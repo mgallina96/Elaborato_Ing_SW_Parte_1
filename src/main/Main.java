@@ -5,17 +5,13 @@ import javafx.stage.Stage;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.regex.Pattern;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        GregorianCalendar birthday = new GregorianCalendar();
-        birthday.set(2000, Calendar.MARCH, 4);
-        User user = new User("AAA", "BBB", "CCC", "password", birthday);
-        System.out.println(user.toString());
 
-        System.out.println(user.isOfAge() ? "Maggiorenne" : "Non maggiorenne");
     }
 
 
