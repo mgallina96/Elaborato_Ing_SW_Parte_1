@@ -4,12 +4,12 @@ import java.util.HashMap;
 
 public class Database {
 
-    private Database database;
+    private static Database database;
     private HashMap<String, User> userList = new HashMap<>();
 
     private Database() {}
 
-    public Database getInstance() {
+    public static Database getInstance() {
         if(database == null)
             database = new Database();
 
