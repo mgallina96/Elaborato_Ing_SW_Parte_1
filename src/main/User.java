@@ -1,35 +1,73 @@
 package main;
-import java.time.Year;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class User extends Operator {
+public class User {
 
-    private static final long OF_AGE = 568024668000L;
-    private GregorianCalendar subscriptionDate;
-    private GregorianCalendar expiryDate;
-    boolean isExpired;
+    private boolean isCustomer;
+    private String username;
+    private String firstName;
+    private String lastName;
+    private String password;
+    private GregorianCalendar birthday;
 
     public User(String firstName, String lastName, String username, String password, GregorianCalendar birthday) {
-        super(firstName, lastName, username, password, birthday);
-        super.setUser(true);
-
-        subscriptionDate = new GregorianCalendar();
-        expiryDate = (GregorianCalendar)(subscriptionDate.clone());
-        expiryDate.add(Calendar.YEAR, 5);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.birthday = birthday;
     }
 
-    public GregorianCalendar getSubscriptionDate() {
-        return subscriptionDate;
+    public String getUsername() {
+        return username;
     }
 
-    public GregorianCalendar getExpiryDate() {
-        return expiryDate;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public boolean isOfAge() {
-        return subscriptionDate.getTimeInMillis() - super.getBirthday().getTimeInMillis() >= OF_AGE;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public GregorianCalendar getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(GregorianCalendar birthday) {
+        this.birthday = birthday;
+    }
+
+    public boolean isCustomer() {
+        return isCustomer;
+    }
+
+    public void setCustomer(boolean isCustomer) {
+        this.isCustomer = isCustomer;
+    }
+
+    public String toString() {
+        return String.format("First name: %s | Last name: %s | Username: %s | Birthday = %s", firstName, lastName, username, birthday.toZonedDateTime().toString().substring(0, 10));
     }
 
 }
