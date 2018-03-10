@@ -36,7 +36,8 @@ public class Customer extends User {
         return expiryDate;
     }
 
-    public void setExpiryDate(GregorianCalendar expiryDate) {
-        this.expiryDate = expiryDate;
+    public void renewSubscription() {
+        if(isExpired)
+            expiryDate.add(Calendar.YEAR, EXPIRY_TIME_IN_YEARS);
     }
 }
