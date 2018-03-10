@@ -32,8 +32,8 @@ public class MainTest {
 
         //uso values() perchè è un metodo che ritorna una collection "stream"abile, la hash map non lo è purtroppo
         database.getUserList().values().stream()
-                //.filter(s -> !s.isCustomer())
-                .forEach(s -> System.out.println(s.toString() + "\t\tCustomer? " + s.isCustomer() + "\n"));
+                .filter(s -> s.isCustomer())
+                .forEach(s -> System.out.println(s.toString() + "\t\tExpiry date: " + 0 + "\n"));
 
     }
 

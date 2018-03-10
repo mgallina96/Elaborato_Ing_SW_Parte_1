@@ -9,7 +9,7 @@ public class Customer extends User {
     private static final int EXPIRY_TIME_IN_YEARS = 5;
     private GregorianCalendar subscriptionDate;
     private GregorianCalendar expiryDate;
-    private boolean isExpired;
+    private boolean hasExpired;
 
     public Customer(String firstName, String lastName, String username, String password, GregorianCalendar birthday) {
         super(firstName, lastName, username, password, birthday);
@@ -18,10 +18,15 @@ public class Customer extends User {
         subscriptionDate = new GregorianCalendar();
         expiryDate = (GregorianCalendar)(subscriptionDate.clone());
         expiryDate.add(Calendar.YEAR, EXPIRY_TIME_IN_YEARS);
+        hasExpired = false;
     }
 
     public boolean isOfAge() {
         return subscriptionDate.getTimeInMillis() - super.getBirthday().getTimeInMillis() >= OF_AGE;
+    }
+
+    public boolean hasExpired() {
+        return expiryDate.after(new GregorianCalendar());
     }
 
     public GregorianCalendar getSubscriptionDate() {
@@ -37,7 +42,7 @@ public class Customer extends User {
     }
 
     public void renewSubscription() {
-        if(isExpired)
+        if(hasExpired)
             expiryDate.add(Calendar.YEAR, EXPIRY_TIME_IN_YEARS);
     }
 }
