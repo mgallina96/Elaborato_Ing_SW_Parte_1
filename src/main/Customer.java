@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 
 public class Customer extends User {
 
-    private static final long OF_AGE = 568024668000L;
+    private static final int LEGAL_AGE_IN_YEARS = 18;
     private static final int EXPIRY_TIME_IN_YEARS = 5;
     private GregorianCalendar subscriptionDate;
     private GregorianCalendar expiryDate;
@@ -22,7 +22,11 @@ public class Customer extends User {
     }
 
     public boolean isOfAge() {
-        return subscriptionDate.getTimeInMillis() - super.getBirthday().getTimeInMillis() >= OF_AGE;
+        GregorianCalendar subscription = (GregorianCalendar)subscriptionDate.clone();
+        GregorianCalendar correctedBirthday = (GregorianCalendar)super.getBirthday().clone();
+        correctedBirthday.add(Calendar.YEAR, LEGAL_AGE_IN_YEARS);
+
+        return correctedBirthday.before(subscription);
     }
 
     public boolean hasExpired() {

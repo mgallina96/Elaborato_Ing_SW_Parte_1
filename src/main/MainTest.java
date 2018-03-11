@@ -20,7 +20,7 @@ public class MainTest {
             String username = nome + "_" + cognome + "_" + rand.nextInt(Integer.MAX_VALUE);
             String password = rand.nextLong() + "";
             GregorianCalendar gregorianCalendar = new GregorianCalendar();
-            gregorianCalendar.set(rand.nextInt(65) + 1935, rand.nextInt(12), rand.nextInt(30) + 1);
+            gregorianCalendar.set(rand.nextInt(70) + 1935, rand.nextInt(12), rand.nextInt(30) + 1);
 
             //ci saranno molti più clienti che non operatori ovviamente
             User o = (rand.nextDouble() > 0.9) ?
@@ -33,7 +33,7 @@ public class MainTest {
         //uso values() perchè è un metodo che ritorna una collection "stream"abile, la hash map non lo è purtroppo
         database.getUserList().values().stream()
                 .filter(s -> s.isCustomer())
-                .forEach(s -> System.out.println(s.toString() + "\t\tExpiry date: " + 0 + "\n"));
+                .forEach(s -> System.out.println(s.toString() + "\t\tOf age? " + ((Customer)s).isOfAge() + "\n"));
 
     }
 
