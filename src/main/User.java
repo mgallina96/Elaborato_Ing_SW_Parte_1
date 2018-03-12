@@ -1,22 +1,14 @@
 package main;
-
-import java.time.Year;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class User {
 
-    private static final long OF_AGE = 568024668000L;
+    private boolean isCustomer;
     private String username;
     private String firstName;
     private String lastName;
     private String password;
     private GregorianCalendar birthday;
-    private GregorianCalendar subscriptionDate;
-    private GregorianCalendar expiryDate;
-    boolean isExpired;
-    boolean isUser;
 
     public User(String firstName, String lastName, String username, String password, GregorianCalendar birthday) {
         this.firstName = firstName;
@@ -24,46 +16,58 @@ public class User {
         this.username = username;
         this.password = password;
         this.birthday = birthday;
-        subscriptionDate = new GregorianCalendar();
-        expiryDate = (GregorianCalendar)(subscriptionDate.clone());
-        expiryDate.add(Calendar.YEAR, 5);
-        System.out.println(subscriptionDate.toZonedDateTime());
-        System.out.println(expiryDate.toZonedDateTime());
     }
 
     public String getUsername() {
         return username;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getFirstName() {
         return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
     }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public GregorianCalendar getBirthday() {
         return birthday;
     }
 
-    public GregorianCalendar getSubscriptionDate() {
-        return subscriptionDate;
+    public void setBirthday(GregorianCalendar birthday) {
+        this.birthday = birthday;
     }
 
-    public GregorianCalendar getExpiryDate() {
-        return expiryDate;
+    public boolean isCustomer() {
+        return isCustomer;
     }
 
-    public boolean isOfAge() {
-        return subscriptionDate.getTimeInMillis() - birthday.getTimeInMillis() >= OF_AGE;
+    public void setCustomer(boolean isCustomer) {
+        this.isCustomer = isCustomer;
     }
 
     public String toString() {
-        return String.format("First name: %s | Last name: %s | Username: %s | Birthday = %s\n", firstName, lastName, username, birthday.toZonedDateTime());
+        return String.format("First name: %s | Last name: %s | Username: %s | Birthday = %s", firstName, lastName, username, birthday.toZonedDateTime().toString().substring(0, 10));
     }
+
 }

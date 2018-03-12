@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="0.0" y="487.0">main.InputParserUtility</node>
+    <node x="357.0" y="487.0">main.Database</node>
+    <node x="212.75" y="0.0">main.User</node>
+    <node x="-583.1724137931035" y="270.98275862068965">main.MainTest</node>
+    <node x="625.0" y="487.0">main.Main</node>
+    <node x="399.0" y="312.5">main.Operator</node>
+    <node x="0.0" y="257.0">main.Customer</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="main.Operator" target="main.User">
+      <point x="0.0" y="-37.0" />
+      <point x="586.0" y="232.0" />
+      <point x="475.25" y="232.0" />
+      <point x="87.5" y="103.5" />
+    </edge>
+    <edge source="main.Customer" target="main.User">
+      <point x="0.0" y="-92.5" />
+      <point x="189.5" y="232.0" />
+      <point x="300.25" y="232.0" />
+      <point x="-87.5" y="103.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7651715039577837" x="397.0" y="369.0" />
+  <SelectedNodes>
+    <node>main.MainTest</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Constructors</Category>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
