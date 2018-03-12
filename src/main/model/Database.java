@@ -1,13 +1,18 @@
-package main;
+package main.model;
+
+import main.model.user.User;
 
 import java.util.HashMap;
 
 public class Database {
+    private static final User ADMIN = new User("admin", "admin");
 
     private static Database database;
     private HashMap<String, User> userList = new HashMap<>();
 
-    private Database() {}
+    private Database() {
+        this.addUser(ADMIN);
+    }
 
     public static Database getInstance() {
         if(database == null)

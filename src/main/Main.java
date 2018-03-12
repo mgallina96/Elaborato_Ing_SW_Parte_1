@@ -1,16 +1,14 @@
 package main;
-import javafx.application.Application;
-import javafx.stage.Stage;
 
-public class Main extends Application {
-
-    @Override
-    public void start(Stage primaryStage) {
-
-    }
-
-
+/**
+ * The entry point of the application.
+ *
+ * @author Manuel Gallina, Giosuè Filippini, Alessandro Polcini
+ * @version 0.1
+ * @since version 0.1 - 03/03/2018
+ */
+public class Main {
     public static void main(String[] args) {
-        launch(args);
+        SystemController.getInstance().init();
     }
 }

@@ -1,4 +1,9 @@
 package main;
+import main.model.user.Customer;
+import main.model.Database;
+import main.model.user.Operator;
+import main.model.user.User;
+
 import java.io.File;
 import java.util.*;
 
