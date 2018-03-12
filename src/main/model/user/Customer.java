@@ -1,4 +1,4 @@
-package main;
+package main.model.user;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -19,6 +19,10 @@ public class Customer extends User {
         expiryDate = (GregorianCalendar)(subscriptionDate.clone());
         expiryDate.add(Calendar.YEAR, EXPIRY_TIME_IN_YEARS);
         hasExpired = false;
+    }
+
+    public Customer(String username, String password) {
+        super(username, password);
     }
 
     public boolean isOfAge() {

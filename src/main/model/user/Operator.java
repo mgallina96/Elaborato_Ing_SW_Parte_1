@@ -1,4 +1,4 @@
-package main;
+package main.model.user;
 
 import java.util.GregorianCalendar;
 
