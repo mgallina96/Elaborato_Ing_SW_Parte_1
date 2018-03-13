@@ -1,4 +1,5 @@
 package main.utility;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -141,6 +142,43 @@ public class InputParserUtility {
         }
 
         return false;
+    }
+
+    /**
+     * Converts a date in DD/MM/YYYY format to a valid {@link GregorianCalendar} date.
+     * <p> Accepted formats: "DD/MM/YYYY", "DD-MM-YYYY", "DD,MM,YYYY", "DD.MM.YYYY", "DD|MM|YYYY", etc. <p>Basically,
+     * any single non-digit separator is accepted.
+     * <p> Any invalid date is automatically corrected by the {@link GregorianCalendar} class. For instance: the input
+     * "32/10/2015" is transformed into "1/11/2015" because it gets parsed as "(31/10/2015 + one day) = 1/11/2015".
+     * @param date the string value of a date in DD/MM/YYYY format.
+     * @return the corresponding {@code GregorianCalendar} date.
+     */
+    public static GregorianCalendar toGregorianDate(String date) {
+        GregorianCalendar finalDate = new GregorianCalendar();
+        date = date + "/";
+        int len = date.length();
+        int[] fields = new int[3];
+        int count = 0;
+        StringBuilder sb = new StringBuilder();
+
+        for(int i = 0; i < len; i++) {
+            String currentChar = date.charAt(i) + "";
+
+            if(currentChar.matches("[^0-9]")) {
+                fields[count++] = Integer.parseInt(sb.toString());
+                sb = new StringBuilder();
+                date = date.substring(i);
+                len = date.length();
+                i = 0;
+            }
+            else
+                sb.append(currentChar);
+
+        }
+
+        finalDate.set(fields[2], fields[1] - 1, fields[0]);
+
+        return finalDate;
     }
 
 }

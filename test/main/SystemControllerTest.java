@@ -27,7 +27,7 @@ class SystemControllerTest {
         String wrongUsername = "Paolo";
         String wrongPassword = "54321";
 
-        Assertions.assertTrue(CONTROLLER.checkUser(correctUsername, correctPassword));
-        Assertions.assertFalse(CONTROLLER.checkUser(wrongUsername, wrongPassword));
+        Assertions.assertTrue(CONTROLLER.checkUserOccurrence(correctUsername, correctPassword));
+        Assertions.assertFalse(CONTROLLER.checkUserOccurrence(wrongUsername, wrongPassword));
     }
 }

@@ -1,4 +1,5 @@
 package main;
+
 /**
  * The entry point of the application.
  *
@@ -6,7 +7,6 @@ package main;
  * @version 0.1
  * @since version 0.1 - 03/03/2018
  */
-
 public class Main {
 
     public static void main(String[] args) {
