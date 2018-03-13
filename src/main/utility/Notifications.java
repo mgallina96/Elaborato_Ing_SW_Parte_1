@@ -23,6 +23,7 @@ public class Notifications {
     public static final String PROMPT_SIGN_UP_CONFIRMATION = "Are you sure you want to submit this form? (y/n)";
     public static final String PROMPT_LOGIN_SCREEN = "Welcome back! Log in to " + MSG_BIBLIO_NAME;
     public static final String PROMPT_SIGN_UP_SCREEN = "Hi there! Sign up for " + MSG_BIBLIO_NAME;
+    public static final String PROMPT_MODIFY_FIELDS = "Please modify the wrong fields.";
 
     //ERRORS
     public static final String ERR_NOT_OF_AGE = "Warning: user is underage. Please re-fill this form.";

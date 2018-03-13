@@ -2,7 +2,6 @@ package main.gui;
 import main.SystemController;
 import main.utility.InputParserUtility;
 import static main.utility.Notifications.*;
-import java.util.GregorianCalendar;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -63,6 +62,8 @@ public class View {
         boolean valid;
         System.out.println(PROMPT_SIGN_UP_SCREEN + "\n" + SEPARATOR);
 
+        controller.addUserToDatabase("Ale", "Polcio", "polcio", "asd", InputParserUtility.toGregorianDate("14/10/1996"));
+
         do {
             valid = true;
 
@@ -75,7 +76,7 @@ public class View {
             System.out.print(PROMPT_PASSWORD);
             String password = scanner.nextLine();
             System.out.print(PROMPT_BIRTHDAY);
-            GregorianCalendar birthday = InputParserUtility.toGregorianDate(scanner.nextLine());
+            String birthday = scanner.nextLine();
 
             System.out.println(SEPARATOR + "\n" + PROMPT_SIGN_UP_CONFIRMATION + "\n" + SEPARATOR);
             String choice;
@@ -86,13 +87,13 @@ public class View {
 
             if(choice.matches("[yY]")) {
 
-                if(!controller.legalAge(birthday)) {
+                if(!controller.legalAge(InputParserUtility.toGregorianDate(birthday))) {
                     System.out.println(ERR_NOT_OF_AGE);
                     continue;
                 }
 
                 if(!controller.checkUserOccurrence(username, password)) {
-                    controller.addUserToDatabase(firstName, lastName, username, password, birthday);
+                    controller.addUserToDatabase(firstName, lastName, username, password, InputParserUtility.toGregorianDate(birthday));
                     System.out.println(MSG_SIGN_UP_SUCCESSFUL);
                     break;
                 }
@@ -110,7 +111,8 @@ public class View {
                             valid = false;
                             break;
                         case 2:
-                            continue;
+                            System.out.println(PROMPT_MODIFY_FIELDS);
+                            break;
                         case 3:
                             renewSubscription();
                             valid = false;
@@ -170,7 +172,7 @@ public class View {
     }
 
     /**
-     * Boots up the operator menu
+     * Boots up the operator menu.
      */
     public void operatorMenu() {
         System.out.printf("%s\n\n", operatorChoices);
@@ -178,21 +180,24 @@ public class View {
         String command;
         do {
             command = scanner.nextLine();
-        } while(!InputParserUtility.isValidInteger(command, 1, 2));
+        } while(!InputParserUtility.isValidInteger(command, 1, 3));
 
         switch(Integer.parseInt(command)) {
-            case 1: showUsers(); break;
-            default: break;
+            case 1:
+                showUsers();
+                break;
+            default:
+                break;
         }
 
         scanner.close();
     }
 
     /**
-     * It shows the list of the users subscribe to the service
+     * Shows the full list of subscribed users.
      */
     private void showUsers() {
-        System.out.println(controller.getUsersList());
+        System.out.println(controller.allUsersToString());
     }
 
 }

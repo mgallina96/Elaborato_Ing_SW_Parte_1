@@ -60,18 +60,17 @@ public class SystemController {
     }
 
     /**
-     * Returns a String that contains all the users present into the database.
-     * @return the list of the users as a String
+     * Returns a {@code String} that contains all the users in the database.
+     * @return the list of all users as a {@code String}.
      */
-    public String getUsersList() {
+    public String allUsersToString() {
         HashMap<String, User> list = database.getUserList();
-        String toReturn = "";
+        StringBuilder allUsers = new StringBuilder();
 
-        for(Map.Entry<String, User> user : list.entrySet()) {
-            toReturn += user.getValue().toString();
-        }
+        for(User u : list.values())
+            allUsers.append(u.toString());
 
-        return toReturn;
+        return allUsers.toString();
     }
 
     /**
