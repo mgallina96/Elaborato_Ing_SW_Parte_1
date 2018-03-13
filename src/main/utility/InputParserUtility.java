@@ -12,9 +12,8 @@ public class InputParserUtility {
     private static Logger logger = Logger.getLogger("InputParserUtility");
     private static final String ERROR_MSG_INVALID_INPUT = "Invalid input.";
 
-    /**
-     * Constructor has been made private to prevent instantiation.
-     */
+
+    //Constructor has been made private to prevent instantiation.
     private InputParserUtility() {}
 
     /**
@@ -65,7 +64,7 @@ public class InputParserUtility {
      *                          {@code false} otherwise.
      */
     public static boolean isValidName(String input) {
-        return input.matches("(([A-Z]('[A-Z])?[a-z]+)( |-))*([A-Z]('[A-Z])?[a-z]+)");
+        return input.matches("(([A-Z]('[A-Z])?[a-z]+)( |-)?)*([A-Z]('[A-Z])?[a-z]+)");
     }
 
     /**

@@ -1,24 +1,29 @@
 package main.gui;
-
 import main.SystemController;
+import main.utility.InputParserUtility;
 
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
- * Main GUI class.
- *
- * It builds the graphic appearance and manages the interaction with the user.
+ * Main GUI class which sets up the graphical appearance and manages any kind of interaction with the user.
  *
  * @author Manuel Gallina
  * @version 0.1
  * @since version 0.1 - 08/03/2018
  */
 public class View {
+
+    private Logger logger = Logger.getLogger(this.getClass().getName());
+    private static final String biblioName = "BIBLIOTECA SMARTin4t0r 3.0";
+    private static final String choices = "(1) LOGIN\t|\t(2) SIGN IN";
+    private static final String LOGIN_FAILED = "Wrong username or password.\n";
     private SystemController controller;
     private Scanner scanner;
 
     /**
-     * Constructor.
+     * The constructor for the View class.
      *
      * @param controller The system controller.
      */
@@ -31,25 +36,17 @@ public class View {
      * Builds the first screen of the user interface which is the login screen.
      */
     public void start() {
-        System.out.print("BIBLIOTECA SMARTin4t0r 3.0\n\n" +
-                "(1) LOGIN\t|\t(2) SIGN IN\n\n" +
-                "> ");
+        System.out.printf("%s\n\n%s\n\n>", biblioName, choices);
 
-        int command = 0;
-
+        String command;
         do {
-            if(scanner.hasNextInt())
-                command = scanner.nextInt();
-            else
-                scanner.nextLine();
-        } while (command < 1 || command > 2);
+            command = scanner.nextLine();
+        } while(!InputParserUtility.isValidInteger(command, 1, 3));
 
-        switch (command) {
-            case 1:
-                login();
+        switch(Integer.parseInt(command)) {
+            case 1: login();
                 break;
-            case 2:
-                signIn();
+            case 2: signIn();
                 break;
             default:
                 break;
@@ -58,10 +55,16 @@ public class View {
         scanner.close();
     }
 
+    /**
+     * Boots up the section from which the user can sign in.
+     */
     private void signIn() {
         //TODO
     }
 
+    /**
+     * Boots up the login screen.
+     */
     private void login() {
         while(true) {
             String username;
@@ -75,11 +78,10 @@ public class View {
             password = scanner.next();
             scanner.nextLine();
 
-            if (controller.checkUser(username, password))
+            if(controller.checkUser(username, password))
                 break;
-            System.out.println("Username o password errati\n");
-        }
 
-        //TODO: profileScreen();
+            logger.log(Level.SEVERE, LOGIN_FAILED);
+        }
     }
 }

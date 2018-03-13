@@ -18,7 +18,7 @@ public class SystemController {
     private View view;
     private Database database;
 
-    //Singleton constructor
+    //Singleton constructor, the keyword 'private' prevents instantiation.
     private SystemController() {
         database = Database.getInstance();
         view = new View(this);
@@ -30,13 +30,13 @@ public class SystemController {
      * @return The system controller.
      */
     public static SystemController getInstance() {
-        if (instance == null)
+        if(instance == null)
             instance = new SystemController();
         return instance;
     }
 
     /**
-     * Initializes the system controller which starts the gui.
+     * Initializes the system controller which starts the GUI.
      */
     public void init() {
         view.start();
@@ -47,7 +47,7 @@ public class SystemController {
      *
      * @param username The username.
      * @param password The password.
-     * @return True if the user credentials are correct, false otherwise.
+     * @return {@code true} if the user credentials are correct, {@code false} otherwise.
      */
     public boolean checkUser(String username, String password) {
         return database.isPresent(new Customer(username, password));
