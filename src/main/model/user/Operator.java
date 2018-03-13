@@ -12,7 +12,7 @@ public class Operator extends User {
     }
 
     /**
-     * Views the list of all enrolled customers.
+     * Shows the list of all enrolled customers.
      */
     public void viewCustomerList() {
 
