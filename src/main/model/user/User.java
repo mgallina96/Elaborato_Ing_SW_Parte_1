@@ -83,7 +83,7 @@ public class User {
     }
 
     public String toString() {
-        return String.format("First name: %s | Last name: %s | Username: %s | Birthday = %s", firstName, lastName, username, birthday.toZonedDateTime().toString().substring(0, 10));
+        return String.format("First name: %s | Last name: %s | Username: %s | Birthday = %s\n", firstName, lastName, username, birthday.toZonedDateTime().toString().substring(0, 10));
     }
 
 }

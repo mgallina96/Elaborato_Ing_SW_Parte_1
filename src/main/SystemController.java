@@ -3,6 +3,10 @@ package main;
 import main.gui.View;
 import main.model.user.Customer;
 import main.model.Database;
+import main.model.user.User;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Controller class that manages all the interactions between the graphic user interface
@@ -51,5 +55,20 @@ public class SystemController {
      */
     public boolean checkUser(String username, String password) {
         return database.isPresent(new Customer(username, password));
+    }
+
+    /**
+     * Returns a String that contains all the users present into the database.
+     * @return the list of the users as a String
+     */
+    public String getUsersList() {
+        HashMap<String, User> list = database.getUserList();
+        String toReturn = "";
+
+        for(Map.Entry<String, User> user : list.entrySet()) {
+            toReturn += user.getValue().toString();
+        }
+
+        return toReturn;
     }
 }
