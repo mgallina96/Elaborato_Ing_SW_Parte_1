@@ -62,8 +62,6 @@ public class View {
         boolean valid;
         System.out.println(PROMPT_SIGN_UP_SCREEN + "\n" + SEPARATOR);
 
-        controller.addUserToDatabase("Ale", "Polcio", "polcio", "asd", InputParserUtility.toGregorianDate("14/10/1996"));
-
         do {
             valid = true;
 
