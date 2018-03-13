@@ -5,7 +5,7 @@ import main.model.user.User;
 import java.util.HashMap;
 
 /**
- * Database singleton class. This class manages a simple Database in form of a HashMap.
+ * Database singleton class. This class manages a simple Database in form of a {@link HashMap}.
  * <p>
  * This class provides methods for adding elements to or removing elements from the database, searching through the
  * database for a single element and checking whether a given element belongs to the database.
