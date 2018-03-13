@@ -18,6 +18,7 @@ public class View {
     private Logger logger = Logger.getLogger(this.getClass().getName());
     private static final String biblioName = "BIBLIOTECA SMARTin4t0r 3.0";
     private static final String choices = "(1) LOGIN\t|\t(2) SIGN IN";
+    private static final String operatorChoices = "(1) SHOW SUBSCRIBED USER";
     private static final String LOGIN_FAILED = "Wrong username or password.\n";
     private SystemController controller;
     private Scanner scanner;
@@ -84,4 +85,31 @@ public class View {
             logger.log(Level.SEVERE, LOGIN_FAILED);
         }
     }
+
+    /**
+     * Boots up the operator menu
+     */
+    public void operatorMenu() {
+        System.out.printf("%s\n\n", operatorChoices);
+
+        String command;
+        do {
+            command = scanner.nextLine();
+        } while(!InputParserUtility.isValidInteger(command, 1, 2));
+
+        switch(Integer.parseInt(command)) {
+            case 1: showUsers(); break;
+            default: break;
+        }
+
+        scanner.close();
+    }
+
+    /**
+     * It shows the list of the users subscribe to the service
+     */
+    private void showUsers() {
+        System.out.println(controller.getUsersList());
+    }
+
 }
