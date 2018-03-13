@@ -16,7 +16,6 @@ import java.util.logging.Logger;
 public class View {
 
     private Logger logger = Logger.getLogger(this.getClass().getName());
-    private static final String operatorChoices = "(1) SHOW SUBSCRIBED USER";
     private SystemController controller;
     private Scanner scanner;
 
@@ -34,7 +33,7 @@ public class View {
      * Builds the first screen of the user interface which is the login screen.
      */
     public void start() {
-        System.out.printf("%s\n\n%s\n\n> ", MSG_BIBLIO_NAME, MSG_BIBLIO_INITIAL_CHOICES);
+        System.out.printf("%s\n\n%s\n\n> ", MSG_BIBLIO_NAME, PROMPT_BIBLIO_INITIAL_CHOICES);
 
         String command;
         do {
@@ -60,7 +59,7 @@ public class View {
      */
     private void signUp() {
         boolean valid;
-        System.out.println(PROMPT_SIGN_UP_SCREEN + "\n" + SEPARATOR);
+        System.out.printf("%s\n%s\n", PROMPT_SIGN_UP_SCREEN, SEPARATOR);
 
         do {
             valid = true;
@@ -76,7 +75,7 @@ public class View {
             System.out.print(PROMPT_BIRTHDAY);
             String birthday = scanner.nextLine();
 
-            System.out.println(SEPARATOR + "\n" + PROMPT_SIGN_UP_CONFIRMATION + "\n" + SEPARATOR);
+            System.out.printf("%s\n%s\n%s\n", SEPARATOR, PROMPT_SIGN_UP_CONFIRMATION, SEPARATOR);
             String choice;
 
             do {
@@ -119,7 +118,7 @@ public class View {
                 }
             }
             else {
-                System.out.println(ERR_SIGN_UP_FAILED + " " + MSG_EXIT_WITHOUT_SAVING);
+                System.out.printf("%s %s\n", ERR_SIGN_UP_FAILED, MSG_EXIT_WITHOUT_SAVING);
                 break;
             }
 
@@ -173,12 +172,12 @@ public class View {
      * Boots up the operator menu.
      */
     public void operatorMenu() {
-        System.out.printf("%s\n\n", operatorChoices);
+        System.out.printf("%s\n\n", PROMPT_OPERATOR_CHOICES);
 
         String command;
         do {
             command = scanner.nextLine();
-        } while(!InputParserUtility.isValidInteger(command, 1, 3));
+        } while(!InputParserUtility.isValidInteger(command, 1, 2));
 
         switch(Integer.parseInt(command)) {
             case 1:

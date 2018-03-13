@@ -9,7 +9,6 @@ public class Notifications {
 
     //MESSAGES
     public static final String MSG_BIBLIO_NAME = "BIBLIOTECA SMARTin4t0r 3.0";
-    public static final String MSG_BIBLIO_INITIAL_CHOICES = "(1) LOGIN\t|\t(2) SIGN UP";
     public static final String MSG_SIGN_UP_SUCCESSFUL = "Sign up successful. Welcome!";
     public static final String MSG_EXIT_WITHOUT_SAVING = "Exiting without saving...";
 
@@ -20,6 +19,8 @@ public class Notifications {
     public static final String PROMPT_PASSWORD = "Password: ";
     public static final String PROMPT_BIRTHDAY = "Birthday (accepted format = DD/MM/YYYY): ";
     public static final String PROMPT_PRESENT_USER_MULTIPLE_CHOICE = "This user is already present in our database.\n(1) EXIT WITHOUT SAVING\t|\t(2) CHANGE FIELDS\t|\t(3) RENEW SUBSCRIPTION";
+    public static final String PROMPT_BIBLIO_INITIAL_CHOICES = "(1) LOGIN\t|\t(2) SIGN UP";
+    public static final String PROMPT_OPERATOR_CHOICES = "(1) SHOW ALL SUBSCRIBED USERS";
     public static final String PROMPT_SIGN_UP_CONFIRMATION = "Are you sure you want to submit this form? (y/n)";
     public static final String PROMPT_LOGIN_SCREEN = "Welcome back! Log in to " + MSG_BIBLIO_NAME;
     public static final String PROMPT_SIGN_UP_SCREEN = "Hi there! Sign up for " + MSG_BIBLIO_NAME;
