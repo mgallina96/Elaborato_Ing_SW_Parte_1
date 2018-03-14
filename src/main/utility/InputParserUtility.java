@@ -155,6 +155,42 @@ public class InputParserUtility {
      */
     public static GregorianCalendar toGregorianDate(String date) {
         GregorianCalendar finalDate = new GregorianCalendar();
+        int[] fields = separateDate(date);
+
+        finalDate.set(fields[2], fields[1] - 1, fields[0]);
+
+        return finalDate;
+    }
+
+    /**
+     * Checks whether the input (DD/MM/YYYY format) is a valid date or not.
+     *
+     * @param date the date to be parsed and checked.
+     * @return a boolean value: {@code true} if the input is a valid date,
+     *                          {@code false} otherwise.
+     */
+    public static boolean isValidDate(String date) {
+        int[] fields = separateDate(date);
+        int day = fields[0];
+        int month = fields[1];
+        int year = fields[2];
+
+        boolean yearLen = (year + "").length() == 4;
+        boolean leapYear = ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+        boolean monthDayBounds = month > 0 && month < 13 && day > 0;
+        boolean february = month == 2 && ((leapYear && (day < 30)) || (!leapYear && (day < 29)));
+        boolean thirty = (day < 31) && (month == 4 || month == 6 || month == 9 || month == 11);
+        boolean thirtyOne = (day < 32) && !(month == 2 || month == 4 || month == 6 || month == 9 || month == 11);
+
+        return yearLen && monthDayBounds && (thirtyOne || thirty || february);
+    }
+
+    /**
+     * Splits a DD/MM/YYYY date into three parts: DD, MM and YYYY and stores those values as integers in an array.
+     * @param date the date to separate.
+     * @return the integer {@code array} composed of the extracted fields day, month and year.
+     */
+    private static int[] separateDate(String date) {
         date = date + "/";
         int len = date.length();
         int[] fields = new int[3];
@@ -176,9 +212,7 @@ public class InputParserUtility {
 
         }
 
-        finalDate.set(fields[2], fields[1] - 1, fields[0]);
-
-        return finalDate;
+        return fields;
     }
 
 }

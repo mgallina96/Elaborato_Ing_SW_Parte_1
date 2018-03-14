@@ -1,7 +1,11 @@
 package main.model;
 import main.model.user.User;
+import main.utility.Notifications;
 
+import java.io.*;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Database singleton class. This class manages a simple Database in form of a {@link HashMap}.
@@ -10,16 +14,18 @@ import java.util.HashMap;
  * database for a single element and checking whether a given element belongs to the database.
  *
  */
-public class Database {
+public class Database implements Serializable {
 
     //A default admin user, added to the database whenever this class is instantiated.
-    private static final User ADMIN = new User("admin", "admin");
+    //private static final User ADMIN = new User("admin", "admin");
     private static Database database;
     private HashMap<String, User> userList = new HashMap<>();
+    private Logger logger = Logger.getLogger(this.getClass().getName());
 
     //Singleton Database constructor, private to prevent instantiation.
     private Database() {
-        this.addUser(ADMIN);
+        loadDatabase();
+        //this.addUser(ADMIN);
     }
 
     /**
@@ -83,14 +89,32 @@ public class Database {
     /**
      * Loads an existing database into this class' HashMap.
      */
-    public void loadDatabase() {
+    private void loadDatabase() {
+        try {
 
+        }
+        catch(Exception e) {
+
+        }
     }
 
     /**
      * Saves this database to a {@code .ser} file
      */
     public void saveDatabase() {
+        String path = Notifications.DATABASE_FILE_NAME + " Database.ser";
 
+        try {
+            FileOutputStream fileOut = new FileOutputStream(path);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+
+            out.writeObject(database);
+
+            out.close();
+            fileOut.close();
+        }
+        catch(IOException IOEx) {
+            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE, IOEx);
+        }
     }
 }

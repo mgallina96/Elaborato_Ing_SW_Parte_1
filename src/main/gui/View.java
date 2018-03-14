@@ -75,15 +75,19 @@ public class View {
             System.out.print(PROMPT_BIRTHDAY);
             String birthday = scanner.nextLine();
 
-            System.out.printf("%s\n%s\n%s\n", SEPARATOR, PROMPT_SIGN_UP_CONFIRMATION, SEPARATOR);
-            String choice;
+            if(!InputParserUtility.isValidDate(birthday)) {
+                System.out.println(ERR_INVALID_DATE);
+                continue;
+            }
 
+            System.out.printf("%s\n%s\n%s\n", SEPARATOR, PROMPT_SIGN_UP_CONFIRMATION, SEPARATOR);
+
+            String choice;
             do {
                 choice = scanner.nextLine();
             } while(choice.matches("[^ynYN]"));
 
             if(choice.matches("[yY]")) {
-
                 if(!controller.legalAge(InputParserUtility.toGregorianDate(birthday))) {
                     System.out.println(ERR_NOT_OF_AGE);
                     continue;

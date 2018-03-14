@@ -28,12 +28,15 @@ public class Notifications {
 
     //ERRORS
     public static final String ERR_NOT_OF_AGE = "Warning: user is underage. Please re-fill this form.";
-    public static final String ERR_INVALID_NAME = "It looks like this name has an invalid format, please re-insert a valid name.";
+    public static final String ERR_INVALID_NAME = "Looks like this name has an invalid format, please re-insert a valid name.";
+    public static final String ERR_INVALID_DATE = "This birth date has an invalid format. Please re-insert a valid date.";
     public static final String ERR_LOGIN_FAILED = "Login failed: wrong username or password.";
     public static final String ERR_SIGN_UP_FAILED = "Sign up failed.";
+    public static final String ERR_SAVING_DATABASE = "An error occurred while saving the database to a .ser file.";
 
     //general useful messages
     public static final String SEPARATOR = "-------------------------------------------------------------------------------------------------------------";
+    public static final String DATABASE_FILE_NAME = "Biblioteca SMARTINATOR";
 
 
 }
