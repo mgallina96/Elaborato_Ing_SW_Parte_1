@@ -163,19 +163,6 @@ public class View {
 
     }
 
-    private String insertName() {
-        String name = scanner.nextLine();
-        boolean valid = InputParserUtility.isValidName(name);
-
-        while(!valid) {
-            System.out.println(ERR_INVALID_NAME);
-            name = scanner.nextLine();
-            valid = InputParserUtility.isValidName(name);
-        }
-
-        return name;
-    }
-
     /**
      * Boots up the operator menu.
      */
@@ -196,6 +183,26 @@ public class View {
         }
 
         scanner.close();
+    }
+
+    /**
+     * Loops a scanner until the inserted {@code String} is a valid first name (or last name).
+     * <p>The parameters and the logic for name validity are defined in the {@code isValidName()} method of the
+     * {@link InputParserUtility} class.
+     *
+     * @return a valid name in the form of a {@code String}.
+     */
+    private String insertName() {
+        String name = scanner.nextLine();
+        boolean valid = InputParserUtility.isValidName(name);
+
+        while(!valid) {
+            System.out.println(ERR_INVALID_NAME);
+            name = scanner.nextLine();
+            valid = InputParserUtility.isValidName(name);
+        }
+
+        return name;
     }
 
     /**
