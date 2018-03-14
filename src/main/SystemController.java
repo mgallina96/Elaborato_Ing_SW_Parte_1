@@ -15,14 +15,15 @@ import java.util.HashMap;
  * @since version 0.1 - 12/03/2018
  */
 public class SystemController {
-    private static SystemController instance;
 
+    private static SystemController instance;
     private View view;
     private Database database;
 
-    //Singleton constructor, the keyword 'private' prevents instantiation.
+    //Singleton constructor, private to prevent instantiation.
     private SystemController() {
         database = Database.getInstance();
+        database.getUserList().values().forEach(System.out::println);
         view = new View(this);
     }
 
@@ -88,5 +89,12 @@ public class SystemController {
      */
     public boolean legalAge(GregorianCalendar birthday) {
         return new Customer("", "", "", "", birthday).isOfAge();
+    }
+
+    /**
+     * Saves the database and possible changes made to it.
+     */
+    public void saveDatabase() {
+        database.saveDatabase();
     }
 }

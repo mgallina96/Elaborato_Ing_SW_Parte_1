@@ -66,18 +66,21 @@ public class View {
 
             System.out.print(PROMPT_FIRST_NAME);
             String firstName = insertName();
+
             System.out.print(PROMPT_LAST_NAME);
             String lastName = insertName();
+
             System.out.print(PROMPT_USERNAME);
             String username = scanner.nextLine();
+
             System.out.print(PROMPT_PASSWORD);
             String password = scanner.nextLine();
+
             System.out.print(PROMPT_BIRTHDAY);
             String birthday = scanner.nextLine();
-
-            if(!InputParserUtility.isValidDate(birthday)) {
+            while(!InputParserUtility.isValidDate(birthday)) {
                 System.out.println(ERR_INVALID_DATE);
-                continue;
+                birthday = scanner.nextLine();
             }
 
             System.out.printf("%s\n%s\n%s\n", SEPARATOR, PROMPT_SIGN_UP_CONFIRMATION, SEPARATOR);
@@ -95,6 +98,7 @@ public class View {
 
                 if(!controller.checkUserOccurrence(username, password)) {
                     controller.addUserToDatabase(firstName, lastName, username, password, InputParserUtility.toGregorianDate(birthday));
+                    saveDatabase();
                     System.out.println(MSG_SIGN_UP_SUCCESSFUL);
                     break;
                 }
@@ -199,6 +203,13 @@ public class View {
      */
     private void showUsers() {
         System.out.println(controller.allUsersToString());
+    }
+
+    /**
+     * Saves the database.
+     */
+    private void saveDatabase() {
+        controller.saveDatabase();
     }
 
 }

@@ -11,8 +11,6 @@ import java.util.logging.Logger;
 public class InputParserUtility {
 
     private static Logger logger = Logger.getLogger("InputParserUtility");
-    private static final String ERROR_MSG_INVALID_INPUT = "Invalid input.";
-
 
     //Constructor has been made private to prevent instantiation.
     private InputParserUtility() {}
@@ -29,7 +27,7 @@ public class InputParserUtility {
             Integer.parseInt(input);
         }
         catch(NumberFormatException NFEx) {
-            logger.log(Level.SEVERE, ERROR_MSG_INVALID_INPUT);
+            logger.log(Level.SEVERE, Notifications.ERR_MSG_INVALID_INPUT);
             return false;
         }
 
@@ -80,7 +78,7 @@ public class InputParserUtility {
             Double.parseDouble(input);
         }
         catch(Exception e) {
-            logger.log(Level.SEVERE, ERROR_MSG_INVALID_INPUT);
+            logger.log(Level.SEVERE, Notifications.ERR_MSG_INVALID_INPUT);
             return false;
         }
 
@@ -118,7 +116,7 @@ public class InputParserUtility {
             Long.parseLong(input);
         }
         catch(NumberFormatException NFEx) {
-            logger.log(Level.SEVERE, ERROR_MSG_INVALID_INPUT);
+            logger.log(Level.SEVERE, Notifications.ERR_MSG_INVALID_INPUT);
             return false;
         }
 
@@ -163,26 +161,30 @@ public class InputParserUtility {
     }
 
     /**
-     * Checks whether the input (DD/MM/YYYY format) is a valid date or not.
+     * Checks whether the input is a valid date or not.
+     * <p>To be considered valid, the date has to conform to the DD/MM/YYYY format and must follow the basic rules of
+     * the Gregorian calendar.
      *
      * @param date the date to be parsed and checked.
      * @return a boolean value: {@code true} if the input is a valid date,
      *                          {@code false} otherwise.
      */
     public static boolean isValidDate(String date) {
+        if(!date.matches("\\d?\\d.\\d?\\d.\\d\\d\\d\\d"))
+            return false;
+
         int[] fields = separateDate(date);
         int day = fields[0];
         int month = fields[1];
         int year = fields[2];
 
-        boolean yearLen = (year + "").length() == 4;
         boolean leapYear = ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
         boolean monthDayBounds = month > 0 && month < 13 && day > 0;
         boolean february = month == 2 && ((leapYear && (day < 30)) || (!leapYear && (day < 29)));
         boolean thirty = (day < 31) && (month == 4 || month == 6 || month == 9 || month == 11);
         boolean thirtyOne = (day < 32) && !(month == 2 || month == 4 || month == 6 || month == 9 || month == 11);
 
-        return yearLen && monthDayBounds && (thirtyOne || thirty || february);
+        return monthDayBounds && (thirtyOne || thirty || february);
     }
 
     /**

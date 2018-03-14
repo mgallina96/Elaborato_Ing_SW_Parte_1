@@ -36,6 +36,7 @@ public class Notifications {
     public static final String ERR_LOADING_DATABASE = "An error occurred while loading the database.";
     public static final String ERR_DATABASE_CLASS_NOT_FOUND = "Database class not found.";
     public static final String ERR_FILE_NOT_FOUND = "Error: file not found.";
+    public static final String ERR_MSG_INVALID_INPUT = "Invalid input.";
 
     //general useful messages
     public static final String SEPARATOR = "-------------------------------------------------------------------------------------------------------------";

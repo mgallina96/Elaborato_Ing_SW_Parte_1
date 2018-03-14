@@ -95,6 +95,7 @@ public class Database implements Serializable {
         try {
             FileInputStream fileIn = new FileInputStream(path);
             ObjectInputStream in = new ObjectInputStream(fileIn);
+
             userList = (HashMap<String, User>)in.readObject();
 
             in.close();
@@ -112,7 +113,7 @@ public class Database implements Serializable {
     }
 
     /**
-     * Saves the database-related {@code HashMap} to a {@code .ser} file.
+     * Saves the {@code HashMap} that contains all subscribed users to a {@code .ser} file.
      */
     public void saveDatabase() {
         String path = Notifications.DATABASE_FILE_NAME;
