@@ -1,7 +1,7 @@
 package main.gui;
+import static main.utility.Notifications.*;
 import main.SystemController;
 import main.utility.InputParserUtility;
-import static main.utility.Notifications.*;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;

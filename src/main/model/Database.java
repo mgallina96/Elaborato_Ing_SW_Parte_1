@@ -1,7 +1,6 @@
 package main.model;
 import main.model.user.User;
 import main.utility.Notifications;
-
 import java.io.*;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -88,7 +87,7 @@ public class Database implements Serializable {
     }
 
     /**
-     * Loads an existing database into this class' HashMap.
+     * Loads an existing database of users into this class' HashMap.
      */
     private void loadDatabase() {
         String path = Notifications.DATABASE_FILE_NAME;
@@ -113,7 +112,7 @@ public class Database implements Serializable {
     }
 
     /**
-     * Saves this database to a {@code .ser} file
+     * Saves the database-related {@code HashMap} to a {@code .ser} file.
      */
     public void saveDatabase() {
         String path = Notifications.DATABASE_FILE_NAME;

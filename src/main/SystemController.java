@@ -3,12 +3,8 @@ import main.gui.View;
 import main.model.user.Customer;
 import main.model.Database;
 import main.model.user.User;
-
 import java.util.GregorianCalendar;
-import main.model.user.User;
-
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Controller class that manages all the interactions between the graphic user interface
