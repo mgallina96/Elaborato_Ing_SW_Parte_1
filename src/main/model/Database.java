@@ -19,11 +19,12 @@ public class Database implements Serializable {
     //A default admin user, added to the database whenever this class is instantiated.
     //private static final User ADMIN = new User("admin", "admin");
     private static Database database;
-    private HashMap<String, User> userList = new HashMap<>();
+    private HashMap<String, User> userList;
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     //Singleton Database constructor, private to prevent instantiation.
     private Database() {
+        this.userList = new HashMap<>();
         loadDatabase();
         //this.addUser(ADMIN);
     }
@@ -90,11 +91,24 @@ public class Database implements Serializable {
      * Loads an existing database into this class' HashMap.
      */
     private void loadDatabase() {
+        String path = Notifications.DATABASE_FILE_NAME;
+
         try {
+            FileInputStream fileIn = new FileInputStream(path);
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            userList = (HashMap<String, User>)in.readObject();
 
+            in.close();
+            fileIn.close();
         }
-        catch(Exception e) {
-
+        catch(FileNotFoundException FNFEx) {
+            logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND);
+        }
+        catch(IOException IOEx) {
+            logger.log(Level.SEVERE, Notifications.ERR_LOADING_DATABASE);
+        }
+        catch(ClassNotFoundException CNFEx) {
+            logger.log(Level.SEVERE, Notifications.ERR_DATABASE_CLASS_NOT_FOUND);
         }
     }
 
@@ -102,19 +116,19 @@ public class Database implements Serializable {
      * Saves this database to a {@code .ser} file
      */
     public void saveDatabase() {
-        String path = Notifications.DATABASE_FILE_NAME + " Database.ser";
+        String path = Notifications.DATABASE_FILE_NAME;
 
         try {
             FileOutputStream fileOut = new FileOutputStream(path);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
-            out.writeObject(database);
+            out.writeObject(userList);
 
             out.close();
             fileOut.close();
         }
         catch(IOException IOEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE, IOEx);
+            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE);
         }
     }
 }

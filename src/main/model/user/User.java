@@ -1,11 +1,12 @@
 package main.model.user;
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
 /**
  * The {@code User} class, superclass of {@link Customer} and {@link Operator}. This class contains fields and methods
  * that both customers and operators have in common, like personal details (and getters/setters for those details).
  */
-public class User {
+public class User implements Serializable {
 
     private static final String DEFAULT_FIRST_NAME = "null";
     private static final String DEFAULT_LAST_NAME = "null";

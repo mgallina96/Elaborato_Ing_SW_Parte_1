@@ -33,10 +33,13 @@ public class Notifications {
     public static final String ERR_LOGIN_FAILED = "Login failed: wrong username or password.";
     public static final String ERR_SIGN_UP_FAILED = "Sign up failed.";
     public static final String ERR_SAVING_DATABASE = "An error occurred while saving the database to a .ser file.";
+    public static final String ERR_LOADING_DATABASE = "An error occurred while loading the database.";
+    public static final String ERR_DATABASE_CLASS_NOT_FOUND = "Database class not found.";
+    public static final String ERR_FILE_NOT_FOUND = "Error: file not found.";
 
     //general useful messages
     public static final String SEPARATOR = "-------------------------------------------------------------------------------------------------------------";
-    public static final String DATABASE_FILE_NAME = "Biblioteca SMARTINATOR";
+    public static final String DATABASE_FILE_NAME = "Biblioteca SMARTINATOR - Database.ser";
 
 
 }
