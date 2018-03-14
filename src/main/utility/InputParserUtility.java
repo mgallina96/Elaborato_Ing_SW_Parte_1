@@ -170,7 +170,7 @@ public class InputParserUtility {
      *                          {@code false} otherwise.
      */
     public static boolean isValidDate(String date) {
-        if(!date.matches("\\d?\\d.\\d?\\d.\\d\\d\\d\\d"))
+        if(!date.matches("\\d?\\d[^0-9]\\d?\\d[^0-9]\\d\\d\\d\\d"))
             return false;
 
         int[] fields = separateDate(date);

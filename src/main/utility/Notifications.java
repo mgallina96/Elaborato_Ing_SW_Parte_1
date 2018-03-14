@@ -32,6 +32,7 @@ public class Notifications {
     public static final String ERR_INVALID_DATE = "This birth date has an invalid format. Please re-insert a valid date.";
     public static final String ERR_LOGIN_FAILED = "Login failed: wrong username or password.";
     public static final String ERR_SIGN_UP_FAILED = "Sign up failed.";
+    public static final String ERR_SIGN_UP_ABORTED = "Sign up aborted.";
     public static final String ERR_SAVING_DATABASE = "An error occurred while saving the database to a .ser file.";
     public static final String ERR_LOADING_DATABASE = "An error occurred while loading the database.";
     public static final String ERR_DATABASE_CLASS_NOT_FOUND = "Database class not found.";

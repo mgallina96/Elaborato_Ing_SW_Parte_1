@@ -126,7 +126,7 @@ public class View {
                 }
             }
             else {
-                System.out.printf("%s %s\n", ERR_SIGN_UP_FAILED, MSG_EXIT_WITHOUT_SAVING);
+                System.out.printf("%s %s\n", ERR_SIGN_UP_ABORTED, MSG_EXIT_WITHOUT_SAVING);
                 break;
             }
 

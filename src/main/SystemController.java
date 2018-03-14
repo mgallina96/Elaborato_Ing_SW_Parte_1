@@ -23,7 +23,6 @@ public class SystemController {
     //Singleton constructor, private to prevent instantiation.
     private SystemController() {
         database = Database.getInstance();
-        database.getUserList().values().forEach(System.out::println);
         view = new View(this);
     }
 
