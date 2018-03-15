@@ -19,7 +19,7 @@ public class InputParserUtility {
     /**
      * Checks whether the input is an integer or not.
      *
-     * @param input the input to be parsed and checked.
+     * @param input The input to be parsed and checked.
      * @return a boolean value: {@code true} if the input is an integer,
      *                          {@code false} otherwise.
      */
@@ -38,9 +38,10 @@ public class InputParserUtility {
     /**
      * Checks whether the input is an integer. If so, the integer must have a value between {@code lowerBound}
      * (inclusive) and {@code upperBound} (exclusive), otherwise it's considered invalid.
-     * @param input the input to be parsed and checked.
-     * @param lowerBound the lower bound for the input, inclusive.
-     * @param upperBound the upper bound for the input, exclusive.
+     *
+     * @param input The input to be parsed and checked.
+     * @param lowerBound The lower bound for the input, inclusive.
+     * @param upperBound The upper bound for the input, exclusive.
      * @return a boolean value: {@code true} if the input is both an integer and a value between {@code lowerBound}
      *                                       and {@code upperBound},
      *                          {@code false} otherwise.
@@ -59,7 +60,8 @@ public class InputParserUtility {
      * spaces, apostrophes, and dashes only.
      * <p>
      * Examples: "De Loria", "New York City", "O'Sullivan", "Stratford-upon-Avon", etc.
-     * @param input the {@code String} to be checked.
+     *
+     * @param input The {@code String} to be checked.
      * @return a boolean value: {@code true} if the input only contains letters, spaces, apostrophes and dashes.
      *                          {@code false} otherwise.
      */
@@ -70,7 +72,7 @@ public class InputParserUtility {
     /**
      * Checks whether the input is a {@code double} or not.
      *
-     * @param input the input to be parsed and checked.
+     * @param input The input to be parsed and checked.
      * @return a boolean value: {@code true} if the input is a {@code double},
      *                          {@code false} otherwise.
      */
@@ -89,9 +91,10 @@ public class InputParserUtility {
     /**
      * Checks whether the input is a {@code double}. If so, the floating-point number must have a value between
      * {@code lowerBound} (inclusive) and {@code upperBound} (exclusive), otherwise it's considered invalid.
-     * @param input the input to be parsed and checked.
-     * @param lowerBound the lower bound for the input, inclusive.
-     * @param upperBound the upper bound for the input, exclusive.
+     *
+     * @param input The input to be parsed and checked.
+     * @param lowerBound The lower bound for the input, inclusive.
+     * @param upperBound The upper bound for the input, exclusive.
      * @return a boolean value: {@code true} if the input is both a {@code double} and a value between
      *                                       {@code lowerBound} and {@code upperBound},
      *                          {@code false} otherwise.
@@ -108,7 +111,7 @@ public class InputParserUtility {
     /**
      * Checks whether the input is a {@code long} or not.
      *
-     * @param input the input to be parsed and checked.
+     * @param input The input to be parsed and checked.
      * @return a boolean value: {@code true} if the input is a {@code long},
      *                          {@code false} otherwise.
      */
@@ -127,9 +130,10 @@ public class InputParserUtility {
     /**
      * Checks whether the input is a {@code long}. If so, the long integer must have a value between {@code lowerBound}
      * (inclusive) and {@code upperBound} (exclusive), otherwise it's considered invalid.
-     * @param input the input to be parsed and checked.
-     * @param lowerBound the lower bound for the input, inclusive.
-     * @param upperBound the upper bound for the input, exclusive.
+     *
+     * @param input The input to be parsed and checked.
+     * @param lowerBound The lower bound for the input, inclusive.
+     * @param upperBound The upper bound for the input, exclusive.
      * @return a boolean value: {@code true} if the input is both a {@code long} and a value between {@code lowerBound}
      *                                       and {@code upperBound},
      *                          {@code false} otherwise.
@@ -149,7 +153,8 @@ public class InputParserUtility {
      * any single non-digit separator is accepted.
      * <p> Any invalid date is automatically corrected by the {@link GregorianCalendar} class. For instance: the input
      * "32/10/2015" is transformed into "1/11/2015" because it gets parsed as "(31/10/2015 + one day) = 1/11/2015".
-     * @param date the string value of a date in DD/MM/YYYY format.
+     *
+     * @param date The string value of a date in DD/MM/YYYY format.
      * @return the corresponding {@code GregorianCalendar} date.
      */
     public static GregorianCalendar toGregorianDate(String date) {
@@ -166,7 +171,7 @@ public class InputParserUtility {
      * <p>To be considered valid, the date has to conform to the DD/MM/YYYY format and must follow the basic rules of
      * the Gregorian calendar.
      *
-     * @param date the date to be parsed and checked.
+     * @param date The date to be parsed and checked.
      * @return a boolean value: {@code true} if the input is a valid date,
      *                          {@code false} otherwise.
      */
@@ -190,7 +195,8 @@ public class InputParserUtility {
 
     /**
      * Splits a DD/MM/YYYY date into three parts: DD, MM and YYYY and stores those values as integers in an array.
-     * @param date the date to separate.
+     *
+     * @param date The date to separate.
      * @return the integer {@code array} composed of the extracted fields day, month and year.
      */
     private static int[] separateDate(String date) {

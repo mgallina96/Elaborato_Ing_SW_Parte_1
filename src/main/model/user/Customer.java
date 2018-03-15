@@ -13,7 +13,11 @@ import java.util.GregorianCalendar;
  */
 public class Customer extends User {
 
+    /**
+     * Unique serial ID for the {@link Customer} class. DO NOT CHANGE, otherwise the database can't be read properly.
+     */
     private static final long serialVersionUID = 562339799965662315L;
+
     private static final int RENEWAL_BOUNDARY_IN_DAYS = 10;
     private static final int LEGAL_AGE_IN_YEARS = 18;
     private static final int EXPIRY_TIME_IN_YEARS = 5;
@@ -22,11 +26,12 @@ public class Customer extends User {
 
     /**
      * Constructor that builds a new {@code Customer} object using the given parameters.
-     * @param firstName the customer's first name.
-     * @param lastName the customer's last name.
-     * @param username the customer's username.
-     * @param password the customer's password.
-     * @param birthday the customer's birthday, in {@code GregorianCalendar} form.
+     *
+     * @param firstName The customer's first name.
+     * @param lastName The customer's last name.
+     * @param username The customer's username.
+     * @param password The customer's password.
+     * @param birthday The customer's birthday, in {@code GregorianCalendar} form.
      */
     public Customer(String firstName, String lastName, String username, String password, GregorianCalendar birthday) {
         super(firstName, lastName, username, password, birthday);
@@ -39,8 +44,9 @@ public class Customer extends User {
 
     /**
      * Quick initialization of a {@code Customer} object, where only the username and password are specified.
-     * @param username the customer's username.
-     * @param password the customer's password.
+     *
+     * @param username The customer's username.
+     * @param password The customer's password.
      */
     public Customer(String username, String password) {
         super(username, password);
@@ -50,6 +56,7 @@ public class Customer extends User {
      * Checks whether the customer is of age. The legal age parameter is defined as a static final integer in the
      * {@link Customer} class and may vary according to law or country.
      * <p> The legal age in Italy is 18, so this is the value this check is going to be based on.
+     *
      * @return {@code true} if the customer is of legal age, {@code false} otherwise.
      */
     public boolean isOfAge() {
@@ -62,6 +69,7 @@ public class Customer extends User {
 
     /**
      * Checks whether the customer's subscription has expired or not.
+     *
      * @return {@code true} if the customer's subscription has expired, {@code false} otherwise.
      */
     public boolean hasExpired() {
@@ -83,6 +91,7 @@ public class Customer extends User {
 
     /**
      * The getter for the exact date and time the customer first signed up.
+     *
      * @return the subscription date in {@code GregorianCalendar} form.
      */
     public GregorianCalendar getSubscriptionDate() {
@@ -91,6 +100,7 @@ public class Customer extends User {
 
     /**
      * The getter for the date when the customer's subscription expires.
+     *
      * @return the expiry date in {@code GregorianCalendar} form.
      */
     public GregorianCalendar getExpiryDate() {

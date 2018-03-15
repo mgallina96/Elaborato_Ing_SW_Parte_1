@@ -35,24 +35,32 @@ public class View {
      * Builds the first screen of the user interface which is the login screen.
      */
     public void start() {
-        System.out.printf("%s\n\n%s\n\n> ", MSG_BIBLIO_NAME, PROMPT_BIBLIO_INITIAL_CHOICES);
+        boolean exit = false;
 
-        String command;
-        do {
-            command = scanner.nextLine();
-        } while(!InputParserUtility.isValidInteger(command, 1, 3));
+        while(!exit) {
+            System.out.printf("%s\n%s\n%s\n%s\n> ", MSG_BIBLIO_NAME, SEPARATOR, PROMPT_BIBLIO_INITIAL_CHOICES, SEPARATOR);
 
-        switch(Integer.parseInt(command)) {
-            case 1:
-                login();
-                break;
-            case 2:
-                signUp();
-                break;
-            default:
-                break;
+            String command;
+            do {
+                command = scanner.nextLine();
+            } while(!InputParserUtility.isValidInteger(command, 1, 4));
+
+            switch(Integer.parseInt(command)) {
+                case 1:
+                    login();
+                    break;
+                case 2:
+                    signUp();
+                    break;
+                case 3:
+                    exit = true;
+                    break;
+                default:
+                    break;
+            }
         }
 
+        System.out.printf("%s\n", MSG_GOODBYE);
         scanner.close();
     }
 
@@ -61,30 +69,21 @@ public class View {
      */
     private void signUp() {
         boolean valid;
-        System.out.printf("%s\n%s\n", PROMPT_SIGN_UP_SCREEN, SEPARATOR);
+        System.out.printf("%s\n", PROMPT_SIGN_UP_SCREEN);
 
         do {
             valid = true;
 
             System.out.print(PROMPT_FIRST_NAME);
-            String firstName = insertName();
-
+                String firstName = insertName();
             System.out.print(PROMPT_LAST_NAME);
-            String lastName = insertName();
-
+                String lastName = insertName();
             System.out.print(PROMPT_USERNAME);
-            String username = scanner.nextLine();
-
+                String username = scanner.nextLine();
             System.out.print(PROMPT_PASSWORD);
-            String password = scanner.nextLine();
-
+                String password = scanner.nextLine();
             System.out.print(PROMPT_BIRTHDAY);
-            String birthday = scanner.nextLine();
-            while(!InputParserUtility.isValidDate(birthday)) {
-                System.out.println(ERR_INVALID_DATE);
-                birthday = scanner.nextLine();
-            }
-
+                String birthday = insertDate();
             System.out.printf("%s\n%s\n%s\n", SEPARATOR, PROMPT_SIGN_UP_CONFIRMATION, SEPARATOR);
 
             String choice;
@@ -100,12 +99,12 @@ public class View {
 
                 if(!controller.checkUserOccurrence(username, password)) {
                     controller.addUserToDatabase(firstName, lastName, username, password, InputParserUtility.toGregorianDate(birthday));
-                    saveDatabase();
-                    System.out.println(MSG_SIGN_UP_SUCCESSFUL);
+                    controller.saveDatabase();
+                    System.out.printf("%s\n", MSG_SIGN_UP_SUCCESSFUL);
                     break;
                 }
                 else {
-                    System.out.println(PROMPT_PRESENT_USER_MULTIPLE_CHOICE);
+                    System.out.printf("%s\n%s\n%s\n%s\n", ERR_USER_ALREADY_PRESENT, SEPARATOR, PROMPT_PRESENT_USER_MULTIPLE_CHOICE, SEPARATOR);
                     String input;
 
                     do {
@@ -121,14 +120,14 @@ public class View {
                             System.out.println(PROMPT_MODIFY_FIELDS);
                             break;
                         case 3:
-                            renewSubscription();
+                            controller.renewSubscription();
                             valid = false;
                             break;
                     }
                 }
             }
             else {
-                System.out.printf("%s %s\n", ERR_SIGN_UP_ABORTED, MSG_EXIT_WITHOUT_SAVING);
+                System.out.printf("%s %s\n\n", ERR_SIGN_UP_ABORTED, MSG_EXIT_WITHOUT_SAVING);
                 break;
             }
 
@@ -140,19 +139,17 @@ public class View {
      * Boots up the login screen.
      */
     private void login() {
-        System.out.println(PROMPT_LOGIN_SCREEN);
+        System.out.printf("\n%s\n", PROMPT_LOGIN_SCREEN);
 
         while(true) {
             String username;
             String password;
 
             System.out.print(PROMPT_USERNAME);
-            username = scanner.next();
-            scanner.nextLine();
+            username = scanner.nextLine();
 
             System.out.print(PROMPT_PASSWORD);
-            password = scanner.next();
-            scanner.nextLine();
+            password = scanner.nextLine();
 
             if(controller.checkUserOccurrence(username, password)) {
                 switch(controller.getUserStatus(username)) {
@@ -174,47 +171,55 @@ public class View {
     }
 
     private void customerMenu() {
-        System.out.printf("%s\n\n", PROMPT_CUSTOMER_CHOICES);
+        boolean exit = false;
 
-        String command;
-        do {
-            command = scanner.nextLine();
-        } while(!InputParserUtility.isValidInteger(command, 1, 3));
+        while(!exit) {
+            System.out.printf("\n%s\n%s\n%s\n%s\n", MSG_CUSTOMER_MENU, SEPARATOR, PROMPT_CUSTOMER_CHOICES, SEPARATOR);
 
-        switch (Integer.parseInt(command)) {
-            case 1: //renew
-                controller.renewSubscription();
-                break;
-            case 2: //logout
-                break;
-            default:
-                break;
+            String command;
+            do {
+                command = scanner.nextLine();
+            } while(!InputParserUtility.isValidInteger(command, 1, 3));
+
+            switch(Integer.parseInt(command)) {
+                case 1:
+                    controller.renewSubscription();
+                    break;
+                case 2:
+                    exit = true;
+                    System.out.printf("%s\n\n", MSG_LOG_OUT);
+                    break;
+                default:
+                    break;
+            }
         }
-
-    }
-
-    private void renewSubscription() {
     }
 
     /**
      * Boots up the operator menu.
      */
     private void operatorMenu() {
-        System.out.printf("%s\n\n", PROMPT_OPERATOR_CHOICES);
+        boolean exit = false;
 
-        String command;
-        do {
-            command = scanner.nextLine();
-        } while(!InputParserUtility.isValidInteger(command, 1, 3));
+        while(!exit) {
+            System.out.printf("\n%s\n%s\n%s\n%s\n", MSG_OPERATOR_MENU, SEPARATOR, PROMPT_OPERATOR_CHOICES, SEPARATOR);
 
-        switch(Integer.parseInt(command)) {
-            case 1:
-                showUsers();
-                break;
-            case 2://logout
-                break;
-            default:
-                break;
+            String command;
+            do {
+                command = scanner.nextLine();
+            } while(!InputParserUtility.isValidInteger(command, 1, 3));
+
+            switch(Integer.parseInt(command)) {
+                case 1:
+                    showUsers();
+                    break;
+                case 2:
+                    exit = true;
+                    System.out.printf("%s\n\n", MSG_LOG_OUT);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -227,29 +232,38 @@ public class View {
      */
     private String insertName() {
         String name = scanner.nextLine();
-        boolean valid = InputParserUtility.isValidName(name);
 
-        while(!valid) {
+        while(!InputParserUtility.isValidName(name)) {
             System.out.println(ERR_INVALID_NAME);
             name = scanner.nextLine();
-            valid = InputParserUtility.isValidName(name);
         }
 
         return name;
     }
 
     /**
-     * Shows the full list of subscribed users.
+     * Loops a scanner until the inserted {@code String} is a valid date.
+     * <p>The parameters and the logic for date validity are defined in the {@code isValidDate()} method of the
+     * {@link InputParserUtility} class.
+     *
+     * @return a valid date in the form of a {@code String}.
      */
-    private void showUsers() {
-        System.out.println(controller.allUsersToString());
+    private String insertDate() {
+        String date = scanner.nextLine();
+
+        while(!InputParserUtility.isValidDate(date)) {
+            System.out.println(ERR_INVALID_DATE);
+            date = scanner.nextLine();
+        }
+
+        return date;
     }
 
     /**
-     * Saves the database.
+     * Shows the full list of subscribed users.
      */
-    private void saveDatabase() {
-        controller.saveDatabase();
+    private void showUsers() {
+        System.out.printf("%s\n%s%s\n", MSG_USER_LIST, controller.allUsersToString(), SEPARATOR);
     }
 
 }

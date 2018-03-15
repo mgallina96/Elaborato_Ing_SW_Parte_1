@@ -15,20 +15,28 @@ import java.util.logging.Logger;
  */
 public class Database implements Serializable {
 
-    //A default admin user, added to the database whenever this class is instantiated.
-    private static final User ADMIN = new User("admin", "admin");
+    /**
+     * Unique serial ID for the {@link Database} class. DO NOT CHANGE, otherwise the database can't be read properly.
+     */
     private static final long serialVersionUID = -5681383377098150051L;
-    private User currentUser;
+
+    //A default admin user, the first entity to be added to the database.
     private static Database database;
     private HashMap<String, User> userList;
     private Logger logger = Logger.getLogger(this.getClass().getName());
+    private static final User ADMIN = new User("admin", "admin");
+    private User currentUser;
 
     //Singleton Database constructor, private to prevent instantiation.
     private Database() {
         this.userList = new HashMap<>();
         loadDatabase();
-        if(!isPresent(ADMIN))
+
+        //Adds the admin to the database, if the admin hasn't been added yet.
+        if(!isPresent(ADMIN)) {
+            ADMIN.setUserStatus(User.UserStatus.OPERATOR);
             this.addUser(ADMIN);
+        }
     }
 
     /**
@@ -36,6 +44,7 @@ public class Database implements Serializable {
      * <p>
      * This method builds a single instance of Database the first time it is called. Calling it more than once doesn't
      * change anything.
+     *
      * @return either a new {@code Database} instance, if the {@code Database} has not been initialized yet, or the
      * already initialized {@code Database} object.
      */
@@ -48,7 +57,8 @@ public class Database implements Serializable {
 
     /**
      * Adds a new user to the database.
-     * @param toAdd the {@code User} who is to be added to the database.
+     *
+     * @param toAdd The {@code User} who is to be added to the database.
      */
     public void addUser(User toAdd) {
         userList.put(toAdd.getUsername(), toAdd);
@@ -56,7 +66,8 @@ public class Database implements Serializable {
 
     /**
      * Removes an already existing user from the database.
-     * @param toRemove the {@code User} who is to be removed.
+     *
+     * @param toRemove The {@code User} who is to be removed.
      */
     public void removeUser(User toRemove) {
         if(isPresent(toRemove))
@@ -65,6 +76,7 @@ public class Database implements Serializable {
 
     /**
      * Returns the list of users in form of a HashMap.
+     *
      * @return the actual database.
      */
     public HashMap<String, User> getUserList() {
@@ -73,7 +85,8 @@ public class Database implements Serializable {
 
     /**
      * Checks whether the given user is present in the database.
-     * @param toFind the user to be found.
+     *
+     * @param toFind The user to be found.
      * @return {@code true} if the user is present in the database, {@code false} otherwise.
      */
     public boolean isPresent(User toFind) {
@@ -82,7 +95,8 @@ public class Database implements Serializable {
 
     /**
      * Returns the given user (if present).
-     * @param toFind the user to be found.
+     *
+     * @param toFind The user to be found.
      * @return the user or {@code null} if that user can't be found in the database.
      */
     public User fetchUser(User toFind) {
@@ -137,7 +151,7 @@ public class Database implements Serializable {
 
     /**
      * Sets the current user who just logged in.
-     * @param currentUser the logged-in user to set.
+     * @param currentUser The logged-in user to set.
      */
     public void setCurrentUser(User currentUser) {
         this.currentUser = fetchUser(currentUser);
@@ -145,6 +159,7 @@ public class Database implements Serializable {
 
     /**
      * Getter for the current user.
+     *
      * @return the current user who just logged in.
      */
     public User getCurrentUser() {
