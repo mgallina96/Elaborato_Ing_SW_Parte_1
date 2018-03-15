@@ -1,6 +1,4 @@
 package main.model.user;
-import main.utility.InputParserUtility;
-
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -12,11 +10,12 @@ import java.util.GregorianCalendar;
  * function, an expiry and validity check and a subscription renewal.
  */
 public class Customer extends User {
-
     private static final long serialVersionUID = 562339799965662315L;
+
     private static final int RENEWAL_BOUNDARY_IN_DAYS = 10;
     private static final int LEGAL_AGE_IN_YEARS = 18;
     private static final int EXPIRY_TIME_IN_YEARS = 5;
+
     private GregorianCalendar subscriptionDate;
     private GregorianCalendar expiryDate;
 

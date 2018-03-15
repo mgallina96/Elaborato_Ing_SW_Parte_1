@@ -14,12 +14,13 @@ import java.util.logging.Logger;
  *
  */
 public class Database implements Serializable {
+    private static final long serialVersionUID = -5681383377098150051L;
 
     //A default admin user, added to the database whenever this class is instantiated.
     private static final User ADMIN = new User("admin", "admin");
-    private static final long serialVersionUID = -5681383377098150051L;
-    private User currentUser;
+
     private static Database database;
+    private User currentUser;
     private HashMap<String, User> userList;
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -149,5 +150,19 @@ public class Database implements Serializable {
      */
     public User getCurrentUser() {
         return currentUser;
+    }
+
+    /**
+     * Returns a {@code String} that contains all the users in the database.
+     *
+     * @return the list of all users as a {@code String}.
+     */
+    public String allUsersToString() {
+        StringBuilder allUsers = new StringBuilder();
+
+        for(User u : getUserList().values())
+            allUsers.append(u.toString());
+
+        return allUsers.toString();
     }
 }

@@ -7,18 +7,14 @@ import java.util.GregorianCalendar;
  * that both customers and operators have in common, like personal details (and getters/setters for those details).
  */
 public class User implements Serializable {
-
-    public enum UserStatus {
-        CUSTOMER,
-        OPERATOR
-    }
-
     private static final long serialVersionUID = -5681383377098150051L;
-    private UserStatus userStatus;
+
     private static final String DEFAULT_FIRST_NAME = "null";
     private static final String DEFAULT_LAST_NAME = "null";
     private static final String DEFAULT_PASSWORD = "null";
     private static final GregorianCalendar DEFAULT_BIRTHDAY = new GregorianCalendar();
+
+    private UserStatus userStatus;
     private String username;
     private String firstName;
     private String lastName;
