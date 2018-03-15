@@ -1,8 +1,11 @@
 package main;
-import main.gui.View;
+import main.gui.GuiManager;
+import main.gui.screens.StartScreen;
 import main.model.user.Customer;
 import main.model.Database;
 import main.model.user.User;
+import main.model.user.UserStatus;
+
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.StringJoiner;
@@ -16,15 +19,14 @@ import java.util.StringJoiner;
  * @since version 0.1 - 12/03/2018
  */
 public class SystemController {
-
     private static SystemController instance;
-    private View view;
+    private GuiManager guiManager;
     private Database database;
 
     //Singleton constructor, private to prevent instantiation.
     private SystemController() {
         database = Database.getInstance();
-        view = new View(this);
+        guiManager = new StartScreen(this);
     }
 
     /**
@@ -39,11 +41,9 @@ public class SystemController {
         return instance;
     }
 
-    /**
-     * Initializes the system controller which starts the GUI.
-     */
+    /** Initializes the system controller which starts the GUI. */
     public void init() {
-        view.start();
+        guiManager.start();
     }
 
     /**
@@ -54,13 +54,22 @@ public class SystemController {
      * @param password The password.
      * @return {@code true} if the user's credentials are correct, {@code false} otherwise.
      */
-    public boolean checkUserOccurrence(String username, String password) {
-        if(database.isPresent(new Customer(username, password))){
-            setCurrentUser(username);
+    public boolean checkUserLogin(String username, String password) {
+        User toCheck = new User(username, password);
+        if(database.isPresent(toCheck)){
+            database.setCurrentUser(toCheck);
             return true;
         }
-
         return false;
+    }
+
+    /**
+     * Returns a {@code String} that contains all the users in the database.
+     *
+     * @return the list of all users as a {@code String}.
+     */
+    public String allUsersToString() {
+        return database.allUsersToString();
     }
 
     /**
@@ -83,14 +92,13 @@ public class SystemController {
      * @return {@code true} if the customer is of age, {@code false} otherwise.
      */
     public boolean legalAge(GregorianCalendar birthday) {
-        return new Customer("", "", "", "", birthday).isOfAge();
-    }
-
-    /**
-     * Saves the database and possible changes made to it.
-     */
-    public void saveDatabase() {
-        database.saveDatabase();
+        return new Customer(
+                "",
+                "",
+                "",
+                "",
+                birthday
+        ).isOfAge();
     }
 
     /**
@@ -98,7 +106,7 @@ public class SystemController {
      * @param username The user's username.
      * @return an {@code enum} value, OPERATOR or CUSTOMER.
      */
-    public User.UserStatus getUserStatus(String username) {
+    public UserStatus getUserStatus(String username) {
         return database.fetchUser(new User(username)).getUserStatus();
     }
 
@@ -112,10 +120,21 @@ public class SystemController {
 
     /**
      * Renews the user's subscription.
+     * <p>
+     * The user must be a customer.
+     *
+     * @throws IllegalArgumentException if the current user is not a customer.
      */
-    public void renewSubscription() {
+    public void renewSubscription() throws IllegalArgumentException {
         if(database.getCurrentUser() instanceof Customer)
             ((Customer)database.getCurrentUser()).renewSubscription();
+        else
+            throw new IllegalArgumentException();
+    }
+
+    /** Saves the database and possible changes made to it. */
+    public void saveDatabase() {
+        database.saveDatabase();
     }
 
     /**

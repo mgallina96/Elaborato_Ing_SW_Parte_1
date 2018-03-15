@@ -1,6 +1,5 @@
 package main.model.user;
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
@@ -8,26 +7,14 @@ import java.util.GregorianCalendar;
  * that both customers and operators have in common, like personal details (and getters/setters for those details).
  */
 public class User implements Serializable {
-
-    /**
-     * Enumeration which provides the {@link User} class with two states: CUSTOMER and OPERATOR. Only one can be active
-     * at any time.
-     */
-    public enum UserStatus {
-        CUSTOMER,
-        OPERATOR
-    }
-
-    /**
-     * Unique serial ID for the {@link User} class. DO NOT CHANGE, otherwise the database can't be read properly.
-     */
     private static final long serialVersionUID = -5681383377098150051L;
 
-    private UserStatus userStatus;
     private static final String DEFAULT_FIRST_NAME = "null";
     private static final String DEFAULT_LAST_NAME = "null";
     private static final String DEFAULT_PASSWORD = "null";
-    private static final GregorianCalendar DEFAULT_BIRTHDAY = new GregorianCalendar(1970, Calendar.JANUARY,1);
+    private static final GregorianCalendar DEFAULT_BIRTHDAY = new GregorianCalendar();
+
+    private UserStatus userStatus;
     private String username;
     private String firstName;
     private String lastName;
