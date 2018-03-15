@@ -1,5 +1,6 @@
 package main.model;
 import main.model.user.User;
+import main.model.user.UserStatus;
 import main.utility.Notifications;
 import java.io.*;
 import java.util.HashMap;
@@ -35,7 +36,7 @@ public class Database implements Serializable {
 
         //Adds the admin to the database, if the admin hasn't been added yet.
         if(!isPresent(ADMIN)) {
-            ADMIN.setUserStatus(User.UserStatus.OPERATOR);
+            ADMIN.setUserStatus(UserStatus.OPERATOR);
             this.addUser(ADMIN);
         }
     }
@@ -175,8 +176,10 @@ public class Database implements Serializable {
     public String allUsersToString() {
         StringBuilder allUsers = new StringBuilder();
 
-        for(User u : getUserList().values())
+        for(User u : getUserList().values()) {
+            allUsers.append("\t- ");
             allUsers.append(u.toString());
+        }
 
         return allUsers.toString();
     }
