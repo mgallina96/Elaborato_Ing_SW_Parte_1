@@ -5,6 +5,7 @@ import main.model.Database;
 import main.model.user.User;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.StringJoiner;
 
 /**
  * Controller class that manages all the interactions between the graphic user interface
@@ -63,23 +64,6 @@ public class SystemController {
     }
 
     /**
-     * Returns a {@code String} that contains all the users in the database.
-     *
-     * @return the list of all users as a {@code String}.
-     */
-    public String allUsersToString() {
-        HashMap<String, User> list = database.getUserList();
-        StringBuilder allUsers = new StringBuilder();
-
-        for(User u : list.values()) {
-            allUsers.append("\t- ");
-            allUsers.append(u.toString());
-        }
-
-        return allUsers.toString();
-    }
-
-    /**
      * Adds a new user to the database.
      *
      * @param firstName The user's first name.
@@ -130,7 +114,46 @@ public class SystemController {
      * Renews the user's subscription.
      */
     public void renewSubscription() {
-        if(database.getCurrentUser() instanceof  Customer)
+        if(database.getCurrentUser() instanceof Customer)
             ((Customer)database.getCurrentUser()).renewSubscription();
+    }
+
+    /**
+     * Checks whether a given user is allowed to renew his/her subscription.
+     */
+    public boolean canRenew() {
+        return (database.getCurrentUser() instanceof Customer) && ((Customer)database.getCurrentUser()).canRenew();
+    }
+
+    /**
+     * Returns a {@code String} that contains all the users in the database.
+     *
+     * @return the list of all users as a {@code String}.
+     */
+    public String allUsersToString() {
+        HashMap<String, User> list = database.getUserList();
+        StringBuilder allUsers = new StringBuilder();
+
+        for(User u : list.values()) {
+            allUsers.append("\t- ");
+            allUsers.append(u.toString());
+        }
+
+        return allUsers.toString();
+    }
+
+    /**
+     * Converts the subscription and expiry dates into a {@code String}.
+     *
+     * @return a {@code String} containing the subscription and expiry dates.
+     */
+    public String dateDetails() {
+        User u = database.getCurrentUser();
+
+        return (u instanceof Customer) ?
+                String.format("Reminder:\n\tYou subscribed on %s\n\tYour subscription expires on %s",
+                        ((Customer)u).getSubscriptionDate().toZonedDateTime().toString().substring(0, 10),
+                        ((Customer)u).getExpiryDate().toZonedDateTime().toString().substring(0, 10)) :
+                "";
     }
 }

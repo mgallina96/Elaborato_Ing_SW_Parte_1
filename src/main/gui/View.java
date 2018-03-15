@@ -104,7 +104,7 @@ public class View {
                     break;
                 }
                 else {
-                    System.out.printf("%s\n%s\n%s\n%s\n", ERR_USER_ALREADY_PRESENT, SEPARATOR, PROMPT_PRESENT_USER_MULTIPLE_CHOICE, SEPARATOR);
+                    System.out.printf("%s\n%s\n%s\n%s\n> ", ERR_USER_ALREADY_PRESENT, SEPARATOR, PROMPT_PRESENT_USER_MULTIPLE_CHOICE, SEPARATOR);
                     String input;
 
                     do {
@@ -174,7 +174,7 @@ public class View {
         boolean exit = false;
 
         while(!exit) {
-            System.out.printf("\n%s\n%s\n%s\n%s\n", MSG_CUSTOMER_MENU, SEPARATOR, PROMPT_CUSTOMER_CHOICES, SEPARATOR);
+            System.out.printf("\n%s\n%s\n%s\n%s\n> ", MSG_CUSTOMER_MENU, SEPARATOR, PROMPT_CUSTOMER_CHOICES, SEPARATOR);
 
             String command;
             do {
@@ -184,6 +184,8 @@ public class View {
             switch(Integer.parseInt(command)) {
                 case 1:
                     controller.renewSubscription();
+                    if(!controller.canRenew())
+                        System.out.printf("%s\n\t%s\n", ERR_CANNOT_RENEW, controller.dateDetails());
                     break;
                 case 2:
                     exit = true;
@@ -202,7 +204,7 @@ public class View {
         boolean exit = false;
 
         while(!exit) {
-            System.out.printf("\n%s\n%s\n%s\n%s\n", MSG_OPERATOR_MENU, SEPARATOR, PROMPT_OPERATOR_CHOICES, SEPARATOR);
+            System.out.printf("\n%s\n%s\n%s\n%s\n> ", MSG_OPERATOR_MENU, SEPARATOR, PROMPT_OPERATOR_CHOICES, SEPARATOR);
 
             String command;
             do {

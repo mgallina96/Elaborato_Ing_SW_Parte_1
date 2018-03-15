@@ -45,6 +45,7 @@ public class Notifications {
     public static final String ERR_FILE_NOT_FOUND = "Error: file not found.";
     public static final String ERR_MSG_INVALID_INPUT = "Invalid input.";
     public static final String ERR_USER_ALREADY_PRESENT = "This user is already present in our database.";
+    public static final String ERR_CANNOT_RENEW = "It's too early to renew your subscription.";
 
     //generic useful messages
     public static final String SEPARATOR = "-------------------------------------------------------------------------------------------------------------";
