@@ -16,7 +16,9 @@ import java.util.logging.Logger;
 public class Database implements Serializable {
 
     //A default admin user, added to the database whenever this class is instantiated.
-    //private static final User ADMIN = new User("admin", "admin");
+    private static final User ADMIN = new User("admin", "admin");
+    private static final long serialVersionUID = -5681383377098150051L;
+    private User currentUser;
     private static Database database;
     private HashMap<String, User> userList;
     private Logger logger = Logger.getLogger(this.getClass().getName());
@@ -25,7 +27,8 @@ public class Database implements Serializable {
     private Database() {
         this.userList = new HashMap<>();
         loadDatabase();
-        //this.addUser(ADMIN);
+        if(!isPresent(ADMIN))
+            this.addUser(ADMIN);
     }
 
     /**
@@ -105,7 +108,7 @@ public class Database implements Serializable {
             logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND);
         }
         catch(IOException IOEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_LOADING_DATABASE);
+            logger.log(Level.SEVERE, Notifications.ERR_LOADING_DATABASE, IOEx);
         }
         catch(ClassNotFoundException CNFEx) {
             logger.log(Level.SEVERE, Notifications.ERR_DATABASE_CLASS_NOT_FOUND);
@@ -130,5 +133,21 @@ public class Database implements Serializable {
         catch(IOException IOEx) {
             logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE);
         }
+    }
+
+    /**
+     * Sets the current user who just logged in.
+     * @param currentUser the logged-in user to set.
+     */
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = fetchUser(currentUser);
+    }
+
+    /**
+     * Getter for the current user.
+     * @return the current user who just logged in.
+     */
+    public User getCurrentUser() {
+        return currentUser;
     }
 }

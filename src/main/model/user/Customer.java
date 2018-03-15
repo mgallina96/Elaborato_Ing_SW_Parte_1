@@ -1,4 +1,6 @@
 package main.model.user;
+import main.utility.InputParserUtility;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -11,11 +13,12 @@ import java.util.GregorianCalendar;
  */
 public class Customer extends User {
 
+    private static final long serialVersionUID = 562339799965662315L;
+    private static final int RENEWAL_BOUNDARY_IN_DAYS = 10;
     private static final int LEGAL_AGE_IN_YEARS = 18;
     private static final int EXPIRY_TIME_IN_YEARS = 5;
     private GregorianCalendar subscriptionDate;
     private GregorianCalendar expiryDate;
-    private boolean hasExpired;
 
     /**
      * Constructor that builds a new {@code Customer} object using the given parameters.
@@ -27,12 +30,11 @@ public class Customer extends User {
      */
     public Customer(String firstName, String lastName, String username, String password, GregorianCalendar birthday) {
         super(firstName, lastName, username, password, birthday);
-        super.setCustomer(true);
+        super.setUserStatus(UserStatus.CUSTOMER);
 
         subscriptionDate = new GregorianCalendar();
         expiryDate = (GregorianCalendar)(subscriptionDate.clone());
         expiryDate.add(Calendar.YEAR, EXPIRY_TIME_IN_YEARS);
-        hasExpired = false;
     }
 
     /**
@@ -67,6 +69,19 @@ public class Customer extends User {
     }
 
     /**
+     * Checks whether the current date is within x days of the expiry date, where x is an integer parameter defined
+     * in the {@link Customer} class. If so, the customer is allowed to renew his/her subscription.
+     *
+     * @return {@code true} if the customer is allowed to renew his/her subscription, {@code false} otherwise.
+     */
+    public boolean canRenew() {
+        GregorianCalendar expiryDateMinus10 = (GregorianCalendar)expiryDate.clone();
+        expiryDateMinus10.add(Calendar.DATE, -RENEWAL_BOUNDARY_IN_DAYS);
+
+        return !hasExpired() && expiryDateMinus10.before(new GregorianCalendar());
+    }
+
+    /**
      * The getter for the exact date and time the customer first signed up.
      * @return the subscription date in {@code GregorianCalendar} form.
      */
@@ -87,7 +102,7 @@ public class Customer extends User {
      * class. This value is equal to 5 now.
      */
     public void renewSubscription() {
-        if(hasExpired)
+        if(canRenew())
             expiryDate.add(Calendar.YEAR, EXPIRY_TIME_IN_YEARS);
     }
 }

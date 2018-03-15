@@ -52,7 +52,12 @@ public class SystemController {
      * @return {@code true} if the user credentials are correct, {@code false} otherwise.
      */
     public boolean checkUserOccurrence(String username, String password) {
-        return database.isPresent(new Customer(username, password));
+        if(database.isPresent(new Customer(username, password))){
+            setCurrentUser(username);
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -95,5 +100,30 @@ public class SystemController {
      */
     public void saveDatabase() {
         database.saveDatabase();
+    }
+
+    /**
+     * Getter for the User status (OPERATOR or CUSTOMER).
+     * @param username the user's username.
+     * @return an {@code enum} value, OPERATOR or CUSTOMER.
+     */
+    public User.UserStatus getUserStatus(String username) {
+        return database.fetchUser(new User(username)).getUserStatus();
+    }
+
+    /**
+     * Sets the current user.
+     * @param username the user's username.
+     */
+    private void setCurrentUser(String username) {
+        database.setCurrentUser(new User(username));
+    }
+
+    /**
+     * Renews the user's subscription.
+     */
+    public void renewSubscription() {
+        if(database.getCurrentUser() instanceof  Customer)
+            ((Customer)database.getCurrentUser()).renewSubscription();
     }
 }

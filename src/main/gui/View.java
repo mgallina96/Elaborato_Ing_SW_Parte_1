@@ -1,5 +1,7 @@
 package main.gui;
 import static main.utility.Notifications.*;
+
+import com.sun.org.apache.xpath.internal.SourceTree;
 import main.SystemController;
 import main.utility.InputParserUtility;
 import java.util.Scanner;
@@ -152,37 +154,68 @@ public class View {
             password = scanner.next();
             scanner.nextLine();
 
-            if(controller.checkUserOccurrence(username, password))
+            if(controller.checkUserOccurrence(username, password)) {
+                switch(controller.getUserStatus(username)) {
+                    case OPERATOR:
+                        operatorMenu();
+                        break;
+                    case CUSTOMER:
+                        customerMenu();
+                        break;
+                    default:
+                        break;
+                }
+
                 break;
+            }
 
             logger.log(Level.SEVERE, ERR_LOGIN_FAILED);
         }
     }
 
-    private void renewSubscription() {
-
-    }
-
-    /**
-     * Boots up the operator menu.
-     */
-    public void operatorMenu() {
-        System.out.printf("%s\n\n", PROMPT_OPERATOR_CHOICES);
+    private void customerMenu() {
+        System.out.printf("%s\n\n", PROMPT_CUSTOMER_CHOICES);
 
         String command;
         do {
             command = scanner.nextLine();
-        } while(!InputParserUtility.isValidInteger(command, 1, 2));
+        } while(!InputParserUtility.isValidInteger(command, 1, 3));
 
-        switch(Integer.parseInt(command)) {
-            case 1:
-                showUsers();
+        switch (Integer.parseInt(command)) {
+            case 1: //renew
+                controller.renewSubscription();
+                break;
+            case 2: //logout
                 break;
             default:
                 break;
         }
 
-        scanner.close();
+    }
+
+    private void renewSubscription() {
+    }
+
+    /**
+     * Boots up the operator menu.
+     */
+    private void operatorMenu() {
+        System.out.printf("%s\n\n", PROMPT_OPERATOR_CHOICES);
+
+        String command;
+        do {
+            command = scanner.nextLine();
+        } while(!InputParserUtility.isValidInteger(command, 1, 3));
+
+        switch(Integer.parseInt(command)) {
+            case 1:
+                showUsers();
+                break;
+            case 2://logout
+                break;
+            default:
+                break;
+        }
     }
 
     /**

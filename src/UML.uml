@@ -3,39 +3,111 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="0.0" y="487.0">main.InputParserUtility</node>
-    <node x="357.0" y="487.0">main.Database</node>
-    <node x="212.75" y="0.0">main.User</node>
-    <node x="-583.1724137931035" y="270.98275862068965">main.MainTest</node>
-    <node x="625.0" y="487.0">main.Main</node>
-    <node x="399.0" y="312.5">main.Operator</node>
-    <node x="0.0" y="257.0">main.Customer</node>
+    <node x="278.37714646464644" y="79.0">main.model.user.User</node>
+    <node x="115.5" y="287.0">main.SystemController</node>
+    <node x="292.0" y="178.0">main.model.Database</node>
+    <node x="160.0" y="178.0">main.model.user.Customer</node>
+    <node x="408.0" y="178.0">main.model.user.Operator</node>
+    <node x="147.5" y="366.0">main.Main</node>
+    <node x="33.0" y="178.0">main.gui.View</node>
+    <node x="250.5438131313131" y="0.0">main.model.user.User.UserStatus</node>
+    <node x="0.0" y="79.0">main.utility.InputParserUtility</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="main.Operator" target="main.User">
-      <point x="0.0" y="-37.0" />
-      <point x="586.0" y="232.0" />
-      <point x="475.25" y="232.0" />
-      <point x="87.5" y="103.5" />
+    <edge source="main.SystemController" target="main.model.Database">
+      <point x="63.18181818181819" y="-14.5" />
+      <point x="248.1818181818182" y="267.0" />
+      <point x="364.0" y="267.0" />
+      <point x="24.0" y="14.5" />
     </edge>
-    <edge source="main.Customer" target="main.User">
-      <point x="0.0" y="-92.5" />
-      <point x="189.5" y="232.0" />
-      <point x="300.25" y="232.0" />
-      <point x="-87.5" y="103.5" />
+    <edge source="main.Main" target="main.SystemController">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="main.model.Database" target="main.model.user.User">
+      <point x="36.0" y="-14.5" />
+      <point x="376.0" y="138.0" />
+      <point x="336.06464646464644" y="138.0" />
+      <point x="22.1875" y="14.5" />
+    </edge>
+    <edge source="main.SystemController" target="main.gui.View">
+      <point x="-50.54545454545456" y="-14.5" />
+      <point x="134.45454545454544" y="257.0" />
+      <point x="60.375" y="257.0" />
+      <point x="-9.125" y="14.5" />
+    </edge>
+    <edge source="main.model.user.User.UserStatus" target="main.model.user.User">
+      <point x="25.750000000000007" y="14.5" />
+      <point x="327.7938131313131" y="59.0" />
+      <point x="337.54381313131313" y="59.0" />
+      <point x="23.666666666666686" y="-14.5" />
+    </edge>
+    <edge source="main.model.user.User" target="main.model.user.User.UserStatus">
+      <point x="-23.666666666666686" y="-14.5" />
+      <point x="290.21047979797976" y="59.0" />
+      <point x="293.46047979797976" y="59.0" />
+      <point x="-8.583333333333314" y="14.5" />
+    </edge>
+    <edge source="main.SystemController" target="main.model.user.User">
+      <point x="37.90909090909091" y="-14.5" />
+      <point x="222.9090909090909" y="247.0" />
+      <point x="281.5" y="247.0" />
+      <point x="281.5" y="148.0" />
+      <point x="300.56464646464644" y="148.0" />
+      <point x="-13.3125" y="14.5" />
+    </edge>
+    <edge source="main.SystemController" target="main.model.user.Customer">
+      <point x="0.0" y="-14.5" />
+      <point x="-25.0" y="14.5" />
+    </edge>
+    <edge source="main.gui.View" target="main.SystemController">
+      <point x="9.125" y="14.5" />
+      <point x="78.625" y="247.0" />
+      <point x="147.09090909090907" y="247.0" />
+      <point x="-37.909090909090935" y="-14.5" />
+    </edge>
+    <edge source="main.model.user.Customer" target="main.model.user.User.UserStatus">
+      <point x="-25.0" y="-14.5" />
+      <point x="185.0" y="59.0" />
+      <point x="276.2938131313131" y="59.0" />
+      <point x="-25.75" y="14.5" />
+    </edge>
+    <edge source="main.gui.View" target="main.utility.InputParserUtility">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="main.model.user.Operator" target="main.model.user.User.UserStatus">
+      <point x="23.75" y="-14.5" />
+      <point x="479.25" y="59.0" />
+      <point x="344.9604797979798" y="59.0" />
+      <point x="42.91666666666669" y="14.5" />
+    </edge>
+    <edge source="main.SystemController" target="main.model.user.User.UserStatus">
+      <point x="-12.636363636363626" y="-14.5" />
+      <point x="172.36363636363637" y="227.0" />
+      <point x="149.5" y="227.0" />
+      <point x="149.5" y="49.0" />
+      <point x="259.1271464646464" y="49.0" />
+      <point x="-42.916666666666686" y="14.5" />
+    </edge>
+    <edge source="main.model.user.Operator" target="main.model.user.User">
+      <point x="-23.75" y="-14.5" />
+      <point x="431.75" y="128.0" />
+      <point x="344.93964646464644" y="128.0" />
+      <point x="31.0625" y="14.5" />
+    </edge>
+    <edge source="main.model.user.Customer" target="main.model.user.User">
+      <point x="25.0" y="-14.5" />
+      <point x="235.0" y="128.0" />
+      <point x="282.81464646464644" y="128.0" />
+      <point x="-31.0625" y="14.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.7651715039577837" x="397.0" y="369.0" />
-  <SelectedNodes>
-    <node>main.MainTest</node>
-  </SelectedNodes>
+  <settings layout="Hierarchic Group" zoom="1.0" x="203.27272727272737" y="184.7727272727273" />
+  <SelectedNodes />
   <Categories>
-    <Category>Fields</Category>
     <Category>Inner Classes</Category>
-    <Category>Constructors</Category>
-    <Category>Properties</Category>
-    <Category>Methods</Category>
   </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>

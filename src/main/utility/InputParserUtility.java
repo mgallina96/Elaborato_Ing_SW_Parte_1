@@ -4,9 +4,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Utility class that contains useful methods for parsing strings and checking whether a given input is valid or not.
+ *
  * @author Alessandro Polcini
  * Created on 08/03/18
- * Utility class that contains useful methods for parsing strings and checking whether a given input is valid or not.
  */
 public class InputParserUtility {
 
