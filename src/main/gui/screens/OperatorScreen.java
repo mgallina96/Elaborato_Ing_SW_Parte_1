@@ -27,7 +27,8 @@ class OperatorScreen extends Screen {
             case 1:
                 System.out.printf("%s\n%s\n", MSG_USER_LIST, controller.allUsersToString());
                 break;
-            case 2://logout
+            case 2:
+                //logout
                 break;
             default:
                 break;
