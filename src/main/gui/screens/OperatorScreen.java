@@ -25,7 +25,7 @@ class OperatorScreen extends Screen {
 
         switch(Integer.parseInt(command)) {
             case 1:
-                System.out.println(MSG_USER_LIST + controller.allUsersToString());
+                System.out.printf("%s\n%s\n", MSG_USER_LIST, controller.allUsersToString());
                 break;
             case 2://logout
                 break;
