@@ -7,6 +7,10 @@ import java.util.GregorianCalendar;
  * that both customers and operators have in common, like personal details (and getters/setters for those details).
  */
 public class User implements Serializable {
+
+    /**
+     * Unique serial ID for the {@link User} class. DO NOT CHANGE, otherwise the database can't be read properly.
+     */
     private static final long serialVersionUID = -5681383377098150051L;
 
     private static final String DEFAULT_FIRST_NAME = "null";
@@ -49,6 +53,7 @@ public class User implements Serializable {
 
     /**
      * The most complete user constructor, having all possible parameters for a user.
+     *
      * @param firstName The user's first name.
      * @param lastName The user's last name.
      * @param username The user's unique username.

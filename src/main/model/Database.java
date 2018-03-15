@@ -23,7 +23,7 @@ public class Database implements Serializable {
 
     //A default admin user, added to the database whenever this class is instantiated.
     private static final User ADMIN = new User("admin", "admin");
-
+    public static final String DATABASE_FILE_NAME = "Biblioteca SMARTINATOR - Database.ser";
     private static Database database;
     private User currentUser;
     private HashMap<String, User> userList;
@@ -109,10 +109,8 @@ public class Database implements Serializable {
      * Loads an existing database of users into this class' HashMap.
      */
     private void loadDatabase() {
-        String path = Notifications.DATABASE_FILE_NAME;
-
         try {
-            FileInputStream fileIn = new FileInputStream(path);
+            FileInputStream fileIn = new FileInputStream(DATABASE_FILE_NAME);
             ObjectInputStream in = new ObjectInputStream(fileIn);
 
             userList = (HashMap<String, User>)in.readObject();
@@ -124,7 +122,7 @@ public class Database implements Serializable {
             logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND);
         }
         catch(IOException IOEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_LOADING_DATABASE, IOEx);
+            logger.log(Level.SEVERE, Notifications.ERR_LOADING_DATABASE);
         }
         catch(ClassNotFoundException CNFEx) {
             logger.log(Level.SEVERE, Notifications.ERR_DATABASE_CLASS_NOT_FOUND);
@@ -135,10 +133,8 @@ public class Database implements Serializable {
      * Saves the {@code HashMap} that contains all subscribed users to a {@code .ser} file.
      */
     public void saveDatabase() {
-        String path = Notifications.DATABASE_FILE_NAME;
-
         try {
-            FileOutputStream fileOut = new FileOutputStream(path);
+            FileOutputStream fileOut = new FileOutputStream(DATABASE_FILE_NAME);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
             out.writeObject(userList);
@@ -176,7 +172,7 @@ public class Database implements Serializable {
     public String allUsersToString() {
         StringBuilder allUsers = new StringBuilder();
 
-        for(User u : getUserList().values()) {
+        for(User u : userList.values()) {
             allUsers.append("\t- ");
             allUsers.append(u.toString());
         }

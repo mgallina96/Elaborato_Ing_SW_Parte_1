@@ -11,14 +11,15 @@ import java.util.HashMap;
 import java.util.StringJoiner;
 
 /**
- * Controller class that manages all the interactions between the graphic user interface
- * and the logic model of the program.
+ * Controller class that manages any kind of interaction between the graphical user interface
+ * and the logic (model) of the program.
  *
  * @author Manuel Gallina
  * @version 0.1
  * @since version 0.1 - 12/03/2018
  */
 public class SystemController {
+
     private static SystemController instance;
     private GuiManager guiManager;
     private Database database;
@@ -41,7 +42,9 @@ public class SystemController {
         return instance;
     }
 
-    /** Initializes the system controller which starts the GUI. */
+    /**
+     * Initializes the system controller which starts the GUI.
+     */
     public void init() {
         guiManager.start();
     }
@@ -132,7 +135,9 @@ public class SystemController {
             throw new IllegalArgumentException();
     }
 
-    /** Saves the database and possible changes made to it. */
+    /**
+     * Saves the database and possible changes made to it.
+     */
     public void saveDatabase() {
         database.saveDatabase();
     }
@@ -142,23 +147,6 @@ public class SystemController {
      */
     public boolean canRenew() {
         return (database.getCurrentUser() instanceof Customer) && ((Customer)database.getCurrentUser()).canRenew();
-    }
-
-    /**
-     * Returns a {@code String} that contains all the users in the database.
-     *
-     * @return the list of all users as a {@code String}.
-     */
-    public String allUsersToString() {
-        HashMap<String, User> list = database.getUserList();
-        StringBuilder allUsers = new StringBuilder();
-
-        for(User u : list.values()) {
-            allUsers.append("\t- ");
-            allUsers.append(u.toString());
-        }
-
-        return allUsers.toString();
     }
 
     /**

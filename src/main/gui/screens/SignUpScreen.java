@@ -1,11 +1,7 @@
 package main.gui.screens;
-
 import main.SystemController;
 import main.utility.InputParserUtility;
-
 import static main.utility.Notifications.*;
-import static main.utility.Notifications.ERR_SIGN_UP_ABORTED;
-import static main.utility.Notifications.MSG_EXIT_WITHOUT_SAVING;
 
 /**
  * The sign up screen.
@@ -13,6 +9,7 @@ import static main.utility.Notifications.MSG_EXIT_WITHOUT_SAVING;
  * @author Alessandro Polcini
  */
 public class SignUpScreen extends Screen {
+
     /**
      * Boots up the section from which the user can sign up.
      *
@@ -40,11 +37,7 @@ public class SignUpScreen extends Screen {
             String password = getScanner().nextLine();
 
             System.out.print(PROMPT_BIRTHDAY);
-            String birthday = getScanner().nextLine();
-            while(!InputParserUtility.isValidDate(birthday)) {
-                System.out.println(ERR_INVALID_DATE);
-                birthday = getScanner().nextLine();
-            }
+            String birthday = insertDate();
 
             System.out.printf("%s\n%s\n%s\n", SEPARATOR, PROMPT_SIGN_UP_CONFIRMATION, SEPARATOR);
 
@@ -106,14 +99,30 @@ public class SignUpScreen extends Screen {
      */
     private String insertName() {
         String name = getScanner().nextLine();
-        boolean valid = InputParserUtility.isValidName(name);
 
-        while(!valid) {
+        while(!InputParserUtility.isValidName(name)) {
             System.out.println(ERR_INVALID_NAME);
             name = getScanner().nextLine();
-            valid = InputParserUtility.isValidName(name);
         }
 
         return name;
+    }
+
+    /**
+     * Loops a scanner until the inserted {@code String} is a valid birth date.
+     * <p>The parameters and the logic for date validity are defined in the {@code isValidDate()} method of the
+     * {@link InputParserUtility} class.
+     *
+     * @return a valid birth date in the form of a {@code String}.
+     */
+    private String insertDate() {
+        String date = getScanner().nextLine();
+
+        while(!InputParserUtility.isValidDate(date)) {
+            System.out.println(ERR_INVALID_DATE);
+            date = getScanner().nextLine();
+        }
+
+        return date;
     }
 }

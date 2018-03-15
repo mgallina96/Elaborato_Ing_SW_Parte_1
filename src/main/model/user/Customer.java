@@ -10,6 +10,7 @@ import java.util.GregorianCalendar;
  * function, an expiry and validity check and a subscription renewal.
  */
 public class Customer extends User {
+
     /**
      * Unique serial ID for the {@link Customer} class. DO NOT CHANGE, otherwise the database can't be read properly.
      */

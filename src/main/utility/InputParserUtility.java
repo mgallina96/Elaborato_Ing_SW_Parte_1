@@ -66,7 +66,7 @@ public class InputParserUtility {
      *                          {@code false} otherwise.
      */
     public static boolean isValidName(String input) {
-        return input.matches("(([A-Z]('[A-Z])?[a-z]+)( |-)?)*([A-Z]('[A-Z])?[a-z]+)");
+        return input.matches("(([A-Z]('[A-Z])?[a-zèéçòàùäåêëïîìöü]+)( |-)?)*([A-Z]('[A-Z])?[a-zèéçòàùäåêëïîìöü]+)");
     }
 
     /**

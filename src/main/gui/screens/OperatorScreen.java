@@ -1,11 +1,8 @@
 package main.gui.screens;
-
 import main.SystemController;
 import main.utility.InputParserUtility;
-
 import java.util.logging.Logger;
-
-import static main.utility.Notifications.PROMPT_OPERATOR_CHOICES;
+import static main.utility.Notifications.*;
 
 /**
  * The operator menu screen.
@@ -13,6 +10,7 @@ import static main.utility.Notifications.PROMPT_OPERATOR_CHOICES;
  * @author Manuel Gallina
  */
 class OperatorScreen extends Screen {
+
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     public OperatorScreen(SystemController controller) {
@@ -27,7 +25,7 @@ class OperatorScreen extends Screen {
 
         switch(Integer.parseInt(command)) {
             case 1:
-                System.out.println(controller.allUsersToString());
+                System.out.println(MSG_USER_LIST + controller.allUsersToString());
                 break;
             case 2://logout
                 break;

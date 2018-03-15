@@ -49,7 +49,6 @@ public class Notifications {
 
     //generic useful messages
     public static final String SEPARATOR = "-------------------------------------------------------------------------------------------------------------";
-    public static final String DATABASE_FILE_NAME = "Biblioteca SMARTINATOR - Database.ser";
 
 
 }

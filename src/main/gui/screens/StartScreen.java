@@ -2,21 +2,19 @@ package main.gui.screens;
 import main.SystemController;
 import main.gui.GuiManager;
 import main.utility.InputParserUtility;
-
 import java.util.Scanner;
 import java.util.logging.Logger;
-
-import static main.utility.Notifications.MSG_BIBLIO_NAME;
-import static main.utility.Notifications.PROMPT_BIBLIO_INITIAL_CHOICES;
+import static main.utility.Notifications.*;
 
 /**
- * The start screen of the application.
+ * The starting screen of the application.
  *
  * @author Manuel Gallina
  * @version 0.1
  * @since version 0.1 - 08/03/2018
  */
 public class StartScreen implements GuiManager {
+
     private Logger logger = Logger.getLogger(this.getClass().getName());
     private SystemController controller;
     private Scanner scanner;
@@ -31,7 +29,10 @@ public class StartScreen implements GuiManager {
         scanner = new Scanner(System.in);
     }
 
-    /** Builds the first screen of the user interface which is the login screen. */
+    /**
+     * Builds the main screen of the user interface, which is the login screen.
+     *
+     */
     @Override
     public void start() {
         System.out.printf("%s\n\n%s\n\n> ", MSG_BIBLIO_NAME, PROMPT_BIBLIO_INITIAL_CHOICES);
@@ -51,6 +52,7 @@ public class StartScreen implements GuiManager {
             default:
                 break;
         }
+
         scanner.close();
     }
 }

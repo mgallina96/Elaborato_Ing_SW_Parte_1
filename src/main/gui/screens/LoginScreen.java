@@ -1,10 +1,7 @@
 package main.gui.screens;
-
 import main.SystemController;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import static main.utility.Notifications.*;
 
 /**
@@ -12,9 +9,9 @@ import static main.utility.Notifications.*;
  *
  * @author Manuel Gallina
  */
-public class LoginScreen extends Screen{
-    private static final String ESCAPE_STRING = "quit";
+public class LoginScreen extends Screen {
 
+    private static final String ESCAPE_STRING_REGEX = "[qQ]([uU][iI][tT])?";
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     /**
@@ -27,20 +24,21 @@ public class LoginScreen extends Screen{
 
         System.out.println(PROMPT_LOGIN_SCREEN);
 
-        while (true){
+        while(true){
             String username;
             String password;
 
             try {
                 username = inputRequest(PROMPT_USERNAME);
                 password = inputRequest(PROMPT_PASSWORD);
-            } catch (InterruptedException e) {
+            }
+            catch(InterruptedException e) {
                 new StartScreen(controller).start();
                 break;
             }
 
             if(controller.checkUserLogin(username, password)) {
-                switch (controller.getUserStatus(username)) {
+                switch(controller.getUserStatus(username)) {
                     case OPERATOR:
                         new OperatorScreen(controller);
                         break;
@@ -49,12 +47,16 @@ public class LoginScreen extends Screen{
                         break;
                 }
                 break;
-            } else
+            }
+            else
                 logger.log(Level.SEVERE, ERR_LOGIN_FAILED);
         }
     }
 
-    // Asks for an input and acquires it. If the user writes the escape string the application closes.
+    /**
+     * Asks for an input and acquires it. If the user types in one of the possible escape strings, the application closes.
+     * <p>Escape strings: {@code "quit"} (uppercase/lowercase is ignored), {@code Q"}, {@code "q"}.
+     */
     private String inputRequest(String prompt) throws InterruptedException {
         String input;
 
@@ -62,7 +64,7 @@ public class LoginScreen extends Screen{
         input = getScanner().next();
         getScanner().nextLine();
 
-        if(input.equalsIgnoreCase(ESCAPE_STRING))
+        if(input.matches(ESCAPE_STRING_REGEX))
             throw new InterruptedException();
 
         return input;

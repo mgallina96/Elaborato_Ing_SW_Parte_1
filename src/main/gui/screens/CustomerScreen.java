@@ -1,9 +1,7 @@
 package main.gui.screens;
-
 import main.SystemController;
 import main.utility.InputParserUtility;
-
-import static main.utility.Notifications.PROMPT_CUSTOMER_CHOICES;
+import static main.utility.Notifications.*;
 
 /**
  * The customer menu screen.
@@ -11,6 +9,7 @@ import static main.utility.Notifications.PROMPT_CUSTOMER_CHOICES;
  * @author Manuel Gallina
  */
 public class CustomerScreen extends Screen {
+
     public CustomerScreen(SystemController controller) {
         super(controller);
         System.out.printf("%s\n\n", PROMPT_CUSTOMER_CHOICES);
