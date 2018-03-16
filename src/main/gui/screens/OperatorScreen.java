@@ -9,7 +9,7 @@ import static main.utility.Notifications.*;
  *
  * @author Manuel Gallina
  */
-class OperatorScreen extends Screen {
+public class OperatorScreen extends Screen {
 
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -29,7 +29,6 @@ class OperatorScreen extends Screen {
                 break;
             case 2:
                 controller.logout();
-                new StartScreen(controller);
                 break;
             default:
                 break;

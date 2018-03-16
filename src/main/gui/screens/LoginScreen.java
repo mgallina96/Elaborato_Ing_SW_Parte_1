@@ -1,5 +1,7 @@
 package main.gui.screens;
 import main.SystemController;
+import main.model.user.UserStatus;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static main.utility.Notifications.*;
@@ -8,6 +10,7 @@ import static main.utility.Notifications.*;
  * The login screen.
  *
  * @author Manuel Gallina
+ * @author Giosuè Filippini
  */
 public class LoginScreen extends Screen {
 
@@ -15,42 +18,12 @@ public class LoginScreen extends Screen {
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     /**
-     * Builds the login screen.
+     * Constructor.
      *
      * @param controller The system controller.
      */
     public LoginScreen(SystemController controller) {
         super(controller);
-
-        System.out.println(PROMPT_LOGIN_SCREEN);
-
-        while(true){
-            String username;
-            String password;
-
-            try {
-                username = inputRequest(PROMPT_USERNAME);
-                password = inputRequest(PROMPT_PASSWORD);
-            }
-            catch(InterruptedException e) {
-                new StartScreen(controller).start();
-                break;
-            }
-
-            if(controller.checkUserLogin(username, password)) {
-                switch(controller.getUserStatus(username)) {
-                    case OPERATOR:
-                        new OperatorScreen(controller);
-                        break;
-                    case CUSTOMER:
-                        new CustomerScreen(controller);
-                        break;
-                }
-                break;
-            }
-            else
-                logger.log(Level.SEVERE, ERR_LOGIN_FAILED);
-        }
     }
 
     /**
@@ -68,5 +41,35 @@ public class LoginScreen extends Screen {
             throw new InterruptedException();
 
         return input;
+    }
+
+    /**
+     * Build the effective login screen. It returns the name of the user that logged in.
+     * @return The username.
+     */
+    public String login() {
+
+        System.out.println(PROMPT_LOGIN_SCREEN);
+
+        while(true){
+            String username;
+            String password;
+
+            try {
+                username = inputRequest(PROMPT_USERNAME);
+                password = inputRequest(PROMPT_PASSWORD);
+            }
+            catch(InterruptedException e) {
+                break; // in this case it returns a null value.
+            }
+
+            if(getController().checkUserLogin(username, password)) {
+                return username;
+            }
+            else
+                logger.log(Level.SEVERE, ERR_LOGIN_FAILED);
+        }
+
+        return null;
     }
 }

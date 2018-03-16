@@ -13,46 +13,31 @@ import static main.utility.Notifications.*;
  * @version 0.1
  * @since version 0.1 - 08/03/2018
  */
-public class StartScreen implements GuiManager {
+public class MainScreen extends Screen {
 
     private Logger logger = Logger.getLogger(this.getClass().getName());
-    private SystemController controller;
-    private Scanner scanner;
 
     /**
      * The constructor for the GuiManager class.
      *
      * @param controller The system controller.
      */
-    public StartScreen(SystemController controller) {
-        this.controller = controller;
-        scanner = new Scanner(System.in);
+    public MainScreen(SystemController controller) {
+        super(controller);
     }
 
     /**
-     * Builds the main screen of the user interface, which is the login screen.
-     *
+     * Builds the effective main screen. It permits to the user to make a choice, then it returns it.
+     * @return The choice that the user makes.
      */
-    @Override
-    public void start() {
+    public int takeChoice() {
         System.out.printf("%s\n\n%s\n\n> ", MSG_BIBLIO_NAME, PROMPT_BIBLIO_INITIAL_CHOICES);
 
         String command;
         do {
-            command = scanner.nextLine();
+            command = getScanner().nextLine();
         } while(!InputParserUtility.isValidInteger(command, 1, 3));
 
-        switch(Integer.parseInt(command)) {
-            case 1:
-                new LoginScreen(controller);
-                break;
-            case 2:
-                new SignUpScreen(controller);
-                break;
-            default:
-                break;
-        }
-
-        scanner.close();
+        return Integer.parseInt(command);
     }
 }

@@ -1,14 +1,13 @@
 package main;
 import main.gui.GuiManager;
-import main.gui.screens.StartScreen;
+import main.gui.screens.MainScreen;
+import main.gui.TextualView;
 import main.model.user.Customer;
 import main.model.Database;
 import main.model.user.User;
 import main.model.user.UserStatus;
 
 import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.StringJoiner;
 
 /**
  * Controller class that manages any kind of interaction between the graphical user interface
@@ -27,7 +26,7 @@ public class SystemController {
     //Singleton constructor, private to prevent instantiation.
     private SystemController() {
         database = Database.getInstance();
-        guiManager = new StartScreen(this);
+        guiManager = new TextualView(this);
     }
 
     /**
@@ -46,7 +45,7 @@ public class SystemController {
      * Initializes the system controller which starts the GUI.
      */
     public void init() {
-        guiManager.start();
+        guiManager.mainScreen();
     }
 
     /**

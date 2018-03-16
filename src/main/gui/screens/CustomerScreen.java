@@ -25,7 +25,6 @@ public class CustomerScreen extends Screen {
                 break;
             case 2:
                 controller.logout();
-                new StartScreen(controller);
                 break;
             default:
                 break;

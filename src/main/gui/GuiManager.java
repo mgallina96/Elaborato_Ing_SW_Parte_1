@@ -5,7 +5,18 @@ package main.gui;
  * It also serves as the interface for communication between the view module and the controller.
  *
  * @author Manuel Gallina
+ * @author Giosuè Filippini
  */
 public interface GuiManager {
-    void start();
+
+
+    void mainScreen();
+
+    void loginScreen();
+
+    void signUpScreen();
+
+    void operatorScreen();
+
+    void customerScreen();
 }
