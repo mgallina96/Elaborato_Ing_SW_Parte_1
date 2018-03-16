@@ -163,4 +163,11 @@ public class SystemController {
                         ((Customer)u).getExpiryDate().toZonedDateTime().toString().substring(0, 10)) :
                 "";
     }
+
+    /**
+     * Makes the current user logout from the system.
+     */
+    public void logout() {
+        database.removeCurrentUser();
+    }
 }

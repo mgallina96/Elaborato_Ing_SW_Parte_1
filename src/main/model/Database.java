@@ -179,4 +179,11 @@ public class Database implements Serializable {
 
         return allUsers.toString();
     }
+
+    /**
+     * Sets null the current user, it means that there is no active user in the system.
+     */
+    public void removeCurrentUser() {
+        currentUser = null;
+    }
 }

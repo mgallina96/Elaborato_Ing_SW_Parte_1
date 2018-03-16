@@ -23,7 +23,9 @@ public class CustomerScreen extends Screen {
             case 1:
                 controller.renewSubscription();
                 break;
-            case 2: //logout
+            case 2:
+                controller.logout();
+                new StartScreen(controller);
                 break;
             default:
                 break;
