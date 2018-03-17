@@ -22,10 +22,20 @@ public class Screen {
         this.controller = controller;
     }
 
+    /**
+     * Getter for the {@link Scanner} from which all input is taken.
+     *
+     * @return The application scanner.
+     */
     public Scanner getScanner() {
         return scanner;
     }
 
+    /**
+     * Getter for the system controller.
+     *
+     * @return The system controller.
+     */
     public SystemController getController() {
         return controller;
     }

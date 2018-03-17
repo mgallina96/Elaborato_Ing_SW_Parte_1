@@ -13,6 +13,10 @@ public class OperatorScreen extends Screen {
 
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
+    /**
+     * Constructor for the OperatorScreen class. It boots up the operator section.
+     * @param controller The system controller.
+     */
     public OperatorScreen(SystemController controller) {
         super(controller);
 

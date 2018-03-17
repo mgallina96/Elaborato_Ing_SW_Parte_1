@@ -6,8 +6,8 @@ import java.util.GregorianCalendar;
  * The {@code Customer} class, a subclass of {@link User} equipped with:
  * <p>- customer-specific fields like the date of subscription, the expiry date of said subscription and constants
  * that define the time after which the subscription expires and the legal age of the customer.
- * <p>- methods that provide various features, like an age-checking
- * function, an expiry and validity check and a subscription renewal.
+ * <p>- methods that provide various features, like an age-checking function, an expiry and validity check and a
+ * subscription renewal function.
  */
 public class Customer extends User {
 

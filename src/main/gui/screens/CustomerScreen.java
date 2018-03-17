@@ -10,6 +10,10 @@ import static main.utility.Notifications.*;
  */
 public class CustomerScreen extends Screen {
 
+    /**
+     * Constructor for the CustomerScreen class. It boots up the customer section.
+     * @param controller The system controller.
+     */
     public CustomerScreen(SystemController controller) {
         super(controller);
         System.out.printf("%s\n\n", PROMPT_CUSTOMER_CHOICES);

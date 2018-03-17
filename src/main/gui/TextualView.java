@@ -1,5 +1,4 @@
 package main.gui;
-
 import main.SystemController;
 import main.gui.screens.CustomerScreen;
 import main.gui.screens.LoginScreen;
@@ -8,7 +7,8 @@ import main.gui.screens.SignUpScreen;
 import main.gui.screens.OperatorScreen;
 
 /**
- * Class for the  textual representation of the application. It creates the different screen and manage the interaction between them.
+ * Class that manages a textual GUI for the application, loading the different sections when they are needed and
+ * handling the interactions between them.
  *
  * @author Giosuè Filippini
  */
@@ -17,7 +17,8 @@ public class TextualView implements GuiManager {
     private SystemController controller;
 
     /**
-     * TextualView constructor.
+     * Constructor for the TextualView class.
+     *
      * @param controller The system controller.
      */
     public TextualView(SystemController controller) {
@@ -25,13 +26,13 @@ public class TextualView implements GuiManager {
     }
 
     /**
-     * Builds the main screen.
+     * Loads the main screen.
      */
     @Override
     public void mainScreen() {
         MainScreen mainScreen = new MainScreen(controller);
 
-        switch(mainScreen.takeChoice()) {
+        switch(mainScreen.menuChoices()) {
             case 1:
                 loginScreen();
                 break;
@@ -44,7 +45,7 @@ public class TextualView implements GuiManager {
     }
 
     /**
-     * Builds the login screen.
+     * Loads the login screen.
      */
     @Override
     public void loginScreen() {
@@ -57,14 +58,14 @@ public class TextualView implements GuiManager {
             case CUSTOMER:
                 customerScreen();
                 break;
-            default: // in case of null value: it means that the username or the password is not valid.
+            default: //in case a null value is passed: this means that either the username or the password isn't valid.
                 mainScreen();
         }
 
     }
 
     /**
-     * Builds the sign up screen.
+     * Loads the sign up screen.
      */
     @Override
     public void signUpScreen() {
@@ -72,7 +73,7 @@ public class TextualView implements GuiManager {
     }
 
     /**
-     * Builds the operator screen
+     * Loads the operator screen
      */
     @Override
     public void operatorScreen() {
@@ -80,7 +81,7 @@ public class TextualView implements GuiManager {
     }
 
     /**
-     * Builds the customer screen
+     * Loads the customer screen
      */
     @Override
     public void customerScreen() {

@@ -164,7 +164,7 @@ public class SystemController {
     }
 
     /**
-     * Makes the current user logout from the system.
+     * Allows the current user to log out of the system.
      */
     public void logout() {
         database.removeCurrentUser();

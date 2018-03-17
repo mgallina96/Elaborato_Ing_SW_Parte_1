@@ -1,7 +1,5 @@
 package main;
 
-import main.model.Database;
-
 /**
  * The entry point of the application.
  *

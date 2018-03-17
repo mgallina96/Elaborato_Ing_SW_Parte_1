@@ -27,8 +27,9 @@ public class LoginScreen extends Screen {
     }
 
     /**
-     * Asks for an input and acquires it. If the user types in one of the possible escape strings, the application closes.
-     * <p>Escape strings: {@code "quit"} (uppercase/lowercase is ignored), {@code Q"}, {@code "q"}.
+     * Asks for an input and acquires it. If the user types in one of the possible escape strings, the application
+     * closes.
+     * <p>Accepted escape strings: {@code "quit"} (uppercase/lowercase is ignored), {@code Q"}, {@code "q"}.
      */
     private String inputRequest(String prompt) throws InterruptedException {
         String input;
@@ -44,7 +45,9 @@ public class LoginScreen extends Screen {
     }
 
     /**
-     * Build the effective login screen. It returns the name of the user that logged in.
+     * Builds the actual login screen. This method keeps track of the user that just logged in by returning a
+     * {@code String} with his/her name.
+     *
      * @return The username.
      */
     public String login() {

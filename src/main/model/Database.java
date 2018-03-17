@@ -130,7 +130,8 @@ public class Database implements Serializable {
     }
 
     /**
-     * Saves the {@code HashMap} that contains all subscribed users to a {@code .ser} file.
+     * Saves the {@code HashMap} containing all subscribed users to a {@code .ser} file.
+     *
      */
     public void saveDatabase() {
         try {
@@ -149,6 +150,7 @@ public class Database implements Serializable {
 
     /**
      * Sets the current user who just logged in.
+     *
      * @param currentUser The logged-in user to set.
      */
     public void setCurrentUser(User currentUser) {
@@ -181,7 +183,7 @@ public class Database implements Serializable {
     }
 
     /**
-     * Sets null the current user, it means that there is no active user in the system.
+     * Sets the current user to {@code null}: this means that no user is active at that moment in the system.
      */
     public void removeCurrentUser() {
         currentUser = null;

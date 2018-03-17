@@ -18,7 +18,7 @@ public class MainScreen extends Screen {
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     /**
-     * The constructor for the GuiManager class.
+     * The constructor for the GUI manager class.
      *
      * @param controller The system controller.
      */
@@ -27,10 +27,11 @@ public class MainScreen extends Screen {
     }
 
     /**
-     * Builds the effective main screen. It permits to the user to make a choice, then it returns it.
-     * @return The choice that the user makes.
+     * Builds the actual main screen. It allows the user to make a choice and then returns it for further use
+     * within the application.
+     * @return The choice the user made.
      */
-    public int takeChoice() {
+    public int menuChoices() {
         System.out.printf("%s\n\n%s\n\n> ", MSG_BIBLIO_NAME, PROMPT_BIBLIO_INITIAL_CHOICES);
 
         String command;
