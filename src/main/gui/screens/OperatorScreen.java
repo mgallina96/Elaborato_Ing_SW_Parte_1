@@ -19,23 +19,28 @@ public class OperatorScreen extends Screen {
      */
     public OperatorScreen(SystemController controller) {
         super(controller);
+        boolean exitFromOperatorSection = false;
 
-        System.out.printf("%s\n\n", PROMPT_OPERATOR_CHOICES);
+        while(!exitFromOperatorSection) {
+            System.out.printf("%s\n%s\n%s\n", SEPARATOR, PROMPT_OPERATOR_CHOICES, SEPARATOR);
 
-        String command;
-        do {
-            command = getScanner().nextLine();
-        } while(!InputParserUtility.isValidInteger(command, 1, 3));
+            String command;
+            do {
+                command = getScanner().nextLine();
+            } while(!InputParserUtility.isValidInteger(command, 1, 3));
 
-        switch(Integer.parseInt(command)) {
-            case 1:
-                System.out.printf("%s\n%s\n", MSG_USER_LIST, controller.allUsersToString());
-                break;
-            case 2:
-                controller.logout();
-                break;
-            default:
-                break;
+            switch(Integer.parseInt(command)) {
+                case 1:
+                    System.out.printf("%s\n%s\n", MSG_USER_LIST, getController().allUsersToString());
+                    break;
+                case 2:
+                    System.out.printf("%s\n", MSG_LOG_OUT);
+                    exitFromOperatorSection = true;
+                    getController().logout();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

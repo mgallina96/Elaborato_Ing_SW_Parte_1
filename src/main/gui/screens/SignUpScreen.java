@@ -47,14 +47,14 @@ public class SignUpScreen extends Screen {
             } while(choice.matches("[^ynYN]"));
 
             if(choice.matches("[yY]")) {
-                if(!controller.legalAge(InputParserUtility.toGregorianDate(birthday))) {
+                if(!getController().legalAge(InputParserUtility.toGregorianDate(birthday))) {
                     System.out.println(ERR_NOT_OF_AGE);
                     continue;
                 }
 
-                if(!controller.checkUserLogin(username, password)) {
-                    controller.addUserToDatabase(firstName, lastName, username, password, InputParserUtility.toGregorianDate(birthday));
-                    controller.saveDatabase();
+                if(!getController().checkUserLogin(username, password)) {
+                    getController().addUserToDatabase(firstName, lastName, username, password, InputParserUtility.toGregorianDate(birthday));
+                    getController().saveDatabase();
                     System.out.println(MSG_SIGN_UP_SUCCESSFUL);
                     break;
                 }
@@ -75,7 +75,7 @@ public class SignUpScreen extends Screen {
                             System.out.println(PROMPT_MODIFY_FIELDS);
                             break;
                         case 3:
-                            controller.renewSubscription();
+                            getController().renewSubscription();
                             valid = false;
                             break;
                     }

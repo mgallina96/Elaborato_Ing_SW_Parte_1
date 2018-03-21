@@ -10,12 +10,8 @@ package main.gui;
 public interface GuiManager {
 
     void mainScreen();
-
     void loginScreen();
-
     void signUpScreen();
-
     void operatorScreen();
-
     void customerScreen();
 }

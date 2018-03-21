@@ -42,7 +42,7 @@ public class SystemController {
     }
 
     /**
-     * Initializes the system controller which starts the GUI.
+     * Initializes the system controller, which starts the GUI.
      */
     public void init() {
         guiManager.mainScreen();
@@ -54,7 +54,8 @@ public class SystemController {
      *
      * @param username The username.
      * @param password The password.
-     * @return {@code true} if the user's credentials are correct, {@code false} otherwise.
+     * @return {@code true} if the user's credentials are correct and match with an entry in the database,
+     * {@code false} otherwise.
      */
     public boolean checkUserLogin(String username, String password) {
         User toCheck = new User(username, password);
@@ -94,13 +95,7 @@ public class SystemController {
      * @return {@code true} if the customer is of age, {@code false} otherwise.
      */
     public boolean legalAge(GregorianCalendar birthday) {
-        return new Customer(
-                "",
-                "",
-                "",
-                "",
-                birthday
-        ).isOfAge();
+        return new Customer("", "", "", "", birthday).isOfAge();
     }
 
     /**
@@ -157,7 +152,8 @@ public class SystemController {
         User u = database.getCurrentUser();
 
         return (u instanceof Customer) ?
-                String.format("Reminder:\n\tYou subscribed on %s\n\tYour subscription expires on %s",
+                String.format("Reminder:\n\tYou subscribed on %s\n\tYour subscription expires on %s\n\tYou're not " +
+                                "allowed to renew your subscription until 10 days before the expiry date.",
                         ((Customer)u).getSubscriptionDate().toZonedDateTime().toString().substring(0, 10),
                         ((Customer)u).getExpiryDate().toZonedDateTime().toString().substring(0, 10)) :
                 "";

@@ -5,6 +5,7 @@ import main.gui.screens.LoginScreen;
 import main.gui.screens.MainScreen;
 import main.gui.screens.SignUpScreen;
 import main.gui.screens.OperatorScreen;
+import static main.utility.Notifications.*;
 
 /**
  * Class that manages a textual GUI for the application, loading the different sections when they are needed and
@@ -39,6 +40,9 @@ public class TextualView implements GuiManager {
             case 2:
                 signUpScreen();
                 break;
+            case 3:
+                System.out.printf("%s\n", MSG_GOODBYE);
+                break;
             default:
                 break;
         }
@@ -58,7 +62,7 @@ public class TextualView implements GuiManager {
             case CUSTOMER:
                 customerScreen();
                 break;
-            default: //in case a null value is passed: this means that either the username or the password isn't valid.
+            default: //in case ths user status is still a null value (either the username or the password isn't valid).
                 mainScreen();
         }
 

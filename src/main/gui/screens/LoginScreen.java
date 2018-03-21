@@ -51,10 +51,9 @@ public class LoginScreen extends Screen {
      * @return The username.
      */
     public String login() {
+        System.out.printf("%s\n%s\n", PROMPT_LOGIN_SCREEN, SEPARATOR);
 
-        System.out.println(PROMPT_LOGIN_SCREEN);
-
-        while(true){
+        while(true) {
             String username;
             String password;
 
@@ -63,14 +62,16 @@ public class LoginScreen extends Screen {
                 password = inputRequest(PROMPT_PASSWORD);
             }
             catch(InterruptedException e) {
-                break; // in this case it returns a null value.
+                break; //returns a null value in this case.
             }
 
             if(getController().checkUserLogin(username, password)) {
                 return username;
             }
-            else
+            else {
                 logger.log(Level.SEVERE, ERR_LOGIN_FAILED);
+                System.out.printf("%s\n%s\n", PROMPT_RETRY_LOGGING_IN, SEPARATOR);
+            }
         }
 
         return null;

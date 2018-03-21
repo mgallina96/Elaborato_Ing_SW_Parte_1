@@ -16,22 +16,30 @@ public class CustomerScreen extends Screen {
      */
     public CustomerScreen(SystemController controller) {
         super(controller);
-        System.out.printf("%s\n\n", PROMPT_CUSTOMER_CHOICES);
+        boolean exitFromCustomerSection = false;
 
-        String command;
-        do {
-            command = getScanner().nextLine();
-        } while(!InputParserUtility.isValidInteger(command, 1, 3));
+        while(!exitFromCustomerSection) {
+            System.out.printf("%s\n%s\n%s\n", SEPARATOR, PROMPT_CUSTOMER_CHOICES, SEPARATOR);
 
-        switch (Integer.parseInt(command)) {
-            case 1:
-                controller.renewSubscription();
-                break;
-            case 2:
-                controller.logout();
-                break;
-            default:
-                break;
+            String command;
+            do {
+                command = getScanner().nextLine();
+            } while(!InputParserUtility.isValidInteger(command, 1, 3));
+
+            switch(Integer.parseInt(command)) {
+                case 1:
+                    getController().renewSubscription();
+                    if(!getController().canRenew())
+                        System.out.printf("%s\n%s\n", ERR_CANNOT_RENEW, getController().dateDetails());
+                    break;
+                case 2:
+                    System.out.printf("%s\n", MSG_LOG_OUT);
+                    exitFromCustomerSection = true;
+                    getController().logout();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

@@ -11,7 +11,7 @@ public class Notifications {
     public static final String MSG_BIBLIO_NAME = "BIBLIOTECA SMARTin4t0r 3.0";
     public static final String MSG_SIGN_UP_SUCCESSFUL = "Sign up successful. Welcome!";
     public static final String MSG_EXIT_WITHOUT_SAVING = "Exiting without saving...";
-    public static final String MSG_GOODBYE = "Exiting " + MSG_BIBLIO_NAME + ". Goodbye...";
+    public static final String MSG_GOODBYE = "Exiting " + MSG_BIBLIO_NAME + "... Goodbye!";
     public static final String MSG_LOG_OUT = "Logging out...";
     public static final String MSG_USER_LIST = "Here is the list of all subscribed users:";
     public static final String MSG_OPERATOR_MENU = "Welcome, operator!";
@@ -31,6 +31,7 @@ public class Notifications {
     public static final String PROMPT_LOGIN_SCREEN = "Welcome back! Log in to " + MSG_BIBLIO_NAME;
     public static final String PROMPT_SIGN_UP_SCREEN = "Hi there! Sign up for " + MSG_BIBLIO_NAME;
     public static final String PROMPT_MODIFY_FIELDS = "Please modify the wrong fields.";
+    public static final String PROMPT_RETRY_LOGGING_IN = "Please retry logging in with correct credentials.";
 
     //ERRORS
     public static final String ERR_NOT_OF_AGE = "Warning: user is underage. Please re-fill this form.";

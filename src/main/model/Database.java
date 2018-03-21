@@ -23,7 +23,7 @@ public class Database implements Serializable {
 
     //A default admin user, added to the database whenever this class is instantiated.
     private static final User ADMIN = new User("admin", "admin");
-    public static final String DATABASE_FILE_NAME = "Biblioteca SMARTINATOR - Database.ser";
+    private static final String DATABASE_FILE_NAME = "Biblioteca SMARTINATOR - Database.ser";
     private static Database database;
     private User currentUser;
     private HashMap<String, User> userList;
@@ -183,7 +183,7 @@ public class Database implements Serializable {
     }
 
     /**
-     * Sets the current user to {@code null}: this means that no user is active at that moment in the system.
+     * Sets the current user to {@code null}: this means that no user is active in the system at that moment.
      */
     public void removeCurrentUser() {
         currentUser = null;

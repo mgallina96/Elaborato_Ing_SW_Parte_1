@@ -32,12 +32,12 @@ public class MainScreen extends Screen {
      * @return The choice the user made.
      */
     public int menuChoices() {
-        System.out.printf("%s\n\n%s\n\n> ", MSG_BIBLIO_NAME, PROMPT_BIBLIO_INITIAL_CHOICES);
+        System.out.printf("%s\n%s\n%s\n%s\n> ", MSG_BIBLIO_NAME, SEPARATOR, PROMPT_BIBLIO_INITIAL_CHOICES, SEPARATOR);
 
         String command;
         do {
             command = getScanner().nextLine();
-        } while(!InputParserUtility.isValidInteger(command, 1, 3));
+        } while(!InputParserUtility.isValidInteger(command, 1, 4));
 
         return Integer.parseInt(command);
     }
