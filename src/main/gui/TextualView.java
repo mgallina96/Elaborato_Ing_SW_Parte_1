@@ -1,5 +1,5 @@
 package main.gui;
-import main.SystemController;
+import main.Controller;
 import main.gui.screens.CustomerScreen;
 import main.gui.screens.LoginScreen;
 import main.gui.screens.MainScreen;
@@ -15,14 +15,14 @@ import static main.utility.Notifications.*;
  */
 public class TextualView implements GuiManager {
 
-    private SystemController controller;
+    private Controller controller;
 
     /**
      * Constructor for the TextualView class.
      *
      * @param controller The system controller.
      */
-    public TextualView(SystemController controller) {
+    public TextualView(Controller controller) {
         this.controller = controller;
     }
 

@@ -11,9 +11,9 @@ import org.junit.jupiter.api.Test;
  *
  * @author Manuel Gallina
  */
-class SystemControllerTest {
+class ControllerTest {
     private static final Database DATABASE = Database.getInstance();
-    private static final SystemController CONTROLLER = SystemController.getInstance();
+    private static final Controller CONTROLLER = Controller.getInstance();
 
     @BeforeEach
     void setUp() {

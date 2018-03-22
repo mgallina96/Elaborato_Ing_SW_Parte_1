@@ -1,8 +1,7 @@
 package main.gui.screens;
-import main.SystemController;
-import main.gui.GuiManager;
+import main.Controller;
 import main.utility.InputParserUtility;
-import java.util.Scanner;
+
 import java.util.logging.Logger;
 import static main.utility.Notifications.*;
 
@@ -22,7 +21,7 @@ public class MainScreen extends Screen {
      *
      * @param controller The system controller.
      */
-    public MainScreen(SystemController controller) {
+    public MainScreen(Controller controller) {
         super(controller);
     }
 
