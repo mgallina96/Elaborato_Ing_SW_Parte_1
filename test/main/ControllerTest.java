@@ -1,6 +1,7 @@
 package main;
 
-import main.model.Database;
+import main.model.database.Database;
+import main.model.database.DatabaseManager;
 import main.model.user.Customer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,12 +13,12 @@ import org.junit.jupiter.api.Test;
  * @author Manuel Gallina
  */
 class ControllerTest {
-    private static final Database DATABASE = Database.getInstance();
+    private static final Database DATABASE = DatabaseManager.getInstance();
     private static final Controller CONTROLLER = Controller.getInstance();
 
     @BeforeEach
     void setUp() {
-        DATABASE.addUser(new Customer("Mario", "12345"));
+        DATABASE.add(new Customer("Mario", "12345"));
     }
 
     @Test

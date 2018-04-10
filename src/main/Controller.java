@@ -1,8 +1,9 @@
 package main;
 import main.gui.GuiManager;
 import main.gui.TextualView;
+import main.model.database.Database;
+import main.model.database.DatabaseManager;
 import main.model.user.Customer;
-import main.model.Database;
 import main.model.user.User;
 import main.model.user.UserStatus;
 
@@ -24,7 +25,7 @@ public class Controller implements SystemController {
 
     //Singleton constructor, private to prevent instantiation.
     private Controller() {
-        database = Database.getInstance();
+        database = DatabaseManager.getInstance();
         guiManager = new TextualView(this);
     }
 
@@ -71,7 +72,7 @@ public class Controller implements SystemController {
      * @return the list of all users as a {@code String}.
      */
     public String allUsersToString() {
-        return database.allUsersToString();
+        return database.getUserListString();
     }
 
     /**
@@ -84,7 +85,7 @@ public class Controller implements SystemController {
      * @param birthday The user's birthday.
      */
     public void addUserToDatabase(String firstName, String lastName, String username, String password, GregorianCalendar birthday) {
-        database.addUser(new Customer(firstName, lastName, username, password, birthday));
+        database.add(new Customer(firstName, lastName, username, password, birthday));
     }
 
     /**
@@ -103,7 +104,7 @@ public class Controller implements SystemController {
      * @return an {@code enum} value, OPERATOR or CUSTOMER.
      */
     public UserStatus getUserStatus(String username) {
-        return database.fetchUser(new User(username)).getUserStatus();
+        return database.fetch(new User(username)).getUserStatus();
     }
 
     /**

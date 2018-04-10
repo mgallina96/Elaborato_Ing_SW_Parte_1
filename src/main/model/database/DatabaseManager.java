@@ -1,4 +1,5 @@
-package main.model;
+package main.model.database;
+import main.model.media.Media;
 import main.model.user.User;
 import main.model.user.UserStatus;
 import main.utility.Notifications;
@@ -14,31 +15,22 @@ import java.util.logging.Logger;
  * database for a single element and checking whether a given element belongs to the database.
  *
  */
-public class Database implements Serializable {
+public class DatabaseManager implements Serializable, Database {
 
     /**
-     * Unique serial ID for the {@link Database} class. DO NOT CHANGE, otherwise the database can't be read properly.
+     * Unique serial ID for the {@link DatabaseManager} class. DO NOT CHANGE, otherwise the database can't be read properly.
      */
     private static final long serialVersionUID = -5681383377098150051L;
 
-    //A default admin user, added to the database whenever this class is instantiated.
-    private static final User ADMIN = new User("admin", "admin");
+    private UserDatabase userDatabase = UserDatabase.getInstance();
+    private MediaDatabase mediaDatabase = MediaDatabase.getInstance();
     private static final String DATABASE_FILE_NAME = "Biblioteca SMARTINATOR - Database.ser";
-    private static Database database;
-    private User currentUser;
-    private HashMap<String, User> userList;
+    private static DatabaseManager database;
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     //Singleton Database constructor, private to prevent instantiation.
-    private Database() {
-        this.userList = new HashMap<>();
+    private DatabaseManager() {
         loadDatabase();
-
-        //Adds the admin to the database, if the admin hasn't been added yet.
-        if(!isPresent(ADMIN)) {
-            ADMIN.setUserStatus(UserStatus.OPERATOR);
-            this.addUser(ADMIN);
-        }
     }
 
     /**
@@ -50,9 +42,9 @@ public class Database implements Serializable {
      * @return either a new {@code Database} instance, if the {@code Database} has not been initialized yet, or the
      * already initialized {@code Database} object.
      */
-    public static Database getInstance() {
+    public static DatabaseManager getInstance() {
         if(database == null)
-            database = new Database();
+            database = new DatabaseManager();
 
         return database;
     }
@@ -62,8 +54,12 @@ public class Database implements Serializable {
      *
      * @param toAdd The {@code User} who is to be added to the database.
      */
-    public void addUser(User toAdd) {
-        userList.put(toAdd.getUsername(), toAdd);
+    public void add(User toAdd) {
+        userDatabase.addUser(toAdd);
+    }
+
+    public void add(Media toAdd) {
+        mediaDatabase.addMedia(toAdd);
     }
 
     /**
@@ -71,18 +67,13 @@ public class Database implements Serializable {
      *
      * @param toRemove The {@code User} who is to be removed.
      */
-    public void removeUser(User toRemove) {
-        if(isPresent(toRemove))
-            userList.remove(toRemove.getUsername());
+    public void remove(User toRemove) {
+        userDatabase.removeUser(toRemove);
     }
 
-    /**
-     * Returns the list of users in form of a HashMap.
-     *
-     * @return the actual database.
-     */
-    public HashMap<String, User> getUserList() {
-        return userList;
+    @Override
+    public void remove(Media toRemove) {
+        mediaDatabase.removeMedia(toRemove);
     }
 
     /**
@@ -91,19 +82,68 @@ public class Database implements Serializable {
      * @param toFind The user to be found.
      * @return {@code true} if the user is present in the database, {@code false} otherwise.
      */
+    @Override
     public boolean isPresent(User toFind) {
-        return userList.containsKey(toFind.getUsername());
+        return userDatabase.isPresent(toFind);
+    }
+
+    @Override
+    public boolean isPresent(Media toFind) {
+        return mediaDatabase.isPresent(toFind);
     }
 
     /**
      * Returns the given user (if present).
      *
-     * @param toFind The user to be found.
+     * @param toFetch The user to be found.
      * @return the user or {@code null} if that user can't be found in the database.
      */
-    public User fetchUser(User toFind) {
-        return isPresent(toFind) ? userList.get(toFind.getUsername()) : null;
+    @Override
+    public User fetch(User toFetch) {
+        return userDatabase.fetchUser(toFetch);
     }
+
+    @Override
+    public Media fetch(Media toFetch) {
+        return mediaDatabase.fetch(toFetch);
+    }
+
+    /**
+     * Sets the current user who just logged in.
+     *
+     * @param currentUser The logged-in user to set.
+     */
+    public void setCurrentUser(User currentUser) {
+        userDatabase.setCurrentUser(currentUser);
+    }
+
+    /**
+     * Getter for the current user.
+     *
+     * @return the current user who just logged in.
+     */
+    public User getCurrentUser() {
+        return userDatabase.getCurrentUser();
+    }
+
+    /**
+     * Returns a {@code String} that contains all the users in the database.
+     *
+     * @return the list of all users as a {@code String}.
+     */
+    public String getUserListString() {
+        return userDatabase.getUserListString();
+    }
+
+    @Override
+    public String getMediaListString() {
+        return mediaDatabase.getMediaListString();
+    }
+
+    /**
+     * Sets the current user to {@code null}: this means that no user is active in the system at that moment.
+     */
+    public void removeCurrentUser() { userDatabase.removeCurrentUser(); }
 
     /**
      * Loads an existing database of users into this class' HashMap.
@@ -113,7 +153,8 @@ public class Database implements Serializable {
             FileInputStream fileIn = new FileInputStream(DATABASE_FILE_NAME);
             ObjectInputStream in = new ObjectInputStream(fileIn);
 
-            userList = (HashMap<String, User>)in.readObject();
+            userDatabase.setUserList((HashMap<String, User>) in.readObject());
+            mediaDatabase.setMediaList((HashMap<String, Media>) in.readObject());
 
             in.close();
             fileIn.close();
@@ -138,54 +179,14 @@ public class Database implements Serializable {
             FileOutputStream fileOut = new FileOutputStream(DATABASE_FILE_NAME);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
-            out.writeObject(userList);
+            out.writeObject(userDatabase.getUserList());
+            out.writeObject(mediaDatabase.getMediaList());
 
             out.close();
             fileOut.close();
         }
         catch(IOException IOEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE);
+            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE, IOEx);
         }
-    }
-
-    /**
-     * Sets the current user who just logged in.
-     *
-     * @param currentUser The logged-in user to set.
-     */
-    public void setCurrentUser(User currentUser) {
-        this.currentUser = fetchUser(currentUser);
-    }
-
-    /**
-     * Getter for the current user.
-     *
-     * @return the current user who just logged in.
-     */
-    public User getCurrentUser() {
-        return currentUser;
-    }
-
-    /**
-     * Returns a {@code String} that contains all the users in the database.
-     *
-     * @return the list of all users as a {@code String}.
-     */
-    public String allUsersToString() {
-        StringBuilder allUsers = new StringBuilder();
-
-        for(User u : userList.values()) {
-            allUsers.append("\t- ");
-            allUsers.append(u.toString());
-        }
-
-        return allUsers.toString();
-    }
-
-    /**
-     * Sets the current user to {@code null}: this means that no user is active in the system at that moment.
-     */
-    public void removeCurrentUser() {
-        currentUser = null;
     }
 }

@@ -17,9 +17,23 @@ public class Operator extends User {
     }
 
     /**
-     * Shows the list of all enrolled customers.
+     *
      */
-    public void viewCustomerList() {
+    public void addMediaToDatabase() {
+
+    }
+
+    /**
+     *
+     */
+    public void removeMediaFromDatabase() {
+
+    }
+
+    /**
+     *
+     */
+    public void viewMediaList() {
 
     }
 
