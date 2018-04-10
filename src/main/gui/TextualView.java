@@ -32,19 +32,23 @@ public class TextualView implements GuiManager {
     @Override
     public void mainScreen() {
         MainScreen mainScreen = new MainScreen(controller);
+        boolean exit = false;
 
-        switch(mainScreen.menuChoices()) {
-            case 1:
-                loginScreen();
-                break;
-            case 2:
-                signUpScreen();
-                break;
-            case 3:
-                System.out.printf("%s\n", MSG_GOODBYE);
-                break;
-            default:
-                break;
+        while(!exit) {
+            switch(mainScreen.menuChoices()) {
+                case 1:
+                    loginScreen();
+                    break;
+                case 2:
+                    signUpScreen();
+                    break;
+                case 3:
+                    System.out.printf("%s\n", MSG_GOODBYE);
+                    exit = true;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
