@@ -6,9 +6,7 @@ import java.util.GregorianCalendar;
  */
 public class Operator extends User {
 
-    /**
-     * Unique serial ID for the {@link Operator} class. DO NOT CHANGE, otherwise the database can't be read properly.
-     */
+    //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = 6873316295925654746L;
 
     public Operator(String firstName, String lastName, String username, String password, GregorianCalendar birthday) {

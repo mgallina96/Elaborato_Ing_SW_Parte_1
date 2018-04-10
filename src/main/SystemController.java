@@ -3,6 +3,8 @@ package main;
 import java.util.GregorianCalendar;
 
 /**
+ * Interface for the system controller.
+ *
  * @author Manuel Gallina
  */
 public interface SystemController {

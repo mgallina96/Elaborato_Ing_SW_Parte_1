@@ -6,7 +6,6 @@ import main.model.database.DatabaseManager;
 import main.model.user.Customer;
 import main.model.user.User;
 import main.model.user.UserStatus;
-
 import java.util.GregorianCalendar;
 
 /**

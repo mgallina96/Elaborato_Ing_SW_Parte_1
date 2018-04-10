@@ -11,9 +11,7 @@ import java.util.GregorianCalendar;
  */
 public class Customer extends User {
 
-    /**
-     * Unique serial ID for the {@link Customer} class. DO NOT CHANGE, otherwise the database can't be read properly.
-     */
+    //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = 562339799965662315L;
 
     private static final int RENEWAL_BOUNDARY_IN_DAYS = 10;

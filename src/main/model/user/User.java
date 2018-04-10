@@ -8,9 +8,7 @@ import java.util.GregorianCalendar;
  */
 public class User implements Serializable {
 
-    /**
-     * Unique serial ID for the {@link User} class. DO NOT CHANGE, otherwise the database can't be read properly.
-     */
+    //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -5681383377098150051L;
 
     private static final String DEFAULT_FIRST_NAME = "null";
