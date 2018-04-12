@@ -107,14 +107,6 @@ public class Controller implements SystemController {
     }
 
     /**
-     * Sets the current user.
-     * @param username The user's username.
-     */
-    private void setCurrentUser(String username) {
-        database.setCurrentUser(new User(username));
-    }
-
-    /**
      * Renews the user's subscription.
      * <p>
      * The user must be a customer.

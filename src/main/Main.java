@@ -1,5 +1,7 @@
 package main;
 
+import main.model.media.Book;
+
 /**
  * The entry point of the application.
  *

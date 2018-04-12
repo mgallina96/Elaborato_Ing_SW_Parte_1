@@ -32,6 +32,8 @@ class MediaDatabase implements Serializable {
 
 
     void addMedia(Media toAdd) {
+        Media m = new Media("");
+        m.setIdentifier(mediaList.size());
     }
 
     void removeMedia(Media toRemove) {

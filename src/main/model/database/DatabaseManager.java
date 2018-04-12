@@ -22,12 +22,15 @@ public class DatabaseManager implements Serializable, Database {
     private static final String DATABASE_FILE_NAME = "Biblioteca SMARTINATOR - Database.ser";
 
     private static DatabaseManager database;
-    private UserDatabase userDatabase = UserDatabase.getInstance();
-    private MediaDatabase mediaDatabase = MediaDatabase.getInstance();
-    private Logger logger = Logger.getLogger(this.getClass().getName());
+    private UserDatabase userDatabase;
+    private MediaDatabase mediaDatabase;
+    private Logger logger;
 
     //Singleton Database constructor, private to prevent instantiation.
     private DatabaseManager() {
+        this.userDatabase = UserDatabase.getInstance();
+        this.mediaDatabase = MediaDatabase.getInstance();
+        this.logger = Logger.getLogger(this.getClass().getName());
         loadDatabase();
     }
 
@@ -78,9 +81,7 @@ public class DatabaseManager implements Serializable, Database {
     }
 
     @Override
-    public void setCurrentUser(User currentUser) {
-        userDatabase.setCurrentUser(currentUser);
-    }
+    public void setCurrentUser(User currentUser) { userDatabase.setCurrentUser(currentUser); }
 
     @Override
     public User getCurrentUser() {

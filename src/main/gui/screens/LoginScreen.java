@@ -45,7 +45,7 @@ public class LoginScreen extends Screen {
 
     /**
      * Builds the actual login screen. This method keeps track of the user that just logged in by returning a
-     * {@code String} with his/her name.
+     * {@code String} with his/her username.
      *
      * @return The username.
      */

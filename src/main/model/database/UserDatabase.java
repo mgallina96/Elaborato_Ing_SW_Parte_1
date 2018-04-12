@@ -44,11 +44,11 @@ class UserDatabase implements Serializable {
     void addUser(User toAdd) {
         userList.put(toAdd.getUsername(), toAdd);
     }
-
+/*
     void removeUser(User toRemove) {
         if(isPresent(toRemove))
             userList.remove(toRemove.getUsername());
-    }
+    }*/
 
     boolean isPresent(User toFind) {
         return userList.containsKey(toFind.getUsername());
