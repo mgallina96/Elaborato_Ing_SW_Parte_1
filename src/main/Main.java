@@ -1,10 +1,5 @@
 package main;
 
-import main.model.database.DatabaseManager;
-import main.model.media.Book;
-
-import java.util.Random;
-
 /**
  * The entry point of the application.
  *
