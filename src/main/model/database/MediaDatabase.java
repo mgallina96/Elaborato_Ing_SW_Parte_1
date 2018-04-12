@@ -15,7 +15,9 @@ class MediaDatabase implements Serializable {
     private static final long serialVersionUID = -5687383377098150051L;
 
     private static MediaDatabase mediaDatabase;
-    private HashMap<String, Media> mediaList;
+    private static int counter;
+
+    private HashMap<Integer, Media> mediaList;
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     //Singleton Database constructor, private to prevent instantiation.
@@ -30,22 +32,21 @@ class MediaDatabase implements Serializable {
         return mediaDatabase;
     }
 
-
     void addMedia(Media toAdd) {
-        Media m = new Media("");
-        m.setIdentifier(mediaList.size());
+        toAdd.setIdentifier(counter++);
+        mediaList.put(toAdd.getIdentifier(), toAdd);
     }
 
     void removeMedia(Media toRemove) {
-
+        mediaList.remove(toRemove.getIdentifier());
     }
 
     boolean isPresent(Media toFind) {
-        return false;
+        return mediaList.containsKey(toFind.getIdentifier());
     }
 
     Media fetch(Media toFetch) {
-        return null;
+        return mediaList.get(toFetch.getIdentifier());
     }
 
     String getMediaListString() {
@@ -59,11 +60,19 @@ class MediaDatabase implements Serializable {
         return allMedia.toString();
     }
 
-    void setMediaList(HashMap<String, Media> mediaList) {
+    void setMediaList(HashMap<Integer, Media> mediaList) {
         this.mediaList = mediaList;
     }
 
-    HashMap<String, Media> getMediaList() {
+    HashMap<Integer, Media> getMediaList() {
         return mediaList;
+    }
+
+    static int getCounter() {
+        return counter;
+    }
+
+    static void setCounter(int counter) {
+        MediaDatabase.counter = counter;
     }
 }

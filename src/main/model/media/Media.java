@@ -18,6 +18,10 @@ public class Media implements Serializable {
     private String[] path;
     private GregorianCalendar dateAdded;
 
+    public Media(int identifier) {
+        this.identifier = identifier;
+    }
+
     public Media(String mediaName) {
         this.mediaName = mediaName;
         dateAdded = new GregorianCalendar();
@@ -25,6 +29,10 @@ public class Media implements Serializable {
 
     public void setDateAdded(GregorianCalendar dateAdded) {
         this.dateAdded = dateAdded;
+    }
+
+    public int getIdentifier() {
+        return identifier;
     }
 
     public void setIdentifier(int identifier) {
@@ -36,6 +44,9 @@ public class Media implements Serializable {
     }
 
     public String toString() {
-        return "";
+        return String.format("Media name: %s\t|\tItem ID: %d\t|\tDate added: %s",
+                mediaName, identifier, dateAdded.toZonedDateTime());
     }
+
+
 }

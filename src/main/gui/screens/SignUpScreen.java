@@ -59,7 +59,7 @@ public class SignUpScreen extends Screen {
                     break;
                 }
                 else {
-                    System.out.println(PROMPT_PRESENT_USER_MULTIPLE_CHOICE);
+                    System.out.printf("%s\n%s\n%s\n%s\n", ERR_USER_ALREADY_PRESENT, SEPARATOR, PROMPT_PRESENT_USER_MULTIPLE_CHOICE, SEPARATOR);
                     String input;
 
                     do {

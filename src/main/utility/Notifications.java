@@ -14,6 +14,7 @@ public class Notifications {
     public static final String MSG_GOODBYE = "Exiting " + MSG_BIBLIO_NAME + "... Goodbye!";
     public static final String MSG_LOG_OUT = "Logging out...";
     public static final String MSG_USER_LIST = "Here is the list of all subscribed users:";
+    public static final String MSG_MEDIA_LIST = "Here is the list of all media items:";
     public static final String MSG_OPERATOR_MENU = "Welcome, operator!";
     public static final String MSG_CUSTOMER_MENU = "Welcome, customer!";
 
@@ -25,7 +26,7 @@ public class Notifications {
     public static final String PROMPT_BIRTHDAY = "Birthday (accepted format = DD/MM/YYYY): ";
     public static final String PROMPT_PRESENT_USER_MULTIPLE_CHOICE = "(1) EXIT WITHOUT SAVING\t|\t(2) CHANGE FIELDS\t|\t(3) RENEW SUBSCRIPTION";
     public static final String PROMPT_BIBLIO_INITIAL_CHOICES = "(1) LOGIN\t|\t(2) SIGN UP\t|\t(3) EXIT";
-    public static final String PROMPT_OPERATOR_CHOICES = "(1) SHOW ALL SUBSCRIBED USERS\t|\t(2) LOGOUT";
+    public static final String PROMPT_OPERATOR_CHOICES = "(1) ADD A MEDIA ITEM\t|\t(2) REMOVE A MEDIA ITEM\t|\t(3) SHOW ALL MEDIA ITEMS\t|\t(4) SHOW ALL SUBSCRIBED USERS\t|\t(5) LOGOUT";
     public static final String PROMPT_CUSTOMER_CHOICES = "(1) RENEW YOUR SUBSCRIPTION!\t|\t(2) LOGOUT";
     public static final String PROMPT_SIGN_UP_CONFIRMATION = "Are you sure you want to submit this form? (y/n)";
     public static final String PROMPT_LOGIN_SCREEN = "Welcome back! Log in to " + MSG_BIBLIO_NAME;
@@ -49,7 +50,7 @@ public class Notifications {
     public static final String ERR_CANNOT_RENEW = "It's too early to renew your subscription.";
 
     //generic useful messages
-    public static final String SEPARATOR = "-------------------------------------------------------------------------------------------------------------";
+    public static final String SEPARATOR = "--------------------------------------------------------------------------------------------------------------------------------------";
 
 
 }

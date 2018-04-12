@@ -16,6 +16,9 @@ public interface SystemController {
     boolean legalAge(GregorianCalendar gregorianCalendar);
     boolean checkUserLogin(String username, String password);
     void addUserToDatabase(String firstName, String lastName, String username, String password, GregorianCalendar gregorianCalendar);
+    void addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName);
+    void removeMediaFromDatabase(int id);
     void saveDatabase();
     Object allUsersToString();
+    Object allMediaToString();
 }

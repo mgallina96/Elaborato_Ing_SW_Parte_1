@@ -99,7 +99,6 @@ public interface Database {
      */
     void saveDatabase();
 
-    //void remove(User toRemove);
-    //void remove(Media toRemove);
+    void remove(Media toRemove);
 
 }

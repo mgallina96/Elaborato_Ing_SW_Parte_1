@@ -1,5 +1,7 @@
 package main.model.media;
 
+import java.io.Serializable;
+
 /**
  * The {@code Book} class, subclass of the {@link Media} class.
  * <p>
@@ -8,7 +10,10 @@ package main.model.media;
  *
  * @author Alessandro Polcini
  */
-public class Book extends Media {
+public class Book extends Media implements Serializable {
+
+    //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
+    private static final long serialVersionUID = -1281383374398165051L;
 
     private static final String ID = "Book";
     private String title;
@@ -26,7 +31,7 @@ public class Book extends Media {
     private int volumeNumber;
 
     public Book(String title, String author, String genre, int publicationYear, String publisherName) {
-        super(title, ID);
+        super(title);
         this.title = title;
         this.author = author;
         this.genre = genre;
@@ -44,8 +49,8 @@ public class Book extends Media {
     }
 
     public String toString() {
-        return String.format("Title: %s\t|\tAuthor: %s\t|\tPublication year: %d\t|\tGenre: %s\t|\tPublisher name: %s",
-                title, author, publicationYear, genre, publisherName);
+        return String.format("Item ID: %d\t|\tTitle: %s\t|\tAuthor: %s\t|\tPublication year: %d\t|\tGenre: %s\t|\tPublisher name: %s\n",
+                getIdentifier(), title, author, publicationYear, genre, publisherName);
     }
 
     public String allDetailsToString() {

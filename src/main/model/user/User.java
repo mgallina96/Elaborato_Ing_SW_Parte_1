@@ -1,5 +1,6 @@
 package main.model.user;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
@@ -11,10 +12,10 @@ public class User implements Serializable {
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -5681383377098150051L;
 
-    private static final String DEFAULT_FIRST_NAME = "null";
-    private static final String DEFAULT_LAST_NAME = "null";
+    private static final String DEFAULT_FIRST_NAME = "Giorgio";
+    private static final String DEFAULT_LAST_NAME = "Franchi";
     private static final String DEFAULT_PASSWORD = "null";
-    private static final GregorianCalendar DEFAULT_BIRTHDAY = new GregorianCalendar();
+    private static final GregorianCalendar DEFAULT_BIRTHDAY = new GregorianCalendar(1970, Calendar.JANUARY, 1);
 
     private UserStatus userStatus;
     private String username;

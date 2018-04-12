@@ -61,6 +61,11 @@ public class DatabaseManager implements Serializable, Database {
     }
 
     @Override
+    public void remove(Media toRemove) {
+        mediaDatabase.removeMedia(toRemove);
+    }
+
+    @Override
     public boolean isPresent(User toFind) {
         return userDatabase.isPresent(toFind);
     }
@@ -81,7 +86,9 @@ public class DatabaseManager implements Serializable, Database {
     }
 
     @Override
-    public void setCurrentUser(User currentUser) { userDatabase.setCurrentUser(currentUser); }
+    public void setCurrentUser(User currentUser) {
+        userDatabase.setCurrentUser(currentUser);
+    }
 
     @Override
     public User getCurrentUser() {
@@ -99,7 +106,9 @@ public class DatabaseManager implements Serializable, Database {
     }
 
     @Override
-    public void removeCurrentUser() { userDatabase.removeCurrentUser(); }
+    public void removeCurrentUser() {
+        userDatabase.removeCurrentUser();
+    }
 
     @Override
     public void saveDatabase() {
@@ -109,6 +118,7 @@ public class DatabaseManager implements Serializable, Database {
 
             out.writeObject(userDatabase.getUserList());
             out.writeObject(mediaDatabase.getMediaList());
+            out.writeObject(Integer.toString(MediaDatabase.getCounter()));
 
             out.close();
             fileOut.close();
@@ -129,7 +139,8 @@ public class DatabaseManager implements Serializable, Database {
             ObjectInputStream in = new ObjectInputStream(fileIn);
 
             userDatabase.setUserList((HashMap<String, User>) in.readObject());
-            mediaDatabase.setMediaList((HashMap<String, Media>) in.readObject());
+            mediaDatabase.setMediaList((HashMap<Integer, Media>) in.readObject());
+            MediaDatabase.setCounter(Integer.parseInt((String)in.readObject()));
 
             in.close();
             fileIn.close();
@@ -138,7 +149,7 @@ public class DatabaseManager implements Serializable, Database {
             logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND);
         }
         catch(IOException IOEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_LOADING_DATABASE);
+            logger.log(Level.SEVERE, Notifications.ERR_LOADING_DATABASE, IOEx);
         }
         catch(ClassNotFoundException CNFEx) {
             logger.log(Level.SEVERE, Notifications.ERR_DATABASE_CLASS_NOT_FOUND);

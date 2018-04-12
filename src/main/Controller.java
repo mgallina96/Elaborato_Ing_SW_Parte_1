@@ -3,6 +3,8 @@ import main.gui.GuiManager;
 import main.gui.TextualView;
 import main.model.database.Database;
 import main.model.database.DatabaseManager;
+import main.model.media.Book;
+import main.model.media.Media;
 import main.model.user.Customer;
 import main.model.user.User;
 import main.model.user.UserStatus;
@@ -75,6 +77,15 @@ public class Controller implements SystemController {
     }
 
     /**
+     * Returns a {@code String} that contains all the users in the database.
+     *
+     * @return the list of all users as a {@code String}.
+     */
+    public String allMediaToString() {
+        return database.getMediaListString();
+    }
+
+    /**
      * Adds a new user to the database.
      *
      * @param firstName The user's first name.
@@ -85,6 +96,15 @@ public class Controller implements SystemController {
      */
     public void addUserToDatabase(String firstName, String lastName, String username, String password, GregorianCalendar birthday) {
         database.add(new Customer(firstName, lastName, username, password, birthday));
+    }
+
+    public void addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName) {
+        database.add(new Book(title, author, genre, publicationYear, publisherName));
+    }
+
+    @Override
+    public void removeMediaFromDatabase(int id) {
+        database.remove(new Media(id));
     }
 
     /**

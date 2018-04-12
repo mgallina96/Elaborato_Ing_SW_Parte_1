@@ -27,13 +27,25 @@ public class OperatorScreen extends Screen {
             String command;
             do {
                 command = getScanner().nextLine();
-            } while(!InputParserUtility.isValidInteger(command, 1, 3));
+            } while(!InputParserUtility.isValidInteger(command, 1, 6));
 
             switch(Integer.parseInt(command)) {
                 case 1:
-                    System.out.printf("%s\n%s\n", MSG_USER_LIST, getController().allUsersToString());
+                    //Aggiungi risorsa
+                    addMedia();
                     break;
                 case 2:
+                    //Rimuovi risorsa
+                    removeMedia();
+                    break;
+                case 3:
+                    //Visualizza risorse
+                    System.out.printf("%s\n%s\n", MSG_MEDIA_LIST, getController().allMediaToString());
+                    break;
+                case 4:
+                    System.out.printf("%s\n%s\n", MSG_USER_LIST, getController().allUsersToString());
+                    break;
+                case 5:
                     System.out.printf("%s\n", MSG_LOG_OUT);
                     exitFromOperatorSection = true;
                     getController().logout();
@@ -42,5 +54,15 @@ public class OperatorScreen extends Screen {
                     break;
             }
         }
+    }
+
+    private void addMedia() {
+        System.out.println();
+        getController().addMediaToDatabase("","","",0,"");
+    }
+
+    private void removeMedia() {
+        System.out.print("");
+        getController().removeMediaFromDatabase(1);
     }
 }
