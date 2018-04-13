@@ -9,7 +9,7 @@ import main.model.user.User;
  */
 public class QuickFillMain {
 
-    //quanto volete riempire il database, viene riempito con (2^FILLING_LEVEL)^2 utenti e libri.
+    //di quanto volete riempire il database? Viene riempito con (2^FILLING_LEVEL)^2 utenti e libri.
     public static final byte FILLING_LEVEL = 5;
 
     public static void main(String[] args) {
