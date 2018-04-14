@@ -45,4 +45,15 @@ public class RandomWords {
         return wordPool[random.nextInt(poolSize)];
     }
 
+    public int getPoolSize() {
+        return poolSize;
+    }
+
+    public Random getRandom() {
+        return random;
+    }
+
+    public String[] getWordPool() {
+        return wordPool;
+    }
 }

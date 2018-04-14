@@ -18,8 +18,6 @@ public class BookGenerator {
         ArrayList<Media> media = new ArrayList<>();
         TitleGenerator titleGenerator = TitleGenerator.getInstance();
 
-        RandomWords firstNames = new RandomWords(PoolLoader.fromTXTFile("test_resources\\users\\nomi_italiani.txt"));
-        RandomWords lastNames = new RandomWords(PoolLoader.fromTXTFile("test_resources\\users\\cognomi_italiani.txt"));
         RandomWords genres = new RandomWords(PoolLoader.fromTXTFile("test_resources\\media\\generi_libro.txt"));
 
         for(int i = 0; i < howMany; i++) {
@@ -31,10 +29,10 @@ public class BookGenerator {
 
             media.add(new Book(
                     titleGenerator.generateTitle(),
-                    (firstNames.nextWord() + " " + lastNames.nextWord()),
+                    titleGenerator.firstnameLastname(),
                     genres.nextWord(),
                     year,
-                    (firstNames.nextWord() + " " + lastNames.nextWord() + " Editore")
+                    (rand.nextBoolean() ? titleGenerator.firstnameLastname() : titleGenerator.randomNoun()) + " Editore"
             ));
         }
 

@@ -77,7 +77,8 @@ da quando
 dopo che
 prima che
 intanto che
-(non) appena
+appena
+non appena
 ogni qual volta
 ogni volta che
 ora che
