@@ -1,6 +1,8 @@
 package generators.randomwords;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,10 +16,11 @@ public class PoolLoader {
         File f = new File(path);
 
         try {
-            Scanner s = new Scanner(f);
+            BufferedReader s = new BufferedReader(new FileReader(f));
 
-            while(s.hasNextLine()) {
-                arrayList.add(s.nextLine());
+            String line;
+            while((line = s.readLine()) != null) {
+                arrayList.add(line.matches("[^a-z].*") ? line.replaceAll("\\p{C}", "") : line);
                 counter++;
             }
 

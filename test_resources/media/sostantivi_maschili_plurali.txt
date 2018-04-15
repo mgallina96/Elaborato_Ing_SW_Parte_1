@@ -66,7 +66,6 @@ acumi
 adattamenti
 addestramenti
 additivi
-addizioni
 addobbi
 addomi
 adipi
@@ -3857,7 +3856,7 @@ sgomenti
 sgorbi
 sgravi
 sguardi
-shampoi
+shampoo
 shock
 sibili
 sicari

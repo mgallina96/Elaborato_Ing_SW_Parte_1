@@ -37,6 +37,7 @@ acquolina
 acrobazia
 acustica
 acutezza
+addizione
 adesione
 adiposità
 adolescenza

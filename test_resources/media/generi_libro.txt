@@ -1,11 +1,11 @@
 ﻿Horror
 Romantico
-Erotica
 Giallo
 Thriller
 Fantasy
 Fantascienza
 Commedia
+Erotica
 Comico
 Noir
 Romanzo storico
@@ -24,3 +24,12 @@ Spirituale
 Salute e benessere
 Giardinaggio
 Automobili
+Matematica
+Fisica
+Didattica
+Viaggi
+Avventura
+Geografia
+Scienza
+Fumetto
+Animali

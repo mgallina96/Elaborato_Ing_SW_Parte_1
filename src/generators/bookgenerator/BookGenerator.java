@@ -32,7 +32,7 @@ public class BookGenerator {
                     titleGenerator.firstnameLastname(),
                     genres.nextWord(),
                     year,
-                    (rand.nextBoolean() ? titleGenerator.firstnameLastname() : titleGenerator.randomNoun()) + " Editore"
+                    (rand.nextBoolean() ? titleGenerator.firstnameLastname() : titleGenerator.capitalize(titleGenerator.randomNoun())) + " Editore"
             ));
         }
 

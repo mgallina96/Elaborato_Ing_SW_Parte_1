@@ -1,6 +1,7 @@
 package generators;
 
 import main.model.database.DatabaseManager;
+import main.model.media.Book;
 import main.model.media.Media;
 import main.model.user.User;
 
@@ -10,7 +11,7 @@ import main.model.user.User;
 public class QuickFillMain {
 
     //di quanto volete riempire il database? Viene riempito con (2^FILLING_LEVEL)^2 utenti e libri.
-    public static final byte FILLING_LEVEL = 5;
+    public static final byte FILLING_LEVEL = 7;
 
     public static void main(String[] args) {
 

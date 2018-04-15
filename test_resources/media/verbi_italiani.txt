@@ -630,7 +630,6 @@ conformare
 confortare
 confrontare
 confutare
-
 congedare
 congegnare
 congelare
@@ -1898,7 +1897,6 @@ pentirsi
 penzolare
 pepare
 percepire
-
 percorrere
 percuotere
 perdere

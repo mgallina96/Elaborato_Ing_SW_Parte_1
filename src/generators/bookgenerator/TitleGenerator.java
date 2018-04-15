@@ -41,7 +41,7 @@ public class TitleGenerator {
             }
         }
         else {
-            switch(random.nextInt(10)) {
+            switch(random.nextInt(12)) {
                 case 0: //la casa / nel buio
                     finalTitle = articleNoun();
                     break;
@@ -60,17 +60,23 @@ public class TitleGenerator {
                 case 5: //l'estremo orizzonte
                     finalTitle = articleNounAdjective(false);
                     break;
-                case 6: //giancarlo e maria nella casa
-                    finalTitle = firstNames.nextWord() + SPACE + conjunctions.nextWord() + SPACE + firstNames.nextWord() + SPACE + location();
+                case 6: //giancarlo e maria nella casa / piero e lucia per la pace
+                    finalTitle = firstNames.nextWord() + SPACE + conjunctions.nextWord() + SPACE + firstNames.nextWord() + SPACE + prepNoun();
                     break;
                 case 7: //la tragica storia di giancarlo e maria
                     finalTitle = articleNounAdjective(true) + SPACE + prepositions.nextWord() + SPACE + firstNames.nextWord() + " e " + firstNames.nextWord();
                     break;
-                case 8: //la principessa sul pisello
-                    finalTitle = articleNoun() + SPACE + location();
+                case 8: //la principessa sul pisello / il morto con la cravatta
+                    finalTitle = articleNoun() + SPACE + prepNoun();
                     break;
                 case 9: //uno strano caso
                     finalTitle = articleNounAdjective(true);
+                    break;
+                case 10: //cadere dal tetto / giocare col fuoco
+                    finalTitle = verbs.nextWord() + SPACE + prepNoun();
+                    break;
+                case 11: //franco (cognome) volerà sulla città
+                    finalTitle = firstNames.nextWord() + SPACE + (random.nextBoolean() ? lastNames.nextWord() + SPACE : "") + verbs.nextWord() + SPACE + prepNoun();
                     break;
             }
         }
@@ -94,29 +100,43 @@ public class TitleGenerator {
     }
 
     private String articleNoun() {
-        String[] components = sentenceGenerator(random.nextInt(GRAMMAR_BOUND));
+        return twoComponents(ARTICLE_POS, NOUN_POS);
+    }
 
-        //checkGrammar();
-
-        return components[ARTICLE_POS] + SPACE + components[NOUN_POS];
+    private String prepNoun() {
+        return twoComponents(PREPOSITION_POS, NOUN_POS);
     }
 
     private String articleNounAdjective(boolean flipNounAdjective) {
-        String[] components = sentenceGenerator(random.nextInt(GRAMMAR_BOUND));
+        String[] components;
+        String article;
+        String noun;
+        String adjective;
 
-        //checkGrammar();
+        do {
+            components = sentenceGenerator(random.nextInt(GRAMMAR_BOUND));
+            article = components[ARTICLE_POS];
+            adjective = components[ADJECTIVE_POS];
+            noun = components[NOUN_POS];
+        } while(flipNounAdjective ? !isValidGrammar(article, adjective) : !isValidGrammar(article, noun));
 
-        return components[ARTICLE_POS] + SPACE + (flipNounAdjective ?
-                (components[ADJECTIVE_POS] + SPACE + components[NOUN_POS]) :
-                (components[NOUN_POS] + SPACE + components[ADJECTIVE_POS]));
+        return article + SPACE + (flipNounAdjective ?
+                                    adjective + SPACE + noun :
+                                    noun + SPACE + adjective);
     }
 
-    private String location() {
-        String[] components = sentenceGenerator(random.nextInt(GRAMMAR_BOUND));
+    private String twoComponents(int posA, int posB) {
+        String[] components;
+        String a;
+        String b;
 
-        //checkGrammar();
+        do {
+            components = sentenceGenerator(random.nextInt(GRAMMAR_BOUND));
+            a = components[posA];
+            b = components[posB];
+        } while(!isValidGrammar(a, b));
 
-        return components[PREPOSITION_POS] + SPACE + components[NOUN_POS];
+        return a + SPACE + b;
     }
 
     String firstnameLastname() {
@@ -131,8 +151,17 @@ public class TitleGenerator {
         return sentenceGenerator(random.nextInt(GRAMMAR_BOUND))[ADJECTIVE_POS];
     }
 
-    private String capitalize(String s) {
+    String capitalize(String s) {
         return s.substring(0, 1).toUpperCase() + s.substring(1);
+    }
+
+    private boolean isValidGrammar(String article, String noun) {
+        boolean conditionMSing = (article.matches(".*o") && noun.matches("s[^aeiou][^aeiou].*")) || (article.matches(".*[ln]") && noun.matches("[^aeiou][^aeiou]?[aeiou].*"));
+        boolean conditionMPlur = (article.matches("gli") && noun.matches("s[^aeiou][^aeiou].*")) || (article.matches("i") && noun.matches("[^aeiou][^aeiou]?[aeiou].*"));
+        boolean conditionFSingPlur = (article.matches(".*[ae]") && noun.matches("[^aeiou].*"));
+        boolean conditionBoth = (article.matches(".*('|gli)") && noun.matches("[aeiou].*"));
+
+        return conditionMSing || conditionMPlur || conditionFSingPlur || conditionBoth;
     }
 
     private void loadRandomizers() {
