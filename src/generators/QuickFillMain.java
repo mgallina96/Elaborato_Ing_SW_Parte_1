@@ -15,15 +15,17 @@ public class QuickFillMain {
 
     public static void main(String[] args) {
 
-        DatabaseManager d = DatabaseManager.getInstance();
+        //DatabaseManager d = DatabaseManager.getInstance();
         Generator generator = new Generator(FILLING_LEVEL);
-
+/*
         for(User u : generator.getUsers())
             d.add(u);
         for(Media m : generator.getBooks())
             d.add(m);
 
-        d.saveDatabase();
+        d.saveDatabase();*/
+
+        generator.getBooks().forEach(System.out::print);
     }
 
 }
