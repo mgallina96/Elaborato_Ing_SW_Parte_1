@@ -41,7 +41,7 @@ public class TitleGenerator {
             }
         }
         else {
-            switch(random.nextInt(12)) {
+            switch(random.nextInt(13)) {
                 case 0: //la casa / nel buio
                     finalTitle = articleNoun();
                     break;
@@ -49,10 +49,10 @@ public class TitleGenerator {
                     finalTitle = articleNounAdjective(false);
                     break;
                 case 2: //le avventure di harry potter
-                    finalTitle = articleNoun() + SPACE + prepositions.nextWord() + SPACE + firstnameLastname();
+                    finalTitle = articleNoun() + SPACE + "di" + SPACE + firstnameLastname();
                     break;
                 case 3: //harry potter e la pietra filosofale
-                    finalTitle = firstnameLastname() + SPACE + conjunctions.nextWord() + SPACE + articleNounAdjective(false);
+                    finalTitle = firstnameLastname() + SPACE + "e" + SPACE + articleNounAdjective(false);
                     break;
                 case 4: //molto forte, incredibilmente vicino
                     finalTitle = adverbs.nextWord() + SPACE + randomAdjective() + ", " + adverbs.nextWord() + SPACE + randomAdjective();
@@ -61,10 +61,10 @@ public class TitleGenerator {
                     finalTitle = articleNounAdjective(false);
                     break;
                 case 6: //giancarlo e maria nella casa / piero e lucia per la pace
-                    finalTitle = firstNames.nextWord() + SPACE + conjunctions.nextWord() + SPACE + firstNames.nextWord() + SPACE + prepNoun();
+                    finalTitle = firstNames.nextWord() + SPACE + "e" + SPACE + firstNames.nextWord() + SPACE + prepNoun();
                     break;
                 case 7: //la tragica storia di giancarlo e maria
-                    finalTitle = articleNounAdjective(true) + SPACE + prepositions.nextWord() + SPACE + firstNames.nextWord() + " e " + firstNames.nextWord();
+                    finalTitle = articleNounAdjective(true) + SPACE + prepositions.nextWord() + SPACE + firstNames.nextWord() + SPACE + "e" + SPACE + firstNames.nextWord();
                     break;
                 case 8: //la principessa sul pisello / il morto con la cravatta
                     finalTitle = articleNoun() + SPACE + prepNoun();
@@ -77,6 +77,10 @@ public class TitleGenerator {
                     break;
                 case 11: //franco (cognome) volerà sulla città
                     finalTitle = firstNames.nextWord() + SPACE + (random.nextBoolean() ? lastNames.nextWord() + SPACE : "") + verbs.nextWord() + SPACE + prepNoun();
+                    break;
+                case 12:
+                    //perchè morire? / perchè la morte?
+                    finalTitle = conjunctions.nextWord() + SPACE + (random.nextBoolean() ? verbs.nextWord() : articleNoun()) + (random.nextBoolean() ? "" : "?");
                     break;
             }
         }
