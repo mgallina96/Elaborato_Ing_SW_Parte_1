@@ -57,6 +57,13 @@ public interface Database {
     String getMediaListString();
 
     /**
+     *
+     * @param filter
+     * @return
+     */
+    String getFilteredMediaList(String filter);
+
+    /**
      * Sets the current user who just logged in.
      *
      * @param currentUser The logged-in user to set.

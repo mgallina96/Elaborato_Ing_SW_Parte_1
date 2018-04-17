@@ -160,7 +160,7 @@ public class TitleGenerator {
     }
 
     private boolean isValidGrammar(String article, String noun) {
-        boolean conditionMSing = (article.matches(".*o") && noun.matches("s[^aeiou].*")) || (article.matches(".*[ln]") && noun.matches("[^aeious][^aeiou]?[aeiou].*"));
+        boolean conditionMSing = (article.matches(".*o") && noun.matches("[sz][^aeiou].*")) || (article.matches(".*[ln]") && noun.matches("[^aeiouzs][^aeiou]?[aeiou].*"));
         boolean conditionMPlur = (article.matches("gli") && noun.matches("s[^aeiou].*")) || (article.matches("i") && noun.matches("[^aeious][^aeiou]?[aeiou].*"));
         boolean conditionFSingPlur = (article.matches(".*[ae]") && noun.matches("[^aeiou].*"));
         boolean conditionBoth = (article.matches(".*('|gli)") && noun.matches("[aeiou].*"));

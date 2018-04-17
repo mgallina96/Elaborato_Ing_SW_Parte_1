@@ -1,9 +1,13 @@
 package generators;
 
+import main.SystemController;
 import main.model.database.DatabaseManager;
 import main.model.media.Book;
 import main.model.media.Media;
 import main.model.user.User;
+
+import java.util.HashMap;
+import java.util.stream.Stream;
 
 /**
  * Created by Alessandro on 12/04/18.
@@ -15,17 +19,16 @@ public class QuickFillMain {
 
     public static void main(String[] args) {
 
-        //DatabaseManager d = DatabaseManager.getInstance();
+        DatabaseManager d = DatabaseManager.getInstance();
         Generator generator = new Generator(FILLING_LEVEL);
-/*
+
         for(User u : generator.getUsers())
             d.add(u);
         for(Media m : generator.getBooks())
             d.add(m);
 
-        d.saveDatabase();*/
+        d.saveDatabase();
 
-        generator.getBooks().forEach(System.out::print);
     }
 
 }

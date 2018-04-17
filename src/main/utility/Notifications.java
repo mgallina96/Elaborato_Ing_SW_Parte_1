@@ -15,6 +15,8 @@ public class Notifications {
     public static final String MSG_LOG_OUT = "Logging out...";
     public static final String MSG_USER_LIST = "Here is the list of all subscribed users:";
     public static final String MSG_MEDIA_LIST = "Here is the list of all media items:";
+    public static final String MSG_FILTERED_MEDIA_LIST = "Results:";
+    public static final String MSG_REMOVE_SUCCESSFUL = "Media item removed successfully.";
     public static final String MSG_OPERATOR_MENU = "Welcome, operator!";
     public static final String MSG_CUSTOMER_MENU = "Welcome, customer!";
 
@@ -56,6 +58,7 @@ public class Notifications {
     public static final String ERR_MSG_INVALID_INPUT = "Invalid input.";
     public static final String ERR_USER_ALREADY_PRESENT = "This user is already present in our database.";
     public static final String ERR_CANNOT_RENEW = "It's too early to renew your subscription.";
+    public static final String PROMPT_REMOVE_MEDIA_ID = "Please choose the ID for the item you wish to remove.";
 
     //generic useful messages
     public static final String SEPARATOR = "--------------------------------------------------------------------------------------------------------------------------------------";

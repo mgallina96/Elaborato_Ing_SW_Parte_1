@@ -106,6 +106,11 @@ public class DatabaseManager implements Serializable, Database {
     }
 
     @Override
+    public String getFilteredMediaList(String filter) {
+        return mediaDatabase.getFilteredMediaList(filter);
+    }
+
+    @Override
     public void removeCurrentUser() {
         userDatabase.removeCurrentUser();
     }

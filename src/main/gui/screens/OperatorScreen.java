@@ -31,15 +31,12 @@ public class OperatorScreen extends Screen {
 
             switch(Integer.parseInt(command)) {
                 case 1:
-                    //Aggiungi risorsa
                     addMedia();
                     break;
                 case 2:
-                    //Rimuovi risorsa
                     removeMedia();
                     break;
                 case 3:
-                    //Visualizza risorse
                     System.out.printf("%s\n%s\n", MSG_MEDIA_LIST, getController().allMediaToString());
                     break;
                 case 4:
@@ -78,8 +75,19 @@ public class OperatorScreen extends Screen {
 
     private void removeMedia() {
         System.out.println(PROMPT_REMOVE_MEDIA);
+        String input = getScanner().nextLine();
 
-        getController().removeMediaFromDatabase(1);
+        System.out.printf("%s\n%s\n", MSG_FILTERED_MEDIA_LIST, getController().allFilteredMediaList(input));
+        System.out.println(PROMPT_REMOVE_MEDIA_ID);
+
+        String id = getScanner().nextLine();
+        while(!InputParserUtility.isValidInteger(id)) {
+            System.out.println(ERR_MSG_INVALID_INPUT);
+            id = getScanner().nextLine();
+        }
+
+        getController().removeMediaFromDatabase(Integer.parseInt(id));
+        System.out.println(MSG_REMOVE_SUCCESSFUL);
     }
 
     /**

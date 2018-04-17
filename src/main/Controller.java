@@ -86,6 +86,15 @@ public class Controller implements SystemController {
     }
 
     /**
+     * Returns a {@code String} that contains all the users in the database.
+     *
+     * @return the list of all users as a {@code String}.
+     */
+    public String allFilteredMediaList(String filter) {
+        return database.getFilteredMediaList(filter);
+    }
+
+    /**
      * Adds a new user to the database.
      *
      * @param firstName The user's first name.

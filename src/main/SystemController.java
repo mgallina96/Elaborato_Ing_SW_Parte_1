@@ -19,6 +19,7 @@ public interface SystemController {
     void addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName);
     void removeMediaFromDatabase(int id);
     void saveDatabase();
-    Object allUsersToString();
-    Object allMediaToString();
+    String allUsersToString();
+    String allMediaToString();
+    String allFilteredMediaList(String filter);
 }
