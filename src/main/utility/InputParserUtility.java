@@ -1,4 +1,5 @@
 package main.utility;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -222,6 +223,26 @@ public class InputParserUtility {
         }
 
         return fields;
+    }
+
+    /**
+     * Checks whether the given year is valid or not.
+     * To be valid, the year has to be between 0 and the current year.
+     *
+     * @param year the year to check.
+     * @return a boolean value, {@code true} if the year is valid, {@code false} otherwise.
+     */
+    public static boolean isValidYear(String year) {
+        int y;
+
+        try {
+            y = Integer.parseInt(year);
+        }
+        catch(Exception e) {
+            return false;
+        }
+
+        return y >= 0 && y <= new GregorianCalendar().get(Calendar.YEAR);
     }
 
 }

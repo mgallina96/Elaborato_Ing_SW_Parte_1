@@ -47,7 +47,11 @@ public class Book extends Media implements Serializable {
         this.belongsToSeries = belongsToSeries;
         this.volumeNumber = this.belongsToSeries ? volumeNumber : 0;
     }
-
+/*
+    public void setPath(String[] path) {
+        super.setPath(path);
+    }
+*/
     public String toString() {
         return String.format("Item ID: %d\t|\tTitle: %s\t|\tAuthor: %s\t|\tPublication year: %d\t|\tGenre: %s\t|\tPublisher name: %s\n",
                 getIdentifier(), title, author, publicationYear, genre, publisherName);

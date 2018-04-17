@@ -33,11 +33,19 @@ public class Notifications {
     public static final String PROMPT_SIGN_UP_SCREEN = "Hi there! Sign up for " + MSG_BIBLIO_NAME;
     public static final String PROMPT_MODIFY_FIELDS = "Please modify the wrong fields.";
     public static final String PROMPT_RETRY_LOGGING_IN = "Please retry logging in with correct credentials.";
+    public static final String PROMPT_ADD_MEDIA = "Please add a media item.";
+    public static final String PROMPT_TITLE = "Title: ";
+    public static final String PROMPT_AUTHOR = "Author: ";
+    public static final String PROMPT_GENRE = "Genre: ";
+    public static final String PROMPT_PUBLICATION_YEAR = "Publication year: ";
+    public static final String PROMPT_PUBLISHER_NAME = "Publisher: ";
+    public static final String PROMPT_REMOVE_MEDIA = "Please insert one or more keywords for the media item you wish to remove: ";
 
     //ERRORS
     public static final String ERR_NOT_OF_AGE = "Warning: user is underage. Please re-fill this form.";
     public static final String ERR_INVALID_NAME = "Looks like this name has an invalid format, please re-insert a valid name.";
     public static final String ERR_INVALID_DATE = "This birth date has an invalid format. Please re-insert a valid date.";
+    public static final String ERR_INVALID_YEAR = "This year has an invalid format. Please re-insert a valid year.";
     public static final String ERR_LOGIN_FAILED = "Login failed: wrong username or password.";
     public static final String ERR_SIGN_UP_FAILED = "Sign up failed.";
     public static final String ERR_SIGN_UP_ABORTED = "Sign up aborted.";

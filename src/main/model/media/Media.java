@@ -48,5 +48,11 @@ public class Media implements Serializable {
                 mediaName, identifier, dateAdded.toZonedDateTime());
     }
 
+    public void setPath(String[] path) {
+        this.path = path;
+    }
 
+    public String[] getPath() {
+        return path;
+    }
 }

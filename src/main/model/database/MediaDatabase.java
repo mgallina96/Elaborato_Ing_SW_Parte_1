@@ -60,6 +60,16 @@ class MediaDatabase implements Serializable {
         return allMedia.toString();
     }
 
+    String getFilteredMediaList(String filter) {
+        StringBuilder filteredMedia = new StringBuilder();
+
+        mediaList.values().stream()
+                .filter(s -> s.toString().contains(filter))
+                .forEach(s -> filteredMedia.append(s.toString()));
+
+        return filteredMedia.toString();
+    }
+
     void setMediaList(HashMap<Integer, Media> mediaList) {
         this.mediaList = mediaList;
     }
