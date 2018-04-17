@@ -67,10 +67,9 @@ class MediaDatabase implements Serializable {
         StringBuilder filteredMedia = new StringBuilder();
         filter = filter.replaceAll("[\\W]+", "|");
         String regex = ".*(" + filter + ").*";
-        Pattern p = Pattern.compile(regex);
 
         mediaList.values().stream()
-                .filter(s -> s.toString().matches(p.pattern()))
+                .filter(s -> s.getBareItemDetails().matches(regex))
                 .forEach(s -> filteredMedia.append(s.toString()));
 
         return filteredMedia.toString();

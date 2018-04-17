@@ -37,6 +37,8 @@ public class Book extends Media implements Serializable {
         this.genre = genre;
         this.publicationYear = publicationYear;
         this.publisherName = publisherName;
+
+        super.setBareItemDetails(title, author, genre, publicationYear, publisherName);
     }
 
     public void setDetails(String description, String subtitle, String language, int pageCount, boolean belongsToSeries, int volumeNumber) {
@@ -52,6 +54,12 @@ public class Book extends Media implements Serializable {
         super.setPath(path);
     }
 */
+
+    @Override
+    public String getBareItemDetails() {
+        return super.getBareItemDetails();
+    }
+
     public String toString() {
         return String.format("Item ID: %d\t|\tTitle: %s\t|\tAuthor: %s\t|\tPublication year: %d\t|\tGenre: %s\t|\tPublisher name: %s\n",
                 getIdentifier(), title, author, publicationYear, genre, publisherName);

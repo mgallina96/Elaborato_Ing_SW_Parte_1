@@ -41,22 +41,25 @@ public interface Database {
     Media fetch(Media toFetch);
 
     /**
-     * Returns a {@code String} that contains a brief description for each one of the users in the database,
-     * according to the {@code toString} method found in the {@code User} class.
+     * Returns a {@code String} that contains a brief description for every user in the database, according to the
+     * {@code toString} method found in the {@link User} class.
      *
      * @return the list of all users as a {@code String}.
      */
     String getUserListString();
 
     /**
-     * Returns a {@code String} that contains a brief description for each one of the pieces of media in the database,
-     * according to the {@code toString} method found in the {@code Media} class.
+     * Returns a {@code String} that contains a brief description for every piece of media in the database, according
+     * to the {@code toString} method found in the {@link Media} class.
      *
      * @return the list of all media items as a {@code String}.
      */
     String getMediaListString();
 
     /**
+     * Returns a list that contains a brief description for every piece of media in the database that matches a
+     * specific input. The logic for the filtering can be found in the {@code getFilteredMediaList} method of the
+     * {@link MediaDatabase} class.
      *
      * @param filter
      * @return

@@ -53,6 +53,11 @@ public class OperatorScreen extends Screen {
         }
     }
 
+    /**
+     * Allows the operator to add a media item (book, film, etc.) to the database after filling out all the fields
+     * for that particular media item (title, author, genre, etc.).
+     *
+     */
     private void addMedia() {
         System.out.printf("%s\n%s\n", PROMPT_ADD_MEDIA, SEPARATOR);
         System.out.print(PROMPT_TITLE);
@@ -73,6 +78,11 @@ public class OperatorScreen extends Screen {
         getController().addMediaToDatabase(title, author, genre, year, publisherName);
     }
 
+    /**
+     * Allows the operator to search for a media item by inputting keywords to narrow down the search.
+     * Once the user has located the media item to remove, this method asks for the numeric "item ID" in order to remove
+     * the desired item from the database.
+     */
     private void removeMedia() {
         System.out.println(PROMPT_REMOVE_MEDIA);
         String input = getScanner().nextLine();
