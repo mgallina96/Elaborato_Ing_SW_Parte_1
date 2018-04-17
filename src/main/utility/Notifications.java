@@ -42,6 +42,7 @@ public class Notifications {
     public static final String PROMPT_PUBLICATION_YEAR = "Publication year: ";
     public static final String PROMPT_PUBLISHER_NAME = "Publisher: ";
     public static final String PROMPT_REMOVE_MEDIA = "Please insert one or more keywords for the media item you wish to remove: ";
+    public static final String PROMPT_REMOVE_MEDIA_ID = "Please choose the ID for the item you wish to remove.";
 
     //ERRORS
     public static final String ERR_NOT_OF_AGE = "Warning: user is underage. Please re-fill this form.";
@@ -58,7 +59,8 @@ public class Notifications {
     public static final String ERR_MSG_INVALID_INPUT = "Invalid input.";
     public static final String ERR_USER_ALREADY_PRESENT = "This user is already present in our database.";
     public static final String ERR_CANNOT_RENEW = "It's too early to renew your subscription.";
-    public static final String PROMPT_REMOVE_MEDIA_ID = "Please choose the ID for the item you wish to remove.";
+    public static final String ERR_FILTERED_MEDIA_LIST_EMPTY = "No media items match your search. Aborting...";
+    public static final String ERR_MEDIA_NOT_PRESENT = "The chosen ID doesn't match any media in the database.";
 
     //generic useful messages
     public static final String SEPARATOR = "--------------------------------------------------------------------------------------------------------------------------------------";

@@ -67,6 +67,10 @@ public class Controller implements SystemController {
         return false;
     }
 
+    public boolean mediaIsPresent(int id) {
+        return database.isPresent(new Media(id));
+    }
+
     /**
      * Returns a {@code String} that contains all the users in the database.
      *
@@ -107,6 +111,15 @@ public class Controller implements SystemController {
         database.add(new Customer(firstName, lastName, username, password, birthday));
     }
 
+    /**
+     * Adds a new media item to the database.
+     *
+     * @param title the title.
+     * @param author the author.
+     * @param genre the genre.
+     * @param publicationYear the publication year.
+     * @param publisherName the publisher's name.
+     */
     public void addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName) {
         database.add(new Book(title, author, genre, publicationYear, publisherName));
     }

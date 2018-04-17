@@ -7,7 +7,7 @@ import static main.utility.Notifications.*;
 /**
  * The operator menu screen.
  *
- * @author Manuel Gallina
+ * @author Manuel Gallina, Giosuè Filippini, Alessandro Polcini
  */
 public class OperatorScreen extends Screen {
 
@@ -87,17 +87,24 @@ public class OperatorScreen extends Screen {
         System.out.println(PROMPT_REMOVE_MEDIA);
         String input = getScanner().nextLine();
 
-        System.out.printf("%s\n%s\n", MSG_FILTERED_MEDIA_LIST, getController().allFilteredMediaList(input));
-        System.out.println(PROMPT_REMOVE_MEDIA_ID);
+        String output = getController().allFilteredMediaList(input);
 
-        String id = getScanner().nextLine();
-        while(!InputParserUtility.isValidInteger(id)) {
-            System.out.println(ERR_MSG_INVALID_INPUT);
-            id = getScanner().nextLine();
+        if(output.length() > 0) {
+            System.out.printf("%s\n%s\n", MSG_FILTERED_MEDIA_LIST, output);
+
+            System.out.println(PROMPT_REMOVE_MEDIA_ID);
+            int id = insertInteger();
+            while(!getController().mediaIsPresent(id)) {
+                System.out.println(ERR_MEDIA_NOT_PRESENT);
+                id = insertInteger();
+            }
+
+            getController().removeMediaFromDatabase(id);
+            System.out.println(MSG_REMOVE_SUCCESSFUL);
         }
-
-        getController().removeMediaFromDatabase(Integer.parseInt(id));
-        System.out.println(MSG_REMOVE_SUCCESSFUL);
+        else {
+            System.out.println(ERR_FILTERED_MEDIA_LIST_EMPTY);
+        }
     }
 
     /**
@@ -134,6 +141,24 @@ public class OperatorScreen extends Screen {
         }
 
         return Integer.parseInt(year);
+    }
+
+    /**
+     * Loops a scanner until the inserted {@code String} represents a valid integer.
+     * <p>The parameters and the logic for integer validity are defined in the {@code isValidInteger()} method of the
+     * {@link InputParserUtility} class.
+     *
+     * @return a valid int.
+     */
+    private int insertInteger() {
+        String integer = getScanner().nextLine();
+
+        while(!InputParserUtility.isValidInteger(integer)) {
+            System.out.println(ERR_MSG_INVALID_INPUT);
+            integer = getScanner().nextLine();
+        }
+
+        return Integer.parseInt(integer);
     }
 
 
