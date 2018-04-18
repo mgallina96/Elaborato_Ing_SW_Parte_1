@@ -1,5 +1,6 @@
 package main.gui.screens;
 import main.Controller;
+import main.SystemController;
 import main.utility.InputParserUtility;
 import static main.utility.Notifications.*;
 
@@ -15,7 +16,7 @@ public class SignUpScreen extends Screen {
      *
      * @param controller The system controller.
      */
-    public SignUpScreen(Controller controller) {
+    public SignUpScreen(SystemController controller) {
         super(controller);
 
         boolean valid;

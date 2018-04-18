@@ -1,7 +1,6 @@
 package main.gui.screens;
-import main.Controller;
-import main.SystemController;
 
+import main.SystemController;
 import java.util.Scanner;
 
 /**
@@ -10,7 +9,6 @@ import java.util.Scanner;
  * @author Manuel Gallina
  */
 public class Screen {
-
     private Scanner scanner;
     private SystemController controller;
 
@@ -19,7 +17,7 @@ public class Screen {
      *
      * @param controller The system controller.
      */
-    public Screen(SystemController controller) {
+    Screen(SystemController controller) {
         scanner = new Scanner(System.in);
         this.controller = controller;
     }
@@ -29,7 +27,7 @@ public class Screen {
      *
      * @return The application scanner.
      */
-    public Scanner getScanner() {
+    Scanner getScanner() {
         return scanner;
     }
 

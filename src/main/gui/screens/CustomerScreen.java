@@ -1,6 +1,7 @@
 package main.gui.screens;
-import main.Controller;
+import main.SystemController;
 import main.utility.InputParserUtility;
+
 import static main.utility.Notifications.*;
 
 /**
@@ -12,7 +13,7 @@ public class CustomerScreen extends Screen {
      * Constructor for the CustomerScreen class. It boots up the customer section.
      * @param controller The system controller.
      */
-    public CustomerScreen(Controller controller) {
+    public CustomerScreen(SystemController controller) {
         super(controller);
         boolean exitFromCustomerSection = false;
 
