@@ -11,6 +11,7 @@ import static main.utility.Notifications.*;
  */
 public class OperatorScreen extends Screen {
 
+    private static final String QUIT_STRING = "!quit";
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     /**
@@ -75,7 +76,35 @@ public class OperatorScreen extends Screen {
         System.out.print(PROMPT_PUBLISHER_NAME);
         String publisherName = insertName();
 
-        getController().addMediaToDatabase(title, author, genre, year, publisherName);
+        String path = chooseFolder();
+
+        getController().addMediaToDatabase(title, author, genre, year, publisherName, path);
+
+        System.out.println(MSG_ADD_SUCCESSFUL);
+    }
+
+    private String chooseFolder() {
+        System.out.println(PROMPT_SELECT_PATH);
+        //getController().getPathList();
+
+        String path = getScanner().nextLine();
+        boolean present = getController().pathIsPresent(path);
+        boolean valid = InputParserUtility.isValidPathFormat(path);
+
+        while(!(present && valid)) {
+            if(!valid)
+                System.out.println(ERR_INVALID_PATH);
+            else
+                System.out.println(ERR_PATH_NOT_PRESENT);
+
+            path = getScanner().nextLine();
+
+            present = getController().pathIsPresent(path);
+            valid = InputParserUtility.isValidPathFormat(path);
+        }
+
+
+        return path;
     }
 
     /**
@@ -86,6 +115,11 @@ public class OperatorScreen extends Screen {
     private void removeMedia() {
         System.out.println(PROMPT_REMOVE_MEDIA);
         String input = getScanner().nextLine();
+
+        if(input.equals(QUIT_STRING)) {
+            System.out.println(MSG_ABORT);
+            return;
+        }
 
         String output = getController().allFilteredMediaList(input);
 

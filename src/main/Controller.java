@@ -67,8 +67,14 @@ public class Controller implements SystemController {
         return false;
     }
 
+    @Override
     public boolean mediaIsPresent(int id) {
         return database.isPresent(new Media(id));
+    }
+
+    @Override
+    public boolean pathIsPresent(String path) {
+        return database.isPresent(path);
     }
 
     /**
@@ -120,8 +126,8 @@ public class Controller implements SystemController {
      * @param publicationYear the publication year.
      * @param publisherName the publisher's name.
      */
-    public void addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName) {
-        database.add(new Book(title, author, genre, publicationYear, publisherName));
+    public void addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName, String path) {
+        database.add(new Book(title, author, genre, publicationYear, publisherName), path);
     }
 
     @Override

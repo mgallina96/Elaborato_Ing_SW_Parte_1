@@ -19,6 +19,8 @@ public class Notifications {
     public static final String MSG_REMOVE_SUCCESSFUL = "Media item removed successfully.";
     public static final String MSG_OPERATOR_MENU = "Welcome, operator!";
     public static final String MSG_CUSTOMER_MENU = "Welcome, customer!";
+    public static final String MSG_ABORT = "Aborting...";
+    public static final String MSG_ADD_SUCCESSFUL = "Media item added successfully.";
 
     //PROMPTS
     public static final String PROMPT_FIRST_NAME = "First name (please insert a valid first name): ";
@@ -41,8 +43,9 @@ public class Notifications {
     public static final String PROMPT_GENRE = "Genre: ";
     public static final String PROMPT_PUBLICATION_YEAR = "Publication year: ";
     public static final String PROMPT_PUBLISHER_NAME = "Publisher: ";
-    public static final String PROMPT_REMOVE_MEDIA = "Please insert one or more keywords for the media item you wish to remove: ";
+    public static final String PROMPT_REMOVE_MEDIA = "Please insert one or more keywords for the media item you wish to remove (insert !quit to quit): ";
     public static final String PROMPT_REMOVE_MEDIA_ID = "Please choose the ID for the item you wish to remove.";
+    public static final String PROMPT_SELECT_PATH = "Insert the folder you wish to put the media item in.\nPlease insert a valid path format (folder\\subfolder\\subfolder...).";
 
     //ERRORS
     public static final String ERR_NOT_OF_AGE = "Warning: user is underage. Please re-fill this form.";
@@ -54,6 +57,7 @@ public class Notifications {
     public static final String ERR_SIGN_UP_ABORTED = "Sign up aborted.";
     public static final String ERR_SAVING_DATABASE = "An error occurred while saving the database to a .ser file.";
     public static final String ERR_LOADING_DATABASE = "An error occurred while loading the database.";
+    public static final String ERR_LOADING_FILE_SYSTEM = "An error occurred while loading the file system.";
     public static final String ERR_DATABASE_CLASS_NOT_FOUND = "Database class not found.";
     public static final String ERR_FILE_NOT_FOUND = "Error: file not found.";
     public static final String ERR_MSG_INVALID_INPUT = "Invalid input.";
@@ -61,6 +65,8 @@ public class Notifications {
     public static final String ERR_CANNOT_RENEW = "It's too early to renew your subscription.";
     public static final String ERR_FILTERED_MEDIA_LIST_EMPTY = "No media items match your search. Aborting...";
     public static final String ERR_MEDIA_NOT_PRESENT = "The chosen ID doesn't match any media in the database.";
+    public static final String ERR_INVALID_PATH = "The path you inserted seems to be invalid. Please re-insert a valid path. (accepted format: folder\\subfolder\\subfolder...)";
+    public static final String ERR_PATH_NOT_PRESENT = "The path you inserted doesn't exist.";
 
     //generic useful messages
     public static final String SEPARATOR = "--------------------------------------------------------------------------------------------------------------------------------------";

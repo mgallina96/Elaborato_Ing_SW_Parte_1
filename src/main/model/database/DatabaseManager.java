@@ -19,7 +19,7 @@ public class DatabaseManager implements Serializable, Database {
 
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -5681383377098150051L;
-    private static final String DATABASE_FILE_NAME = "Biblioteca SMARTINATOR - Database.ser";
+    private static final String DATABASE_FILE_PATH = "application_resources\\Biblioteca SMARTINATOR - Database.ser";
 
     private static DatabaseManager database;
     private UserDatabase userDatabase;
@@ -56,8 +56,8 @@ public class DatabaseManager implements Serializable, Database {
     }
 
     @Override
-    public void add(Media toAdd) {
-        mediaDatabase.addMedia(toAdd);
+    public void add(Media toAdd, String path) {
+        mediaDatabase.addMedia(toAdd, path);
     }
 
     @Override
@@ -72,6 +72,11 @@ public class DatabaseManager implements Serializable, Database {
 
     @Override
     public boolean isPresent(Media toFind) {
+        return mediaDatabase.isPresent(toFind);
+    }
+
+    @Override
+    public boolean isPresent(String toFind) {
         return mediaDatabase.isPresent(toFind);
     }
 
@@ -118,7 +123,7 @@ public class DatabaseManager implements Serializable, Database {
     @Override
     public void saveDatabase() {
         try {
-            FileOutputStream fileOut = new FileOutputStream(DATABASE_FILE_NAME);
+            FileOutputStream fileOut = new FileOutputStream(DATABASE_FILE_PATH);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
             out.writeObject(userDatabase.getUserList());
@@ -140,7 +145,7 @@ public class DatabaseManager implements Serializable, Database {
      */
     private void loadDatabase() {
         try {
-            FileInputStream fileIn = new FileInputStream(DATABASE_FILE_NAME);
+            FileInputStream fileIn = new FileInputStream(DATABASE_FILE_PATH);
             ObjectInputStream in = new ObjectInputStream(fileIn);
 
             userDatabase.setUserList((HashMap<String, User>) in.readObject());

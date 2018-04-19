@@ -226,10 +226,10 @@ public class InputParserUtility {
     }
 
     /**
-     * Checks whether the given year is valid or not.
+     * Checks whether the given {@code String} represents a valid year or not.
      * To be valid, the year has to be between 0 and the current year.
      *
-     * @param year the year to check.
+     * @param year the year to be checked.
      * @return a boolean value, {@code true} if the year is valid, {@code false} otherwise.
      */
     public static boolean isValidYear(String year) {
@@ -243,6 +243,17 @@ public class InputParserUtility {
         }
 
         return y >= 0 && y <= new GregorianCalendar().get(Calendar.YEAR);
+    }
+
+    /**
+     * Checks whether the given {@code String} represents a valid path or not.
+     * The path has to conform to the format "folder\subfolder\subfolder....".
+     *
+     * @param path the path to be checked.
+     * @return a boolean value, {@code true} if the path is valid, {@code false} otherwise.
+     */
+    public static boolean isValidPathFormat(String path) {
+        return path.matches("(\\w*\\\\\\w.*)+");
     }
 
 }

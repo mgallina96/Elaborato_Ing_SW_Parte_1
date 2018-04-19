@@ -16,8 +16,9 @@ public interface SystemController {
     boolean legalAge(GregorianCalendar gregorianCalendar);
     boolean checkUserLogin(String username, String password);
     boolean mediaIsPresent(int id);
+    boolean pathIsPresent(String path);
     void addUserToDatabase(String firstName, String lastName, String username, String password, GregorianCalendar gregorianCalendar);
-    void addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName);
+    void addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName, String path);
     void removeMediaFromDatabase(int id);
     void saveDatabase();
     String allUsersToString();

@@ -25,7 +25,7 @@ public class QuickFillMain {
         for(User u : generator.getUsers())
             d.add(u);
         for(Media m : generator.getBooks())
-            d.add(m);
+            d.add(m, "");
 
         d.saveDatabase();
 

@@ -21,8 +21,9 @@ public interface Database {
      * Adds a new piece of media to the database.
      *
      * @param toAdd The {@code Media} item to be added to the database.
+     * @param path The path the {@code Media} item is stored in.
      */
-    void add(Media toAdd);
+    void add(Media toAdd, String path);
 
     /**
      * Returns the given user (if present).
@@ -101,6 +102,14 @@ public interface Database {
      * @return {@code true} if the media item is present in the database, {@code false} otherwise.
      */
     boolean isPresent(Media toFind);
+
+    /**
+     * Checks whether the given {@code String} is present in the file system.
+     *
+     * @param toFind The string to be found.
+     * @return {@code true} if the string is present in the file system, {@code false} otherwise.
+     */
+    boolean isPresent(String toFind);
 
     /**
      * Saves a {@code HashMap} containing all subscribed users and another {@code HashMap} containing all media files
