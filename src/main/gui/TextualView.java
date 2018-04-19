@@ -64,13 +64,12 @@ public class TextualView implements GuiManager {
     public void loginScreen() {
         LoginScreen loginScreen = new LoginScreen(controller);
 
-        //TODO: Dipendenza tra View e Model
         switch(controller.getUserStatus(loginScreen.login())) {
-            case OPERATOR:
-                operatorScreen();
-                break;
-            case CUSTOMER:
+            case 0:
                 customerScreen();
+                break;
+            case 1:
+                operatorScreen();
                 break;
             default: //in case ths user status is still a null value (either the username or the password isn't valid).
                 mainScreen();

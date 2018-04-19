@@ -38,7 +38,9 @@ public class Book extends Media implements Serializable {
         this.publicationYear = publicationYear;
         this.publisherName = publisherName;
 
-        super.setBareItemDetails(title, author, genre, publicationYear, publisherName);
+        String bareDetails = title + ", " + author + ", " + genre + ", " + publicationYear + ", "  + publisherName;
+
+        super.setBareItemDetails(bareDetails);
     }
 
     public void setDetails(String description, String subtitle, String language, int pageCount, boolean belongsToSeries, int volumeNumber) {

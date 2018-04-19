@@ -1,8 +1,10 @@
 package main.gui.screens;
-import main.Controller;
+
 import main.SystemController;
 import main.utility.InputParserUtility;
+
 import java.util.logging.Logger;
+
 import static main.utility.Notifications.*;
 
 /**
@@ -57,7 +59,6 @@ public class OperatorScreen extends Screen {
     /**
      * Allows the operator to add a media item (book, film, etc.) to the database after filling out all the fields
      * for that particular media item (title, author, genre, etc.).
-     *
      */
     private void addMedia() {
         System.out.printf("%s\n%s\n", PROMPT_ADD_MEDIA, SEPARATOR);
@@ -161,6 +162,4 @@ public class OperatorScreen extends Screen {
 
         return Integer.parseInt(integer);
     }
-
-
 }

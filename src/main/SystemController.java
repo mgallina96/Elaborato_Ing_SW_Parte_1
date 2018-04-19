@@ -1,7 +1,5 @@
 package main;
 
-import main.model.user.UserStatus;
-
 import java.util.GregorianCalendar;
 
 /**
@@ -15,13 +13,15 @@ public interface SystemController {
     void init();
 
     /**
-     * Renews the user's subscription.
+     * Renews the user's subscription and returns a boolean value to tell the program whether the renewal was successful
+     * or not.
      * <p>
      * The user must be a customer.
      *
+     * @return a {@code boolean} value: {@code true} if the user can renew his/her subscription, {@code false} otherwise.
      * @throws IllegalArgumentException if the current user is not a customer.
      */
-    void renewSubscription();
+    boolean renewSubscription();
 
     /** Checks whether a given user is allowed to renew his/her subscription. */
     boolean canRenew();
@@ -84,6 +84,12 @@ public interface SystemController {
      * @param publisherName the publisher's name.
      */
     void addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName);
+
+    /**
+     * Removes the media element with the given ID from the database.
+     *
+     * @param id The ID of the media element.
+     */
     void removeMediaFromDatabase(int id);
 
     /** Saves the database and possible changes made to it. */
@@ -93,9 +99,9 @@ public interface SystemController {
      * Getter for the User status (OPERATOR or CUSTOMER).
      *
      * @param username The user's username.
-     * @return an {@code enum} value, OPERATOR or CUSTOMER.
+     * @return an {@code int} value, 0 (CUSTOMER) or 1 (OPERATOR).
      */
-    UserStatus getUserStatus(String username);
+    int getUserStatus(String username);
 
     /**
      * Returns a {@code String} that contains all the users in the database.

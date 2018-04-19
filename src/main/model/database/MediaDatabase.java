@@ -1,11 +1,10 @@
 package main.model.database;
-import main.model.media.Book;
+
 import main.model.media.Media;
-import java.io.*;
-import java.lang.reflect.Array;
-import java.util.*;
+
+import java.io.Serializable;
+import java.util.HashMap;
 import java.util.logging.Logger;
-import java.util.regex.Pattern;
 
 /**
  * Database concerned with saving, removing, finding, fetching and generally managing all kinds of media items.
@@ -65,7 +64,7 @@ class MediaDatabase implements Serializable {
 
     String getFilteredMediaList(String filter) {
         StringBuilder filteredMedia = new StringBuilder();
-        filter = filter.replaceAll("[\\W]+", "|");
+        filter = filter.replaceAll("(\\W+ )+", "|");
         String regex = ".*(" + filter + ").*";
 
         mediaList.values().stream()

@@ -98,8 +98,8 @@ public class Media implements Serializable {
     }
 
 
-    void setBareItemDetails(String title, String author, String genre, int year, String publisher) {
-        this.bareItemDetails = title + ", " + author + ", " + genre + ", " + year + ", " + publisher;
+    void setBareItemDetails(String bareItemDetails) {
+        this.bareItemDetails = bareItemDetails;
     }
 
     /**

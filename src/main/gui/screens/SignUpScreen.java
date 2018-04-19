@@ -1,7 +1,7 @@
 package main.gui.screens;
-import main.Controller;
 import main.SystemController;
 import main.utility.InputParserUtility;
+
 import static main.utility.Notifications.*;
 
 /**

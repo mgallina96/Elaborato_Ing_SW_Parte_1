@@ -1,4 +1,5 @@
 package main;
+
 import main.gui.GuiManager;
 import main.gui.TextualView;
 import main.model.database.Database;
@@ -7,7 +8,7 @@ import main.model.media.Book;
 import main.model.media.Media;
 import main.model.user.Customer;
 import main.model.user.User;
-import main.model.user.UserStatus;
+
 import java.util.GregorianCalendar;
 
 /**
@@ -94,8 +95,15 @@ public class Controller implements SystemController {
     }
 
     @Override
-    public UserStatus getUserStatus(String username) {
-        return database.fetch(new User(username)).getUserStatus();
+    public int getUserStatus(String username) {
+        switch (database.fetch(new User(username)).getUserStatus()) {
+            case CUSTOMER:
+                return 0;
+            case OPERATOR:
+                return 1;
+            default:
+                return -1;
+        }
     }
 
     @Override
@@ -104,9 +112,9 @@ public class Controller implements SystemController {
     }
 
     @Override
-    public void renewSubscription() throws IllegalArgumentException {
+    public boolean renewSubscription() throws IllegalArgumentException {
         if(database.getCurrentUser() instanceof Customer)
-            ((Customer)database.getCurrentUser()).renewSubscription();
+            return ((Customer)database.getCurrentUser()).renewSubscription();
         else
             throw new IllegalArgumentException();
     }

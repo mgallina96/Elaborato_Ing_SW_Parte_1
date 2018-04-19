@@ -1,7 +1,9 @@
 package main.model.database;
+
 import main.model.media.Media;
 import main.model.user.User;
 import main.utility.Notifications;
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.logging.Level;

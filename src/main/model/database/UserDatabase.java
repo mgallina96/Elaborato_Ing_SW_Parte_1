@@ -1,7 +1,10 @@
 package main.model.database;
+
+import main.model.user.Customer;
 import main.model.user.User;
 import main.model.user.UserStatus;
-import java.io.*;
+
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
@@ -32,6 +35,8 @@ class UserDatabase implements Serializable {
             ADMIN.setUserStatus(UserStatus.OPERATOR);
             this.addUser(ADMIN);
         }
+
+        sweep();
     }
 
     static UserDatabase getInstance() {
@@ -87,5 +92,11 @@ class UserDatabase implements Serializable {
 
     void setUserList(HashMap<String, User> userList) {
         this.userList = userList;
+    }
+
+    private void sweep() {
+        userList.values().stream()
+                .filter(s -> ((Customer)s).hasExpired())
+                .forEach(s -> userList.remove(s.getUsername()));
     }
 }

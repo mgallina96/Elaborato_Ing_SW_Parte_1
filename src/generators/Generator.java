@@ -1,11 +1,10 @@
 package generators;
+
 import generators.bookgenerator.BookGenerator;
 import main.model.media.Media;
 import main.model.user.User;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * Created by Alessandro on 12/04/18.

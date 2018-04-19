@@ -27,8 +27,7 @@ public class CustomerScreen extends Screen {
 
             switch(Integer.parseInt(command)) {
                 case 1:
-                    getController().renewSubscription();
-                    if(!getController().canRenew())
+                    if(!getController().renewSubscription())
                         System.out.printf("%s\n%s\n", ERR_CANNOT_RENEW, getController().dateDetails());
                     break;
                 case 2:

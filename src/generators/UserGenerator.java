@@ -1,7 +1,9 @@
 package generators;
+
 import generators.randomwords.PoolLoader;
 import generators.randomwords.RandomWords;
 import main.model.user.User;
+
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Random;

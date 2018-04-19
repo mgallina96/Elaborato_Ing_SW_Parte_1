@@ -87,15 +87,6 @@ public class User implements Serializable {
     }
 
     /**
-     * Setter for the user's username.
-     *
-     * @param username The user's unique username to set.
-     */
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    /**
      * Getter for the user's first name.
      *
      * @return the first name in form of a {@code String}.
@@ -154,7 +145,7 @@ public class User implements Serializable {
      *
      * @return the birth date in {@code GregorianCalendar} form.
      */
-    public GregorianCalendar getBirthday() {
+    GregorianCalendar getBirthday() {
         return birthday;
     }
 
