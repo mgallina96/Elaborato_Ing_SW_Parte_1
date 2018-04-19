@@ -46,8 +46,9 @@ public class Controller implements SystemController {
 
     @Override
     public boolean checkUserLogin(String username, String password) {
-        User toCheck = new User(username, password);
-        if(database.isPresent(toCheck)){
+        User toCheck = database.fetch(new User(username));
+
+        if(toCheck != null && toCheck.getPassword().equals(password)){
             database.setCurrentUser(toCheck);
             return true;
         }
