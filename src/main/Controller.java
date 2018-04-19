@@ -8,6 +8,7 @@ import main.model.media.Book;
 import main.model.media.Media;
 import main.model.user.Customer;
 import main.model.user.User;
+import main.model.user.UserStatus;
 
 import java.util.GregorianCalendar;
 
@@ -98,7 +99,10 @@ public class Controller implements SystemController {
 
     @Override
     public int getUserStatus(String username) {
-        switch (database.fetch(new User(username)).getUserStatus()) {
+        if(username == null)
+            return -1;
+
+        switch(database.fetch(new User(username)).getUserStatus()) {
             case CUSTOMER:
                 return 0;
             case OPERATOR:

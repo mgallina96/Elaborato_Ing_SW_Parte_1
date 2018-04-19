@@ -17,6 +17,7 @@ public class Notifications {
     public static final String MSG_MEDIA_LIST = "Here is the list of all media items:";
     public static final String MSG_FILTERED_MEDIA_LIST = "Results:";
     public static final String MSG_REMOVE_SUCCESSFUL = "Media item removed successfully.";
+    public static final String MSG_EXIT_LOGIN = "Exiting login section...";
     public static final String MSG_OPERATOR_MENU = "Welcome, operator!";
     public static final String MSG_CUSTOMER_MENU = "Welcome, customer!";
 
