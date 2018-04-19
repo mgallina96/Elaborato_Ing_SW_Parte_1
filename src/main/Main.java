@@ -11,6 +11,6 @@ public class Main {
 
     public static void main(String[] args) {
         SystemController controller = Controller.getInstance();
-        ((Controller) controller).init();
+        controller.init();
     }
 }

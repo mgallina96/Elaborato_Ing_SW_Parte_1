@@ -3,8 +3,6 @@ package main.gui.screens;
 import main.SystemController;
 import main.utility.InputParserUtility;
 
-import java.util.logging.Logger;
-
 import static main.utility.Notifications.*;
 
 /**
@@ -13,8 +11,6 @@ import static main.utility.Notifications.*;
  * @author Manuel Gallina, Giosuè Filippini, Alessandro Polcini
  */
 public class OperatorScreen extends Screen {
-
-    private Logger logger = Logger.getLogger(this.getClass().getName());
 
     /**
      * Constructor for the OperatorScreen class.

@@ -97,7 +97,14 @@ public class Media implements Serializable {
         return bareItemDetails;
     }
 
-
+    /**
+     * Setter for the "bare details" of this media item. These "bare details" are nothing but a simple concatenation
+     * of the item's main parameters in form of a {@code String}. This string comes in handy whenever a filtering
+     * or searching method is called, as it merges all information in one single string, allowing the program to look
+     * for a particular sub-string in more than one parameter at a time.
+     *
+     * @param bareItemDetails The bare details describing this media item.
+     */
     void setBareItemDetails(String bareItemDetails) {
         this.bareItemDetails = bareItemDetails;
     }

@@ -15,14 +15,13 @@ public class Book extends Media implements Serializable {
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -1281383374398165051L;
 
-    private static final String ID = "Book";
     private String title;
     private String author;
     private String genre;
     private int publicationYear;
     private String publisherName;
 
-    //non proprio necessari, ma carini da avere
+    //Additional details.
     private String description;
     private String subtitle;
     private String language;
@@ -32,7 +31,8 @@ public class Book extends Media implements Serializable {
 
     /**
      * Constructor for the Book class.
-     * <p>Sets the main fields to briefly describe a book.
+     * <p>
+     * Sets the main fields to briefly describe a book.
      *
      * @param title The title of the book.
      * @param author The author.
@@ -96,5 +96,4 @@ public class Book extends Media implements Serializable {
         return String.format("%s\t|\tSubtitle: %s\t|\tLanguage: %s\t|\tPage count: %d%s\nDescription: %s\n",
                 toString(), subtitle, language, pageCount, (belongsToSeries ? ("|\tVolume number: " + volumeNumber) : ""), description);
     }
-
 }

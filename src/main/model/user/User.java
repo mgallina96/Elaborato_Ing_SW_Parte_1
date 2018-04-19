@@ -12,9 +12,9 @@ public class User implements Serializable {
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -5681383377098150051L;
 
-    private static final String DEFAULT_FIRST_NAME = "Giorgio";
-    private static final String DEFAULT_LAST_NAME = "Franchi";
-    private static final String DEFAULT_PASSWORD = "null";
+    private static final String DEFAULT_FIRST_NAME = "Default";
+    private static final String DEFAULT_LAST_NAME = "Default";
+    private static final String DEFAULT_PASSWORD = "Default";
     private static final GregorianCalendar DEFAULT_BIRTHDAY = new GregorianCalendar(1970, Calendar.JANUARY, 1);
 
     private UserStatus userStatus;
@@ -27,7 +27,8 @@ public class User implements Serializable {
     /**
      * The least specific user constructor (mainly used to quickly initialize a user for database matching).
      * This constructor only sets the {@code username} parameter.
-     * <p>All the other parameters are initialized to their default state.
+     * <p>
+     * All the other parameters are initialized to their default state.
      *
      * @param username The user's unique username.
      */
@@ -39,7 +40,8 @@ public class User implements Serializable {
 
     /**
      * User constructor which only sets the {@code username} and {@code password} parameters.
-     * <p>All the other parameters are initialized to their default state.
+     * <p>
+     * All the other parameters are initialized to their default state.
      *
      * @param username The user's unique username.
      * @param password The user's password.
@@ -82,6 +84,7 @@ public class User implements Serializable {
      *
      * @return the username in form of a {@code String}.
      */
+    @SuppressWarnings("unused")
     public String getUsername() {
         return username;
     }
@@ -91,6 +94,7 @@ public class User implements Serializable {
      *
      * @return the first name in form of a {@code String}.
      */
+    @SuppressWarnings("unused")
     public String getFirstName() {
         return firstName;
     }
@@ -100,6 +104,7 @@ public class User implements Serializable {
      *
      * @param firstName The user's first name to set.
      */
+    @SuppressWarnings("unused")
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -109,6 +114,7 @@ public class User implements Serializable {
      *
      * @return the last name in form of a {@code String}.
      */
+    @SuppressWarnings("unused")
     public String getLastName() {
         return lastName;
     }
@@ -118,6 +124,7 @@ public class User implements Serializable {
      *
      * @param lastName The user's last name to set.
      */
+    @SuppressWarnings("unused")
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -127,6 +134,7 @@ public class User implements Serializable {
      *
      * @return the password in form of a {@code String}.
      */
+    @SuppressWarnings("unused")
     public String getPassword() {
         return password;
     }
@@ -136,6 +144,7 @@ public class User implements Serializable {
      *
      * @param password The password to set.
      */
+    @SuppressWarnings("unused")
     public void setPassword(String password) {
         this.password = password;
     }
@@ -145,6 +154,7 @@ public class User implements Serializable {
      *
      * @return the birth date in {@code GregorianCalendar} form.
      */
+    @SuppressWarnings("unused")
     GregorianCalendar getBirthday() {
         return birthday;
     }
@@ -154,6 +164,7 @@ public class User implements Serializable {
      *
      * @param birthday The birth date in {@code GregorianCalendar} form.
      */
+    @SuppressWarnings("unused")
     public void setBirthday(GregorianCalendar birthday) {
         this.birthday = birthday;
     }
@@ -163,6 +174,7 @@ public class User implements Serializable {
      *
      * @return {@code true} if the User is a Customer, {@code false} if the User is an Operator.
      */
+    @SuppressWarnings("unused")
     public UserStatus getUserStatus() {
         return userStatus;
     }
@@ -173,6 +185,7 @@ public class User implements Serializable {
      *
      * @param userStatus The status to set.
      */
+    @SuppressWarnings("unused")
     public void setUserStatus(UserStatus userStatus) {
         this.userStatus = userStatus;
     }
@@ -186,5 +199,4 @@ public class User implements Serializable {
         return String.format("First name: %s\t|\tLast name: %s\t|\tUsername: %s\t|\tBirthday = %s\n",
                 firstName, lastName, username, birthday.toZonedDateTime().toString().substring(0, 10));
     }
-
 }
