@@ -45,6 +45,14 @@ public interface SystemController {
     boolean legalAge(GregorianCalendar birthday);
 
     /**
+     * Returns the amount of days the user has left to renew their subscription.
+     *
+     * @param username The user's username.
+     * @return An {@code integer} value representing the days the user has left.
+     */
+    int daysLeftToRenew(String username);
+
+    /**
      * Checks whether the given pair <{@code username, password}> can be found in the database. If so, the user with
      * those credentials becomes the "current user".
      *

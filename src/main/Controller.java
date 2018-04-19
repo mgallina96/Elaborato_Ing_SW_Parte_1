@@ -51,6 +51,7 @@ public class Controller implements SystemController {
             database.setCurrentUser(toCheck);
             return true;
         }
+
         return false;
     }
 
@@ -108,7 +109,14 @@ public class Controller implements SystemController {
 
     @Override
     public boolean canRenew() {
-        return (database.getCurrentUser() instanceof Customer) && ((Customer)database.getCurrentUser()).canRenew();
+        User currentUser = database.getCurrentUser();
+        return (currentUser instanceof Customer) && ((Customer)currentUser).canRenew();
+    }
+
+    @Override
+    public int daysLeftToRenew(String username) {
+        User user = database.fetch(new User(username));
+        return (user instanceof Customer) ? ((Customer)user).daysLeftToRenew() : 999999999;
     }
 
     @Override

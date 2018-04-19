@@ -95,6 +95,7 @@ class UserDatabase implements Serializable {
 
     private void sweep() {
         userList.values().stream()
+                .filter(s -> s instanceof Customer)
                 .filter(s -> ((Customer)s).hasExpired())
                 .forEach(s -> userList.remove(s.getUsername()));
     }

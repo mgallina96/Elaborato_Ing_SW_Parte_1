@@ -1,4 +1,5 @@
 package main.model.user;
+import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAmount;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -118,7 +119,12 @@ public class Customer extends User {
         return false;
     }
 
+    /**
+     * Returns the amount of days the user has left to renew their subscription.
+     *
+     * @return An {@code integer} value representing the days the user has left.
+     */
     public int daysLeftToRenew() {
-        return 0;
+        return (int)Math.abs(ChronoUnit.DAYS.between(new GregorianCalendar().toInstant(), expiryDate.toInstant()));
     }
 }

@@ -43,6 +43,7 @@ public class Notifications {
     public static final String PROMPT_PUBLISHER_NAME = "Publisher: ";
     public static final String PROMPT_REMOVE_MEDIA = "Please insert one or more keywords for the media item you wish to remove: ";
     public static final String PROMPT_REMOVE_MEDIA_ID = "Please choose the ID for the item you wish to remove.";
+    public static final String PROMPT_EXPIRY_IMMINENT = "WARNING! SUBSCRIPTION EXPIRY IMMINENT!";
 
     //ERRORS
     public static final String ERR_NOT_OF_AGE = "Warning: user is underage. Please re-fill this form.";

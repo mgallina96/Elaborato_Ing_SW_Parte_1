@@ -67,6 +67,10 @@ public class LoginScreen extends Screen {
             }
 
             if(getController().checkUserLogin(username, password)) {
+                if(getController().canRenew())
+                    System.out.printf("%s Days you have left to renew your subscription: %s days.\n",
+                            PROMPT_EXPIRY_IMMINENT, getController().daysLeftToRenew(username));
+
                 return username;
             }
             else {
