@@ -1,5 +1,4 @@
 package main.model.database;
-
 import main.model.user.Customer;
 import main.model.user.User;
 import main.model.user.UserStatus;

@@ -18,7 +18,7 @@ public class LoginScreen extends Screen {
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     /**
-     * Constructor.
+     * Constructor for the {@code LoginScreen} class.
      *
      * @param controller The system controller.
      */
@@ -29,7 +29,8 @@ public class LoginScreen extends Screen {
     /**
      * Asks for an input and acquires it. If the user types in one of the possible escape strings, the application
      * closes.
-     * <p>Accepted escape strings: {@code "quit"} (uppercase/lowercase is ignored), {@code Q"}, {@code "q"}.
+     * <p>
+     * Accepted escape strings: {@code "quit"} or {@code "q"} (case insensitive).
      */
     private String inputRequest(String prompt) throws InterruptedException {
         String input;
@@ -45,10 +46,10 @@ public class LoginScreen extends Screen {
     }
 
     /**
-     * Builds the actual login screen. This method keeps track of the user that just logged in by returning a
-     * {@code String} with his/her username.
+     * Builds the actual login screen. This method also keeps track of the user that just logged in by returning a
+     * {@code String} with their username.
      *
-     * @return The username.
+     * @return The username of the user who just logged in.
      */
     public String login() {
         System.out.printf("%s\n%s\n", PROMPT_LOGIN_SCREEN, SEPARATOR);

@@ -30,6 +30,16 @@ public class Book extends Media implements Serializable {
     private boolean belongsToSeries;
     private int volumeNumber;
 
+    /**
+     * Constructor for the Book class.
+     * <p>Sets the main fields to briefly describe a book.
+     *
+     * @param title The title of the book.
+     * @param author The author.
+     * @param genre The genre of the book.
+     * @param publicationYear The year the book was published.
+     * @param publisherName The name of the publisher (or publishing house).
+     */
     public Book(String title, String author, String genre, int publicationYear, String publisherName) {
         super(title);
         this.title = title;
@@ -43,6 +53,16 @@ public class Book extends Media implements Serializable {
         super.setBareItemDetails(bareDetails);
     }
 
+    /**
+     * Setter for the optional details to describe a book in more detail.
+     *
+     * @param description A brief description of the book.
+     * @param subtitle The subtitle.
+     * @param language The language the book is written in.
+     * @param pageCount The number of pages.
+     * @param belongsToSeries Whether the book belongs to a series or not.
+     * @param volumeNumber The volume number (automatically set to 0 if the book doesn't belong to a series).
+     */
     public void setDetails(String description, String subtitle, String language, int pageCount, boolean belongsToSeries, int volumeNumber) {
         this.description = description;
         this.subtitle = subtitle;
@@ -51,22 +71,27 @@ public class Book extends Media implements Serializable {
         this.belongsToSeries = belongsToSeries;
         this.volumeNumber = this.belongsToSeries ? volumeNumber : 0;
     }
-/*
-    public void setPath(String[] path) {
-        super.setPath(path);
-    }
-*/
 
     @Override
     public String getBareItemDetails() {
         return super.getBareItemDetails();
     }
 
+    /**
+     * Overridden toString() method.
+     *
+     * @return A string containing a brief description of the book.
+     */
     public String toString() {
         return String.format("Item ID: %d\t|\tTitle: %s\t|\tAuthor: %s\t|\tPublication year: %d\t|\tGenre: %s\t|\tPublisher name: %s\n",
                 getIdentifier(), title, author, publicationYear, genre, publisherName);
     }
 
+    /**
+     * Much more detailed information about the book.
+     *
+     * @return A string containing an accurate description of the book.
+     */
     public String allDetailsToString() {
         return String.format("%s\t|\tSubtitle: %s\t|\tLanguage: %s\t|\tPage count: %d%s\nDescription: %s\n",
                 toString(), subtitle, language, pageCount, (belongsToSeries ? ("|\tVolume number: " + volumeNumber) : ""), description);

@@ -27,8 +27,10 @@ public class MainScreen extends Screen {
     }
 
     /**
-     * Builds the actual main screen and the main choices for navigating this application. <p>The user is allowed to
-     * make a choice, which this method then returns for further use within the program.
+     * Builds the actual main screen and the main choices for navigating this application.
+     * <p>
+     * The user is allowed to make a choice, which this method then returns (as an {@code int} value) for further use
+     * within the application.
      *
      * @return The choice the user made.
      */

@@ -1,4 +1,5 @@
 package main.model.user;
+import java.time.temporal.TemporalAmount;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -77,7 +78,11 @@ public class Customer extends User {
         return !hasExpired() && (new GregorianCalendar()).after(expiryDateMinus10);
     }
 
-
+    /**
+     * Checks whether the user's subscription has expired.
+     *
+     * @return A boolean value: {@code true} if the user's subscription has expired, {@code false} otherwise.
+     */
     public boolean hasExpired() {
         return (new GregorianCalendar()).after(expiryDate);
     }
@@ -111,5 +116,9 @@ public class Customer extends User {
         }
 
         return false;
+    }
+
+    public int daysLeftToRenew() {
+        return 0;
     }
 }
