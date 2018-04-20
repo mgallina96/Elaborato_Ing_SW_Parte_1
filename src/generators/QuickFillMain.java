@@ -1,13 +1,8 @@
 package generators;
 
-import main.SystemController;
 import main.model.database.DatabaseManager;
-import main.model.media.Book;
 import main.model.media.Media;
 import main.model.user.User;
-
-import java.util.HashMap;
-import java.util.stream.Stream;
 
 /**
  * Created by Alessandro on 12/04/18.
@@ -28,7 +23,5 @@ public class QuickFillMain {
             d.add(m, "");
 
         d.saveDatabase();
-
     }
-
 }

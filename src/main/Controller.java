@@ -19,8 +19,8 @@ import java.util.GregorianCalendar;
  * @since version 0.1 - 12/03/2018
  */
 public class Controller implements SystemController {
-
     private static Controller instance;
+
     private GuiManager guiManager;
     private Database database;
 
@@ -30,34 +30,20 @@ public class Controller implements SystemController {
         guiManager = new TextualView(this);
     }
 
-    /**
-     * Getter/setter for the system controller.
-     *
-     * @return The system controller.
-     */
-    public static Controller getInstance() {
+    //Returns the instance of the controller.
+    static Controller getInstance() {
         if(instance == null)
             instance = new Controller();
 
         return instance;
     }
 
-    /**
-     * Initializes the system controller, which starts the GUI.
-     */
+    @Override
     public void init() {
         guiManager.mainScreen();
     }
 
-    /**
-     * Checks whether the given pair <{@code username, password}> can be found in the database. If so, the user with
-     * those credentials becomes the "current user".
-     *
-     * @param username The username.
-     * @param password The password.
-     * @return {@code true} if the user's credentials are correct and match with an entry in the database,
-     * {@code false} otherwise.
-     */
+    @Override
     public boolean checkUserLogin(String username, String password) {
         User toCheck = new User(username, password);
         if(database.isPresent(toCheck)){
@@ -86,33 +72,17 @@ public class Controller implements SystemController {
         return database.getUserListString();
     }
 
-    /**
-     * Returns a {@code String} that contains all the users in the database.
-     *
-     * @return the list of all users as a {@code String}.
-     */
+    @Override
     public String allMediaToString() {
         return database.getMediaListString();
     }
 
-    /**
-     * Returns a {@code String} that contains all the users in the database.
-     *
-     * @return the list of all users as a {@code String}.
-     */
+    @Override
     public String allFilteredMediaList(String filter) {
         return database.getFilteredMediaList(filter);
     }
 
-    /**
-     * Adds a new user to the database.
-     *
-     * @param firstName The user's first name.
-     * @param lastName The user's last name.
-     * @param username The user's username.
-     * @param password The user's password.
-     * @param birthday The user's birthday.
-     */
+    @Override
     public void addUserToDatabase(String firstName, String lastName, String username, String password, GregorianCalendar birthday) {
         database.add(new Customer(firstName, lastName, username, password, birthday));
     }
@@ -135,32 +105,22 @@ public class Controller implements SystemController {
         database.remove(new Media(id));
     }
 
-    /**
-     * Checks whether a customer is of age or not.
-     *
-     * @param birthday The birthday to be checked.
-     * @return {@code true} if the customer is of age, {@code false} otherwise.
-     */
+    @Override
     public boolean legalAge(GregorianCalendar birthday) {
         return new Customer("", "", "", "", birthday).isOfAge();
     }
 
-    /**
-     * Getter for the User status (OPERATOR or CUSTOMER).
-     * @param username The user's username.
-     * @return an {@code enum} value, OPERATOR or CUSTOMER.
-     */
+    @Override
     public UserStatus getUserStatus(String username) {
         return database.fetch(new User(username)).getUserStatus();
     }
 
-    /**
-     * Renews the user's subscription.
-     * <p>
-     * The user must be a customer.
-     *
-     * @throws IllegalArgumentException if the current user is not a customer.
-     */
+    @Override
+    public boolean canRenew() {
+        return (database.getCurrentUser() instanceof Customer) && ((Customer)database.getCurrentUser()).canRenew();
+    }
+
+    @Override
     public void renewSubscription() throws IllegalArgumentException {
         if(database.getCurrentUser() instanceof Customer)
             ((Customer)database.getCurrentUser()).renewSubscription();
@@ -168,28 +128,14 @@ public class Controller implements SystemController {
             throw new IllegalArgumentException();
     }
 
-    /**
-     * Saves the database and possible changes made to it.
-     */
+    @Override
     public void saveDatabase() {
         database.saveDatabase();
     }
 
-    /**
-     * Checks whether a given user is allowed to renew his/her subscription.
-     */
-    public boolean canRenew() {
-        return (database.getCurrentUser() instanceof Customer) && ((Customer)database.getCurrentUser()).canRenew();
-    }
-
-    /**
-     * Converts the subscription and expiry dates into a {@code String}.
-     *
-     * @return a {@code String} containing the subscription and expiry dates.
-     */
+    @Override
     public String dateDetails() {
         User u = database.getCurrentUser();
-
         return (u instanceof Customer) ?
                 String.format("Reminder:\n\tYou subscribed on %s\n\tYour subscription expires on %s\n\tYou're not " +
                                 "allowed to renew your subscription until 10 days before the expiry date.",
@@ -198,9 +144,7 @@ public class Controller implements SystemController {
                 "";
     }
 
-    /**
-     * Allows the current user to log out of the system.
-     */
+    @Override
     public void logout() {
         database.removeCurrentUser();
     }

@@ -1,5 +1,6 @@
 package main.gui.screens;
 import main.Controller;
+import main.SystemController;
 import main.utility.InputParserUtility;
 import java.util.logging.Logger;
 import static main.utility.Notifications.*;
@@ -18,7 +19,7 @@ public class OperatorScreen extends Screen {
      * Constructor for the OperatorScreen class. It boots up the operator section.
      * @param controller The system controller.
      */
-    public OperatorScreen(Controller controller) {
+    public OperatorScreen(SystemController controller) {
         super(controller);
         boolean exitFromOperatorSection = false;
 

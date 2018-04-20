@@ -1,11 +1,8 @@
 package main.gui;
-import main.Controller;
-import main.gui.screens.CustomerScreen;
-import main.gui.screens.LoginScreen;
-import main.gui.screens.MainScreen;
-import main.gui.screens.SignUpScreen;
-import main.gui.screens.OperatorScreen;
-import static main.utility.Notifications.*;
+import main.SystemController;
+import main.gui.screens.*;
+
+import static main.utility.Notifications.MSG_GOODBYE;
 
 /**
  * Class that manages a textual GUI for the application, loading the different sections when they are needed and
@@ -14,21 +11,32 @@ import static main.utility.Notifications.*;
  * @author Giosuè Filippini
  */
 public class TextualView implements GuiManager {
-
-    private Controller controller;
+    private SystemController controller;
 
     /**
      * Constructor for the TextualView class.
      *
      * @param controller The system controller.
      */
-    public TextualView(Controller controller) {
+    public TextualView(SystemController controller) {
         this.controller = controller;
     }
 
-    /**
-     * Loads the main screen.
-     */
+    @Override
+    public void signUpScreen() {
+        new SignUpScreen(controller);
+    }
+
+    @Override
+    public void operatorScreen() {
+        new OperatorScreen(controller);
+    }
+
+    @Override
+    public void customerScreen() {
+        new CustomerScreen(controller);
+    }
+
     @Override
     public void mainScreen() {
         MainScreen mainScreen = new MainScreen(controller);
@@ -52,13 +60,11 @@ public class TextualView implements GuiManager {
         }
     }
 
-    /**
-     * Loads the login screen.
-     */
     @Override
     public void loginScreen() {
         LoginScreen loginScreen = new LoginScreen(controller);
 
+        //TODO: Dipendenza tra View e Model
         switch(controller.getUserStatus(loginScreen.login())) {
             case OPERATOR:
                 operatorScreen();
@@ -69,30 +75,5 @@ public class TextualView implements GuiManager {
             default: //in case ths user status is still a null value (either the username or the password isn't valid).
                 mainScreen();
         }
-
-    }
-
-    /**
-     * Loads the sign up screen.
-     */
-    @Override
-    public void signUpScreen() {
-        new SignUpScreen(controller);
-    }
-
-    /**
-     * Loads the operator screen
-     */
-    @Override
-    public void operatorScreen() {
-        new OperatorScreen(controller);
-    }
-
-    /**
-     * Loads the customer screen
-     */
-    @Override
-    public void customerScreen() {
-        new CustomerScreen(controller);
     }
 }

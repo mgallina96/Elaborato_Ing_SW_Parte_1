@@ -9,9 +9,18 @@ package main.gui;
  */
 public interface GuiManager {
 
+    /** Loads the main screen. */
     void mainScreen();
+
+    /** Loads the login screen. */
     void loginScreen();
+
+    /** Loads the sign up screen. */
     void signUpScreen();
+
+    /** Loads the operator screen. */
     void operatorScreen();
+
+    /** Loads the customer screen. */
     void customerScreen();
 }
