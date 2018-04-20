@@ -43,6 +43,27 @@ public class Customer extends User {
     }
 
     /**
+     * Constructor that builds a new {@code Customer} object using the given parameters.
+     *
+     * For test purposes only.
+     *
+     * @param firstName The customer's first name.
+     * @param lastName The customer's last name.
+     * @param username The customer's username.
+     * @param password The customer's password.
+     * @param birthday The customer's birthday, in {@code GregorianCalendar} form.
+     * @param subscriptionDate The customer's subscription date, in {@code GregorianCalendar} form.
+     */
+    public Customer(String firstName, String lastName, String username, String password, GregorianCalendar birthday, GregorianCalendar subscriptionDate) {
+        super(firstName, lastName, username, password, birthday);
+        super.setUserStatus(UserStatus.CUSTOMER);
+
+        this.subscriptionDate = subscriptionDate;
+        expiryDate = (GregorianCalendar)(subscriptionDate.clone());
+        expiryDate.add(Calendar.YEAR, EXPIRY_TIME_IN_YEARS);
+    }
+
+    /**
      * Quick initialization of a {@code Customer} object, where only the username and password are specified.
      *
      * @param username The customer's username.
