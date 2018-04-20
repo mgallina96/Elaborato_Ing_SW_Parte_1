@@ -1,14 +1,16 @@
 package main.gui.screens;
 
 import main.SystemController;
+
 import java.util.Scanner;
 
 /**
- * Class implementing a generic screen.
+ * Class that implements a generic screen.
  *
  * @author Manuel Gallina
  */
 public class Screen {
+
     private Scanner scanner;
     private SystemController controller;
 
@@ -23,7 +25,7 @@ public class Screen {
     }
 
     /**
-     * Getter for the {@link Scanner} from which all input is taken.
+     * Getter for the {@link Scanner} from which all keyboard input is taken.
      *
      * @return The application scanner.
      */

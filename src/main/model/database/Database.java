@@ -28,16 +28,16 @@ public interface Database {
     /**
      * Returns the given user (if present).
      *
-     * @param toFetch The user to be found.
-     * @return the user or {@code null} if that user can't be found in the database.
+     * @param toFetch The user to be found and returned.
+     * @return The user or {@code null} if that user can't be found in the database.
      */
     User fetch(User toFetch);
 
     /**
      * Returns the given media item (if present).
      *
-     * @param toFetch The media item to be found.
-     * @return the piece of media or {@code null} if that piece of media can't be found in the database.
+     * @param toFetch The media item to be found and returned.
+     * @return The piece of media or {@code null} if that piece of media can't be found in the database.
      */
     Media fetch(Media toFetch);
 
@@ -45,7 +45,7 @@ public interface Database {
      * Returns a {@code String} that contains a brief description for every user in the database, according to the
      * {@code toString} method found in the {@link User} class.
      *
-     * @return the list of all users as a {@code String}.
+     * @return The list of all users as a {@code String}.
      */
     String getUserListString();
 
@@ -53,7 +53,7 @@ public interface Database {
      * Returns a {@code String} that contains a brief description for every piece of media in the database, according
      * to the {@code toString} method found in the {@link Media} class.
      *
-     * @return the list of all media items as a {@code String}.
+     * @return The list of all media items as a {@code String}.
      */
     String getMediaListString();
 
@@ -62,8 +62,8 @@ public interface Database {
      * specific input. The logic for the filtering can be found in the {@code getFilteredMediaList} method of the
      * {@link MediaDatabase} class.
      *
-     * @param filter
-     * @return
+     * @param filter The filter to apply.
+     * @return The filtered list of media items.
      */
     String getFilteredMediaList(String filter);
 
@@ -75,8 +75,8 @@ public interface Database {
     void setCurrentUser(User currentUser);
 
     /**
-     * Sets the current user browsing the program to {@code null}: this means that no user is active in the system at
-     * that particular moment.
+     * Removes the current user browsing the program by setting its value to {@code null}: this means that no user is
+     * active in the system at that particular moment.
      */
     void removeCurrentUser();
 
@@ -91,7 +91,7 @@ public interface Database {
      * Checks whether the given user is present in the database.
      *
      * @param toFind The user to be found.
-     * @return {@code true} if the user is present in the database, {@code false} otherwise.
+     * @return A boolean value: {@code true} if the user is present in the database, {@code false} otherwise.
      */
     boolean isPresent(User toFind);
 
@@ -99,7 +99,7 @@ public interface Database {
      * Checks whether the given piece of media is present in the database.
      *
      * @param toFind The media item to be found.
-     * @return {@code true} if the media item is present in the database, {@code false} otherwise.
+     * @return A boolean value: {@code true} if the media item is present in the database, {@code false} otherwise.
      */
     boolean isPresent(Media toFind);
 
@@ -112,7 +112,12 @@ public interface Database {
     boolean isPresent(String toFind);
 
     /**
-     * Saves a {@code HashMap} containing all subscribed users and another {@code HashMap} containing all media files
+     * Saves:
+     * <p>
+     * - a {@code HashMap} containing all subscribed users;<p>
+     * - a {@code HashMap} containing all media files;<p>
+     * - an {@code integer} to keep track of the media item IDs
+     * <p>
      * to a {@code .ser} file.
      *
      */

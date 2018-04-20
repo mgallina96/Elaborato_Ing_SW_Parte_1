@@ -14,11 +14,11 @@ import static main.utility.Notifications.*;
  */
 public class LoginScreen extends Screen {
 
-    private static final String ESCAPE_STRING_REGEX = "[qQ]([uU][iI][tT])?";
+    private static final String ESCAPE_STRING = "!quit";
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     /**
-     * Constructor.
+     * Constructor for the {@code LoginScreen} class.
      *
      * @param controller The system controller.
      */
@@ -27,9 +27,7 @@ public class LoginScreen extends Screen {
     }
 
     /**
-     * Asks for an input and acquires it. If the user types in one of the possible escape strings, the application
-     * closes.
-     * <p>Accepted escape strings: {@code "quit"} (uppercase/lowercase is ignored), {@code Q"}, {@code "q"}.
+     * Asks for an input and acquires it. If the user types in {@code "!quit"}, the login section closes.
      */
     private String inputRequest(String prompt) throws InterruptedException {
         String input;
@@ -38,17 +36,17 @@ public class LoginScreen extends Screen {
         input = getScanner().next();
         getScanner().nextLine();
 
-        if(input.matches(ESCAPE_STRING_REGEX))
+        if(input.equals(ESCAPE_STRING))
             throw new InterruptedException();
 
         return input;
     }
 
     /**
-     * Builds the actual login screen. This method keeps track of the user that just logged in by returning a
-     * {@code String} with his/her username.
+     * Builds the actual login screen. This method also keeps track of the user that just logged in by returning a
+     * {@code String} with their username.
      *
-     * @return The username.
+     * @return The username of the user who just logged in.
      */
     public String login() {
         System.out.printf("%s\n%s\n", PROMPT_LOGIN_SCREEN, SEPARATOR);
@@ -57,15 +55,22 @@ public class LoginScreen extends Screen {
             String username;
             String password;
 
+            System.out.printf("[insert %s at any time to exit this section]\n", ESCAPE_STRING);
+
             try {
                 username = inputRequest(PROMPT_USERNAME);
                 password = inputRequest(PROMPT_PASSWORD);
             }
             catch(InterruptedException e) {
+                System.out.printf("%s\n\n", MSG_EXIT_LOGIN);
                 break; //returns a null value in this case.
             }
 
             if(getController().checkUserLogin(username, password)) {
+                if(getController().canRenew())
+                    System.out.printf("%s Days you have left to renew your subscription: %s days.\n",
+                            PROMPT_EXPIRY_IMMINENT, getController().daysLeftToRenew(username));
+
                 return username;
             }
             else {

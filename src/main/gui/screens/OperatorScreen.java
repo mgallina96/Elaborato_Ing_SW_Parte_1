@@ -1,8 +1,6 @@
 package main.gui.screens;
-import main.Controller;
 import main.SystemController;
 import main.utility.InputParserUtility;
-import java.util.logging.Logger;
 import static main.utility.Notifications.*;
 
 /**
@@ -13,10 +11,11 @@ import static main.utility.Notifications.*;
 public class OperatorScreen extends Screen {
 
     private static final String QUIT_STRING = "!quit";
-    private Logger logger = Logger.getLogger(this.getClass().getName());
 
     /**
-     * Constructor for the OperatorScreen class. It boots up the operator section.
+     * Constructor for the OperatorScreen class.
+     * <p>
+     * Boots up the operator section.
      * @param controller The system controller.
      */
     public OperatorScreen(SystemController controller) {
@@ -56,9 +55,8 @@ public class OperatorScreen extends Screen {
     }
 
     /**
-     * Allows the operator to add a media item (book, film, etc.) to the database after filling out all the fields
-     * for that particular media item (title, author, genre, etc.).
-     *
+     * Allows the operator to add a media item (book, film, etc.) to the database after filling all the fields
+     * (title, author, genre, etc.) for that particular media item.
      */
     private void addMedia() {
         System.out.printf("%s\n%s\n", PROMPT_ADD_MEDIA, SEPARATOR);
@@ -110,8 +108,9 @@ public class OperatorScreen extends Screen {
 
     /**
      * Allows the operator to search for a media item by inputting keywords to narrow down the search.
-     * Once the user has located the media item to remove, this method asks for the numeric "item ID" in order to remove
-     * the desired item from the database.
+     * Once the user has located the media item they wish to remove, this method asks the user to insert the numeric ID
+     * associated with that media item. If that ID is present in the database and has a valid format, the associated
+     * media item is removed from the database.
      */
     private void removeMedia() {
         System.out.println(PROMPT_REMOVE_MEDIA);
@@ -195,6 +194,4 @@ public class OperatorScreen extends Screen {
 
         return Integer.parseInt(integer);
     }
-
-
 }

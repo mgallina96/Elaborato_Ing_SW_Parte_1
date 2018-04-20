@@ -1,7 +1,5 @@
 package main;
 
-import main.model.user.UserStatus;
-
 import java.util.GregorianCalendar;
 
 /**
@@ -15,15 +13,17 @@ public interface SystemController {
     void init();
 
     /**
-     * Renews the user's subscription.
+     * Renews the user's subscription and returns a boolean value to tell the program whether the renewal was successful
+     * or not.
      * <p>
      * The user must be a customer.
      *
+     * @return a {@code boolean} value: {@code true} if the user can renew their subscription, {@code false} otherwise.
      * @throws IllegalArgumentException if the current user is not a customer.
      */
-    void renewSubscription();
+    boolean renewSubscription();
 
-    /** Checks whether a given user is allowed to renew his/her subscription. */
+    /** Checks whether a given user is allowed to renew their subscription. */
     boolean canRenew();
 
     /**
@@ -45,6 +45,14 @@ public interface SystemController {
     boolean legalAge(GregorianCalendar birthday);
 
     /**
+     * Returns the amount of days the user has left to renew their subscription.
+     *
+     * @param username The user's username.
+     * @return An {@code integer} value representing the days the user has left.
+     */
+    int daysLeftToRenew(String username);
+
+    /**
      * Checks whether the given pair <{@code username, password}> can be found in the database. If so, the user with
      * those credentials becomes the "current user".
      *
@@ -58,7 +66,7 @@ public interface SystemController {
     /**
      * Checks if the media with the given ID is present in the database.
      *
-     * @param id The ID of the media to check.
+     * @param id The ID of the media to be checked.
      * @return {@code true} if the media is present in the database, {@code false} otherwise.
      */
     boolean mediaIsPresent(int id);
@@ -84,18 +92,24 @@ public interface SystemController {
      * @param publisherName the publisher's name.
      */
     void addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName);
+
+    /**
+     * Removes the media element associated with the given ID from the database.
+     *
+     * @param id The ID of the media element to be removed.
+     */
     void removeMediaFromDatabase(int id);
 
     /** Saves the database and possible changes made to it. */
     void saveDatabase();
 
     /**
-     * Getter for the User status (OPERATOR or CUSTOMER).
+     * Getter for the User status (CUSTOMER or OPERATOR).
      *
      * @param username The user's username.
-     * @return an {@code enum} value, OPERATOR or CUSTOMER.
+     * @return an {@code int} value, 0 (CUSTOMER) or 1 (OPERATOR).
      */
-    UserStatus getUserStatus(String username);
+    int getUserStatus(String username);
 
     /**
      * Returns a {@code String} that contains all the users in the database.
@@ -105,16 +119,16 @@ public interface SystemController {
     String allUsersToString();
 
     /**
-     * Returns a {@code String} that contains all the users in the database.
+     * Returns a {@code String} that contains all media items in the database.
      *
-     * @return the list of all users as a {@code String}.
+     * @return the list of all media items as a {@code String}.
      */
     String allMediaToString();
 
     /**
-     * Returns a {@code String} that contains all the users in the database.
+     * Returns a {@code String} that contains all the media items that match a certain filter.
      *
-     * @return the list of all users as a {@code String}.
+     * @return the list of all filtered media items as a {@code String}.
      */
     String allFilteredMediaList(String filter);
 }

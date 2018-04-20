@@ -1,8 +1,9 @@
 package main.model.database;
 import main.model.media.Media;
+import java.io.Serializable;
+import java.util.HashMap;
 import java.io.*;
 import static main.utility.Notifications.*;
-import java.util.*;
 import java.util.logging.Logger;
 
 /**
@@ -71,7 +72,7 @@ class MediaDatabase implements Serializable {
 
     String getFilteredMediaList(String filter) {
         StringBuilder filteredMedia = new StringBuilder();
-        filter = (filter.replaceAll("[\\W]+", "|")).toLowerCase();
+        filter = filter.replaceAll("(\\W+ )+", "|").toLowerCase();
         String regex = ".*(" + filter + ").*";
 
         mediaList.values().stream()

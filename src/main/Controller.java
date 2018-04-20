@@ -1,4 +1,5 @@
 package main;
+
 import main.gui.GuiManager;
 import main.gui.TextualView;
 import main.model.database.Database;
@@ -8,6 +9,7 @@ import main.model.media.Media;
 import main.model.user.Customer;
 import main.model.user.User;
 import main.model.user.UserStatus;
+
 import java.util.GregorianCalendar;
 
 /**
@@ -45,11 +47,13 @@ public class Controller implements SystemController {
 
     @Override
     public boolean checkUserLogin(String username, String password) {
-        User toCheck = new User(username, password);
-        if(database.isPresent(toCheck)){
+        User toCheck = database.fetch(new User(username));
+
+        if(toCheck != null && toCheck.getPassword().equals(password)){
             database.setCurrentUser(toCheck);
             return true;
         }
+
         return false;
     }
 
@@ -111,19 +115,36 @@ public class Controller implements SystemController {
     }
 
     @Override
-    public UserStatus getUserStatus(String username) {
-        return database.fetch(new User(username)).getUserStatus();
+    public int getUserStatus(String username) {
+        if(username == null)
+            return -1;
+
+        switch(database.fetch(new User(username)).getUserStatus()) {
+            case CUSTOMER:
+                return 0;
+            case OPERATOR:
+                return 1;
+            default:
+                return -1;
+        }
     }
 
     @Override
     public boolean canRenew() {
-        return (database.getCurrentUser() instanceof Customer) && ((Customer)database.getCurrentUser()).canRenew();
+        User currentUser = database.getCurrentUser();
+        return (currentUser instanceof Customer) && ((Customer)currentUser).canRenew();
     }
 
     @Override
-    public void renewSubscription() throws IllegalArgumentException {
+    public int daysLeftToRenew(String username) {
+        User user = database.fetch(new User(username));
+        return (user instanceof Customer) ? ((Customer)user).daysLeftToRenew() : 999999999;
+    }
+
+    @Override
+    public boolean renewSubscription() throws IllegalArgumentException {
         if(database.getCurrentUser() instanceof Customer)
-            ((Customer)database.getCurrentUser()).renewSubscription();
+            return ((Customer)database.getCurrentUser()).renewSubscription();
         else
             throw new IllegalArgumentException();
     }

@@ -1,6 +1,8 @@
 package generators.bookgenerator;
+
 import generators.randomwords.PoolLoader;
 import generators.randomwords.RandomWords;
+
 import java.util.Random;
 
 public class TitleGenerator {

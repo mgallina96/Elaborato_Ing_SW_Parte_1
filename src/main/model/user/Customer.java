@@ -1,4 +1,5 @@
 package main.model.user;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -65,15 +66,6 @@ public class Customer extends User {
     }
 
     /**
-     * Checks whether the customer's subscription has expired or not.
-     *
-     * @return {@code true} if the customer's subscription has expired, {@code false} otherwise.
-     */
-    public boolean hasExpired() {
-        return expiryDate.after(new GregorianCalendar());
-    }
-
-    /**
      * Checks whether the current date is within x days of the expiry date, where x is an integer parameter defined
      * in the {@link Customer} class. If so, the customer is allowed to renew his/her subscription.
      *
@@ -83,7 +75,16 @@ public class Customer extends User {
         GregorianCalendar expiryDateMinus10 = (GregorianCalendar)expiryDate.clone();
         expiryDateMinus10.add(Calendar.DATE, -RENEWAL_BOUNDARY_IN_DAYS);
 
-        return !hasExpired() && expiryDateMinus10.before(new GregorianCalendar());
+        return !hasExpired() && (new GregorianCalendar()).after(expiryDateMinus10);
+    }
+
+    /**
+     * Checks whether the user's subscription has expired.
+     *
+     * @return A boolean value: {@code true} if the user's subscription has expired, {@code false} otherwise.
+     */
+    public boolean hasExpired() {
+        return (new GregorianCalendar()).after(expiryDate);
     }
 
     /**
@@ -108,8 +109,21 @@ public class Customer extends User {
      * Renews the subscription by x years, where x is a static final integer value defined in the {@link Customer}
      * class. This value is equal to 5 now.
      */
-    public void renewSubscription() {
-        if(canRenew())
+    public boolean renewSubscription() {
+        if(canRenew()) {
             expiryDate.add(Calendar.YEAR, EXPIRY_TIME_IN_YEARS);
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Returns the amount of days the user has left to renew their subscription.
+     *
+     * @return An {@code integer} value representing the days the user has left.
+     */
+    public int daysLeftToRenew() {
+        return (int)Math.abs(ChronoUnit.DAYS.between(new GregorianCalendar().toInstant(), expiryDate.toInstant()));
     }
 }

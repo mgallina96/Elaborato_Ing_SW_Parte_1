@@ -2,6 +2,7 @@ package main.model.database;
 import main.model.media.Media;
 import main.model.user.User;
 import main.utility.Notifications;
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -40,7 +41,7 @@ public class DatabaseManager implements Serializable, Database {
      * This method builds a single instance of Database the first time it is called. Calling it more than once doesn't
      * change anything.
      *
-     * @return either a new {@code Database} instance, if the {@code Database} has not been initialized yet, or the
+     * @return Either a new {@code Database} instance, if the {@code Database} has not been initialized yet, or the
      * already initialized {@code Database} object.
      */
     public static DatabaseManager getInstance() {
@@ -140,8 +141,10 @@ public class DatabaseManager implements Serializable, Database {
 
     /**
      * Opens a .ser serializable file and loads its contents into this program.<p>
-     * This method loads a {@code HashMap} containing all subscribed users and a {@code HashMap} containing all
-     * registered media items into the {@link UserDatabase} and the {@link MediaDatabase} respectively.
+     * This method loads:
+     * <p>- a {@code HashMap} containing all subscribed users into the {@link UserDatabase} class;
+     * <p>- a {@code HashMap} containing all registered media items into the {@link MediaDatabase} class;
+     * <p>- an {@code integer} to keep track of the media item IDs into the {@link MediaDatabase} class.
      */
     private void loadDatabase() {
         try {
