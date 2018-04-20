@@ -10,7 +10,7 @@ import main.model.user.User;
 public class QuickFillMain {
 
     //di quanto volete riempire il database? Viene riempito con (2^FILLING_LEVEL)^2 utenti e libri.
-    public static final byte FILLING_LEVEL = 7;
+    private static final byte FILLING_LEVEL = 6;
 
     public static void main(String[] args) {
 
@@ -22,6 +22,6 @@ public class QuickFillMain {
         for(Media m : generator.getBooks())
             d.add(m, "");
 
-        d.saveDatabase();
+        //d.saveDatabase();
     }
 }

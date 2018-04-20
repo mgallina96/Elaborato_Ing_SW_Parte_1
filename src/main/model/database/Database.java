@@ -111,18 +111,6 @@ public interface Database {
      */
     boolean isPresent(String toFind);
 
-    /**
-     * Saves:
-     * <p>
-     * - a {@code HashMap} containing all subscribed users;<p>
-     * - a {@code HashMap} containing all media files;<p>
-     * - an {@code integer} to keep track of the media item IDs
-     * <p>
-     * to a {@code .ser} file.
-     *
-     */
-    void saveDatabase();
-
     void remove(Media toRemove);
 
 }

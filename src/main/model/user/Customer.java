@@ -9,6 +9,8 @@ import java.util.GregorianCalendar;
  * that define the time after which the subscription expires and the legal age of the customer.
  * <p>- methods that provide various features, like an age-checking function, an expiry and validity check and a
  * subscription renewal function.
+ *
+ * @author Manuel Gallina, Giosuè Filippini, Alessandro Polcini
  */
 public class Customer extends User {
 

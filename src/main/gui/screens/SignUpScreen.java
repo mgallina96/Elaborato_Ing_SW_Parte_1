@@ -55,7 +55,6 @@ public class SignUpScreen extends Screen {
 
                 if(!getController().checkUserLogin(username, password)) {
                     getController().addUserToDatabase(firstName, lastName, username, password, InputParserUtility.toGregorianDate(birthday));
-                    getController().saveDatabase();
                     System.out.println(MSG_SIGN_UP_SUCCESSFUL);
                     break;
                 }

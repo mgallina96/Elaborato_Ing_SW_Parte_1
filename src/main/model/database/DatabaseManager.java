@@ -54,16 +54,19 @@ public class DatabaseManager implements Serializable, Database {
     @Override
     public void add(User toAdd) {
         userDatabase.addUser(toAdd);
+        saveDatabase();
     }
 
     @Override
     public void add(Media toAdd, String path) {
         mediaDatabase.addMedia(toAdd, path);
+        saveDatabase();
     }
 
     @Override
     public void remove(Media toRemove) {
         mediaDatabase.removeMedia(toRemove);
+        saveDatabase();
     }
 
     @Override
@@ -121,10 +124,22 @@ public class DatabaseManager implements Serializable, Database {
         userDatabase.removeCurrentUser();
     }
 
-    @Override
-    public void saveDatabase() {
+    /**
+     * Saves:
+     * <p>
+     * - a {@code HashMap} containing all subscribed users;<p>
+     * - a {@code HashMap} containing all media files;<p>
+     * - an {@code integer} to keep track of the media item IDs
+     * <p>
+     * to a {@code .ser} file.
+     *
+     */
+    private void saveDatabase() {
         try {
-            FileOutputStream fileOut = new FileOutputStream(DATABASE_FILE_PATH);
+            //to increase serializing speed
+            RandomAccessFile raf = new RandomAccessFile(DATABASE_FILE_PATH, "rw");
+
+            FileOutputStream fileOut = new FileOutputStream(raf.getFD());
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
             out.writeObject(userDatabase.getUserList());

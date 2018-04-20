@@ -71,7 +71,7 @@ public interface SystemController {
     boolean mediaIsPresent(int id);
 
     /**
-     * Adds a new user to the database.
+     * Adds a new user to the database and saves all changes made to the database..
      *
      * @param firstName The user's first name.
      * @param lastName The user's last name.
@@ -82,7 +82,7 @@ public interface SystemController {
     void addUserToDatabase(String firstName, String lastName, String username, String password, GregorianCalendar birthday);
 
     /**
-     * Adds a new media item to the database.
+     * Adds a new media item to the database and saves all changes made to the database.
      *
      * @param title the title.
      * @param author the author.
@@ -95,14 +95,12 @@ public interface SystemController {
     boolean pathIsPresent(String path);
 
     /**
-     * Removes the media element associated with the given ID from the database.
+     * Removes the media element associated with the given ID from the database and saves all changes made to the
+     * database.
      *
      * @param id The ID of the media element to be removed.
      */
     void removeMediaFromDatabase(int id);
-
-    /** Saves the database and possible changes made to it. */
-    void saveDatabase();
 
     /**
      * Getter for the User status (CUSTOMER or OPERATOR).

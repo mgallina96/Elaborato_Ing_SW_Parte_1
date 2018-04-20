@@ -90,15 +90,8 @@ public class Controller implements SystemController {
     public void addUserToDatabase(String firstName, String lastName, String username, String password, GregorianCalendar birthday) {
         database.add(new Customer(firstName, lastName, username, password, birthday));
     }
-    /**
-     * Adds a new media item to the database.
-     *
-     * @param title the title.
-     * @param author the author.
-     * @param genre the genre.
-     * @param publicationYear the publication year.
-     * @param publisherName the publisher's name.
-     */
+
+    @Override
     public void addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName, String path) {
         database.add(new Book(title, author, genre, publicationYear, publisherName), path);
     }
@@ -146,11 +139,6 @@ public class Controller implements SystemController {
             return ((Customer)database.getCurrentUser()).renewSubscription();
         else
             throw new IllegalArgumentException();
-    }
-
-    @Override
-    public void saveDatabase() {
-        database.saveDatabase();
     }
 
     @Override
