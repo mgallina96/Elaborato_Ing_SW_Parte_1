@@ -1,5 +1,4 @@
 package main;
-
 import java.util.GregorianCalendar;
 
 /**
@@ -91,7 +90,9 @@ public interface SystemController {
      * @param publicationYear the publication year.
      * @param publisherName the publisher's name.
      */
-    void addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName);
+    void addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName, String path);
+
+    boolean pathIsPresent(String path);
 
     /**
      * Removes the media element associated with the given ID from the database.

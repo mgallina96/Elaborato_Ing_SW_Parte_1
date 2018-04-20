@@ -21,8 +21,8 @@ import java.util.GregorianCalendar;
  * @since version 0.1 - 12/03/2018
  */
 public class Controller implements SystemController {
-    private static Controller instance;
 
+    private static Controller instance;
     private GuiManager guiManager;
     private Database database;
 
@@ -90,7 +90,6 @@ public class Controller implements SystemController {
     public void addUserToDatabase(String firstName, String lastName, String username, String password, GregorianCalendar birthday) {
         database.add(new Customer(firstName, lastName, username, password, birthday));
     }
-
     /**
      * Adds a new media item to the database.
      *
