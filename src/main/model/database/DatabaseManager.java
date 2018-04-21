@@ -27,8 +27,6 @@ public class DatabaseManager implements Serializable, Database {
     private UserDatabase userDatabase;
     private MediaDatabase mediaDatabase;
 
-    private Folder root;
-
     private Logger logger;
 
     //Singleton Database constructor, private to prevent instantiation.
@@ -136,7 +134,6 @@ public class DatabaseManager implements Serializable, Database {
      * - an {@code integer} to keep track of the media item IDs
      * <p>
      * to a {@code .ser} file.
-     *
      */
     private void saveDatabase() {
         try {
@@ -149,7 +146,6 @@ public class DatabaseManager implements Serializable, Database {
             out.writeObject(userDatabase.getUserList());
             out.writeObject(mediaDatabase.getMediaList());
             out.writeObject(Integer.toString(MediaDatabase.getCounter()));
-            out.writeObject(root);
 
             out.close();
             fileOut.close();
@@ -175,7 +171,6 @@ public class DatabaseManager implements Serializable, Database {
             userDatabase.setUserList((HashMap<String, User>) in.readObject());
             mediaDatabase.setMediaList((HashMap<Integer, Media>) in.readObject());
             MediaDatabase.setCounter(Integer.parseInt((String)in.readObject()));
-            root = (Folder) in.readObject();
 
             in.close();
             fileIn.close();

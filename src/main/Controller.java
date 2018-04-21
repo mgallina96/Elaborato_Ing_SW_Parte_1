@@ -17,7 +17,6 @@ import java.util.GregorianCalendar;
  * and the logic (model) of the program.
  *
  * @author Manuel Gallina
- * @version 0.1
  * @since version 0.1 - 12/03/2018
  */
 public class Controller implements SystemController {

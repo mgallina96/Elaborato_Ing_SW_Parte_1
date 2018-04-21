@@ -11,6 +11,7 @@ import static main.utility.Notifications.*;
  *
  * @author Manuel Gallina
  * @author Giosuè Filippini
+ * @since version 0.1
  */
 public class LoginScreen extends Screen {
 

@@ -7,6 +7,7 @@ import static main.utility.Notifications.*;
  * The operator menu screen.
  *
  * @author Manuel Gallina, Giosuè Filippini, Alessandro Polcini
+ * @since version 0.1
  */
 public class OperatorScreen extends Screen {
 

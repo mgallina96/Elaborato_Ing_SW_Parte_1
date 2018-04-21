@@ -6,14 +6,19 @@ import java.util.ArrayList;
 /**
  * @author Manuel Gallina
  */
-public class Folder implements Serializable {
-
-    //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
-    private static final long serialVersionUID = 562139798965262215L;
+public class Folder {
 
     private Folder parent;
     private ArrayList<Folder> children;
     private String name;
+    private int folderId;
+
+    public Folder(String name) {
+        this.parent = this;
+        this.children = new ArrayList<>();
+        this.name = name;
+        this.folderId = 1;
+    }
 
     public Folder(Folder parent, String name) {
         this.parent = parent;
@@ -35,5 +40,13 @@ public class Folder implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    public int getFolderId() {
+        return folderId;
+    }
+
+    public void setFolderId(int folderId) {
+        this.folderId = folderId;
     }
 }

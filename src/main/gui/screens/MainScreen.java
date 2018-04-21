@@ -8,6 +8,7 @@ import static main.utility.Notifications.*;
  * The starting screen of the application.
  *
  * @author Manuel Gallina
+ * @since version 0.1
  */
 public class MainScreen extends Screen {
 

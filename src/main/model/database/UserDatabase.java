@@ -18,12 +18,13 @@ class UserDatabase implements Serializable {
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -5681387677098150051L;
 
+    private Logger logger = Logger.getLogger(this.getClass().getName());
+
     //A default admin user, added to the database whenever this class is instantiated.
     private static final User ADMIN = new User("admin", "admin");
     private static UserDatabase userDatabase;
     private User currentUser;
     private HashMap<String, User> userList;
-    private Logger logger = Logger.getLogger(this.getClass().getName());
 
     //Singleton Database constructor, private to prevent instantiation.
     private UserDatabase() {
@@ -48,11 +49,11 @@ class UserDatabase implements Serializable {
     void addUser(User toAdd) {
         userList.put(toAdd.getUsername(), toAdd);
     }
-/*
+
     void removeUser(User toRemove) {
         if(isPresent(toRemove))
             userList.remove(toRemove.getUsername());
-    }*/
+    }
 
     boolean isPresent(User toFind) {
         return userList.containsKey(toFind.getUsername());
