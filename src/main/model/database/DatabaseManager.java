@@ -1,4 +1,5 @@
 package main.model.database;
+import main.model.database.filesystem.Folder;
 import main.model.media.Media;
 import main.model.user.User;
 import main.utility.Notifications;
@@ -25,6 +26,9 @@ public class DatabaseManager implements Serializable, Database {
     private static DatabaseManager database;
     private UserDatabase userDatabase;
     private MediaDatabase mediaDatabase;
+
+    private Folder root;
+
     private Logger logger;
 
     //Singleton Database constructor, private to prevent instantiation.
@@ -145,6 +149,7 @@ public class DatabaseManager implements Serializable, Database {
             out.writeObject(userDatabase.getUserList());
             out.writeObject(mediaDatabase.getMediaList());
             out.writeObject(Integer.toString(MediaDatabase.getCounter()));
+            out.writeObject(root);
 
             out.close();
             fileOut.close();
@@ -161,6 +166,7 @@ public class DatabaseManager implements Serializable, Database {
      * <p>- a {@code HashMap} containing all registered media items into the {@link MediaDatabase} class;
      * <p>- an {@code integer} to keep track of the media item IDs into the {@link MediaDatabase} class.
      */
+    @SuppressWarnings("unchecked")
     private void loadDatabase() {
         try {
             FileInputStream fileIn = new FileInputStream(DATABASE_FILE_PATH);
@@ -169,6 +175,7 @@ public class DatabaseManager implements Serializable, Database {
             userDatabase.setUserList((HashMap<String, User>) in.readObject());
             mediaDatabase.setMediaList((HashMap<Integer, Media>) in.readObject());
             MediaDatabase.setCounter(Integer.parseInt((String)in.readObject()));
+            root = (Folder) in.readObject();
 
             in.close();
             fileIn.close();

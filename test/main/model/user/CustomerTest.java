@@ -68,6 +68,6 @@ class CustomerTest {
 
     @Test
     void daysLeftToRenew() {
-        Assertions.assertEquals(4, testCustomer1.daysLeftToRenew());
+        Assertions.assertTrue(testCustomer1.daysLeftToRenew() >= 4 && testCustomer1.daysLeftToRenew() <= 5);
     }
 }
