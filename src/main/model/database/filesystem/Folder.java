@@ -2,6 +2,8 @@ package main.model.database.filesystem;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * @author Manuel Gallina
@@ -18,6 +20,13 @@ public class Folder {
         this.children = new ArrayList<>();
         this.name = name;
         this.folderId = 1;
+    }
+
+    Folder(String name, int ID) {
+        this.parent = this;
+        this.children = new ArrayList<>();
+        this.name = name;
+        this.folderId = ID;
     }
 
     public Folder(Folder parent, String name) {
@@ -38,6 +47,10 @@ public class Folder {
         return children;
     }
 
+    public void add(Folder child) {
+        children.add(child);
+    }
+
     public String getName() {
         return name;
     }
@@ -48,5 +61,9 @@ public class Folder {
 
     public void setFolderId(int folderId) {
         this.folderId = folderId;
+    }
+
+    public void sort() {
+        children.sort(Comparator.comparing(Folder::getName));
     }
 }

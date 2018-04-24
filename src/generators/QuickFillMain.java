@@ -1,6 +1,8 @@
 package generators;
 
 import main.model.database.DatabaseManager;
+import main.model.database.filesystem.FileSystem;
+import main.model.database.filesystem.Folder;
 import main.model.media.Media;
 import main.model.user.User;
 
@@ -13,7 +15,7 @@ public class QuickFillMain {
     private static final byte FILLING_LEVEL = 6;
 
     public static void main(String[] args) {
-
+/*
         DatabaseManager d = DatabaseManager.getInstance();
         Generator generator = new Generator(FILLING_LEVEL);
 
@@ -22,6 +24,11 @@ public class QuickFillMain {
         for(Media m : generator.getBooks())
             d.add(m, "");
 
-        //d.saveDatabase();
+        //d.saveDatabase();*/
+
+
+
+
+
     }
 }
