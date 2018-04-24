@@ -1,8 +1,5 @@
 package main.model.database.filesystem;
-
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 /**
@@ -15,22 +12,16 @@ public class Folder {
     private String name;
     private int folderId;
 
-    public Folder(String name) {
+    Folder(String name) {
         this.parent = this;
         this.children = new ArrayList<>();
         this.name = name;
         this.folderId = 1;
     }
 
-    Folder(String name, int ID) {
-        this.parent = this;
-        this.children = new ArrayList<>();
-        this.name = name;
-        this.folderId = ID;
-    }
-
-    public Folder(Folder parent, String name) {
+    public Folder(Folder parent, String name, int ID) {
         this.parent = parent;
+        this.folderId = ID;
         this.children = new ArrayList<>();
         this.name = name;
     }

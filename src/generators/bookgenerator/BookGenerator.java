@@ -13,6 +13,9 @@ import java.util.Random;
  */
 public class BookGenerator {
 
+    public static final String COMMON_MEDIA_PATH = "resources\\media\\";
+    public static final String COMMON_USER_PATH = "resources\\users\\";
+
     private BookGenerator() {}
 
     public static ArrayList<Media> generateBooks(int howMany) {

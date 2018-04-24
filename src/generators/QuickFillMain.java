@@ -26,8 +26,11 @@ public class QuickFillMain {
 
         //d.saveDatabase();*/
 
+        FileSystem fs = FileSystem.getInstance();
 
-
+        System.out.println(
+                fs.getAllPathsToString()
+        );
 
 
     }
