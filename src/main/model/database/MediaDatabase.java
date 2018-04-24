@@ -122,7 +122,7 @@ class MediaDatabase implements Serializable {
             in.close();
         }
         catch(Exception e) {
-            System.out.println(ERR_LOADING_FILE_SYSTEM);
+            System.out.println(ERR_LOADING_FILESYSTEM);
         }
 
         fileSystem = resolveDirectories(sb.toString());

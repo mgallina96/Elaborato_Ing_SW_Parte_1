@@ -29,7 +29,7 @@ public class QuickFillMain {
         FileSystem fs = FileSystem.getInstance();
 
         System.out.println(
-                fs.getAllPathsToString()
+                fs.getAllPaths()
         );
 
 

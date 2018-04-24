@@ -66,11 +66,7 @@ public class Controller implements SystemController {
         return database.isPresent(path);
     }
 
-    /**
-     * Returns a {@code String} that contains all the users in the database.
-     *
-     * @return the list of all users as a {@code String}.
-     */
+    @Override
     public String allUsersToString() {
         return database.getUserListString();
     }

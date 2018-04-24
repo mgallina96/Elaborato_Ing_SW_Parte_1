@@ -1,11 +1,12 @@
 package main.model.database.filesystem;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 
 /**
  * @author Manuel Gallina
  */
-public class Folder {
+public class Folder implements Serializable {
 
     private Folder parent;
     private ArrayList<Folder> children;
@@ -13,17 +14,17 @@ public class Folder {
     private int folderId;
 
     Folder(String name) {
-        this.parent = this;
-        this.children = new ArrayList<>();
         this.name = name;
+        this.parent = this;
         this.folderId = 1;
+        this.children = new ArrayList<>();
     }
 
-    public Folder(Folder parent, String name, int ID) {
+    public Folder(String name, Folder parent, int ID) {
+        this.name = name;
         this.parent = parent;
         this.folderId = ID;
         this.children = new ArrayList<>();
-        this.name = name;
     }
 
     public Folder getParent() {

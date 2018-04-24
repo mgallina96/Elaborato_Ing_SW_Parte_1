@@ -59,8 +59,9 @@ public class Notifications {
     public static final String ERR_SIGN_UP_ABORTED = "Sign up aborted.";
     public static final String ERR_SAVING_DATABASE = "An error occurred while saving the database to a .ser file.";
     public static final String ERR_LOADING_DATABASE = "An error occurred while loading the database.";
-    public static final String ERR_LOADING_FILE_SYSTEM = "An error occurred while loading the file system.";
+    public static final String ERR_LOADING_FILESYSTEM = "An error occurred while loading the file system.";
     public static final String ERR_DATABASE_CLASS_NOT_FOUND = "Database class not found.";
+    public static final String ERR_FILESYSTEM_CLASS_NOT_FOUND = "FileSystem class not found.";
     public static final String ERR_FILE_NOT_FOUND = "Error: file not found.";
     public static final String ERR_MSG_INVALID_INPUT = "Invalid input.";
     public static final String ERR_USER_ALREADY_PRESENT = "This user is already present in our database.";

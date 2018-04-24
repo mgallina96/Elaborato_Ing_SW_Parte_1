@@ -26,6 +26,14 @@ public interface Database {
     void add(Media toAdd, String path);
 
     /**
+     * Removes a media item from the database.
+     *
+     * @param toRemove The {@code Media} item to remove.
+     */
+    void remove(Media toRemove);
+
+
+    /**
      * Returns the given user (if present).
      *
      * @param toFetch The user to be found and returned.
@@ -110,7 +118,5 @@ public interface Database {
      * @return {@code true} if the string is present in the file system, {@code false} otherwise.
      */
     boolean isPresent(String toFind);
-
-    void remove(Media toRemove);
 
 }
