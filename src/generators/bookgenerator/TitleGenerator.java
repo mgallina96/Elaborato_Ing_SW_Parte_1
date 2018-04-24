@@ -2,6 +2,8 @@ package generators.bookgenerator;
 
 import generators.randomwords.PoolLoader;
 import generators.randomwords.RandomWords;
+import static generators.bookgenerator.BookGenerator.COMMON_MEDIA_PATH;
+import static generators.bookgenerator.BookGenerator.COMMON_USER_PATH;
 
 import java.util.Random;
 
@@ -171,27 +173,27 @@ public class TitleGenerator {
     }
 
     private void loadRandomizers() {
-        firstNames = new RandomWords(PoolLoader.fromTXTFile("test_resources\\users\\nomi_italiani.txt"));
-        lastNames = new RandomWords(PoolLoader.fromTXTFile("test_resources\\users\\cognomi_italiani.txt"));
-        nounsMS = new RandomWords(PoolLoader.fromTXTFile("test_resources\\media\\sostantivi_maschili_singolari.txt"));
-        nounsMP = new RandomWords(PoolLoader.fromTXTFile("test_resources\\media\\sostantivi_maschili_plurali.txt"));
-        nounsFS = new RandomWords(PoolLoader.fromTXTFile("test_resources\\media\\sostantivi_femminili_singolari.txt"));
-        nounsFP = new RandomWords(PoolLoader.fromTXTFile("test_resources\\media\\sostantivi_femminili_plurali.txt"));
-        adjectivesMS = new RandomWords(PoolLoader.fromTXTFile("test_resources\\media\\aggettivi_maschili_singolari.txt"));
-        adjectivesMP = new RandomWords(PoolLoader.fromTXTFile("test_resources\\media\\aggettivi_maschili_plurali.txt"));
-        adjectivesFS = new RandomWords(PoolLoader.fromTXTFile("test_resources\\media\\aggettivi_femminili_singolari.txt"));
-        adjectivesFP = new RandomWords(PoolLoader.fromTXTFile("test_resources\\media\\aggettivi_femminili_plurali.txt"));
-        articlesMS = new RandomWords(PoolLoader.fromTXTFile("test_resources\\media\\articoli_maschili_singolari.txt"));
-        articlesMP = new RandomWords(PoolLoader.fromTXTFile("test_resources\\media\\articoli_maschili_plurali.txt"));
-        articlesFS = new RandomWords(PoolLoader.fromTXTFile("test_resources\\media\\articoli_femminili_singolari.txt"));
-        articlesFP = new RandomWords(PoolLoader.fromTXTFile("test_resources\\media\\articoli_femminili_plurali.txt"));
-        conjunctions = new RandomWords(PoolLoader.fromTXTFile("test_resources\\media\\congiunzioni_italiane.txt"));
-        adverbs = new RandomWords(PoolLoader.fromTXTFile("test_resources\\media\\avverbi.txt"));
-        prepositions = new RandomWords(PoolLoader.fromTXTFile("test_resources\\media\\preposizioni_italiane.txt"));
-        prepsMS = new RandomWords(PoolLoader.fromTXTFile("test_resources\\media\\preposizioni_articolate_maschili_singolari.txt"));
-        prepsMP = new RandomWords(PoolLoader.fromTXTFile("test_resources\\media\\preposizioni_articolate_maschili_plurali.txt"));
-        prepsFS = new RandomWords(PoolLoader.fromTXTFile("test_resources\\media\\preposizioni_articolate_femminili_singolari.txt"));
-        prepsFP = new RandomWords(PoolLoader.fromTXTFile("test_resources\\media\\preposizioni_articolate_femminili_plurali.txt"));
-        verbs = new RandomWords(PoolLoader.fromTXTFile("test_resources\\media\\verbi_italiani.txt"));
+        firstNames = new RandomWords(PoolLoader.fromTXTFile(COMMON_USER_PATH + "nomi_italiani.txt"));
+        lastNames = new RandomWords(PoolLoader.fromTXTFile(COMMON_USER_PATH + "cognomi_italiani.txt"));
+        nounsMS = new RandomWords(PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "sostantivi_maschili_singolari.txt"));
+        nounsMP = new RandomWords(PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "sostantivi_maschili_plurali.txt"));
+        nounsFS = new RandomWords(PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "sostantivi_femminili_singolari.txt"));
+        nounsFP = new RandomWords(PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "sostantivi_femminili_plurali.txt"));
+        adjectivesMS = new RandomWords(PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "aggettivi_maschili_singolari.txt"));
+        adjectivesMP = new RandomWords(PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "aggettivi_maschili_plurali.txt"));
+        adjectivesFS = new RandomWords(PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "aggettivi_femminili_singolari.txt"));
+        adjectivesFP = new RandomWords(PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "aggettivi_femminili_plurali.txt"));
+        articlesMS = new RandomWords(PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "articoli_maschili_singolari.txt"));
+        articlesMP = new RandomWords(PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "articoli_maschili_plurali.txt"));
+        articlesFS = new RandomWords(PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "articoli_femminili_singolari.txt"));
+        articlesFP = new RandomWords(PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "articoli_femminili_plurali.txt"));
+        conjunctions = new RandomWords(PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "congiunzioni_italiane.txt"));
+        adverbs = new RandomWords(PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "avverbi.txt"));
+        prepositions = new RandomWords(PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "preposizioni_italiane.txt"));
+        prepsMS = new RandomWords(PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "preposizioni_articolate_maschili_singolari.txt"));
+        prepsMP = new RandomWords(PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "preposizioni_articolate_maschili_plurali.txt"));
+        prepsFS = new RandomWords(PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "preposizioni_articolate_femminili_singolari.txt"));
+        prepsFP = new RandomWords(PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "preposizioni_articolate_femminili_plurali.txt"));
+        verbs = new RandomWords(PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "verbi_italiani.txt"));
     }
 }
