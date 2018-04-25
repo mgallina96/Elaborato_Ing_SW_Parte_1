@@ -15,7 +15,7 @@ public class Main {
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) {
-        Notifications.setLanguage(Notifications.ENGLISH);
+        Notifications.setLanguage(Notifications.ITALIAN);
         LOGGER.setLevel(Level.ALL);
         SystemController controller = Controller.getInstance();
         controller.init();

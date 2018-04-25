@@ -56,7 +56,7 @@ public class LoginScreen extends Screen {
             String username;
             String password;
 
-            System.out.printf("[insert %s at any time to exit this section]\n", ESCAPE_STRING);
+            System.out.printf("[%s %s]\n", ESCAPE_STRING, MSG_ESCAPE_STRING_MESSAGE);
 
             try {
                 username = inputRequest(PROMPT_USERNAME);
@@ -69,8 +69,8 @@ public class LoginScreen extends Screen {
 
             if(getController().checkUserLogin(username, password)) {
                 if(getController().canRenew())
-                    System.out.printf("%s Days you have left to renew your subscription: %s days.\n",
-                            PROMPT_EXPIRY_IMMINENT, getController().daysLeftToRenew(username));
+                    System.out.printf("%s %s %s %s.\n",
+                            PROMPT_EXPIRY_IMMINENT, MSG_REMINDER_DAYS_LEFT, getController().daysLeftToRenew(username), MSG_DAYS);
 
                 return username;
             }

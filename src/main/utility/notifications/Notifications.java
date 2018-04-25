@@ -25,6 +25,9 @@ public class Notifications {
     public static String MSG_CUSTOMER_MENU;
     public static String MSG_ABORT;
     public static String MSG_ADD_SUCCESSFUL;
+    public static String MSG_REMINDER_DAYS_LEFT;
+    public static String MSG_DAYS;
+    public static String MSG_ESCAPE_STRING_MESSAGE;
 
     //PROMPTS
     public static String PROMPT_FIRST_NAME;
@@ -94,6 +97,9 @@ public class Notifications {
                 MSG_CUSTOMER_MENU = "Benvenuto, cliente!";
                 MSG_ABORT = "Annullamento in corso...";
                 MSG_ADD_SUCCESSFUL = "Media aggiunto con successo.";
+                MSG_REMINDER_DAYS_LEFT = "Giorni che rimangono per rinnovare l'iscrizione:";
+                MSG_DAYS = "giorni";
+                MSG_ESCAPE_STRING_MESSAGE = "per uscire da questa sezione";
                 PROMPT_FIRST_NAME = "Nome (si prega di inserire un nome valido): ";
                 PROMPT_LAST_NAME = "Cognome (si prega di inserire un cognome valido): ";
                 PROMPT_USERNAME = "Username: ";
@@ -156,6 +162,9 @@ public class Notifications {
                 MSG_CUSTOMER_MENU = "Welcome, customer!";
                 MSG_ABORT = "Aborting...";
                 MSG_ADD_SUCCESSFUL = "Media item added successfully.";
+                MSG_REMINDER_DAYS_LEFT = "Days you have left to renew your subscription:";
+                MSG_DAYS = "days";
+                MSG_ESCAPE_STRING_MESSAGE = "to exit this section";
                 PROMPT_FIRST_NAME = "First name (please insert a valid first name): ";
                 PROMPT_LAST_NAME = "Last name (please insert a valid last name): ";
                 PROMPT_USERNAME = "Username: ";
