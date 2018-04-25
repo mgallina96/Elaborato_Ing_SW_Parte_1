@@ -1,8 +1,7 @@
 package main.model.database;
-import main.model.database.filesystem.Folder;
 import main.model.media.Media;
 import main.model.user.User;
-import main.utility.Notifications;
+import main.utility.notifications.Notifications;
 
 import java.io.*;
 import java.util.HashMap;
@@ -78,11 +77,6 @@ public class DatabaseManager implements Serializable, Database {
 
     @Override
     public boolean isPresent(Media toFind) {
-        return mediaDatabase.isPresent(toFind);
-    }
-
-    @Override
-    public boolean isPresent(String toFind) {
         return mediaDatabase.isPresent(toFind);
     }
 

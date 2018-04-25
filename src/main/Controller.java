@@ -4,6 +4,7 @@ import main.gui.GuiManager;
 import main.gui.TextualView;
 import main.model.database.Database;
 import main.model.database.DatabaseManager;
+import main.model.database.filesystem.FileSystem;
 import main.model.media.Book;
 import main.model.media.Media;
 import main.model.user.Customer;
@@ -24,10 +25,12 @@ public class Controller implements SystemController {
     private static Controller instance;
     private GuiManager guiManager;
     private Database database;
+    private FileSystem fileSystem;
 
     //Singleton constructor, private to prevent instantiation.
     private Controller() {
         database = DatabaseManager.getInstance();
+        fileSystem = FileSystem.getInstance();
         guiManager = new TextualView(this);
     }
 
@@ -63,7 +66,7 @@ public class Controller implements SystemController {
 
     @Override
     public boolean pathIsPresent(String path) {
-        return database.isPresent(path);
+        return fileSystem.isPresent(path);
     }
 
     @Override

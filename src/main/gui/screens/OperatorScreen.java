@@ -1,7 +1,7 @@
 package main.gui.screens;
 import main.SystemController;
 import main.utility.InputParserUtility;
-import static main.utility.Notifications.*;
+import static main.utility.notifications.Notifications.*;
 
 /**
  * The operator menu screen.

@@ -3,15 +3,21 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+import static main.model.database.filesystem.FileSystem.ROOT;
+
 /**
  * @author Manuel Gallina
  */
 public class Folder implements Serializable {
 
+    //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
+    private static final long serialVersionUID = 7970305636210332068L;
+
     private Folder parent;
     private ArrayList<Folder> children;
     private String name;
     private int folderId;
+    private int depth;
 
     Folder(String name) {
         this.name = name;
@@ -25,19 +31,34 @@ public class Folder implements Serializable {
         this.parent = parent;
         this.folderId = ID;
         this.children = new ArrayList<>();
+        resolveDepth();
+    }
+
+    private void resolveDepth() {
+        this.depth = 0;
+        Folder tmpParent = this.parent;
+
+        while(tmpParent != ROOT) {
+            this.depth++;
+            tmpParent = tmpParent.parent;
+        }
+    }
+
+    public int getDepth() {
+        return depth;
     }
 
     public Folder getParent() {
         return parent;
     }
 
-    public void setParent(Folder parent) {
+    /*public void setParent(Folder parent) {
         this.parent = parent;
-    }
+    }*/
 
-    public ArrayList<Folder> getChildren() {
+    /*public ArrayList<Folder> getChildren() {
         return children;
-    }
+    }*/
 
     public void add(Folder child) {
         children.add(child);
@@ -51,9 +72,9 @@ public class Folder implements Serializable {
         return folderId;
     }
 
-    public void setFolderId(int folderId) {
+    /*public void setFolderId(int folderId) {
         this.folderId = folderId;
-    }
+    }*/
 
     public void sort() {
         children.sort(Comparator.comparing(Folder::getName));

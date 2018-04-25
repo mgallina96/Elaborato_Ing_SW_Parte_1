@@ -2,7 +2,7 @@ package main.gui;
 import main.SystemController;
 import main.gui.screens.*;
 
-import static main.utility.Notifications.MSG_GOODBYE;
+import static main.utility.notifications.Notifications.MSG_GOODBYE;
 
 /**
  * Class that manages a textual GUI for the application, loading the different sections when they are needed and

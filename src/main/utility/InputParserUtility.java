@@ -1,4 +1,6 @@
 package main.utility;
+import main.utility.notifications.Notifications;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;

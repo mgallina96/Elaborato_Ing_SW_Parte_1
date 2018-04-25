@@ -4,7 +4,7 @@ import main.SystemController;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static main.utility.Notifications.*;
+import static main.utility.notifications.Notifications.*;
 
 /**
  * The login screen.

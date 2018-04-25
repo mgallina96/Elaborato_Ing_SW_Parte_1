@@ -2,8 +2,6 @@ package main.model.database;
 import main.model.media.Media;
 import java.io.Serializable;
 import java.util.HashMap;
-import java.io.*;
-import static main.utility.Notifications.*;
 import java.util.logging.Logger;
 
 /**
@@ -21,13 +19,11 @@ class MediaDatabase implements Serializable {
     private static int counter;
 
     private HashMap<Integer, Media> mediaList;
-    private String fileSystem;
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     //Singleton Database constructor, private to prevent instantiation.
     private MediaDatabase() {
         this.mediaList = new HashMap<>();
-        loadFileSystem();
     }
 
     static MediaDatabase getInstance() {
@@ -49,10 +45,6 @@ class MediaDatabase implements Serializable {
 
     boolean isPresent(Media toFind) {
         return mediaList.containsKey(toFind.getIdentifier());
-    }
-
-    boolean isPresent(String path) {
-        return fileSystem.contains(path);
     }
 
     Media fetch(Media toFetch) {
@@ -82,14 +74,6 @@ class MediaDatabase implements Serializable {
         return filteredMedia.toString();
     }
 
-    void setFileSystem(String fileSystem) {
-        this.fileSystem = fileSystem;
-    }
-
-    public String getFileSystem() {
-        return fileSystem;
-    }
-
     void setMediaList(HashMap<Integer, Media> mediaList) {
         this.mediaList = mediaList;
     }
@@ -104,28 +88,6 @@ class MediaDatabase implements Serializable {
 
     static void setCounter(int counter) {
         MediaDatabase.counter = counter;
-    }
-
-    private void loadFileSystem() {
-        File file = new File(FILE_SYSTEM_PATH);
-        StringBuilder sb = new StringBuilder();
-
-        try {
-            BufferedReader in = new BufferedReader(new FileReader(file));
-
-            String line;
-            while((line = in.readLine()) != null) {
-                sb.append(line);
-                sb.append("\n");
-            }
-
-            in.close();
-        }
-        catch(Exception e) {
-            System.out.println(ERR_LOADING_FILESYSTEM);
-        }
-
-        fileSystem = resolveDirectories(sb.toString());
     }
 
     private String[] resolvePath(String p) {
@@ -148,15 +110,6 @@ class MediaDatabase implements Serializable {
             }
 
         return path;
-    }
-
-    private String resolveDirectories(String s) {
-        String line = "";
-
-        if(s.charAt(0) == ' ')
-            return resolveDirectories(s);
-
-        return "";
     }
 
 

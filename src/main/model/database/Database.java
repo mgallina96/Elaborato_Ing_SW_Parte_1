@@ -111,12 +111,4 @@ public interface Database {
      */
     boolean isPresent(Media toFind);
 
-    /**
-     * Checks whether the given {@code String} is present in the file system.
-     *
-     * @param toFind The string to be found.
-     * @return {@code true} if the string is present in the file system, {@code false} otherwise.
-     */
-    boolean isPresent(String toFind);
-
 }
