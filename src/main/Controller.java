@@ -9,7 +9,6 @@ import main.model.media.Book;
 import main.model.media.Media;
 import main.model.user.Customer;
 import main.model.user.User;
-import main.model.user.UserStatus;
 
 import java.util.GregorianCalendar;
 
@@ -153,5 +152,25 @@ public class Controller implements SystemController {
     @Override
     public void logout() {
         database.removeCurrentUser();
+    }
+
+    @Override
+    public boolean folderHasChildren(int folderID) {
+        return fileSystem.getFileSystem().get(folderID).hasChildren();
+    }
+
+    @Override
+    public String getFoldersByDepth(int depth, int parentID) {
+        return fileSystem.getFoldersByDepth(depth, parentID);
+    }
+
+    @Override
+    public int getRootID() {
+        return FileSystem.getROOT().getFolderId();
+    }
+
+    @Override
+    public String getPathToString(int folderID) {
+        return fileSystem.pathToString(folderID);
     }
 }

@@ -130,4 +130,34 @@ public interface SystemController {
      * @return the list of all filtered media items as a {@code String}.
      */
     String allFilteredMediaList(String filter);
+
+    /**
+     * Checks whether the folder associated to the given ID has children.
+     *
+     * @param folderID The ID associated to the folder to be checked.
+     * @return A boolean value: {@code true} if the given folder has children, {@code false} otherwise.
+     */
+    boolean folderHasChildren(int folderID);
+
+    /**
+     *
+     * @param depth
+     * @param parentID
+     * @return
+     */
+    String getFoldersByDepth(int depth, int parentID);
+
+    /**
+     *
+     * @return
+     */
+    int getRootID();
+
+    /**
+     *
+     * @param folderID
+     * @return
+     */
+    String getPathToString(int folderID);
+
 }

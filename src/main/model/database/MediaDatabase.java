@@ -1,5 +1,7 @@
 package main.model.database;
+
 import main.model.media.Media;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.logging.Logger;

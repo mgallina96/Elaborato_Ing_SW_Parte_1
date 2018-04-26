@@ -71,8 +71,8 @@ public class TextualView implements GuiManager {
             case 1:
                 operatorScreen();
                 break;
-            default: //in case ths user status is still a null value (either the username or the password isn't valid).
-                mainScreen();
+            default:
+                //in case ths user status is still a null value (either the username or the password isn't valid).
         }
     }
 }

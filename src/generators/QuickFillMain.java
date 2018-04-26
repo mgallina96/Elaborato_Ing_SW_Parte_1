@@ -1,10 +1,6 @@
 package generators;
 
-import main.model.database.DatabaseManager;
 import main.model.database.filesystem.FileSystem;
-import main.model.database.filesystem.Folder;
-import main.model.media.Media;
-import main.model.user.User;
 import main.utility.notifications.Notifications;
 
 /**

@@ -1,6 +1,9 @@
 package main.gui.screens;
+
 import main.SystemController;
+import main.model.database.filesystem.FileSystem;
 import main.utility.InputParserUtility;
+
 import static main.utility.notifications.Notifications.*;
 
 /**
@@ -79,30 +82,24 @@ public class OperatorScreen extends Screen {
         String path = chooseFolder();
 
         getController().addMediaToDatabase(title, author, genre, year, publisherName, path);
-
-        System.out.println(MSG_ADD_SUCCESSFUL);
     }
 
     private String chooseFolder() {
-        System.out.println(PROMPT_SELECT_PATH);
-        //getController().getPathList();
+        System.out.printf("%s\n%s\n", SEPARATOR, PROMPT_SELECT_PATH);
+        String path;
 
-        String path = getScanner().nextLine();
-        boolean present = getController().pathIsPresent(path);
-        boolean valid = InputParserUtility.isValidPathFormat(path);
+        int depth = 0;
+        int currentID = getController().getRootID();
 
-        while(!(present && valid)) {
-            if(!valid)
-                System.out.println(ERR_INVALID_PATH);
-            else
-                System.out.println(ERR_PATH_NOT_PRESENT);
+        do {
+            if(depth > 0)
+                currentID = insertInteger();
+            System.out.println(getController().getFoldersByDepth(depth++, currentID));
+        } while(getController().folderHasChildren(currentID));
 
-            path = getScanner().nextLine();
+        path = getController().getPathToString(currentID);
 
-            present = getController().pathIsPresent(path);
-            valid = InputParserUtility.isValidPathFormat(path);
-        }
-
+        System.out.printf("%s\"%s\"\n", MSG_ADD_SUCCESSFUL, path);
 
         return path;
     }

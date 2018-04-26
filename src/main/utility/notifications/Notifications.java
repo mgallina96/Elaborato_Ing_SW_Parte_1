@@ -96,7 +96,7 @@ public class Notifications {
                 MSG_OPERATOR_MENU = "Benvenuto, operatore!";
                 MSG_CUSTOMER_MENU = "Benvenuto, cliente!";
                 MSG_ABORT = "Annullamento in corso...";
-                MSG_ADD_SUCCESSFUL = "Media aggiunto con successo.";
+                MSG_ADD_SUCCESSFUL = "Media aggiunto con successo al percorso: ";
                 MSG_REMINDER_DAYS_LEFT = "Giorni che rimangono per rinnovare l'iscrizione:";
                 MSG_DAYS = "giorni";
                 MSG_ESCAPE_STRING_MESSAGE = "per uscire da questa sezione";
@@ -161,7 +161,7 @@ public class Notifications {
                 MSG_OPERATOR_MENU = "Welcome, operator!";
                 MSG_CUSTOMER_MENU = "Welcome, customer!";
                 MSG_ABORT = "Aborting...";
-                MSG_ADD_SUCCESSFUL = "Media item added successfully.";
+                MSG_ADD_SUCCESSFUL = "Media item added successfully to: ";
                 MSG_REMINDER_DAYS_LEFT = "Days you have left to renew your subscription:";
                 MSG_DAYS = "days";
                 MSG_ESCAPE_STRING_MESSAGE = "to exit this section";
