@@ -16,7 +16,7 @@ public class Media implements Serializable {
     private String bareItemDetails;
     private int identifier;
     private String mediaName;
-    private String[] path;
+    private String path;
     private GregorianCalendar dateAdded;
 
     /**
@@ -58,30 +58,20 @@ public class Media implements Serializable {
     }
 
     /**
-     * Sets the item path (symbolic folder path) in form of a {@code String} array. Every element in the array
-     * represents a folder, which will (symbolically) be as deeply nested as the position it holds in the array.
-     * <p>
-     * Example. The following path represented in form of an array ["Book", "Horror", "1950s", "A"] is an abstraction
-     * that has the same meaning as: "the 'A' folder is a sub-folder of the '1950s' folder, which in turn is a
-     * sub-folder of the 'Horror' folder, which is contained in the 'Book' folder".
+     * Sets the item path (symbolic folder path) in form of a {@code String}.
      *
      * @param path the path to set.
      */
-    public void setPath(String[] path) {
+    public void setPath(String path) {
         this.path = path;
     }
 
     /**
-     * Getter for the item path (symbolic folder path). Every element in the array
-     * represents a folder, which will (symbolically) be as deeply nested as the position it holds in the array.
-     * <p>
-     * Example. The following path represented in form of an array ["Book", "Horror", "1950s", "A"] is an abstraction
-     * that has the same meaning as: "the 'A' folder is a sub-folder of the '1950s' folder, which in turn is a
-     * sub-folder of the 'Horror' folder, which is contained in the 'Book' folder".
+     * Getter for the item path (symbolic folder path).
      *
-     * @return a {@code String} array representing a folder path.
+     * @return a {@code String} representing a folder path.
      */
-    public String[] getPath() {
+    public String getPath() {
         return path;
     }
 

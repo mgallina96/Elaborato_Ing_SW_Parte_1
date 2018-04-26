@@ -5,6 +5,7 @@ import main.model.database.filesystem.FileSystem;
 import main.model.database.filesystem.Folder;
 import main.model.media.Media;
 import main.model.user.User;
+import main.utility.notifications.Notifications;
 
 /**
  * Created by Alessandro on 12/04/18.
@@ -15,7 +16,8 @@ public class QuickFillMain {
     private static final byte FILLING_LEVEL = 6;
 
     public static void main(String[] args) {
-/*
+        Notifications.setLanguage(Notifications.ENGLISH);
+        /*
         DatabaseManager d = DatabaseManager.getInstance();
         Generator generator = new Generator(FILLING_LEVEL);
 

@@ -1,11 +1,11 @@
 package generators.bookgenerator;
-
 import generators.randomwords.PoolLoader;
 import generators.randomwords.RandomWords;
-import static generators.bookgenerator.BookGenerator.COMMON_MEDIA_PATH;
-import static generators.bookgenerator.BookGenerator.COMMON_USER_PATH;
 
 import java.util.Random;
+
+import static generators.Generator.COMMON_MEDIA_PATH;
+import static generators.Generator.COMMON_USER_PATH;
 
 public class TitleGenerator {
 

@@ -11,6 +11,8 @@ import java.util.ArrayList;
  */
 public class Generator {
 
+    public static final String COMMON_MEDIA_PATH = "resources\\media\\";
+    public static final String COMMON_USER_PATH = "resources\\users\\";
     private byte fillingLevel;
     private ArrayList<User> users;
     private ArrayList<Media> books;

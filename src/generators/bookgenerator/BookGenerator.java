@@ -8,13 +8,12 @@ import main.model.media.Media;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static generators.Generator.COMMON_MEDIA_PATH;
+
 /**
  * Created by Alessandro on 12/04/18.
  */
 public class BookGenerator {
-
-    public static final String COMMON_MEDIA_PATH = "resources\\media\\";
-    public static final String COMMON_USER_PATH = "resources\\users\\";
 
     private BookGenerator() {}
 
@@ -23,7 +22,7 @@ public class BookGenerator {
         ArrayList<Media> media = new ArrayList<>();
         TitleGenerator titleGenerator = TitleGenerator.getInstance();
 
-        RandomWords genres = new RandomWords(PoolLoader.fromTXTFile("test_resources\\media\\generi_libro.txt"));
+        RandomWords genres = new RandomWords(PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "generi_libro.txt"));
 
         for(int i = 0; i < howMany; i++) {
             int year;

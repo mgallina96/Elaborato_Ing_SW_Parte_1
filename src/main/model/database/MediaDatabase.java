@@ -35,7 +35,7 @@ class MediaDatabase implements Serializable {
 
     void addMedia(Media toAdd, String path) {
         toAdd.setIdentifier(counter++);
-        toAdd.setPath(resolvePath(path));
+        toAdd.setPath(path);
         mediaList.put(toAdd.getIdentifier(), toAdd);
     }
 
@@ -89,28 +89,5 @@ class MediaDatabase implements Serializable {
     static void setCounter(int counter) {
         MediaDatabase.counter = counter;
     }
-
-    private String[] resolvePath(String p) {
-        p += "\\";
-        int len = p.length();
-        int dim = 0;
-
-        for(int i = 0; i < len; i++)
-            if(p.charAt(i) == '\\')
-                dim++;
-
-        String[] path = new String[dim];
-        int counter = 0;
-
-        for(int i = 0; i < p.length(); i++)
-            if(p.charAt(i) == '\\') {
-                path[counter++] = p.substring(0, i);
-                p = p.substring(i + 1);
-                i = 0;
-            }
-
-        return path;
-    }
-
 
 }

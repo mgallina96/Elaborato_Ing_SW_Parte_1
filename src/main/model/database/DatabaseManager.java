@@ -173,7 +173,7 @@ public class DatabaseManager implements Serializable, Database {
             logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND);
         }
         catch(IOException IOEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_LOADING_DATABASE, IOEx);
+            logger.log(Level.SEVERE, Notifications.ERR_LOADING_DATABASE);
         }
         catch(ClassNotFoundException CNFEx) {
             logger.log(Level.SEVERE, Notifications.ERR_DATABASE_CLASS_NOT_FOUND);
