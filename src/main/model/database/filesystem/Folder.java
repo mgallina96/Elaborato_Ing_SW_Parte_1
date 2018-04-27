@@ -1,7 +1,5 @@
 package main.model.database.filesystem;
-
 import java.io.Serializable;
-
 import static main.model.database.filesystem.FileSystem.ROOT;
 
 /**
@@ -22,7 +20,7 @@ public class Folder implements Serializable {
         this.name = name;
         this.parent = this;
         this.folderId = 1;
-        this.depth = -1;
+        this.depth = 0;
         this.hasChildren = true;
     }
 
@@ -31,17 +29,7 @@ public class Folder implements Serializable {
         this.parent = parent;
         this.folderId = ID;
         this.hasChildren = false;
-        resolveDepth();
-    }
-
-    private void resolveDepth() {
-        this.depth = 0;
-        Folder tmpParent = this.parent;
-
-        while(tmpParent != ROOT) {
-            this.depth++;
-            tmpParent = tmpParent.parent;
-        }
+        this.depth = this.parent.getDepth() + 1;
     }
 
     public void setHasChildren(boolean hasChildren) {
