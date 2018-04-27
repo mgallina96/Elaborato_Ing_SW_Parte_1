@@ -10,7 +10,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * @author Manuel Gallina
+ * The file system for this application.
+ * <p>
+ * Manages the general folder structure and provides methods for checking path validity, checking path presence,
+ * returning sub-folders.
+ *
+ * @author Manuel Gallina, Giosuè Filippini, Alessandro Polcini
  */
 public class FileSystem implements Serializable {
 
@@ -18,11 +23,13 @@ public class FileSystem implements Serializable {
     private static final long serialVersionUID = 7970305636210332068L;
 
     private static final String FILESYSTEM_FILE_PATH = "application_resources\\Biblioteca SMARTINATOR - File System.ser";
-    static final Folder ROOT = new Folder("root");
+    private static final Folder ROOT = new Folder("root");
+    private final long ROOT_ID = 1L;
+
     private static FileSystem instance;
     private String allPaths;
     private Logger logger;
-    private HashMap<Integer, Folder> fileSystem;
+    private HashMap<Long, Folder> fileSystem;
 
     @SuppressWarnings("all")
     private FileSystem() {
@@ -30,11 +37,11 @@ public class FileSystem implements Serializable {
         this.logger = Logger.getLogger(this.getClass().getName());
 
         loadFileSystem();
-        //please don't FUCKING move the following declaration.
+        //please DON'T move the following declaration, as the paths can only be resolved AFTER the File System has been loaded.
         this.allPaths = allPathsToString();
 
-        if(!fileSystem.containsValue(ROOT))
-            this.fileSystem.put(1, ROOT);
+        if(!fileSystem.containsKey(ROOT_ID))
+            this.fileSystem.put(ROOT_ID, ROOT);
     }
 
     public static FileSystem getInstance() {
@@ -44,48 +51,92 @@ public class FileSystem implements Serializable {
         return instance;
     }
 
+    /**
+     * Checks whether the given path is present in the File System.
+     *
+     * @param path The path to be checked.
+     * @return A boolean value, {@code true} if the path is present, {@code false} otherwise.
+     */
     public boolean isPresent(String path) {
         return allPaths.contains(path);
     }
 
+    /**
+     * Returns all the present paths in the form of a {@code String}.
+     *
+     * @return A {@code String} containing all paths.
+     */
     public String getAllPaths() {
         return allPaths;
+    }
+
+    public HashMap<Long, Folder> getFileSystem() {
+        return fileSystem;
+    }
+
+    /**
+     * Getter for the ID of the ROOT folder.
+     *
+     * @return The ROOT ID's {@code Long} value.
+     */
+    public long getRootID() {
+        return ROOT_ID;
     }
 
     private String allPathsToString() {
         StringBuilder allPaths = new StringBuilder();
 
-        for(Folder f : fileSystem.values()) {
-            ArrayList<String> tmp = new ArrayList<>();
-
-            while(f.getParent() != f) {
-                tmp.add(f.getName() + "\\");
-                f = f.getParent();
-            }
-
-            Collections.reverse(tmp);
-            tmp.forEach(allPaths::append);
-            allPaths.append("\n");
-        }
+        fileSystem.values().stream()
+                .filter(f -> f.getParent() != f)
+                .forEach(f -> allPaths.append(f.getFolderPath()).append("\n"));
 
         return allPaths.toString().trim();
     }
 
-    public String pathToString(int folderID) {
-        Folder folder = fileSystem.get(folderID);
+    /**
+     * Returns all sub-folders of a desired folder in the form of a {@code String}.
+     *
+     * @param parentID The ID associated to the parent whose sub-folders are to be visualized.
+     * @return A {@code String} containing all sub-folders.
+     */
+    public String getSubFolders(long parentID) {
+        StringBuilder folders = new StringBuilder();
 
-        StringBuilder path = new StringBuilder();
-        ArrayList<String> tmp = new ArrayList<>();
+        fileSystem.get(parentID).getChildren()
+                .forEach(f -> folders.append(f.getFolderId()).append(".\t").append(f.getName()).append("\n"));
 
-        while(folder.getParent() != folder) {
-            tmp.add(folder.getName() + "\\");
-            folder = folder.getParent();
+        return folders.toString().trim();
+    }
+
+    /**
+     * Recursive function that builds a tree structure starting from a folder.
+     * A HashMap with specific key values is needed for this method to work correctly.
+     * The key values have to follow a binary pattern.
+     *
+     * @param root The root folder to start from.
+     * @param depth The depth of the current folder.
+     * @return A string containing the full tree.
+     */
+    private String tree(Folder root, int depth) {
+        StringBuilder treeToString = new StringBuilder();
+
+        for(int i = 0; i < depth; i++)
+            treeToString.append("|\t");
+        treeToString.append(root.getName()).append("\n");
+
+        Folder timesTwo = fileSystem.get(root.getFolderId() * 2);
+        Folder timesTwoPlusOne = fileSystem.get(root.getFolderId() * 2 + 1);
+
+        if(timesTwo != null) {
+            depth++;
+            treeToString.append(tree(timesTwo, depth));
+            depth--;
+        }
+        if(timesTwoPlusOne != null) {
+            treeToString.append(tree(timesTwoPlusOne, depth));
         }
 
-        Collections.reverse(tmp);
-        tmp.forEach(path::append);
-
-        return path.toString();
+        return treeToString.toString().trim();
     }
 
     @SuppressWarnings("unchecked")
@@ -94,7 +145,7 @@ public class FileSystem implements Serializable {
             FileInputStream fileIn = new FileInputStream(FILESYSTEM_FILE_PATH);
             ObjectInputStream in = new ObjectInputStream(fileIn);
 
-            this.fileSystem = ((HashMap<Integer, Folder>) in.readObject());
+            this.fileSystem = ((HashMap<Long, Folder>) in.readObject());
 
             in.close();
             fileIn.close();
@@ -110,9 +161,10 @@ public class FileSystem implements Serializable {
         }
     }
 
+    /**
+     * Saves the File System in the form of a HashMap object.
+     */
     public void saveFileSystem() {
-        setChildrenStatus();
-
         try {
             //to increase serializing speed
             RandomAccessFile raf = new RandomAccessFile(FILESYSTEM_FILE_PATH, "rw");
@@ -128,38 +180,5 @@ public class FileSystem implements Serializable {
         catch(IOException IOEx) {
             logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE, IOEx);
         }
-    }
-
-    public String getFoldersByDepth(int depth, int parentID) {
-       StringBuilder folders = new StringBuilder();
-
-        for(Folder folder : fileSystem.values()) {
-            if(folder.getParent().getFolderId() == parentID && folder.getDepth() == depth) {
-                folders.append(folder.getFolderId());
-                folders.append(".\t");
-                folders.append(folder.getName());
-                folders.append("\n");
-            }
-        }
-
-        return folders.toString().trim();
-    }
-
-    private void setChildrenStatus() {
-        for(Folder f : fileSystem.values())
-            for(Folder f1 : fileSystem.values()) {
-                if(f.getParent() == f1) {
-                    f1.setHasChildren(true);
-                    break;
-                }
-            }
-    }
-
-    public HashMap<Integer, Folder> getFileSystem() {
-        return fileSystem;
-    }
-
-    public static Folder getROOT() {
-        return ROOT;
     }
 }

@@ -155,22 +155,27 @@ public class Controller implements SystemController {
     }
 
     @Override
-    public boolean folderHasChildren(int folderID) {
-        return fileSystem.getFileSystem().get(folderID).hasChildren();
+    public boolean folderHasChildren(long folderID) {
+        return !fileSystem.getFileSystem().get(folderID).getChildren().isEmpty();
     }
 
     @Override
-    public String getFoldersByDepth(int depth, int parentID) {
-        return fileSystem.getFoldersByDepth(depth, parentID);
+    public String getSubFolders(long parentID) {
+        return fileSystem.getSubFolders(parentID);
     }
 
     @Override
-    public int getRootID() {
-        return FileSystem.getROOT().getFolderId();
+    public long getRootID() {
+        return fileSystem.getRootID();
     }
 
     @Override
-    public String getPathToString(int folderID) {
-        return fileSystem.pathToString(folderID);
+    public String getPathToString(long folderID) {
+        return fileSystem.getFileSystem().get(folderID).getFolderPath();
+    }
+
+    @Override
+    public String getFolderContents(String folderPath) {
+        return database.getFolderContents(folderPath);
     }
 }

@@ -137,27 +137,38 @@ public interface SystemController {
      * @param folderID The ID associated to the folder to be checked.
      * @return A boolean value: {@code true} if the given folder has children, {@code false} otherwise.
      */
-    boolean folderHasChildren(int folderID);
+    boolean folderHasChildren(long folderID);
 
     /**
+     * Searches the file system for the folder with the given ID and returns its children in the format of a {@code
+     * String}.
      *
-     * @param depth
-     * @param parentID
-     * @return
+     * @param parentID The ID of the desired parent folder.
+     * @return A {@code String} containing all sub-folders of the desired parent folder.
      */
-    String getFoldersByDepth(int depth, int parentID);
+    String getSubFolders(long parentID);
 
     /**
+     * Getter for the ROOT folder ID.
      *
-     * @return
+     * @return The ID's {@code Long} value.
      */
-    int getRootID();
+    long getRootID();
 
     /**
+     * Returns the path of the folder associated with the given ID.
      *
-     * @param folderID
-     * @return
+     * @param folderID The folder ID.
+     * @return A {@code String} containing the full path of that folder.
      */
-    String getPathToString(int folderID);
+    String getPathToString(long folderID);
+
+    /**
+     * Returns the contents of the folder that matches the given path.
+     *
+     * @param folderPath The path to look for.
+     * @return A {@code String} with all the contents of that folder.
+     */
+    String getFolderContents(String folderPath);
 
 }

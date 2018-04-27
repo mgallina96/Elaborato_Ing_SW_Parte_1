@@ -111,4 +111,12 @@ public interface Database {
      */
     boolean isPresent(Media toFind);
 
+    /**
+     * Returns the contents of the folder that matches the given path.
+     *
+     * @param folderPath The path to look for.
+     * @return A {@code String} with all the contents of that folder.
+     */
+    String getFolderContents(String folderPath);
+
 }

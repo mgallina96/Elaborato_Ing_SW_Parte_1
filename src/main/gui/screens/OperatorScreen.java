@@ -42,7 +42,7 @@ public class OperatorScreen extends Screen {
                     removeMedia();
                     break;
                 case 3:
-                    System.out.printf("%s\n%s\n", MSG_MEDIA_LIST, getController().allMediaToString());
+                    printFilteredMedia();
                     break;
                 case 4:
                     System.out.printf("%s\n%s\n", MSG_USER_LIST, getController().allUsersToString());
@@ -79,29 +79,39 @@ public class OperatorScreen extends Screen {
         System.out.print(PROMPT_PUBLISHER_NAME);
         String publisherName = insertName();
 
+        System.out.printf("%s\n%s\n", SEPARATOR, PROMPT_SELECT_PATH);
         String path = chooseFolder();
 
         getController().addMediaToDatabase(title, author, genre, year, publisherName, path);
-    }
-
-    private String chooseFolder() {
-        System.out.printf("%s\n%s\n", SEPARATOR, PROMPT_SELECT_PATH);
-        String path;
-
-        int depth = 0;
-        int currentID = getController().getRootID();
-
-        do {
-            if(depth > 0)
-                currentID = insertInteger();
-            System.out.println(getController().getFoldersByDepth(depth++, currentID));
-        } while(getController().folderHasChildren(currentID));
-
-        path = getController().getPathToString(currentID);
 
         System.out.printf("%s\"%s\"\n", MSG_ADD_SUCCESSFUL, path);
+    }
 
-        return path;
+    /**
+     * Prints the filtered list of {@code Media} items that are located in the chosen folder.
+     */
+    private void printFilteredMedia() {
+        System.out.printf("%s\n%s\n", PROMPT_WHICH_FOLDER, SEPARATOR);
+        String path = chooseFolder();
+
+        System.out.printf("%s\"%s\":\n%s\n", MSG_FOLDER_CONTENTS, path, getController().getFolderContents(path));
+    }
+
+    /**
+     * Allows the operator to choose a path step by step, by printing the selected sub-folders until the desired one is
+     * reached.
+     *
+     * @return A {@code String} representing the path of the desired folder.
+     */
+    private String chooseFolder() {
+        long currentID = getController().getRootID();
+
+        while(getController().folderHasChildren(currentID)) {
+            System.out.println(getController().getSubFolders(currentID));
+            currentID = insertInteger();
+        }
+
+        return getController().getPathToString(currentID);
     }
 
     /**

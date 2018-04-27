@@ -116,6 +116,11 @@ public class DatabaseManager implements Serializable, Database {
     }
 
     @Override
+    public String getFolderContents(String folderPath) {
+        return mediaDatabase.getFolderContents(folderPath);
+    }
+
+    @Override
     public void removeCurrentUser() {
         userDatabase.removeCurrentUser();
     }

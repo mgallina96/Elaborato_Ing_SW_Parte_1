@@ -96,4 +96,8 @@ public class Book extends Media implements Serializable {
         return String.format("%s\t|\tSubtitle: %s\t|\tLanguage: %s\t|\tPage count: %d%s\nDescription: %s\n",
                 toString(), subtitle, language, pageCount, (belongsToSeries ? ("|\tVolume number: " + volumeNumber) : ""), description);
     }
+
+    public String getGenre() {
+        return genre;
+    }
 }

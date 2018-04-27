@@ -1,9 +1,12 @@
 package main.model.database.filesystem;
 import java.io.Serializable;
-import static main.model.database.filesystem.FileSystem.ROOT;
+import java.util.ArrayList;
 
 /**
- * @author Manuel Gallina
+ * The {@code Folder} class, which manages a single folder entity by storing its most important parameters: parent,
+ * children, path, unique ID and depth.
+ *
+ * @author Manuel Gallina, Giosuè Filippini, Alessandro Polcini
  */
 public class Folder implements Serializable {
 
@@ -11,52 +14,87 @@ public class Folder implements Serializable {
     private static final long serialVersionUID = 7970305636210332068L;
 
     private Folder parent;
-    private boolean hasChildren;
+    private ArrayList<Folder> children;
     private String name;
-    private int folderId;
+    private String folderPath;
+    private long folderId;
     private int depth;
 
+    /**
+     * Default constructor for the ROOT folder only. The ROOT folder is the first element in the folder structure, whose
+     * children array contains all the other folders (either directly or indirectly). The parent of ROOT is ROOT itself.
+     *
+     * @param name The name of the folder.
+     */
     Folder(String name) {
         this.name = name;
+        this.folderPath = this.name + "\\";
         this.parent = this;
         this.folderId = 1;
         this.depth = 0;
-        this.hasChildren = true;
+        this.children = new ArrayList<>();
     }
 
-    public Folder(String name, Folder parent, int ID) {
+    /**
+     * Constructor for a common non-ROOT folder. Its depth is initialized as the parent's depth +1 and its path can be
+     * resolved by appending its name to the parent path.<p>
+     * As the folder is created, it gets added to its parent's {@code ArrayList} of children.
+     *
+     * @param name The name of the folder.
+     * @param parent The parent of the folder.
+     */
+    public Folder(String name, Folder parent) {
         this.name = name;
         this.parent = parent;
-        this.folderId = ID;
-        this.hasChildren = false;
+        this.children = new ArrayList<>();
         this.depth = this.parent.getDepth() + 1;
+
+        if(this.parent.getChildren().isEmpty())
+            this.folderId = this.parent.getFolderId() * 2;
+        else
+            this.folderId = (this.parent.getChildren().get(this.parent.getChildren().size() - 1)).getFolderId() * 2 + 1;
+
+        this.parent.addChild(this);
+
+        //please DON'T move the following declaration, as the parent must be constructed BEFORE resolving the path.
+        this.folderPath = this.parent.getFolderPath() + this.name + "\\";
     }
 
-    public void setHasChildren(boolean hasChildren) {
-        this.hasChildren = hasChildren;
-    }
-
-    public boolean hasChildren() {
-        return hasChildren;
-    }
-
-    public int getDepth() {
-        return depth;
-    }
-
-    public Folder getParent() {
-        return parent;
+    /**
+     * Getter for the folder path.
+     *
+     * @return A {@code String} containing the path of this folder.
+     */
+    public String getFolderPath() {
+        return folderPath;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getFolderId() {
-        return folderId;
+    public Folder getParent() {
+        return parent;
     }
 
-    /*public void setFolderId(int folderId) {
-        this.folderId = folderId;
-    }*/
+    /**
+     * Getter for the children of this folder.
+     *
+     * @return An {@code ArrayList} containing this folder's children.
+     */
+    public ArrayList<Folder> getChildren() {
+        return children;
+    }
+
+    private void addChild(Folder toAdd) {
+        children.add(toAdd);
+    }
+
+    public int getDepth() {
+        return depth;
+    }
+
+    public long getFolderId() {
+        return folderId;
+    }
 }

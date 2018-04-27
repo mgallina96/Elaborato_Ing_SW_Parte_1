@@ -15,7 +15,6 @@ class MediaDatabase implements Serializable {
 
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -5687383377098150051L;
-    private static final String FILE_SYSTEM_PATH = "application_resources\\Biblioteca SMARTINATOR - File System.txt";
 
     private static MediaDatabase mediaDatabase;
     private static int counter;
@@ -74,6 +73,16 @@ class MediaDatabase implements Serializable {
                 .forEach(s -> filteredMedia.append(s.toString()));
 
         return filteredMedia.toString();
+    }
+
+    String getFolderContents(String folderPath) {
+        StringBuilder folderContents = new StringBuilder();
+
+        mediaList.values().stream()
+                .filter(m -> m.getPath().equals(folderPath))
+                .forEach(m -> folderContents.append(m.toString()));
+
+        return folderContents.toString();
     }
 
     void setMediaList(HashMap<Integer, Media> mediaList) {
