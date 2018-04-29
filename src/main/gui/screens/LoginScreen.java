@@ -15,7 +15,6 @@ import static main.utility.notifications.Notifications.*;
  */
 public class LoginScreen extends Screen {
 
-    private static final String ESCAPE_STRING = "!quit";
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     /**
@@ -27,21 +26,6 @@ public class LoginScreen extends Screen {
         super(controller);
     }
 
-    /**
-     * Asks for an input and acquires it. If the user types in {@code "!quit"}, the login section closes.
-     */
-    private String inputRequest(String prompt) throws InterruptedException {
-        String input;
-
-        System.out.print(prompt);
-        input = getScanner().next();
-        getScanner().nextLine();
-
-        if(input.equals(ESCAPE_STRING))
-            throw new InterruptedException();
-
-        return input;
-    }
 
     /**
      * Builds the actual login screen. This method also keeps track of the user that just logged in by returning a
@@ -82,4 +66,21 @@ public class LoginScreen extends Screen {
 
         return null;
     }
+
+    /**
+     * Asks for an input and acquires it. If the user types in {@code "!quit"}, the login section closes.
+     */
+    private String inputRequest(String prompt) throws InterruptedException {
+        String input;
+
+        System.out.print(prompt);
+        input = getScanner().next();
+        getScanner().nextLine();
+
+        if(input.equals(ESCAPE_STRING))
+            throw new InterruptedException();
+
+        return input;
+    }
+
 }

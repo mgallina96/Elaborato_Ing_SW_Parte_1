@@ -62,21 +62,21 @@ public class Controller implements SystemController {
     public boolean mediaIsPresent(int id) {
         return database.isPresent(new Media(id));
     }
-
+/*
     @Override
     public boolean pathIsPresent(String path) {
         return fileSystem.isPresent(path);
-    }
+    }*/
 
     @Override
     public String allUsersToString() {
         return database.getUserListString();
     }
 
-    @Override
+ /*   @Override
     public String allMediaToString() {
         return database.getMediaListString();
-    }
+    }*/
 
     @Override
     public String allFilteredMediaList(String filter) {
@@ -127,7 +127,7 @@ public class Controller implements SystemController {
     @Override
     public int daysLeftToRenew(String username) {
         User user = database.fetch(new User(username));
-        return (user instanceof Customer) ? ((Customer)user).daysLeftToRenew() : 999999999;
+        return (user instanceof Customer) ? ((Customer)user).daysLeftToRenew() : Integer.MAX_VALUE;
     }
 
     @Override

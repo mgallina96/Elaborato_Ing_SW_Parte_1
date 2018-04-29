@@ -3,348 +3,90 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="599.675" y="535.0">main.Controller</node>
-    <node x="291.215676999768" y="406.0">main.model.database.DatabaseManager</node>
-    <node x="1128.170672761582" y="208.0">main.gui.screens.Screen</node>
-    <node x="448.89578893328905" y="208.0">main.model.media.Media</node>
-    <node x="116.0" y="208.0">main.model.user.Customer</node>
-    <node x="0.0" y="208.0">main.model.user.Operator</node>
-    <node x="1583.195672761582" y="297.0">main.model.database.filesystem.Folder</node>
-    <node x="1126.675" y="614.0">main.Main</node>
-    <node x="1283.170672761582" y="297.0">main.gui.screens.LoginScreen</node>
-    <node x="1416.170672761582" y="297.0">main.gui.screens.SignUpScreen</node>
-    <node x="618.1706727615821" y="297.0">main.model.media.Book</node>
-    <node x="1155.3957889332892" y="79.0">main.SystemController</node>
-    <node x="260.2217786001877" y="79.0">main.model.user.User</node>
-    <node x="176.96602702852715" y="0.0">main.model.user.UserStatus</node>
-    <node x="848.1706727615821" y="297.0">main.gui.screens.MainScreen</node>
-    <node x="502.17067276158207" y="297.0">main.model.database.Database</node>
-    <node x="1571.695672761582" y="406.0">main.model.database.filesystem.FileSystem</node>
-    <node x="714.1706727615821" y="297.0">main.gui.GuiManager</node>
-    <node x="195.67499999999995" y="297.0">main.model.database.UserDatabase</node>
-    <node x="1058.425" y="406.0">main.gui.TextualView</node>
-    <node x="1128.170672761582" y="297.0">main.gui.screens.CustomerScreen</node>
-    <node x="335.67499999999995" y="297.0">main.model.database.MediaDatabase</node>
-    <node x="978.1706727615821" y="297.0">main.gui.screens.OperatorScreen</node>
+    <node x="260.0" y="232.0">main.model.database.DatabaseManager</node>
+    <node x="467.0" y="232.0">main.Controller</node>
+    <node x="306.0" y="0.0">main.gui.screens.Screen</node>
+    <node x="158.0" y="306.0">main.model.media.Media</node>
+    <node x="115.0" y="232.0">main.model.user.Customer</node>
+    <node x="0.0" y="232.0">main.model.user.Operator</node>
+    <node x="297.0" y="459.0">main.model.database.filesystem.Folder</node>
+    <node x="423.0" y="459.0">main.Main</node>
+    <node x="568.0" y="79.0">main.gui.screens.SignUpScreen</node>
+    <node x="435.0" y="79.0">main.gui.screens.LoginScreen</node>
+    <node x="161.0" y="385.0">main.model.media.Book</node>
+    <node x="448.0" y="153.0">main.SystemController</node>
+    <node x="70.75" y="153.0">main.model.user.User</node>
+    <node x="149.0" y="459.0">main.model.user.UserStatus</node>
+    <node x="150.0" y="79.0">main.gui.screens.MainScreen</node>
+    <node x="283.5" y="153.0">main.model.database.Database</node>
+    <node x="0.0" y="459.0">main.model.database.filesystem.FileSystem</node>
+    <node x="0.0" y="306.0">main.gui.GuiManager</node>
+    <node x="458.0" y="306.0">main.model.database.UserDatabase</node>
+    <node x="1.0000000000001137" y="385.0">main.gui.TextualView</node>
+    <node x="280.0" y="79.0">main.gui.screens.CustomerScreen</node>
+    <node x="284.0" y="306.0">main.model.database.MediaDatabase</node>
+    <node x="0.0" y="79.0">main.gui.screens.OperatorScreen</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="main.gui.screens.LoginScreen" target="main.SystemController">
-      <point x="28.25" y="-14.5" />
-      <point x="1367.920672761582" y="188.0" />
-      <point x="1237.5321525696527" y="188.0" />
-      <point x="12.63636363636374" y="14.5" />
-    </edge>
-    <edge source="main.Main" target="main.SystemController">
-      <point x="18.75" y="-14.5" />
-      <point x="1182.925" y="589.0" />
-      <point x="1686.195672761582" y="589.0" />
-      <point x="1686.195672761582" y="148.0" />
-      <point x="1288.0776071151072" y="148.0" />
-      <point x="63.181818181818244" y="14.5" />
-    </edge>
-    <edge source="main.model.database.filesystem.FileSystem" target="main.model.database.filesystem.Folder">
-      <point x="39.0" y="-14.5" />
-      <point x="1662.695672761582" y="386.0" />
-      <point x="1654.070672761582" y="386.0" />
-      <point x="30.375" y="14.5" />
-    </edge>
     <edge source="main.gui.screens.LoginScreen" target="main.gui.screens.Screen">
-      <point x="-28.25" y="-14.5" />
-      <point x="1311.420672761582" y="267.0" />
-      <point x="1186.2706727615819" y="267.0" />
-      <point x="16.59999999999991" y="14.5" />
+      <point x="0.0" y="-14.5" />
+      <point x="491.5" y="59.0" />
+      <point x="364.1" y="59.0" />
+      <point x="16.600000000000023" y="14.5" />
     </edge>
     <edge source="main.Controller" target="main.SystemController">
-      <point x="31.076923076923094" y="-14.5" />
-      <point x="681.251923076923" y="495.0" />
-      <point x="1561.195672761582" y="495.0" />
-      <point x="1561.195672761582" y="158.0" />
-      <point x="1275.4412434787437" y="158.0" />
-      <point x="50.545454545454504" y="14.5" />
-    </edge>
-    <edge source="main.model.database.DatabaseManager" target="main.model.media.Media">
-      <point x="40.85714285714283" y="-14.5" />
-      <point x="403.5728198569108" y="376.0" />
-      <point x="475.17499999999995" y="376.0" />
-      <point x="475.17499999999995" y="277.0" />
-      <point x="482.64578893328905" y="277.0" />
-      <point x="-6.75" y="14.5" />
-    </edge>
-    <edge source="main.model.database.DatabaseManager" target="main.model.user.User">
-      <point x="-20.428571428571445" y="-14.5" />
-      <point x="342.28710557119655" y="366.0" />
-      <point x="325.17499999999995" y="366.0" />
-      <point x="325.17499999999995" y="188.0" />
-      <point x="313.4717786001877" y="188.0" />
-      <point x="17.75" y="14.5" />
-    </edge>
-    <edge source="main.Controller" target="main.model.database.filesystem.FileSystem">
-      <point x="46.61538461538464" y="-14.5" />
-      <point x="696.7903846153846" y="515.0" />
-      <point x="1649.695672761582" y="515.0" />
-      <point x="26.0" y="14.5" />
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
     </edge>
     <edge source="main.model.media.Book" target="main.model.media.Media">
       <point x="0.0" y="-14.5" />
-      <point x="655.6706727615821" y="267.0" />
-      <point x="523.145788933289" y="267.0" />
-      <point x="33.75" y="14.5" />
-    </edge>
-    <edge source="main.gui.screens.SignUpScreen" target="main.SystemController">
-      <point x="30.25" y="-14.5" />
-      <point x="1506.920672761582" y="178.0" />
-      <point x="1250.1685162060162" y="178.0" />
-      <point x="25.272727272727252" y="14.5" />
-    </edge>
-    <edge source="main.Controller" target="main.model.user.User">
-      <point x="-46.61538461538464" y="-14.5" />
-      <point x="603.5596153846153" y="515.0" />
-      <point x="105.5" y="515.0" />
-      <point x="105.5" y="138.0" />
-      <point x="270.87177860018767" y="138.0" />
-      <point x="-24.850000000000023" y="14.5" />
+      <point x="0.0" y="14.5" />
     </edge>
     <edge source="main.gui.TextualView" target="main.gui.GuiManager">
-      <point x="-49.950000000000045" y="-14.5" />
-      <point x="1063.975" y="386.0" />
-      <point x="798.9206727615821" y="386.0" />
-      <point x="28.25" y="14.5" />
-    </edge>
-    <edge source="main.Controller" target="main.gui.TextualView">
-      <point x="23.307692307692264" y="-14.5" />
-      <point x="673.4826923076922" y="485.0" />
-      <point x="1113.925" y="485.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="main.model.database.UserDatabase" target="main.model.user.User">
-      <point x="9.916666666666686" y="-14.5" />
-      <point x="265.09166666666664" y="277.0" />
-      <point x="260.67499999999995" y="277.0" />
-      <point x="260.67499999999995" y="168.0" />
-      <point x="292.1717786001877" y="168.0" />
-      <point x="-3.5500000000000114" y="14.5" />
-    </edge>
-    <edge source="main.gui.TextualView" target="main.gui.screens.LoginScreen">
-      <point x="27.75" y="-14.5" />
-      <point x="1141.675" y="366.0" />
-      <point x="1367.920672761582" y="366.0" />
-      <point x="28.25" y="14.5" />
-    </edge>
-    <edge source="main.Main" target="main.Controller">
-      <point x="-18.75" y="-14.5" />
-      <point x="1145.425" y="589.0" />
-      <point x="650.175" y="589.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="main.model.database.Database" target="main.model.media.Media">
-      <point x="-24.0" y="-14.5" />
-      <point x="526.1706727615821" y="277.0" />
-      <point x="509.64578893328905" y="277.0" />
-      <point x="20.25" y="14.5" />
-    </edge>
-    <edge source="main.gui.TextualView" target="main.gui.screens.SignUpScreen">
-      <point x="38.84999999999991" y="-14.5" />
-      <point x="1152.7749999999999" y="376.0" />
-      <point x="1476.670672761582" y="376.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="main.gui.TextualView" target="main.SystemController">
-      <point x="-38.84999999999991" y="-14.5" />
-      <point x="1075.075" y="376.0" />
-      <point x="837.6706727615821" y="376.0" />
-      <point x="837.6706727615821" y="148.0" />
-      <point x="1161.7139707514707" y="148.0" />
-      <point x="-63.181818181818244" y="14.5" />
-    </edge>
-    <edge source="main.gui.TextualView" target="main.gui.screens.OperatorScreen">
-      <point x="-5.5499999999999545" y="-14.5" />
-      <point x="1108.375" y="346.0" />
-      <point x="1043.170672761582" y="346.0" />
+      <point x="-1.1368683772161603E-13" y="-14.5" />
       <point x="0.0" y="14.5" />
     </edge>
     <edge source="main.gui.screens.MainScreen" target="main.gui.screens.Screen">
-      <point x="27.5" y="-14.5" />
-      <point x="930.6706727615821" y="267.0" />
-      <point x="1136.470672761582" y="267.0" />
-      <point x="-33.200000000000045" y="14.5" />
+      <point x="0.0" y="-14.5" />
+      <point x="205.0" y="59.0" />
+      <point x="330.9" y="59.0" />
+      <point x="-16.600000000000023" y="14.5" />
     </edge>
     <edge source="main.gui.screens.SignUpScreen" target="main.gui.screens.Screen">
-      <point x="-30.25" y="-14.5" />
-      <point x="1446.420672761582" y="257.0" />
-      <point x="1202.870672761582" y="257.0" />
+      <point x="0.0" y="-14.5" />
+      <point x="628.5" y="49.0" />
+      <point x="380.70000000000005" y="49.0" />
       <point x="33.200000000000045" y="14.5" />
     </edge>
-    <edge source="main.gui.screens.MainScreen" target="main.SystemController">
-      <point x="-27.5" y="-14.5" />
-      <point x="875.6706727615821" y="158.0" />
-      <point x="1174.3503343878347" y="158.0" />
-      <point x="-50.545454545454504" y="14.5" />
-    </edge>
-    <edge source="main.gui.screens.Screen" target="main.SystemController">
-      <point x="20.75" y="-14.5" />
-      <point x="1190.420672761582" y="188.0" />
-      <point x="1212.2594252969252" y="188.0" />
-      <point x="-12.63636363636374" y="14.5" />
-    </edge>
-    <edge source="main.gui.TextualView" target="main.gui.screens.MainScreen">
-      <point x="-16.649999999999864" y="-14.5" />
-      <point x="1097.275" y="356.0" />
-      <point x="930.6706727615821" y="356.0" />
-      <point x="27.5" y="14.5" />
-    </edge>
-    <edge source="main.gui.screens.CustomerScreen" target="main.SystemController">
-      <point x="33.75" y="-14.5" />
-      <point x="1229.420672761582" y="277.0" />
-      <point x="1221.670672761582" y="277.0" />
-      <point x="1221.670672761582" y="188.0" />
-      <point x="1224.8957889332892" y="188.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="main.model.database.UserDatabase" target="main.model.user.Customer">
-      <point x="-49.583333333333314" y="-14.5" />
-      <point x="205.59166666666658" y="277.0" />
-      <point x="199.33333333333337" y="277.0" />
-      <point x="33.33333333333334" y="14.5" />
-    </edge>
-    <edge source="main.model.database.UserDatabase" target="main.model.user.UserStatus">
-      <point x="-29.75" y="-14.5" />
-      <point x="225.42499999999995" y="277.0" />
-      <point x="226.5" y="277.0" />
-      <point x="226.5" y="59.0" />
-      <point x="228.46602702852715" y="59.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
     <edge source="main.model.user.Operator" target="main.model.user.User">
-      <point x="23.75" y="-14.5" />
-      <point x="71.25" y="128.0" />
-      <point x="263.7717786001877" y="128.0" />
-      <point x="-31.94999999999999" y="14.5" />
-    </edge>
-    <edge source="main.Controller" target="main.gui.GuiManager">
-      <point x="15.538461538461547" y="-14.5" />
-      <point x="665.7134615384615" y="475.0" />
-      <point x="742.4206727615821" y="475.0" />
-      <point x="-28.25" y="14.5" />
-    </edge>
-    <edge source="main.Controller" target="main.model.user.Customer">
-      <point x="-31.076923076923094" y="-14.5" />
-      <point x="619.0980769230769" y="495.0" />
-      <point x="153.21794871794862" y="495.0" />
-      <point x="153.21794871794862" y="277.0" />
-      <point x="166.0" y="277.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="main.model.user.User" target="main.model.user.UserStatus">
-      <point x="-17.75" y="-14.5" />
-      <point x="277.9717786001877" y="59.0" />
-      <point x="249.06602702852717" y="59.0" />
-      <point x="20.599999999999994" y="14.5" />
-    </edge>
-    <edge source="main.model.user.Customer" target="main.model.user.User">
-      <point x="25.0" y="-14.5" />
-      <point x="191.0" y="148.0" />
-      <point x="277.9717786001877" y="148.0" />
+      <point x="0.0" y="-14.5" />
+      <point x="47.5" y="207.0" />
+      <point x="88.5" y="207.0" />
       <point x="-17.75" y="14.5" />
     </edge>
-    <edge source="main.model.database.DatabaseManager" target="main.model.database.MediaDatabase">
-      <point x="20.428571428571445" y="-14.5" />
-      <point x="383.14424842833944" y="366.0" />
-      <point x="432.42499999999995" y="366.0" />
-      <point x="32.25" y="14.5" />
-    </edge>
-    <edge source="main.Controller" target="main.model.media.Media">
-      <point x="-15.538461538461547" y="-14.5" />
-      <point x="634.6365384615384" y="475.0" />
-      <point x="491.67067276158207" y="475.0" />
-      <point x="491.67067276158207" y="277.0" />
-      <point x="496.14578893328905" y="277.0" />
-      <point x="6.75" y="14.5" />
-    </edge>
-    <edge source="main.gui.screens.OperatorScreen" target="main.SystemController">
-      <point x="-32.5" y="-14.5" />
-      <point x="1010.6706727615821" y="257.0" />
-      <point x="1019.9749999999999" y="257.0" />
-      <point x="1019.9749999999999" y="168.0" />
-      <point x="1186.9866980241982" y="168.0" />
-      <point x="-37.90909090909099" y="14.5" />
-    </edge>
-    <edge source="main.model.user.Operator" target="main.model.user.UserStatus">
-      <point x="-23.75" y="-14.5" />
-      <point x="23.75" y="49.0" />
-      <point x="187.26602702852722" y="49.0" />
-      <point x="-41.19999999999993" y="14.5" />
-    </edge>
-    <edge source="main.Controller" target="main.model.database.Database">
-      <point x="-7.769230769230717" y="-14.5" />
-      <point x="642.4057692307692" y="465.0" />
-      <point x="574.1706727615821" y="465.0" />
-      <point x="24.0" y="14.5" />
+    <edge source="main.model.user.Customer" target="main.model.user.User">
+      <point x="0.0" y="-14.5" />
+      <point x="165.0" y="207.0" />
+      <point x="124.0" y="207.0" />
+      <point x="17.75" y="14.5" />
     </edge>
     <edge source="main.model.database.DatabaseManager" target="main.model.database.Database">
-      <point x="61.28571428571428" y="-14.5" />
-      <point x="424.00139128548227" y="386.0" />
-      <point x="526.1706727615821" y="386.0" />
-      <point x="-24.0" y="14.5" />
-    </edge>
-    <edge source="main.gui.TextualView" target="main.gui.screens.CustomerScreen">
-      <point x="5.5499999999999545" y="-14.5" />
-      <point x="1119.475" y="346.0" />
-      <point x="1195.670672761582" y="346.0" />
+      <point x="0.0" y="-14.5" />
       <point x="0.0" y="14.5" />
     </edge>
     <edge source="main.gui.screens.OperatorScreen" target="main.gui.screens.Screen">
-      <point x="32.5" y="-14.5" />
-      <point x="1075.670672761582" y="277.0" />
-      <point x="1153.070672761582" y="277.0" />
-      <point x="-16.59999999999991" y="14.5" />
-    </edge>
-    <edge source="main.Controller" target="main.model.database.DatabaseManager">
-      <point x="-23.307692307692264" y="-14.5" />
-      <point x="626.8673076923077" y="485.0" />
-      <point x="362.715676999768" y="485.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="main.Controller" target="main.model.media.Book">
       <point x="0.0" y="-14.5" />
-      <point x="650.175" y="455.0" />
-      <point x="655.6706727615821" y="455.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="main.model.database.Database" target="main.model.user.User">
-      <point x="24.0" y="-14.5" />
-      <point x="574.1706727615821" y="277.0" />
-      <point x="600.730111933521" y="277.0" />
-      <point x="600.730111933521" y="178.0" />
-      <point x="320.5717786001877" y="178.0" />
-      <point x="24.850000000000023" y="14.5" />
-    </edge>
-    <edge source="main.model.user.Customer" target="main.model.user.UserStatus">
-      <point x="-25.0" y="-14.5" />
-      <point x="141.0" y="59.0" />
-      <point x="207.86602702852713" y="59.0" />
-      <point x="-20.600000000000023" y="14.5" />
-    </edge>
-    <edge source="main.model.database.MediaDatabase" target="main.model.media.Media">
-      <point x="32.25" y="-14.5" />
-      <point x="432.42499999999995" y="277.0" />
-      <point x="469.14578893328905" y="277.0" />
-      <point x="-20.25" y="14.5" />
-    </edge>
-    <edge source="main.model.database.DatabaseManager" target="main.model.database.UserDatabase">
-      <point x="-40.85714285714289" y="-14.5" />
-      <point x="321.8585341426251" y="376.0" />
-      <point x="284.92499999999995" y="376.0" />
-      <point x="29.75" y="14.5" />
+      <point x="65.0" y="49.0" />
+      <point x="314.29999999999995" y="49.0" />
+      <point x="-33.200000000000045" y="14.5" />
     </edge>
     <edge source="main.gui.screens.CustomerScreen" target="main.gui.screens.Screen">
-      <point x="-33.75" y="-14.5" />
-      <point x="1161.920672761582" y="277.0" />
-      <point x="1169.670672761582" y="277.0" />
+      <point x="0.0" y="-14.5" />
       <point x="0.0" y="14.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.6978883861236809" x="843.9130434782596" y="321.49999999999983" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="668.0" y="326.5" />
   <SelectedNodes />
   <Categories />
   <SCOPE>All</SCOPE>

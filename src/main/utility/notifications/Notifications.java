@@ -56,6 +56,7 @@ public class Notifications {
     public static String PROMPT_SELECT_PATH;
     public static String PROMPT_EXPIRY_IMMINENT;
     public static String PROMPT_WHICH_FOLDER;
+    public static String PROMPT_REMOVE_CONFIRMATION;
 
     //ERRORS
     public static String ERR_NOT_OF_AGE;
@@ -112,7 +113,8 @@ public class Notifications {
                 PROMPT_BIBLIO_INITIAL_CHOICES = "(1) ENTRA\t|\t(2) REGISTRATI\t|\t(3) ESCI";
                 PROMPT_OPERATOR_CHOICES = "(1) AGIUNGI UN MEDIA\t|\t(2) RIMUOVI UN MEDIA\t|\t(3) MOSTRA TUTTI I MEDIA\t|\t(4) MOSTRA TUTTI GLI UTENTI ISCRITTI\t|\t(5) ESCI";
                 PROMPT_CUSTOMER_CHOICES = "(1) RINNOVA LA TUA ISCRIZIONE!\t|\t(2) ESCI";
-                PROMPT_SIGN_UP_CONFIRMATION = "Sei sicuro/a di voler confermare? (y/n)";
+                PROMPT_SIGN_UP_CONFIRMATION = "Confermi l'iscrizione? (y/n)";
+                PROMPT_REMOVE_CONFIRMATION = "Confermi la rimozione? (y/n)";
                 PROMPT_LOGIN_SCREEN = "Bentornato/a! Entra nella " + MSG_BIBLIO_NAME;
                 PROMPT_SIGN_UP_SCREEN = "Ciao! Registrati alla " + MSG_BIBLIO_NAME;
                 PROMPT_MODIFY_FIELDS = "Modificare i campi errati per favore.";
@@ -180,6 +182,7 @@ public class Notifications {
                 PROMPT_OPERATOR_CHOICES = "(1) ADD A MEDIA ITEM\t|\t(2) REMOVE A MEDIA ITEM\t|\t(3) SHOW ALL MEDIA ITEMS\t|\t(4) SHOW ALL SUBSCRIBED USERS\t|\t(5) LOGOUT";
                 PROMPT_CUSTOMER_CHOICES = "(1) RENEW YOUR SUBSCRIPTION!\t|\t(2) LOGOUT";
                 PROMPT_SIGN_UP_CONFIRMATION = "Are you sure you want to submit this form? (y/n)";
+                PROMPT_REMOVE_CONFIRMATION = "Are you sure you want to remove this media item? (y/n)";
                 PROMPT_LOGIN_SCREEN = "Welcome back! Log in to " + MSG_BIBLIO_NAME;
                 PROMPT_SIGN_UP_SCREEN = "Hi there! Sign up for " + MSG_BIBLIO_NAME;
                 PROMPT_MODIFY_FIELDS = "Please modify the wrong fields.";
@@ -232,11 +235,9 @@ public class Notifications {
         this.language.initializeLanguages();
     }
 
-    public static Notifications setLanguage(Language language) {
+    public static void setLanguage(Language language) {
         if(notifications == null)
             notifications = new Notifications(language);
-
-        return notifications;
     }
 
     public Language getLanguage() {

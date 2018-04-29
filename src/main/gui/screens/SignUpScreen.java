@@ -22,6 +22,8 @@ public class SignUpScreen extends Screen {
         boolean valid;
         System.out.printf("%s\n%s\n", PROMPT_SIGN_UP_SCREEN, SEPARATOR);
 
+        //TODO Cambiare il rinnovo con lo spostamento alla sezione login
+
         do {
             valid = true;
 
@@ -42,12 +44,7 @@ public class SignUpScreen extends Screen {
 
             System.out.printf("%s\n%s\n%s\n", SEPARATOR, PROMPT_SIGN_UP_CONFIRMATION, SEPARATOR);
 
-            String choice;
-            do {
-                choice = getScanner().nextLine();
-            } while(choice.matches("[^ynYN]"));
-
-            if(choice.matches("[yY]")) {
+            if(insertString(YN_REGEX).equalsIgnoreCase(YES)) {
                 if(!getController().legalAge(InputParserUtility.toGregorianDate(birthday))) {
                     System.out.println(ERR_NOT_OF_AGE);
                     continue;
@@ -60,13 +57,8 @@ public class SignUpScreen extends Screen {
                 }
                 else {
                     System.out.printf("%s\n%s\n%s\n%s\n", ERR_USER_ALREADY_PRESENT, SEPARATOR, PROMPT_PRESENT_USER_MULTIPLE_CHOICE, SEPARATOR);
-                    String input;
 
-                    do {
-                        input = getScanner().nextLine();
-                    } while(!InputParserUtility.isValidInteger(input, 1, 4));
-
-                    switch(Integer.parseInt(input)) {
+                    switch(insertInteger(1, 4)) {
                         case 1:
                             System.out.println(MSG_EXIT_WITHOUT_SAVING);
                             valid = false;
@@ -87,42 +79,6 @@ public class SignUpScreen extends Screen {
             }
 
         } while(valid);
-
     }
 
-    /**
-     * Loops a scanner until the inserted {@code String} is a valid first name (or last name).
-     * <p>The parameters and the logic for name validity are defined in the {@code isValidName()} method of the
-     * {@link InputParserUtility} class.
-     *
-     * @return a valid name in the form of a {@code String}.
-     */
-    private String insertName() {
-        String name = getScanner().nextLine();
-
-        while(!InputParserUtility.isValidName(name)) {
-            System.out.println(ERR_INVALID_NAME);
-            name = getScanner().nextLine();
-        }
-
-        return name;
-    }
-
-    /**
-     * Loops a scanner until the inserted {@code String} is a valid birth date.
-     * <p>The parameters and the logic for date validity are defined in the {@code isValidDate()} method of the
-     * {@link InputParserUtility} class.
-     *
-     * @return a valid birth date in the form of a {@code String}.
-     */
-    private String insertDate() {
-        String date = getScanner().nextLine();
-
-        while(!InputParserUtility.isValidDate(date)) {
-            System.out.println(ERR_INVALID_DATE);
-            date = getScanner().nextLine();
-        }
-
-        return date;
-    }
 }

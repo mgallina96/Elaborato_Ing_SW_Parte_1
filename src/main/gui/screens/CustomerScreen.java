@@ -10,6 +10,7 @@ import static main.utility.notifications.Notifications.*;
  * @since version 0.1
  */
 public class CustomerScreen extends Screen {
+
     /**
      * Constructor for the {@code CustomerScreen} class. This constructor boots up the customer section.
      * @param controller The system controller.

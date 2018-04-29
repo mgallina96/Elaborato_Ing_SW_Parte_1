@@ -92,7 +92,7 @@ public interface SystemController {
      */
     void addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName, String path);
 
-    boolean pathIsPresent(String path);
+    //boolean pathIsPresent(String path);
 
     /**
      * Removes the media element associated with the given ID from the database and saves all changes made to the
@@ -117,12 +117,12 @@ public interface SystemController {
      */
     String allUsersToString();
 
-    /**
+/*    /**
      * Returns a {@code String} that contains all media items in the database.
      *
      * @return the list of all media items as a {@code String}.
      */
-    String allMediaToString();
+//    String allMediaToString();
 
     /**
      * Returns a {@code String} that contains all the media items that match a certain filter.

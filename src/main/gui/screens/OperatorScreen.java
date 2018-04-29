@@ -14,8 +14,6 @@ import static main.utility.notifications.Notifications.*;
  */
 public class OperatorScreen extends Screen {
 
-    private static final String QUIT_STRING = "!quit";
-
     /**
      * Constructor for the OperatorScreen class.
      * <p>
@@ -29,12 +27,7 @@ public class OperatorScreen extends Screen {
         while(!exitFromOperatorSection) {
             System.out.printf("%s\n%s\n%s\n", SEPARATOR, PROMPT_OPERATOR_CHOICES, SEPARATOR);
 
-            String command;
-            do {
-                command = getScanner().nextLine();
-            } while(!InputParserUtility.isValidInteger(command, 1, 6));
-
-            switch(Integer.parseInt(command)) {
+            switch(insertInteger(1, 6)) {
                 case 1:
                     addMedia();
                     break;
@@ -124,7 +117,7 @@ public class OperatorScreen extends Screen {
         System.out.println(PROMPT_REMOVE_MEDIA);
         String input = getScanner().nextLine();
 
-        if(input.equals(QUIT_STRING)) {
+        if(input.equals(ESCAPE_STRING)) {
             System.out.println(MSG_ABORT);
             return;
         }
@@ -133,73 +126,29 @@ public class OperatorScreen extends Screen {
 
         if(output.length() > 0) {
             System.out.printf("%s\n%s\n", MSG_FILTERED_MEDIA_LIST, output);
+            remove();
+        }
+        else
+            System.out.println(ERR_FILTERED_MEDIA_LIST_EMPTY);
+    }
 
-            System.out.println(PROMPT_REMOVE_MEDIA_ID);
-            int id = insertInteger();
-            while(!getController().mediaIsPresent(id)) {
-                System.out.println(ERR_MEDIA_NOT_PRESENT);
-                id = insertInteger();
-            }
+    private void remove() {
+        System.out.println(PROMPT_REMOVE_MEDIA_ID);
 
+        int id = insertInteger();
+        while(!getController().mediaIsPresent(id)) {
+            System.out.println(ERR_MEDIA_NOT_PRESENT);
+            id = insertInteger();
+        }
+
+        System.out.println(PROMPT_REMOVE_CONFIRMATION);
+
+        if(insertString(YN_REGEX).equalsIgnoreCase(YES)) {
             getController().removeMediaFromDatabase(id);
             System.out.println(MSG_REMOVE_SUCCESSFUL);
         }
-        else {
-            System.out.println(ERR_FILTERED_MEDIA_LIST_EMPTY);
-        }
+        else
+            System.out.println(MSG_ABORT);
     }
 
-    /**
-     * Loops a scanner until the inserted {@code String} is a valid person name.
-     * <p>The parameters and the logic for name validity are defined in the {@code isValidName()} method of the
-     * {@link InputParserUtility} class.
-     *
-     * @return a valid name in the form of a {@code String}.
-     */
-    private String insertName() {
-        String name = getScanner().nextLine();
-
-        while(!InputParserUtility.isValidName(name)) {
-            System.out.println(ERR_INVALID_NAME);
-            name = getScanner().nextLine();
-        }
-
-        return name;
-    }
-
-    /**
-     * Loops a scanner until the inserted {@code String} is a valid year.
-     * <p>The parameters and the logic for year validity are defined in the {@code isValidYear()} method of the
-     * {@link InputParserUtility} class.
-     *
-     * @return a valid year in the form of an {@code int}.
-     */
-    private int insertYear() {
-        String year = getScanner().nextLine();
-
-        while(!InputParserUtility.isValidYear(year)) {
-            System.out.println(ERR_INVALID_YEAR);
-            year = getScanner().nextLine();
-        }
-
-        return Integer.parseInt(year);
-    }
-
-    /**
-     * Loops a scanner until the inserted {@code String} represents a valid integer.
-     * <p>The parameters and the logic for integer validity are defined in the {@code isValidInteger()} method of the
-     * {@link InputParserUtility} class.
-     *
-     * @return a valid int.
-     */
-    private int insertInteger() {
-        String integer = getScanner().nextLine();
-
-        while(!InputParserUtility.isValidInteger(integer)) {
-            System.out.println(ERR_MSG_INVALID_INPUT);
-            integer = getScanner().nextLine();
-        }
-
-        return Integer.parseInt(integer);
-    }
 }

@@ -11,14 +11,14 @@ import main.model.user.User;
 public interface Database {
 
     /**
-     * Adds a new user to the database.
+     * Adds a new user to the database and saves the database after adding the user.
      *
      * @param toAdd The {@code User} to be added to the database.
      */
     void add(User toAdd);
 
     /**
-     * Adds a new piece of media to the database.
+     * Adds a new piece of media to the database and saves the database after adding the media item.
      *
      * @param toAdd The {@code Media} item to be added to the database.
      * @param path The path the {@code Media} item is stored in.

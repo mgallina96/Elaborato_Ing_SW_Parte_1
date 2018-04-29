@@ -50,16 +50,16 @@ public class FileSystem implements Serializable {
 
         return instance;
     }
-
+/*
     /**
      * Checks whether the given path is present in the File System.
      *
      * @param path The path to be checked.
      * @return A boolean value, {@code true} if the path is present, {@code false} otherwise.
      */
-    public boolean isPresent(String path) {
+/*    public boolean isPresent(String path) {
         return allPaths.contains(path);
-    }
+    }*/
 
     /**
      * Returns all the present paths in the form of a {@code String}.
