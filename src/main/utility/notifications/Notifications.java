@@ -29,6 +29,7 @@ public class Notifications {
     public static String MSG_DAYS;
     public static String MSG_ESCAPE_STRING_MESSAGE;
     public static String MSG_FOLDER_CONTENTS;
+    public static String MSG_MOVE_TO_LOGIN;
 
     //PROMPTS
     public static String PROMPT_FIRST_NAME;
@@ -104,12 +105,13 @@ public class Notifications {
                 MSG_DAYS = "giorni";
                 MSG_ESCAPE_STRING_MESSAGE = "per uscire da questa sezione";
                 MSG_FOLDER_CONTENTS = "Ecco i contenuti della cartella ";
+                MSG_MOVE_TO_LOGIN = "È consigliato spostarsi alla sezione login e provare ad accedere con questi dati.";
                 PROMPT_FIRST_NAME = "Nome (si prega di inserire un nome valido): ";
                 PROMPT_LAST_NAME = "Cognome (si prega di inserire un cognome valido): ";
                 PROMPT_USERNAME = "Username: ";
                 PROMPT_PASSWORD = "Password: ";
                 PROMPT_BIRTHDAY = "Compleanno (formato accettato = GG/MM/AAAA): ";
-                PROMPT_PRESENT_USER_MULTIPLE_CHOICE = "(1) USCIRE SENZA SALVARE\t|\t(2) CAMBIARE I CAMPI\t|\t(3) RINNOVARE L'ISCRIZIONE";
+                PROMPT_PRESENT_USER_MULTIPLE_CHOICE = "(1) USCIRE SENZA SALVARE\t|\t(2) CAMBIARE I CAMPI";
                 PROMPT_BIBLIO_INITIAL_CHOICES = "(1) ENTRA\t|\t(2) REGISTRATI\t|\t(3) ESCI";
                 PROMPT_OPERATOR_CHOICES = "(1) AGIUNGI UN MEDIA\t|\t(2) RIMUOVI UN MEDIA\t|\t(3) MOSTRA TUTTI I MEDIA\t|\t(4) MOSTRA TUTTI GLI UTENTI ISCRITTI\t|\t(5) ESCI";
                 PROMPT_CUSTOMER_CHOICES = "(1) RINNOVA LA TUA ISCRIZIONE!\t|\t(2) ESCI";
@@ -144,7 +146,7 @@ public class Notifications {
                 ERR_FILESYSTEM_CLASS_NOT_FOUND = "Classe FileSystem non trovata.";
                 ERR_FILE_NOT_FOUND = "Errore: file non trovato.";
                 ERR_MSG_INVALID_INPUT = "Input non valido.";
-                ERR_USER_ALREADY_PRESENT = "Questo utente è già presente nel database.";
+                ERR_USER_ALREADY_PRESENT = "Questo nome utente è già presente nel database.";
                 ERR_CANNOT_RENEW = "È troppo presto per effettuare il rinnovo dell'iscrizione.";
                 ERR_FILTERED_MEDIA_LIST_EMPTY = "Nessun media trovato. Terminazione in corso...";
                 ERR_MEDIA_NOT_PRESENT = "L'ID selezionato non corrisponde ad alcun media nel database.";
@@ -172,12 +174,13 @@ public class Notifications {
                 MSG_DAYS = "days";
                 MSG_ESCAPE_STRING_MESSAGE = "to exit this section";
                 MSG_FOLDER_CONTENTS = "Here are the contents of the folder ";
+                MSG_MOVE_TO_LOGIN = "Try logging in with these credentials.";
                 PROMPT_FIRST_NAME = "First name (please insert a valid first name): ";
                 PROMPT_LAST_NAME = "Last name (please insert a valid last name): ";
                 PROMPT_USERNAME = "Username: ";
                 PROMPT_PASSWORD = "Password: ";
                 PROMPT_BIRTHDAY = "Birthday (accepted format = DD/MM/YYYY): ";
-                PROMPT_PRESENT_USER_MULTIPLE_CHOICE = "(1) EXIT WITHOUT SAVING\t|\t(2) CHANGE FIELDS\t|\t(3) RENEW SUBSCRIPTION";
+                PROMPT_PRESENT_USER_MULTIPLE_CHOICE = "(1) EXIT WITHOUT SAVING\t|\t(2) CHANGE FIELDS";
                 PROMPT_BIBLIO_INITIAL_CHOICES = "(1) LOGIN\t|\t(2) SIGN UP\t|\t(3) EXIT";
                 PROMPT_OPERATOR_CHOICES = "(1) ADD A MEDIA ITEM\t|\t(2) REMOVE A MEDIA ITEM\t|\t(3) SHOW ALL MEDIA ITEMS\t|\t(4) SHOW ALL SUBSCRIBED USERS\t|\t(5) LOGOUT";
                 PROMPT_CUSTOMER_CHOICES = "(1) RENEW YOUR SUBSCRIPTION!\t|\t(2) LOGOUT";
@@ -212,7 +215,7 @@ public class Notifications {
                 ERR_FILESYSTEM_CLASS_NOT_FOUND = "FileSystem class not found.";
                 ERR_FILE_NOT_FOUND = "Error: file not found.";
                 ERR_MSG_INVALID_INPUT = "Invalid input.";
-                ERR_USER_ALREADY_PRESENT = "This user is already present in our database.";
+                ERR_USER_ALREADY_PRESENT = "This username is already present in our database.";
                 ERR_CANNOT_RENEW = "It's too early to renew your subscription.";
                 ERR_FILTERED_MEDIA_LIST_EMPTY = "No media items match your search. Aborting...";
                 ERR_MEDIA_NOT_PRESENT = "The chosen ID doesn't match any media in the database.";

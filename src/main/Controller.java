@@ -59,6 +59,11 @@ public class Controller implements SystemController {
     }
 
     @Override
+    public boolean userIsPresent(String username) {
+        return database.isPresent(new User(username));
+    }
+
+    @Override
     public boolean mediaIsPresent(int id) {
         return database.isPresent(new Media(id));
     }

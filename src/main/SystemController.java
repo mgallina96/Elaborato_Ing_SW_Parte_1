@@ -63,6 +63,14 @@ public interface SystemController {
     boolean checkUserLogin(String username, String password);
 
     /**
+     * Checks whether the given username matches an entry in the database.
+     *
+     * @param username The username to be checked.
+     * @return A boolean value, {@code true} if the given user can be found in the database, {@code false} otherwise.
+     */
+    boolean userIsPresent(String username);
+
+    /**
      * Checks if the media with the given ID is present in the database.
      *
      * @param id The ID of the media to be checked.

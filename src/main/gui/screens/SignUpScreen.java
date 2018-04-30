@@ -18,67 +18,75 @@ public class SignUpScreen extends Screen {
      */
     public SignUpScreen(SystemController controller) {
         super(controller);
-
-        boolean valid;
         System.out.printf("%s\n%s\n", PROMPT_SIGN_UP_SCREEN, SEPARATOR);
 
-        //TODO Cambiare il rinnovo con lo spostamento alla sezione login
-
+        int status;
         do {
-            valid = true;
+            status = signUp();
+        } while(status == 1);
+    }
 
-            System.out.print(PROMPT_FIRST_NAME);
-            String firstName = insertName();
+    private int signUp() {
+        String[] details;
 
-            System.out.print(PROMPT_LAST_NAME);
-            String lastName = insertName();
+        try {
+            details = fillDetails();
+        }
+        catch(InterruptedException IEx) {
+            System.out.printf("%s %s\n", ERR_SIGN_UP_ABORTED, MSG_EXIT_WITHOUT_SAVING);
+            return -1;
+        }
 
-            System.out.print(PROMPT_USERNAME);
-            String username = getScanner().nextLine();
+        if(!getController().legalAge(InputParserUtility.toGregorianDate(details[4]))) {
+            System.out.println(ERR_NOT_OF_AGE);
+            return 1;
+        }
+        if(!getController().userIsPresent(details[2])) {
+            getController().addUserToDatabase(details[0], details[1], details[2], details[3], InputParserUtility.toGregorianDate(details[4]));
+            System.out.println(MSG_SIGN_UP_SUCCESSFUL);
+            return 0;
+        }
+        else
+            return userAlreadyPresent();
+    }
 
-            System.out.print(PROMPT_PASSWORD);
-            String password = getScanner().nextLine();
+    private String[] fillDetails() throws InterruptedException {
+        System.out.print(PROMPT_FIRST_NAME);
+        String firstName = insertName();
 
-            System.out.print(PROMPT_BIRTHDAY);
-            String birthday = insertDate();
+        System.out.print(PROMPT_LAST_NAME);
+        String lastName = insertName();
 
-            System.out.printf("%s\n%s\n%s\n", SEPARATOR, PROMPT_SIGN_UP_CONFIRMATION, SEPARATOR);
+        System.out.print(PROMPT_USERNAME);
+        String username = getScanner().nextLine();
 
-            if(insertString(YN_REGEX).equalsIgnoreCase(YES)) {
-                if(!getController().legalAge(InputParserUtility.toGregorianDate(birthday))) {
-                    System.out.println(ERR_NOT_OF_AGE);
-                    continue;
-                }
+        System.out.print(PROMPT_PASSWORD);
+        String password = getScanner().nextLine();
 
-                if(!getController().checkUserLogin(username, password)) {
-                    getController().addUserToDatabase(firstName, lastName, username, password, InputParserUtility.toGregorianDate(birthday));
-                    System.out.println(MSG_SIGN_UP_SUCCESSFUL);
-                    break;
-                }
-                else {
-                    System.out.printf("%s\n%s\n%s\n%s\n", ERR_USER_ALREADY_PRESENT, SEPARATOR, PROMPT_PRESENT_USER_MULTIPLE_CHOICE, SEPARATOR);
+        System.out.print(PROMPT_BIRTHDAY);
+        String birthday = insertDate();
 
-                    switch(insertInteger(1, 4)) {
-                        case 1:
-                            System.out.println(MSG_EXIT_WITHOUT_SAVING);
-                            valid = false;
-                            break;
-                        case 2:
-                            System.out.println(PROMPT_MODIFY_FIELDS);
-                            break;
-                        case 3:
-                            getController().renewSubscription();
-                            valid = false;
-                            break;
-                    }
-                }
-            }
-            else {
-                System.out.printf("%s %s\n", ERR_SIGN_UP_ABORTED, MSG_EXIT_WITHOUT_SAVING);
-                break;
-            }
+        System.out.printf("%s\n%s\n%s\n", SEPARATOR, PROMPT_SIGN_UP_CONFIRMATION, SEPARATOR);
 
-        } while(valid);
+        if(insertString(YN_REGEX).equalsIgnoreCase(NO))
+            throw new InterruptedException();
+
+        return new String[]{firstName, lastName, username, password, birthday};
+    }
+
+    private int userAlreadyPresent() {
+        System.out.printf("%s\n%s\n%s\n%s\n", ERR_USER_ALREADY_PRESENT, SEPARATOR, PROMPT_PRESENT_USER_MULTIPLE_CHOICE, SEPARATOR);
+
+        switch(insertInteger(1, 3)) {
+            case 1:
+                System.out.printf("%s %s\n", MSG_EXIT_WITHOUT_SAVING, MSG_MOVE_TO_LOGIN);
+                return -1;
+            case 2:
+                System.out.println(PROMPT_MODIFY_FIELDS);
+                return 1;
+            default:
+                return 0;
+        }
     }
 
 }
