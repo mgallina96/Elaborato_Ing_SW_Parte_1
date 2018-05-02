@@ -87,7 +87,7 @@ public interface SystemController {
      * @param password The user's password.
      * @param birthday The user's birthday.
      */
-    void addUserToDatabase(String firstName, String lastName, String username, String password, GregorianCalendar birthday);
+    boolean addUserToDatabase(String firstName, String lastName, String username, String password, GregorianCalendar birthday);
 
     /**
      * Adds a new media item to the database and saves all changes made to the database.
@@ -98,7 +98,7 @@ public interface SystemController {
      * @param publicationYear the publication year.
      * @param publisherName the publisher's name.
      */
-    void addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName, String path);
+    boolean addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName, String path);
 
     //boolean pathIsPresent(String path);
 

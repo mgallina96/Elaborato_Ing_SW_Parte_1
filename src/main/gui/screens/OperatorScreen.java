@@ -75,9 +75,10 @@ public class OperatorScreen extends Screen {
         System.out.printf("%s\n%s\n", SEPARATOR, PROMPT_SELECT_PATH);
         String path = chooseFolder();
 
-        getController().addMediaToDatabase(title, author, genre, year, publisherName, path);
-
-        System.out.printf("%s\"%s\"\n", MSG_ADD_SUCCESSFUL, path);
+        if(!getController().addMediaToDatabase(title, author, genre, year, publisherName, path))
+            System.out.printf("%s\n%s\n", ERR_MEDIA_ALREADY_PRESENT, MSG_ABORT);
+        else
+            System.out.printf("%s\"%s\"\n", MSG_ADD_SUCCESSFUL, path);
     }
 
     /**

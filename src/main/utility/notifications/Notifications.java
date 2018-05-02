@@ -78,6 +78,7 @@ public class Notifications {
     public static String ERR_CANNOT_RENEW;
     public static String ERR_FILTERED_MEDIA_LIST_EMPTY;
     public static String ERR_MEDIA_NOT_PRESENT;
+    public static String ERR_MEDIA_ALREADY_PRESENT;
     public static String ERR_INVALID_PATH;
     public static String ERR_PATH_NOT_PRESENT;
 
@@ -150,6 +151,7 @@ public class Notifications {
                 ERR_CANNOT_RENEW = "È troppo presto per effettuare il rinnovo dell'iscrizione.";
                 ERR_FILTERED_MEDIA_LIST_EMPTY = "Nessun media trovato. Terminazione in corso...";
                 ERR_MEDIA_NOT_PRESENT = "L'ID selezionato non corrisponde ad alcun media nel database.";
+                ERR_MEDIA_ALREADY_PRESENT = "Il media inserito è già presente nel database.";
                 ERR_INVALID_PATH = "Il percorso inserito sembra essere non valido. Si prega di inserire nuovamente un percorso valido. (cartella\\sottocartella\\sottocartella...)";
                 ERR_PATH_NOT_PRESENT = "Il percorso inserito non esiste.";
             }
@@ -219,6 +221,7 @@ public class Notifications {
                 ERR_CANNOT_RENEW = "It's too early to renew your subscription.";
                 ERR_FILTERED_MEDIA_LIST_EMPTY = "No media items match your search. Aborting...";
                 ERR_MEDIA_NOT_PRESENT = "The chosen ID doesn't match any media in the database.";
+                ERR_MEDIA_ALREADY_PRESENT = "The media you're trying to add is already in our database.";
                 ERR_INVALID_PATH = "The path you inserted seems to be invalid. Please re-insert a valid path. (accepted format: folder\\subfolder\\subfolder...)";
                 ERR_PATH_NOT_PRESENT = "The path you inserted doesn't exist.";
             }

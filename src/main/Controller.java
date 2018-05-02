@@ -67,21 +67,11 @@ public class Controller implements SystemController {
     public boolean mediaIsPresent(int id) {
         return database.isPresent(new Media(id));
     }
-/*
-    @Override
-    public boolean pathIsPresent(String path) {
-        return fileSystem.isPresent(path);
-    }*/
 
     @Override
     public String allUsersToString() {
         return database.getUserListString();
     }
-
- /*   @Override
-    public String allMediaToString() {
-        return database.getMediaListString();
-    }*/
 
     @Override
     public String allFilteredMediaList(String filter) {
@@ -89,13 +79,27 @@ public class Controller implements SystemController {
     }
 
     @Override
-    public void addUserToDatabase(String firstName, String lastName, String username, String password, GregorianCalendar birthday) {
-        database.add(new Customer(firstName, lastName, username, password, birthday));
+    public boolean addUserToDatabase(String firstName, String lastName, String username, String password, GregorianCalendar birthday) {
+        Customer c = new Customer(firstName, lastName, username, password, birthday);
+
+        if(!database.isPresent(c)) {
+            database.add(c);
+            return true;
+        }
+
+        return false;
     }
 
     @Override
-    public void addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName, String path) {
-        database.add(new Book(title, author, genre, publicationYear, publisherName), path);
+    public boolean addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName, String path) {
+        Book b = new Book(title, author, genre, publicationYear, publisherName);
+
+        if(!database.isPresent(b)) {
+            database.add(b, path);
+            return true;
+        }
+
+        return false;
     }
 
     @Override

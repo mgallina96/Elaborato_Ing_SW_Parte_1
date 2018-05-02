@@ -33,9 +33,9 @@ public class QuickFillMain {
 
         //fs.saveFileSystem();
 
-        System.out.println(
-                fs.getAllPaths()
-        );
+        System.out.println(fs.tree(fs.getFileSystem().get(fs.getRootID()), 0));
+
+        //System.out.println(fs.getAllPaths());
 
         //fs.getFileSystem().values().forEach(s -> System.out.println(s.getName() + "\t" + s.getChildren().size()));
 

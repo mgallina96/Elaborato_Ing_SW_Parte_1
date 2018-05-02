@@ -50,16 +50,6 @@ public class FileSystem implements Serializable {
 
         return instance;
     }
-/*
-    /**
-     * Checks whether the given path is present in the File System.
-     *
-     * @param path The path to be checked.
-     * @return A boolean value, {@code true} if the path is present, {@code false} otherwise.
-     */
-/*    public boolean isPresent(String path) {
-        return allPaths.contains(path);
-    }*/
 
     /**
      * Returns all the present paths in the form of a {@code String}.
@@ -110,33 +100,25 @@ public class FileSystem implements Serializable {
 
     /**
      * Recursive function that builds a tree structure starting from a folder.
-     * A HashMap with specific key values is needed for this method to work correctly.
-     * The key values have to follow a binary pattern.
      *
      * @param root The root folder to start from.
      * @param depth The depth of the current folder.
      * @return A string containing the full tree.
      */
-    private String tree(Folder root, int depth) {
-        StringBuilder treeToString = new StringBuilder();
+    public String tree(Folder root, int depth) {
+        StringBuilder folders = new StringBuilder();
 
         for(int i = 0; i < depth; i++)
-            treeToString.append("|\t");
-        treeToString.append(root.getName()).append("\n");
+            folders.append("\t");
+        folders.append(root.getName()).append("\n");
 
-        Folder timesTwo = fileSystem.get(root.getFolderId() * 2);
-        Folder timesTwoPlusOne = fileSystem.get(root.getFolderId() * 2 + 1);
-
-        if(timesTwo != null) {
+        if(!root.getChildren().isEmpty()) {
             depth++;
-            treeToString.append(tree(timesTwo, depth));
-            depth--;
-        }
-        if(timesTwoPlusOne != null) {
-            treeToString.append(tree(timesTwoPlusOne, depth));
+            for(Folder f : root.getChildren())
+                folders.append(tree(f, depth));
         }
 
-        return treeToString.toString().trim();
+        return folders.toString();
     }
 
     @SuppressWarnings("unchecked")
