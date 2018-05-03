@@ -58,6 +58,7 @@ public class Notifications {
     public static String PROMPT_EXPIRY_IMMINENT;
     public static String PROMPT_WHICH_FOLDER;
     public static String PROMPT_REMOVE_CONFIRMATION;
+    public static String PROMPT_SEARCH_FOR_MEDIA;
 
     //ERRORS
     public static String ERR_NOT_OF_AGE;
@@ -115,7 +116,7 @@ public class Notifications {
                 PROMPT_PRESENT_USER_MULTIPLE_CHOICE = "(1) USCIRE SENZA SALVARE\t|\t(2) CAMBIARE I CAMPI";
                 PROMPT_BIBLIO_INITIAL_CHOICES = "(1) ENTRA\t|\t(2) REGISTRATI\t|\t(3) ESCI";
                 PROMPT_OPERATOR_CHOICES = "(1) AGIUNGI UN MEDIA\t|\t(2) RIMUOVI UN MEDIA\t|\t(3) MOSTRA TUTTI I MEDIA\t|\t(4) MOSTRA TUTTI GLI UTENTI ISCRITTI\t|\t(5) ESCI";
-                PROMPT_CUSTOMER_CHOICES = "(1) RINNOVA LA TUA ISCRIZIONE!\t|\t(2) ESCI";
+                PROMPT_CUSTOMER_CHOICES = "(1) RINNOVA LA TUA ISCRIZIONE!\t|\t(2) RICHIEDI UN PRESTITO\t|\t(3) RICHIEDI UNA PROROGA\t|\t(4) CERCA UNA RISORSA\t|\t(5) ESCI";
                 PROMPT_SIGN_UP_CONFIRMATION = "Confermi l'iscrizione? (y/n)";
                 PROMPT_REMOVE_CONFIRMATION = "Confermi la rimozione? (y/n)";
                 PROMPT_LOGIN_SCREEN = "Bentornato/a! Entra nella " + MSG_BIBLIO_NAME;
@@ -129,6 +130,7 @@ public class Notifications {
                 PROMPT_PUBLICATION_YEAR = "Anno di pubblicazione: ";
                 PROMPT_PUBLISHER_NAME = "Casa editrice: ";
                 PROMPT_REMOVE_MEDIA = "Si prega di inserire una o più parole chiave per trovare il media da rimuovere (inserire !quit per uscire): ";
+                PROMPT_SEARCH_FOR_MEDIA = "Si prega di inserire una o più parole chiave relative al media che si desidera trovare (inserire !quit per uscire): ";
                 PROMPT_REMOVE_MEDIA_ID = "Si prega di selezionare l'ID del media da rimuovere.";
                 PROMPT_SELECT_PATH = "Inserire il percorso in cui si vuole mettere il media selezionando volta per volta la cartella desiderata.";
                 PROMPT_EXPIRY_IMMINENT = "ATTENZIONE! SCADENZA ISCRIZIONE IMMINENTE";
@@ -185,7 +187,7 @@ public class Notifications {
                 PROMPT_PRESENT_USER_MULTIPLE_CHOICE = "(1) EXIT WITHOUT SAVING\t|\t(2) CHANGE FIELDS";
                 PROMPT_BIBLIO_INITIAL_CHOICES = "(1) LOGIN\t|\t(2) SIGN UP\t|\t(3) EXIT";
                 PROMPT_OPERATOR_CHOICES = "(1) ADD A MEDIA ITEM\t|\t(2) REMOVE A MEDIA ITEM\t|\t(3) SHOW ALL MEDIA ITEMS\t|\t(4) SHOW ALL SUBSCRIBED USERS\t|\t(5) LOGOUT";
-                PROMPT_CUSTOMER_CHOICES = "(1) RENEW YOUR SUBSCRIPTION!\t|\t(2) LOGOUT";
+                PROMPT_CUSTOMER_CHOICES = "(1) RENEW YOUR SUBSCRIPTION!\t|\t(2) REQUEST A LOAN\t|\t(3) EXTEND YOUR LOAN\t|\t(4) SEARCH FOR MEDIA ITEMS\t|\t(5) LOGOUT";
                 PROMPT_SIGN_UP_CONFIRMATION = "Are you sure you want to submit this form? (y/n)";
                 PROMPT_REMOVE_CONFIRMATION = "Are you sure you want to remove this media item? (y/n)";
                 PROMPT_LOGIN_SCREEN = "Welcome back! Log in to " + MSG_BIBLIO_NAME;
@@ -199,6 +201,7 @@ public class Notifications {
                 PROMPT_PUBLICATION_YEAR = "Publication year: ";
                 PROMPT_PUBLISHER_NAME = "Publisher: ";
                 PROMPT_REMOVE_MEDIA = "Please insert one or more keywords for the media item you wish to remove (insert !quit to quit): ";
+                PROMPT_SEARCH_FOR_MEDIA = "Please insert one or more keywords for the media item you're looking for (insert !quit to quit): ";
                 PROMPT_REMOVE_MEDIA_ID = "Please choose the ID for the item you wish to remove.";
                 PROMPT_SELECT_PATH = "Please choose the folder path you wish to put the media item in by selecting the desired folders step by step.";
                 PROMPT_EXPIRY_IMMINENT = "WARNING! SUBSCRIPTION EXPIRY IMMINENT!";
