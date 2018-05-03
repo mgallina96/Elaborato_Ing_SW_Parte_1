@@ -19,6 +19,7 @@ public class Media implements Serializable {
     private String path;
     private GregorianCalendar dateAdded;
     private int licenses;
+    private int extentionConstraint;
 
     /**
      * Constructor for the {@code Media} class. Builds a new {@code Media} item with its own unique item ID.
@@ -117,5 +118,13 @@ public class Media implements Serializable {
     public String toString() {
         return String.format("Media name: %s\t|\tItem ID: %d\t|\tDate added: %s\t|\tNumber of licences: %d",
                 mediaName, identifier, dateAdded.toZonedDateTime(), licenses);
+    }
+
+    public int getExtentionConstraint() {
+        return extentionConstraint;
+    }
+
+    public void setExtentionConstraint(int extentionConstraint) {
+        this.extentionConstraint = extentionConstraint;
     }
 }

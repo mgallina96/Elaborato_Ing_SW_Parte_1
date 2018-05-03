@@ -1,9 +1,11 @@
 package main.model.database;
+import main.model.database.loan.Loan;
 import main.model.media.Media;
 import main.model.user.User;
 import main.utility.notifications.Notifications;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
