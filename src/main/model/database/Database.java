@@ -112,6 +112,15 @@ public interface Database {
     boolean isPresent(Media toFind);
 
     /**
+     * Checks whether the given media item has the same details (title, author, genre, etc.) as another media item
+     * in the database.
+     *
+     * @param toFind The media item to be checked.
+     * @return {@code true} if there is a match, {@code false} otherwise.
+     */
+    boolean isMatchingMedia(Media toFind);
+
+    /**
      * Returns the contents of the folder that matches the given path.
      *
      * @param folderPath The path to look for.

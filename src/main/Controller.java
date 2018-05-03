@@ -94,7 +94,7 @@ public class Controller implements SystemController {
     public boolean addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName, String path) {
         Book b = new Book(title, author, genre, publicationYear, publisherName);
 
-        if(!database.isPresent(b)) {
+        if(!database.isMatchingMedia(b)) {
             database.add(b, path);
             return true;
         }
@@ -164,22 +164,22 @@ public class Controller implements SystemController {
     }
 
     @Override
-    public boolean folderHasChildren(long folderID) {
+    public boolean folderHasChildren(int folderID) {
         return !fileSystem.getFileSystem().get(folderID).getChildren().isEmpty();
     }
 
     @Override
-    public String getSubFolders(long parentID) {
+    public String getSubFolders(int parentID) {
         return fileSystem.getSubFolders(parentID);
     }
 
     @Override
-    public long getRootID() {
+    public int getRootID() {
         return fileSystem.getRootID();
     }
 
     @Override
-    public String getPathToString(long folderID) {
+    public String getPathToString(int folderID) {
         return fileSystem.getFileSystem().get(folderID).getFolderPath();
     }
 

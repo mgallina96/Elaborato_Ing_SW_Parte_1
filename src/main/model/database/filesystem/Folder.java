@@ -17,7 +17,7 @@ public class Folder implements Serializable {
     private ArrayList<Folder> children;
     private String name;
     private String folderPath;
-    private long folderId;
+    private int folderId;
     private int depth;
 
     /**
@@ -43,17 +43,12 @@ public class Folder implements Serializable {
      * @param name The name of the folder.
      * @param parent The parent of the folder.
      */
-    public Folder(String name, Folder parent) {
+    Folder(String name, Folder parent, int ID) {
         this.name = name;
         this.parent = parent;
         this.children = new ArrayList<>();
         this.depth = this.parent.getDepth() + 1;
-
-        if(this.parent.getChildren().isEmpty())
-            this.folderId = this.parent.getFolderId() * 2;
-        else
-            this.folderId = (this.parent.getChildren().get(this.parent.getChildren().size() - 1)).getFolderId() * 2 + 1;
-
+        this.folderId = ID;
         this.parent.addChild(this);
 
         //please DON'T move the following declaration, as the parent must be constructed BEFORE resolving the path.
@@ -94,7 +89,7 @@ public class Folder implements Serializable {
         return depth;
     }
 
-    public long getFolderId() {
+    public int getFolderId() {
         return folderId;
     }
 }

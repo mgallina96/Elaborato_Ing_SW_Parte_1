@@ -24,12 +24,12 @@ public class FileSystem implements Serializable {
 
     private static final String FILESYSTEM_FILE_PATH = "application_resources\\Biblioteca SMARTINATOR - File System.ser";
     private static final Folder ROOT = new Folder("root");
-    private final long ROOT_ID = 1L;
-
+    private final int ROOT_ID = 0;
+    private static int folderCounter;
     private static FileSystem instance;
     private String allPaths;
     private Logger logger;
-    private HashMap<Long, Folder> fileSystem;
+    private HashMap<Integer, Folder> fileSystem;
 
     @SuppressWarnings("all")
     private FileSystem() {
@@ -40,8 +40,10 @@ public class FileSystem implements Serializable {
         //please DON'T move the following declaration, as the paths can only be resolved AFTER the File System has been loaded.
         this.allPaths = allPathsToString();
 
-        if(!fileSystem.containsKey(ROOT_ID))
+        if(!fileSystem.containsKey(ROOT_ID)) {
             this.fileSystem.put(ROOT_ID, ROOT);
+            folderCounter++;
+        }
     }
 
     public static FileSystem getInstance() {
@@ -49,6 +51,15 @@ public class FileSystem implements Serializable {
             instance = new FileSystem();
 
         return instance;
+    }
+
+    public void addFolder(String name, Folder parent) {
+        fileSystem.put(folderCounter, new Folder(name, parent, folderCounter));
+        folderCounter++;
+    }
+
+    public Folder getFolder(int folderID) {
+        return fileSystem.get(folderID);
     }
 
     /**
@@ -60,7 +71,7 @@ public class FileSystem implements Serializable {
         return allPaths;
     }
 
-    public HashMap<Long, Folder> getFileSystem() {
+    public HashMap<Integer, Folder> getFileSystem() {
         return fileSystem;
     }
 
@@ -69,7 +80,7 @@ public class FileSystem implements Serializable {
      *
      * @return The ROOT ID's {@code Long} value.
      */
-    public long getRootID() {
+    public int getRootID() {
         return ROOT_ID;
     }
 
@@ -89,7 +100,7 @@ public class FileSystem implements Serializable {
      * @param parentID The ID associated to the parent whose sub-folders are to be visualized.
      * @return A {@code String} containing all sub-folders.
      */
-    public String getSubFolders(long parentID) {
+    public String getSubFolders(int parentID) {
         StringBuilder folders = new StringBuilder();
 
         fileSystem.get(parentID).getChildren()
@@ -127,7 +138,8 @@ public class FileSystem implements Serializable {
             FileInputStream fileIn = new FileInputStream(FILESYSTEM_FILE_PATH);
             ObjectInputStream in = new ObjectInputStream(fileIn);
 
-            this.fileSystem = ((HashMap<Long, Folder>) in.readObject());
+            this.fileSystem = ((HashMap<Integer, Folder>) in.readObject());
+            folderCounter = Integer.parseInt((String)in.readObject());
 
             in.close();
             fileIn.close();
@@ -155,6 +167,7 @@ public class FileSystem implements Serializable {
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
             out.writeObject(fileSystem);
+            out.writeObject(Integer.toString(folderCounter));
 
             out.close();
             fileOut.close();

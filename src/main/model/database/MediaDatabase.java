@@ -44,6 +44,15 @@ class MediaDatabase implements Serializable {
         mediaList.remove(toRemove.getIdentifier());
     }
 
+    boolean isMatchingMedia(Media toFind) {
+        for(Media m : mediaList.values()) {
+            if((m.getBareItemDetails().toLowerCase()).equals(toFind.getBareItemDetails().toLowerCase()))
+                return true;
+        }
+
+        return false;
+    }
+
     boolean isPresent(Media toFind) {
         return mediaList.containsKey(toFind.getIdentifier());
     }

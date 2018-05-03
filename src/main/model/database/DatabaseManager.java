@@ -81,6 +81,11 @@ public class DatabaseManager implements Serializable, Database {
     }
 
     @Override
+    public boolean isMatchingMedia(Media toFind) {
+        return mediaDatabase.isMatchingMedia(toFind);
+    }
+
+    @Override
     public User fetch(User toFetch) {
         return userDatabase.fetchUser(toFetch);
     }

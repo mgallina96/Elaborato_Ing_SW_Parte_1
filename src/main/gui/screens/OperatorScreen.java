@@ -98,7 +98,7 @@ public class OperatorScreen extends Screen {
      * @return A {@code String} representing the path of the desired folder.
      */
     private String chooseFolder() {
-        long currentID = getController().getRootID();
+        int currentID = getController().getRootID();
 
         while(getController().folderHasChildren(currentID)) {
             System.out.println(getController().getSubFolders(currentID));
