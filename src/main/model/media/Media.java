@@ -18,6 +18,7 @@ public class Media implements Serializable {
     private String mediaName;
     private String path;
     private GregorianCalendar dateAdded;
+    private int licences;
 
     /**
      * Constructor for the {@code Media} class. Builds a new {@code Media} item with its own unique item ID.
@@ -34,9 +35,10 @@ public class Media implements Serializable {
      *
      * @param mediaName the name to set.
      */
-    public Media(String mediaName) {
+    public Media(String mediaName, int licences) {
         this.mediaName = mediaName;
         this.dateAdded = new GregorianCalendar();
+        this.licences = licences;
     }
 
     /**
@@ -55,6 +57,14 @@ public class Media implements Serializable {
      */
     public void setIdentifier(int identifier) {
         this.identifier = identifier;
+    }
+
+    public void setLicences(int licences) {
+        this.licences = licences;
+    }
+
+    public int getLicences() {
+        return licences;
     }
 
     /**
@@ -105,7 +115,7 @@ public class Media implements Serializable {
      * @return a {@code String} with the basic details that describe this particular media item.
      */
     public String toString() {
-        return String.format("Media name: %s\t|\tItem ID: %d\t|\tDate added: %s",
-                mediaName, identifier, dateAdded.toZonedDateTime());
+        return String.format("Media name: %s\t|\tItem ID: %d\t|\tDate added: %s\t|\tNumber of licences: %d",
+                mediaName, identifier, dateAdded.toZonedDateTime(), licences);
     }
 }

@@ -15,6 +15,7 @@ public class Book extends Media implements Serializable {
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -1281383374398165051L;
 
+    private static final int DEFAULT_LICENCES = 1;
     private String title;
     private String author;
     private String genre;
@@ -39,9 +40,36 @@ public class Book extends Media implements Serializable {
      * @param genre The genre of the book.
      * @param publicationYear The year the book was published.
      * @param publisherName The name of the publisher (or publishing house).
+     * @param licences The number of licences for this book.
+     */
+    public Book(String title, String author, String genre, int publicationYear, String publisherName, int licences) {
+        super(title, licences);
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+        this.publicationYear = publicationYear;
+        this.publisherName = publisherName;
+
+        String bareDetails = title + ", " + author + ", " + genre + ", " + publicationYear + ", "  + publisherName;
+
+        super.setBareItemDetails(bareDetails);
+    }
+
+    /**
+     * Constructor for the Book class.
+     * <p>
+     * Sets the main fields to briefly describe a book.
+     * <p>
+     * Sets the number of licences to a default value of 1.
+     *
+     * @param title The title of the book.
+     * @param author The author.
+     * @param genre The genre of the book.
+     * @param publicationYear The year the book was published.
+     * @param publisherName The name of the publisher (or publishing house).
      */
     public Book(String title, String author, String genre, int publicationYear, String publisherName) {
-        super(title);
+        super(title, DEFAULT_LICENCES);
         this.title = title;
         this.author = author;
         this.genre = genre;
@@ -83,8 +111,8 @@ public class Book extends Media implements Serializable {
      * @return A string containing a brief description of the book.
      */
     public String toString() {
-        return String.format("Item ID: %d\t|\tTitle: %s\t|\tAuthor: %s\t|\tPublication year: %d\t|\tGenre: %s\t|\tPublisher name: %s\n",
-                getIdentifier(), title, author, publicationYear, genre, publisherName);
+        return String.format("Item ID: %d\t|\tTitle: %s\t|\tAuthor: %s\t|\tPublication year: %d\t|\tGenre: %s\t|\tPublisher name: %s\t|\tNumber of licences: %d\n",
+                getIdentifier(), title, author, publicationYear, genre, publisherName, getLicences());
     }
 
     /**
