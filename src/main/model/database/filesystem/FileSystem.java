@@ -132,6 +132,12 @@ public class FileSystem implements Serializable {
         return folders.toString();
     }
 
+    /**
+     * Opens a .ser serializable file and loads its contents into this {@link FileSystem} class.<p>
+     * This method loads:
+     * <p>- a {@code HashMap} containing all folders;
+     * <p>- an {@code integer} to keep track of the ID of the most recently added folder.
+     */
     @SuppressWarnings("unchecked")
     private void loadFileSystem() {
         try {
@@ -145,13 +151,13 @@ public class FileSystem implements Serializable {
             fileIn.close();
         }
         catch(FileNotFoundException FNFEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND);
+            logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND + this.getClass().getName());
         }
         catch(IOException IOEx) {
             logger.log(Level.SEVERE, Notifications.ERR_LOADING_FILESYSTEM, IOEx);
         }
         catch(ClassNotFoundException CNFEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_FILESYSTEM_CLASS_NOT_FOUND);
+            logger.log(Level.SEVERE, Notifications.ERR_CLASS_NOT_FOUND + this.getClass().getName());
         }
     }
 
@@ -173,7 +179,7 @@ public class FileSystem implements Serializable {
             fileOut.close();
         }
         catch(IOException IOEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE, IOEx);
+            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + this.getClass().getName(), IOEx);
         }
     }
 }

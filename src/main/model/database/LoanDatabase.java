@@ -1,5 +1,5 @@
-package main.model.database.loan;
-import main.model.database.filesystem.Folder;
+package main.model.database;
+import main.model.loan.Loan;
 import main.model.media.Media;
 import main.model.user.User;
 import main.utility.notifications.Notifications;
@@ -10,31 +10,31 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class LoanSystem implements Serializable {
+public class LoanDatabase implements Serializable {
 
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -2599493317418350651L;
 
-    private static final String LOAN_SYSTEM_FILE_PATH = "application_resources\\Biblioteca SMARTINATOR - Loan System.ser";
+    private static final String LOAN_DATABASE_FILE_PATH = "application_resources\\Biblioteca SMARTINATOR - Loan Database.ser";
     private static final int MAX_LENT_MEDIA_ITEMS = 3;
     private HashMap<String, ArrayList<Loan>> loans;
-    private static LoanSystem loanSystem;
+    private static LoanDatabase loanDatabase;
     private Logger logger;
 
     //Singleton Database constructor, private to prevent instantiation.
-    private LoanSystem() {
+    private LoanDatabase() {
         this.loans = new HashMap<>();
         logger = Logger.getLogger(this.getClass().getName());
-        loadLoanSystem();
+        loadLoanDatabase();
 
         sweep();
     }
 
-    static LoanSystem getInstance() {
-        if(loanSystem == null)
-            loanSystem = new LoanSystem();
+    static LoanDatabase getInstance() {
+        if(loanDatabase == null)
+            loanDatabase = new LoanDatabase();
 
-        return loanSystem;
+        return loanDatabase;
     }
     
     public String getUserLoans(User user) {
@@ -61,7 +61,7 @@ public class LoanSystem implements Serializable {
                 loans.get(username).add(new Loan(user, media));
         }
 
-        saveLoanSystem();
+        saveLoanDatabase();
         return true;
     }
 
@@ -73,10 +73,14 @@ public class LoanSystem implements Serializable {
         this.loans = loans;
     }
 
+    /**
+     * Opens a .ser serializable file and loads its contents into this {@link LoanDatabase} class.<p>
+     * This method loads a {@code HashMap} containing a record of all loans.
+     */
     @SuppressWarnings("unchecked")
-    private void loadLoanSystem() {
+    void loadLoanDatabase() {
         try {
-            FileInputStream fileIn = new FileInputStream(LOAN_SYSTEM_FILE_PATH);
+            FileInputStream fileIn = new FileInputStream(LOAN_DATABASE_FILE_PATH);
             ObjectInputStream in = new ObjectInputStream(fileIn);
 
             this.loans = ((HashMap<String, ArrayList<Loan>>) in.readObject());
@@ -85,23 +89,23 @@ public class LoanSystem implements Serializable {
             fileIn.close();
         }
         catch(FileNotFoundException FNFEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND);
+            logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND + this.getClass().getName());
         }
         catch(IOException IOEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_LOADING_FILESYSTEM, IOEx);
+            logger.log(Level.SEVERE, Notifications.ERR_LOADING_DATABASE + this.getClass().getName(), IOEx);
         }
         catch(ClassNotFoundException CNFEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_FILESYSTEM_CLASS_NOT_FOUND);
+            logger.log(Level.SEVERE, Notifications.ERR_CLASS_NOT_FOUND + this.getClass().getName());
         }
     }
 
     /**
-     * Saves the File System in the form of a HashMap object.
+     * Saves the loan database in the form of a HashMap object.
      */
-    private void saveLoanSystem() {
+    void saveLoanDatabase() {
         try {
             //to increase serializing speed
-            RandomAccessFile raf = new RandomAccessFile(LOAN_SYSTEM_FILE_PATH, "rw");
+            RandomAccessFile raf = new RandomAccessFile(LOAN_DATABASE_FILE_PATH, "rw");
 
             FileOutputStream fileOut = new FileOutputStream(raf.getFD());
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -112,7 +116,7 @@ public class LoanSystem implements Serializable {
             fileOut.close();
         }
         catch(IOException IOEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE, IOEx);
+            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + this.getClass().getName(), IOEx);
         }
     }
 
