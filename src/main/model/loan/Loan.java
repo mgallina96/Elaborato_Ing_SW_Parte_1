@@ -24,7 +24,7 @@ public class Loan implements Serializable {
         this.user = user;
         this.media = media;
 
-        this.extentionConstraintInDays = this.media.getExtentionConstraint();
+        this.extentionConstraintInDays = this.media.getExtensionConstraint();
         this.loanDate = new GregorianCalendar();
         this.loanExpiry = new GregorianCalendar();
         this.loanExpiry.add(Calendar.DATE, EXPIRY_TIME_IN_DAYS);

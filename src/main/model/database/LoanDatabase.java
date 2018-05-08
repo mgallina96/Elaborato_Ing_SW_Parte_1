@@ -1,4 +1,5 @@
 package main.model.database;
+import com.sun.xml.internal.bind.v2.model.core.ID;
 import main.model.loan.Loan;
 import main.model.media.Media;
 import main.model.user.User;
@@ -26,8 +27,6 @@ public class LoanDatabase implements Serializable {
         this.loans = new HashMap<>();
         logger = Logger.getLogger(this.getClass().getName());
         loadLoanDatabase();
-
-        sweep();
     }
 
     static LoanDatabase getInstance() {
@@ -46,22 +45,22 @@ public class LoanDatabase implements Serializable {
         return userList.toString();
     }
     
-    public boolean addLoan(User user, Media media) {
+    boolean addLoan(User user, Media media) {
         String username = user.getUsername();
-        
+
         if(!loans.containsKey(username)) {
             ArrayList<Loan> a = new ArrayList<>();
             a.add(new Loan(user, media));
             loans.put(username, a);
         }
         else {
-            if(loans.get(username).size() > MAX_LENT_MEDIA_ITEMS)
-                return false;
-            else
+            if(loans.get(username).size() < MAX_LENT_MEDIA_ITEMS) {
                 loans.get(username).add(new Loan(user, media));
+            }
+            else
+                return false;
         }
 
-        saveLoanDatabase();
         return true;
     }
 
@@ -103,6 +102,7 @@ public class LoanDatabase implements Serializable {
      * Saves the loan database in the form of a HashMap object.
      */
     void saveLoanDatabase() {
+        //TODO eliminare ripetizione codice
         try {
             //to increase serializing speed
             RandomAccessFile raf = new RandomAccessFile(LOAN_DATABASE_FILE_PATH, "rw");
@@ -120,10 +120,16 @@ public class LoanDatabase implements Serializable {
         }
     }
 
-    private void sweep() {
+    ArrayList<Integer> sweep() {
+        ArrayList<Integer> IDsToRemove = new ArrayList<>();
+
         for(ArrayList<Loan> al : loans.values())
             for(Loan l : al)
-                if(l.hasExpired())
+                if(l.hasExpired()) {
+                    IDsToRemove.add(l.getMedia().getIdentifier());
                     al.remove(l);
+                }
+
+        return IDsToRemove;
     }
 }

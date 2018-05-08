@@ -22,7 +22,7 @@ public class DatabaseManager implements Serializable, Database {
 
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -5681383377098150051L;
-    private static final String DATABASE_FILE_PATH = "application_resources\\Biblioteca SMARTINATOR - Database.ser";
+    //private static final String DATABASE_FILE_PATH = "application_resources\\Biblioteca SMARTINATOR - Database.ser";
 
     private static DatabaseManager database;
     private UserDatabase userDatabase;
@@ -37,6 +37,9 @@ public class DatabaseManager implements Serializable, Database {
         this.mediaDatabase = MediaDatabase.getInstance();
         this.loanDatabase = LoanDatabase.getInstance();
         this.logger = Logger.getLogger(this.getClass().getName());
+
+        for(int ID : loanDatabase.sweep())
+            mediaDatabase.fetch(new Media(ID)).giveBack();
     }
 
     /**
@@ -65,6 +68,17 @@ public class DatabaseManager implements Serializable, Database {
     public void add(Media toAdd, String path) {
         mediaDatabase.addMedia(toAdd, path);
         mediaDatabase.saveMediaDatabase();
+    }
+
+    @Override
+    public boolean add(User toAdd, Media toLend) {
+        if(loanDatabase.addLoan(toAdd, toLend)) {
+            mediaDatabase.fetch(toLend).lend();
+            loanDatabase.saveLoanDatabase();
+            return true;
+        }
+
+        return false;
     }
 
     @Override

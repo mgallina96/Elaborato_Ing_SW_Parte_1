@@ -103,6 +103,13 @@ public class Controller implements SystemController {
     }
 
     @Override
+    public boolean addLoanToDatabase(String userName, int mediaID) {
+        return database.fetch(new Media(mediaID)).isAvailable() &&
+               database.add(database.fetch(new User(userName)), database.fetch(new Media(mediaID)));
+
+    }
+
+    @Override
     public void removeMediaFromDatabase(int id) {
         database.remove(new Media(id));
     }
@@ -186,5 +193,10 @@ public class Controller implements SystemController {
     @Override
     public String getFolderContents(String folderPath) {
         return database.getFolderContents(folderPath);
+    }
+
+    @Override
+    public String getCurrentUser() {
+        return database.getCurrentUser().getUsername();
     }
 }

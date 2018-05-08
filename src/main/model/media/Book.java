@@ -54,7 +54,7 @@ public class Book extends Media implements Serializable {
         String bareDetails = title + ", " + author + ", " + genre + ", " + publicationYear + ", "  + publisherName;
 
         super.setBareItemDetails(bareDetails);
-        super.setExtentionConstraint(EXTENTION_CONSTRAINT_IN_DAYS);
+        super.setExtensionConstraint(EXTENTION_CONSTRAINT_IN_DAYS);
     }
 
     /**
@@ -81,7 +81,7 @@ public class Book extends Media implements Serializable {
         String bareDetails = title + ", " + author + ", " + genre + ", " + publicationYear + ", "  + publisherName;
 
         super.setBareItemDetails(bareDetails);
-        super.setExtentionConstraint(EXTENTION_CONSTRAINT_IN_DAYS);
+        super.setExtensionConstraint(EXTENTION_CONSTRAINT_IN_DAYS);
     }
 
     /**

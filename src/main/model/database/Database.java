@@ -26,6 +26,15 @@ public interface Database {
     void add(Media toAdd, String path);
 
     /**
+     * Adds a new loan to the database.
+     *
+     * @param toAdd The user to be added.
+     * @param toLend The media to be lent to that user.
+     * @return A boolean value: {@code true} if the loan has been successfully added, {@code false} otherwise.
+     */
+    boolean add(User toAdd, Media toLend);
+
+    /**
      * Removes a media item from the database.
      *
      * @param toRemove The {@code Media} item to remove.
