@@ -2,6 +2,7 @@ package main;
 
 import main.gui.GuiManager;
 import main.gui.TextualView;
+import main.gui.graphic.GraphicView;
 import main.model.database.Database;
 import main.model.database.DatabaseManager;
 import main.model.database.filesystem.FileSystem;
@@ -30,7 +31,7 @@ public class Controller implements SystemController {
     private Controller() {
         database = DatabaseManager.getInstance();
         fileSystem = FileSystem.getInstance();
-        guiManager = new TextualView(this);
+        guiManager = new GraphicView(this);
     }
 
     //Returns the instance of the controller.
