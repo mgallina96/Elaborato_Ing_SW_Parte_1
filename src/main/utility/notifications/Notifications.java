@@ -31,6 +31,7 @@ public class Notifications {
     public static String MSG_FOLDER_CONTENTS;
     public static String MSG_MOVE_TO_LOGIN;
     public static String MSG_BORROW_SUCCESSFUL;
+    public static String MSG_LOAN_LIST;
 
     //PROMPTS
     public static String PROMPT_FIRST_NAME;
@@ -89,7 +90,7 @@ public class Notifications {
     public static String ERR_CANNOT_BORROW;
 
     //generic useful messages
-    public static final String SEPARATOR = "--------------------------------------------------------------------------------------------------------------------------------------";
+    public static final String SEPARATOR = "--------------------------------------------------------------------------------------------------------------------------------------------------------------------";
 
     private enum Language implements Languages {
         ITALIAN {
@@ -114,6 +115,7 @@ public class Notifications {
                 MSG_FOLDER_CONTENTS = "Ecco i contenuti della cartella ";
                 MSG_MOVE_TO_LOGIN = "È consigliato spostarsi alla sezione login e provare ad accedere con questi dati.";
                 MSG_BORROW_SUCCESSFUL = "Il media è stato preso in prestito!";
+                MSG_LOAN_LIST = "Ecco la lista di tutti i prestiti effettuati: ";
                 PROMPT_FIRST_NAME = "Nome (si prega di inserire un nome valido): ";
                 PROMPT_LAST_NAME = "Cognome (si prega di inserire un cognome valido): ";
                 PROMPT_USERNAME = "Username: ";
@@ -121,7 +123,7 @@ public class Notifications {
                 PROMPT_BIRTHDAY = "Compleanno (formato accettato = GG/MM/AAAA): ";
                 PROMPT_PRESENT_USER_MULTIPLE_CHOICE = "(1) USCIRE SENZA SALVARE\t|\t(2) CAMBIARE I CAMPI";
                 PROMPT_BIBLIO_INITIAL_CHOICES = "(1) ENTRA\t|\t(2) REGISTRATI\t|\t(3) ESCI";
-                PROMPT_OPERATOR_CHOICES = "(1) AGIUNGI UN MEDIA\t|\t(2) RIMUOVI UN MEDIA\t|\t(3) MOSTRA TUTTI I MEDIA\t|\t(4) MOSTRA TUTTI GLI UTENTI ISCRITTI\t|\t(5) ESCI";
+                PROMPT_OPERATOR_CHOICES = "(1) AGIUNGI UN MEDIA\t|\t(2) RIMUOVI UN MEDIA\t|\t(3) MOSTRA TUTTI I MEDIA\t|\t(4) MOSTRA TUTTI GLI UTENTI ISCRITTI\t|\t(5) MOSTRA TUTTI I PRESTITI EFFETTUATI\t|\t(6) ESCI";
                 PROMPT_CUSTOMER_CHOICES = "(1) RINNOVA LA TUA ISCRIZIONE!\t|\t(2) RICHIEDI UN PRESTITO\t|\t(3) RICHIEDI UNA PROROGA\t|\t(4) CERCA UNA RISORSA\t|\t(5) ESCI";
                 PROMPT_SIGN_UP_CONFIRMATION = "Confermi l'iscrizione? (y/n)";
                 PROMPT_REMOVE_CONFIRMATION = "Confermi la rimozione? (y/n)";
@@ -190,6 +192,7 @@ public class Notifications {
                 MSG_FOLDER_CONTENTS = "Here are the contents of the folder ";
                 MSG_MOVE_TO_LOGIN = "Try logging in with these credentials.";
                 MSG_BORROW_SUCCESSFUL = "Media item successfully borrowed!";
+                MSG_LOAN_LIST = "Here's the list of all loans that have been granted to the users: ";
                 PROMPT_FIRST_NAME = "First name (please insert a valid first name): ";
                 PROMPT_LAST_NAME = "Last name (please insert a valid last name): ";
                 PROMPT_USERNAME = "Username: ";
@@ -197,7 +200,7 @@ public class Notifications {
                 PROMPT_BIRTHDAY = "Birthday (accepted format = DD/MM/YYYY): ";
                 PROMPT_PRESENT_USER_MULTIPLE_CHOICE = "(1) EXIT WITHOUT SAVING\t|\t(2) CHANGE FIELDS";
                 PROMPT_BIBLIO_INITIAL_CHOICES = "(1) LOGIN\t|\t(2) SIGN UP\t|\t(3) EXIT";
-                PROMPT_OPERATOR_CHOICES = "(1) ADD A MEDIA ITEM\t|\t(2) REMOVE A MEDIA ITEM\t|\t(3) SHOW ALL MEDIA ITEMS\t|\t(4) SHOW ALL SUBSCRIBED USERS\t|\t(5) LOGOUT";
+                PROMPT_OPERATOR_CHOICES = "(1) ADD A MEDIA ITEM\t|\t(2) REMOVE A MEDIA ITEM\t|\t(3) SHOW ALL MEDIA ITEMS\t|\t(4) SHOW ALL SUBSCRIBED USERS\t|\t(5) SHOW ALL LOANS\t|\t(6) LOGOUT";
                 PROMPT_CUSTOMER_CHOICES = "(1) RENEW YOUR SUBSCRIPTION!\t|\t(2) REQUEST A LOAN\t|\t(3) EXTEND YOUR LOAN\t|\t(4) SEARCH FOR MEDIA ITEMS\t|\t(5) LOGOUT";
                 PROMPT_SIGN_UP_CONFIRMATION = "Are you sure you want to submit this form? (y/n)";
                 PROMPT_REMOVE_CONFIRMATION = "Are you sure you want to remove this media item? (y/n)";

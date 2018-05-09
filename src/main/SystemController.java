@@ -143,6 +143,13 @@ public interface SystemController {
     String allFilteredMediaList(String filter);
 
     /**
+     * Returns a {@code String} that contains all the loans that have been granted.
+     *
+     * @return the list of all loans as a {@code String}.
+     */
+    String allLoansToString();
+
+    /**
      * Checks whether the folder associated to the given ID has children.
      *
      * @param folderID The ID associated to the folder to be checked.

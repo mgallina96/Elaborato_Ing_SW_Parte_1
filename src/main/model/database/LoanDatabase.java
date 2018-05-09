@@ -66,6 +66,17 @@ public class LoanDatabase implements Serializable {
             loans.get(username).add(new Loan(user, media));
     }
 
+    public String getLoanListString() {
+        StringBuilder loanList = new StringBuilder();
+
+        loans.forEach((s, l) -> {
+            loanList.append(s).append("\n");
+            l.forEach(loan -> loanList.append("\t").append(loan.getMedia().getBareItemDetails()).append("\n"));
+        });
+
+        return loanList.toString();
+    }
+
     HashMap<String, ArrayList<Loan>> getLoansList() {
         return loans;
     }
@@ -124,11 +135,12 @@ public class LoanDatabase implements Serializable {
 
     private void sweep() {
         for(ArrayList<Loan> al : loans.values())
-            for(Loan l : al)
+            for(Loan l : al) {
                 if(l.hasExpired()) {
                     l.getMedia().giveBack();
                     ((Customer)l.getUser()).giveBack();
                     al.remove(l);
                 }
+            }
     }
 }

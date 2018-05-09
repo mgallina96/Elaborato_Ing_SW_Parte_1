@@ -123,6 +123,11 @@ public class DatabaseManager implements Serializable, Database {
     }
 
     @Override
+    public String getLoanListString() {
+        return loanDatabase.getLoanListString();
+    }
+
+    @Override
     public String getFilteredMediaList(String filter) {
         return mediaDatabase.getFilteredMediaList(filter);
     }

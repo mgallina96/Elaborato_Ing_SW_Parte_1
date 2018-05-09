@@ -64,6 +64,14 @@ public interface Database {
     String getUserListString();
 
     /**
+     * Returns a {@code String} that contains a brief description for every loan that has been granted to each user
+     * in the database.
+     *
+     * @return The list of all loans as a {@code String}.
+     */
+    String getLoanListString();
+
+    /**
      * Returns a list that contains a brief description for every piece of media in the database that matches a
      * specific input. The logic for the filtering can be found in the {@code getFilteredMediaList} method of the
      * {@link MediaDatabase} class.

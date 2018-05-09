@@ -74,6 +74,11 @@ public class Controller implements SystemController {
     }
 
     @Override
+    public String allLoansToString() {
+        return database.getLoanListString();
+    }
+
+    @Override
     public String allFilteredMediaList(String filter) {
         return database.getFilteredMediaList(filter);
     }
