@@ -34,8 +34,8 @@ public class User implements Serializable {
      */
     public User(String username) {
         this.username = username;
-        defaultInit();
         this.password = DEFAULT_PASSWORD;
+        defaultInit();
     }
 
     /**
@@ -69,10 +69,6 @@ public class User implements Serializable {
         this.birthday = birthday;
     }
 
-    /**
-     * Initializer for a default user for whom the fields {@code firstName}, {@code lastName} and {@code birthday}
-     * have not been set.
-     */
     private void defaultInit() {
         this.firstName = DEFAULT_FIRST_NAME;
         this.lastName = DEFAULT_LAST_NAME;
@@ -87,6 +83,16 @@ public class User implements Serializable {
     @SuppressWarnings("unused")
     public String getUsername() {
         return username;
+    }
+
+    /**
+     * Sets the user's username.
+     *
+     * @param username The username to set.
+     */
+    @SuppressWarnings("unused")
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
