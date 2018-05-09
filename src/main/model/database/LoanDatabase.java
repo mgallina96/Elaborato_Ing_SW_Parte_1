@@ -2,6 +2,7 @@ package main.model.database;
 import com.sun.xml.internal.bind.v2.model.core.ID;
 import main.model.loan.Loan;
 import main.model.media.Media;
+import main.model.user.Customer;
 import main.model.user.User;
 import main.utility.notifications.Notifications;
 
@@ -11,6 +12,9 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Database which contains a record of all loans.
+ */
 public class LoanDatabase implements Serializable {
 
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
@@ -26,6 +30,8 @@ public class LoanDatabase implements Serializable {
         this.loans = new HashMap<>();
         logger = Logger.getLogger(this.getClass().getName());
         loadLoanDatabase();
+
+        sweep();
     }
 
     static LoanDatabase getInstance() {
@@ -46,7 +52,29 @@ public class LoanDatabase implements Serializable {
 
     void addLoan(User user, Media media) {
         media.lend();
-        loans.get(user.getUsername()).add(new Loan(user, media));
+        if(user instanceof Customer)
+            ((Customer)user).borrow();
+
+        String username = user.getUsername();
+
+        if(loans.get(username) == null) {
+            ArrayList<Loan> firstLoan = new ArrayList<>();
+            firstLoan.add(new Loan(user, media));
+            loans.put(username, firstLoan);
+        }
+        else
+            loans.get(username).add(new Loan(user, media));
+    }
+
+    public String getLoanListString() {
+        StringBuilder loanList = new StringBuilder();
+
+        loans.forEach((s, l) -> {
+            loanList.append(s).append("\n");
+            l.forEach(loan -> loanList.append("\t").append(loan.getMedia().getBareItemDetails()).append("\n"));
+        });
+
+        return loanList.toString();
     }
 
     HashMap<String, ArrayList<Loan>> getLoansList() {
@@ -86,7 +114,7 @@ public class LoanDatabase implements Serializable {
     /**
      * Saves the loan database in the form of a HashMap object.
      */
-    void saveLoanDatabase() {
+    public void saveLoanDatabase() {
         //TODO eliminare ripetizione codice
         try {
             //to increase serializing speed
@@ -107,11 +135,12 @@ public class LoanDatabase implements Serializable {
 
     private void sweep() {
         for(ArrayList<Loan> al : loans.values())
-            for(Loan l : al)
+            for(Loan l : al) {
                 if(l.hasExpired()) {
                     l.getMedia().giveBack();
+                    ((Customer)l.getUser()).giveBack();
                     al.remove(l);
                 }
+            }
     }
-
 }

@@ -1,5 +1,7 @@
 package main.gui.textual.screens;
 import main.SystemController;
+import main.model.database.DatabaseManager;
+import main.model.user.Customer;
 
 import static main.utility.notifications.Notifications.*;
 
@@ -26,11 +28,13 @@ public class CustomerScreen extends Screen {
                     if(!getController().renewSubscription())
                         System.out.printf("%s\n%s\n", ERR_CANNOT_RENEW, getController().dateDetails());
                     break;
-                case 2: //borrow stuff
-                    if(true)
-                        System.out.println("aaasasa");
-                    if(searchForMedia(PROMPT_SEARCH_FOR_MEDIA_TO_BORROW))
-                        borrowMedia();
+                case 2:
+                    if(getController().canBorrow()) {
+                        if(searchForMedia(PROMPT_SEARCH_FOR_MEDIA_TO_BORROW))
+                            borrowMedia();
+                    }
+                    else
+                        System.out.println(ERR_CANNOT_BORROW);
                     break;
                 case 3: //extend stuff
                     break;
@@ -79,16 +83,10 @@ public class CustomerScreen extends Screen {
         System.out.println(PROMPT_BORROW_CONFIRMATION);
 
         if(insertString(YN_REGEX).equalsIgnoreCase(YES)) {
-            switch(getController().addLoanToDatabase(id)) {
-                case 0: System.out.println(MSG_BORROW_SUCCESSFUL);
-                    break;
-                case 1: System.out.println(ERR_BORROW_FAILED);
-                    break;
-                case -1: System.out.println(ERR_BORROW_FAILED);
-                    break;
-                default:
-                    break;
-            }
+            if(getController().addLoanToDatabase(id))
+                System.out.println(MSG_BORROW_SUCCESSFUL);
+            else
+                System.out.println(ERR_MEDIA_NOT_AVAILABLE);
         }
         else
             System.out.println(MSG_ABORT);

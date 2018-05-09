@@ -25,7 +25,7 @@ public class OperatorScreen extends Screen {
         while(!exitFromOperatorSection) {
             System.out.printf("%s\n%s\n%s\n", SEPARATOR, PROMPT_OPERATOR_CHOICES, SEPARATOR);
 
-            switch(insertInteger(1, 6)) {
+            switch(insertInteger(1, 7)) {
                 case 1:
                     addMedia();
                     break;
@@ -39,6 +39,9 @@ public class OperatorScreen extends Screen {
                     System.out.printf("%s\n%s\n", MSG_USER_LIST, getController().allUsersToString());
                     break;
                 case 5:
+                    System.out.printf("%s\n%s\n", MSG_LOAN_LIST, getController().allLoansToString());
+                    break;
+                case 6:
                     System.out.printf("%s\n", MSG_LOG_OUT);
                     exitFromOperatorSection = true;
                     getController().logout();

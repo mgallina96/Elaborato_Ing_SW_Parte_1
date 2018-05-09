@@ -11,14 +11,14 @@ import main.model.user.User;
 public interface Database {
 
     /**
-     * Adds a new user to the database and saves the database after adding the user.
+     * Adds a new user to the database and saves the user database afterwards.
      *
      * @param toAdd The {@code User} to be added to the database.
      */
     void add(User toAdd);
 
     /**
-     * Adds a new piece of media to the database and saves the database after adding the media item.
+     * Adds a new piece of media to the database and saves the media database afterwards.
      *
      * @param toAdd The {@code Media} item to be added to the database.
      * @param path The path the {@code Media} item is stored in.
@@ -26,7 +26,7 @@ public interface Database {
     void add(Media toAdd, String path);
 
     /**
-     * Adds a new loan to the database.
+     * Adds a new entry to the loan database containing both the current user and the media item that has just been lent.
      *
      * @param toLend The media to be lent to that user.
      */
@@ -38,7 +38,6 @@ public interface Database {
      * @param toRemove The {@code Media} item to remove.
      */
     void remove(Media toRemove);
-
 
     /**
      * Returns the given user (if present).
@@ -65,12 +64,12 @@ public interface Database {
     String getUserListString();
 
     /**
-     * Returns a {@code String} that contains a brief description for every piece of media in the database, according
-     * to the {@code toString} method found in the {@link Media} class.
+     * Returns a {@code String} that contains a brief description for every loan that has been granted to each user
+     * in the database.
      *
-     * @return The list of all media items as a {@code String}.
+     * @return The list of all loans as a {@code String}.
      */
-    String getMediaListString();
+    String getLoanListString();
 
     /**
      * Returns a list that contains a brief description for every piece of media in the database that matches a

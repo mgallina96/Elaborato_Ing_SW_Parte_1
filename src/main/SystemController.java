@@ -24,8 +24,11 @@ public interface SystemController {
      */
     boolean renewSubscription();
 
-    /** Checks whether a given user is allowed to renew their subscription. */
+    /** Checks whether the currently logged-in user is allowed to renew their subscription. */
     boolean canRenew();
+
+    /** Checks whether the currently logged-in user is allowed to borrow another media item. */
+    boolean canBorrow();
 
     /**
      * Converts the subscription and expiry dates into a {@code String}.
@@ -34,7 +37,7 @@ public interface SystemController {
      */
     String dateDetails();
 
-    /** Allows the current user to log out of the system. */
+    /** Logs the current user out of the system. */
     void logout();
 
     /**
@@ -81,7 +84,7 @@ public interface SystemController {
     boolean mediaIsPresent(int id);
 
     /**
-     * Adds a new user to the database and saves all changes made to the database..
+     * Adds a new user to the database.
      *
      * @param firstName The user's first name.
      * @param lastName The user's last name.
@@ -92,7 +95,7 @@ public interface SystemController {
     boolean addUserToDatabase(String firstName, String lastName, String username, String password, GregorianCalendar birthday);
 
     /**
-     * Adds a new media item to the database and saves all changes made to the database.
+     * Adds a new media item to the database.
      *
      * @param title the title.
      * @param author the author.
@@ -106,14 +109,12 @@ public interface SystemController {
      * Adds a new {@code Loan} object to the database whenever the current user borrows a media item.
      *
      * @param mediaID The media to be borrowed.
-     * @return An {@code int} value: 0 if the loan has been added successfully, 1 if the chosen media item is no longer
-     * available, -1 if the user has already borrowed the maximum allowed number of media items.
+     * @return A boolean value: {@code true} if the loan has been added successfully, {@code false} otherwise.
      */
-    int addLoanToDatabase(int mediaID);
+    boolean addLoanToDatabase(int mediaID);
 
     /**
-     * Removes the media element associated with the given ID from the database and saves all changes made to the
-     * database.
+     * Removes the media element with the given ID from the database.
      *
      * @param id The ID of the media element to be removed.
      */
@@ -134,19 +135,19 @@ public interface SystemController {
      */
     String allUsersToString();
 
-/*    /**
-     * Returns a {@code String} that contains all media items in the database.
-     *
-     * @return the list of all media items as a {@code String}.
-     */
-//    String allMediaToString();
-
     /**
      * Returns a {@code String} that contains all the media items that match a certain filter.
      *
      * @return the list of all filtered media items as a {@code String}.
      */
     String allFilteredMediaList(String filter);
+
+    /**
+     * Returns a {@code String} that contains all the loans that have been granted.
+     *
+     * @return the list of all loans as a {@code String}.
+     */
+    String allLoansToString();
 
     /**
      * Checks whether the folder associated to the given ID has children.
@@ -187,4 +188,5 @@ public interface SystemController {
      * @return A {@code String} with all the contents of that folder.
      */
     String getFolderContents(String folderPath);
+
 }

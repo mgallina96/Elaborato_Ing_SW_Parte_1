@@ -162,20 +162,21 @@ public class Customer extends User {
      * @return A boolean value, {@code true} if the customer can borrow another media item, {@code false} otherwise.
      */
     public boolean canBorrow() {
-        return borrowedMediaItems <= MAX_BORROWED_MEDIA_ITEMS;
+        return borrowedMediaItems < MAX_BORROWED_MEDIA_ITEMS;
     }
 
     /**
-     * Increases the counter for the borrowed media items.
+     * Increments the counter for the borrowed media items. It's the logical equivalent of borrowing a media item.
      */
     public void borrow() {
         borrowedMediaItems++;
     }
 
     /**
-     * Decreases the counter for the borrowed media items.
+     * Decrements the counter for the borrowed media items. It's the logical equivalent of returning a media item.
      */
     public void giveBack() {
         borrowedMediaItems--;
     }
+
 }

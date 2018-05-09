@@ -1,6 +1,7 @@
 package main.model.database;
 import main.model.loan.Loan;
 import main.model.media.Media;
+import main.model.user.Customer;
 import main.model.user.User;
 import main.utility.notifications.Notifications;
 
@@ -70,6 +71,8 @@ public class DatabaseManager implements Serializable, Database {
     public void add(Media toLend) {
         loanDatabase.addLoan(userDatabase.getCurrentUser(), toLend);
         //mediaDatabase.fetch(toLend).lend();
+        mediaDatabase.saveMediaDatabase();
+        userDatabase.saveUserDatabase();
         loanDatabase.saveLoanDatabase();
     }
 
@@ -120,8 +123,8 @@ public class DatabaseManager implements Serializable, Database {
     }
 
     @Override
-    public String getMediaListString() {
-        return mediaDatabase.getMediaListString();
+    public String getLoanListString() {
+        return loanDatabase.getLoanListString();
     }
 
     @Override

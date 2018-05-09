@@ -124,7 +124,7 @@ public class UserDatabase implements Serializable {
     /**
      * Saves the File System in the form of a HashMap object.
      */
-    void saveUserDatabase() {
+    public void saveUserDatabase() {
         try {
             //to increase serializing speed
             RandomAccessFile raf = new RandomAccessFile(USER_DATABASE_FILE_PATH, "rw");
@@ -142,6 +142,9 @@ public class UserDatabase implements Serializable {
         }
     }
 
+    /**
+     * Sweeps the user database removing all users whose subscription has expired.
+     */
     private void sweep() {
         userList.values().stream()
                 .filter(s -> s instanceof Customer)
