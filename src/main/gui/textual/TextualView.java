@@ -1,6 +1,7 @@
-package main.gui;
+package main.gui.textual;
 import main.SystemController;
-import main.gui.screens.*;
+import main.gui.GuiManager;
+import main.gui.textual.screens.*;
 
 import static main.utility.notifications.Notifications.MSG_GOODBYE;
 

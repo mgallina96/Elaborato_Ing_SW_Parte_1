@@ -1,4 +1,4 @@
-package main.gui.screens;
+package main.gui.textual.screens;
 import main.SystemController;
 import main.utility.InputParserUtility;
 

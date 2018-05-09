@@ -1,7 +1,6 @@
 package main;
 import main.gui.GuiManager;
-import main.gui.TextualView;
-import main.gui.graphic.GraphicView;
+import main.gui.textual.TextualView;
 import main.model.database.Database;
 import main.model.database.DatabaseManager;
 import main.model.database.filesystem.FileSystem;
