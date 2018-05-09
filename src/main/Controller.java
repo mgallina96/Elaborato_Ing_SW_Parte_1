@@ -1,5 +1,4 @@
 package main;
-
 import main.gui.GuiManager;
 import main.gui.TextualView;
 import main.gui.graphic.GraphicView;

@@ -1,5 +1,4 @@
 package main;
-
 import main.utility.notifications.Notifications;
 
 import java.util.logging.Level;

@@ -166,14 +166,14 @@ public class Customer extends User {
     }
 
     /**
-     * Increases the counter for the borrowed media items.
+     * Increments the counter for the borrowed media items. It's the logical equivalent of borrowing a media item.
      */
     public void borrow() {
         borrowedMediaItems++;
     }
 
     /**
-     * Decreases the counter for the borrowed media items.
+     * Decrements the counter for the borrowed media items. It's the logical equivalent of returning a media item.
      */
     public void giveBack() {
         borrowedMediaItems--;

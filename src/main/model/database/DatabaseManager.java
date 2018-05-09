@@ -120,11 +120,6 @@ public class DatabaseManager implements Serializable, Database {
     }
 
     @Override
-    public String getMediaListString() {
-        return mediaDatabase.getMediaListString();
-    }
-
-    @Override
     public String getFilteredMediaList(String filter) {
         return mediaDatabase.getFilteredMediaList(filter);
     }

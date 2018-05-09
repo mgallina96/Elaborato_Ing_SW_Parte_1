@@ -142,6 +142,9 @@ public class UserDatabase implements Serializable {
         }
     }
 
+    /**
+     * Sweeps the user database removing all users whose subscription has expired.
+     */
     private void sweep() {
         userList.values().stream()
                 .filter(s -> s instanceof Customer)

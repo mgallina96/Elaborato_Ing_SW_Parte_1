@@ -46,6 +46,11 @@ public class FileSystem implements Serializable {
         }
     }
 
+    /**
+     * Getter/Setter for the FileSystem instance.
+     *
+     * @return The FileSystem instance.
+     */
     public static FileSystem getInstance() {
         if(instance == null)
             instance = new FileSystem();
@@ -53,6 +58,12 @@ public class FileSystem implements Serializable {
         return instance;
     }
 
+    /**
+     * Adds a folder to the file system.
+     *
+     * @param name The name of the folder to be added.
+     * @param parent Its parent folder.
+     */
     public void addFolder(String name, Folder parent) {
         fileSystem.put(folderCounter, new Folder(name, parent, folderCounter));
         folderCounter++;

@@ -253,11 +253,21 @@ public class Notifications {
         this.language.initializeLanguages();
     }
 
+    /**
+     * Singleton setter/getter for the {@code Notifications} class.
+     *
+     * @param language The language to be set.
+     */
     public static void setLanguage(Language language) {
         if(notifications == null)
             notifications = new Notifications(language);
     }
 
+    /**
+     * Getter for the language used within the application.
+     *
+     * @return The language.
+     */
     public Language getLanguage() {
         return language;
     }

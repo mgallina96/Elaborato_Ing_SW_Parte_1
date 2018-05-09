@@ -1,4 +1,5 @@
 package main.model.media;
+
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 
@@ -19,7 +20,7 @@ public class Media implements Serializable {
     private String path;
     private GregorianCalendar dateAdded;
     private int licenses;
-    private int extensionConstraint;
+    private int extensionRestriction;
 
     /**
      * Constructor for the {@code Media} class. Builds a new {@code Media} item with its own unique item ID.
@@ -60,10 +61,20 @@ public class Media implements Serializable {
         this.identifier = identifier;
     }
 
-    public void setLicenses(int licences) {
+    /**
+     * Setter for the licenses (how many copies of this media item are available to borrowers).
+     *
+     * @param licenses The number of licenses to be set.
+     */
+    public void setLicenses(int licenses) {
         this.licenses = licenses;
     }
 
+    /**
+     * Getter for the licenses (how many copies of this media item are available to borrowers).
+     *
+     * @return The number of licenses to get.
+     */
     public int getLicenses() {
         return licenses;
     }
@@ -120,23 +131,44 @@ public class Media implements Serializable {
                 mediaName, identifier, dateAdded.toZonedDateTime(), licenses);
     }
 
-    public int getExtensionConstraint() {
-        return extensionConstraint;
+    /**
+     * A customer can extend the term of their loan, but this operation may only be carried out in a very specific time
+     * range that goes from {@code x} days before the expiry date to the expiry date itself.
+     * <p>
+     * {@code x} is the value of the extension restriction (in days). Every media category has its own extension
+     * restriction.
+     *
+     * @return The extension restriction.
+     */
+    public int getExtensionRestriction() {
+        return extensionRestriction;
     }
 
-    public void setExtensionConstraint(int extentionConstraint) {
-        this.extensionConstraint = extentionConstraint;
+    public void setExtensionRestriction(int extensionRestriction) {
+        this.extensionRestriction = extensionRestriction;
     }
 
+    /**
+     * Checks whether this media item is available or not. To be available, a media item has to have more than 0
+     * licenses.
+     *
+     * @return A boolean value, {@code true} if this media item is available, {@code false} otherwise.
+     */
     public boolean isAvailable() {
         return licenses > 0;
     }
 
+    /**
+     * Decrements the counter for the licences. It's the logical equivalent of lending a media item.
+     */
     public void lend(){
         if(licenses > 0)
             licenses--;
     }
 
+    /**
+     * Increments the counter for the borrowed media items. It's the logical equivalent of returning a media item.
+     */
     public void giveBack() {
         if(licenses < 3)
             licenses++;

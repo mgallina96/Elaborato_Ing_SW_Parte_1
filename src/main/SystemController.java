@@ -1,6 +1,4 @@
 package main;
-import main.model.user.User;
-
 import java.util.GregorianCalendar;
 
 /**
@@ -34,7 +32,7 @@ public interface SystemController {
      */
     String dateDetails();
 
-    /** Allows the current user to log out of the system. */
+    /** Logs the current user out of the system. */
     void logout();
 
     /**
@@ -81,7 +79,7 @@ public interface SystemController {
     boolean mediaIsPresent(int id);
 
     /**
-     * Adds a new user to the database and saves all changes made to the database..
+     * Adds a new user to the database.
      *
      * @param firstName The user's first name.
      * @param lastName The user's last name.
@@ -92,7 +90,7 @@ public interface SystemController {
     boolean addUserToDatabase(String firstName, String lastName, String username, String password, GregorianCalendar birthday);
 
     /**
-     * Adds a new media item to the database and saves all changes made to the database.
+     * Adds a new media item to the database.
      *
      * @param title the title.
      * @param author the author.
@@ -112,8 +110,7 @@ public interface SystemController {
     int addLoanToDatabase(int mediaID);
 
     /**
-     * Removes the media element associated with the given ID from the database and saves all changes made to the
-     * database.
+     * Removes the media element with the given ID from the database.
      *
      * @param id The ID of the media element to be removed.
      */
@@ -133,13 +130,6 @@ public interface SystemController {
      * @return the list of all users as a {@code String}.
      */
     String allUsersToString();
-
-/*    /**
-     * Returns a {@code String} that contains all media items in the database.
-     *
-     * @return the list of all media items as a {@code String}.
-     */
-//    String allMediaToString();
 
     /**
      * Returns a {@code String} that contains all the media items that match a certain filter.
@@ -187,4 +177,5 @@ public interface SystemController {
      * @return A {@code String} with all the contents of that folder.
      */
     String getFolderContents(String folderPath);
+
 }
