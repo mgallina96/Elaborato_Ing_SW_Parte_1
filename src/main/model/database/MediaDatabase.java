@@ -160,5 +160,4 @@ public class MediaDatabase implements Serializable {
             logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + this.getClass().getName(), IOEx);
         }
     }
-
 }

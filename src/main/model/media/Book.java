@@ -16,7 +16,7 @@ public class Book extends Media implements Serializable {
     private static final long serialVersionUID = -1281383374398165051L;
 
     private static final int EXTENTION_RESTRICTION_IN_DAYS = 3;
-    private static final int DEFAULT_LICENSES = 1;
+    private static final int DEFAULT_BOOK_LICENSES = 3;
     private String title;
     private String author;
     private String genre;
@@ -62,7 +62,7 @@ public class Book extends Media implements Serializable {
      * <p>
      * Sets the main fields to briefly describe a book.
      * <p>
-     * Sets the number of licences to a default value of 1.
+     * Sets the number of licenses to a default value of 3.
      *
      * @param title The title of the book.
      * @param author The author.
@@ -71,7 +71,7 @@ public class Book extends Media implements Serializable {
      * @param publisherName The name of the publisher (or publishing house).
      */
     public Book(String title, String author, String genre, int publicationYear, String publisherName) {
-        super(title, DEFAULT_LICENSES);
+        super(title, DEFAULT_BOOK_LICENSES);
         this.title = title;
         this.author = author;
         this.genre = genre;

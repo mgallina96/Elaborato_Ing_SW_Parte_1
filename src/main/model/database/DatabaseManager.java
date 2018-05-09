@@ -133,4 +133,5 @@ public class DatabaseManager implements Serializable, Database {
     public void removeCurrentUser() {
         userDatabase.removeCurrentUser();
     }
+
 }

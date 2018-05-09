@@ -49,7 +49,15 @@ public class LoanDatabase implements Serializable {
 
     void addLoan(User user, Media media) {
         media.lend();
-        loans.get(user.getUsername()).add(new Loan(user, media));
+        String username = user.getUsername();
+
+        if(loans.get(username) == null) {
+            ArrayList<Loan> firstLoan = new ArrayList<>();
+            firstLoan.add(new Loan(user, media));
+            loans.put(username, firstLoan);
+        }
+        else
+            loans.get(username).add(new Loan(user, media));
     }
 
     HashMap<String, ArrayList<Loan>> getLoansList() {
@@ -116,5 +124,4 @@ public class LoanDatabase implements Serializable {
                     al.remove(l);
                 }
     }
-
 }

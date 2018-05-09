@@ -18,8 +18,8 @@ public class QuickFillMain {
 
     public static void main(String[] args) {
         //fillFileSystem();
-        //fillDatabase();
-        //printFileSystem();
+        fillDatabase();
+        printFileSystem();
     }
 
     private static void printFileSystem() {
@@ -110,7 +110,7 @@ public class QuickFillMain {
                 d.add(m, "root\\Libri\\" + ((Book)m).getGenre() + "\\");
         }
 
-        //they need to be made (temporarily) public
+        //these methods need to be made (temporarily) public
         /*d.getLoanDatabase().saveLoanDatabase();
         d.getMediaDatabase().saveMediaDatabase();
         d.getUserDatabase().saveUserDatabase();*/
