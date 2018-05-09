@@ -17,9 +17,9 @@ public class QuickFillMain {
     private static final byte FILLING_LEVEL = 6;
 
     public static void main(String[] args) {
-        //printFileSystem();
-        fillDatabase();
         //fillFileSystem();
+        //fillDatabase();
+        //printFileSystem();
     }
 
     private static void printFileSystem() {
@@ -110,8 +110,10 @@ public class QuickFillMain {
                 d.add(m, "root\\Libri\\" + ((Book)m).getGenre() + "\\");
         }
 
-        //needs to be made (temporarily) public in DatabaseManager class
-        //d.saveDatabase();
+        //they need to be made (temporarily) public
+        /*d.getLoanDatabase().saveLoanDatabase();
+        d.getMediaDatabase().saveMediaDatabase();
+        d.getUserDatabase().saveUserDatabase();*/
     }
 
 

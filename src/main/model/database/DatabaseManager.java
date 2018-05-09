@@ -1,9 +1,11 @@
 package main.model.database;
+import main.model.loan.Loan;
 import main.model.media.Media;
 import main.model.user.User;
 import main.utility.notifications.Notifications;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,11 +22,12 @@ public class DatabaseManager implements Serializable, Database {
 
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -5681383377098150051L;
-    private static final String DATABASE_FILE_PATH = "application_resources\\Biblioteca SMARTINATOR - Database.ser";
+    //private static final String DATABASE_FILE_PATH = "application_resources\\Biblioteca SMARTINATOR - Database.ser";
 
     private static DatabaseManager database;
     private UserDatabase userDatabase;
     private MediaDatabase mediaDatabase;
+    private LoanDatabase loanDatabase;
 
     private Logger logger;
 
@@ -32,8 +35,11 @@ public class DatabaseManager implements Serializable, Database {
     private DatabaseManager() {
         this.userDatabase = UserDatabase.getInstance();
         this.mediaDatabase = MediaDatabase.getInstance();
+        this.loanDatabase = LoanDatabase.getInstance();
         this.logger = Logger.getLogger(this.getClass().getName());
-        loadDatabase();
+
+        for(int ID : loanDatabase.sweep())
+            mediaDatabase.fetch(new Media(ID)).giveBack();
     }
 
     /**
@@ -55,19 +61,30 @@ public class DatabaseManager implements Serializable, Database {
     @Override
     public void add(User toAdd) {
         userDatabase.addUser(toAdd);
-        saveDatabase();
+        userDatabase.saveUserDatabase();
     }
 
     @Override
     public void add(Media toAdd, String path) {
         mediaDatabase.addMedia(toAdd, path);
-        saveDatabase();
+        mediaDatabase.saveMediaDatabase();
+    }
+
+    @Override
+    public boolean add(User toAdd, Media toLend) {
+        if(loanDatabase.addLoan(toAdd, toLend)) {
+            mediaDatabase.fetch(toLend).lend();
+            loanDatabase.saveLoanDatabase();
+            return true;
+        }
+
+        return false;
     }
 
     @Override
     public void remove(Media toRemove) {
         mediaDatabase.removeMedia(toRemove);
-        saveDatabase();
+        mediaDatabase.saveMediaDatabase();
     }
 
     @Override
@@ -128,65 +145,5 @@ public class DatabaseManager implements Serializable, Database {
     @Override
     public void removeCurrentUser() {
         userDatabase.removeCurrentUser();
-    }
-
-    /**
-     * Saves:
-     * <p>
-     * - a {@code HashMap} containing all subscribed users;<p>
-     * - a {@code HashMap} containing all media files;<p>
-     * - an {@code integer} to keep track of the media item IDs
-     * <p>
-     * to a {@code .ser} file.
-     */
-    private void saveDatabase() {
-        try {
-            //to increase serializing speed
-            RandomAccessFile raf = new RandomAccessFile(DATABASE_FILE_PATH, "rw");
-
-            FileOutputStream fileOut = new FileOutputStream(raf.getFD());
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-
-            out.writeObject(userDatabase.getUserList());
-            out.writeObject(mediaDatabase.getMediaList());
-            out.writeObject(Integer.toString(MediaDatabase.getCounter()));
-
-            out.close();
-            fileOut.close();
-        }
-        catch(IOException IOEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE, IOEx);
-        }
-    }
-
-    /**
-     * Opens a .ser serializable file and loads its contents into this program.<p>
-     * This method loads:
-     * <p>- a {@code HashMap} containing all subscribed users into the {@link UserDatabase} class;
-     * <p>- a {@code HashMap} containing all registered media items into the {@link MediaDatabase} class;
-     * <p>- an {@code integer} to keep track of the media item IDs into the {@link MediaDatabase} class.
-     */
-    @SuppressWarnings("unchecked")
-    private void loadDatabase() {
-        try {
-            FileInputStream fileIn = new FileInputStream(DATABASE_FILE_PATH);
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-
-            userDatabase.setUserList((HashMap<String, User>) in.readObject());
-            mediaDatabase.setMediaList((HashMap<Integer, Media>) in.readObject());
-            MediaDatabase.setCounter(Integer.parseInt((String)in.readObject()));
-
-            in.close();
-            fileIn.close();
-        }
-        catch(FileNotFoundException FNFEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND);
-        }
-        catch(IOException IOEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_LOADING_DATABASE);
-        }
-        catch(ClassNotFoundException CNFEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_DATABASE_CLASS_NOT_FOUND);
-        }
     }
 }

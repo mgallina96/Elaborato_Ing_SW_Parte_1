@@ -1,4 +1,6 @@
 package main;
+import main.model.user.User;
+
 import java.util.GregorianCalendar;
 
 /**
@@ -100,7 +102,7 @@ public interface SystemController {
      */
     boolean addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName, String path);
 
-    //boolean pathIsPresent(String path);
+    boolean addLoanToDatabase(String userName, int mediaID);
 
     /**
      * Removes the media element associated with the given ID from the database and saves all changes made to the
@@ -179,4 +181,5 @@ public interface SystemController {
      */
     String getFolderContents(String folderPath);
 
+    String getCurrentUser();
 }

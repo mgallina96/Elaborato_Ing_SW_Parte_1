@@ -22,17 +22,21 @@ public class CustomerScreen extends Screen {
         while(!exitFromCustomerSection) {
             System.out.printf("%s\n%s\n%s\n", SEPARATOR, PROMPT_CUSTOMER_CHOICES, SEPARATOR);
 
-            String command;
-            do {
-                command = getScanner().nextLine();
-            } while(!InputParserUtility.isValidInteger(command, 1, 3));
-
-            switch(Integer.parseInt(command)) {
+            switch(insertInteger(1,6)) {
                 case 1:
                     if(!getController().renewSubscription())
                         System.out.printf("%s\n%s\n", ERR_CANNOT_RENEW, getController().dateDetails());
                     break;
-                case 2:
+                case 2: //borrow stuff
+                    if(searchForMedia(PROMPT_SEARCH_FOR_MEDIA_TO_BORROW))
+                        borrowMedia();
+                    break;
+                case 3: //extend stuff
+                    break;
+                case 4:
+                    searchForMedia(PROMPT_SEARCH_FOR_MEDIA);
+                    break;
+                case 5:
                     System.out.printf("%s\n", MSG_LOG_OUT);
                     exitFromCustomerSection = true;
                     getController().logout();
@@ -41,5 +45,47 @@ public class CustomerScreen extends Screen {
                     break;
             }
         }
+    }
+
+    private boolean searchForMedia(String prompt) {
+        System.out.println(prompt);
+        String input = getScanner().nextLine();
+
+        if(input.equals(ESCAPE_STRING)) {
+            System.out.println(MSG_ABORT);
+            return false;
+        }
+
+        String output = getController().allFilteredMediaList(input);
+
+        if(output.length() > 0)
+            System.out.printf("%s\n%s\n", MSG_FILTERED_MEDIA_LIST, output);
+        else {
+            System.out.println(ERR_FILTERED_MEDIA_LIST_EMPTY);
+            return false;
+        }
+
+        return true;
+    }
+
+    private void borrowMedia() {
+        int id = insertInteger();
+        while(!getController().mediaIsPresent(id)) {
+            System.out.println(ERR_MEDIA_NOT_PRESENT);
+            id = insertInteger();
+        }
+
+        System.out.println(PROMPT_BORROW_CONFIRMATION);
+
+        if(insertString(YN_REGEX).equalsIgnoreCase(YES)) {
+            if(getController().addLoanToDatabase(getController().getCurrentUser(), id))
+                System.out.println(MSG_BORROW_SUCCESSFUL);
+            else
+                System.out.println(ERR_BORROW_FAILED);
+        }
+        else
+            System.out.println(MSG_ABORT);
+
+
     }
 }

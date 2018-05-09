@@ -18,7 +18,8 @@ public class Media implements Serializable {
     private String mediaName;
     private String path;
     private GregorianCalendar dateAdded;
-    private int licences;
+    private int licenses;
+    private int extensionConstraint;
 
     /**
      * Constructor for the {@code Media} class. Builds a new {@code Media} item with its own unique item ID.
@@ -35,10 +36,10 @@ public class Media implements Serializable {
      *
      * @param mediaName the name to set.
      */
-    public Media(String mediaName, int licences) {
+    public Media(String mediaName, int licenses) {
         this.mediaName = mediaName;
         this.dateAdded = new GregorianCalendar();
-        this.licences = licences;
+        this.licenses = licenses;
     }
 
     /**
@@ -59,12 +60,12 @@ public class Media implements Serializable {
         this.identifier = identifier;
     }
 
-    public void setLicences(int licences) {
-        this.licences = licences;
+    public void setLicenses(int licences) {
+        this.licenses = licenses;
     }
 
-    public int getLicences() {
-        return licences;
+    public int getLicenses() {
+        return licenses;
     }
 
     /**
@@ -116,6 +117,28 @@ public class Media implements Serializable {
      */
     public String toString() {
         return String.format("Media name: %s\t|\tItem ID: %d\t|\tDate added: %s\t|\tNumber of licences: %d",
-                mediaName, identifier, dateAdded.toZonedDateTime(), licences);
+                mediaName, identifier, dateAdded.toZonedDateTime(), licenses);
+    }
+
+    public int getExtensionConstraint() {
+        return extensionConstraint;
+    }
+
+    public void setExtensionConstraint(int extentionConstraint) {
+        this.extensionConstraint = extentionConstraint;
+    }
+
+    public boolean isAvailable() {
+        return licenses > 0;
+    }
+
+    public void lend(){
+        if(licenses > 0)
+            licenses--;
+    }
+
+    public void giveBack() {
+        if(licenses < 3)
+            licenses++;
     }
 }

@@ -30,6 +30,7 @@ public class Notifications {
     public static String MSG_ESCAPE_STRING_MESSAGE;
     public static String MSG_FOLDER_CONTENTS;
     public static String MSG_MOVE_TO_LOGIN;
+    public static String MSG_BORROW_SUCCESSFUL;
 
     //PROMPTS
     public static String PROMPT_FIRST_NAME;
@@ -58,6 +59,9 @@ public class Notifications {
     public static String PROMPT_EXPIRY_IMMINENT;
     public static String PROMPT_WHICH_FOLDER;
     public static String PROMPT_REMOVE_CONFIRMATION;
+    public static String PROMPT_SEARCH_FOR_MEDIA;
+    public static String PROMPT_SEARCH_FOR_MEDIA_TO_BORROW;
+    public static String PROMPT_BORROW_CONFIRMATION;
 
     //ERRORS
     public static String ERR_NOT_OF_AGE;
@@ -70,8 +74,7 @@ public class Notifications {
     public static String ERR_SAVING_DATABASE;
     public static String ERR_LOADING_DATABASE;
     public static String ERR_LOADING_FILESYSTEM;
-    public static String ERR_DATABASE_CLASS_NOT_FOUND;
-    public static String ERR_FILESYSTEM_CLASS_NOT_FOUND;
+    public static String ERR_CLASS_NOT_FOUND;
     public static String ERR_FILE_NOT_FOUND;
     public static String ERR_MSG_INVALID_INPUT;
     public static String ERR_USER_ALREADY_PRESENT;
@@ -81,6 +84,7 @@ public class Notifications {
     public static String ERR_MEDIA_ALREADY_PRESENT;
     public static String ERR_INVALID_PATH;
     public static String ERR_PATH_NOT_PRESENT;
+    public static String ERR_BORROW_FAILED;
 
     //generic useful messages
     public static final String SEPARATOR = "--------------------------------------------------------------------------------------------------------------------------------------";
@@ -107,6 +111,7 @@ public class Notifications {
                 MSG_ESCAPE_STRING_MESSAGE = "per uscire da questa sezione";
                 MSG_FOLDER_CONTENTS = "Ecco i contenuti della cartella ";
                 MSG_MOVE_TO_LOGIN = "È consigliato spostarsi alla sezione login e provare ad accedere con questi dati.";
+                MSG_BORROW_SUCCESSFUL = "Il media è stato preso in prestito!";
                 PROMPT_FIRST_NAME = "Nome (si prega di inserire un nome valido): ";
                 PROMPT_LAST_NAME = "Cognome (si prega di inserire un cognome valido): ";
                 PROMPT_USERNAME = "Username: ";
@@ -115,7 +120,7 @@ public class Notifications {
                 PROMPT_PRESENT_USER_MULTIPLE_CHOICE = "(1) USCIRE SENZA SALVARE\t|\t(2) CAMBIARE I CAMPI";
                 PROMPT_BIBLIO_INITIAL_CHOICES = "(1) ENTRA\t|\t(2) REGISTRATI\t|\t(3) ESCI";
                 PROMPT_OPERATOR_CHOICES = "(1) AGIUNGI UN MEDIA\t|\t(2) RIMUOVI UN MEDIA\t|\t(3) MOSTRA TUTTI I MEDIA\t|\t(4) MOSTRA TUTTI GLI UTENTI ISCRITTI\t|\t(5) ESCI";
-                PROMPT_CUSTOMER_CHOICES = "(1) RINNOVA LA TUA ISCRIZIONE!\t|\t(2) ESCI";
+                PROMPT_CUSTOMER_CHOICES = "(1) RINNOVA LA TUA ISCRIZIONE!\t|\t(2) RICHIEDI UN PRESTITO\t|\t(3) RICHIEDI UNA PROROGA\t|\t(4) CERCA UNA RISORSA\t|\t(5) ESCI";
                 PROMPT_SIGN_UP_CONFIRMATION = "Confermi l'iscrizione? (y/n)";
                 PROMPT_REMOVE_CONFIRMATION = "Confermi la rimozione? (y/n)";
                 PROMPT_LOGIN_SCREEN = "Bentornato/a! Entra nella " + MSG_BIBLIO_NAME;
@@ -129,10 +134,13 @@ public class Notifications {
                 PROMPT_PUBLICATION_YEAR = "Anno di pubblicazione: ";
                 PROMPT_PUBLISHER_NAME = "Casa editrice: ";
                 PROMPT_REMOVE_MEDIA = "Si prega di inserire una o più parole chiave per trovare il media da rimuovere (inserire !quit per uscire): ";
+                PROMPT_SEARCH_FOR_MEDIA = "Si prega di inserire una o più parole chiave relative al media che si desidera trovare (inserire !quit per uscire): ";
+                PROMPT_SEARCH_FOR_MEDIA_TO_BORROW = "Si prega di inserire una o più parole chiave relative al media che si desidera prendere in prestito (inserire !quit per uscire): ";
                 PROMPT_REMOVE_MEDIA_ID = "Si prega di selezionare l'ID del media da rimuovere.";
                 PROMPT_SELECT_PATH = "Inserire il percorso in cui si vuole mettere il media selezionando volta per volta la cartella desiderata.";
                 PROMPT_EXPIRY_IMMINENT = "ATTENZIONE! SCADENZA ISCRIZIONE IMMINENTE";
                 PROMPT_WHICH_FOLDER = "Inserire il percorso di cui si vuole vedere il contenuto, selezionando volta per volta la cartella desiderata.";
+                PROMPT_BORROW_CONFIRMATION = "Confermi il prestito? (y/n)";
                 ERR_NOT_OF_AGE = "Attenzione: l'utente è minorenne. Si prega di riempire i campi da capo.";
                 ERR_INVALID_NAME = "Sembra che questo nome abbia un formato non valido, si prega di inserire nuovamente un nome valido.";
                 ERR_INVALID_DATE = "Questa data di nascita ha un formato non valido. Si prega di inserire una data di nascita valida.";
@@ -140,12 +148,11 @@ public class Notifications {
                 ERR_LOGIN_FAILED = "Login fallito: username o password sbagliati.";
                 ERR_SIGN_UP_FAILED = "Iscrizione fallita.";
                 ERR_SIGN_UP_ABORTED = "Iscrizione terminata senza successo.";
-                ERR_SAVING_DATABASE = "C'è stato un errore durante il salvataggio del database in un file .ser.";
-                ERR_LOADING_DATABASE = "C'è stato un errore durante il caricamento del database.";
+                ERR_SAVING_DATABASE = "C'è stato un errore durante il salvataggio del seguente database in un file .ser: ";
+                ERR_LOADING_DATABASE = "C'è stato un errore durante il caricamento del seguente database: ";
                 ERR_LOADING_FILESYSTEM = "C'è stato un errore durante il caricamento del file system.";
-                ERR_DATABASE_CLASS_NOT_FOUND = "Classe Database non trovata.";
-                ERR_FILESYSTEM_CLASS_NOT_FOUND = "Classe FileSystem non trovata.";
-                ERR_FILE_NOT_FOUND = "Errore: file non trovato.";
+                ERR_CLASS_NOT_FOUND = "Errore! La classe seguente non è stata trovata: ";
+                ERR_FILE_NOT_FOUND = "Errore! Il file appartenente alla classe seguente non è stato trovato: ";
                 ERR_MSG_INVALID_INPUT = "Input non valido.";
                 ERR_USER_ALREADY_PRESENT = "Questo nome utente è già presente nel database.";
                 ERR_CANNOT_RENEW = "È troppo presto per effettuare il rinnovo dell'iscrizione.";
@@ -154,6 +161,7 @@ public class Notifications {
                 ERR_MEDIA_ALREADY_PRESENT = "Il media inserito è già presente nel database.";
                 ERR_INVALID_PATH = "Il percorso inserito sembra essere non valido. Si prega di inserire nuovamente un percorso valido. (cartella\\sottocartella\\sottocartella...)";
                 ERR_PATH_NOT_PRESENT = "Il percorso inserito non esiste.";
+                ERR_BORROW_FAILED = "Non è stato possibile prendere in prestito il media.";
             }
         },
         ENGLISH {
@@ -177,6 +185,7 @@ public class Notifications {
                 MSG_ESCAPE_STRING_MESSAGE = "to exit this section";
                 MSG_FOLDER_CONTENTS = "Here are the contents of the folder ";
                 MSG_MOVE_TO_LOGIN = "Try logging in with these credentials.";
+                MSG_BORROW_SUCCESSFUL = "Media item successfully borrowed!";
                 PROMPT_FIRST_NAME = "First name (please insert a valid first name): ";
                 PROMPT_LAST_NAME = "Last name (please insert a valid last name): ";
                 PROMPT_USERNAME = "Username: ";
@@ -185,7 +194,7 @@ public class Notifications {
                 PROMPT_PRESENT_USER_MULTIPLE_CHOICE = "(1) EXIT WITHOUT SAVING\t|\t(2) CHANGE FIELDS";
                 PROMPT_BIBLIO_INITIAL_CHOICES = "(1) LOGIN\t|\t(2) SIGN UP\t|\t(3) EXIT";
                 PROMPT_OPERATOR_CHOICES = "(1) ADD A MEDIA ITEM\t|\t(2) REMOVE A MEDIA ITEM\t|\t(3) SHOW ALL MEDIA ITEMS\t|\t(4) SHOW ALL SUBSCRIBED USERS\t|\t(5) LOGOUT";
-                PROMPT_CUSTOMER_CHOICES = "(1) RENEW YOUR SUBSCRIPTION!\t|\t(2) LOGOUT";
+                PROMPT_CUSTOMER_CHOICES = "(1) RENEW YOUR SUBSCRIPTION!\t|\t(2) REQUEST A LOAN\t|\t(3) EXTEND YOUR LOAN\t|\t(4) SEARCH FOR MEDIA ITEMS\t|\t(5) LOGOUT";
                 PROMPT_SIGN_UP_CONFIRMATION = "Are you sure you want to submit this form? (y/n)";
                 PROMPT_REMOVE_CONFIRMATION = "Are you sure you want to remove this media item? (y/n)";
                 PROMPT_LOGIN_SCREEN = "Welcome back! Log in to " + MSG_BIBLIO_NAME;
@@ -199,10 +208,13 @@ public class Notifications {
                 PROMPT_PUBLICATION_YEAR = "Publication year: ";
                 PROMPT_PUBLISHER_NAME = "Publisher: ";
                 PROMPT_REMOVE_MEDIA = "Please insert one or more keywords for the media item you wish to remove (insert !quit to quit): ";
+                PROMPT_SEARCH_FOR_MEDIA = "Please insert one or more keywords for the media item you're looking for (insert !quit to quit): ";
+                PROMPT_SEARCH_FOR_MEDIA_TO_BORROW = "Please insert one or more keywords for the media item you'd like to borrow (insert !quit to quit): ";
                 PROMPT_REMOVE_MEDIA_ID = "Please choose the ID for the item you wish to remove.";
                 PROMPT_SELECT_PATH = "Please choose the folder path you wish to put the media item in by selecting the desired folders step by step.";
                 PROMPT_EXPIRY_IMMINENT = "WARNING! SUBSCRIPTION EXPIRY IMMINENT!";
                 PROMPT_WHICH_FOLDER = "Please choose the path you wish to see the contents of, by selecting the desired folders step by step.";
+                PROMPT_BORROW_CONFIRMATION = "Are you sure you want to borrow this media item? (y/n)";
                 ERR_NOT_OF_AGE = "Warning: user is underage. Please re-fill this form.";
                 ERR_INVALID_NAME = "Looks like this name has an invalid format, please re-insert a valid name.";
                 ERR_INVALID_DATE = "This birth date has an invalid format. Please re-insert a valid date.";
@@ -210,12 +222,11 @@ public class Notifications {
                 ERR_LOGIN_FAILED = "Login failed: wrong username or password.";
                 ERR_SIGN_UP_FAILED = "Sign up failed.";
                 ERR_SIGN_UP_ABORTED = "Sign up aborted.";
-                ERR_SAVING_DATABASE = "An error occurred while saving the database to a .ser file.";
-                ERR_LOADING_DATABASE = "An error occurred while loading the database.";
+                ERR_SAVING_DATABASE = "An error occurred while saving the following database to a .ser file: ";
+                ERR_LOADING_DATABASE = "An error occurred while loading the following database: ";
                 ERR_LOADING_FILESYSTEM = "An error occurred while loading the file system.";
-                ERR_DATABASE_CLASS_NOT_FOUND = "Database class not found.";
-                ERR_FILESYSTEM_CLASS_NOT_FOUND = "FileSystem class not found.";
-                ERR_FILE_NOT_FOUND = "Error: file not found.";
+                ERR_CLASS_NOT_FOUND = "Error! The following class was not found: ";
+                ERR_FILE_NOT_FOUND = "Error! The file belonging to the following class was not found: ";
                 ERR_MSG_INVALID_INPUT = "Invalid input.";
                 ERR_USER_ALREADY_PRESENT = "This username is already present in our database.";
                 ERR_CANNOT_RENEW = "It's too early to renew your subscription.";
@@ -224,6 +235,7 @@ public class Notifications {
                 ERR_MEDIA_ALREADY_PRESENT = "The media you're trying to add is already in our database.";
                 ERR_INVALID_PATH = "The path you inserted seems to be invalid. Please re-insert a valid path. (accepted format: folder\\subfolder\\subfolder...)";
                 ERR_PATH_NOT_PRESENT = "The path you inserted doesn't exist.";
+                ERR_BORROW_FAILED = "There has been an error while borrowing this media item.";
             }
         }
     }
