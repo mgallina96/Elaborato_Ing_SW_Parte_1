@@ -1,4 +1,6 @@
 package main;
+import main.model.user.User;
+
 import java.util.GregorianCalendar;
 
 /**
@@ -22,8 +24,11 @@ public interface SystemController {
      */
     boolean renewSubscription();
 
-    /** Checks whether a given user is allowed to renew their subscription. */
+    /** Checks whether the currently logged-in user is allowed to renew their subscription. */
     boolean canRenew();
+
+    /** Checks whether the currently logged-in user is allowed to borrow another media item. */
+    boolean canBorrow();
 
     /**
      * Converts the subscription and expiry dates into a {@code String}.
@@ -104,10 +109,9 @@ public interface SystemController {
      * Adds a new {@code Loan} object to the database whenever the current user borrows a media item.
      *
      * @param mediaID The media to be borrowed.
-     * @return An {@code int} value: 0 if the loan has been added successfully, 1 if the chosen media item is no longer
-     * available, -1 if the user has already borrowed the maximum allowed number of media items.
+     * @return A boolean value: {@code true} if the loan has been added successfully, {@code false} otherwise.
      */
-    int addLoanToDatabase(int mediaID);
+    boolean addLoanToDatabase(int mediaID);
 
     /**
      * Removes the media element with the given ID from the database.

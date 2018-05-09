@@ -103,19 +103,13 @@ public class Controller implements SystemController {
     }
 
     @Override
-    public int addLoanToDatabase(int mediaID) {
-        User currentUser = database.getCurrentUser();
-        boolean cond1 = database.fetch(new Media(mediaID)).isAvailable();
-        boolean cond2 = (currentUser instanceof Customer) && ((Customer)currentUser).canBorrow();
-
-        if(cond1 && cond2) {
+    public boolean addLoanToDatabase(int mediaID) {
+        if(database.fetch(new Media(mediaID)).isAvailable()) {
             database.add(database.fetch(new Media(mediaID)));
-            return 0;
+            return true;
         }
-        else if(!cond1)
-            return 1;
-        else
-            return -1;
+
+        return false;
     }
 
     @Override
@@ -147,6 +141,12 @@ public class Controller implements SystemController {
     public boolean canRenew() {
         User currentUser = database.getCurrentUser();
         return (currentUser instanceof Customer) && ((Customer)currentUser).canRenew();
+    }
+
+    @Override
+    public boolean canBorrow() {
+        User currentUser = database.getCurrentUser();
+        return (currentUser instanceof Customer) && ((Customer)currentUser).canBorrow();
     }
 
     @Override
@@ -203,4 +203,5 @@ public class Controller implements SystemController {
     public String getFolderContents(String folderPath) {
         return database.getFolderContents(folderPath);
     }
+
 }

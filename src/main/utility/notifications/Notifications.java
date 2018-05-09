@@ -85,6 +85,8 @@ public class Notifications {
     public static String ERR_INVALID_PATH;
     public static String ERR_PATH_NOT_PRESENT;
     public static String ERR_BORROW_FAILED;
+    public static String ERR_MEDIA_NOT_AVAILABLE;
+    public static String ERR_CANNOT_BORROW;
 
     //generic useful messages
     public static final String SEPARATOR = "--------------------------------------------------------------------------------------------------------------------------------------";
@@ -162,6 +164,8 @@ public class Notifications {
                 ERR_INVALID_PATH = "Il percorso inserito sembra essere non valido. Si prega di inserire nuovamente un percorso valido. (cartella\\sottocartella\\sottocartella...)";
                 ERR_PATH_NOT_PRESENT = "Il percorso inserito non esiste.";
                 ERR_BORROW_FAILED = "Non è stato possibile prendere in prestito il media.";
+                ERR_MEDIA_NOT_AVAILABLE = "Il media selezionato non è disponibile al momento.";
+                ERR_CANNOT_BORROW = "Tetto massimo di prestiti raggiunto! Non è possibile prendere in prestito altri media al momento.";
             }
         },
         ENGLISH {
@@ -236,6 +240,8 @@ public class Notifications {
                 ERR_INVALID_PATH = "The path you inserted seems to be invalid. Please re-insert a valid path. (accepted format: folder\\subfolder\\subfolder...)";
                 ERR_PATH_NOT_PRESENT = "The path you inserted doesn't exist.";
                 ERR_BORROW_FAILED = "There has been an error while borrowing this media item.";
+                ERR_MEDIA_NOT_AVAILABLE = "The selected media is not available at the moment.";
+                ERR_CANNOT_BORROW = "Upper loan limit reached! It's not possible to borrow any more media items at the moment.";
             }
         }
     }

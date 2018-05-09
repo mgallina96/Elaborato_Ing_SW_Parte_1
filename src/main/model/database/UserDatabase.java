@@ -124,7 +124,7 @@ public class UserDatabase implements Serializable {
     /**
      * Saves the File System in the form of a HashMap object.
      */
-    void saveUserDatabase() {
+    public void saveUserDatabase() {
         try {
             //to increase serializing speed
             RandomAccessFile raf = new RandomAccessFile(USER_DATABASE_FILE_PATH, "rw");

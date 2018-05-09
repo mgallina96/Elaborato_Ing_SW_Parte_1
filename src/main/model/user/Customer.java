@@ -162,7 +162,7 @@ public class Customer extends User {
      * @return A boolean value, {@code true} if the customer can borrow another media item, {@code false} otherwise.
      */
     public boolean canBorrow() {
-        return borrowedMediaItems <= MAX_BORROWED_MEDIA_ITEMS;
+        return borrowedMediaItems < MAX_BORROWED_MEDIA_ITEMS;
     }
 
     /**
@@ -178,4 +178,5 @@ public class Customer extends User {
     public void giveBack() {
         borrowedMediaItems--;
     }
+
 }

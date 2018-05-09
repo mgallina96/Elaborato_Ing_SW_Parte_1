@@ -142,7 +142,7 @@ public class MediaDatabase implements Serializable {
     /**
      * Saves the File System in the form of a HashMap object.
      */
-    void saveMediaDatabase() {
+    public void saveMediaDatabase() {
         try {
             //to increase serializing speed
             RandomAccessFile raf = new RandomAccessFile(MEDIA_DATABASE_FILE_PATH, "rw");

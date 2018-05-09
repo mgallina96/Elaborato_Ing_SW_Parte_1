@@ -18,8 +18,8 @@ public class QuickFillMain {
 
     public static void main(String[] args) {
         //fillFileSystem();
-        fillDatabase();
-        printFileSystem();
+        //fillDatabase();
+        //printFileSystem();
     }
 
     private static void printFileSystem() {

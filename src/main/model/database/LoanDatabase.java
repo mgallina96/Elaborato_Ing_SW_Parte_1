@@ -2,6 +2,7 @@ package main.model.database;
 import com.sun.xml.internal.bind.v2.model.core.ID;
 import main.model.loan.Loan;
 import main.model.media.Media;
+import main.model.user.Customer;
 import main.model.user.User;
 import main.utility.notifications.Notifications;
 
@@ -29,6 +30,8 @@ public class LoanDatabase implements Serializable {
         this.loans = new HashMap<>();
         logger = Logger.getLogger(this.getClass().getName());
         loadLoanDatabase();
+
+        sweep();
     }
 
     static LoanDatabase getInstance() {
@@ -49,6 +52,9 @@ public class LoanDatabase implements Serializable {
 
     void addLoan(User user, Media media) {
         media.lend();
+        if(user instanceof Customer)
+            ((Customer)user).borrow();
+
         String username = user.getUsername();
 
         if(loans.get(username) == null) {
@@ -97,7 +103,7 @@ public class LoanDatabase implements Serializable {
     /**
      * Saves the loan database in the form of a HashMap object.
      */
-    void saveLoanDatabase() {
+    public void saveLoanDatabase() {
         //TODO eliminare ripetizione codice
         try {
             //to increase serializing speed
@@ -121,6 +127,7 @@ public class LoanDatabase implements Serializable {
             for(Loan l : al)
                 if(l.hasExpired()) {
                     l.getMedia().giveBack();
+                    ((Customer)l.getUser()).giveBack();
                     al.remove(l);
                 }
     }
