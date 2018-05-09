@@ -102,7 +102,14 @@ public interface SystemController {
      */
     boolean addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName, String path);
 
-    boolean addLoanToDatabase(String userName, int mediaID);
+    /**
+     * Adds a new {@code Loan} object to the database whenever the current user borrows a media item.
+     *
+     * @param mediaID The media to be borrowed.
+     * @return An {@code int} value: 0 if the loan has been added successfully, 1 if the chosen media item is no longer
+     * available, -1 if the user has already borrowed the maximum allowed number of media items.
+     */
+    int addLoanToDatabase(int mediaID);
 
     /**
      * Removes the media element associated with the given ID from the database and saves all changes made to the
@@ -180,6 +187,4 @@ public interface SystemController {
      * @return A {@code String} with all the contents of that folder.
      */
     String getFolderContents(String folderPath);
-
-    String getCurrentUser();
 }

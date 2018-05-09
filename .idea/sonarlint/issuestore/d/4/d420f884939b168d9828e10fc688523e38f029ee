@@ -1,0 +1,10 @@
+
+R
+squid:S106"9Replace this use of System.out or System.err by a logger.(åûÉÁûÿÿÿÿ
+M
+squid:S106"9Replace this use of System.out or System.err by a logger.(Ÿ€­ý
+M
+squid:S106"9Replace this use of System.out or System.err by a logger.(²¾Üª
+ksquid:S3457"Q%n should be used in place of \n to produce the platform-specific line separator.(åûÉÁûÿÿÿÿ
+fsquid:S3457"Q%n should be used in place of \n to produce the platform-specific line separator.(Ÿ€­ý
+fsquid:S3457"Q%n should be used in place of \n to produce the platform-specific line separator.(²¾Üª

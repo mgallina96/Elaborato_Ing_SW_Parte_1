@@ -20,9 +20,11 @@ public class Customer extends User {
     private static final int RENEWAL_BOUNDARY_IN_DAYS = 10;
     private static final int LEGAL_AGE_IN_YEARS = 18;
     private static final int EXPIRY_TIME_IN_YEARS = 5;
+    private static final int MAX_BORROWED_MEDIA_ITEMS = 3;
 
     private GregorianCalendar subscriptionDate;
     private GregorianCalendar expiryDate;
+    private int borrowedMediaItems;
 
     /**
      * Constructor that builds a new {@code Customer} object using the given parameters.
@@ -40,6 +42,7 @@ public class Customer extends User {
         subscriptionDate = new GregorianCalendar();
         expiryDate = (GregorianCalendar)(subscriptionDate.clone());
         expiryDate.add(Calendar.YEAR, EXPIRY_TIME_IN_YEARS);
+        borrowedMediaItems = 0;
     }
 
     /**
@@ -61,6 +64,7 @@ public class Customer extends User {
         this.subscriptionDate = subscriptionDate;
         expiryDate = (GregorianCalendar)(subscriptionDate.clone());
         expiryDate.add(Calendar.YEAR, EXPIRY_TIME_IN_YEARS);
+        borrowedMediaItems = 0;
     }
 
     /**
@@ -71,6 +75,7 @@ public class Customer extends User {
      */
     public Customer(String username, String password) {
         super(username, password);
+        borrowedMediaItems = 0;
     }
 
     /**
@@ -148,5 +153,29 @@ public class Customer extends User {
      */
     public int daysLeftToRenew() {
         return (int)Math.abs(ChronoUnit.DAYS.between(new GregorianCalendar().toInstant(), expiryDate.toInstant()));
+    }
+
+    /**
+     * Checks whether the customer has borrowed less than x media items, where x is a constant defined in the
+     * {@link Customer class}.
+     *
+     * @return A boolean value, {@code true} if the customer can borrow another media item, {@code false} otherwise.
+     */
+    public boolean canBorrow() {
+        return borrowedMediaItems <= MAX_BORROWED_MEDIA_ITEMS;
+    }
+
+    /**
+     * Increases the counter for the borrowed media items.
+     */
+    public void borrow() {
+        borrowedMediaItems++;
+    }
+
+    /**
+     * Decreases the counter for the borrowed media items.
+     */
+    public void giveBack() {
+        borrowedMediaItems--;
     }
 }

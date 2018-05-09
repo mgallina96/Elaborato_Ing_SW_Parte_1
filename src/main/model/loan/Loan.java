@@ -15,7 +15,6 @@ public class Loan implements Serializable {
     private static final int EXPIRY_TIME_IN_DAYS = 30;
     private User user;
     private Media media;
-    private ArrayList<Media> lentMediaItems;
     private int extentionConstraintInDays;
     private GregorianCalendar loanDate;
     private GregorianCalendar loanExpiry;
@@ -39,10 +38,6 @@ public class Loan implements Serializable {
         correctedLoanExpiry.add(Calendar.DATE, -extentionConstraintInDays);
 
         return !hasExpired() && (new GregorianCalendar()).after(correctedLoanExpiry);
-    }
-
-    public void addLoan(Media media) {
-
     }
 
     public GregorianCalendar getLoanDate() {

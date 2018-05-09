@@ -31,7 +31,8 @@ public class Controller implements SystemController {
     private Controller() {
         database = DatabaseManager.getInstance();
         fileSystem = FileSystem.getInstance();
-        guiManager = new GraphicView(this);
+        guiManager = new TextualView(this);
+        //guiManager = new GraphicView(this);
     }
 
     //Returns the instance of the controller.
@@ -104,10 +105,19 @@ public class Controller implements SystemController {
     }
 
     @Override
-    public boolean addLoanToDatabase(String userName, int mediaID) {
-        return database.fetch(new Media(mediaID)).isAvailable() &&
-               database.add(database.fetch(new User(userName)), database.fetch(new Media(mediaID)));
+    public int addLoanToDatabase(int mediaID) {
+        User currentUser = database.getCurrentUser();
+        boolean cond1 = database.fetch(new Media(mediaID)).isAvailable();
+        boolean cond2 = (currentUser instanceof Customer) && ((Customer)currentUser).canBorrow();
 
+        if(cond1 && cond2) {
+            database.add(database.fetch(new Media(mediaID)));
+            return 0;
+        }
+        else if(!cond1)
+            return 1;
+        else
+            return -1;
     }
 
     @Override
@@ -194,10 +204,5 @@ public class Controller implements SystemController {
     @Override
     public String getFolderContents(String folderPath) {
         return database.getFolderContents(folderPath);
-    }
-
-    @Override
-    public String getCurrentUser() {
-        return database.getCurrentUser().getUsername();
     }
 }

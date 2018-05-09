@@ -17,7 +17,6 @@ public class LoanDatabase implements Serializable {
     private static final long serialVersionUID = -2599493317418350651L;
 
     private static final String LOAN_DATABASE_FILE_PATH = "application_resources\\Biblioteca SMARTINATOR - Loan Database.ser";
-    private static final int MAX_LENT_MEDIA_ITEMS = 3;
     private HashMap<String, ArrayList<Loan>> loans;
     private static LoanDatabase loanDatabase;
     private Logger logger;
@@ -44,24 +43,10 @@ public class LoanDatabase implements Serializable {
         
         return userList.toString();
     }
-    
-    boolean addLoan(User user, Media media) {
-        String username = user.getUsername();
 
-        if(!loans.containsKey(username)) {
-            ArrayList<Loan> a = new ArrayList<>();
-            a.add(new Loan(user, media));
-            loans.put(username, a);
-        }
-        else {
-            if(loans.get(username).size() < MAX_LENT_MEDIA_ITEMS) {
-                loans.get(username).add(new Loan(user, media));
-            }
-            else
-                return false;
-        }
-
-        return true;
+    void addLoan(User user, Media media) {
+        media.lend();
+        loans.get(user.getUsername()).add(new Loan(user, media));
     }
 
     HashMap<String, ArrayList<Loan>> getLoansList() {
@@ -120,16 +105,13 @@ public class LoanDatabase implements Serializable {
         }
     }
 
-    ArrayList<Integer> sweep() {
-        ArrayList<Integer> IDsToRemove = new ArrayList<>();
-
+    private void sweep() {
         for(ArrayList<Loan> al : loans.values())
             for(Loan l : al)
                 if(l.hasExpired()) {
-                    IDsToRemove.add(l.getMedia().getIdentifier());
+                    l.getMedia().giveBack();
                     al.remove(l);
                 }
-
-        return IDsToRemove;
     }
+
 }
