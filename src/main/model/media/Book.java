@@ -15,7 +15,7 @@ public class Book extends Media implements Serializable {
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -1281383374398165051L;
 
-    private static final int EXTENTION_RESTRICTION_IN_DAYS = 3;
+    private static final int EXTENSION_RESTRICTION_IN_DAYS = 3;
     private static final int DEFAULT_BOOK_LICENSES = 3;
     private String title;
     private String author;
@@ -54,7 +54,7 @@ public class Book extends Media implements Serializable {
         String bareDetails = title + ", " + author + ", " + genre + ", " + publicationYear + ", "  + publisherName;
 
         super.setBareItemDetails(bareDetails);
-        super.setExtensionRestriction(EXTENTION_RESTRICTION_IN_DAYS);
+        super.setExtensionRestriction(EXTENSION_RESTRICTION_IN_DAYS);
     }
 
     /**
@@ -81,7 +81,7 @@ public class Book extends Media implements Serializable {
         String bareDetails = title + ", " + author + ", " + genre + ", " + publicationYear + ", "  + publisherName;
 
         super.setBareItemDetails(bareDetails);
-        super.setExtensionRestriction(EXTENTION_RESTRICTION_IN_DAYS);
+        super.setExtensionRestriction(EXTENSION_RESTRICTION_IN_DAYS);
     }
 
     /**
