@@ -41,6 +41,7 @@ public class SignUpScreen extends Screen {
             System.out.println(ERR_NOT_OF_AGE);
             return 1;
         }
+
         if(getController().addUserToDatabase(details[0], details[1], details[2], details[3], InputParserUtility.toGregorianDate(details[4]))) {
             System.out.println(MSG_SIGN_UP_SUCCESSFUL);
             return 0;
