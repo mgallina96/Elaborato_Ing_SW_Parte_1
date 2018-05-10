@@ -1,4 +1,4 @@
-package main.gui.graphic.screens;
+package main.gui.graphic.screens.start;
 
 import main.SystemController;
 import main.gui.graphic.components.BackgroundImagePanel;
@@ -19,18 +19,20 @@ import static main.gui.graphic.Resources.*;
  *
  * @author Manuel Gallina
  */
-public class LoginScreen{
+public class LoginScreen {
 
     private static final Dimension FRAME_SIZE = new Dimension(960, 540);
 
     private SystemController controller;
 
     private JFrame frame;
+
     private JTextField usernameField;
     private JPasswordField passwordField;
     private JTextField warningField;
 
     private AppScreen appScreen;
+    private SignUpScreen signUpScreen;
 
     private Font textFont;
     private Font warningFont;
@@ -38,7 +40,6 @@ public class LoginScreen{
     private MouseListener mouseListener = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
-
 
         }
 
@@ -64,12 +65,11 @@ public class LoginScreen{
     };
     private ActionListener enterListener = e -> checkLogin();
 
-    /**
-     * Inizializza il pannello di login.
-     */
+    /** Inizializza il pannello di login. */
     public void init(SystemController controller) {
         this.controller = controller;
         appScreen = new AppScreen();
+        signUpScreen = new SignUpScreen();
 
         textFont = bsTextFont.deriveFont(Font.PLAIN, 29);
         warningFont = bsTextFont.deriveFont(Font.PLAIN, 19);
@@ -156,7 +156,7 @@ public class LoginScreen{
     private JButton buildSignUpButton() {
         JButton signUp = buildButton(705, 389, 160, 50);
         signUp.addActionListener(e -> {
-            //signUpScreen.init();
+            signUpScreen.init(controller);
         });
         return signUp;
     }

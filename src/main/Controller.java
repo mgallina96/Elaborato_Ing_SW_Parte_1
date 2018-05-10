@@ -1,5 +1,6 @@
 package main;
 import main.gui.GuiManager;
+import main.gui.graphic.GraphicView;
 import main.gui.textual.TextualView;
 import main.model.database.Database;
 import main.model.database.DatabaseManager;
@@ -21,6 +22,7 @@ import java.util.GregorianCalendar;
 public class Controller implements SystemController {
 
     private static Controller instance;
+
     private GuiManager guiManager;
     private Database database;
     private FileSystem fileSystem;
@@ -29,8 +31,8 @@ public class Controller implements SystemController {
     private Controller() {
         database = DatabaseManager.getInstance();
         fileSystem = FileSystem.getInstance();
-        guiManager = new TextualView(this);
-        //guiManager = new GraphicView(this);
+        //guiManager = new TextualView(this);
+        guiManager = new GraphicView(this);
     }
 
     //Returns the instance of the controller.

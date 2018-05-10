@@ -47,11 +47,10 @@ public class Folder implements Serializable {
         this.name = name;
         this.parent = parent;
         this.children = new ArrayList<>();
-        this.depth = this.parent.getDepth() + 1;
         this.folderId = ID;
-        this.parent.addChild(this);
 
-        //please DON'T move the following declaration, as the parent must be constructed BEFORE resolving the path.
+        this.parent.addChild(this);
+        this.depth = this.parent.getDepth() + 1;
         this.folderPath = this.parent.getFolderPath() + this.name + "\\";
     }
 
@@ -81,15 +80,20 @@ public class Folder implements Serializable {
         return children;
     }
 
-    private void addChild(Folder toAdd) {
-        children.add(toAdd);
-    }
-
+    /**
+     * Returns the depth of the folder.
+     *
+     * @return The depth of the folder.
+     */
     public int getDepth() {
         return depth;
     }
 
     public int getFolderId() {
         return folderId;
+    }
+
+    private void addChild(Folder toAdd) {
+        children.add(toAdd);
     }
 }

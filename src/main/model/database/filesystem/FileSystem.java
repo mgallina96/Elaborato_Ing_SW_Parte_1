@@ -3,8 +3,6 @@ package main.model.database.filesystem;
 import main.utility.notifications.Notifications;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,14 +22,17 @@ public class FileSystem implements Serializable {
 
     private static final String FILESYSTEM_FILE_PATH = "application_resources\\Biblioteca SMARTINATOR - File System.ser";
     private static final Folder ROOT = new Folder("root");
-    private final int ROOT_ID = 0;
+    private static final int ROOT_ID = 0;
+
     private static int folderCounter;
     private static FileSystem instance;
-    private String allPaths;
-    private Logger logger;
-    private HashMap<Integer, Folder> fileSystem;
 
-    @SuppressWarnings("all")
+    private HashMap<Integer, Folder> fileSystem;
+    private String allPaths;
+
+    private Logger logger;
+
+    // Private constructor for the unique instance of file system.
     private FileSystem() {
         this.fileSystem = new HashMap<>();
         this.logger = Logger.getLogger(this.getClass().getName());
@@ -69,6 +70,12 @@ public class FileSystem implements Serializable {
         folderCounter++;
     }
 
+    /**
+     * Returns the folder having the given ID.
+     *
+     * @param folderID The ID of the requested folder.
+     * @return The folder having the given ID.
+     */
     public Folder getFolder(int folderID) {
         return fileSystem.get(folderID);
     }
@@ -82,6 +89,12 @@ public class FileSystem implements Serializable {
         return allPaths;
     }
 
+    /**
+     * Returns the file system data structure as a hash map where the keys are the folders IDs and the values are the
+     * actual {@code Folder} objects.
+     *
+     * @return The file system.
+     */
     public HashMap<Integer, Folder> getFileSystem() {
         return fileSystem;
     }
@@ -93,16 +106,6 @@ public class FileSystem implements Serializable {
      */
     public int getRootID() {
         return ROOT_ID;
-    }
-
-    private String allPathsToString() {
-        StringBuilder allPaths = new StringBuilder();
-
-        fileSystem.values().stream()
-                .filter(f -> f.getParent() != f)
-                .forEach(f -> allPaths.append(f.getFolderPath()).append("\n"));
-
-        return allPaths.toString().trim();
     }
 
     /**
@@ -121,13 +124,13 @@ public class FileSystem implements Serializable {
     }
 
     /**
-     * Recursive function that builds a tree structure starting from a folder.
+     * Recursive function that prints to string a tree structure starting from a folder.
      *
      * @param root The root folder to start from.
      * @param depth The depth of the current folder.
      * @return A string containing the full tree.
      */
-    public String tree(Folder root, int depth) {
+    public String treeToString(Folder root, int depth) {
         StringBuilder folders = new StringBuilder();
 
         for(int i = 0; i < depth; i++)
@@ -137,7 +140,7 @@ public class FileSystem implements Serializable {
         if(!root.getChildren().isEmpty()) {
             depth++;
             for(Folder f : root.getChildren())
-                folders.append(tree(f, depth));
+                folders.append(treeToString(f, depth));
         }
 
         return folders.toString();
@@ -172,9 +175,7 @@ public class FileSystem implements Serializable {
         }
     }
 
-    /**
-     * Saves the File System in the form of a HashMap object.
-     */
+    /** Saves the File System in the form of a HashMap object. */
     public void saveFileSystem() {
         try {
             //to increase serializing speed
@@ -192,5 +193,15 @@ public class FileSystem implements Serializable {
         catch(IOException IOEx) {
             logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + this.getClass().getName(), IOEx);
         }
+    }
+
+    private String allPathsToString() {
+        StringBuilder allPaths = new StringBuilder();
+
+        fileSystem.values().stream()
+                .filter(f -> f.getParent() != f)
+                .forEach(f -> allPaths.append(f.getFolderPath()).append("\n"));
+
+        return allPaths.toString().trim();
     }
 }

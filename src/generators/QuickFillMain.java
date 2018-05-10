@@ -26,7 +26,7 @@ public class QuickFillMain {
         FileSystem fs = FileSystem.getInstance();
 
         System.out.println("Tree structure:");
-        System.out.println(fs.tree(fs.getFileSystem().get(fs.getRootID()), 0) + "\n");
+        System.out.println(fs.treeToString(fs.getFileSystem().get(fs.getRootID()), 0) + "\n");
 
         System.out.println("All paths:");
         System.out.println(fs.getAllPaths() + "\n");

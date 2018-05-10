@@ -2,7 +2,7 @@ package main.gui.graphic;
 
 import main.SystemController;
 import main.gui.GuiManager;
-import main.gui.graphic.screens.LoginScreen;
+import main.gui.graphic.screens.start.LoginScreen;
 
 /**
  * Class that manages a graphic GUI for the application, loading the different sections when they are needed and
