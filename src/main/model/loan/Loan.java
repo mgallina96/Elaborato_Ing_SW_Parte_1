@@ -19,7 +19,7 @@ public class Loan implements Serializable {
     private static final int EXPIRY_TIME_IN_DAYS = 30;
     private User user;
     private Media media;
-    private int extentionRestrictionInDays;
+    private int extensionRestrictionInDays;
     private GregorianCalendar loanDate;
     private GregorianCalendar loanExpiry;
 
@@ -27,7 +27,7 @@ public class Loan implements Serializable {
         this.user = user;
         this.media = media;
 
-        this.extentionRestrictionInDays = this.media.getExtensionRestriction();
+        this.extensionRestrictionInDays = this.media.getExtensionRestriction();
         this.loanDate = new GregorianCalendar();
         this.loanExpiry = new GregorianCalendar();
         this.loanExpiry.add(Calendar.DATE, EXPIRY_TIME_IN_DAYS);
@@ -39,7 +39,7 @@ public class Loan implements Serializable {
 
     public boolean canBeExtended() {
         GregorianCalendar correctedLoanExpiry = (GregorianCalendar)loanExpiry.clone();
-        correctedLoanExpiry.add(Calendar.DATE, -extentionRestrictionInDays);
+        correctedLoanExpiry.add(Calendar.DATE, -extensionRestrictionInDays);
 
         return !hasExpired() && (new GregorianCalendar()).after(correctedLoanExpiry);
     }
@@ -52,8 +52,8 @@ public class Loan implements Serializable {
         return loanExpiry;
     }
 
-    public int getExtentionRestrictionInDays() {
-        return extentionRestrictionInDays;
+    public int getExtensionRestrictionInDays() {
+        return extensionRestrictionInDays;
     }
 
     public User getUser() {

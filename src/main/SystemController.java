@@ -28,7 +28,7 @@ public interface SystemController {
     boolean canRenew();
 
     /** Checks whether the currently logged-in user is allowed to borrow another media item. */
-    boolean canBorrow();
+    boolean canBorrow(int mediaID);
 
     /**
      * Converts the subscription and expiry dates into a {@code String}.

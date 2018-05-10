@@ -56,6 +56,13 @@ public interface Database {
     Media fetch(Media toFetch);
 
     /**
+     *
+     * @param media
+     * @return
+     */
+    boolean canBorrow(Media media);
+
+    /**
      * Returns a {@code String} that contains a brief description for every user in the database, according to the
      * {@code toString} method found in the {@link User} class.
      *

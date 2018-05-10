@@ -21,6 +21,7 @@ public class Media implements Serializable {
     private GregorianCalendar dateAdded;
     private int licenses;
     private int extensionRestriction;
+    private int loanLimit;
 
     /**
      * Constructor for the {@code Media} class. Builds a new {@code Media} item with its own unique item ID.
@@ -37,10 +38,12 @@ public class Media implements Serializable {
      *
      * @param mediaName the name to set.
      */
-    public Media(String mediaName, int licenses) {
+    public Media(String mediaName, int licenses, int extensionRestriction, int loanLimit) {
         this.mediaName = mediaName;
         this.dateAdded = new GregorianCalendar();
         this.licenses = licenses;
+        this.extensionRestriction = extensionRestriction;
+        this.loanLimit = loanLimit;
     }
 
     /**
@@ -144,8 +147,8 @@ public class Media implements Serializable {
         return extensionRestriction;
     }
 
-    public void setExtensionRestriction(int extensionRestriction) {
-        this.extensionRestriction = extensionRestriction;
+    public int getLoanLimit() {
+        return loanLimit;
     }
 
     /**

@@ -1,5 +1,7 @@
 package generators;
 import main.model.database.DatabaseManager;
+import main.model.database.LoanDatabase;
+import main.model.database.UserDatabase;
 import main.model.database.filesystem.FileSystem;
 import main.model.database.filesystem.Folder;
 import main.model.media.Book;
@@ -111,9 +113,9 @@ public class QuickFillMain {
         }
 
         //these methods need to be made (temporarily) public
-        /*d.getLoanDatabase().saveLoanDatabase();
-        d.getMediaDatabase().saveMediaDatabase();
-        d.getUserDatabase().saveUserDatabase();*/
+        /*d.getMediaDatabase().saveMediaDatabase();
+        d.saveHashMap(UserDatabase.getPath(), d.getUserDatabase().getUserList());
+        d.saveHashMap(LoanDatabase.getPath(), d.getLoanDatabase().getLoansList());*/
     }
 
 
