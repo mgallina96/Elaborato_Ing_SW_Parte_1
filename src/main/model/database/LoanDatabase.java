@@ -7,7 +7,9 @@ import main.model.user.User;
 import main.utility.notifications.Notifications;
 
 import java.io.*;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,7 +23,7 @@ public class LoanDatabase implements Serializable {
     private static final long serialVersionUID = -2599493317418350651L;
 
     private static final String LOAN_DATABASE_FILE_PATH = "application_resources\\Biblioteca SMARTINATOR - Loan Database.ser";
-    private HashMap<String, ArrayList<Loan>> loans;
+    private HashMap<User, ArrayList<Loan>> loans;
     private static LoanDatabase loanDatabase;
     private Logger logger;
 
@@ -40,11 +42,25 @@ public class LoanDatabase implements Serializable {
 
         return loanDatabase;
     }
+
+    boolean canBorrow(User user, Media media) {
+        int counter = 0;
+
+        if(loans.get(user) == null)
+            return true;
+
+        for(Loan l : loans.get(user)) {
+            if(l.getMedia().getClass().equals(media.getClass()))
+                counter++;
+        }
+
+        return counter <= media.getLoanLimit();
+    }
     
     public String getUserLoans(User user) {
         StringBuilder userList = new StringBuilder();
 
-        loans.get(user.getUsername())
+        loans.get(user)
                 .forEach(loans -> userList.append(loans.getMedia().toString()));
         
         return userList.toString();
@@ -52,36 +68,32 @@ public class LoanDatabase implements Serializable {
 
     void addLoan(User user, Media media) {
         media.lend();
-        if(user instanceof Customer)
-            ((Customer)user).borrow();
 
-        String username = user.getUsername();
-
-        if(loans.get(username) == null) {
+        if(loans.get(user) == null) {
             ArrayList<Loan> firstLoan = new ArrayList<>();
             firstLoan.add(new Loan(user, media));
-            loans.put(username, firstLoan);
+            loans.put(user, firstLoan);
         }
         else
-            loans.get(username).add(new Loan(user, media));
+            loans.get(user).add(new Loan(user, media));
     }
 
     public String getLoanListString() {
         StringBuilder loanList = new StringBuilder();
 
-        loans.forEach((s, l) -> {
-            loanList.append(s).append("\n");
+        loans.forEach((u, l) -> {
+            loanList.append(u.getUsername()).append("\n");
             l.forEach(loan -> loanList.append("\t").append(loan.getMedia().getBareItemDetails()).append("\n"));
         });
 
         return loanList.toString();
     }
 
-    HashMap<String, ArrayList<Loan>> getLoansList() {
+    HashMap<User, ArrayList<Loan>> getLoansList() {
         return loans;
     }
     
-    void setLoanList(HashMap<String, ArrayList<Loan>> loans) {
+    void setLoanList(HashMap<User, ArrayList<Loan>> loans) {
         this.loans = loans;
     }
 
@@ -95,7 +107,7 @@ public class LoanDatabase implements Serializable {
             FileInputStream fileIn = new FileInputStream(LOAN_DATABASE_FILE_PATH);
             ObjectInputStream in = new ObjectInputStream(fileIn);
 
-            this.loans = ((HashMap<String, ArrayList<Loan>>) in.readObject());
+            this.loans = ((HashMap<User, ArrayList<Loan>>) in.readObject());
 
             in.close();
             fileIn.close();
@@ -111,36 +123,17 @@ public class LoanDatabase implements Serializable {
         }
     }
 
-    /**
-     * Saves the loan database in the form of a HashMap object.
-     */
-    public void saveLoanDatabase() {
-        //TODO eliminare ripetizione codice
-        try {
-            //to increase serializing speed
-            RandomAccessFile raf = new RandomAccessFile(LOAN_DATABASE_FILE_PATH, "rw");
-
-            FileOutputStream fileOut = new FileOutputStream(raf.getFD());
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-
-            out.writeObject(loans);
-
-            out.close();
-            fileOut.close();
-        }
-        catch(IOException IOEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + this.getClass().getName(), IOEx);
-        }
-    }
-
     private void sweep() {
         for(ArrayList<Loan> al : loans.values())
             for(Loan l : al) {
                 if(l.hasExpired()) {
                     l.getMedia().giveBack();
-                    ((Customer)l.getUser()).giveBack();
                     al.remove(l);
                 }
             }
+    }
+
+    static String getPath() {
+        return LOAN_DATABASE_FILE_PATH;
     }
 }

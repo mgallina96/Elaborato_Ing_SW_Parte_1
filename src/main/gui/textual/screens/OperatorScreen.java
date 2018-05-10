@@ -25,23 +25,27 @@ public class OperatorScreen extends Screen {
         while(!exitFromOperatorSection) {
             System.out.printf("%s\n%s\n%s\n", SEPARATOR, PROMPT_OPERATOR_CHOICES, SEPARATOR);
 
-            switch(insertInteger(1, 7)) {
+            switch(insertInteger(1, 8)) {
                 case 1:
                     addMedia();
                     break;
                 case 2:
-                    removeMedia();
+                    if(searchForMedia())
+                        remove();
                     break;
                 case 3:
-                    printFilteredMedia();
+                    printFilteredMediaByFolder();
                     break;
                 case 4:
-                    System.out.printf("%s\n%s\n", MSG_USER_LIST, getController().allUsersToString());
+                    searchForMedia();
                     break;
                 case 5:
-                    System.out.printf("%s\n%s\n", MSG_LOAN_LIST, getController().allLoansToString());
+                    System.out.printf("%s\n%s\n", MSG_USER_LIST, getController().allUsersToString());
                     break;
                 case 6:
+                    System.out.printf("%s\n%s\n", MSG_LOAN_LIST, getController().allLoansToString());
+                    break;
+                case 7:
                     System.out.printf("%s\n", MSG_LOG_OUT);
                     exitFromOperatorSection = true;
                     getController().logout();
@@ -85,7 +89,7 @@ public class OperatorScreen extends Screen {
     /**
      * Prints the filtered list of {@code Media} items that are located in the chosen folder.
      */
-    private void printFilteredMedia() {
+    private void printFilteredMediaByFolder() {
         System.out.printf("%s\n%s\n", PROMPT_WHICH_FOLDER, SEPARATOR);
         String path = chooseFolder();
 
@@ -115,23 +119,25 @@ public class OperatorScreen extends Screen {
      * associated with that media item. If that ID is present in the database and has a valid format, the associated
      * media item is removed from the database.
      */
-    private void removeMedia() {
+    private boolean searchForMedia() {
         System.out.println(PROMPT_REMOVE_MEDIA);
         String input = getScanner().nextLine();
 
         if(input.equals(ESCAPE_STRING)) {
             System.out.println(MSG_ABORT);
-            return;
+            return false;
         }
 
         String output = getController().allFilteredMediaList(input);
 
         if(output.length() > 0) {
             System.out.printf("%s\n%s\n", MSG_FILTERED_MEDIA_LIST, output);
-            remove();
+            return true;
         }
         else
             System.out.println(ERR_FILTERED_MEDIA_LIST_EMPTY);
+
+        return false;
     }
 
     private void remove() {

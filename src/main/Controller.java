@@ -151,9 +151,8 @@ public class Controller implements SystemController {
     }
 
     @Override
-    public boolean canBorrow() {
-        User currentUser = database.getCurrentUser();
-        return (currentUser instanceof Customer) && ((Customer)currentUser).canBorrow();
+    public boolean canBorrow(int mediaID) {
+        return database.canBorrow(new Media(mediaID));
     }
 
     @Override

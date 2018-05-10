@@ -15,8 +15,9 @@ public class Book extends Media implements Serializable {
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -1281383374398165051L;
 
-    private static final int EXTENTION_RESTRICTION_IN_DAYS = 3;
+    private static final int EXTENSION_RESTRICTION_IN_DAYS = 3;
     private static final int DEFAULT_BOOK_LICENSES = 3;
+    private static final int MAX_NUMBER_OF_LENT_BOOKS = 3;
     private String title;
     private String author;
     private String genre;
@@ -44,7 +45,7 @@ public class Book extends Media implements Serializable {
      * @param licenses The number of licences for this book.
      */
     public Book(String title, String author, String genre, int publicationYear, String publisherName, int licenses) {
-        super(title, licenses);
+        super(title, licenses, EXTENSION_RESTRICTION_IN_DAYS, MAX_NUMBER_OF_LENT_BOOKS);
         this.title = title;
         this.author = author;
         this.genre = genre;
@@ -54,7 +55,6 @@ public class Book extends Media implements Serializable {
         String bareDetails = title + ", " + author + ", " + genre + ", " + publicationYear + ", "  + publisherName;
 
         super.setBareItemDetails(bareDetails);
-        super.setExtensionRestriction(EXTENTION_RESTRICTION_IN_DAYS);
     }
 
     /**
@@ -71,7 +71,7 @@ public class Book extends Media implements Serializable {
      * @param publisherName The name of the publisher (or publishing house).
      */
     public Book(String title, String author, String genre, int publicationYear, String publisherName) {
-        super(title, DEFAULT_BOOK_LICENSES);
+        super(title, DEFAULT_BOOK_LICENSES, EXTENSION_RESTRICTION_IN_DAYS, MAX_NUMBER_OF_LENT_BOOKS);
         this.title = title;
         this.author = author;
         this.genre = genre;
@@ -81,7 +81,6 @@ public class Book extends Media implements Serializable {
         String bareDetails = title + ", " + author + ", " + genre + ", " + publicationYear + ", "  + publisherName;
 
         super.setBareItemDetails(bareDetails);
-        super.setExtensionRestriction(EXTENTION_RESTRICTION_IN_DAYS);
     }
 
     /**
@@ -135,5 +134,9 @@ public class Book extends Media implements Serializable {
      */
     public String getGenre() {
         return genre;
+    }
+
+    public static int getMaxNumberOfLentBooks() {
+        return MAX_NUMBER_OF_LENT_BOOKS;
     }
 }

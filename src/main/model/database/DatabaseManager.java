@@ -58,7 +58,7 @@ public class DatabaseManager implements Serializable, Database {
     @Override
     public void add(User toAdd) {
         userDatabase.addUser(toAdd);
-        userDatabase.saveUserDatabase();
+        saveHashMap(UserDatabase.getPath(), userDatabase.getUserList());
     }
 
     @Override
@@ -70,10 +70,9 @@ public class DatabaseManager implements Serializable, Database {
     @Override
     public void add(Media toLend) {
         loanDatabase.addLoan(userDatabase.getCurrentUser(), toLend);
-        //mediaDatabase.fetch(toLend).lend();
         mediaDatabase.saveMediaDatabase();
-        userDatabase.saveUserDatabase();
-        loanDatabase.saveLoanDatabase();
+        saveHashMap(UserDatabase.getPath(), userDatabase.getUserList());
+        saveHashMap(LoanDatabase.getPath(), loanDatabase.getLoansList());
     }
 
     @Override
@@ -105,6 +104,11 @@ public class DatabaseManager implements Serializable, Database {
     @Override
     public Media fetch(Media toFetch) {
         return mediaDatabase.fetch(toFetch);
+    }
+
+    @Override
+    public boolean canBorrow(Media media) {
+        return loanDatabase.canBorrow(userDatabase.getCurrentUser(), media);
     }
 
     @Override
@@ -140,5 +144,23 @@ public class DatabaseManager implements Serializable, Database {
     @Override
     public void removeCurrentUser() {
         userDatabase.removeCurrentUser();
+    }
+
+    private void saveHashMap(String path, HashMap h) {
+        try {
+            //to increase serializing speed
+            RandomAccessFile raf = new RandomAccessFile(path, "rw");
+
+            FileOutputStream fileOut = new FileOutputStream(raf.getFD());
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+
+            out.writeObject(h);
+
+            out.close();
+            fileOut.close();
+        }
+        catch(IOException IOEx) {
+            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + this.getClass().getName(), IOEx);
+        }
     }
 }

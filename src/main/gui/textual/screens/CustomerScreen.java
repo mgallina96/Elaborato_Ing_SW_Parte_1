@@ -29,12 +29,8 @@ public class CustomerScreen extends Screen {
                         System.out.printf("%s\n%s\n", ERR_CANNOT_RENEW, getController().dateDetails());
                     break;
                 case 2:
-                    if(getController().canBorrow()) {
-                        if(searchForMedia(PROMPT_SEARCH_FOR_MEDIA_TO_BORROW))
-                            borrowMedia();
-                    }
-                    else
-                        System.out.println(ERR_CANNOT_BORROW);
+                    if(searchForMedia(PROMPT_SEARCH_FOR_MEDIA_TO_BORROW))
+                        borrowMedia();
                     break;
                 case 3: //extend stuff
                     break;
@@ -83,10 +79,14 @@ public class CustomerScreen extends Screen {
         System.out.println(PROMPT_BORROW_CONFIRMATION);
 
         if(insertString(YN_REGEX).equalsIgnoreCase(YES)) {
-            if(getController().addLoanToDatabase(id))
-                System.out.println(MSG_BORROW_SUCCESSFUL);
+            if(getController().canBorrow(id)) {
+                if(getController().addLoanToDatabase(id))
+                    System.out.println(MSG_BORROW_SUCCESSFUL);
+                else
+                    System.out.println(ERR_MEDIA_NOT_AVAILABLE);
+            }
             else
-                System.out.println(ERR_MEDIA_NOT_AVAILABLE);
+                System.out.println(ERR_CANNOT_BORROW);
         }
         else
             System.out.println(MSG_ABORT);
