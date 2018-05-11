@@ -1,12 +1,10 @@
 package main.model.database;
-import main.model.loan.Loan;
 import main.model.user.Customer;
 import main.model.user.User;
 import main.model.user.UserStatus;
 import main.utility.notifications.Notifications;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -127,7 +125,7 @@ public class UserDatabase implements Serializable {
     private void sweep() {
         userList.values().stream()
                 .filter(s -> s instanceof Customer)
-                .filter(s -> ((Customer)s).hasExpired())
+                .filter(s -> ((Customer)s).subscriptionHasExpired())
                 .forEach(s -> userList.remove(s.getUsername()));
     }
 

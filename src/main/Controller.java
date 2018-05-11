@@ -1,7 +1,6 @@
 package main;
 import main.gui.GuiManager;
 import main.gui.graphic.GraphicView;
-import main.gui.textual.TextualView;
 import main.model.database.Database;
 import main.model.database.DatabaseManager;
 import main.model.database.filesystem.FileSystem;
@@ -147,7 +146,7 @@ public class Controller implements SystemController {
     @Override
     public boolean canRenew() {
         User currentUser = database.getCurrentUser();
-        return (currentUser instanceof Customer) && ((Customer)currentUser).canRenew();
+        return (currentUser instanceof Customer) && ((Customer)currentUser).canRenewSubscription();
     }
 
     @Override

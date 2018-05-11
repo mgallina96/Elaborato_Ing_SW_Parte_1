@@ -55,15 +55,15 @@ class CustomerTest {
 
     @Test
     void canRenew() {
-        Assertions.assertTrue(testCustomer1.canRenew());
-        Assertions.assertFalse(testCustomer2.canRenew());
+        Assertions.assertTrue(testCustomer1.canRenewSubscription());
+        Assertions.assertFalse(testCustomer2.canRenewSubscription());
     }
 
     @Test
     void hasExpired() {
-        Assertions.assertTrue(testCustomer3.hasExpired());
-        Assertions.assertFalse(testCustomer1.hasExpired());
-        Assertions.assertFalse(testCustomer2.hasExpired());
+        Assertions.assertTrue(testCustomer3.subscriptionHasExpired());
+        Assertions.assertFalse(testCustomer1.subscriptionHasExpired());
+        Assertions.assertFalse(testCustomer2.subscriptionHasExpired());
     }
 
     @Test

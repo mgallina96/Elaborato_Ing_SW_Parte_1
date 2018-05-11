@@ -33,9 +33,7 @@ public class User implements Serializable {
      * @param username The user's unique username.
      */
     public User(String username) {
-        this.username = username;
-        this.password = DEFAULT_PASSWORD;
-        defaultInit();
+        this(DEFAULT_FIRST_NAME, DEFAULT_LAST_NAME, username, DEFAULT_PASSWORD, DEFAULT_BIRTHDAY);
     }
 
     /**
@@ -47,9 +45,7 @@ public class User implements Serializable {
      * @param password The user's password.
      */
     public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-        defaultInit();
+        this(DEFAULT_FIRST_NAME, DEFAULT_LAST_NAME, username, password, DEFAULT_BIRTHDAY);
     }
 
     /**
@@ -67,12 +63,6 @@ public class User implements Serializable {
         this.username = username;
         this.password = password;
         this.birthday = birthday;
-    }
-
-    private void defaultInit() {
-        this.firstName = DEFAULT_FIRST_NAME;
-        this.lastName = DEFAULT_LAST_NAME;
-        this.birthday = DEFAULT_BIRTHDAY;
     }
 
     /**
@@ -178,7 +168,7 @@ public class User implements Serializable {
     /**
      * Returns the User status.
      *
-     * @return {@code true} if the User is a Customer, {@code false} if the User is an Operator.
+     * @return The value {@code CUSTOMER} if the User is a Customer, {@code OPERATOR} if the User is an Operator.
      */
     @SuppressWarnings("unused")
     public UserStatus getUserStatus() {
