@@ -20,7 +20,7 @@ public class FileSystem implements Serializable {
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = 7970305636210332068L;
 
-    private static final String FILESYSTEM_FILE_PATH = "application_resources\\Biblioteca SMARTINATOR - File System.ser";
+    private static final String FILESYSTEM_FILE_PATH = "resources\\data\\Biblioteca SMARTINATOR - File System.ser";
     private static final Folder ROOT = new Folder("root");
     private static final int ROOT_ID = 0;
 

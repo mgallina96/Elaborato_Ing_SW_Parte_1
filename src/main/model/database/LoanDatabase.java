@@ -22,7 +22,7 @@ public class LoanDatabase implements Serializable {
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -2599493317418350651L;
 
-    private static final String LOAN_DATABASE_FILE_PATH = "application_resources\\Biblioteca SMARTINATOR - Loan Database.ser";
+    private static final String LOAN_DATABASE_FILE_PATH = "resources\\data\\Biblioteca SMARTINATOR - Loan Database.ser";
     private HashMap<User, ArrayList<Loan>> loans;
     private static LoanDatabase loanDatabase;
     private Logger logger;

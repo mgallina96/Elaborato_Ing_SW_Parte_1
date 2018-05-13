@@ -18,7 +18,7 @@ public class MediaDatabase implements Serializable {
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -5687383377098150051L;
 
-    private static final String MEDIA_DATABASE_FILE_PATH = "application_resources\\Biblioteca SMARTINATOR - Media Database.ser";
+    private static final String MEDIA_DATABASE_FILE_PATH = "resources\\data\\Biblioteca SMARTINATOR - Media Database.ser";
     private static MediaDatabase mediaDatabase;
     private static int counter;
 

@@ -20,7 +20,7 @@ public class UserDatabase implements Serializable {
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -5681387677098150051L;
 
-    private static final String USER_DATABASE_FILE_PATH = "application_resources\\Biblioteca SMARTINATOR - User Database.ser";
+    private static final String USER_DATABASE_FILE_PATH = "resources\\data\\Biblioteca SMARTINATOR - User Database.ser";
     //A default admin user, added to the database whenever this class is instantiated.
     private static final User ADMIN = new User("admin", "admin");
     private static UserDatabase userDatabase;
