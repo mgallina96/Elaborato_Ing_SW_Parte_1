@@ -7,14 +7,23 @@ import java.util.GregorianCalendar;
  * The {@code Media} class, which contains fields and methods that can be applied to any generic piece of media, such
  * as books, movies, magazines, tv series, video games, etc.
  *
- * @author Alessandro Polcini
+ * @author Alessandro Polcini, Manuel Gallina
  */
 public class Media implements Serializable {
 
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -5681380379098150051L;
 
+    private static final int DEFAULT_MEDIA_IDENTIFIER = 0;
+    private static final String DEFAULT_MEDIA_NAME = "Default";
+    private static final String DEFAULT_MEDIA_PATH = "null";
+    private static final GregorianCalendar DEFAULT_DATE_ADDED = new GregorianCalendar(1970, 1, 1);
+    private static final int DEFAULT_MEDIA_LICENSES = 1;
+    private static final int DEFAULT_EXTENSION_RESTRICTION = 1;
+    private static final int DEFAULT_MEDIA_LOAN_LIMIT = 1;
+
     private String bareItemDetails;
+
     private int identifier;
     private String mediaName;
     private String path;
@@ -26,10 +35,11 @@ public class Media implements Serializable {
     /**
      * Constructor for the {@code Media} class. Builds a new {@code Media} item with its own unique item ID.
      *
-     * @param identifier the item ID to set.
+     * @param identifier The item ID to set.
      */
     public Media(int identifier) {
-        this.identifier = identifier;
+        this(identifier, DEFAULT_MEDIA_NAME, DEFAULT_MEDIA_PATH, DEFAULT_DATE_ADDED,
+                DEFAULT_MEDIA_LICENSES, DEFAULT_EXTENSION_RESTRICTION, DEFAULT_MEDIA_LOAN_LIMIT);
     }
 
     /**
@@ -37,10 +47,32 @@ public class Media implements Serializable {
      * This method also keeps track of the date in which the media item was added and saves it in a class field.
      *
      * @param mediaName the name to set.
+     * @param licenses The number of licenses available for this media.
+     * @param extensionRestriction The time range in which the user may extend the loan period for this media.
+     * @param loanLimit The maximum number of loans a user can request for this category of media.
      */
     public Media(String mediaName, int licenses, int extensionRestriction, int loanLimit) {
+        this(DEFAULT_MEDIA_IDENTIFIER, mediaName, DEFAULT_MEDIA_PATH, DEFAULT_DATE_ADDED,
+                licenses, extensionRestriction, loanLimit);
+    }
+
+    /**
+     * Constructor for the {@code Media} class.
+     *
+     * @param identifier The media ID number.
+     * @param mediaName The media name.
+     * @param path The media folder path.
+     * @param dateAdded The date the media was added.
+     * @param licenses The number of licenses available for this media.
+     * @param extensionRestriction The time range in which the user may extend the loan period for this media.
+     * @param loanLimit The maximum number of loans a user can request for this category of media.
+     */
+    public Media(int identifier, String mediaName, String path, GregorianCalendar dateAdded, int licenses,
+                 int extensionRestriction, int loanLimit) {
+        this.identifier = identifier;
         this.mediaName = mediaName;
-        this.dateAdded = new GregorianCalendar();
+        this.path = path;
+        this.dateAdded = dateAdded;
         this.licenses = licenses;
         this.extensionRestriction = extensionRestriction;
         this.loanLimit = loanLimit;
@@ -125,16 +157,6 @@ public class Media implements Serializable {
     }
 
     /**
-     * Custom {@code toString} method for the {@code Media} class.
-     *
-     * @return a {@code String} with the basic details that describe this particular media item.
-     */
-    public String toString() {
-        return String.format("Media name: %s\t|\tItem ID: %d\t|\tDate added: %s\t|\tNumber of licences: %d",
-                mediaName, identifier, dateAdded.toZonedDateTime(), licenses);
-    }
-
-    /**
      * A customer can extend the term of their loan, but this operation may only be carried out in a very specific time
      * range that goes from {@code x} days before the expiry date to the expiry date itself.
      * <p>
@@ -147,6 +169,7 @@ public class Media implements Serializable {
         return extensionRestriction;
     }
 
+    //TODO: Da commentare. Che cos'è loan limit?
     public int getLoanLimit() {
         return loanLimit;
     }
@@ -175,5 +198,15 @@ public class Media implements Serializable {
     public void giveBack() {
         if(licenses < 3)
             licenses++;
+    }
+
+    /**
+     * Custom {@code toString} method for the {@code Media} class.
+     *
+     * @return a {@code String} with the basic details that describe this particular media item.
+     */
+    public String toString() {
+        return String.format("Media name: %s\t|\tItem ID: %d\t|\tDate added: %s\t|\tNumber of licences: %d",
+                mediaName, identifier, dateAdded.toZonedDateTime(), licenses);
     }
 }
