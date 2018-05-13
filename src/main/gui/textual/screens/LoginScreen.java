@@ -1,5 +1,8 @@
 package main.gui.textual.screens;
 import main.SystemController;
+import main.exceptions.UserNotFoundException;
+import main.exceptions.WrongPasswordException;
+import main.utility.notifications.Notifications;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,22 +48,23 @@ public class LoginScreen extends Screen {
             try {
                 username = inputRequest(PROMPT_USERNAME);
                 password = inputRequest(PROMPT_PASSWORD);
-            }
-            catch(InterruptedException e) {
+
+                if (getController().checkUserLogin(username, password)) {
+                    if (getController().canRenew())
+                        System.out.printf("%s %s %s %s.\n",
+                                PROMPT_EXPIRY_IMMINENT, MSG_REMINDER_DAYS_LEFT, getController().daysLeftToRenew(username), MSG_DAYS);
+
+                    return username;
+                } else {
+                    System.out.printf("%s\n%s\n", PROMPT_RETRY_LOGGING_IN, SEPARATOR);
+                }
+            } catch(InterruptedException e) {
                 System.out.printf("%s\n\n", MSG_EXIT_LOGIN);
                 break; //returns a null value in this case.
-            }
-
-            if(getController().checkUserLogin(username, password)) {
-                if(getController().canRenew())
-                    System.out.printf("%s %s %s %s.\n",
-                            PROMPT_EXPIRY_IMMINENT, MSG_REMINDER_DAYS_LEFT, getController().daysLeftToRenew(username), MSG_DAYS);
-
-                return username;
-            }
-            else {
-                logger.log(Level.SEVERE, ERR_LOGIN_FAILED);
-                System.out.printf("%s\n%s\n", PROMPT_RETRY_LOGGING_IN, SEPARATOR);
+            } catch (UserNotFoundException e) {
+                System.out.println(ERR_USER_NOT_PRESENT);
+            } catch (WrongPasswordException e) {
+                System.out.println(ERR_WRONG_PASSWORD);
             }
         }
 
@@ -82,5 +86,4 @@ public class LoginScreen extends Screen {
 
         return input;
     }
-
 }

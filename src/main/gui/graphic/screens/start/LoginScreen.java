@@ -1,6 +1,8 @@
 package main.gui.graphic.screens.start;
 
 import main.SystemController;
+import main.exceptions.UserNotFoundException;
+import main.exceptions.WrongPasswordException;
 import main.gui.graphic.components.BackgroundImagePanel;
 import main.gui.graphic.screens.application.AppScreen;
 
@@ -82,13 +84,19 @@ public class LoginScreen {
     }
 
     private void checkLogin() {
-        if (controller.checkUserLogin(usernameField.getText(), String.copyValueOf(passwordField.getPassword()))) {
-            frame.setVisible(false);
-            appScreen.init();
-        }
-        else {
-            warningField.setText("Username o Password errati. Riprovare.");
-            passwordField.setText("");
+        try {
+            if (controller.checkUserLogin(usernameField.getText(), String.copyValueOf(passwordField.getPassword()))) {
+                frame.setVisible(false);
+                appScreen.init();
+            }
+            else {
+                warningField.setText("Username o Password errati. Riprovare.");
+                passwordField.setText("");
+            }
+        } catch (UserNotFoundException e) {
+            e.printStackTrace();
+        } catch (WrongPasswordException e) {
+            e.printStackTrace();
         }
     }
 

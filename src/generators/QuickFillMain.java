@@ -100,7 +100,8 @@ public class QuickFillMain {
     }
 
     private static void fillDatabase() {
-        Notifications.setLanguage(Notifications.ENGLISH);
+        Notifications notifications = Notifications.getInstance();
+        notifications.setLanguage(Notifications.ENGLISH);
 
         DatabaseManager d = DatabaseManager.getInstance();
         Generator generator = new Generator(FILLING_LEVEL);

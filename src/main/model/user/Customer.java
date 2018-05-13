@@ -27,6 +27,15 @@ public class Customer extends User {
     /**
      * Constructor that builds a new {@code Customer} object using the given parameters.
      *
+     * @param birthday The customer's birthday, in {@code GregorianCalendar} form.
+     */
+    public Customer(GregorianCalendar birthday) {
+        super(birthday);
+    }
+
+    /**
+     * Constructor that builds a new {@code Customer} object using the given parameters.
+     *
      * @param firstName The customer's first name.
      * @param lastName The customer's last name.
      * @param username The customer's username.

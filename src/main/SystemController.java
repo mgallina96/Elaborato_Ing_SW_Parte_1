@@ -1,5 +1,6 @@
 package main;
-import main.model.user.User;
+import main.exceptions.UserNotFoundException;
+import main.exceptions.WrongPasswordException;
 
 import java.util.GregorianCalendar;
 
@@ -64,8 +65,11 @@ public interface SystemController {
      * @param password The password.
      * @return {@code true} if the user's credentials are correct and match with an entry in the database,
      * {@code false} otherwise.
+     *
+     * @throws UserNotFoundException if the user is not present in the database.
+     * @throws WrongPasswordException if the password is wrong.
      */
-    boolean checkUserLogin(String username, String password);
+    boolean checkUserLogin(String username, String password) throws UserNotFoundException, WrongPasswordException;
 
     /**
      * Checks whether the given username matches an entry in the database.

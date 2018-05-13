@@ -14,6 +14,7 @@ public class User implements Serializable {
 
     private static final String DEFAULT_FIRST_NAME = "Default";
     private static final String DEFAULT_LAST_NAME = "Default";
+    private static final String DEFAULT_USERNAME = "Default";
     private static final String DEFAULT_PASSWORD = "Default";
     private static final GregorianCalendar DEFAULT_BIRTHDAY = new GregorianCalendar(1970, Calendar.JANUARY, 1);
 
@@ -34,6 +35,15 @@ public class User implements Serializable {
      */
     public User(String username) {
         this(DEFAULT_FIRST_NAME, DEFAULT_LAST_NAME, username, DEFAULT_PASSWORD, DEFAULT_BIRTHDAY);
+    }
+
+    /**
+     * Constructor that builds a new {@code Customer} object using the given parameters.
+     *
+     * @param birthday The customer's birthday, in {@code GregorianCalendar} form.
+     */
+    public User(GregorianCalendar birthday) {
+        this(DEFAULT_FIRST_NAME, DEFAULT_LAST_NAME, DEFAULT_USERNAME, DEFAULT_PASSWORD, birthday);
     }
 
     /**

@@ -7,6 +7,8 @@ package main.utility.notifications;
  */
 public class Notifications {
 
+    private static final Language DEFAULT_LANGUAGE = Language.ENGLISH;
+
     public static final Language ITALIAN = Language.ITALIAN;
     public static final Language ENGLISH = Language.ENGLISH;
 
@@ -88,9 +90,54 @@ public class Notifications {
     public static String ERR_BORROW_FAILED;
     public static String ERR_MEDIA_NOT_AVAILABLE;
     public static String ERR_CANNOT_BORROW;
+    public static String ERR_USER_NOT_PRESENT;
+    public static String ERR_WRONG_PASSWORD;
 
     //generic useful messages
     public static final String SEPARATOR = "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
+
+    private Language language;
+    private static Notifications notifications;
+
+    private Notifications() {
+        //sets english as the default language
+        this(ENGLISH);
+    }
+
+    private Notifications(Language language) {
+        this.language = language;
+        this.language.initializeLanguages();
+    }
+
+    /**
+     * Returns the instance of the {@code Notifications class}.
+     *
+     * @return The instance of the {@code Notifications class}.
+     */
+    public static Notifications getInstance() {
+        if(notifications == null)
+            notifications = new Notifications(DEFAULT_LANGUAGE);
+        return notifications;
+    }
+
+    /**
+     * Sets the language of the notifications..
+     *
+     * @param language The language to be set.
+     */
+    public void setLanguage(Language language) {
+        this.language = language;
+        language.initializeLanguages();
+    }
+
+    /**
+     * Getter for the language used within the application.
+     *
+     * @return The language.
+     */
+    public Language getLanguage() {
+        return language;
+    }
 
     private enum Language implements Languages {
         ITALIAN {
@@ -168,6 +215,8 @@ public class Notifications {
                 ERR_BORROW_FAILED = "Non è stato possibile prendere in prestito il media.";
                 ERR_MEDIA_NOT_AVAILABLE = "Il media selezionato non è disponibile al momento.";
                 ERR_CANNOT_BORROW = "Tetto massimo di prestiti raggiunto! Non è possibile prendere in prestito altri media al momento.";
+                ERR_USER_NOT_PRESENT = "Il nome utente inserito non è presente. Si prega di verificare che il nome utente sia corretto, oppure di registrarsi.";
+                ERR_WRONG_PASSWORD = "Password errata.";
             }
         },
         ENGLISH {
@@ -245,39 +294,10 @@ public class Notifications {
                 ERR_BORROW_FAILED = "There has been an error while borrowing this media item.";
                 ERR_MEDIA_NOT_AVAILABLE = "The selected media is not available at the moment.";
                 ERR_CANNOT_BORROW = "Upper loan limit reached! It's not possible to borrow any more media items at the moment.";
+                ERR_USER_NOT_PRESENT = "The requested username couldn't be found. Please check the spelling or sign up.";
+                ERR_WRONG_PASSWORD = "Wrong password.";
             }
         }
     }
-
-    private Language language;
-    private static Notifications notifications;
-
-    private Notifications() {
-        //sets english as the default language
-        this(ENGLISH);
-    }
-
-    private Notifications(Language language) {
-        this.language = language;
-        this.language.initializeLanguages();
-    }
-
-    /**
-     * Singleton setter/getter for the {@code Notifications} class.
-     *
-     * @param language The language to be set.
-     */
-    public static void setLanguage(Language language) {
-        if(notifications == null)
-            notifications = new Notifications(language);
-    }
-
-    /**
-     * Getter for the language used within the application.
-     *
-     * @return The language.
-     */
-    public Language getLanguage() {
-        return language;
-    }
 }
+

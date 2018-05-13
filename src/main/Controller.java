@@ -1,6 +1,7 @@
 package main;
+import main.exceptions.UserNotFoundException;
+import main.exceptions.WrongPasswordException;
 import main.gui.GuiManager;
-import main.gui.graphic.GraphicView;
 import main.gui.textual.TextualView;
 import main.model.database.Database;
 import main.model.database.DatabaseManager;
@@ -49,15 +50,18 @@ public class Controller implements SystemController {
     }
 
     @Override
-    public boolean checkUserLogin(String username, String password) {
+    public boolean checkUserLogin(String username, String password) throws UserNotFoundException, WrongPasswordException {
         User toCheck = database.fetch(new User(username));
 
-        if(toCheck != null && toCheck.getPassword().equals(password)){
+        if(toCheck == null)
+            throw new UserNotFoundException();
+
+        if(toCheck.getPassword().equals(password)){
             database.setCurrentUser(toCheck);
             return true;
-        }
+        } else
+            throw new WrongPasswordException();
 
-        return false;
     }
 
     @Override
@@ -126,7 +130,7 @@ public class Controller implements SystemController {
 
     @Override
     public boolean legalAge(GregorianCalendar birthday) {
-        return new Customer("", "", "", "", birthday).isOfAge();
+        return new Customer(birthday).isOfAge();
     }
 
     @Override
