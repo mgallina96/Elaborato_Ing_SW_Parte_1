@@ -162,7 +162,7 @@ public class Notifications {
                 MSG_FOLDER_CONTENTS = "Ecco i contenuti della cartella ";
                 MSG_MOVE_TO_LOGIN = "È consigliato spostarsi alla sezione login e provare ad accedere con questi dati.";
                 MSG_BORROW_SUCCESSFUL = "Il media è stato preso in prestito!";
-                MSG_LOAN_LIST = "Ecco la lista di tutti i prestiti effettuati: ";
+                MSG_LOAN_LIST = "Ecco la lista di tutti i prestiti effettuati agli utenti seguenti: ";
                 PROMPT_FIRST_NAME = "Nome (si prega di inserire un nome valido): ";
                 PROMPT_LAST_NAME = "Cognome (si prega di inserire un cognome valido): ";
                 PROMPT_USERNAME = "Username: ";
@@ -241,7 +241,7 @@ public class Notifications {
                 MSG_FOLDER_CONTENTS = "Here are the contents of the folder ";
                 MSG_MOVE_TO_LOGIN = "Try logging in with these credentials.";
                 MSG_BORROW_SUCCESSFUL = "Media item successfully borrowed!";
-                MSG_LOAN_LIST = "Here's the list of all loans that have been granted to the users: ";
+                MSG_LOAN_LIST = "Here's the list of all loans that have been granted to the following users: ";
                 PROMPT_FIRST_NAME = "First name (please insert a valid first name): ";
                 PROMPT_LAST_NAME = "Last name (please insert a valid last name): ";
                 PROMPT_USERNAME = "Username: ";

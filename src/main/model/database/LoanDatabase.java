@@ -49,11 +49,9 @@ public class LoanDatabase implements Serializable {
         if(loans.get(user.getUsername()) == null)
             return true;
 
-        for(Loan l : loans.get(user.getUsername())) {
-            System.out.println((l.getMedia().getType() + "\t" + media.getType()) + "\n" + l.toString());
+        for(Loan l : loans.get(user.getUsername()))
             if(l.getMedia().getType().equals(media.getType()))
                 counter++;
-        }
 
         return counter < media.getLoanLimit();
     }
@@ -70,12 +68,15 @@ public class LoanDatabase implements Serializable {
             loans.get(user.getUsername()).add(new Loan(user, media));
     }
 
-    public String getLoanListString() {
+    String getLoanListString() {
         StringBuilder loanList = new StringBuilder();
 
         loans.forEach((u, l) -> {
-            loanList.append(u).append("\n");
-            l.forEach(loan -> loanList.append("\t").append(loan.getMedia().getBareItemDetails()).append("\n"));
+            loanList.append("User <").append(u).append(">\n");
+            l.forEach(loan -> loanList
+                    .append("\t- ").append(loan.getMedia().getType())
+                    .append(" - ").append(loan.getMedia().getBareItemDetails())
+                    .append("\n"));
         });
 
         return loanList.toString();
@@ -83,10 +84,6 @@ public class LoanDatabase implements Serializable {
 
     HashMap<String, ArrayList<Loan>> getLoansList() {
         return loans;
-    }
-    
-    void setLoanList(HashMap<String, ArrayList<Loan>> loans) {
-        this.loans = loans;
     }
 
     /**

@@ -1,4 +1,5 @@
 package main;
+import main.model.user.Operator;
 import main.model.user.UserConstants;
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.exceptions.WrongPasswordException;
@@ -156,20 +157,24 @@ public class Controller implements SystemController {
 
     @Override
     public int daysLeftToRenew(String username) throws UserNotFoundException {
-        Customer user = (Customer)database.fetch(new User(username));
+        try {
+            User user = database.fetch(new User(username));
 
-        if(user != null) {
             int days = (int)Math.abs(ChronoUnit.DAYS.between(
                     new GregorianCalendar().toInstant(),
-                    user.getExpiryDate().toInstant()));
+                    ((Customer)user).getExpiryDate().toInstant()));
 
             if(days <= RENEWAL_BOUNDARY_IN_DAYS)
                 return days;
-            else
-                return 0;
         }
-        else
+        catch(ClassCastException CCEx) {
+            return 0;
+        }
+        catch(NullPointerException NPEx) {
             throw new UserNotFoundException();
+        }
+
+        return 0;
     }
 
     @Override

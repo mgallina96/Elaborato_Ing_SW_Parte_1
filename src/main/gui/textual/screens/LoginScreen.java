@@ -58,12 +58,15 @@ public class LoginScreen extends Screen {
                 } else {
                     System.out.printf("%s\n%s\n", PROMPT_RETRY_LOGGING_IN, SEPARATOR);
                 }
-            } catch(InterruptedException e) {
+            }
+            catch(InterruptedException e) {
                 System.out.printf("%s\n\n", MSG_EXIT_LOGIN);
                 break; //returns a null value in this case.
-            } catch (UserNotFoundException e) {
+            }
+            catch(UserNotFoundException e) {
                 System.out.println(ERR_USER_NOT_PRESENT);
-            } catch (WrongPasswordException e) {
+            }
+            catch(WrongPasswordException e) {
                 System.out.println(ERR_WRONG_PASSWORD);
             }
         }
