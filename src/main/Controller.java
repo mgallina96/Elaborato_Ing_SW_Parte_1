@@ -1,8 +1,8 @@
 package main;
-import main.exceptions.UserNotFoundException;
-import main.exceptions.WrongPasswordException;
+import main.model.user.UserConstants;
+import main.utility.exceptions.UserNotFoundException;
+import main.utility.exceptions.WrongPasswordException;
 import main.gui.GuiManager;
-import main.gui.graphic.GraphicView;
 import main.gui.textual.TextualView;
 import main.model.database.Database;
 import main.model.database.DatabaseManager;
@@ -12,7 +12,10 @@ import main.model.media.Media;
 import main.model.user.Customer;
 import main.model.user.User;
 
+import java.time.temporal.ChronoUnit;
 import java.util.GregorianCalendar;
+
+import static main.utility.GlobalParameters.RENEWAL_BOUNDARY_IN_DAYS;
 
 /**
  * Controller class that manages any kind of interaction between the graphical user interface
@@ -130,11 +133,6 @@ public class Controller implements SystemController {
     }
 
     @Override
-    public boolean legalAge(GregorianCalendar birthday) {
-        return new Customer(birthday).isOfAge();
-    }
-
-    @Override
     public int getUserStatus(String username) {
         if(username == null)
             return -1;
@@ -150,20 +148,26 @@ public class Controller implements SystemController {
     }
 
     @Override
-    public boolean canRenew() {
-        User currentUser = database.getCurrentUser();
-        return (currentUser instanceof Customer) && ((Customer)currentUser).canRenewSubscription();
-    }
-
-    @Override
     public boolean canBorrow(int mediaID) {
         return database.canBorrow(new Media(mediaID));
     }
 
     @Override
-    public int daysLeftToRenew(String username) {
-        User user = database.fetch(new User(username));
-        return (user instanceof Customer) ? ((Customer)user).daysLeftToRenew() : Integer.MAX_VALUE;
+    public int daysLeftToRenew(String username) throws UserNotFoundException {
+        Customer user = (Customer)database.fetch(new User(username));
+
+        if(user != null) {
+            int days = (int)Math.abs(ChronoUnit.DAYS.between(
+                    new GregorianCalendar().toInstant(),
+                    user.getExpiryDate().toInstant()));
+
+            if(days <= RENEWAL_BOUNDARY_IN_DAYS)
+                return days;
+            else
+                return 0;
+        }
+        else
+            throw new UserNotFoundException();
     }
 
     @Override

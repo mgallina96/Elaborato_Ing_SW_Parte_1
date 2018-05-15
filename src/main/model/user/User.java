@@ -3,6 +3,8 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import static main.model.user.UserConstants.*;
+
 /**
  * The {@code User} class, superclass of {@link Customer} and {@link Operator}. This class contains fields and methods
  * that both customers and operators have in common, like personal details (and getters/setters for those details).
@@ -11,12 +13,6 @@ public class User implements Serializable {
 
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -5681383377098150051L;
-
-    private static final String DEFAULT_FIRST_NAME = "Default";
-    private static final String DEFAULT_LAST_NAME = "Default";
-    private static final String DEFAULT_USERNAME = "Default";
-    private static final String DEFAULT_PASSWORD = "Default";
-    private static final GregorianCalendar DEFAULT_BIRTHDAY = new GregorianCalendar(1970, Calendar.JANUARY, 1);
 
     private UserStatus userStatus;
     private String username;

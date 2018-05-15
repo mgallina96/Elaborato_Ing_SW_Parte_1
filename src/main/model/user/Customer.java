@@ -2,6 +2,7 @@ package main.model.user;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import static main.utility.GlobalParameters.*;
 
 /**
  * The {@code Customer} class, a subclass of {@link User} equipped with:
@@ -16,10 +17,6 @@ public class Customer extends User {
 
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = 562339799965662315L;
-
-    private static final int RENEWAL_BOUNDARY_IN_DAYS = 10;
-    private static final int LEGAL_AGE_IN_YEARS = 18;
-    private static final int EXPIRY_TIME_IN_YEARS = 5;
 
     private GregorianCalendar subscriptionDate;
     private GregorianCalendar expiryDate;
@@ -57,7 +54,7 @@ public class Customer extends User {
      * @param birthday The customer's birthday, in {@code GregorianCalendar} form.
      * @param subscriptionDate The customer's subscription date, in {@code GregorianCalendar} form.
      */
-    Customer(String firstName, String lastName, String username, String password, GregorianCalendar birthday, GregorianCalendar subscriptionDate) {
+    private Customer(String firstName, String lastName, String username, String password, GregorianCalendar birthday, GregorianCalendar subscriptionDate) {
         super(firstName, lastName, username, password, birthday);
         super.setUserStatus(UserStatus.CUSTOMER);
 
@@ -85,61 +82,18 @@ public class Customer extends User {
     }
 
     /**
-     * Checks whether the customer is of age. The legal age parameter is defined as a static final integer in the
-     * {@link Customer} class and may vary according to law or country.
-     * <p> The legal age in Italy is 18, so this is the value this check is going to be based on.
-     *
-     * @return {@code true} if the customer is of legal age, {@code false} otherwise.
-     */
-    public boolean isOfAge() {
-        GregorianCalendar subscription = (GregorianCalendar)subscriptionDate.clone();
-        GregorianCalendar correctedBirthday = (GregorianCalendar)super.getBirthday().clone();
-        correctedBirthday.add(Calendar.YEAR, LEGAL_AGE_IN_YEARS);
-
-        return correctedBirthday.before(subscription);
-    }
-
-    /**
-     * Checks whether the current date is within x days of the expiry date, where x is an integer parameter defined
-     * in the {@link Customer} class. If so, the customer is allowed to renew his/her subscription.
-     *
-     * @return {@code true} if the customer is allowed to renew his/her subscription, {@code false} otherwise.
-     */
-    public boolean canRenewSubscription() {
-        GregorianCalendar expiryDateMinus10 = (GregorianCalendar)expiryDate.clone();
-        expiryDateMinus10.add(Calendar.DATE, -RENEWAL_BOUNDARY_IN_DAYS);
-
-        return !subscriptionHasExpired() && (new GregorianCalendar()).after(expiryDateMinus10);
-    }
-
-    /**
-     * Checks whether the user's subscription has expired.
-     *
-     * @return A boolean value: {@code true} if the user's subscription has expired, {@code false} otherwise.
-     */
-    public boolean subscriptionHasExpired() {
-        return (new GregorianCalendar()).after(expiryDate);
-    }
-
-    /**
      * Renews the subscription by x years, where x is a static final integer value defined in the {@link Customer}
      * class. This value is equal to 5 now.
      */
     public boolean renewSubscription() {
-        if(canRenewSubscription()) {
+        GregorianCalendar expiryDateMinus10 = (GregorianCalendar)expiryDate.clone();
+        expiryDateMinus10.add(Calendar.DATE, -RENEWAL_BOUNDARY_IN_DAYS);
+
+        if(new GregorianCalendar().after(expiryDateMinus10)) {
             expiryDate.add(Calendar.YEAR, EXPIRY_TIME_IN_YEARS);
             return true;
         }
 
         return false;
-    }
-
-    /**
-     * Returns the amount of days the user has left to renew their subscription.
-     *
-     * @return An {@code integer} value representing the days the user has left.
-     */
-    public int daysLeftToRenew() {
-        return (int)Math.abs(ChronoUnit.DAYS.between(new GregorianCalendar().toInstant(), expiryDate.toInstant()));
     }
 }

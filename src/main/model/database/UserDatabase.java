@@ -5,6 +5,7 @@ import main.model.user.UserStatus;
 import main.utility.notifications.Notifications;
 
 import java.io.*;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -123,10 +124,12 @@ public class UserDatabase implements Serializable {
      * Sweeps the user database removing all users whose subscription has expired.
      */
     private void sweep() {
+        GregorianCalendar today = new GregorianCalendar();
+
         userList.values().stream()
-                .filter(s -> s instanceof Customer)
-                .filter(s -> ((Customer)s).subscriptionHasExpired())
-                .forEach(s -> userList.remove(s.getUsername()));
+                .filter(u -> u instanceof Customer)
+                .filter(c -> ((Customer)c).getExpiryDate().after(today))
+                .forEach(c -> userList.remove(c.getUsername()));
     }
 
     static String getPath() {

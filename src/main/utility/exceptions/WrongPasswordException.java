@@ -1,4 +1,4 @@
-package main.exceptions;
+package main.utility.exceptions;
 
 /**
  * @author Manuel Gallina

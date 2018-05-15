@@ -1,7 +1,9 @@
 package main.gui.textual.screens;
 import main.SystemController;
 import main.utility.InputParserUtility;
+import main.utility.exceptions.IllegalDateFormatException;
 
+import static main.utility.GlobalParameters.LEGAL_AGE_IN_YEARS;
 import static main.utility.notifications.Notifications.*;
 
 /**
@@ -37,9 +39,14 @@ public class SignUpScreen extends Screen {
             return -1;
         }
 
-        if(!getController().legalAge(InputParserUtility.toGregorianDate(details[4]))) {
-            System.out.println(ERR_NOT_OF_AGE);
-            return 1;
+        try {
+            if(!InputParserUtility.isOfAge(details[4], LEGAL_AGE_IN_YEARS)) {
+                System.out.println(ERR_NOT_OF_AGE);
+                return 1;
+            }
+        }
+        catch (IllegalDateFormatException IDFEx) {
+            IDFEx.printStackTrace();
         }
 
         if(getController().addUserToDatabase(details[0], details[1], details[2], details[3], InputParserUtility.toGregorianDate(details[4]))) {

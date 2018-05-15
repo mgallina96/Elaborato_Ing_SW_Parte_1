@@ -1,6 +1,6 @@
 package main;
-import main.exceptions.UserNotFoundException;
-import main.exceptions.WrongPasswordException;
+import main.utility.exceptions.UserNotFoundException;
+import main.utility.exceptions.WrongPasswordException;
 
 import java.util.GregorianCalendar;
 
@@ -25,9 +25,6 @@ public interface SystemController {
      */
     boolean renewSubscription();
 
-    /** Checks whether the currently logged-in user is allowed to renew their subscription. */
-    boolean canRenew();
-
     /** Checks whether the currently logged-in user is allowed to borrow another media item. */
     boolean canBorrow(int mediaID);
 
@@ -42,20 +39,12 @@ public interface SystemController {
     void logout();
 
     /**
-     * Checks whether a customer is of age or not.
-     *
-     * @param birthday The birthday to be checked.
-     * @return {@code true} if the customer is of age, {@code false} otherwise.
-     */
-    boolean legalAge(GregorianCalendar birthday);
-
-    /**
      * Returns the amount of days the user has left to renew their subscription.
      *
      * @param username The user's username.
      * @return An {@code integer} value representing the days the user has left.
      */
-    int daysLeftToRenew(String username);
+    int daysLeftToRenew(String username) throws UserNotFoundException;
 
     /**
      * Checks whether the given pair <{@code username, password}> can be found in the database. If so, the user with

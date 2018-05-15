@@ -1,10 +1,8 @@
 package main.gui.textual.screens;
 import main.SystemController;
-import main.exceptions.UserNotFoundException;
-import main.exceptions.WrongPasswordException;
-import main.utility.notifications.Notifications;
+import main.utility.exceptions.UserNotFoundException;
+import main.utility.exceptions.WrongPasswordException;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static main.utility.notifications.Notifications.*;
@@ -49,10 +47,12 @@ public class LoginScreen extends Screen {
                 username = inputRequest(PROMPT_USERNAME);
                 password = inputRequest(PROMPT_PASSWORD);
 
-                if (getController().checkUserLogin(username, password)) {
-                    if (getController().canRenew())
+                if(getController().checkUserLogin(username, password)) {
+                    int days = getController().daysLeftToRenew(username);
+
+                    if(days > 0)
                         System.out.printf("%s %s %s %s.\n",
-                                PROMPT_EXPIRY_IMMINENT, MSG_REMINDER_DAYS_LEFT, getController().daysLeftToRenew(username), MSG_DAYS);
+                                PROMPT_EXPIRY_IMMINENT, MSG_REMINDER_DAYS_LEFT, days, MSG_DAYS);
 
                     return username;
                 } else {

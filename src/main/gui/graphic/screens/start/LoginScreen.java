@@ -1,8 +1,8 @@
 package main.gui.graphic.screens.start;
 
 import main.SystemController;
-import main.exceptions.UserNotFoundException;
-import main.exceptions.WrongPasswordException;
+import main.utility.exceptions.UserNotFoundException;
+import main.utility.exceptions.WrongPasswordException;
 import main.gui.graphic.components.BackgroundImagePanel;
 import main.gui.graphic.screens.application.AppScreen;
 

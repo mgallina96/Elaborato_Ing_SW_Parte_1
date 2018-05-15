@@ -1,6 +1,6 @@
 package main.utility;
+import main.utility.exceptions.IllegalDateFormatException;
 import main.utility.notifications.Notifications;
-
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
@@ -258,4 +258,22 @@ public class InputParserUtility {
         return path.matches("(\\w*\\\\\\w.*)+");
     }
 
+    /**
+     *
+     *
+     * @param birthday
+     * @param legalAgeInYears
+     * @return
+     * @throws IllegalDateFormatException
+     */
+    public static boolean isOfAge(String birthday, int legalAgeInYears) throws IllegalDateFormatException {
+        if(isValidDate(birthday)) {
+            GregorianCalendar gregorianBirthday = toGregorianDate(birthday);
+            gregorianBirthday.add(Calendar.YEAR, legalAgeInYears);
+
+            return gregorianBirthday.before(new GregorianCalendar());
+        }
+        else
+            throw new IllegalDateFormatException();
+    }
 }
