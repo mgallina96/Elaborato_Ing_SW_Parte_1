@@ -1,6 +1,8 @@
 package generators;
 import generators.randomwords.PoolLoader;
 import generators.randomwords.RandomWords;
+import main.model.user.Customer;
+import main.model.user.Operator;
 import main.model.user.User;
 
 import java.util.ArrayList;
@@ -10,7 +12,10 @@ import java.util.Random;
 import static generators.Generator.COMMON_USER_PATH;
 
 /**
- * Created by Alessandro on 12/04/18.
+ * Class UserGenerator to generate a given amount of users with random parameters such as first name, last name,
+ * birth date, etc.
+ *
+ * @author Alessandro Polcini.
  */
 class UserGenerator {
 
@@ -27,9 +32,18 @@ class UserGenerator {
             String ln = lastNames.nextWord();
             GregorianCalendar g = new GregorianCalendar((rand.nextInt(75) + 1935), rand.nextInt(12), rand.nextInt(31));
 
-            users.add(new User(fn, ln, (fn + ln) + rand.nextInt(1000), Long.toString(rand.nextLong()), g));
+            if(rand.nextDouble() > 0.99)
+                users.add(new Operator(fn, ln, strip(fn + ln) + rand.nextInt(1000), Long.toString(rand.nextLong()), g));
+            else
+                users.add(new Customer(fn, ln, strip(fn + ln) + rand.nextInt(1000), Long.toString(rand.nextLong()), g));
         }
 
         return users;
+    }
+
+    private static String strip(String s) {
+        s = s.replaceAll("\\s+", "");
+
+        return s;
     }
 }

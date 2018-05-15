@@ -18,7 +18,9 @@ import java.util.HashMap;
 import static generators.Generator.COMMON_MEDIA_PATH;
 
 /**
- * Created by Alessandro on 12/04/18.
+ * Class QuickFillMain, to quickly fill all of the databases (FileSystem, User database, Media database and Loan
+ * database).
+ * @author Alessandro Polcini.
  */
 public class QuickFillMain {
 

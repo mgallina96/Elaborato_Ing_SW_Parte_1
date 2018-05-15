@@ -33,7 +33,10 @@ public class DatabaseManager implements Serializable, Database {
 
     //Singleton Database constructor, private to prevent instantiation.
     private DatabaseManager() {
+        //TODO cambiare TUTTA questa struttura di DatabaseManager
+
         this.userDatabase = UserDatabase.getInstance();
+            saveHashMap(UserDatabase.getPath(), userDatabase.getUserList());
         this.mediaDatabase = MediaDatabase.getInstance();
         this.loanDatabase = LoanDatabase.getInstance();
         this.logger = Logger.getLogger(this.getClass().getName());

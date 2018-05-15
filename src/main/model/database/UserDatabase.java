@@ -5,6 +5,7 @@ import main.model.user.UserStatus;
 import main.utility.notifications.Notifications;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -67,7 +68,7 @@ public class UserDatabase implements Serializable {
         this.currentUser = fetchUser(currentUser);
     }
 
-    User getCurrentUser() {
+    public User getCurrentUser() {
         return currentUser;
     }
 
@@ -125,11 +126,15 @@ public class UserDatabase implements Serializable {
      */
     private void sweep() {
         GregorianCalendar today = new GregorianCalendar();
+        ArrayList<String> toRemove = new ArrayList<>();
 
         userList.values().stream()
                 .filter(u -> u instanceof Customer)
-                .filter(c -> ((Customer)c).getExpiryDate().after(today))
-                .forEach(c -> userList.remove(c.getUsername()));
+                .filter(c -> today.after(((Customer)c).getExpiryDate()))
+                .forEach(c -> toRemove.add(c.getUsername()));
+
+        for(String s : toRemove)
+            userList.remove(s);
     }
 
     static String getPath() {

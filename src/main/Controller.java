@@ -119,8 +119,10 @@ public class Controller implements SystemController {
 
     @Override
     public boolean addLoanToDatabase(int mediaID) {
-        if(database.fetch(new Media(mediaID)).isAvailable()) {
-            database.add(database.fetch(new Media(mediaID)));
+        Media media = database.fetch(new Media(mediaID));
+
+        if(media.isAvailable()) {
+            database.add(media);
             return true;
         }
 
@@ -149,7 +151,7 @@ public class Controller implements SystemController {
 
     @Override
     public boolean canBorrow(int mediaID) {
-        return database.canBorrow(new Media(mediaID));
+        return database.canBorrow(database.fetch(new Media(mediaID)));
     }
 
     @Override
