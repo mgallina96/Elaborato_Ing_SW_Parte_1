@@ -10,8 +10,8 @@ import java.io.IOException;
 public class Resources {
     public static final String BS_LOGIN_SCREEN_PATH = "resources/images/BS-Login.png";
     public static final String BS_SIGNUP_SCREEN_PATH = "resources/images/BS_SignUp.png";
-    public static final String BS_SIDE_BAR_PATH = "resources/images/BS_SideBar.png";
-    public static final String BS_ICON_PATH = "resources/images/BS_Icon.png";
+    public static final String BS_SIDE_BAR_PATH = "resources/images/BS_SideBar2.png";
+    public static final String BS_ICON_PATH = "resources/images/MR1.png";
 
     private static final String BS_TEXT_FONT_PATH = "resources/fonts/SourceSansPro-Semibold.ttf";
     private static final String BS_ICON_FONT_PATH = "";

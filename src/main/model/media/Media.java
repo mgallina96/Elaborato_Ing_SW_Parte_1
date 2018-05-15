@@ -31,6 +31,7 @@ public class Media implements Serializable {
     private int licenses;
     private int extensionRestriction;
     private int loanLimit;
+    private String type;
 
     /**
      * Constructor for the {@code Media} class. Builds a new {@code Media} item with its own unique item ID.
@@ -76,6 +77,7 @@ public class Media implements Serializable {
         this.licenses = licenses;
         this.extensionRestriction = extensionRestriction;
         this.loanLimit = loanLimit;
+        this.type = "MEDIA";
     }
 
     /**
@@ -208,5 +210,13 @@ public class Media implements Serializable {
     public String toString() {
         return String.format("Media name: %s\t|\tItem ID: %d\t|\tDate added: %s\t|\tNumber of licences: %d",
                 mediaName, identifier, dateAdded.toZonedDateTime(), licenses);
+    }
+
+    void setType(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
     }
 }

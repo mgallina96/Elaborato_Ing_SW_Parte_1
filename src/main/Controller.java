@@ -2,6 +2,7 @@ package main;
 import main.exceptions.UserNotFoundException;
 import main.exceptions.WrongPasswordException;
 import main.gui.GuiManager;
+import main.gui.graphic.GraphicView;
 import main.gui.textual.TextualView;
 import main.model.database.Database;
 import main.model.database.DatabaseManager;

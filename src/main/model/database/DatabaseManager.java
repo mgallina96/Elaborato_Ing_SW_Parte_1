@@ -163,4 +163,17 @@ public class DatabaseManager implements Serializable, Database {
             logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + this.getClass().getName(), IOEx);
         }
     }
+
+//    public MediaDatabase getMediaDatabase() {
+//        return mediaDatabase;
+//    }
+//
+//    public HashMap<String, User> getUserList() {
+//        return userDatabase.getUserList();
+//    }
+//
+//    public HashMap<String, ArrayList<Loan>> getLoansList() {
+//        return loanDatabase.getLoansList();
+//    }
+
 }

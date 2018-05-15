@@ -1,14 +1,21 @@
 package generators;
+import generators.randomwords.PoolLoader;
+import generators.randomwords.RandomWords;
 import main.model.database.DatabaseManager;
 import main.model.database.LoanDatabase;
 import main.model.database.UserDatabase;
 import main.model.database.filesystem.FileSystem;
 import main.model.database.filesystem.Folder;
 import main.model.media.Book;
+import main.model.media.Film;
 import main.model.media.Media;
 import main.model.user.User;
 import main.utility.notifications.Notifications;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+
+import static generators.Generator.COMMON_MEDIA_PATH;
 
 /**
  * Created by Alessandro on 12/04/18.
@@ -45,56 +52,12 @@ public class QuickFillMain {
         fs.addFolder("Libri", ROOT);
         fs.addFolder("Film", ROOT);
 
-        fs.addFolder("Animali", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Fumetto", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Scienza", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Geografia", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Avventura", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Viaggi", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Didattica", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Fisica", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Automobili", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Arte", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Tecnica", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Romanzo epico", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Raccolta di favole", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Raccolta di poesie", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Religioso", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Salute e benessere", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Giardinaggio", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Spirituale", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Matematica", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Horror", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Romantico", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Giallo", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Fantasy", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Noir", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Thriller", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Fantascienza", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Commedia", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Erotica", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Musica", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Raccolta di fiabe", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Per bambini", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Fotografia", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Biografia", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Romanzo storico", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        fs.addFolder("Comico", fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
+        String[] genres = PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "generi_libro.txt");
 
-        fs.addFolder("Documentario", fs.getFolder(ROOT.getChildren().get(1).getFolderId()));
-        fs.addFolder("Avventura", fs.getFolder(ROOT.getChildren().get(1).getFolderId()));
-        fs.addFolder("Azione", fs.getFolder(ROOT.getChildren().get(1).getFolderId()));
-        fs.addFolder("Supereroi", fs.getFolder(ROOT.getChildren().get(1).getFolderId()));
-        fs.addFolder("Horror", fs.getFolder(ROOT.getChildren().get(1).getFolderId()));
-        fs.addFolder("Romantico", fs.getFolder(ROOT.getChildren().get(1).getFolderId()));
-        fs.addFolder("Giallo", fs.getFolder(ROOT.getChildren().get(1).getFolderId()));
-        fs.addFolder("Fantasy", fs.getFolder(ROOT.getChildren().get(1).getFolderId()));
-        fs.addFolder("Noir", fs.getFolder(ROOT.getChildren().get(1).getFolderId()));
-        fs.addFolder("Thriller", fs.getFolder(ROOT.getChildren().get(1).getFolderId()));
-        fs.addFolder("Fantascienza", fs.getFolder(ROOT.getChildren().get(1).getFolderId()));
-        fs.addFolder("Erotica", fs.getFolder(ROOT.getChildren().get(1).getFolderId()));
-        fs.addFolder("Romanzo storico", fs.getFolder(ROOT.getChildren().get(1).getFolderId()));
-        fs.addFolder("Comico", fs.getFolder(ROOT.getChildren().get(1).getFolderId()));
+        for(String g : genres)
+            fs.addFolder(g, fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
+        for(String g : genres)
+            fs.addFolder(g, fs.getFolder(ROOT.getChildren().get(1).getFolderId()));
 
         fs.saveFileSystem();
     }
@@ -108,15 +71,17 @@ public class QuickFillMain {
 
         for(User u : generator.getUsers())
             d.add(u);
-        for(Media m : generator.getBooks()) {
+        for(Media m : generator.getBooks())
             if(m instanceof Book)
                 d.add(m, "root\\Libri\\" + ((Book)m).getGenre() + "\\");
-        }
+        for(Media f : generator.getFilms())
+            if(f instanceof Film)
+                d.add(f, "root\\Film\\" + ((Film)f).getGenre() + "\\");
 
         //these methods need to be made (temporarily) public
-        /*d.getMediaDatabase().saveMediaDatabase();
-        d.saveHashMap(UserDatabase.getPath(), d.getUserDatabase().getUserList());
-        d.saveHashMap(LoanDatabase.getPath(), d.getLoanDatabase().getLoansList());*/
+//        d.getMediaDatabase().saveMediaDatabase();
+//        d.saveHashMap("resources\\data\\Biblioteca SMARTINATOR - User Database.ser", d.getUserList());
+//        d.saveHashMap("resources\\data\\Biblioteca SMARTINATOR - Loan Database.ser", d.getLoansList());
     }
 
 

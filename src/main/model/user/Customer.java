@@ -31,6 +31,7 @@ public class Customer extends User {
      */
     public Customer(GregorianCalendar birthday) {
         super(birthday);
+        this.subscriptionDate = new GregorianCalendar();
     }
 
     /**

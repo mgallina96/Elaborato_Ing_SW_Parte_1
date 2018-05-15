@@ -15,6 +15,7 @@ public class Book extends Media implements Serializable {
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -1281383374398165051L;
 
+    private static final String TYPE = "BOOK";
     private static final int EXTENSION_RESTRICTION_IN_DAYS = 3;
     private static final int DEFAULT_BOOK_LICENSES = 3;
     private static final int MAX_NUMBER_OF_LENT_BOOKS = 3;
@@ -54,6 +55,7 @@ public class Book extends Media implements Serializable {
 
         String bareDetails = title + ", " + author + ", " + genre + ", " + publicationYear + ", "  + publisherName;
 
+        super.setType(TYPE);
         super.setBareItemDetails(bareDetails);
     }
 
@@ -71,16 +73,7 @@ public class Book extends Media implements Serializable {
      * @param publisherName The name of the publisher (or publishing house).
      */
     public Book(String title, String author, String genre, int publicationYear, String publisherName) {
-        super(title, DEFAULT_BOOK_LICENSES, EXTENSION_RESTRICTION_IN_DAYS, MAX_NUMBER_OF_LENT_BOOKS);
-        this.title = title;
-        this.author = author;
-        this.genre = genre;
-        this.publicationYear = publicationYear;
-        this.publisherName = publisherName;
-
-        String bareDetails = title + ", " + author + ", " + genre + ", " + publicationYear + ", "  + publisherName;
-
-        super.setBareItemDetails(bareDetails);
+        this(title, author, genre, publicationYear, publisherName, DEFAULT_BOOK_LICENSES);
     }
 
     /**
@@ -113,8 +106,8 @@ public class Book extends Media implements Serializable {
      * @return A string containing a brief description of the book.
      */
     public String toString() {
-        return String.format("Item ID: %d\t|\tTitle: %s\t|\tAuthor: %s\t|\tPublication year: %d\t|\tGenre: %s\t|\tPublisher name: %s\t|\tNumber of licenses: %d\n",
-                getIdentifier(), title, author, publicationYear, genre, publisherName, getLicenses());
+        return String.format("Media type: %s, Item ID: %d\t|\tTitle: %s\t|\tAuthor: %s\t|\tPublication year: %d\t|\tGenre: %s\t|\tPublisher name: %s\t|\tNumber of licenses: %d\n",
+                TYPE, getIdentifier(), title, author, publicationYear, genre, publisherName, getLicenses());
     }
 
     /**

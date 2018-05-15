@@ -3,8 +3,9 @@ package main.model.media;
 public class Film extends Media {
 
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
-    private static final long serialVersionUID = -5271323384398635051L;
+    private static final long serialVersionUID = -5271323384398735051L;
 
+    private static final String TYPE = "FILM";
     private static final int EXTENSION_RESTRICTION_IN_DAYS = 5;
     private static final int DEFAULT_FILM_LICENSES = 5;
     private static final int MAX_NUMBER_OF_LENT_FILMS = 5;
@@ -18,7 +19,7 @@ public class Film extends Media {
     private String description;
     private String cast;
     private String language;
-    private double runningTime;
+    private int runningTime;
     private boolean belongsToSeries;
     private int filmNumber;
 
@@ -27,10 +28,10 @@ public class Film extends Media {
      * <p>
      * Sets the main fields to briefly describe a film.
      *
-     * @param title The title of the book.
+     * @param title The title of the film.
      * @param director The director.
-     * @param genre The genre of the book.
-     * @param releaseYear The year the book was published.
+     * @param genre The genre of the film.
+     * @param releaseYear The year the film was released.
      * @param producer The name of the producer (or producer house).
      * @param licenses The number of licences for this film.
      */
@@ -44,6 +45,7 @@ public class Film extends Media {
 
         String bareDetails = title + ", " + director + ", " + genre + ", " + releaseYear + ", "  + producer;
 
+        super.setType(TYPE);
         super.setBareItemDetails(bareDetails);
     }
 
@@ -54,38 +56,29 @@ public class Film extends Media {
      * <p>
      * Sets the number of licenses to a default value of 3.
      *
-     * @param title The title of the book.
+     * @param title The title of the film.
      * @param director The director.
-     * @param genre The genre of the book.
-     * @param releaseYear The year the book was published.
+     * @param genre The genre of the film.
+     * @param releaseYear The year the film was released.
      * @param producer The name of the publisher (or publishing house).
      */
     public Film(String title, String director, String genre, int releaseYear, String producer) {
-        super(title, DEFAULT_FILM_LICENSES, EXTENSION_RESTRICTION_IN_DAYS, MAX_NUMBER_OF_LENT_FILMS);
-        this.title = title;
-        this.director = director;
-        this.genre = genre;
-        this.releaseYear = releaseYear;
-        this.producer = producer;
-
-        String bareDetails = title + ", " + director + ", " + genre + ", " + releaseYear + ", "  + producer;
-
-        super.setBareItemDetails(bareDetails);
+        this(title, director, genre, releaseYear, producer, DEFAULT_FILM_LICENSES);
     }
 
     /**
-     * Setter for the optional details to describe a book in more detail.
+     * Setter for the optional details to describe a film in more detail.
      *
-     * @param description A brief description of the book.
-     * @param subtitle The cast.
-     * @param language The language the book is written in.
-     * @param runningTime The number of pages.
-     * @param belongsToSeries Whether the book belongs to a series or not.
-     * @param filmNumber The volume number (automatically set to 0 if the book doesn't belong to a series).
+     * @param description A brief description of the film.
+     * @param cast The cast.
+     * @param language The language of the film.
+     * @param runningTime The running time.
+     * @param belongsToSeries Whether the film belongs to a series or not.
+     * @param filmNumber The volume number (automatically set to 0 if the film doesn't belong to a series).
      */
-    public void setDetails(String description, String subtitle, String language, double runningTime, boolean belongsToSeries, int filmNumber) {
+    public void setDetails(String description, String cast, String language, int runningTime, boolean belongsToSeries, int filmNumber) {
         this.description = description;
-        this.cast = subtitle;
+        this.cast = cast;
         this.language = language;
         this.runningTime = runningTime;
         this.belongsToSeries = belongsToSeries;
@@ -100,17 +93,17 @@ public class Film extends Media {
     /**
      * Overridden toString() method.
      *
-     * @return A string containing a brief description of the book.
+     * @return A string containing a brief description of the film.
      */
     public String toString() {
-        return String.format("Item ID: %d\t|\tTitle: %s\t|\tDirector: %s\t|\tRelease year: %d\t|\tGenre: %s\t|\tPublisher: %s\t|\tNumber of licenses: %d\n",
-                getIdentifier(), title, director, releaseYear, genre, producer, getLicenses());
+        return String.format("Media type: %s, Item ID: %d\t|\tTitle: %s\t|\tDirector: %s\t|\tRelease year: %d\t|\tGenre: %s\t|\tPublisher: %s\t|\tNumber of licenses: %d\n",
+                TYPE, getIdentifier(), title, director, releaseYear, genre, producer, getLicenses());
     }
 
     /**
-     * Much more detailed information about the book.
+     * Much more detailed information about the film.
      *
-     * @return A string containing an accurate description of the book.
+     * @return A string containing an accurate description of the film.
      */
     public String allDetailsToString() {
         return String.format("%s\t|\tCast: %s\t|\tLanguage: %s\t|\tRunning time: %f%s\nDescription: %s\n",
@@ -118,7 +111,7 @@ public class Film extends Media {
     }
 
     /**
-     * Getter for the book genre.
+     * Getter for the film genre.
      *
      * @return The genre.
      */

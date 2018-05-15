@@ -63,4 +63,8 @@ public class Loan implements Serializable {
     public Media getMedia() {
         return media;
     }
+
+    public String toString() {
+        return String.format("Loan -> Media item: " + media + "\tUser: " + user);
+    }
 }

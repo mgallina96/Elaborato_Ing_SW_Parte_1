@@ -1,4 +1,4 @@
-package generators.bookgenerator;
+package generators.mediagenerator;
 
 import generators.randomwords.PoolLoader;
 import generators.randomwords.RandomWords;

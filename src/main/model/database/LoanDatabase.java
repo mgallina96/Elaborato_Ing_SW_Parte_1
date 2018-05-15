@@ -23,7 +23,7 @@ public class LoanDatabase implements Serializable {
     private static final long serialVersionUID = -2599493317418350651L;
 
     private static final String LOAN_DATABASE_FILE_PATH = "resources\\data\\Biblioteca SMARTINATOR - Loan Database.ser";
-    private HashMap<User, ArrayList<Loan>> loans;
+    private HashMap<String, ArrayList<Loan>> loans;
     private static LoanDatabase loanDatabase;
     private Logger logger;
 
@@ -46,54 +46,46 @@ public class LoanDatabase implements Serializable {
     boolean canBorrow(User user, Media media) {
         int counter = 0;
 
-        if(loans.get(user) == null)
+        if(loans.get(user.getUsername()) == null)
             return true;
 
-        for(Loan l : loans.get(user)) {
-            if(l.getMedia().getClass().equals(media.getClass()))
+        for(Loan l : loans.get(user.getUsername())) {
+            System.out.println((l.getMedia().getType() + "\t" + media.getType()) + "\n" + l.toString());
+            if(l.getMedia().getType().equals(media.getType()))
                 counter++;
         }
 
-        return counter <= media.getLoanLimit();
-    }
-    
-    public String getUserLoans(User user) {
-        StringBuilder userList = new StringBuilder();
-
-        loans.get(user)
-                .forEach(loans -> userList.append(loans.getMedia().toString()));
-        
-        return userList.toString();
+        return counter < media.getLoanLimit();
     }
 
     void addLoan(User user, Media media) {
         media.lend();
 
-        if(loans.get(user) == null) {
+        if(loans.get(user.getUsername()) == null) {
             ArrayList<Loan> firstLoan = new ArrayList<>();
             firstLoan.add(new Loan(user, media));
-            loans.put(user, firstLoan);
+            loans.put(user.getUsername(), firstLoan);
         }
         else
-            loans.get(user).add(new Loan(user, media));
+            loans.get(user.getUsername()).add(new Loan(user, media));
     }
 
     public String getLoanListString() {
         StringBuilder loanList = new StringBuilder();
 
         loans.forEach((u, l) -> {
-            loanList.append(u.getUsername()).append("\n");
+            loanList.append(u).append("\n");
             l.forEach(loan -> loanList.append("\t").append(loan.getMedia().getBareItemDetails()).append("\n"));
         });
 
         return loanList.toString();
     }
 
-    HashMap<User, ArrayList<Loan>> getLoansList() {
+    HashMap<String, ArrayList<Loan>> getLoansList() {
         return loans;
     }
     
-    void setLoanList(HashMap<User, ArrayList<Loan>> loans) {
+    void setLoanList(HashMap<String, ArrayList<Loan>> loans) {
         this.loans = loans;
     }
 
@@ -107,7 +99,7 @@ public class LoanDatabase implements Serializable {
             FileInputStream fileIn = new FileInputStream(LOAN_DATABASE_FILE_PATH);
             ObjectInputStream in = new ObjectInputStream(fileIn);
 
-            this.loans = ((HashMap<User, ArrayList<Loan>>) in.readObject());
+            this.loans = ((HashMap<String, ArrayList<Loan>>) in.readObject());
 
             in.close();
             fileIn.close();

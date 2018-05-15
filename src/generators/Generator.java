@@ -1,6 +1,9 @@
 package generators;
 
-import generators.bookgenerator.BookGenerator;
+import generators.mediagenerator.BookGenerator;
+import generators.mediagenerator.FilmGenerator;
+import generators.randomwords.PoolLoader;
+import generators.randomwords.RandomWords;
 import main.model.media.Media;
 import main.model.user.User;
 
@@ -16,6 +19,7 @@ public class Generator {
     private byte fillingLevel;
     private ArrayList<User> users;
     private ArrayList<Media> books;
+    private ArrayList<Media> films;
 
     public Generator(byte fillingLevel) {
         this.fillingLevel = fillingLevel;
@@ -23,7 +27,8 @@ public class Generator {
         int howMany = i * i;
 
         users = UserGenerator.generateUsers(howMany);
-        books = BookGenerator.generateBooks(howMany);
+        books = BookGenerator.generateBooks((int)(howMany / 1.4));
+        films = FilmGenerator.generateFilm((int)(howMany / 1.4));
     }
 
     public ArrayList<User> getUsers() {
@@ -32,5 +37,9 @@ public class Generator {
 
     public ArrayList<Media> getBooks() {
         return books;
+    }
+
+    public ArrayList<Media> getFilms() {
+        return films;
     }
 }
