@@ -22,7 +22,7 @@ public class OperatorScreen extends Screen {
      * @param userController The user controller.
      */
     public OperatorScreen(UserController userController, MediaController mediaController, LoanController loanController, FileSystemController fileSystemController) {
-        super(userController, mediaController, loanController);
+        super(userController, mediaController, loanController, fileSystemController);
         boolean exitFromOperatorSection = false;
 
         while(!exitFromOperatorSection) {

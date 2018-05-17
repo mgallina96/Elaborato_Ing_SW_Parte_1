@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <excludeFromCompile>
-      <file url="file://$PROJECT_DIR$/resources/data/Biblioteca SMARTINATOR - Loan Database.ser" />
-      <file url="file://$PROJECT_DIR$/resources/data/Biblioteca SMARTINATOR - User Database.ser" />
-      <file url="file://$PROJECT_DIR$/src/generators/QuickFillMain.java" />
-      <file url="file://$PROJECT_DIR$/src/main/gui/graphic/screens/start/LoginScreen.java" />
-      <file url="file://$PROJECT_DIR$/src/main/gui/graphic/GraphicView.java" />
-      <file url="file://$PROJECT_DIR$/src/main/gui/graphic/screens/start/SignUpScreen.java" />
-    </excludeFromCompile>
     <wildcardResourcePatterns>
       <entry name="!?*.java" />
       <entry name="!?*.form" />

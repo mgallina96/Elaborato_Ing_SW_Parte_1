@@ -1,6 +1,4 @@
 package main.gui.textual.screens;
-import main.RobaInutileConDocumentazioneUtile;
-import main.utility.InputParserUtility;
 
 import static main.utility.notifications.Notifications.*;
 

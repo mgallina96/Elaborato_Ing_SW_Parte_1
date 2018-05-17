@@ -36,13 +36,13 @@ public class Screen {
     <C extends Controller> Screen(@NotNull C... controllers) {
         for(C controller : controllers) {
             try {
-                if (controller instanceof UserController)
+                if(controller instanceof UserController)
                     this.userController = (UserController) controller;
-                else if (controller instanceof MediaController)
+                else if(controller instanceof MediaController)
                     this.mediaController = (MediaController) controller;
-                else if (controller instanceof LoanController)
+                else if(controller instanceof LoanController)
                     this.loanController = (LoanController) controller;
-                else if (controller instanceof FileSystemController)
+                else if(controller instanceof FileSystemController)
                     this.fileSystemController = (FileSystemController) controller;
             }
             catch(ClassCastException CCEX) {

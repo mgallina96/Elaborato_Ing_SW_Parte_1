@@ -1,5 +1,10 @@
 package main.controller;
 
+/**
+ * Interface for the file system controller, which provides methods specific to file system management.
+ *
+ * @author Manuel Gallina, Giosuè Filippini, Alessandro Polcini
+ */
 public interface FileSystemController extends Controller {
 
     /**

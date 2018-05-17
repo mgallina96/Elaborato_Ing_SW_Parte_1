@@ -16,7 +16,7 @@ import static main.utility.notifications.Notifications.*;
  */
 public class LoginScreen extends Screen {
 
-    private Logger logger = Logger.getLogger(this.getClass().getName());
+    //private Logger logger = Logger.getLogger(this.getClass().getName());
 
     /**
      * Constructor for the {@code LoginScreen} class.

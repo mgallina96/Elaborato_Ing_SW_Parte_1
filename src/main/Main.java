@@ -4,6 +4,7 @@ import main.controller.FileSystemController;
 import main.controller.FileSystemManager;
 import main.controller.SystemController;
 import main.gui.GuiManager;
+import main.gui.graphic.GraphicView;
 import main.gui.textual.TextualView;
 import main.utility.notifications.Notifications;
 
@@ -27,9 +28,10 @@ public class Main {
 
     public static void main(String[] args) {
         NOTIFICATIONS.setLanguage(Notifications.ENGLISH);
-
         LOGGER.setLevel(Level.ALL);
 
-        //GuiManager guiManager = new TextualView()
+        GuiManager textualView = new TextualView(CONTROLLER, FILE_SYSTEM_CONTROLLER);
+        textualView.mainScreen();
+        //GuiManager graphicalView = new GraphicView(CONTROLLER, FILE_SYSTEM_CONTROLLER);
     }
 }

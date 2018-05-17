@@ -12,7 +12,7 @@ public class FileSystemManager implements FileSystemController {
     }
 
     public static FileSystemManager getInstance() {
-        return fileSystemManager == null ? (fileSystemManager = new FileSystemManager()) : fileSystemManager;
+        return (fileSystemManager == null) ? (fileSystemManager = new FileSystemManager()) : fileSystemManager;
     }
 
     public static FileSystemManager getFileSystemManager() {

@@ -39,10 +39,7 @@ public class LoanDatabase implements Serializable {
     }
 
     public static LoanDatabase getInstance() {
-        if(loanDatabase == null)
-            loanDatabase = new LoanDatabase();
-
-        return loanDatabase;
+        return (loanDatabase == null) ? (loanDatabase = new LoanDatabase()) : loanDatabase;
     }
 
     boolean canBorrow(User user, Media media) {

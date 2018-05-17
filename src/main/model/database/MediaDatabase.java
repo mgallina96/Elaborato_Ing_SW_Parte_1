@@ -34,10 +34,7 @@ public class MediaDatabase implements Serializable {
     }
 
     public static MediaDatabase getInstance() {
-        if(mediaDatabase == null)
-            mediaDatabase = new MediaDatabase();
-
-        return mediaDatabase;
+        return (mediaDatabase == null) ? (mediaDatabase = new MediaDatabase()) : mediaDatabase;
     }
 
     public void addMedia(Media toAdd, String path) {
@@ -66,7 +63,7 @@ public class MediaDatabase implements Serializable {
         return mediaList.get(toFetch.getIdentifier());
     }
 
-    String getMediaListString() {
+    public String getMediaListString() {
         StringBuilder allMedia = new StringBuilder();
 
         for(Media m : mediaList.values())

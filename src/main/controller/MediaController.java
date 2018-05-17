@@ -1,5 +1,10 @@
 package main.controller;
 
+/**
+ * Interface for the Media controller, which provides methods specific to media management.
+ *
+ * @author Manuel Gallina, Giosuè Filippini, Alessandro Polcini
+ */
 public interface MediaController extends Controller {
 
     /**

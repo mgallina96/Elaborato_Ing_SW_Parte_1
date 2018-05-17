@@ -1,6 +1,6 @@
 package main.gui.graphic;
 
-import main.RobaInutileConDocumentazioneUtile;
+import main.controller.*;
 import main.gui.GuiManager;
 import main.gui.graphic.screens.start.LoginScreen;
 
@@ -11,17 +11,19 @@ import main.gui.graphic.screens.start.LoginScreen;
  * @author Manuel Gallina
  */
 public class GraphicView implements GuiManager {
-    private RobaInutileConDocumentazioneUtile controller;
+    private Controller controller;
+    private FileSystemController fileSystemController;
 
-    public GraphicView(RobaInutileConDocumentazioneUtile controller) {
+    public GraphicView(Controller controller, FileSystemController fileSystemController) {
         this.controller = controller;
+        this.fileSystemController = fileSystemController;
         Resources.init();
     }
 
     @Override
     public void mainScreen() {
         LoginScreen loginScreen = new LoginScreen();
-        loginScreen.init(controller);
+        loginScreen.init((UserController) controller);
     }
 
     @Override
@@ -43,7 +45,11 @@ public class GraphicView implements GuiManager {
 
     }
 
-    public RobaInutileConDocumentazioneUtile getController() {
+    public Controller getController() {
         return controller;
+    }
+
+    public FileSystemController getFileSystemController() {
+        return fileSystemController;
     }
 }

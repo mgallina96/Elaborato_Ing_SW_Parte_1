@@ -1,4 +1,6 @@
 package main.controller;
+import main.gui.graphic.GraphicView;
+import main.gui.textual.TextualView;
 import main.model.database.*;
 import main.model.loan.Loan;
 import main.utility.exceptions.UserNotFoundException;
@@ -44,22 +46,16 @@ public class SystemController implements UserController, MediaController, LoanCo
         loanDatabase = LoanDatabase.getInstance();
 
         logger = Logger.getLogger(this.getClass().getName());
-
-        //guiManager = new TextualView(this);
-//        guiManager = new GraphicView(this);
     }
 
     //Returns the instance of the controller.
     public static SystemController getInstance() {
-        if(instance == null)
-            instance = new SystemController();
-
-        return instance;
+        return (instance == null) ? (instance = new SystemController()) : instance;
     }
 
-    public void init() {
-        guiManager.mainScreen();
-    }
+//    public void init() {
+//        guiManager.mainScreen();
+//    }
 
     @Override
     public boolean checkUserLogin(String username, String password) throws UserNotFoundException, WrongPasswordException {
@@ -212,7 +208,7 @@ public class SystemController implements UserController, MediaController, LoanCo
         return mediaDatabase.getFolderContents(folderPath);
     }
 
-    private void saveHashMap(String path, HashMap h) {
+    public void saveHashMap(String path, HashMap h) {
         try {
             //to increase serializing speed
             RandomAccessFile raf = new RandomAccessFile(path, "rw");

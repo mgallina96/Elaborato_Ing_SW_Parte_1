@@ -1,6 +1,6 @@
 package main.gui.graphic.screens.start;
 
-import main.RobaInutileConDocumentazioneUtile;
+import main.controller.UserController;
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.exceptions.WrongPasswordException;
 import main.gui.graphic.components.BackgroundImagePanel;
@@ -25,7 +25,7 @@ public class LoginScreen {
 
     private static final Dimension FRAME_SIZE = new Dimension(960, 540);
 
-    private RobaInutileConDocumentazioneUtile controller;
+    private UserController userController;
 
     private JFrame frame;
 
@@ -68,8 +68,8 @@ public class LoginScreen {
     private ActionListener enterListener = e -> checkLogin();
 
     /** Inizializza il pannello di login. */
-    public void init(RobaInutileConDocumentazioneUtile controller) {
-        this.controller = controller;
+    public void init(UserController userController) {
+        this.userController = userController;
         appScreen = new AppScreen();
         signUpScreen = new SignUpScreen();
 
@@ -85,7 +85,7 @@ public class LoginScreen {
 
     private void checkLogin() {
         try {
-            if (controller.checkUserLogin(usernameField.getText(), String.copyValueOf(passwordField.getPassword()))) {
+            if (userController.checkUserLogin(usernameField.getText(), String.copyValueOf(passwordField.getPassword()))) {
                 frame.setVisible(false);
                 appScreen.init();
             }
@@ -164,7 +164,7 @@ public class LoginScreen {
     private JButton buildSignUpButton() {
         JButton signUp = buildButton(705, 389, 160, 50);
         signUp.addActionListener(e -> {
-            signUpScreen.init(controller);
+            signUpScreen.init(userController);
         });
         return signUp;
     }

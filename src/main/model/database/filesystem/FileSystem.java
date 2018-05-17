@@ -54,10 +54,7 @@ public class FileSystem implements Serializable {
      * @return The FileSystem instance.
      */
     public static FileSystem getInstance() {
-        if(instance == null)
-            instance = new FileSystem();
-
-        return instance;
+        return (instance == null) ? (instance = new FileSystem()) : instance;
     }
 
     /**

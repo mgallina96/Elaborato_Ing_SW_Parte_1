@@ -1,7 +1,9 @@
 package generators;
 import generators.randomwords.PoolLoader;
 import generators.randomwords.RandomWords;
+import main.controller.SystemController;
 import main.model.database.LoanDatabase;
+import main.model.database.MediaDatabase;
 import main.model.database.UserDatabase;
 import main.model.database.filesystem.FileSystem;
 import main.model.database.filesystem.Folder;
@@ -13,6 +15,7 @@ import main.utility.notifications.Notifications;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 import static generators.Generator.COMMON_MEDIA_PATH;
 
@@ -67,22 +70,26 @@ public class QuickFillMain {
         Notifications notifications = Notifications.getInstance();
         notifications.setLanguage(Notifications.ENGLISH);
 
-        DatabaseManager d = DatabaseManager.getInstance();
+        SystemController sc = SystemController.getInstance();
+        UserDatabase userDatabase = UserDatabase.getInstance();
+        MediaDatabase mediaDatabase = MediaDatabase.getInstance();
+        LoanDatabase loanDatabase = LoanDatabase.getInstance();
+
         Generator generator = new Generator(FILLING_LEVEL);
 
         for(User u : generator.getUsers())
-            d.add(u);
+            userDatabase.addUser(u);
         for(Media m : generator.getBooks())
             if(m instanceof Book)
-                d.add(m, "root\\Libri\\" + ((Book)m).getGenre() + "\\");
+                mediaDatabase.addMedia(m, "root\\Libri\\" + ((Book)m).getGenre() + "\\");
         for(Media f : generator.getFilms())
             if(f instanceof Film)
-                d.add(f, "root\\Film\\" + ((Film)f).getGenre() + "\\");
+                mediaDatabase.addMedia(f, "root\\Film\\" + ((Film)f).getGenre() + "\\");
 
         //these methods need to be made (temporarily) public
-//        d.getMediaDatabase().saveMediaDatabase();
-//        d.saveHashMap("resources\\data\\Biblioteca SMARTINATOR - User Database.ser", d.getUserList());
-//        d.saveHashMap("resources\\data\\Biblioteca SMARTINATOR - Loan Database.ser", d.getLoansList());
+        mediaDatabase.saveMediaDatabase();
+        sc.saveHashMap("resources\\data\\Biblioteca SMARTINATOR - User Database.ser", userDatabase.getUserList());
+        sc.saveHashMap("resources\\data\\Biblioteca SMARTINATOR - Loan Database.ser", loanDatabase.getLoansList());
     }
 
 

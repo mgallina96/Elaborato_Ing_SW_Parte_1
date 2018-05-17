@@ -3,6 +3,11 @@ import main.utility.exceptions.UserNotFoundException;
 import main.utility.exceptions.WrongPasswordException;
 import java.util.GregorianCalendar;
 
+/**
+ * Interface for the User controller, which provides methods specific to user management.
+ *
+ * @author Manuel Gallina, Giosuè Filippini, Alessandro Polcini
+ */
 public interface UserController extends Controller {
 
     /**
@@ -61,7 +66,7 @@ public interface UserController extends Controller {
     int getUserStatus(String username);
 
     /**
-     * Returns a {@code String} that contains all the users in the database.
+     * Returns a {@code String} containing all the users in the database.
      *
      * @return the list of all users as a {@code String}.
      */

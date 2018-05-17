@@ -1,5 +1,10 @@
 package main.controller;
 
+/**
+ * Interface for the Loan controller, which provides methods specific to loan management.
+ *
+ * @author Manuel Gallina, Giosuè Filippini, Alessandro Polcini
+ */
 public interface LoanController extends Controller {
 
     /** Checks whether the currently logged-in user is allowed to borrow another media item. */

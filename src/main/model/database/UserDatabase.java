@@ -47,10 +47,7 @@ public class UserDatabase implements Serializable {
     }
 
     public static UserDatabase getInstance() {
-        if(userDatabase == null)
-            userDatabase = new UserDatabase();
-
-        return userDatabase;
+        return (userDatabase == null) ? (userDatabase = new UserDatabase()) : userDatabase;
     }
 
     public void addUser(User toAdd) {
