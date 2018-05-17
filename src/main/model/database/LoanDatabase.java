@@ -4,6 +4,7 @@ import main.model.loan.Loan;
 import main.model.media.Media;
 import main.model.user.Customer;
 import main.model.user.User;
+import main.utility.exceptions.UserNotFoundException;
 import main.utility.notifications.Notifications;
 
 import java.io.*;
@@ -80,6 +81,15 @@ public class LoanDatabase implements Serializable {
         });
 
         return loanList.toString();
+    }
+
+    public ArrayList<Loan> getUserLoans(User user) throws UserNotFoundException {
+        try {
+            return this.loans.get(user.getUsername());
+        }
+        catch(NullPointerException NPEx) {
+            throw new UserNotFoundException();
+        }
     }
 
     HashMap<String, ArrayList<Loan>> getLoansList() {

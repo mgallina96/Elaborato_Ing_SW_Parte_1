@@ -1,4 +1,6 @@
 package main;
+import main.gui.graphic.GraphicView;
+import main.model.loan.Loan;
 import main.model.user.Operator;
 import main.model.user.UserConstants;
 import main.utility.exceptions.UserNotFoundException;
@@ -152,7 +154,19 @@ public class Controller implements SystemController {
 
     @Override
     public boolean canBorrow(int mediaID) {
-        return database.canBorrow(database.fetch(new Media(mediaID)));
+        int counter = 0;
+        Media media = database.fetch(new Media(mediaID));
+
+        try {
+            for(Loan l : database.getUserLoans(database.getCurrentUser()))
+                if(l.getMedia().getType().equals(media.getType()))
+                    counter++;
+        }
+        catch(Exception e) {
+            return true;
+        }
+
+        return counter < media.getLoanLimit();
     }
 
     @Override
@@ -202,6 +216,11 @@ public class Controller implements SystemController {
     }
 
     @Override
+    public String getFolderContents(String folderPath) {
+        return database.getFolderContents(folderPath);
+    }
+
+    @Override
     public boolean folderHasChildren(int folderID) {
         return !fileSystem.getFileSystem().get(folderID).getChildren().isEmpty();
     }
@@ -220,10 +239,4 @@ public class Controller implements SystemController {
     public String getPathToString(int folderID) {
         return fileSystem.getFileSystem().get(folderID).getFolderPath();
     }
-
-    @Override
-    public String getFolderContents(String folderPath) {
-        return database.getFolderContents(folderPath);
-    }
-
 }

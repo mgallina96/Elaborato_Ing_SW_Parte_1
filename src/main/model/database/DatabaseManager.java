@@ -3,6 +3,7 @@ import main.model.loan.Loan;
 import main.model.media.Media;
 import main.model.user.Customer;
 import main.model.user.User;
+import main.utility.exceptions.UserNotFoundException;
 import main.utility.notifications.Notifications;
 
 import java.io.*;
@@ -132,6 +133,10 @@ public class DatabaseManager implements Serializable, Database {
     @Override
     public String getLoanListString() {
         return loanDatabase.getLoanListString();
+    }
+
+    public ArrayList<Loan> getUserLoans(User user) throws UserNotFoundException {
+        return loanDatabase.getUserLoans(user);
     }
 
     @Override

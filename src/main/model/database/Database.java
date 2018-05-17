@@ -1,6 +1,10 @@
 package main.model.database;
+import main.model.loan.Loan;
 import main.model.media.Media;
 import main.model.user.User;
+import main.utility.exceptions.UserNotFoundException;
+
+import java.util.ArrayList;
 
 /**
  * Interface whose primary task is to control and manage the interaction between different kinds of databases
@@ -61,6 +65,8 @@ public interface Database {
      * @return
      */
     boolean canBorrow(Media media);
+
+    ArrayList<Loan> getUserLoans(User user) throws UserNotFoundException;
 
     /**
      * Returns a {@code String} that contains a brief description for every user in the database, according to the
