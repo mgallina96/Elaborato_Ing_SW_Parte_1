@@ -19,7 +19,7 @@ public class Main {
         Notifications notifications = Notifications.getInstance();
         notifications.setLanguage(Notifications.ENGLISH);
         LOGGER.setLevel(Level.ALL);
-        SystemController controller = Controller.getInstance();
+        RobaInutileConDocumentazioneUtile controller = SystemController.getInstance();
         controller.init();
     }
 }

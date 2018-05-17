@@ -3,7 +3,7 @@ import main.utility.exceptions.UserNotFoundException;
 import main.utility.exceptions.WrongPasswordException;
 import java.util.GregorianCalendar;
 
-public interface UserController {
+public interface UserController extends Controller {
 
     /**
      * Renews the user's subscription and returns a boolean value to tell the program whether the renewal was successful

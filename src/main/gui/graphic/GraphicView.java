@@ -1,6 +1,6 @@
 package main.gui.graphic;
 
-import main.SystemController;
+import main.RobaInutileConDocumentazioneUtile;
 import main.gui.GuiManager;
 import main.gui.graphic.screens.start.LoginScreen;
 
@@ -11,9 +11,9 @@ import main.gui.graphic.screens.start.LoginScreen;
  * @author Manuel Gallina
  */
 public class GraphicView implements GuiManager {
-    private SystemController controller;
+    private RobaInutileConDocumentazioneUtile controller;
 
-    public GraphicView(SystemController controller) {
+    public GraphicView(RobaInutileConDocumentazioneUtile controller) {
         this.controller = controller;
         Resources.init();
     }
@@ -43,7 +43,7 @@ public class GraphicView implements GuiManager {
 
     }
 
-    public SystemController getController() {
+    public RobaInutileConDocumentazioneUtile getController() {
         return controller;
     }
 }

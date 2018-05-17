@@ -1,7 +1,7 @@
 package main.gui.textual.screens;
-import main.SystemController;
-import main.model.database.DatabaseManager;
-import main.model.user.Customer;
+import main.LoanController;
+import main.MediaController;
+import main.UserController;
 
 import static main.utility.notifications.Notifications.*;
 
@@ -14,10 +14,13 @@ public class CustomerScreen extends Screen {
 
     /**
      * Constructor for the {@code CustomerScreen} class. This constructor boots up the customer section.
-     * @param controller The system controller.
+     *
+     * @param userController The user controller.
+     * @param mediaController The media controller.
+     * @param loanController The loan controller.
      */
-    public CustomerScreen(SystemController controller) {
-        super(controller);
+    public CustomerScreen(UserController userController, MediaController mediaController, LoanController loanController) {
+        super(userController, mediaController, loanController);
         boolean exitFromCustomerSection = false;
 
         while(!exitFromCustomerSection) {
@@ -25,8 +28,8 @@ public class CustomerScreen extends Screen {
 
             switch(insertInteger(1,6)) {
                 case 1:
-                    if(!getController().renewSubscription())
-                        System.out.printf("%s\n%s\n", ERR_CANNOT_RENEW, getController().dateDetails());
+                    if(!userController.renewSubscription())
+                        System.out.printf("%s\n%s\n", ERR_CANNOT_RENEW, userController.dateDetails());
                     break;
                 case 2:
                     if(searchForMedia(PROMPT_SEARCH_FOR_MEDIA_TO_BORROW))
@@ -40,7 +43,7 @@ public class CustomerScreen extends Screen {
                 case 5:
                     System.out.printf("%s\n", MSG_LOG_OUT);
                     exitFromCustomerSection = true;
-                    getController().logout();
+                    userController.logout();
                     break;
                 default:
                     break;
@@ -57,7 +60,7 @@ public class CustomerScreen extends Screen {
             return false;
         }
 
-        String output = getController().allFilteredMediaList(input);
+        String output = getMediaController().allFilteredMediaList(input);
 
         if(output.length() > 0)
             System.out.printf("%s\n%s\n", MSG_FILTERED_MEDIA_LIST, output);
@@ -71,7 +74,7 @@ public class CustomerScreen extends Screen {
 
     private void borrowMedia() {
         int id = insertInteger();
-        while(!getController().mediaIsPresent(id)) {
+        while(!getMediaController().mediaIsPresent(id)) {
             System.out.println(ERR_MEDIA_NOT_PRESENT);
             id = insertInteger();
         }
@@ -79,8 +82,8 @@ public class CustomerScreen extends Screen {
         System.out.println(PROMPT_BORROW_CONFIRMATION);
 
         if(insertString(YN_REGEX).equalsIgnoreCase(YES)) {
-            if(getController().canBorrow(id)) {
-                if(getController().addLoanToDatabase(id))
+            if(getLoanController().canBorrow(id)) {
+                if(getLoanController().addLoanToDatabase(id))
                     System.out.println(MSG_BORROW_SUCCESSFUL);
                 else
                     System.out.println(ERR_MEDIA_NOT_AVAILABLE);

@@ -1,7 +1,8 @@
 package main.gui.textual;
-import main.SystemController;
+import main.*;
 import main.gui.GuiManager;
 import main.gui.textual.screens.*;
+import main.model.database.filesystem.FileSystem;
 
 import static main.utility.notifications.Notifications.MSG_GOODBYE;
 
@@ -12,35 +13,41 @@ import static main.utility.notifications.Notifications.MSG_GOODBYE;
  * @author Giosuè Filippini
  */
 public class TextualView implements GuiManager {
-    private SystemController controller;
+    private UserController userController;
+    private MediaController mediaController;
+    private LoanController loanController;
+    private FileSystemController fileSystemController;
 
     /**
      * Constructor for the TextualView class.
      *
      * @param controller The system controller.
      */
-    public TextualView(SystemController controller) {
-        this.controller = controller;
+    public TextualView(UserController userController, MediaController mediaController, LoanController loanController, FileSystemController fileSystemController) {
+        this.userController = userController;
+        this.mediaController = mediaController;
+        this.loanController = loanController;
+        this.fileSystemController = fileSystemController;
     }
 
     @Override
     public void signUpScreen() {
-        new SignUpScreen(controller);
+        new SignUpScreen(userController);
     }
 
     @Override
     public void operatorScreen() {
-        new OperatorScreen(controller);
+        new OperatorScreen(userController, mediaController, loanController, fileSystemController);
     }
 
     @Override
     public void customerScreen() {
-        new CustomerScreen(controller);
+        new CustomerScreen(userController, mediaController, loanController);
     }
 
     @Override
     public void mainScreen() {
-        MainScreen mainScreen = new MainScreen(controller);
+        MainScreen mainScreen = new MainScreen();
         boolean exit = false;
 
         while(!exit) {
@@ -63,17 +70,17 @@ public class TextualView implements GuiManager {
 
     @Override
     public void loginScreen() {
-        LoginScreen loginScreen = new LoginScreen(controller);
+        LoginScreen loginScreen = new LoginScreen(userController);
 
-        switch(controller.getUserStatus(loginScreen.login())) {
+        switch(userController.getUserStatus(loginScreen.login())) {
             case 0:
                 customerScreen();
                 break;
             case 1:
                 operatorScreen();
                 break;
-            default:
-                //in case ths user status is still a null value (either the username or the password isn't valid).
+            default: //in case ths user status is still a null value (either the username or the password isn't valid).
+                break;
         }
     }
 }

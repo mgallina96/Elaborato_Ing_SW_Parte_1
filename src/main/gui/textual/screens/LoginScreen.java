@@ -1,5 +1,6 @@
 package main.gui.textual.screens;
-import main.SystemController;
+import main.RobaInutileConDocumentazioneUtile;
+import main.UserController;
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.exceptions.WrongPasswordException;
 
@@ -21,10 +22,10 @@ public class LoginScreen extends Screen {
     /**
      * Constructor for the {@code LoginScreen} class.
      *
-     * @param controller The system controller.
+     * @param userController The system controller.
      */
-    public LoginScreen(SystemController controller) {
-        super(controller);
+    public LoginScreen(UserController userController) {
+        super(userController);
     }
 
 
@@ -47,8 +48,8 @@ public class LoginScreen extends Screen {
                 username = inputRequest(PROMPT_USERNAME);
                 password = inputRequest(PROMPT_PASSWORD);
 
-                if(getController().checkUserLogin(username, password)) {
-                    int days = getController().daysLeftToRenew(username);
+                if(getUserController().checkUserLogin(username, password)) {
+                    int days = getUserController().daysLeftToRenew(username);
 
                     if(days > 0)
                         System.out.printf("%s %s %s %s.\n",

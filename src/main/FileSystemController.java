@@ -1,6 +1,6 @@
 package main;
 
-public interface FileSystemController {
+public interface FileSystemController extends Controller {
 
     /**
      * Checks whether the folder associated to the given ID has children.

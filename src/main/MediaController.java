@@ -1,6 +1,6 @@
 package main;
 
-public interface MediaController {
+public interface MediaController extends Controller {
 
     /**
      * Checks if the media with the given ID is present in the database.

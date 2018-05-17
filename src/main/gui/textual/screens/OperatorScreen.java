@@ -1,6 +1,7 @@
 package main.gui.textual.screens;
 
-import main.SystemController;
+import main.*;
+import main.model.database.filesystem.FileSystem;
 
 import static main.utility.notifications.Notifications.*;
 
@@ -16,10 +17,10 @@ public class OperatorScreen extends Screen {
      * Constructor for the OperatorScreen class.
      * <p>
      * Boots up the operator section.
-     * @param controller The system controller.
+     * @param userController The user controller.
      */
-    public OperatorScreen(SystemController controller) {
-        super(controller);
+    public OperatorScreen(UserController userController, MediaController mediaController, LoanController loanController, FileSystemController fileSystemController) {
+        super(userController, mediaController, loanController);
         boolean exitFromOperatorSection = false;
 
         while(!exitFromOperatorSection) {
@@ -40,15 +41,15 @@ public class OperatorScreen extends Screen {
                     searchForMedia();
                     break;
                 case 5:
-                    System.out.printf("%s\n%s\n", MSG_USER_LIST, getController().allUsersToString());
+                    System.out.printf("%s\n%s\n", MSG_USER_LIST, userController.allUsersToString());
                     break;
                 case 6:
-                    System.out.printf("%s\n%s\n", MSG_LOAN_LIST, getController().allLoansToString());
+                    System.out.printf("%s\n%s\n", MSG_LOAN_LIST, loanController.allLoansToString());
                     break;
                 case 7:
                     System.out.printf("%s\n", MSG_LOG_OUT);
                     exitFromOperatorSection = true;
-                    getController().logout();
+                    userController.logout();
                     break;
                 default:
                     break;
@@ -80,7 +81,7 @@ public class OperatorScreen extends Screen {
         System.out.printf("%s\n%s\n", SEPARATOR, PROMPT_SELECT_PATH);
         String path = chooseFolder();
 
-        if(!getController().addMediaToDatabase(title, author, genre, year, publisherName, path))
+        if(!getMediaController().addMediaToDatabase(title, author, genre, year, publisherName, path))
             System.out.printf("%s\n%s\n", ERR_MEDIA_ALREADY_PRESENT, MSG_ABORT);
         else
             System.out.printf("%s\"%s\"\n", MSG_ADD_SUCCESSFUL, path);
@@ -93,7 +94,7 @@ public class OperatorScreen extends Screen {
         System.out.printf("%s\n%s\n", PROMPT_WHICH_FOLDER, SEPARATOR);
         String path = chooseFolder();
 
-        System.out.printf("%s\"%s\":\n%s\n", MSG_FOLDER_CONTENTS, path, getController().getFolderContents(path));
+        System.out.printf("%s\"%s\":\n%s\n", MSG_FOLDER_CONTENTS, path, getMediaController().getFolderContents(path));
     }
 
     /**
@@ -103,14 +104,14 @@ public class OperatorScreen extends Screen {
      * @return A {@code String} representing the path of the desired folder.
      */
     private String chooseFolder() {
-        int currentID = getController().getRootID();
+        int currentID = getFileSystemController().getRootID();
 
-        while(getController().folderHasChildren(currentID)) {
-            System.out.println(getController().getSubFolders(currentID));
+        while(getFileSystemController().folderHasChildren(currentID)) {
+            System.out.println(getFileSystemController().getSubFolders(currentID));
             currentID = insertInteger();
         }
 
-        return getController().getPathToString(currentID);
+        return getFileSystemController().getPathToString(currentID);
     }
 
     /**
@@ -128,7 +129,7 @@ public class OperatorScreen extends Screen {
             return false;
         }
 
-        String output = getController().allFilteredMediaList(input);
+        String output = getMediaController().allFilteredMediaList(input);
 
         if(output.length() > 0) {
             System.out.printf("%s\n%s\n", MSG_FILTERED_MEDIA_LIST, output);
@@ -144,7 +145,7 @@ public class OperatorScreen extends Screen {
         System.out.println(PROMPT_REMOVE_MEDIA_ID);
 
         int id = insertInteger();
-        while(!getController().mediaIsPresent(id)) {
+        while(!getMediaController().mediaIsPresent(id)) {
             System.out.println(ERR_MEDIA_NOT_PRESENT);
             id = insertInteger();
         }
@@ -152,7 +153,7 @@ public class OperatorScreen extends Screen {
         System.out.println(PROMPT_REMOVE_CONFIRMATION);
 
         if(insertString(YN_REGEX).equalsIgnoreCase(YES)) {
-            getController().removeMediaFromDatabase(id);
+            getMediaController().removeMediaFromDatabase(id);
             System.out.println(MSG_REMOVE_SUCCESSFUL);
         }
         else

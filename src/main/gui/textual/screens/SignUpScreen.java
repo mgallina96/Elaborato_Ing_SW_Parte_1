@@ -1,5 +1,7 @@
 package main.gui.textual.screens;
-import main.SystemController;
+import main.FileSystemController;
+import main.LoanController;
+import main.UserController;
 import main.utility.InputParserUtility;
 import main.utility.exceptions.IllegalDateFormatException;
 
@@ -16,10 +18,10 @@ public class SignUpScreen extends Screen {
     /**
      * Boots up the section from which the user can sign up.
      *
-     * @param controller The system controller.
+     * @param userController The system user controller.
      */
-    public SignUpScreen(SystemController controller) {
-        super(controller);
+    public SignUpScreen(UserController userController) {
+        super(userController);
         System.out.printf("%s\n%s\n", PROMPT_SIGN_UP_SCREEN, SEPARATOR);
 
         int status;
@@ -49,7 +51,7 @@ public class SignUpScreen extends Screen {
             IDFEx.printStackTrace();
         }
 
-        if(getController().addUserToDatabase(details[0], details[1], details[2], details[3], InputParserUtility.toGregorianDate(details[4]))) {
+        if(getUserController().addUserToDatabase(details[0], details[1], details[2], details[3], InputParserUtility.toGregorianDate(details[4]))) {
             System.out.println(MSG_SIGN_UP_SUCCESSFUL);
             return 0;
         }

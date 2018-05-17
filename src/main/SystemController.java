@@ -1,121 +1,233 @@
 package main;
+import main.model.database.*;
+import main.model.loan.Loan;
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.exceptions.WrongPasswordException;
-
+import main.gui.GuiManager;
+import main.model.media.Book;
+import main.model.media.Media;
+import main.model.user.Customer;
+import main.model.user.User;
+import main.utility.notifications.Notifications;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.RandomAccessFile;
+import java.time.temporal.ChronoUnit;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static main.utility.GlobalParameters.*;
 
 /**
- * Interface for the system controller.
+ * Controller class that manages any kind of interaction between the graphical user interface
+ * and the logic (model) of the program.
  *
  * @author Manuel Gallina
+ * @since version 0.1 - 12/03/2018
  */
-public interface SystemController {
+public class SystemController implements UserController, MediaController, LoanController {
 
-    /** Initializes the system controller, which starts the GUI. */
-    void init();
+    private static SystemController instance;
+
+    private GuiManager guiManager;
+    private UserDatabase userDatabase;
+    private MediaDatabase mediaDatabase;
+    private LoanDatabase loanDatabase;
+    private Logger logger;
+
+    //Singleton constructor, private to prevent instantiation.
+    private SystemController() {
+        userDatabase = UserDatabase.getInstance();
+        mediaDatabase = MediaDatabase.getInstance();
+        loanDatabase = LoanDatabase.getInstance();
+
+        logger = Logger.getLogger(this.getClass().getName());
+
+        //guiManager = new TextualView(this);
+//        guiManager = new GraphicView(this);
+    }
+
+    //Returns the instance of the controller.
+    static SystemController getInstance() {
+        if(instance == null)
+            instance = new SystemController();
+
+        return instance;
+    }
+
+    public void init() {
+        guiManager.mainScreen();
+    }
+
+    @Override
+    public boolean checkUserLogin(String username, String password) throws UserNotFoundException, WrongPasswordException {
+        User toCheck = userDatabase.fetchUser(new User(username));
+
+        if(toCheck == null)
+            throw new UserNotFoundException();
+
+        if(toCheck.getPassword().equals(password)){
+            userDatabase.setCurrentUser(toCheck);
+            return true;
+        } else
+            throw new WrongPasswordException();
+
+    }
+
+    public boolean userIsPresent(String username) {
+        return userDatabase.isPresent(new User(username));
+    }
+
+    public boolean mediaIsPresent(int id) {
+        return mediaDatabase.isPresent(new Media(id));
+    }
+
+    public String allUsersToString() {
+        return userDatabase.getUserListString();
+    }
+
+    public String allLoansToString() {
+        return loanDatabase.getLoanListString();
+    }
+
+    public String allFilteredMediaList(String filter) {
+        return mediaDatabase.getFilteredMediaList(filter);
+    }
+
+    public boolean addUserToDatabase(String firstName, String lastName, String username, String password, GregorianCalendar birthday) {
+        Customer c = new Customer(firstName, lastName, username, password, birthday);
+
+        if(!userDatabase.isPresent(c)) {
+            userDatabase.addUser(c);
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName, String path) {
+        Book b = new Book(title, author, genre, publicationYear, publisherName);
+
+        if(!mediaDatabase.isMatchingMedia(b)) {
+            mediaDatabase.addMedia(b, path);
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean addLoanToDatabase(int mediaID) {
+        Media toLend = mediaDatabase.fetch(new Media(mediaID));
+
+        if(toLend.isAvailable()) {
+            loanDatabase.addLoan(userDatabase.getCurrentUser(), toLend);
+            mediaDatabase.saveMediaDatabase();
+            saveHashMap(USER_DATABASE_FILE_PATH, userDatabase.getUserList());
+            saveHashMap(LOAN_DATABASE_FILE_PATH, loanDatabase.getLoansList());
+            return true;
+        }
+
+        return false;
+    }
+
+    public void removeMediaFromDatabase(int id) {
+        mediaDatabase.removeMedia(new Media(id));
+    }
+
+    public int getUserStatus(String username) {
+        if(username == null)
+            return -1;
+
+        switch(userDatabase.fetchUser(new User(username)).getUserStatus()) {
+            case CUSTOMER:
+                return 0;
+            case OPERATOR:
+                return 1;
+            default:
+                return -1;
+        }
+    }
+
+    public boolean canBorrow(int mediaID) {
+        int counter = 0;
+        Media media = mediaDatabase.fetch(new Media(mediaID));
+
+        try {
+            for(Loan l : loanDatabase.getUserLoans(userDatabase.getCurrentUser()))
+                if(l.getMedia().getType().equals(media.getType()))
+                    counter++;
+        }
+        catch(Exception e) {
+            return true;
+        }
+
+        return counter < media.getLoanLimit();
+    }
+
+    public int daysLeftToRenew(String username) throws UserNotFoundException {
+        try {
+            User user = userDatabase.fetchUser(new User(username));
+
+            int days = (int)Math.abs(ChronoUnit.DAYS.between(
+                    new GregorianCalendar().toInstant(),
+                    ((Customer)user).getExpiryDate().toInstant()));
+
+            if(days <= RENEWAL_BOUNDARY_IN_DAYS)
+                return days;
+        }
+        catch(ClassCastException CCEx) {
+            return 0;
+        }
+        catch(NullPointerException NPEx) {
+            throw new UserNotFoundException();
+        }
+
+        return 0;
+    }
+
+    public boolean renewSubscription() throws IllegalArgumentException {
+        if(userDatabase.getCurrentUser() instanceof Customer)
+            return ((Customer)userDatabase.getCurrentUser()).renewSubscription();
+        else
+            throw new IllegalArgumentException();
+    }
+
+    public String dateDetails() {
+        User u = userDatabase.getCurrentUser();
+        return (u instanceof Customer) ?
+                String.format("Reminder:\n\tYou subscribed on %s\n\tYour subscription expires on %s\n\tYou're not " +
+                                "allowed to renew your subscription until 10 days before the expiry date.",
+                        ((Customer)u).getSubscriptionDate().toZonedDateTime().toString().substring(0, 10),
+                        ((Customer)u).getExpiryDate().toZonedDateTime().toString().substring(0, 10)) :
+                "";
+    }
+
+    public void logout() {
+        userDatabase.removeCurrentUser();
+    }
+
+    public String getFolderContents(String folderPath) {
+        return mediaDatabase.getFolderContents(folderPath);
+    }
+
+    private void saveHashMap(String path, HashMap h) {
+        try {
+            //to increase serializing speed
+            RandomAccessFile raf = new RandomAccessFile(path, "rw");
+
+            FileOutputStream fileOut = new FileOutputStream(raf.getFD());
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+
+            out.writeObject(h);
+
+            out.close();
+            fileOut.close();
+        }
+        catch(IOException IOEx) {
+            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + this.getClass().getName(), IOEx);
+        }
+    }
 
 }
-
-/**
- * Interface whose primary task is to control and manage the interaction between different kinds of databases
- * (user database and media database for now).
- *
- * @author Manuel Gallina, Alessandro Polcini
- */
-/**
- * Adds a new user to the database and saves the user database afterwards.
- *
- * @param toAdd The {@code User} to be added to the database.
- */
-/**
- * Adds a new piece of media to the database and saves the media database afterwards.
- *
- * @param toAdd The {@code Media} item to be added to the database.
- * @param path The path the {@code Media} item is stored in.
- */
-/**
- * Adds a new entry to the loan database containing both the current user and the media item that has just been lent.
- *
- * @param toLend The media to be lent to that user.
- */
-/**
- * Removes a media item from the database.
- *
- * @param toRemove The {@code Media} item to remove.
- */
-/**
- * Returns the given user (if present).
- *
- * @param toFetch The user to be found and returned.
- * @return The user or {@code null} if that user can't be found in the database.
- */
-/**
- * Returns the given media item (if present).
- *
- * @param toFetch The media item to be found and returned.
- * @return The piece of media or {@code null} if that piece of media can't be found in the database.
- */
-/**
- *
- * @param media
- * @return
- */
-/**
- * Returns a {@code String} that contains a brief description for every user in the database, according to the
- * {@code toString} method found in the {@link main.model.user.User} class.
- *
- * @return The list of all users as a {@code String}.
- */
-/**
- * Returns a {@code String} that contains a brief description for every loan that has been granted to each user
- * in the database.
- *
- * @return The list of all loans as a {@code String}.
- */
-/**
- * Returns a list that contains a brief description for every piece of media in the database that matches a
- * specific input. The logic for the filtering can be found in the {@code getFilteredMediaList} method of the
- * {@link main.model.database.MediaDatabase} class.
- *
- * @param filter The filter to apply.
- * @return The filtered list of media items.
- */
-/**
- * Sets the current user who just logged in.
- *
- * @param currentUser The logged-in user to set.
- */
-/**
- * Removes the current user browsing the program by setting its value to {@code null}: this means that no user is
- * active in the system at that particular moment.
- */
-/**
- * Getter for the current user.
- *
- * @return the current user who just logged in.
- */
-/**
- * Checks whether the given user is present in the database.
- *
- * @param toFind The user to be found.
- * @return A boolean value: {@code true} if the user is present in the database, {@code false} otherwise.
- */
-/**
- * Checks whether the given piece of media is present in the database.
- *
- * @param toFind The media item to be found.
- * @return A boolean value: {@code true} if the media item is present in the database, {@code false} otherwise.
- */
-/**
- * Checks whether the given media item has the same details (title, author, genre, etc.) as another media item
- * in the database.
- *
- * @param toFind The media item to be checked.
- * @return {@code true} if there is a match, {@code false} otherwise.
- */
-/**
- * Returns the contents of the folder that matches the given path.
- *
- * @param folderPath The path to look for.
- * @return A {@code String} with all the contents of that folder.
- */

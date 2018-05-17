@@ -1,6 +1,6 @@
 package main.gui.graphic.screens.start;
 
-import main.SystemController;
+import main.RobaInutileConDocumentazioneUtile;
 import main.gui.graphic.components.BackgroundImagePanel;
 import main.utility.InputParserUtility;
 
@@ -21,7 +21,7 @@ import static main.utility.notifications.Notifications.ERR_INVALID_NAME;
 public class SignUpScreen {
     private static final Dimension FRAME_SIZE = new Dimension(960, 540);
 
-    private SystemController controller;
+    private RobaInutileConDocumentazioneUtile controller;
 
     private JFrame frame;
 
@@ -67,7 +67,7 @@ public class SignUpScreen {
     };
 
     /** Inizializza il pannello di login. */
-    public void init(SystemController controller) {
+    public void init(RobaInutileConDocumentazioneUtile controller) {
         this.controller = controller;
 
         loginScreen = new LoginScreen();

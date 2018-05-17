@@ -1,6 +1,6 @@
 package main;
 
-public interface LoanController {
+public interface LoanController extends Controller {
 
     /** Checks whether the currently logged-in user is allowed to borrow another media item. */
     boolean canBorrow(int mediaID);

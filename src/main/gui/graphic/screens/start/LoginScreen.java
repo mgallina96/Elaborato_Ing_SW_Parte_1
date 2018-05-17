@@ -1,6 +1,6 @@
 package main.gui.graphic.screens.start;
 
-import main.SystemController;
+import main.RobaInutileConDocumentazioneUtile;
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.exceptions.WrongPasswordException;
 import main.gui.graphic.components.BackgroundImagePanel;
@@ -25,7 +25,7 @@ public class LoginScreen {
 
     private static final Dimension FRAME_SIZE = new Dimension(960, 540);
 
-    private SystemController controller;
+    private RobaInutileConDocumentazioneUtile controller;
 
     private JFrame frame;
 
@@ -68,7 +68,7 @@ public class LoginScreen {
     private ActionListener enterListener = e -> checkLogin();
 
     /** Inizializza il pannello di login. */
-    public void init(SystemController controller) {
+    public void init(RobaInutileConDocumentazioneUtile controller) {
         this.controller = controller;
         appScreen = new AppScreen();
         signUpScreen = new SignUpScreen();

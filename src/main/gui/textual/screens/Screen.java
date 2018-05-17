@@ -1,6 +1,8 @@
 package main.gui.textual.screens;
-import main.SystemController;
+import main.*;
 import main.utility.InputParserUtility;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Scanner;
 import static main.utility.notifications.Notifications.*;
 
@@ -12,20 +14,75 @@ import static main.utility.notifications.Notifications.*;
 public class Screen {
 
     private Scanner scanner;
-    private SystemController controller;
+    private UserController userController;
+    private MediaController mediaController;
+    private LoanController loanController;
+    private FileSystemController fileSystemController;
     static final String ESCAPE_STRING = "!quit";
     static final String YES = "y";
     static final String NO = "n";
     static final String YN_REGEX = "[yYnN]";
 
+    public Screen() {
+        scanner = new Scanner(System.in);
+    }
+
     /**
      * Constructor for the Screen class, initializing a {@link Scanner} and assigning a controller.
      *
-     * @param controller The system controller.
+     * @param controllers The system controller(s).
      */
-    Screen(SystemController controller) {
+    @SafeVarargs
+    <C extends Controller> Screen(@NotNull C... controllers) {
+        for(C controller : controllers) {
+            try {
+                if (controller instanceof UserController)
+                    this.userController = (UserController) controller;
+                else if (controller instanceof MediaController)
+                    this.mediaController = (MediaController) controller;
+                else if (controller instanceof LoanController)
+                    this.loanController = (LoanController) controller;
+                else if (controller instanceof FileSystemController)
+                    this.fileSystemController = (FileSystemController) controller;
+            }
+            catch(ClassCastException CCEX) {
+                CCEX.printStackTrace();
+            }
+        }
+
         scanner = new Scanner(System.in);
-        this.controller = controller;
+    }
+
+    public UserController getUserController() {
+        return userController;
+    }
+
+    public void setUserController(UserController userController) {
+        this.userController = userController;
+    }
+
+    public MediaController getMediaController() {
+        return mediaController;
+    }
+
+    public void setMediaController(MediaController mediaController) {
+        this.mediaController = mediaController;
+    }
+
+    public LoanController getLoanController() {
+        return loanController;
+    }
+
+    public void setLoanController(LoanController loanController) {
+        this.loanController = loanController;
+    }
+
+    public void setFileSystemController(FileSystemController fileSystemController) {
+        this.fileSystemController = fileSystemController;
+    }
+
+    public FileSystemController getFileSystemController() {
+        return fileSystemController;
     }
 
     /**
@@ -37,14 +94,14 @@ public class Screen {
         return scanner;
     }
 
-    /**
-     * Getter for the system controller.
-     *
-     * @return The system controller.
-     */
-    public SystemController getController() {
-        return controller;
-    }
+//    /**
+//     * Getter for the system controller.
+//     *
+//     * @return The system controller.
+//     */
+//    public SystemController getController() {
+//        return controller;
+//    }
 
     /**
      * Loops a scanner until the inserted {@code String} is a valid first name (or last name).
@@ -110,6 +167,7 @@ public class Screen {
      * @param upperBound The upper bound, exclusive.
      * @return A valid int.
      */
+    @SuppressWarnings("all")
     int insertInteger(int lowerBound, int upperBound) {
         String integer = getScanner().nextLine();
 
