@@ -1,16 +1,17 @@
 package main.controller;
-import main.gui.graphic.GraphicView;
-import main.gui.textual.TextualView;
-import main.model.database.*;
-import main.model.loan.Loan;
-import main.utility.exceptions.UserNotFoundException;
-import main.utility.exceptions.WrongPasswordException;
 import main.gui.GuiManager;
+import main.model.database.LoanDatabase;
+import main.model.database.MediaDatabase;
+import main.model.database.UserDatabase;
+import main.model.loan.Loan;
 import main.model.media.Book;
 import main.model.media.Media;
 import main.model.user.Customer;
 import main.model.user.User;
+import main.utility.exceptions.UserNotFoundException;
+import main.utility.exceptions.WrongPasswordException;
 import main.utility.notifications.Notifications;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -20,6 +21,7 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import static main.utility.GlobalParameters.*;
 
 /**

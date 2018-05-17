@@ -4,11 +4,9 @@ import main.controller.FileSystemController;
 import main.controller.FileSystemManager;
 import main.controller.SystemController;
 import main.gui.GuiManager;
-import main.gui.graphic.GraphicView;
 import main.gui.textual.TextualView;
 import main.utility.notifications.Notifications;
 
-import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

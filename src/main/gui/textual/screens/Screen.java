@@ -34,14 +34,21 @@ public class Screen {
      */
     @SafeVarargs
     <C extends Controller> Screen(@NotNull C... controllers) {
+        boolean[] controllerSet = new boolean[3];
         for(C controller : controllers) {
             try {
-                if(controller instanceof UserController)
+                if(controller instanceof UserController && !controllerSet[0]) {
                     this.userController = (UserController) controller;
-                else if(controller instanceof MediaController)
+                    controllerSet[0] = true;
+                }
+                else if(controller instanceof MediaController && !controllerSet[1]) {
                     this.mediaController = (MediaController) controller;
-                else if(controller instanceof LoanController)
+                    controllerSet[1] = true;
+                }
+                else if(controller instanceof LoanController && !controllerSet[2]) {
                     this.loanController = (LoanController) controller;
+                    controllerSet[2] = true;
+                }
                 else if(controller instanceof FileSystemController)
                     this.fileSystemController = (FileSystemController) controller;
             }
