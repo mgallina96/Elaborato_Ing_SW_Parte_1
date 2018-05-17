@@ -1,5 +1,5 @@
 package main.gui.textual.screens;
-import main.*;
+import main.controller.*;
 import main.utility.InputParserUtility;
 import org.jetbrains.annotations.NotNull;
 

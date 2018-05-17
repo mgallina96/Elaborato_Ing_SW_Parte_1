@@ -1,4 +1,4 @@
-package main;
+package main.controller;
 import main.model.database.*;
 import main.model.loan.Loan;
 import main.utility.exceptions.UserNotFoundException;
@@ -50,7 +50,7 @@ public class SystemController implements UserController, MediaController, LoanCo
     }
 
     //Returns the instance of the controller.
-    static SystemController getInstance() {
+    public static SystemController getInstance() {
         if(instance == null)
             instance = new SystemController();
 

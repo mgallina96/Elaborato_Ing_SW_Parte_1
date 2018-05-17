@@ -1,7 +1,7 @@
 package main.gui.textual.screens;
-import main.LoanController;
-import main.MediaController;
-import main.UserController;
+import main.controller.LoanController;
+import main.controller.MediaController;
+import main.controller.UserController;
 
 import static main.utility.notifications.Notifications.*;
 

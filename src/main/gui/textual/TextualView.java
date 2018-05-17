@@ -1,8 +1,7 @@
 package main.gui.textual;
-import main.*;
+import main.controller.*;
 import main.gui.GuiManager;
 import main.gui.textual.screens.*;
-import main.model.database.filesystem.FileSystem;
 
 import static main.utility.notifications.Notifications.MSG_GOODBYE;
 
@@ -23,10 +22,10 @@ public class TextualView implements GuiManager {
      *
      * @param controller The system controller.
      */
-    public TextualView(UserController userController, MediaController mediaController, LoanController loanController, FileSystemController fileSystemController) {
-        this.userController = userController;
-        this.mediaController = mediaController;
-        this.loanController = loanController;
+    public TextualView(Controller controller, FileSystemController fileSystemController) {
+        this.userController = (UserController) controller;
+        this.mediaController = (MediaController) controller;
+        this.loanController = (LoanController) controller;
         this.fileSystemController = fileSystemController;
     }
 

@@ -1,7 +1,6 @@
 package generators;
 import generators.randomwords.PoolLoader;
 import generators.randomwords.RandomWords;
-import main.model.database.DatabaseManager;
 import main.model.database.LoanDatabase;
 import main.model.database.UserDatabase;
 import main.model.database.filesystem.FileSystem;

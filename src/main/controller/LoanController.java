@@ -1,4 +1,4 @@
-package main;
+package main.controller;
 
 public interface LoanController extends Controller {
 

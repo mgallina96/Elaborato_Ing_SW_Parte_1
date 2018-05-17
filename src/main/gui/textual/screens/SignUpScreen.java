@@ -1,7 +1,5 @@
 package main.gui.textual.screens;
-import main.FileSystemController;
-import main.LoanController;
-import main.UserController;
+import main.controller.UserController;
 import main.utility.InputParserUtility;
 import main.utility.exceptions.IllegalDateFormatException;
 

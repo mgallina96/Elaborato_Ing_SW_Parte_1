@@ -1,7 +1,9 @@
 package main.gui.textual.screens;
 
-import main.*;
-import main.model.database.filesystem.FileSystem;
+import main.controller.FileSystemController;
+import main.controller.LoanController;
+import main.controller.MediaController;
+import main.controller.UserController;
 
 import static main.utility.notifications.Notifications.*;
 

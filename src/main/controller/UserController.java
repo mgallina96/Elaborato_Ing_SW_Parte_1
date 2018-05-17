@@ -1,4 +1,4 @@
-package main;
+package main.controller;
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.exceptions.WrongPasswordException;
 import java.util.GregorianCalendar;

@@ -1,6 +1,5 @@
 package main.gui.textual.screens;
-import main.RobaInutileConDocumentazioneUtile;
-import main.UserController;
+import main.controller.UserController;
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.exceptions.WrongPasswordException;
 

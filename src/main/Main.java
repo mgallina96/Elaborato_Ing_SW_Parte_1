@@ -1,6 +1,13 @@
 package main;
+import main.controller.Controller;
+import main.controller.FileSystemController;
+import main.controller.FileSystemManager;
+import main.controller.SystemController;
+import main.gui.GuiManager;
+import main.gui.textual.TextualView;
 import main.utility.notifications.Notifications;
 
+import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,12 +21,15 @@ import java.util.logging.Logger;
 public class Main {
 
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
+    private static final Notifications NOTIFICATIONS = Notifications.getInstance();
+    private static final Controller CONTROLLER = SystemController.getInstance();
+    private static final FileSystemController FILE_SYSTEM_CONTROLLER = FileSystemManager.getInstance();
 
     public static void main(String[] args) {
-        Notifications notifications = Notifications.getInstance();
-        notifications.setLanguage(Notifications.ENGLISH);
+        NOTIFICATIONS.setLanguage(Notifications.ENGLISH);
+
         LOGGER.setLevel(Level.ALL);
-        RobaInutileConDocumentazioneUtile controller = SystemController.getInstance();
-        controller.init();
+
+        //GuiManager guiManager = new TextualView()
     }
 }
