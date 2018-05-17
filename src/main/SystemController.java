@@ -14,172 +14,108 @@ public interface SystemController {
     /** Initializes the system controller, which starts the GUI. */
     void init();
 
-    /**
-     * Renews the user's subscription and returns a boolean value to tell the program whether the renewal was successful
-     * or not.
-     * <p>
-     * The user must be a customer.
-     *
-     * @return a {@code boolean} value: {@code true} if the user can renew their subscription, {@code false} otherwise.
-     * @throws IllegalArgumentException if the current user is not a customer.
-     */
-    boolean renewSubscription();
-
-    /** Checks whether the currently logged-in user is allowed to borrow another media item. */
-    boolean canBorrow(int mediaID);
-
-    /**
-     * Converts the subscription and expiry dates into a {@code String}.
-     *
-     * @return a {@code String} containing the subscription and expiry dates.
-     */
-    String dateDetails();
-
-    /** Logs the current user out of the system. */
-    void logout();
-
-    /**
-     * Returns the amount of days the user has left to renew their subscription.
-     *
-     * @param username The user's username.
-     * @return An {@code integer} value representing the days the user has left.
-     */
-    int daysLeftToRenew(String username) throws UserNotFoundException;
-
-    /**
-     * Checks whether the given pair <{@code username, password}> can be found in the database. If so, the user with
-     * those credentials becomes the "current user".
-     *
-     * @param username The username.
-     * @param password The password.
-     * @return {@code true} if the user's credentials are correct and match with an entry in the database,
-     * {@code false} otherwise.
-     *
-     * @throws UserNotFoundException if the user is not present in the database.
-     * @throws WrongPasswordException if the password is wrong.
-     */
-    boolean checkUserLogin(String username, String password) throws UserNotFoundException, WrongPasswordException;
-
-    /**
-     * Checks whether the given username matches an entry in the database.
-     *
-     * @param username The username to be checked.
-     * @return A boolean value, {@code true} if the given user can be found in the database, {@code false} otherwise.
-     */
-    boolean userIsPresent(String username);
-
-    /**
-     * Checks if the media with the given ID is present in the database.
-     *
-     * @param id The ID of the media to be checked.
-     * @return {@code true} if the media is present in the database, {@code false} otherwise.
-     */
-    boolean mediaIsPresent(int id);
-
-    /**
-     * Adds a new user to the database.
-     *
-     * @param firstName The user's first name.
-     * @param lastName The user's last name.
-     * @param username The user's username.
-     * @param password The user's password.
-     * @param birthday The user's birthday.
-     */
-    boolean addUserToDatabase(String firstName, String lastName, String username, String password, GregorianCalendar birthday);
-
-    /**
-     * Adds a new media item to the database.
-     *
-     * @param title the title.
-     * @param author the author.
-     * @param genre the genre.
-     * @param publicationYear the publication year.
-     * @param publisherName the publisher's name.
-     */
-    boolean addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName, String path);
-
-    /**
-     * Adds a new {@code Loan} object to the database whenever the current user borrows a media item.
-     *
-     * @param mediaID The media to be borrowed.
-     * @return A boolean value: {@code true} if the loan has been added successfully, {@code false} otherwise.
-     */
-    boolean addLoanToDatabase(int mediaID);
-
-    /**
-     * Removes the media element with the given ID from the database.
-     *
-     * @param id The ID of the media element to be removed.
-     */
-    void removeMediaFromDatabase(int id);
-
-    /**
-     * Getter for the User status (CUSTOMER or OPERATOR).
-     *
-     * @param username The user's username.
-     * @return an {@code int} value, 0 (CUSTOMER) or 1 (OPERATOR).
-     */
-    int getUserStatus(String username);
-
-    /**
-     * Returns a {@code String} that contains all the users in the database.
-     *
-     * @return the list of all users as a {@code String}.
-     */
-    String allUsersToString();
-
-    /**
-     * Returns a {@code String} that contains all the media items that match a certain filter.
-     *
-     * @return the list of all filtered media items as a {@code String}.
-     */
-    String allFilteredMediaList(String filter);
-
-    /**
-     * Returns a {@code String} that contains all the loans that have been granted.
-     *
-     * @return the list of all loans as a {@code String}.
-     */
-    String allLoansToString();
-
-    /**
-     * Checks whether the folder associated to the given ID has children.
-     *
-     * @param folderID The ID associated to the folder to be checked.
-     * @return A boolean value: {@code true} if the given folder has children, {@code false} otherwise.
-     */
-    boolean folderHasChildren(int folderID);
-
-    /**
-     * Searches the file system for the folder with the given ID and returns its children in the format of a {@code
-     * String}.
-     *
-     * @param parentID The ID of the desired parent folder.
-     * @return A {@code String} containing all sub-folders of the desired parent folder.
-     */
-    String getSubFolders(int parentID);
-
-    /**
-     * Getter for the ROOT folder ID.
-     *
-     * @return The ID's {@code Long} value.
-     */
-    int getRootID();
-
-    /**
-     * Returns the path of the folder associated with the given ID.
-     *
-     * @param folderID The folder ID.
-     * @return A {@code String} containing the full path of that folder.
-     */
-    String getPathToString(int folderID);
-
-    /**
-     * Returns the contents of the folder that matches the given path.
-     *
-     * @param folderPath The path to look for.
-     * @return A {@code String} with all the contents of that folder.
-     */
-    String getFolderContents(String folderPath);
-
 }
+
+/**
+ * Interface whose primary task is to control and manage the interaction between different kinds of databases
+ * (user database and media database for now).
+ *
+ * @author Manuel Gallina, Alessandro Polcini
+ */
+/**
+ * Adds a new user to the database and saves the user database afterwards.
+ *
+ * @param toAdd The {@code User} to be added to the database.
+ */
+/**
+ * Adds a new piece of media to the database and saves the media database afterwards.
+ *
+ * @param toAdd The {@code Media} item to be added to the database.
+ * @param path The path the {@code Media} item is stored in.
+ */
+/**
+ * Adds a new entry to the loan database containing both the current user and the media item that has just been lent.
+ *
+ * @param toLend The media to be lent to that user.
+ */
+/**
+ * Removes a media item from the database.
+ *
+ * @param toRemove The {@code Media} item to remove.
+ */
+/**
+ * Returns the given user (if present).
+ *
+ * @param toFetch The user to be found and returned.
+ * @return The user or {@code null} if that user can't be found in the database.
+ */
+/**
+ * Returns the given media item (if present).
+ *
+ * @param toFetch The media item to be found and returned.
+ * @return The piece of media or {@code null} if that piece of media can't be found in the database.
+ */
+/**
+ *
+ * @param media
+ * @return
+ */
+/**
+ * Returns a {@code String} that contains a brief description for every user in the database, according to the
+ * {@code toString} method found in the {@link main.model.user.User} class.
+ *
+ * @return The list of all users as a {@code String}.
+ */
+/**
+ * Returns a {@code String} that contains a brief description for every loan that has been granted to each user
+ * in the database.
+ *
+ * @return The list of all loans as a {@code String}.
+ */
+/**
+ * Returns a list that contains a brief description for every piece of media in the database that matches a
+ * specific input. The logic for the filtering can be found in the {@code getFilteredMediaList} method of the
+ * {@link main.model.database.MediaDatabase} class.
+ *
+ * @param filter The filter to apply.
+ * @return The filtered list of media items.
+ */
+/**
+ * Sets the current user who just logged in.
+ *
+ * @param currentUser The logged-in user to set.
+ */
+/**
+ * Removes the current user browsing the program by setting its value to {@code null}: this means that no user is
+ * active in the system at that particular moment.
+ */
+/**
+ * Getter for the current user.
+ *
+ * @return the current user who just logged in.
+ */
+/**
+ * Checks whether the given user is present in the database.
+ *
+ * @param toFind The user to be found.
+ * @return A boolean value: {@code true} if the user is present in the database, {@code false} otherwise.
+ */
+/**
+ * Checks whether the given piece of media is present in the database.
+ *
+ * @param toFind The media item to be found.
+ * @return A boolean value: {@code true} if the media item is present in the database, {@code false} otherwise.
+ */
+/**
+ * Checks whether the given media item has the same details (title, author, genre, etc.) as another media item
+ * in the database.
+ *
+ * @param toFind The media item to be checked.
+ * @return {@code true} if there is a match, {@code false} otherwise.
+ */
+/**
+ * Returns the contents of the folder that matches the given path.
+ *
+ * @param folderPath The path to look for.
+ * @return A {@code String} with all the contents of that folder.
+ */

@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static main.utility.GlobalParameters.USER_DATABASE_FILE_PATH;
+
 /**
  * Database concerned with saving, removing, finding, fetching and generally managing all kinds of users and details
  * about them.
@@ -22,7 +24,6 @@ public class UserDatabase implements Serializable {
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -5681387677098150051L;
 
-    private static final String USER_DATABASE_FILE_PATH = "resources\\data\\Biblioteca SMARTINATOR - User Database.ser";
     //A default admin user, added to the database whenever this class is instantiated.
     private static final User ADMIN = new User("admin", "admin");
     private static UserDatabase userDatabase;
@@ -45,26 +46,26 @@ public class UserDatabase implements Serializable {
         sweep();
     }
 
-    static UserDatabase getInstance() {
+    public static UserDatabase getInstance() {
         if(userDatabase == null)
             userDatabase = new UserDatabase();
 
         return userDatabase;
     }
 
-    void addUser(User toAdd) {
+    public void addUser(User toAdd) {
         userList.put(toAdd.getUsername(), toAdd);
     }
 
-    boolean isPresent(User toFind) {
+    public boolean isPresent(User toFind) {
         return userList.containsKey(toFind.getUsername());
     }
 
-    User fetchUser(User toFetch) {
+    public User fetchUser(User toFetch) {
         return isPresent(toFetch) ? userList.get(toFetch.getUsername()) : null;
     }
 
-    void setCurrentUser(User currentUser) {
+    public void setCurrentUser(User currentUser) {
         this.currentUser = fetchUser(currentUser);
     }
 
@@ -72,11 +73,11 @@ public class UserDatabase implements Serializable {
         return currentUser;
     }
 
-    void removeCurrentUser() {
+    public void removeCurrentUser() {
         currentUser = null;
     }
 
-    String getUserListString() {
+    public String getUserListString() {
         StringBuilder allUsers = new StringBuilder();
 
         for(User u : userList.values()) {
@@ -87,7 +88,7 @@ public class UserDatabase implements Serializable {
         return allUsers.toString();
     }
 
-    HashMap<String, User> getUserList() {
+    public HashMap<String, User> getUserList() {
         return userList;
     }
 

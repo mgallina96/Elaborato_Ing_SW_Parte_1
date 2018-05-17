@@ -15,6 +15,8 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static main.utility.GlobalParameters.LOAN_DATABASE_FILE_PATH;
+
 /**
  * Database which contains a record of all loans.
  */
@@ -23,7 +25,6 @@ public class LoanDatabase implements Serializable {
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -2599493317418350651L;
 
-    private static final String LOAN_DATABASE_FILE_PATH = "resources\\data\\Biblioteca SMARTINATOR - Loan Database.ser";
     private HashMap<String, ArrayList<Loan>> loans;
     private static LoanDatabase loanDatabase;
     private Logger logger;
@@ -37,7 +38,7 @@ public class LoanDatabase implements Serializable {
         sweep();
     }
 
-    static LoanDatabase getInstance() {
+    public static LoanDatabase getInstance() {
         if(loanDatabase == null)
             loanDatabase = new LoanDatabase();
 
@@ -57,7 +58,7 @@ public class LoanDatabase implements Serializable {
         return counter < media.getLoanLimit();
     }
 
-    void addLoan(User user, Media media) {
+    public void addLoan(User user, Media media) {
         media.lend();
 
         if(loans.get(user.getUsername()) == null) {
@@ -69,7 +70,7 @@ public class LoanDatabase implements Serializable {
             loans.get(user.getUsername()).add(new Loan(user, media));
     }
 
-    String getLoanListString() {
+    public String getLoanListString() {
         StringBuilder loanList = new StringBuilder();
 
         loans.forEach((u, l) -> {
@@ -92,7 +93,7 @@ public class LoanDatabase implements Serializable {
         }
     }
 
-    HashMap<String, ArrayList<Loan>> getLoansList() {
+    public HashMap<String, ArrayList<Loan>> getLoansList() {
         return loans;
     }
 

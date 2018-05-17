@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static main.utility.GlobalParameters.MEDIA_DATABASE_FILE_PATH;
+
 /**
  * Database concerned with saving, removing, finding, fetching and generally managing all kinds of media items.
  *
@@ -18,7 +20,6 @@ public class MediaDatabase implements Serializable {
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -5687383377098150051L;
 
-    private static final String MEDIA_DATABASE_FILE_PATH = "resources\\data\\Biblioteca SMARTINATOR - Media Database.ser";
     private static MediaDatabase mediaDatabase;
     private static int counter;
 
@@ -32,24 +33,24 @@ public class MediaDatabase implements Serializable {
         loadMediaDatabase();
     }
 
-    static MediaDatabase getInstance() {
+    public static MediaDatabase getInstance() {
         if(mediaDatabase == null)
             mediaDatabase = new MediaDatabase();
 
         return mediaDatabase;
     }
 
-    void addMedia(Media toAdd, String path) {
+    public void addMedia(Media toAdd, String path) {
         toAdd.setIdentifier(counter++);
         toAdd.setPath(path);
         mediaList.put(toAdd.getIdentifier(), toAdd);
     }
 
-    void removeMedia(Media toRemove) {
+    public void removeMedia(Media toRemove) {
         mediaList.remove(toRemove.getIdentifier());
     }
 
-    boolean isMatchingMedia(Media toFind) {
+    public boolean isMatchingMedia(Media toFind) {
         for(Media m : mediaList.values())
             if((m.getBareItemDetails().toLowerCase()).equals(toFind.getBareItemDetails().toLowerCase()))
                 return true;
@@ -57,11 +58,11 @@ public class MediaDatabase implements Serializable {
         return false;
     }
 
-    boolean isPresent(Media toFind) {
+    public boolean isPresent(Media toFind) {
         return mediaList.containsKey(toFind.getIdentifier());
     }
 
-    Media fetch(Media toFetch) {
+    public Media fetch(Media toFetch) {
         return mediaList.get(toFetch.getIdentifier());
     }
 
@@ -74,7 +75,7 @@ public class MediaDatabase implements Serializable {
         return allMedia.toString();
     }
 
-    String getFilteredMediaList(String filter) {
+    public String getFilteredMediaList(String filter) {
         StringBuilder filteredMedia = new StringBuilder();
         filter = filter.replaceAll("(\\W+ )+", "|").toLowerCase();
         String regex = ".*(" + filter + ").*";
@@ -86,7 +87,7 @@ public class MediaDatabase implements Serializable {
         return filteredMedia.toString();
     }
 
-    String getFolderContents(String folderPath) {
+    public String getFolderContents(String folderPath) {
         StringBuilder folderContents = new StringBuilder();
 
         mediaList.values().stream()
@@ -142,7 +143,7 @@ public class MediaDatabase implements Serializable {
     /**
      * Saves the File System in the form of a HashMap object.
      */
-    void saveMediaDatabase() {
+    public void saveMediaDatabase() {
         try {
             //to increase serializing speed
             RandomAccessFile raf = new RandomAccessFile(MEDIA_DATABASE_FILE_PATH, "rw");

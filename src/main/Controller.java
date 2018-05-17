@@ -1,24 +1,25 @@
 package main;
-import main.gui.graphic.GraphicView;
+import main.model.database.*;
 import main.model.loan.Loan;
-import main.model.user.Operator;
-import main.model.user.UserConstants;
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.exceptions.WrongPasswordException;
 import main.gui.GuiManager;
 import main.gui.textual.TextualView;
-import main.model.database.Database;
-import main.model.database.DatabaseManager;
-import main.model.database.filesystem.FileSystem;
 import main.model.media.Book;
 import main.model.media.Media;
 import main.model.user.Customer;
 import main.model.user.User;
-
+import main.utility.notifications.Notifications;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.RandomAccessFile;
 import java.time.temporal.ChronoUnit;
 import java.util.GregorianCalendar;
-
-import static main.utility.GlobalParameters.RENEWAL_BOUNDARY_IN_DAYS;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static main.utility.GlobalParameters.*;
 
 /**
  * Controller class that manages any kind of interaction between the graphical user interface
@@ -27,19 +28,25 @@ import static main.utility.GlobalParameters.RENEWAL_BOUNDARY_IN_DAYS;
  * @author Manuel Gallina
  * @since version 0.1 - 12/03/2018
  */
-public class Controller implements SystemController {
+public class Controller implements UserController, MediaController, LoanController {
 
     private static Controller instance;
 
     private GuiManager guiManager;
-    private Database database;
-    private FileSystem fileSystem;
+    private UserDatabase userDatabase;
+    private MediaDatabase mediaDatabase;
+    private LoanDatabase loanDatabase;
+    private Logger logger;
 
     //Singleton constructor, private to prevent instantiation.
     private Controller() {
-        database = DatabaseManager.getInstance();
-        fileSystem = FileSystem.getInstance();
-        guiManager = new TextualView(this);
+        userDatabase = UserDatabase.getInstance();
+        mediaDatabase = MediaDatabase.getInstance();
+        loanDatabase = LoanDatabase.getInstance();
+
+        logger = Logger.getLogger(this.getClass().getName());
+
+        //guiManager = new TextualView(this);
         //guiManager = new GraphicView(this);
     }
 
@@ -51,98 +58,90 @@ public class Controller implements SystemController {
         return instance;
     }
 
-    @Override
     public void init() {
         guiManager.mainScreen();
     }
 
     @Override
     public boolean checkUserLogin(String username, String password) throws UserNotFoundException, WrongPasswordException {
-        User toCheck = database.fetch(new User(username));
+        User toCheck = userDatabase.fetchUser(new User(username));
 
         if(toCheck == null)
             throw new UserNotFoundException();
 
         if(toCheck.getPassword().equals(password)){
-            database.setCurrentUser(toCheck);
+            userDatabase.setCurrentUser(toCheck);
             return true;
         } else
             throw new WrongPasswordException();
 
     }
 
-    @Override
     public boolean userIsPresent(String username) {
-        return database.isPresent(new User(username));
+        return userDatabase.isPresent(new User(username));
     }
 
-    @Override
     public boolean mediaIsPresent(int id) {
-        return database.isPresent(new Media(id));
+        return mediaDatabase.isPresent(new Media(id));
     }
 
-    @Override
     public String allUsersToString() {
-        return database.getUserListString();
+        return userDatabase.getUserListString();
     }
 
-    @Override
     public String allLoansToString() {
-        return database.getLoanListString();
+        return loanDatabase.getLoanListString();
     }
 
-    @Override
     public String allFilteredMediaList(String filter) {
-        return database.getFilteredMediaList(filter);
+        return mediaDatabase.getFilteredMediaList(filter);
     }
 
-    @Override
     public boolean addUserToDatabase(String firstName, String lastName, String username, String password, GregorianCalendar birthday) {
         Customer c = new Customer(firstName, lastName, username, password, birthday);
 
-        if(!database.isPresent(c)) {
-            database.add(c);
+        if(!userDatabase.isPresent(c)) {
+            userDatabase.addUser(c);
             return true;
         }
 
         return false;
     }
 
-    @Override
     public boolean addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName, String path) {
         Book b = new Book(title, author, genre, publicationYear, publisherName);
 
-        if(!database.isMatchingMedia(b)) {
-            database.add(b, path);
+        if(!mediaDatabase.isMatchingMedia(b)) {
+            mediaDatabase.addMedia(b, path);
             return true;
         }
 
         return false;
     }
 
-    @Override
     public boolean addLoanToDatabase(int mediaID) {
-        Media media = database.fetch(new Media(mediaID));
+        Media toLend = mediaDatabase.fetch(new Media(mediaID));
 
-        if(media.isAvailable()) {
-            database.add(media);
+        if(toLend.isAvailable()) {
+            loanDatabase.addLoan(userDatabase.getCurrentUser(), toLend);
+            mediaDatabase.saveMediaDatabase();
+            saveHashMap(USER_DATABASE_FILE_PATH, userDatabase.getUserList());
+            saveHashMap(LOAN_DATABASE_FILE_PATH, loanDatabase.getLoansList());
             return true;
         }
 
         return false;
     }
 
-    @Override
     public void removeMediaFromDatabase(int id) {
-        database.remove(new Media(id));
+        mediaDatabase.removeMedia(new Media(id));
     }
 
-    @Override
     public int getUserStatus(String username) {
         if(username == null)
             return -1;
 
-        switch(database.fetch(new User(username)).getUserStatus()) {
+        switch(userDatabase.fetchUser(new User(username)).getUserStatus()) {
             case CUSTOMER:
                 return 0;
             case OPERATOR:
@@ -152,13 +151,12 @@ public class Controller implements SystemController {
         }
     }
 
-    @Override
     public boolean canBorrow(int mediaID) {
         int counter = 0;
-        Media media = database.fetch(new Media(mediaID));
+        Media media = mediaDatabase.fetch(new Media(mediaID));
 
         try {
-            for(Loan l : database.getUserLoans(database.getCurrentUser()))
+            for(Loan l : loanDatabase.getUserLoans(userDatabase.getCurrentUser()))
                 if(l.getMedia().getType().equals(media.getType()))
                     counter++;
         }
@@ -169,10 +167,9 @@ public class Controller implements SystemController {
         return counter < media.getLoanLimit();
     }
 
-    @Override
     public int daysLeftToRenew(String username) throws UserNotFoundException {
         try {
-            User user = database.fetch(new User(username));
+            User user = userDatabase.fetchUser(new User(username));
 
             int days = (int)Math.abs(ChronoUnit.DAYS.between(
                     new GregorianCalendar().toInstant(),
@@ -191,17 +188,15 @@ public class Controller implements SystemController {
         return 0;
     }
 
-    @Override
     public boolean renewSubscription() throws IllegalArgumentException {
-        if(database.getCurrentUser() instanceof Customer)
-            return ((Customer)database.getCurrentUser()).renewSubscription();
+        if(userDatabase.getCurrentUser() instanceof Customer)
+            return ((Customer)userDatabase.getCurrentUser()).renewSubscription();
         else
             throw new IllegalArgumentException();
     }
 
-    @Override
     public String dateDetails() {
-        User u = database.getCurrentUser();
+        User u = userDatabase.getCurrentUser();
         return (u instanceof Customer) ?
                 String.format("Reminder:\n\tYou subscribed on %s\n\tYour subscription expires on %s\n\tYou're not " +
                                 "allowed to renew your subscription until 10 days before the expiry date.",
@@ -210,33 +205,30 @@ public class Controller implements SystemController {
                 "";
     }
 
-    @Override
     public void logout() {
-        database.removeCurrentUser();
+        userDatabase.removeCurrentUser();
     }
 
-    @Override
     public String getFolderContents(String folderPath) {
-        return database.getFolderContents(folderPath);
+        return mediaDatabase.getFolderContents(folderPath);
     }
 
-    @Override
-    public boolean folderHasChildren(int folderID) {
-        return !fileSystem.getFileSystem().get(folderID).getChildren().isEmpty();
+    private void saveHashMap(String path, HashMap h) {
+        try {
+            //to increase serializing speed
+            RandomAccessFile raf = new RandomAccessFile(path, "rw");
+
+            FileOutputStream fileOut = new FileOutputStream(raf.getFD());
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+
+            out.writeObject(h);
+
+            out.close();
+            fileOut.close();
+        }
+        catch(IOException IOEx) {
+            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + this.getClass().getName(), IOEx);
+        }
     }
 
-    @Override
-    public String getSubFolders(int parentID) {
-        return fileSystem.getSubFolders(parentID);
-    }
-
-    @Override
-    public int getRootID() {
-        return fileSystem.getRootID();
-    }
-
-    @Override
-    public String getPathToString(int folderID) {
-        return fileSystem.getFileSystem().get(folderID).getFolderPath();
-    }
 }

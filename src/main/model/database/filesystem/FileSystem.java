@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static main.utility.GlobalParameters.FILESYSTEM_FILE_PATH;
+
 /**
  * The file system for this application.
  * <p>
@@ -20,7 +22,6 @@ public class FileSystem implements Serializable {
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = 7970305636210332068L;
 
-    private static final String FILESYSTEM_FILE_PATH = "resources\\data\\Biblioteca SMARTINATOR - File System.ser";
     private static final Folder ROOT = new Folder("root");
     private static final int ROOT_ID = 0;
 
