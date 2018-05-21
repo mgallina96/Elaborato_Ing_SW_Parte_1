@@ -43,11 +43,11 @@ public class Folder implements Serializable {
      * @param name The name of the folder.
      * @param parent The parent of the folder.
      */
-    Folder(String name, Folder parent, int ID) {
+    Folder(String name, Folder parent, int id) {
         this.name = name;
         this.parent = parent;
         this.children = new ArrayList<>();
-        this.folderId = ID;
+        this.folderId = id;
 
         this.parent.addChild(this);
         this.depth = this.parent.getDepth() + 1;
@@ -67,7 +67,7 @@ public class Folder implements Serializable {
         return name;
     }
 
-    public Folder getParent() {
+    Folder getParent() {
         return parent;
     }
 
@@ -85,7 +85,7 @@ public class Folder implements Serializable {
      *
      * @return The depth of the folder.
      */
-    public int getDepth() {
+    private int getDepth() {
         return depth;
     }
 

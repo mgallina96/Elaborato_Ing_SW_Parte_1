@@ -1,10 +1,0 @@
-
-bsquid:S2095"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(¹ÀŠˆ
-Bsquid:S1948"(Make "logger" transient or serializable.(ø¢Á®øÿÿÿÿ
-gsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·Æ†‡
-gsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊÆÑß
-gsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕÞá®
-isquid:S2095"OUse try-with-resources or close this "ObjectInputStream" in a "finally" clause.(¾Å¨Îûÿÿÿÿ
-gsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕÞá®
-qsquid:S2095"PUse try-with-resources or close this "ObjectOutputStream" in a "finally" clause.(ˆÔ§ðþÿÿÿÿ8ä–Ñù­,
-osquid:S2095"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(¡…úýøÿÿÿÿ8ýçÙù­,

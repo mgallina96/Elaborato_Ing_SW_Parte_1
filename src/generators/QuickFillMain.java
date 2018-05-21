@@ -1,6 +1,5 @@
 package generators;
 import generators.randomwords.PoolLoader;
-import generators.randomwords.RandomWords;
 import main.controller.SystemController;
 import main.model.database.LoanDatabase;
 import main.model.database.MediaDatabase;
@@ -13,9 +12,7 @@ import main.model.media.Media;
 import main.model.user.User;
 import main.utility.notifications.Notifications;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.logging.Logger;
 
 import static generators.Generator.COMMON_MEDIA_PATH;
 
@@ -39,18 +36,18 @@ public class QuickFillMain {
         FileSystem fs = FileSystem.getInstance();
 
         System.out.println("Tree structure:");
-        System.out.println(fs.treeToString(fs.getFileSystem().get(fs.getRootID()), 0) + "\n");
+        System.out.println(fs.treeToString(fs.getFolderStructure().get(fs.getRootID()), 0) + "\n");
 
         System.out.println("All paths:");
         System.out.println(fs.getAllPaths() + "\n");
 
         System.out.println("Robe:");
-        fs.getFileSystem().values().forEach(s -> System.out.println(s.getName() + "\t" + s.getChildren().size()));
+        fs.getFolderStructure().values().forEach(s -> System.out.println(s.getName() + "\t" + s.getChildren().size()));
     }
 
     private static void fillFileSystem() {
         FileSystem fs = FileSystem.getInstance();
-        HashMap<Integer, Folder> fileSystem = fs.getFileSystem();
+        HashMap<Integer, Folder> fileSystem = fs.getFolderStructure();
         Folder ROOT = fileSystem.get(fs.getRootID());
 
         fs.addFolder("Libri", ROOT);

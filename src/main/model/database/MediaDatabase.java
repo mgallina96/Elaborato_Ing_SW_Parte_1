@@ -49,7 +49,7 @@ public class MediaDatabase implements Serializable {
 
     public boolean isMatchingMedia(Media toFind) {
         for(Media m : mediaList.values())
-            if((m.getBareItemDetails().toLowerCase()).equals(toFind.getBareItemDetails().toLowerCase()))
+            if((m.getBareItemDetails()).equalsIgnoreCase(toFind.getBareItemDetails()))
                 return true;
 
         return false;

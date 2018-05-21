@@ -28,22 +28,22 @@ public class FileSystem implements Serializable {
     private static int folderCounter;
     private static FileSystem instance;
 
-    private HashMap<Integer, Folder> fileSystem;
+    private HashMap<Integer, Folder> folderStructure;
     private String allPaths;
 
-    private Logger logger;
+    private transient Logger logger;
 
     // Private constructor for the unique instance of file system.
     private FileSystem() {
-        this.fileSystem = new HashMap<>();
+        this.folderStructure = new HashMap<>();
         this.logger = Logger.getLogger(this.getClass().getName());
 
         loadFileSystem();
         //please DON'T move the following declaration, as the paths can only be resolved AFTER the File System has been loaded.
         this.allPaths = allPathsToString();
 
-        if(!fileSystem.containsKey(ROOT_ID)) {
-            this.fileSystem.put(ROOT_ID, ROOT);
+        if(!folderStructure.containsKey(ROOT_ID)) {
+            this.folderStructure.put(ROOT_ID, ROOT);
             folderCounter++;
         }
     }
@@ -54,7 +54,10 @@ public class FileSystem implements Serializable {
      * @return The FileSystem instance.
      */
     public static FileSystem getInstance() {
-        return (instance == null) ? (instance = new FileSystem()) : instance;
+        if(instance == null)
+            instance = new FileSystem();
+
+        return instance;
     }
 
     /**
@@ -64,7 +67,7 @@ public class FileSystem implements Serializable {
      * @param parent Its parent folder.
      */
     public void addFolder(String name, Folder parent) {
-        fileSystem.put(folderCounter, new Folder(name, parent, folderCounter));
+        folderStructure.put(folderCounter, new Folder(name, parent, folderCounter));
         folderCounter++;
     }
 
@@ -75,7 +78,7 @@ public class FileSystem implements Serializable {
      * @return The folder having the given ID.
      */
     public Folder getFolder(int folderID) {
-        return fileSystem.get(folderID);
+        return folderStructure.get(folderID);
     }
 
     /**
@@ -93,8 +96,8 @@ public class FileSystem implements Serializable {
      *
      * @return The file system.
      */
-    public HashMap<Integer, Folder> getFileSystem() {
-        return fileSystem;
+    public HashMap<Integer, Folder> getFolderStructure() {
+        return folderStructure;
     }
 
     /**
@@ -115,7 +118,7 @@ public class FileSystem implements Serializable {
     public String getSubFolders(int parentID) {
         StringBuilder folders = new StringBuilder();
 
-        fileSystem.get(parentID).getChildren()
+        folderStructure.get(parentID).getChildren()
                 .forEach(f -> folders.append(f.getFolderId()).append(".\t").append(f.getName()).append("\n"));
 
         return folders.toString().trim();
@@ -152,54 +155,47 @@ public class FileSystem implements Serializable {
      */
     @SuppressWarnings("unchecked")
     private void loadFileSystem() {
-        try {
+        try(
             FileInputStream fileIn = new FileInputStream(FILESYSTEM_FILE_PATH);
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-
-            this.fileSystem = ((HashMap<Integer, Folder>) in.readObject());
+            ObjectInputStream in = new ObjectInputStream(fileIn)
+        ) {
+            this.folderStructure = ((HashMap<Integer, Folder>) in.readObject());
             folderCounter = Integer.parseInt((String)in.readObject());
-
-            in.close();
-            fileIn.close();
         }
-        catch(FileNotFoundException FNFEx) {
+        catch(FileNotFoundException fnfEx) {
             logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND + this.getClass().getName());
         }
-        catch(IOException IOEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_LOADING_FILESYSTEM, IOEx);
+        catch(IOException ioEx) {
+            logger.log(Level.SEVERE, Notifications.ERR_LOADING_FILESYSTEM);
         }
-        catch(ClassNotFoundException CNFEx) {
+        catch(ClassNotFoundException cnfEx) {
             logger.log(Level.SEVERE, Notifications.ERR_CLASS_NOT_FOUND + this.getClass().getName());
         }
     }
 
     /** Saves the File System in the form of a HashMap object. */
     public void saveFileSystem() {
-        try {
+        try(
             //to increase serializing speed
             RandomAccessFile raf = new RandomAccessFile(FILESYSTEM_FILE_PATH, "rw");
-
             FileOutputStream fileOut = new FileOutputStream(raf.getFD());
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-
-            out.writeObject(fileSystem);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut)
+        ) {
+            out.writeObject(folderStructure);
             out.writeObject(Integer.toString(folderCounter));
-
-            out.close();
-            fileOut.close();
         }
-        catch(IOException IOEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + this.getClass().getName(), IOEx);
+        catch(IOException ioEx) {
+            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + this.getClass().getName());
         }
     }
 
     private String allPathsToString() {
-        StringBuilder allPaths = new StringBuilder();
+        StringBuilder pathBuilder = new StringBuilder();
 
-        fileSystem.values().stream()
+        folderStructure.values().stream()
                 .filter(f -> f.getParent() != f)
-                .forEach(f -> allPaths.append(f.getFolderPath()).append("\n"));
+                .forEach(f -> pathBuilder.append(f.getFolderPath()).append("\n"));
 
-        return allPaths.toString().trim();
+        return pathBuilder.toString().trim();
     }
 }

@@ -1,17 +1,0 @@
-
-R
-squid:S106"9Replace this use of System.out or System.err by a logger.(Æİêùÿÿÿÿ
-R
-squid:S106"9Replace this use of System.out or System.err by a logger.(ÆÄÖÃÿÿÿÿÿ
-R
-squid:S106"9Replace this use of System.out or System.err by a logger.(ÜØ¿Ëûÿÿÿÿ
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(İØûÛ
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(ûôù
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(ÎÕ–”
-`squid:S2142"FEither re-interrupt this method or rethrow the "InterruptedException".(²ı…¦ûÿÿÿÿ
-ksquid:S3457"Q%n should be used in place of \n to produce the platform-specific line separator.(ÆÄÖÃÿÿÿÿÿ
-ksquid:S3457"Q%n should be used in place of \n to produce the platform-specific line separator.(ÜØ¿Ëûÿÿÿÿ
-fsquid:S3457"Q%n should be used in place of \n to produce the platform-specific line separator.(ÎÕ–”

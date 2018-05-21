@@ -1,5 +1,4 @@
 package main.controller;
-import main.gui.GuiManager;
 import main.model.database.LoanDatabase;
 import main.model.database.MediaDatabase;
 import main.model.database.UserDatabase;
@@ -35,7 +34,6 @@ public class SystemController implements UserController, MediaController, LoanCo
 
     private static SystemController instance;
 
-    private GuiManager guiManager;
     private UserDatabase userDatabase;
     private MediaDatabase mediaDatabase;
     private LoanDatabase loanDatabase;
@@ -52,12 +50,11 @@ public class SystemController implements UserController, MediaController, LoanCo
 
     //Returns the instance of the controller.
     public static SystemController getInstance() {
-        return (instance == null) ? (instance = new SystemController()) : instance;
-    }
+        if(instance == null)
+            instance = new SystemController();
 
-//    public void init() {
-//        guiManager.mainScreen();
-//    }
+        return instance;
+    }
 
     @Override
     public boolean checkUserLogin(String username, String password) throws UserNotFoundException, WrongPasswordException {
@@ -157,7 +154,7 @@ public class SystemController implements UserController, MediaController, LoanCo
                 if(l.getMedia().getType().equals(media.getType()))
                     counter++;
         }
-        catch(Exception e) {
+        catch(Exception ex) {
             return true;
         }
 
@@ -175,17 +172,17 @@ public class SystemController implements UserController, MediaController, LoanCo
             if(days <= RENEWAL_BOUNDARY_IN_DAYS)
                 return days;
         }
-        catch(ClassCastException CCEx) {
+        catch(ClassCastException ccEx) {
             return 0;
         }
-        catch(NullPointerException NPEx) {
+        catch(NullPointerException npEx) {
             throw new UserNotFoundException();
         }
 
         return 0;
     }
 
-    public boolean renewSubscription() throws IllegalArgumentException {
+    public boolean renewSubscription() {
         if(userDatabase.getCurrentUser() instanceof Customer)
             return ((Customer)userDatabase.getCurrentUser()).renewSubscription();
         else
@@ -211,20 +208,16 @@ public class SystemController implements UserController, MediaController, LoanCo
     }
 
     public void saveHashMap(String path, HashMap h) {
-        try {
-            //to increase serializing speed
-            RandomAccessFile raf = new RandomAccessFile(path, "rw");
-
-            FileOutputStream fileOut = new FileOutputStream(raf.getFD());
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-
+        try(
+                //to increase serializing speed
+                RandomAccessFile raf = new RandomAccessFile(path, "rw");
+                FileOutputStream fileOut = new FileOutputStream(raf.getFD());
+                ObjectOutputStream out = new ObjectOutputStream(fileOut)
+        ) {
             out.writeObject(h);
-
-            out.close();
-            fileOut.close();
         }
-        catch(IOException IOEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + this.getClass().getName(), IOEx);
+        catch(IOException ioEx) {
+            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + this.getClass().getName(), ioEx);
         }
     }
 

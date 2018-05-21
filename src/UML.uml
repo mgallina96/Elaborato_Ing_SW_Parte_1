@@ -3,98 +3,130 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="474.0" y="80.0">main.LoanController</node>
-    <node x="302.25" y="390.0">main.model.media.Media</node>
-    <node x="320.0" y="80.0">main.MediaController</node>
-    <node x="132.0" y="315.0">main.gui.textual.screens.SignUpScreen</node>
-    <node x="0.0" y="80.0">main.FileSystemController</node>
+    <node x="0.0" y="80.0">main.controller.UserController</node>
+    <node x="290.0" y="80.0">main.controller.MediaController</node>
+    <node x="299.75" y="390.0">main.model.media.Media</node>
+    <node x="565.0" y="315.0">main.gui.textual.screens.SignUpScreen</node>
     <node x="149.0" y="620.0">main.model.user.UserStatus</node>
+    <node x="444.0" y="80.0">main.controller.FileSystemController</node>
     <node x="469.0" y="390.0">main.gui.GuiManager</node>
     <node x="513.0" y="545.0">main.model.database.UserDatabase</node>
-    <node x="354.0" y="470.0">main.model.media.Film</node>
+    <node x="259.0" y="470.0">main.model.media.Film</node>
     <node x="0.0" y="545.0">main.model.database.MediaDatabase</node>
-    <node x="262.5" y="0.0">main.Controller</node>
-    <node x="273.0" y="315.0">main.gui.textual.screens.CustomerScreen</node>
-    <node x="116.0" y="470.0">main.model.user.Customer</node>
-    <node x="0.0" y="470.0">main.model.user.Operator</node>
-    <node x="426.0" y="315.0">main.gui.textual.screens.OperatorScreen</node>
-    <node x="577.0" y="315.0">main.gui.textual.screens.MainScreen</node>
+    <node x="0.0" y="315.0">main.gui.textual.screens.CustomerScreen</node>
+    <node x="0.0" y="470.0">main.model.user.Customer</node>
+    <node x="118.0" y="470.0">main.model.user.Operator</node>
+    <node x="285.0" y="315.0">main.gui.textual.screens.OperatorScreen</node>
     <node x="297.0" y="620.0">main.model.database.filesystem.Folder</node>
-    <node x="0.0" y="315.0">main.gui.textual.screens.LoginScreen</node>
-    <node x="176.0" y="80.0">main.UserController</node>
+    <node x="436.0" y="315.0">main.gui.textual.screens.MainScreen</node>
+    <node x="446.5" y="160.0">main.controller.FileSystemManager</node>
+    <node x="153.0" y="315.0">main.gui.textual.screens.LoginScreen</node>
     <node x="423.0" y="620.0">main.Main</node>
-    <node x="298.0" y="235.0">main.gui.textual.screens.Screen</node>
-    <node x="2.5" y="160.0">main.FileSystemManager</node>
-    <node x="259.0" y="470.0">main.model.media.Book</node>
-    <node x="71.0" y="390.0">main.model.user.User</node>
-    <node x="318.7857142857143" y="160.0">main.SystemController</node>
+    <node x="309.0" y="235.0">main.gui.textual.screens.Screen</node>
+    <node x="349.0" y="470.0">main.model.media.Book</node>
+    <node x="72.0" y="390.0">main.model.user.User</node>
+    <node x="136.92857142857142" y="160.0">main.controller.SystemController</node>
     <node x="469.0" y="470.0">main.gui.textual.TextualView</node>
     <node x="0.0" y="620.0">main.model.database.filesystem.FileSystem</node>
+    <node x="232.0" y="0.0">main.controller.Controller</node>
     <node x="177.0" y="545.0">main.model.database.LoanDatabase</node>
     <node x="542.0" y="620.0">main.model.loan.Loan</node>
     <node x="346.0" y="545.0">main.model.user.UserConstants</node>
+    <node x="144.0" y="80.0">main.controller.LoanController</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="main.gui.textual.screens.CustomerScreen" target="main.gui.textual.screens.Screen">
-      <point x="0.0" y="-15.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="main.FileSystemController" target="main.Controller">
-      <point x="0.0" y="-15.0" />
-      <point x="78.0" y="50.0" />
-      <point x="275.0" y="50.0" />
-      <point x="-37.5" y="15.0" />
-    </edge>
-    <edge source="main.FileSystemManager" target="main.FileSystemController">
-      <point x="0.0" y="-15.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
     <edge source="main.gui.textual.screens.SignUpScreen" target="main.gui.textual.screens.Screen">
       <point x="0.0" y="-15.0" />
-      <point x="192.5" y="295.0" />
-      <point x="322.9" y="295.0" />
-      <point x="-16.600000000000023" y="15.0" />
+      <point x="625.5" y="285.0" />
+      <point x="383.7" y="285.0" />
+      <point x="33.19999999999999" y="15.0" />
     </edge>
-    <edge source="main.UserController" target="main.Controller">
+    <edge source="main.gui.textual.screens.OperatorScreen" target="main.gui.textual.screens.Screen">
       <point x="0.0" y="-15.0" />
-      <point x="238.0" y="60.0" />
-      <point x="300.0" y="60.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="main.controller.LoanController" target="main.controller.Controller">
+      <point x="0.0" y="-15.0" />
+      <point x="207.0" y="60.0" />
+      <point x="269.5" y="60.0" />
       <point x="-12.5" y="15.0" />
     </edge>
     <edge source="main.model.media.Book" target="main.model.media.Media">
       <point x="0.0" y="-15.0" />
-      <point x="296.5" y="445.0" />
-      <point x="322.5" y="445.0" />
-      <point x="-20.25" y="15.0" />
+      <point x="386.5" y="445.0" />
+      <point x="360.5" y="445.0" />
+      <point x="20.25" y="15.0" />
+    </edge>
+    <edge source="main.gui.textual.screens.LoginScreen" target="main.gui.textual.screens.Screen">
+      <point x="0.0" y="-15.0" />
+      <point x="209.0" y="295.0" />
+      <point x="333.9" y="295.0" />
+      <point x="-16.600000000000023" y="15.0" />
+    </edge>
+    <edge source="main.controller.FileSystemController" target="main.controller.Controller">
+      <point x="0.0" y="-15.0" />
+      <point x="522.0" y="50.0" />
+      <point x="319.5" y="50.0" />
+      <point x="37.5" y="15.0" />
+    </edge>
+    <edge source="main.controller.UserController" target="main.controller.Controller">
+      <point x="0.0" y="-15.0" />
+      <point x="62.0" y="50.0" />
+      <point x="244.5" y="50.0" />
+      <point x="-37.5" y="15.0" />
+    </edge>
+    <edge source="main.gui.textual.screens.CustomerScreen" target="main.gui.textual.screens.Screen">
+      <point x="0.0" y="-15.0" />
+      <point x="66.5" y="285.0" />
+      <point x="317.3" y="285.0" />
+      <point x="-33.19999999999999" y="15.0" />
+    </edge>
+    <edge source="main.controller.MediaController" target="main.controller.Controller">
+      <point x="0.0" y="-15.0" />
+      <point x="357.0" y="60.0" />
+      <point x="294.5" y="60.0" />
+      <point x="12.5" y="15.0" />
+    </edge>
+    <edge source="main.controller.FileSystemManager" target="main.controller.FileSystemController">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
     </edge>
     <edge source="main.model.media.Film" target="main.model.media.Media">
       <point x="0.0" y="-15.0" />
-      <point x="389.0" y="445.0" />
-      <point x="363.0" y="445.0" />
-      <point x="20.25" y="15.0" />
+      <point x="294.0" y="445.0" />
+      <point x="320.0" y="445.0" />
+      <point x="-20.25" y="15.0" />
     </edge>
-    <edge source="main.SystemController" target="main.LoanController">
-      <point x="46.0" y="-15.0" />
-      <point x="433.7857142857143" y="135.0" />
-      <point x="537.0" y="135.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="main.gui.textual.screens.MainScreen" target="main.gui.textual.screens.Screen">
+    <edge source="main.controller.SystemController" target="main.controller.LoanController">
       <point x="0.0" y="-15.0" />
-      <point x="631.5" y="285.0" />
-      <point x="372.7" y="285.0" />
-      <point x="33.19999999999999" y="15.0" />
-    </edge>
-    <edge source="main.SystemController" target="main.MediaController">
-      <point x="0.0" y="-15.0" />
+      <point x="205.92857142857142" y="135.0" />
+      <point x="207.0" y="135.0" />
       <point x="0.0" y="15.0" />
     </edge>
     <edge source="main.model.user.Operator" target="main.model.user.User">
       <point x="0.0" y="-15.0" />
-      <point x="48.0" y="445.0" />
-      <point x="88.75" y="445.0" />
-      <point x="-17.75" y="15.0" />
+      <point x="166.0" y="445.0" />
+      <point x="125.25" y="445.0" />
+      <point x="17.75" y="15.0" />
+    </edge>
+    <edge source="main.gui.textual.screens.MainScreen" target="main.gui.textual.screens.Screen">
+      <point x="0.0" y="-15.0" />
+      <point x="490.5" y="295.0" />
+      <point x="367.1" y="295.0" />
+      <point x="16.600000000000023" y="15.0" />
+    </edge>
+    <edge source="main.controller.SystemController" target="main.controller.UserController">
+      <point x="-46.0" y="-15.0" />
+      <point x="159.92857142857142" y="135.0" />
+      <point x="62.0" y="135.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="main.controller.SystemController" target="main.controller.MediaController">
+      <point x="46.0" y="-15.0" />
+      <point x="251.92857142857142" y="135.0" />
+      <point x="357.0" y="135.0" />
+      <point x="0.0" y="15.0" />
     </edge>
     <edge source="main.gui.textual.TextualView" target="main.gui.GuiManager">
       <point x="0.0" y="-15.0" />
@@ -102,42 +134,12 @@
     </edge>
     <edge source="main.model.user.Customer" target="main.model.user.User">
       <point x="0.0" y="-15.0" />
-      <point x="165.0" y="445.0" />
-      <point x="124.25" y="445.0" />
-      <point x="17.75" y="15.0" />
-    </edge>
-    <edge source="main.LoanController" target="main.Controller">
-      <point x="0.0" y="-15.0" />
-      <point x="537.0" y="50.0" />
-      <point x="350.0" y="50.0" />
-      <point x="37.5" y="15.0" />
-    </edge>
-    <edge source="main.gui.textual.screens.OperatorScreen" target="main.gui.textual.screens.Screen">
-      <point x="0.0" y="-15.0" />
-      <point x="491.5" y="295.0" />
-      <point x="356.1" y="295.0" />
-      <point x="16.600000000000023" y="15.0" />
-    </edge>
-    <edge source="main.gui.textual.screens.LoginScreen" target="main.gui.textual.screens.Screen">
-      <point x="0.0" y="-15.0" />
-      <point x="56.0" y="285.0" />
-      <point x="306.3" y="285.0" />
-      <point x="-33.19999999999999" y="15.0" />
-    </edge>
-    <edge source="main.MediaController" target="main.Controller">
-      <point x="0.0" y="-15.0" />
-      <point x="387.0" y="60.0" />
-      <point x="325.0" y="60.0" />
-      <point x="12.5" y="15.0" />
-    </edge>
-    <edge source="main.SystemController" target="main.UserController">
-      <point x="-46.0" y="-15.0" />
-      <point x="341.7857142857143" y="135.0" />
-      <point x="238.0" y="135.0" />
-      <point x="0.0" y="15.0" />
+      <point x="49.0" y="445.0" />
+      <point x="89.75" y="445.0" />
+      <point x="-17.75" y="15.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.5760869565217391" x="1002.0" y="405.0" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="343.0" y="442.5" />
   <SelectedNodes />
   <Categories />
   <SCOPE>All</SCOPE>

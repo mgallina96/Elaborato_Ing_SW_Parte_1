@@ -101,15 +101,6 @@ public class Screen {
         return scanner;
     }
 
-//    /**
-//     * Getter for the system controller.
-//     *
-//     * @return The system controller.
-//     */
-//    public SystemController getController() {
-//        return controller;
-//    }
-
     /**
      * Loops a scanner until the inserted {@code String} is a valid first name (or last name).
      * <p>The parameters and the logic for name validity are defined in the {@code isValidName()} method of the

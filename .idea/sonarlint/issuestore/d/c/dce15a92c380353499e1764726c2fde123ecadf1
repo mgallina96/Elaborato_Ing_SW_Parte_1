@@ -1,39 +1,0 @@
-
-N"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(Ö±åº
-r
-squid:S135"YReduce the total number of break and continue statements in this loop to use at most one.(ü§è½ùÿÿÿÿ
-R
-squid:S106"9Replace this use of System.out or System.err by a logger.(û¹õ¥ÿÿÿÿÿ
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(¼¡€Å
-L
-squid:S106"9Replace this use of System.out or System.err by a logger.(ˆ ×
-R
-squid:S106"9Replace this use of System.out or System.err by a logger.(ëØ‚¶úÿÿÿÿ
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(Û–şğ
-R
-squid:S106"9Replace this use of System.out or System.err by a logger.(Œ©ûÃùÿÿÿÿ
-R
-squid:S106"9Replace this use of System.out or System.err by a logger.( üÔÁüÿÿÿÿ
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(Ğûæ÷
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(…¾øã
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(„¢‹
-R
-squid:S106"9Replace this use of System.out or System.err by a logger.(°àÿúÿÿÿÿ
-L
-squid:S106"9Replace this use of System.out or System.err by a logger.(¸ì‹8
-R
-squid:S106"9Replace this use of System.out or System.err by a logger.(õ‰çøÿÿÿÿ
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(¬ŸÔİ
-R
-squid:S106"9Replace this use of System.out or System.err by a logger.(¦Ù£Áıÿÿÿÿ
-gsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(„ß¶”
-ksquid:S3457"Q%n should be used in place of \n to produce the platform-specific line separator.(û¹õ¥ÿÿÿÿÿ
-ksquid:S3457"Q%n should be used in place of \n to produce the platform-specific line separator.( üÔÁüÿÿÿÿ
-fsquid:S3457"Q%n should be used in place of \n to produce the platform-specific line separator.(„¢‹
-ksquid:S3457"Q%n should be used in place of \n to produce the platform-specific line separator.(õ‰çøÿÿÿÿ

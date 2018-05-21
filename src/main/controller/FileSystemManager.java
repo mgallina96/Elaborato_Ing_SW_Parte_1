@@ -12,15 +12,14 @@ public class FileSystemManager implements FileSystemController {
     }
 
     public static FileSystemManager getInstance() {
-        return (fileSystemManager == null) ? (fileSystemManager = new FileSystemManager()) : fileSystemManager;
-    }
+        if(fileSystemManager == null)
+            fileSystemManager = new FileSystemManager();
 
-    public static FileSystemManager getFileSystemManager() {
         return fileSystemManager;
     }
 
     public boolean folderHasChildren(int folderID) {
-        return !fileSystem.getFileSystem().get(folderID).getChildren().isEmpty();
+        return !fileSystem.getFolderStructure().get(folderID).getChildren().isEmpty();
     }
 
     public String getSubFolders(int parentID) {
@@ -32,7 +31,7 @@ public class FileSystemManager implements FileSystemController {
     }
 
     public String getPathToString(int folderID) {
-        return fileSystem.getFileSystem().get(folderID).getFolderPath();
+        return fileSystem.getFolderStructure().get(folderID).getFolderPath();
     }
 
 }
