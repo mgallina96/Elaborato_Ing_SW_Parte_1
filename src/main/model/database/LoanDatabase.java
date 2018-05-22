@@ -66,15 +66,6 @@ public class LoanDatabase implements Serializable {
         return loanList.toString();
     }
 
-    public ArrayList<Loan> getUserLoans(User user) throws UserNotFoundException {
-        try {
-            return this.loans.get(user.getUsername());
-        }
-        catch(NullPointerException npEx) {
-            throw new UserNotFoundException();
-        }
-    }
-
     public String getUserLoansToString(User user) {
         try {
             StringBuilder userLoans = new StringBuilder();
@@ -84,8 +75,20 @@ public class LoanDatabase implements Serializable {
             return userLoans.toString();
 
         }
+        catch(NullPointerException npEx) {
+            return "";
+        }
         catch(UserNotFoundException unfEx) {
             return "";
+        }
+    }
+
+    public ArrayList<Loan> getUserLoans(User user) throws UserNotFoundException {
+        try {
+            return this.loans.get(user.getUsername());
+        }
+        catch(NullPointerException npEx) {
+            throw new UserNotFoundException();
         }
     }
 

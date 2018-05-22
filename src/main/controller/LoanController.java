@@ -1,5 +1,7 @@
 package main.controller;
 
+import main.model.user.User;
+
 /**
  * Interface for the Loan controller, which provides methods specific to loan management.
  *
@@ -26,5 +28,15 @@ public interface LoanController extends Controller {
      */
     String allLoansToString();
 
+    /**
+     *
+     * @return
+     */
+    String currentUserLoansToString();
 
+    /**
+     *
+     * @param mediaID
+     */
+    void extendLoan(int mediaID);
 }

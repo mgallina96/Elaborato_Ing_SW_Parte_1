@@ -33,7 +33,8 @@ public class Notifications {
     public static String MSG_FOLDER_CONTENTS;
     public static String MSG_MOVE_TO_LOGIN;
     public static String MSG_BORROW_SUCCESSFUL;
-    public static String MSG_LOAN_LIST;
+    public static String MSG_LOAN_LIST_ALL;
+    public static String MSG_LOAN_LIST_SINGLE;
 
     //PROMPTS
     public static String PROMPT_FIRST_NAME;
@@ -65,6 +66,8 @@ public class Notifications {
     public static String PROMPT_SEARCH_FOR_MEDIA;
     public static String PROMPT_SEARCH_FOR_MEDIA_TO_BORROW;
     public static String PROMPT_BORROW_CONFIRMATION;
+    public static String PROMPT_SEARCH_FOR_LOANS;
+    public static String PROMPT_CHOOSE_MEDIA_TO_EXTEND;
 
     //ERRORS
     public static String ERR_NOT_OF_AGE;
@@ -92,6 +95,7 @@ public class Notifications {
     public static String ERR_CANNOT_BORROW;
     public static String ERR_USER_NOT_PRESENT;
     public static String ERR_WRONG_PASSWORD;
+    public static String ERR_LOAN_LIST_EMPTY;
 
     //generic useful messages
     public static final String SEPARATOR = "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
@@ -162,7 +166,8 @@ public class Notifications {
                 MSG_FOLDER_CONTENTS = "Ecco i contenuti della cartella ";
                 MSG_MOVE_TO_LOGIN = "È consigliato spostarsi alla sezione login e provare ad accedere con questi dati.";
                 MSG_BORROW_SUCCESSFUL = "Il media è stato preso in prestito!";
-                MSG_LOAN_LIST = "Ecco la lista di tutti i prestiti effettuati agli utenti seguenti: ";
+                MSG_LOAN_LIST_ALL = "Ecco la lista di tutti i prestiti effettuati agli utenti seguenti: ";
+                MSG_LOAN_LIST_SINGLE = "Ecco la lista dei tuoi prestiti: ";
                 PROMPT_FIRST_NAME = "Nome (si prega di inserire un nome valido): ";
                 PROMPT_LAST_NAME = "Cognome (si prega di inserire un cognome valido): ";
                 PROMPT_USERNAME = "Username: ";
@@ -192,6 +197,8 @@ public class Notifications {
                 PROMPT_EXPIRY_IMMINENT = "ATTENZIONE! SCADENZA ISCRIZIONE IMMINENTE";
                 PROMPT_WHICH_FOLDER = "Inserire il percorso di cui si vuole vedere il contenuto, selezionando volta per volta la cartella desiderata.";
                 PROMPT_BORROW_CONFIRMATION = "Confermi il prestito? (y/n)";
+                PROMPT_SEARCH_FOR_LOANS = "Ecco la lista dei media presi in prestito. Si prega di selezionare il media di cui si vuole prorogare il prestito.";
+                PROMPT_CHOOSE_MEDIA_TO_EXTEND = "Scegliere l'ID del media di cui si vuole estendere il prestito.";
                 ERR_NOT_OF_AGE = "Attenzione: l'utente è minorenne. Si prega di riempire i campi da capo.";
                 ERR_INVALID_NAME = "Sembra che questo nome abbia un formato non valido, si prega di inserire nuovamente un nome valido.";
                 ERR_INVALID_DATE = "Questa data di nascita ha un formato non valido. Si prega di inserire una data di nascita valida.";
@@ -217,6 +224,7 @@ public class Notifications {
                 ERR_CANNOT_BORROW = "Tetto massimo di prestiti raggiunto! Non è possibile prendere in prestito altri media al momento.";
                 ERR_USER_NOT_PRESENT = "Il nome utente inserito non è presente. Si prega di verificare che il nome utente sia corretto, oppure di registrarsi.";
                 ERR_WRONG_PASSWORD = "Password errata.";
+                ERR_LOAN_LIST_EMPTY = "Non hai effettuato alcun prestito";
             }
         },
         ENGLISH {
@@ -241,7 +249,8 @@ public class Notifications {
                 MSG_FOLDER_CONTENTS = "Here are the contents of the folder ";
                 MSG_MOVE_TO_LOGIN = "Try logging in with these credentials.";
                 MSG_BORROW_SUCCESSFUL = "Media item successfully borrowed!";
-                MSG_LOAN_LIST = "Here's the list of all loans that have been granted to the following users: ";
+                MSG_LOAN_LIST_ALL = "Here's the list of all loans that have been granted to the following users: ";
+                MSG_LOAN_LIST_SINGLE = "Here's the list of your loans: ";
                 PROMPT_FIRST_NAME = "First name (please insert a valid first name): ";
                 PROMPT_LAST_NAME = "Last name (please insert a valid last name): ";
                 PROMPT_USERNAME = "Username: ";
@@ -271,6 +280,8 @@ public class Notifications {
                 PROMPT_EXPIRY_IMMINENT = "WARNING! SUBSCRIPTION EXPIRY IMMINENT!";
                 PROMPT_WHICH_FOLDER = "Please choose the path you wish to see the contents of, by selecting the desired folders step by step.";
                 PROMPT_BORROW_CONFIRMATION = "Are you sure you want to borrow this media item? (y/n)";
+                PROMPT_SEARCH_FOR_LOANS = "Here's the list of the media items you borrowed. Please select the media item whose loan you wish to extend.";
+                PROMPT_CHOOSE_MEDIA_TO_EXTEND = "Please select the ID of the media whose loan you wish to extend.";
                 ERR_NOT_OF_AGE = "Warning: user is underage. Please re-fill this form.";
                 ERR_INVALID_NAME = "Looks like this name has an invalid format, please re-insert a valid name.";
                 ERR_INVALID_DATE = "This birth date has an invalid format. Please re-insert a valid date.";
@@ -296,6 +307,7 @@ public class Notifications {
                 ERR_CANNOT_BORROW = "Upper loan limit reached! It's not possible to borrow any more media items at the moment.";
                 ERR_USER_NOT_PRESENT = "The requested username couldn't be found. Please check the spelling or sign up.";
                 ERR_WRONG_PASSWORD = "Wrong password.";
+                ERR_LOAN_LIST_EMPTY = "There are no loans associated to this user.";
             }
         }
     }

@@ -36,8 +36,8 @@ public class CustomerScreen extends Screen {
                         borrowMedia();
                     break;
                 case 3:
-                    if(searchForLoans(PROMPT_SEARCH_FOR_LOANS))
-                        borrowMedia();
+                    if(searchForLoans())
+                        extendLoan();
                     break;
                 case 4:
                     searchForMedia(PROMPT_SEARCH_FOR_MEDIA);
@@ -53,21 +53,13 @@ public class CustomerScreen extends Screen {
         }
     }
 
-    private boolean searchForLoans(String prompt) {
-        System.out.println(prompt);
-        String input = getScanner().nextLine();
-
-        if(input.equals(ESCAPE_STRING)) {
-            System.out.println(MSG_ABORT);
-            return false;
-        }
-
-        String output = getLoanController().getCurrentUserLoansToString(input);
+    private boolean searchForLoans() {
+        String output = getLoanController().currentUserLoansToString();
 
         if(output.length() > 0)
-            System.out.printf("%s%n%s%n", MSG_FILTERED_MEDIA_LIST, output);
+            System.out.printf("%s%n%s%n", MSG_LOAN_LIST_SINGLE, output);
         else {
-            System.out.println(ERR_FILTERED_MEDIA_LIST_EMPTY);
+            System.out.println(ERR_LOAN_LIST_EMPTY);
             return false;
         }
 
@@ -116,5 +108,22 @@ public class CustomerScreen extends Screen {
         }
         else
             System.out.println(MSG_ABORT);
+    }
+
+    private void extendLoan() {
+        System.out.println(PROMPT_CHOOSE_MEDIA_TO_EXTEND);
+
+        int id = insertInteger();
+        while(!getMediaController().mediaIsPresent(id)) {
+            System.out.println(ERR_MEDIA_NOT_PRESENT);
+            id = insertInteger();
+        }
+
+        if(getLoanController().canBeExtended(id)) {
+            getLoanController().extendLoan(id);
+            System.out.println(MSG_EXTEND_SUCCESSFUL);
+        }
+        else
+            System.out.println(ERR_CANNOT_EXTEND);
     }
 }

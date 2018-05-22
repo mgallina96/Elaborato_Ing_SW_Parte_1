@@ -78,18 +78,6 @@ public class SystemController implements UserController, MediaController, LoanCo
         return mediaDatabase.isPresent(new Media(id));
     }
 
-    public String allUsersToString() {
-        return userDatabase.getUserListString();
-    }
-
-    public String allLoansToString() {
-        return loanDatabase.getLoanListString();
-    }
-
-    public String allFilteredMediaList(String filter) {
-        return mediaDatabase.getFilteredMediaList(filter);
-    }
-
     public boolean addUserToDatabase(String firstName, String lastName, String username, String password, GregorianCalendar birthday) {
         Customer c = new Customer(firstName, lastName, username, password, birthday);
 
@@ -128,10 +116,6 @@ public class SystemController implements UserController, MediaController, LoanCo
         return false;
     }
 
-    public void extendLoan(int mediaID) {
-
-    }
-
     public void removeMediaFromDatabase(int id) {
         mediaDatabase.removeMedia(new Media(id));
     }
@@ -168,29 +152,25 @@ public class SystemController implements UserController, MediaController, LoanCo
 
     @Override
     public boolean canBeExtended(int mediaID) {
-        boolean present = false;
-        Loan loan = null;
-
         try {
             for(Loan l : loanDatabase.getUserLoans(userDatabase.getCurrentUser())) {
-                loan = l;
-                if(loan.getMedia().getIdentifier() == mediaID) {
-                    present = true;
-                    break;
+                if(l.getMedia().getIdentifier() == mediaID) {
+                    GregorianCalendar correctedLoanExpiry = (GregorianCalendar) l.getLoanExpiry().clone();
+                    correctedLoanExpiry.add(Calendar.DATE, -l.getExtensionRestrictionInDays());
+
+                    return (new GregorianCalendar()).after(correctedLoanExpiry);
                 }
             }
-
-            if(!present)
-                throw new NullPointerException();
-
-            GregorianCalendar correctedLoanExpiry = (GregorianCalendar) loan.getLoanExpiry().clone();
-            correctedLoanExpiry.add(Calendar.DATE, -loan.getExtensionRestrictionInDays());
-
-            return (new GregorianCalendar()).after(correctedLoanExpiry);
         }
         catch(Exception ex) {
             return true;
         }
+
+        return false;
+    }
+
+    public void extendLoan(int mediaID) {
+
     }
 
     public int daysLeftToRenew(String username) throws UserNotFoundException {
@@ -233,6 +213,23 @@ public class SystemController implements UserController, MediaController, LoanCo
 
     public void logout() {
         userDatabase.removeCurrentUser();
+    }
+
+    public String allUsersToString() {
+        return userDatabase.getUserListString();
+    }
+
+    public String allLoansToString() {
+        return loanDatabase.getLoanListString();
+    }
+
+    @Override
+    public String currentUserLoansToString() {
+        return loanDatabase.getUserLoansToString(userDatabase.getCurrentUser());
+    }
+
+    public String allFilteredMediaList(String filter) {
+        return mediaDatabase.getFilteredMediaList(filter);
     }
 
     public String getFolderContents(String folderPath) {

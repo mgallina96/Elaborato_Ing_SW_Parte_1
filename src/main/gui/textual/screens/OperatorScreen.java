@@ -46,7 +46,7 @@ public class OperatorScreen extends Screen {
                     System.out.printf("%s%n%s%n", MSG_USER_LIST, userController.allUsersToString());
                     break;
                 case 6:
-                    System.out.printf("%s%n%s%n", MSG_LOAN_LIST, loanController.allLoansToString());
+                    System.out.printf("%s%n%s%n", MSG_LOAN_LIST_ALL, loanController.allLoansToString());
                     break;
                 case 7:
                     System.out.printf("%s%n", MSG_LOG_OUT);
