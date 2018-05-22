@@ -171,7 +171,11 @@ public class Media implements Serializable {
         return extensionRestriction;
     }
 
-    //TODO: Da commentare. Che cos'è loan limit?
+    /**
+     * Getter for the maximum number of media items that can be borrowed.
+     *
+     * @return The loan limit.
+     */
     public int getLoanLimit() {
         return loanLimit;
     }
@@ -208,7 +212,7 @@ public class Media implements Serializable {
      * @return a {@code String} with the basic details that describe this particular media item.
      */
     public String toString() {
-        return String.format("Media name: %s\t|\tItem ID: %d\t|\tDate added: %s\t|\tNumber of licences: %d",
+        return String.format("Media name: %s\t|\tItem ID: %d\t|\tDate added: %s\t|\tNumber of licences: %d%n",
                 mediaName, identifier, dateAdded.toZonedDateTime(), licenses);
     }
 

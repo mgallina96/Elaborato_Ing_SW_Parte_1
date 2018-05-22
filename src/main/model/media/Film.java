@@ -85,18 +85,14 @@ public class Film extends Media {
         this.filmNumber = this.belongsToSeries ? filmNumber : 0;
     }
 
-    @Override
-    public String getBareItemDetails() {
-        return super.getBareItemDetails();
-    }
-
     /**
      * Overridden toString() method.
      *
      * @return A string containing a brief description of the film.
      */
+    @Override
     public String toString() {
-        return String.format("Media type: %s, Item ID: %d\t|\tTitle: %s\t|\tDirector: %s\t|\tRelease year: %d\t|\tGenre: %s\t|\tPublisher: %s\t|\tNumber of licenses: %d\n",
+        return String.format("Media type: %s, Item ID: %d\t|\tTitle: %s\t|\tDirector: %s\t|\tRelease year: %d\t|\tGenre: %s\t|\tPublisher: %s\t|\tNumber of licenses: %d%n",
                 TYPE, getIdentifier(), title, director, releaseYear, genre, producer, getLicenses());
     }
 
@@ -106,7 +102,7 @@ public class Film extends Media {
      * @return A string containing an accurate description of the film.
      */
     public String allDetailsToString() {
-        return String.format("%s\t|\tCast: %s\t|\tLanguage: %s\t|\tRunning time: %f%s\nDescription: %s\n",
+        return String.format("%s\t|\tCast: %s\t|\tLanguage: %s\t|\tRunning time: %d%s%nDescription: %s%n",
                 toString(), cast, language, runningTime, (belongsToSeries ? ("|\tVolume number: " + filmNumber) : ""), description);
     }
 

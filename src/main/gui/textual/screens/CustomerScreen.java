@@ -24,12 +24,12 @@ public class CustomerScreen extends Screen {
         boolean exitFromCustomerSection = false;
 
         while(!exitFromCustomerSection) {
-            System.out.printf("%s\n%s\n%s\n", SEPARATOR, PROMPT_CUSTOMER_CHOICES, SEPARATOR);
+            System.out.printf("%s%n%s%n%s%n", SEPARATOR, PROMPT_CUSTOMER_CHOICES, SEPARATOR);
 
             switch(insertInteger(1,6)) {
                 case 1:
                     if(!userController.renewSubscription())
-                        System.out.printf("%s\n%s\n", ERR_CANNOT_RENEW, userController.dateDetails());
+                        System.out.printf("%s%n%s%n", ERR_CANNOT_RENEW, userController.dateDetails());
                     break;
                 case 2:
                     if(searchForMedia(PROMPT_SEARCH_FOR_MEDIA_TO_BORROW))
@@ -41,7 +41,7 @@ public class CustomerScreen extends Screen {
                     searchForMedia(PROMPT_SEARCH_FOR_MEDIA);
                     break;
                 case 5:
-                    System.out.printf("%s\n", MSG_LOG_OUT);
+                    System.out.printf("%s%n", MSG_LOG_OUT);
                     exitFromCustomerSection = true;
                     userController.logout();
                     break;
@@ -63,7 +63,7 @@ public class CustomerScreen extends Screen {
         String output = getMediaController().allFilteredMediaList(input);
 
         if(output.length() > 0)
-            System.out.printf("%s\n%s\n", MSG_FILTERED_MEDIA_LIST, output);
+            System.out.printf("%s%n%s%n", MSG_FILTERED_MEDIA_LIST, output);
         else {
             System.out.println(ERR_FILTERED_MEDIA_LIST_EMPTY);
             return false;

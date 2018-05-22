@@ -1,16 +1,11 @@
 package main.model.database;
-import com.sun.xml.internal.bind.v2.model.core.ID;
 import main.model.loan.Loan;
 import main.model.media.Media;
-import main.model.user.Customer;
 import main.model.user.User;
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.notifications.Notifications;
-
 import java.io.*;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +22,7 @@ public class LoanDatabase implements Serializable {
 
     private HashMap<String, ArrayList<Loan>> loans;
     private static LoanDatabase loanDatabase;
-    private Logger logger;
+    private transient Logger logger;
 
     //Singleton Database constructor, private to prevent instantiation.
     private LoanDatabase() {
@@ -39,7 +34,10 @@ public class LoanDatabase implements Serializable {
     }
 
     public static LoanDatabase getInstance() {
-        return (loanDatabase == null) ? (loanDatabase = new LoanDatabase()) : loanDatabase;
+        if(loanDatabase == null)
+            loanDatabase = new LoanDatabase();
+
+        return loanDatabase;
     }
 
     boolean canBorrow(User user, Media media) {
@@ -85,7 +83,7 @@ public class LoanDatabase implements Serializable {
         try {
             return this.loans.get(user.getUsername());
         }
-        catch(NullPointerException NPEx) {
+        catch(NullPointerException npEx) {
             throw new UserNotFoundException();
         }
     }
@@ -99,23 +97,20 @@ public class LoanDatabase implements Serializable {
      * This method loads a {@code HashMap} containing a record of all loans.
      */
     @SuppressWarnings("unchecked")
-    void loadLoanDatabase() {
-        try {
+    private void loadLoanDatabase() {
+        try (
             FileInputStream fileIn = new FileInputStream(LOAN_DATABASE_FILE_PATH);
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-
+            ObjectInputStream in = new ObjectInputStream(fileIn)
+        ) {
             this.loans = ((HashMap<String, ArrayList<Loan>>) in.readObject());
-
-            in.close();
-            fileIn.close();
         }
-        catch(FileNotFoundException FNFEx) {
+        catch(FileNotFoundException fnfEx) {
             logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND + this.getClass().getName());
         }
-        catch(IOException IOEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_LOADING_DATABASE + this.getClass().getName(), IOEx);
+        catch(IOException ioEx) {
+            logger.log(Level.SEVERE, Notifications.ERR_LOADING_DATABASE + this.getClass().getName());
         }
-        catch(ClassNotFoundException CNFEx) {
+        catch(ClassNotFoundException cnfEx) {
             logger.log(Level.SEVERE, Notifications.ERR_CLASS_NOT_FOUND + this.getClass().getName());
         }
     }

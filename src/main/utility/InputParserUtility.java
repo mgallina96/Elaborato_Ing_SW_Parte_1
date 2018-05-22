@@ -30,7 +30,7 @@ public class InputParserUtility {
         try {
             Integer.parseInt(input);
         }
-        catch(NumberFormatException NFEx) {
+        catch(NumberFormatException nfEx) {
             logger.log(Level.SEVERE, Notifications.ERR_MSG_INVALID_INPUT);
             return false;
         }
@@ -122,7 +122,7 @@ public class InputParserUtility {
         try {
             Long.parseLong(input);
         }
-        catch(NumberFormatException NFEx) {
+        catch(NumberFormatException nfEx) {
             logger.log(Level.SEVERE, Notifications.ERR_MSG_INVALID_INPUT);
             return false;
         }

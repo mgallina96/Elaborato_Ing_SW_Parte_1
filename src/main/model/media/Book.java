@@ -95,18 +95,14 @@ public class Book extends Media implements Serializable {
         this.volumeNumber = this.belongsToSeries ? volumeNumber : 0;
     }
 
-    @Override
-    public String getBareItemDetails() {
-        return super.getBareItemDetails();
-    }
-
     /**
      * Overridden toString() method.
      *
      * @return A string containing a brief description of the book.
      */
+    @Override
     public String toString() {
-        return String.format("Media type: %s, Item ID: %d\t|\tTitle: %s\t|\tAuthor: %s\t|\tPublication year: %d\t|\tGenre: %s\t|\tPublisher name: %s\t|\tNumber of licenses: %d\n",
+        return String.format("Media type: %s, Item ID: %d\t|\tTitle: %s\t|\tAuthor: %s\t|\tPublication year: %d\t|\tGenre: %s\t|\tPublisher name: %s\t|\tNumber of licenses: %d%n",
                 TYPE, getIdentifier(), title, author, publicationYear, genre, publisherName, getLicenses());
     }
 
@@ -116,7 +112,7 @@ public class Book extends Media implements Serializable {
      * @return A string containing an accurate description of the book.
      */
     public String allDetailsToString() {
-        return String.format("%s\t|\tSubtitle: %s\t|\tLanguage: %s\t|\tPage count: %d%s\nDescription: %s\n",
+        return String.format("%s\t|\tSubtitle: %s\t|\tLanguage: %s\t|\tPage count: %d%s%nDescription: %s%n",
                 toString(), subtitle, language, pageCount, (belongsToSeries ? ("|\tVolume number: " + volumeNumber) : ""), description);
     }
 

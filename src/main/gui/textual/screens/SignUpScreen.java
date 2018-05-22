@@ -20,7 +20,7 @@ public class SignUpScreen extends Screen {
      */
     public SignUpScreen(UserController userController) {
         super(userController);
-        System.out.printf("%s\n%s\n", PROMPT_SIGN_UP_SCREEN, SEPARATOR);
+        System.out.printf("%s%n%s%n", PROMPT_SIGN_UP_SCREEN, SEPARATOR);
 
         int status;
         do {
@@ -34,8 +34,8 @@ public class SignUpScreen extends Screen {
         try {
             details = fillDetails();
         }
-        catch(InterruptedException IEx) {
-            System.out.printf("%s %s\n", ERR_SIGN_UP_ABORTED, MSG_EXIT_WITHOUT_SAVING);
+        catch(InterruptedException iEx) {
+            System.out.printf("%s %s%n", ERR_SIGN_UP_ABORTED, MSG_EXIT_WITHOUT_SAVING);
             return -1;
         }
 
@@ -45,8 +45,8 @@ public class SignUpScreen extends Screen {
                 return 1;
             }
         }
-        catch (IllegalDateFormatException IDFEx) {
-            IDFEx.printStackTrace();
+        catch (IllegalDateFormatException idfEx) {
+            idfEx.printStackTrace();
         }
 
         if(getUserController().addUserToDatabase(details[0], details[1], details[2], details[3], InputParserUtility.toGregorianDate(details[4]))) {
@@ -73,7 +73,7 @@ public class SignUpScreen extends Screen {
         System.out.print(PROMPT_BIRTHDAY);
         String birthday = insertDate();
 
-        System.out.printf("%s\n%s\n%s\n", SEPARATOR, PROMPT_SIGN_UP_CONFIRMATION, SEPARATOR);
+        System.out.printf("%s%n%s%n%s%n", SEPARATOR, PROMPT_SIGN_UP_CONFIRMATION, SEPARATOR);
 
         if(insertString(YN_REGEX).equalsIgnoreCase(NO))
             throw new InterruptedException();
@@ -82,11 +82,11 @@ public class SignUpScreen extends Screen {
     }
 
     private int userAlreadyPresent() {
-        System.out.printf("%s\n%s\n%s\n%s\n", ERR_USER_ALREADY_PRESENT, SEPARATOR, PROMPT_PRESENT_USER_MULTIPLE_CHOICE, SEPARATOR);
+        System.out.printf("%s%n%s%n%s%n%s%n", ERR_USER_ALREADY_PRESENT, SEPARATOR, PROMPT_PRESENT_USER_MULTIPLE_CHOICE, SEPARATOR);
 
         switch(insertInteger(1, 3)) {
             case 1:
-                System.out.printf("%s %s\n", MSG_EXIT_WITHOUT_SAVING, MSG_MOVE_TO_LOGIN);
+                System.out.printf("%s %s%n", MSG_EXIT_WITHOUT_SAVING, MSG_MOVE_TO_LOGIN);
                 return -1;
             case 2:
                 System.out.println(PROMPT_MODIFY_FIELDS);

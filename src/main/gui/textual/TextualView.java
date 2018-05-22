@@ -58,7 +58,7 @@ public class TextualView implements GuiManager {
                     signUpScreen();
                     break;
                 case 3:
-                    System.out.printf("%s\n", MSG_GOODBYE);
+                    System.out.printf("%s%n", MSG_GOODBYE);
                     exit = true;
                     break;
                 default:

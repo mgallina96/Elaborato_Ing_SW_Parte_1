@@ -198,7 +198,7 @@ public class User implements Serializable {
      * @return the user's details, in form of a {@code String}.
      */
     public String toString() {
-        return String.format("First name: %s\t|\tLast name: %s\t|\tUsername: %s\t|\tBirthday = %s\n",
+        return String.format("First name: %s\t|\tLast name: %s\t|\tUsername: %s\t|\tBirthday = %s%n",
                 firstName, lastName, username, birthday.toZonedDateTime().toString().substring(0, 10));
     }
 }

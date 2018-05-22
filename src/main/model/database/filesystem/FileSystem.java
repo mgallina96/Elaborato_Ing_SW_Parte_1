@@ -68,7 +68,7 @@ public class FileSystem implements Serializable {
      */
     public void addFolder(String name, Folder parent) {
         folderStructure.put(folderCounter, new Folder(name, parent, folderCounter));
-        folderCounter++;
+        incrementFolderCounter();
     }
 
     /**
@@ -147,6 +147,14 @@ public class FileSystem implements Serializable {
         return folders.toString();
     }
 
+    private static void setFolderCounter(int folderCounter) {
+        FileSystem.folderCounter = folderCounter;
+    }
+
+    private static void incrementFolderCounter() {
+        folderCounter++;
+    }
+
     /**
      * Opens a .ser serializable file and loads its contents into this {@link FileSystem} class.<p>
      * This method loads:
@@ -160,7 +168,7 @@ public class FileSystem implements Serializable {
             ObjectInputStream in = new ObjectInputStream(fileIn)
         ) {
             this.folderStructure = ((HashMap<Integer, Folder>) in.readObject());
-            folderCounter = Integer.parseInt((String)in.readObject());
+            setFolderCounter(Integer.parseInt((String)in.readObject()));
         }
         catch(FileNotFoundException fnfEx) {
             logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND + this.getClass().getName());

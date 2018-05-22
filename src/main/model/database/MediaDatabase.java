@@ -24,7 +24,7 @@ public class MediaDatabase implements Serializable {
     private static int counter;
 
     private HashMap<Integer, Media> mediaList;
-    private Logger logger;
+    private transient Logger logger;
 
     //Singleton Database constructor, private to prevent instantiation.
     private MediaDatabase() {
@@ -34,11 +34,18 @@ public class MediaDatabase implements Serializable {
     }
 
     public static MediaDatabase getInstance() {
-        return (mediaDatabase == null) ? (mediaDatabase = new MediaDatabase()) : mediaDatabase;
+        if(mediaDatabase == null)
+            mediaDatabase = new MediaDatabase();
+
+        return mediaDatabase;
     }
 
     public void addMedia(Media toAdd, String path) {
-        toAdd.setIdentifier(counter++);
+        toAdd.setIdentifier(counter);
+        //--------------------- sonar culo
+        incrementCounter();
+        //--------------------- non toccare
+
         toAdd.setPath(path);
         mediaList.put(toAdd.getIdentifier(), toAdd);
     }
@@ -102,12 +109,16 @@ public class MediaDatabase implements Serializable {
         return mediaList;
     }
 
-    static int getCounter() {
+    private static int getCounter() {
         return counter;
     }
 
-    static void setCounter(int counter) {
+    private static void setCounter(int counter) {
         MediaDatabase.counter = counter;
+    }
+
+    private static void incrementCounter() {
+        counter++;
     }
 
     /**
@@ -115,24 +126,21 @@ public class MediaDatabase implements Serializable {
      * This method loads a {@code HashMap} containing all media items.
      */
     @SuppressWarnings("unchecked")
-    void loadMediaDatabase() {
-        try {
+    private void loadMediaDatabase() {
+        try (
             FileInputStream fileIn = new FileInputStream(MEDIA_DATABASE_FILE_PATH);
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-
+            ObjectInputStream in = new ObjectInputStream(fileIn)
+        ) {
             this.mediaList = (HashMap<Integer, Media>) in.readObject();
-            counter = Integer.parseInt((String)in.readObject());
-
-            in.close();
-            fileIn.close();
+            setCounter(Integer.parseInt((String)in.readObject()));
         }
-        catch(FileNotFoundException FNFEx) {
+        catch(FileNotFoundException fnfEx) {
             logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND + this.getClass().getName());
         }
-        catch(IOException IOEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_LOADING_DATABASE + this.getClass().getName(), IOEx);
+        catch(IOException ioEx) {
+            logger.log(Level.SEVERE, Notifications.ERR_LOADING_DATABASE + this.getClass().getName());
         }
-        catch(ClassNotFoundException CNFEx) {
+        catch(ClassNotFoundException cnfEx) {
             logger.log(Level.SEVERE, Notifications.ERR_CLASS_NOT_FOUND + this.getClass().getName());
         }
     }
@@ -141,21 +149,17 @@ public class MediaDatabase implements Serializable {
      * Saves the File System in the form of a HashMap object.
      */
     public void saveMediaDatabase() {
-        try {
+        try (
             //to increase serializing speed
             RandomAccessFile raf = new RandomAccessFile(MEDIA_DATABASE_FILE_PATH, "rw");
-
             FileOutputStream fileOut = new FileOutputStream(raf.getFD());
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-
+            ObjectOutputStream out = new ObjectOutputStream(fileOut)
+        ) {
             out.writeObject(mediaList);
             out.writeObject(Integer.toString(MediaDatabase.getCounter()));
-
-            out.close();
-            fileOut.close();
         }
-        catch(IOException IOEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + this.getClass().getName(), IOEx);
+        catch(IOException ioEx) {
+            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + this.getClass().getName());
         }
     }
 }

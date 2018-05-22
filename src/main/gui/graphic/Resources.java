@@ -8,6 +8,7 @@ import java.io.IOException;
  * @author Manuel Gallina
  */
 public class Resources {
+
     public static final String BS_LOGIN_SCREEN_PATH = "resources/images/BS-Login.png";
     public static final String BS_SIGNUP_SCREEN_PATH = "resources/images/BS_SignUp.png";
     public static final String BS_SIDE_BAR_PATH = "resources/images/BS_SideBar2.png";
@@ -17,6 +18,8 @@ public class Resources {
     private static final String BS_ICON_FONT_PATH = "";
 
     public static Font bsTextFont;
+
+    private Resources() {}
 
     public static void init() {
         try {

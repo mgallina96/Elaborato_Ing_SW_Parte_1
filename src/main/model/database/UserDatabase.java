@@ -29,7 +29,7 @@ public class UserDatabase implements Serializable {
     private static UserDatabase userDatabase;
     private User currentUser;
     private HashMap<String, User> userList;
-    private Logger logger;
+    private transient Logger logger;
 
     //Singleton Database constructor, private to prevent instantiation.
     private UserDatabase() {
@@ -47,7 +47,10 @@ public class UserDatabase implements Serializable {
     }
 
     public static UserDatabase getInstance() {
-        return (userDatabase == null) ? (userDatabase = new UserDatabase()) : userDatabase;
+        if(userDatabase == null)
+            userDatabase = new UserDatabase();
+
+        return userDatabase;
     }
 
     public void addUser(User toAdd) {
@@ -98,23 +101,20 @@ public class UserDatabase implements Serializable {
      * This method loads a {@code HashMap} containing all subscribed users.
      */
     @SuppressWarnings("unchecked")
-    void loadUserDatabase() {
-        try {
+    private void loadUserDatabase() {
+        try (
             FileInputStream fileIn = new FileInputStream(USER_DATABASE_FILE_PATH);
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-
+            ObjectInputStream in = new ObjectInputStream(fileIn)
+        ) {
             this.userList = (HashMap<String, User>) in.readObject();
-
-            in.close();
-            fileIn.close();
         }
-        catch(FileNotFoundException FNFEx) {
+        catch(FileNotFoundException fnfEx) {
             logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND + this.getClass().getName());
         }
-        catch(IOException IOEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_LOADING_DATABASE + this.getClass().getName(), IOEx);
+        catch(IOException ioEx) {
+            logger.log(Level.SEVERE, Notifications.ERR_LOADING_DATABASE + this.getClass().getName());
         }
-        catch(ClassNotFoundException CNFEx) {
+        catch(ClassNotFoundException cnfEx) {
             logger.log(Level.SEVERE, Notifications.ERR_CLASS_NOT_FOUND + this.getClass().getName());
         }
     }

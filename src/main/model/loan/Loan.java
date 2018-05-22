@@ -65,6 +65,6 @@ public class Loan implements Serializable {
     }
 
     public String toString() {
-        return String.format("Loan -> Media item: " + media + "\tUser: " + user);
+        return String.format("Loan -> Media item: %s\tUser: %s", media.toString(), user.toString());
     }
 }

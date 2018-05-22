@@ -52,8 +52,8 @@ public class Screen {
                 else if(controller instanceof FileSystemController)
                     this.fileSystemController = (FileSystemController) controller;
             }
-            catch(ClassCastException CCEX) {
-                CCEX.printStackTrace();
+            catch(ClassCastException ccEX) {
+                ccEX.printStackTrace();
             }
         }
 

@@ -16,8 +16,6 @@ import static main.utility.notifications.Notifications.*;
  */
 public class LoginScreen extends Screen {
 
-    //private Logger logger = Logger.getLogger(this.getClass().getName());
-
     /**
      * Constructor for the {@code LoginScreen} class.
      *
@@ -35,13 +33,13 @@ public class LoginScreen extends Screen {
      * @return The username of the user who just logged in.
      */
     public String login() {
-        System.out.printf("%s\n%s\n", PROMPT_LOGIN_SCREEN, SEPARATOR);
+        System.out.printf("%s%n%s%n", PROMPT_LOGIN_SCREEN, SEPARATOR);
 
         while(true) {
             String username;
             String password;
 
-            System.out.printf("[%s %s]\n", ESCAPE_STRING, MSG_ESCAPE_STRING_MESSAGE);
+            System.out.printf("[%s %s]%n", ESCAPE_STRING, MSG_ESCAPE_STRING_MESSAGE);
 
             try {
                 username = inputRequest(PROMPT_USERNAME);
@@ -51,16 +49,16 @@ public class LoginScreen extends Screen {
                     int days = getUserController().daysLeftToRenew(username);
 
                     if(days > 0)
-                        System.out.printf("%s %s %s %s.\n",
+                        System.out.printf("%s %s %s %s.%n",
                                 PROMPT_EXPIRY_IMMINENT, MSG_REMINDER_DAYS_LEFT, days, MSG_DAYS);
 
                     return username;
                 } else {
-                    System.out.printf("%s\n%s\n", PROMPT_RETRY_LOGGING_IN, SEPARATOR);
+                    System.out.printf("%s%n%s%n", PROMPT_RETRY_LOGGING_IN, SEPARATOR);
                 }
             }
             catch(InterruptedException e) {
-                System.out.printf("%s\n\n", MSG_EXIT_LOGIN);
+                System.out.printf("%s%n%n", MSG_EXIT_LOGIN);
                 break; //returns a null value in this case.
             }
             catch(UserNotFoundException e) {

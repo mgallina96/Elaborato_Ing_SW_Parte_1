@@ -19,7 +19,7 @@ public class MainScreen extends Screen {
      * @return The choice the user made.
      */
     public int menuChoices() {
-        System.out.printf("%s\n%s\n%s\n%s\n> ", MSG_BIBLIO_NAME, SEPARATOR, PROMPT_BIBLIO_INITIAL_CHOICES, SEPARATOR);
+        System.out.printf("%s%n%s%n%s%n%s%n> ", MSG_BIBLIO_NAME, SEPARATOR, PROMPT_BIBLIO_INITIAL_CHOICES, SEPARATOR);
 
         return insertInteger(1, 4);
     }
