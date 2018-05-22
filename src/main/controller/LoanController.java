@@ -10,6 +10,7 @@ public interface LoanController extends Controller {
     /** Checks whether the currently logged-in user is allowed to borrow another media item. */
     boolean canBorrow(int mediaID);
 
+    boolean canBeExtended(int mediaID);
     /**
      * Adds a new {@code Loan} object to the database whenever the current user borrows a media item.
      *

@@ -10,17 +10,16 @@ import main.model.user.User;
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.exceptions.WrongPasswordException;
 import main.utility.notifications.Notifications;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.RandomAccessFile;
 import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import static main.utility.GlobalParameters.*;
 
 /**
@@ -96,6 +95,7 @@ public class SystemController implements UserController, MediaController, LoanCo
 
         if(!userDatabase.isPresent(c)) {
             userDatabase.addUser(c);
+            saveHashMap(USER_DATABASE_FILE_PATH, userDatabase.getUserList());
             return true;
         }
 
@@ -107,6 +107,7 @@ public class SystemController implements UserController, MediaController, LoanCo
 
         if(!mediaDatabase.isMatchingMedia(b)) {
             mediaDatabase.addMedia(b, path);
+            mediaDatabase.saveMediaDatabase();
             return true;
         }
 
@@ -125,6 +126,10 @@ public class SystemController implements UserController, MediaController, LoanCo
         }
 
         return false;
+    }
+
+    public void extendLoan(int mediaID) {
+
     }
 
     public void removeMediaFromDatabase(int id) {
@@ -159,6 +164,33 @@ public class SystemController implements UserController, MediaController, LoanCo
         }
 
         return counter < media.getLoanLimit();
+    }
+
+    @Override
+    public boolean canBeExtended(int mediaID) {
+        boolean present = false;
+        Loan loan = null;
+
+        try {
+            for(Loan l : loanDatabase.getUserLoans(userDatabase.getCurrentUser())) {
+                loan = l;
+                if(loan.getMedia().getIdentifier() == mediaID) {
+                    present = true;
+                    break;
+                }
+            }
+
+            if(!present)
+                throw new NullPointerException();
+
+            GregorianCalendar correctedLoanExpiry = (GregorianCalendar) loan.getLoanExpiry().clone();
+            correctedLoanExpiry.add(Calendar.DATE, -loan.getExtensionRestrictionInDays());
+
+            return (new GregorianCalendar()).after(correctedLoanExpiry);
+        }
+        catch(Exception ex) {
+            return true;
+        }
     }
 
     public int daysLeftToRenew(String username) throws UserNotFoundException {
@@ -208,16 +240,16 @@ public class SystemController implements UserController, MediaController, LoanCo
     }
 
     public void saveHashMap(String path, HashMap h) {
-        try(
-                //to increase serializing speed
-                RandomAccessFile raf = new RandomAccessFile(path, "rw");
-                FileOutputStream fileOut = new FileOutputStream(raf.getFD());
-                ObjectOutputStream out = new ObjectOutputStream(fileOut)
+        try (
+            //to increase serializing speed
+            RandomAccessFile raf = new RandomAccessFile(path, "rw");
+            FileOutputStream fileOut = new FileOutputStream(raf.getFD());
+            ObjectOutputStream out = new ObjectOutputStream(fileOut)
         ) {
             out.writeObject(h);
         }
         catch(IOException ioEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + this.getClass().getName(), ioEx);
+            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + this.getClass().getName());
         }
     }
 

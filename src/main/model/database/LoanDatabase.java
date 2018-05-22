@@ -40,19 +40,6 @@ public class LoanDatabase implements Serializable {
         return loanDatabase;
     }
 
-    boolean canBorrow(User user, Media media) {
-        int counter = 0;
-
-        if(loans.get(user.getUsername()) == null)
-            return true;
-
-        for(Loan l : loans.get(user.getUsername()))
-            if(l.getMedia().getType().equals(media.getType()))
-                counter++;
-
-        return counter < media.getLoanLimit();
-    }
-
     public void addLoan(User user, Media media) {
         media.lend();
 
@@ -85,6 +72,20 @@ public class LoanDatabase implements Serializable {
         }
         catch(NullPointerException npEx) {
             throw new UserNotFoundException();
+        }
+    }
+
+    public String getUserLoansToString(User user) {
+        try {
+            StringBuilder userLoans = new StringBuilder();
+            getUserLoans(user)
+                    .forEach(s -> userLoans.append(s.getMedia()));
+
+            return userLoans.toString();
+
+        }
+        catch(UserNotFoundException unfEx) {
+            return "";
         }
     }
 
