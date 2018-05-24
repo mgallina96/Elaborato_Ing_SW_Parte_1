@@ -21,7 +21,7 @@ public class MediaDatabase implements Serializable, Database {
     private static final long serialVersionUID = -5687383377098150051L;
 
     private static MediaDatabase mediaDatabase;
-    private static int counter;
+    private int counter;
 
     private HashMap<Integer, Media> mediaList;
     private transient Logger logger;
@@ -30,7 +30,6 @@ public class MediaDatabase implements Serializable, Database {
     private MediaDatabase() {
         this.mediaList = new HashMap<>();
         logger = Logger.getLogger(this.getClass().getName());
-        loadMediaDatabase();
     }
 
     public static MediaDatabase getInstance() {
@@ -41,10 +40,7 @@ public class MediaDatabase implements Serializable, Database {
     }
 
     public void addMedia(Media toAdd, String path) {
-        toAdd.setIdentifier(counter);
-        //--------------------- sonar culo
-        incrementCounter();
-        //--------------------- non toccare
+        toAdd.setIdentifier(counter++);
 
         toAdd.setPath(path);
         mediaList.put(toAdd.getIdentifier(), toAdd);
@@ -113,16 +109,12 @@ public class MediaDatabase implements Serializable, Database {
         return mediaList;
     }
 
-    private static int getCounter() {
+    private int getCounter() {
         return counter;
     }
 
-    private static void setCounter(int counter) {
-        MediaDatabase.counter = counter;
-    }
-
-    private static void incrementCounter() {
-        counter++;
+    private void setCounter(int counter) {
+        this.counter = counter;
     }
 
     /**
@@ -136,7 +128,6 @@ public class MediaDatabase implements Serializable, Database {
             ObjectInputStream in = new ObjectInputStream(fileIn)
         ) {
             setMediaDatabase((MediaDatabase)in.readObject());
-            setCounter(Integer.parseInt((String)in.readObject()));
         }
         catch(FileNotFoundException fnfEx) {
             logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND + this.getClass().getName());
@@ -146,24 +137,6 @@ public class MediaDatabase implements Serializable, Database {
         }
         catch(ClassNotFoundException cnfEx) {
             logger.log(Level.SEVERE, Notifications.ERR_CLASS_NOT_FOUND + this.getClass().getName());
-        }
-    }
-
-    /**
-     * Saves the File System in the form of a HashMap object.
-     */
-    public void saveMediaDatabase() {
-        try (
-            //to increase serializing speed
-            RandomAccessFile raf = new RandomAccessFile(MEDIA_DATABASE_FILE_PATH, "rw");
-            FileOutputStream fileOut = new FileOutputStream(raf.getFD());
-            ObjectOutputStream out = new ObjectOutputStream(fileOut)
-        ) {
-            out.writeObject(mediaList);
-            out.writeObject(Integer.toString(MediaDatabase.getCounter()));
-        }
-        catch(IOException ioEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + this.getClass().getName());
         }
     }
 }

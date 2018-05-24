@@ -35,7 +35,6 @@ public class UserDatabase implements Serializable, Database {
     private UserDatabase() {
         this.userList = new HashMap<>();
         logger = Logger.getLogger(this.getClass().getName());
-        loadUserDatabase();
 
         //Adds the admin to the database, if the admin hasn't been added yet.
         if(!isPresent(ADMIN)) {

@@ -83,10 +83,10 @@ public class QuickFillMain {
             if(f instanceof Film)
                 mediaDatabase.addMedia(f, "root\\Film\\" + ((Film)f).getGenre() + "\\");
 
-        //these methods need to be made (temporarily) public
-        mediaDatabase.saveMediaDatabase();
-        sc.saveHashMap("resources\\data\\Biblioteca SMARTINATOR - User Database.ser", userDatabase.getUserList());
-        sc.saveHashMap("resources\\data\\Biblioteca SMARTINATOR - Loan Database.ser", loanDatabase.getLoansList());
+        //this method needs to be made (temporarily) public
+        //sc.saveDatabase("resources\\data\\Biblioteca SMARTINATOR - Media Database.ser", mediaDatabase);
+        //sc.saveDatabase("resources\\data\\Biblioteca SMARTINATOR - User Database.ser", userDatabase);
+        //sc.saveDatabase("resources\\data\\Biblioteca SMARTINATOR - Loan Database.ser", loanDatabase);
     }
 
 

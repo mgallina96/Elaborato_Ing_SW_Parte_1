@@ -30,7 +30,6 @@ public class LoanDatabase implements Serializable, Database {
     private LoanDatabase() {
         this.loans = new HashMap<>();
         logger = Logger.getLogger(this.getClass().getName());
-        loadLoanDatabase();
 
         sweep();
     }

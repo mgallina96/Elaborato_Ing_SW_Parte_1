@@ -13,16 +13,13 @@ import main.utility.exceptions.WrongPasswordException;
 import main.utility.notifications.Notifications;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.RandomAccessFile;
+import java.io.*;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import static main.utility.GlobalParameters.*;
 
 /**
@@ -44,8 +41,11 @@ public class SystemController implements UserController, MediaController, LoanCo
     //Singleton constructor, private to prevent instantiation.
     private SystemController() {
         userDatabase = UserDatabase.getInstance();
+        loadDatabase(USER_DATABASE_FILE_PATH);
         mediaDatabase = MediaDatabase.getInstance();
+        loadDatabase(MEDIA_DATABASE_FILE_PATH);
         loanDatabase = LoanDatabase.getInstance();
+        loadDatabase(LOAN_DATABASE_FILE_PATH);
 
         logger = Logger.getLogger(this.getClass().getName());
     }
@@ -263,10 +263,10 @@ public class SystemController implements UserController, MediaController, LoanCo
 
     private <D extends Database> void saveDatabase(String path, @NotNull D database) {
         try (
-            //to increase serializing speed
-            RandomAccessFile raf = new RandomAccessFile(path, "rw");
-            FileOutputStream fileOut = new FileOutputStream(raf.getFD());
-            ObjectOutputStream out = new ObjectOutputStream(fileOut)
+                //to increase serializing speed
+                RandomAccessFile raf = new RandomAccessFile(path, "rw");
+                FileOutputStream fileOut = new FileOutputStream(raf.getFD());
+                ObjectOutputStream out = new ObjectOutputStream(fileOut)
         ) {
             out.writeObject(database);
         }
@@ -275,4 +275,33 @@ public class SystemController implements UserController, MediaController, LoanCo
         }
     }
 
+    /**
+     * Opens a .ser serializable file and loads its contents into this {@link UserDatabase} class.<p>
+     * This method loads a {@code HashMap} containing all subscribed users.
+     */
+    @SuppressWarnings("unchecked")
+    private void loadDatabase(String path) {
+        try (
+            FileInputStream fileIn = new FileInputStream(path);
+            ObjectInputStream in = new ObjectInputStream(fileIn)
+        ) {
+            Object database = in.readObject();
+
+            if(database instanceof UserDatabase)
+                userDatabase = (UserDatabase)database;
+            else if(database instanceof MediaDatabase)
+                mediaDatabase = (MediaDatabase)database;
+            else if(database instanceof LoanDatabase)
+                loanDatabase = (LoanDatabase)database;
+        }
+        catch(FileNotFoundException fnfEx) {
+            logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND + this.getClass().getName());
+        }
+        catch(IOException ioEx) {
+            logger.log(Level.SEVERE, Notifications.ERR_LOADING_DATABASE + this.getClass().getName());
+        }
+        catch(ClassNotFoundException cnfEx) {
+            logger.log(Level.SEVERE, Notifications.ERR_CLASS_NOT_FOUND + this.getClass().getName());
+        }
+    }
 }
