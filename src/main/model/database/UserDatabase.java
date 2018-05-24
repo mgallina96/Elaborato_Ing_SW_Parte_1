@@ -19,7 +19,7 @@ import static main.utility.GlobalParameters.USER_DATABASE_FILE_PATH;
  *
  * @author Manuel Gallina, Alessandro Polcini
  */
-public class UserDatabase implements Serializable {
+public class UserDatabase implements Serializable, Database {
 
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -5681387677098150051L;
@@ -88,6 +88,10 @@ public class UserDatabase implements Serializable {
         return allUsers.toString();
     }
 
+    private static void setUserDatabase(UserDatabase userDatabase) {
+        UserDatabase.userDatabase = userDatabase;
+    }
+
     public HashMap<String, User> getUserList() {
         return userList;
     }
@@ -106,7 +110,7 @@ public class UserDatabase implements Serializable {
             FileInputStream fileIn = new FileInputStream(USER_DATABASE_FILE_PATH);
             ObjectInputStream in = new ObjectInputStream(fileIn)
         ) {
-            this.userList = (HashMap<String, User>) in.readObject();
+            setUserDatabase((UserDatabase)in.readObject());
         }
         catch(FileNotFoundException fnfEx) {
             logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND + this.getClass().getName());

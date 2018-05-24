@@ -1,4 +1,5 @@
 package main.controller;
+import main.model.database.Database;
 import main.model.database.LoanDatabase;
 import main.model.database.MediaDatabase;
 import main.model.database.UserDatabase;
@@ -10,6 +11,8 @@ import main.model.user.User;
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.exceptions.WrongPasswordException;
 import main.utility.notifications.Notifications;
+import org.jetbrains.annotations.NotNull;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -83,7 +86,7 @@ public class SystemController implements UserController, MediaController, LoanCo
 
         if(!userDatabase.isPresent(c)) {
             userDatabase.addUser(c);
-            saveHashMap(USER_DATABASE_FILE_PATH, userDatabase.getUserList());
+            saveDatabase(USER_DATABASE_FILE_PATH, userDatabase);
             return true;
         }
 
@@ -95,7 +98,7 @@ public class SystemController implements UserController, MediaController, LoanCo
 
         if(!mediaDatabase.isMatchingMedia(b)) {
             mediaDatabase.addMedia(b, path);
-            mediaDatabase.saveMediaDatabase();
+            saveDatabase(MEDIA_DATABASE_FILE_PATH, mediaDatabase);
             return true;
         }
 
@@ -107,9 +110,9 @@ public class SystemController implements UserController, MediaController, LoanCo
 
         if(toLend.isAvailable()) {
             loanDatabase.addLoan(userDatabase.getCurrentUser(), toLend);
-            mediaDatabase.saveMediaDatabase();
-            saveHashMap(USER_DATABASE_FILE_PATH, userDatabase.getUserList());
-            saveHashMap(LOAN_DATABASE_FILE_PATH, loanDatabase.getLoansList());
+            saveDatabase(MEDIA_DATABASE_FILE_PATH, mediaDatabase);
+            saveDatabase(USER_DATABASE_FILE_PATH, userDatabase);
+            saveDatabase(LOAN_DATABASE_FILE_PATH, loanDatabase);
             return true;
         }
 
@@ -205,10 +208,22 @@ public class SystemController implements UserController, MediaController, LoanCo
     }
 
     public boolean renewSubscription() {
-        if(userDatabase.getCurrentUser() instanceof Customer)
-            return ((Customer)userDatabase.getCurrentUser()).renewSubscription();
-        else
+        try {
+            Customer customer = (Customer) userDatabase.getCurrentUser();
+
+            GregorianCalendar correctedExpiryDate = (GregorianCalendar) (customer.getExpiryDate().clone());
+            correctedExpiryDate.add(Calendar.DATE, -RENEWAL_BOUNDARY_IN_DAYS);
+
+            if (new GregorianCalendar().after(correctedExpiryDate)) {
+                customer.renewSubscription();
+                return true;
+            }
+        }
+        catch(ClassCastException ccEx) {
             throw new IllegalArgumentException();
+        }
+
+        return false;
     }
 
     public String dateDetails() {
@@ -246,17 +261,17 @@ public class SystemController implements UserController, MediaController, LoanCo
         return mediaDatabase.getFolderContents(folderPath);
     }
 
-    public void saveHashMap(String path, HashMap h) {
+    private <D extends Database> void saveDatabase(String path, @NotNull D database) {
         try (
             //to increase serializing speed
             RandomAccessFile raf = new RandomAccessFile(path, "rw");
             FileOutputStream fileOut = new FileOutputStream(raf.getFD());
             ObjectOutputStream out = new ObjectOutputStream(fileOut)
         ) {
-            out.writeObject(h);
+            out.writeObject(database);
         }
         catch(IOException ioEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + this.getClass().getName());
+            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + database.getClass().getName());
         }
     }
 

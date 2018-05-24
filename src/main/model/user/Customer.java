@@ -1,4 +1,5 @@
 package main.model.user;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import static main.utility.GlobalParameters.*;
@@ -19,16 +20,7 @@ public class Customer extends User {
 
     private GregorianCalendar subscriptionDate;
     private GregorianCalendar expiryDate;
-
-    /**
-     * Constructor that builds a new {@code Customer} object using the given parameters.
-     *
-     * @param birthday The customer's birthday, in {@code GregorianCalendar} form.
-     */
-    public Customer(GregorianCalendar birthday) {
-        super(birthday);
-        this.subscriptionDate = new GregorianCalendar();
-    }
+    private ArrayList<GregorianCalendar> renewalDates;
 
     /**
      * Constructor that builds a new {@code Customer} object using the given parameters.
@@ -57,6 +49,7 @@ public class Customer extends User {
         super(firstName, lastName, username, password, birthday);
         super.setUserStatus(UserStatus.CUSTOMER);
 
+        this.renewalDates = new ArrayList<>();
         this.subscriptionDate = subscriptionDate;
         expiryDate = (GregorianCalendar)(subscriptionDate.clone());
         expiryDate.add(Calendar.YEAR, EXPIRY_TIME_IN_YEARS);
@@ -81,18 +74,20 @@ public class Customer extends User {
     }
 
     /**
+     * Returns the list of renewals.
+     *
+     * @return the list of renewals.
+     */
+    public ArrayList<GregorianCalendar> getRenewalDate() {
+        return renewalDates;
+    }
+
+    /**
      * Renews the subscription by x years, where x is a static final integer value defined in the {@link Customer}
      * class. This value is equal to 5 now.
      */
-    public boolean renewSubscription() {
-        GregorianCalendar expiryDateMinus10 = (GregorianCalendar)expiryDate.clone();
-        expiryDateMinus10.add(Calendar.DATE, -RENEWAL_BOUNDARY_IN_DAYS);
-
-        if(new GregorianCalendar().after(expiryDateMinus10)) {
-            expiryDate.add(Calendar.YEAR, EXPIRY_TIME_IN_YEARS);
-            return true;
-        }
-
-        return false;
+    public void renewSubscription() {
+        expiryDate.add(Calendar.YEAR, EXPIRY_TIME_IN_YEARS);
+        renewalDates.add(new GregorianCalendar());
     }
 }

@@ -263,7 +263,7 @@ public class Notifications {
                 PROMPT_BIRTHDAY = "Birthday (accepted format = DD/MM/YYYY): ";
                 PROMPT_PRESENT_USER_MULTIPLE_CHOICE = "(1) EXIT WITHOUT SAVING\t|\t(2) CHANGE FIELDS";
                 PROMPT_BIBLIO_INITIAL_CHOICES = "(1) LOGIN\t|\t(2) SIGN UP\t|\t(3) EXIT";
-                PROMPT_OPERATOR_CHOICES = "(1) ADD A MEDIA ITEM\t|\t(2) REMOVE A MEDIA ITEM\t|\t(3) SHOW MEDIA ITEMS BY FOLDER\t|\t(4) SEARCH FOR MEDIA ITEMS\t|\t(5) SHOW ALL SUBSCRIBED USERS\t|\t(6) SHOW ALL LOANS\t|\t(7) LOGOUT";
+                PROMPT_OPERATOR_CHOICES = "(1) ADD A MEDIA ITEM\t|\t(2) REMOVE A MEDIA ITEM\t|\t(3) SHOW MEDIA ITEMS BY FOLDER\t|\t(4) SEARCH FOR MEDIA ITEMS\t|\t(5) SHOW ALL SUBSCRIBED USERS\t|\t(6) SHOW ALL LOANS\t|\t(7) SHOW APPLICATION HISTORY\t|\t(8) LOGOUT";
                 PROMPT_CUSTOMER_CHOICES = "(1) RENEW YOUR SUBSCRIPTION!\t|\t(2) REQUEST A LOAN\t|\t(3) EXTEND YOUR LOAN\t|\t(4) SEARCH FOR MEDIA ITEMS\t|\t(5) LOGOUT";
                 PROMPT_SIGN_UP_CONFIRMATION = "Are you sure you want to submit this form? (y/n)";
                 PROMPT_REMOVE_CONFIRMATION = "Are you sure you want to remove this media item? (y/n)";

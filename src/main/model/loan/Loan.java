@@ -3,6 +3,7 @@ import main.model.media.Media;
 import main.model.user.User;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -22,6 +23,7 @@ public class Loan implements Serializable {
     private int extensionRestrictionInDays;
     private GregorianCalendar loanDate;
     private GregorianCalendar loanExpiry;
+    private ArrayList<GregorianCalendar> extensionDates;
 
     public Loan(User user, Media media) {
         this.user = user;
@@ -31,6 +33,7 @@ public class Loan implements Serializable {
         this.loanDate = new GregorianCalendar();
         this.loanExpiry = new GregorianCalendar();
         this.loanExpiry.add(Calendar.DATE, EXPIRY_TIME_IN_DAYS);
+        this.extensionDates = new ArrayList<>();
     }
 
     public boolean hasExpired() {
@@ -42,7 +45,10 @@ public class Loan implements Serializable {
     }
 
     public void extend() {
-        loanExpiry.add(Calendar.DATE, media.getExtensionRestriction());
+        if(media.isAvailable()) {
+            loanExpiry.add(Calendar.DATE, media.getExtensionRestriction());
+            extensionDates.add(new GregorianCalendar());
+        }
     }
 
     public GregorianCalendar getLoanExpiry() {
@@ -63,5 +69,9 @@ public class Loan implements Serializable {
 
     public String toString() {
         return String.format("Loan -> Media item: %s\tUser: %s", media.toString(), user.toString());
+    }
+
+    public ArrayList<GregorianCalendar> getExtensionDates() {
+        return extensionDates;
     }
 }

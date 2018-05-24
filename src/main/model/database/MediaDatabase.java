@@ -15,7 +15,7 @@ import static main.utility.GlobalParameters.MEDIA_DATABASE_FILE_PATH;
  *
  * @author Manuel Gallina, Alessandro Polcini
  */
-public class MediaDatabase implements Serializable {
+public class MediaDatabase implements Serializable, Database {
 
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -5687383377098150051L;
@@ -51,7 +51,7 @@ public class MediaDatabase implements Serializable {
     }
 
     public void removeMedia(Media toRemove) {
-        mediaList.remove(toRemove.getIdentifier());
+        mediaList.get(toRemove.getIdentifier()).setUnavailable();
     }
 
     public boolean isMatchingMedia(Media toFind) {
@@ -101,6 +101,10 @@ public class MediaDatabase implements Serializable {
         return folderContents.toString();
     }
 
+    private static void setMediaDatabase(MediaDatabase mediaDatabase) {
+        MediaDatabase.mediaDatabase = mediaDatabase;
+    }
+
     void setMediaList(HashMap<Integer, Media> mediaList) {
         this.mediaList = mediaList;
     }
@@ -131,7 +135,7 @@ public class MediaDatabase implements Serializable {
             FileInputStream fileIn = new FileInputStream(MEDIA_DATABASE_FILE_PATH);
             ObjectInputStream in = new ObjectInputStream(fileIn)
         ) {
-            this.mediaList = (HashMap<Integer, Media>) in.readObject();
+            setMediaDatabase((MediaDatabase)in.readObject());
             setCounter(Integer.parseInt((String)in.readObject()));
         }
         catch(FileNotFoundException fnfEx) {

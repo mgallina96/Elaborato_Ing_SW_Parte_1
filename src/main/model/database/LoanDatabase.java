@@ -4,6 +4,8 @@ import main.model.media.Media;
 import main.model.user.User;
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.notifications.Notifications;
+
+import javax.xml.crypto.Data;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +17,7 @@ import static main.utility.GlobalParameters.LOAN_DATABASE_FILE_PATH;
 /**
  * Database which contains a record of all loans.
  */
-public class LoanDatabase implements Serializable {
+public class LoanDatabase implements Serializable, Database {
 
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -2599493317418350651L;
@@ -92,6 +94,10 @@ public class LoanDatabase implements Serializable {
         }
     }
 
+    private static void setLoanDatabase(LoanDatabase loanDatabase) {
+        LoanDatabase.loanDatabase = loanDatabase;
+    }
+
     public HashMap<String, ArrayList<Loan>> getLoansList() {
         return loans;
     }
@@ -106,7 +112,7 @@ public class LoanDatabase implements Serializable {
             FileInputStream fileIn = new FileInputStream(LOAN_DATABASE_FILE_PATH);
             ObjectInputStream in = new ObjectInputStream(fileIn)
         ) {
-            this.loans = ((HashMap<String, ArrayList<Loan>>) in.readObject());
+            setLoanDatabase((LoanDatabase)in.readObject());
         }
         catch(FileNotFoundException fnfEx) {
             logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND + this.getClass().getName());

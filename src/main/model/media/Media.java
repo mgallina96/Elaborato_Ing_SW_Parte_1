@@ -32,6 +32,7 @@ public class Media implements Serializable {
     private int extensionRestriction;
     private int loanLimit;
     private String type;
+    private boolean available;
 
     /**
      * Constructor for the {@code Media} class. Builds a new {@code Media} item with its own unique item ID.
@@ -78,6 +79,7 @@ public class Media implements Serializable {
         this.extensionRestriction = extensionRestriction;
         this.loanLimit = loanLimit;
         this.type = "MEDIA";
+        this.available = true;
     }
 
     /**
@@ -187,14 +189,14 @@ public class Media implements Serializable {
      * @return A boolean value, {@code true} if this media item is available, {@code false} otherwise.
      */
     public boolean isAvailable() {
-        return licenses > 0;
+        return licenses > 0 && this.available;
     }
 
     /**
      * Decrements the counter for the licences. It's the logical equivalent of lending a media item.
      */
     public void lend(){
-        if(licenses > 0)
+        if(isAvailable())
             licenses--;
     }
 
@@ -222,5 +224,9 @@ public class Media implements Serializable {
 
     public String getType() {
         return type;
+    }
+
+    public void setUnavailable() {
+        this.available = false;
     }
 }
