@@ -35,6 +35,7 @@ public class Notifications {
     public static String MSG_BORROW_SUCCESSFUL;
     public static String MSG_LOAN_LIST_ALL;
     public static String MSG_LOAN_LIST_SINGLE;
+    public static String MSG_EXTEND_SUCCESSFUL;
 
     //PROMPTS
     public static String PROMPT_FIRST_NAME;
@@ -96,6 +97,7 @@ public class Notifications {
     public static String ERR_USER_NOT_PRESENT;
     public static String ERR_WRONG_PASSWORD;
     public static String ERR_LOAN_LIST_EMPTY;
+    public static String ERR_CANNOT_EXTEND;
 
     //generic useful messages
     public static final String SEPARATOR = "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
@@ -168,6 +170,7 @@ public class Notifications {
                 MSG_BORROW_SUCCESSFUL = "Il media è stato preso in prestito!";
                 MSG_LOAN_LIST_ALL = "Ecco la lista di tutti i prestiti effettuati agli utenti seguenti: ";
                 MSG_LOAN_LIST_SINGLE = "Ecco la lista dei tuoi prestiti: ";
+                MSG_EXTEND_SUCCESSFUL = "Prestito prorogato correttamente.";
                 PROMPT_FIRST_NAME = "Nome (si prega di inserire un nome valido): ";
                 PROMPT_LAST_NAME = "Cognome (si prega di inserire un cognome valido): ";
                 PROMPT_USERNAME = "Username: ";
@@ -225,6 +228,7 @@ public class Notifications {
                 ERR_USER_NOT_PRESENT = "Il nome utente inserito non è presente. Si prega di verificare che il nome utente sia corretto, oppure di registrarsi.";
                 ERR_WRONG_PASSWORD = "Password errata.";
                 ERR_LOAN_LIST_EMPTY = "Non hai effettuato alcun prestito";
+                ERR_CANNOT_EXTEND = "È troppo presto per estendere questo prestito.";
             }
         },
         ENGLISH {
@@ -251,6 +255,7 @@ public class Notifications {
                 MSG_BORROW_SUCCESSFUL = "Media item successfully borrowed!";
                 MSG_LOAN_LIST_ALL = "Here's the list of all loans that have been granted to the following users: ";
                 MSG_LOAN_LIST_SINGLE = "Here's the list of your loans: ";
+                MSG_EXTEND_SUCCESSFUL = "Loan extended successfully.";
                 PROMPT_FIRST_NAME = "First name (please insert a valid first name): ";
                 PROMPT_LAST_NAME = "Last name (please insert a valid last name): ";
                 PROMPT_USERNAME = "Username: ";
@@ -308,6 +313,7 @@ public class Notifications {
                 ERR_USER_NOT_PRESENT = "The requested username couldn't be found. Please check the spelling or sign up.";
                 ERR_WRONG_PASSWORD = "Wrong password.";
                 ERR_LOAN_LIST_EMPTY = "There are no loans associated to this user.";
+                ERR_CANNOT_EXTEND = "It's too early to extend this loan.";
             }
         }
     }

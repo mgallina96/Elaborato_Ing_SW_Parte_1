@@ -37,15 +37,12 @@ public class Loan implements Serializable {
         return (new GregorianCalendar().after(loanExpiry));
     }
 
-    public boolean canBeExtended() {
-        GregorianCalendar correctedLoanExpiry = (GregorianCalendar)loanExpiry.clone();
-        correctedLoanExpiry.add(Calendar.DATE, -extensionRestrictionInDays);
-
-        return !hasExpired() && (new GregorianCalendar()).after(correctedLoanExpiry);
-    }
-
     public GregorianCalendar getLoanDate() {
         return loanDate;
+    }
+
+    public void extend() {
+        loanExpiry.add(Calendar.DATE, media.getExtensionRestriction());
     }
 
     public GregorianCalendar getLoanExpiry() {

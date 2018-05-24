@@ -170,7 +170,17 @@ public class SystemController implements UserController, MediaController, LoanCo
     }
 
     public void extendLoan(int mediaID) {
-
+        try {
+            for(Loan l : loanDatabase.getUserLoans(userDatabase.getCurrentUser())) {
+                if(l.getMedia().getIdentifier() == mediaID) {
+                    l.extend();
+                    break;
+                }
+            }
+        }
+        catch(Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public int daysLeftToRenew(String username) throws UserNotFoundException {

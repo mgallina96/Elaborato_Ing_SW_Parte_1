@@ -4,6 +4,7 @@ import main.controller.FileSystemController;
 import main.controller.FileSystemManager;
 import main.controller.SystemController;
 import main.gui.GuiManager;
+import main.gui.graphic.GraphicView;
 import main.gui.textual.TextualView;
 import main.utility.notifications.Notifications;
 
@@ -30,6 +31,7 @@ public class Main {
 
         GuiManager textualView = new TextualView(CONTROLLER, FILE_SYSTEM_CONTROLLER);
         textualView.mainScreen();
-        //GuiManager graphicalView = new GraphicView(CONTROLLER, FILE_SYSTEM_CONTROLLER);
+//        GuiManager graphicalView = new GraphicView(CONTROLLER, FILE_SYSTEM_CONTROLLER);
+//        graphicalView.mainScreen();
     }
 }
