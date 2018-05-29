@@ -79,3 +79,5 @@ Y
 )src/main/model/database/LoanDatabase.java,1\e\1e4182559b46e7d8cfeea32e9288186d87bfe536
 Y
 )src/main/controller/SystemController.java,6\6\66d39a051e5aba58b34c367bf4621e759590de90
+`
+0src/generators/mediagenerator/FilmGenerator.java,2\6\267d878199cf45be72add51192dad5bd6855c5f1

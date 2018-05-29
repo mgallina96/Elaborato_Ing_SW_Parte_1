@@ -36,6 +36,7 @@ public class Notifications {
     public static String MSG_LOAN_LIST_ALL;
     public static String MSG_LOAN_LIST_SINGLE;
     public static String MSG_EXTEND_SUCCESSFUL;
+    public static String MSG_LOANS_IN_YEAR;
 
     //PROMPTS
     public static String PROMPT_FIRST_NAME;
@@ -172,6 +173,7 @@ public class Notifications {
                 MSG_LOAN_LIST_ALL = "Ecco la lista di tutti i prestiti effettuati agli utenti seguenti: ";
                 MSG_LOAN_LIST_SINGLE = "Ecco la lista dei tuoi prestiti: ";
                 MSG_EXTEND_SUCCESSFUL = "Prestito prorogato correttamente.";
+                MSG_LOANS_IN_YEAR = "Prestiti effettuati nell'anno ";
                 PROMPT_FIRST_NAME = "Nome (si prega di inserire un nome valido): ";
                 PROMPT_LAST_NAME = "Cognome (si prega di inserire un cognome valido): ";
                 PROMPT_USERNAME = "Username: ";
@@ -258,6 +260,7 @@ public class Notifications {
                 MSG_LOAN_LIST_ALL = "Here's the list of all loans that have been granted to the following users: ";
                 MSG_LOAN_LIST_SINGLE = "Here's the list of your loans: ";
                 MSG_EXTEND_SUCCESSFUL = "Loan extended successfully.";
+                MSG_LOANS_IN_YEAR = "Loans granted in the year ";
                 PROMPT_FIRST_NAME = "First name (please insert a valid first name): ";
                 PROMPT_LAST_NAME = "Last name (please insert a valid last name): ";
                 PROMPT_USERNAME = "Username: ";

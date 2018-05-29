@@ -166,10 +166,7 @@ public class OperatorScreen extends Screen {
     }
 
     private void showHistory() {
-        System.out.println(getLoanController().getLoansByYear(2015));
-        System.out.println(getLoanController().getLoansByYear(2016));
-        System.out.println(getLoanController().getLoansByYear(2017));
-        System.out.println(getLoanController().getLoansByYear(2018));
+
     }
 
 }

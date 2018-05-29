@@ -60,8 +60,17 @@ public class Customer extends User {
      *
      * @return the subscription date in {@code GregorianCalendar} form.
      */
-    public GregorianCalendar getSubscriptionDate() {
+    public GregorianCalendar getSubscriptionDateGregorian() {
         return subscriptionDate;
+    }
+
+    /**
+     * The getter for the exact date and time the customer first signed up.
+     *
+     * @return the subscription date in form of a {@code String}.
+     */
+    public String getSubscriptionDate() {
+        return subscriptionDate.toZonedDateTime().toString().substring(0, 10);
     }
 
     /**
@@ -69,8 +78,17 @@ public class Customer extends User {
      *
      * @return the expiry date in {@code GregorianCalendar} form.
      */
-    public GregorianCalendar getExpiryDate() {
+    public GregorianCalendar getExpiryDateGregorian() {
         return expiryDate;
+    }
+
+    /**
+     * The getter for the date when the customer's subscription expires.
+     *
+     * @return the expiry date in form of a {@code String}.
+     */
+    public String getExpiryDate() {
+        return expiryDate.toZonedDateTime().toString().substring(0, 10);
     }
 
     /**

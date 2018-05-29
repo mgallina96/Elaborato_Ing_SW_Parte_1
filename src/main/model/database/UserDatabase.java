@@ -6,6 +6,7 @@ import main.utility.notifications.Notifications;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -87,6 +88,24 @@ public class UserDatabase implements Serializable, Database {
         return allUsers.toString();
     }
 
+    public String getUsersByYear(int year) {
+        StringBuilder usersByYear = new StringBuilder();
+
+        userList.forEach((userName, user) -> {
+            if(user instanceof Customer) {
+                if(((Customer)user).getSubscriptionDateGregorian().get(Calendar.YEAR) == year)
+                    usersByYear
+                            .append("User <")
+                            .append(userName)
+                            .append(">\tSubscription date: ")
+                            .append(((Customer)user).getSubscriptionDate());
+            }
+
+        });
+
+        return usersByYear.toString();
+    }
+
     private static void setUserDatabase(UserDatabase userDatabase) {
         UserDatabase.userDatabase = userDatabase;
     }
@@ -131,7 +150,7 @@ public class UserDatabase implements Serializable, Database {
 
         userList.values().stream()
                 .filter(u -> u instanceof Customer)
-                .filter(c -> today.after(((Customer)c).getExpiryDate()))
+                .filter(c -> today.after(((Customer)c).getExpiryDateGregorian()))
                 .forEach(c -> toRemove.add(c.getUsername()));
 
         for(String s : toRemove)

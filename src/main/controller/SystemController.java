@@ -15,15 +15,13 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static main.utility.GlobalParameters.*;
-import static main.utility.notifications.Notifications.ERR_NO_LOANS_IN_YEAR;
+import static main.utility.notifications.Notifications.SEPARATOR;
 
 /**
  * Controller class that manages any kind of interaction between the graphical user interface
@@ -195,7 +193,7 @@ public class SystemController implements UserController, MediaController, LoanCo
 
             int days = (int)Math.abs(ChronoUnit.DAYS.between(
                     new GregorianCalendar().toInstant(),
-                    ((Customer)user).getExpiryDate().toInstant()));
+                    ((Customer)user).getExpiryDateGregorian().toInstant()));
 
             if(days <= RENEWAL_BOUNDARY_IN_DAYS)
                 return days;
@@ -214,7 +212,7 @@ public class SystemController implements UserController, MediaController, LoanCo
         try {
             Customer customer = (Customer) userDatabase.getCurrentUser();
 
-            GregorianCalendar correctedExpiryDate = (GregorianCalendar) (customer.getExpiryDate().clone());
+            GregorianCalendar correctedExpiryDate = (GregorianCalendar) (customer.getExpiryDateGregorian().clone());
             correctedExpiryDate.add(Calendar.DATE, -RENEWAL_BOUNDARY_IN_DAYS);
 
             if (new GregorianCalendar().after(correctedExpiryDate)) {
@@ -234,8 +232,8 @@ public class SystemController implements UserController, MediaController, LoanCo
         return (u instanceof Customer) ?
                 String.format("Reminder:\n\tYou subscribed on %s\n\tYour subscription expires on %s\n\tYou're not " +
                                 "allowed to renew your subscription until 10 days before the expiry date.",
-                        ((Customer)u).getSubscriptionDate().toZonedDateTime().toString().substring(0, 10),
-                        ((Customer)u).getExpiryDate().toZonedDateTime().toString().substring(0, 10)) :
+                        ((Customer)u).getSubscriptionDate(),
+                        ((Customer)u).getExpiryDate()) :
                 "";
     }
 
@@ -308,26 +306,30 @@ public class SystemController implements UserController, MediaController, LoanCo
         }
     }
 
-    public String getLoansByYear(int year) {
+
+    /* ---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO
+    public String getLoansByYear(int from, int to) {
         StringBuilder loansByYear = new StringBuilder();
-        int len;
 
-        for(ArrayList<Loan> loans : loanDatabase.getLoansList().values()) {
-            len = loans.size();
-            Loan currentLoan = loans.get(0);
-            if(currentLoan.getLoanDate().get(Calendar.YEAR) == year) {
-                loansByYear.append("User <").append(currentLoan.getUser().getUsername()).append(">\n");
-                loansByYear.append("\t").append(currentLoan.toEssentialString());
-            }
+        for(int year = from; year <= to; year++)
+            loansByYear
+                    .append(loanDatabase.getLoansByYear(year))
+                    .append(SEPARATOR)
+                    .append("\n");
 
-            for(int i = 1; i < len; i++) {
-                currentLoan = loans.get(i);
-                if(currentLoan.getLoanDate().get(Calendar.YEAR) == year) {
-                    loansByYear.append("\t").append(currentLoan.toEssentialString());
-                }
-            }
-        }
-
-        return loansByYear.length() > 0 ? loansByYear.toString() : (ERR_NO_LOANS_IN_YEAR + year);
+        return loansByYear.toString();
     }
+
+    public String getUsersByYear(int from, int to) {
+        StringBuilder usersByYear = new StringBuilder();
+
+        for(int year = from; year <= to; year++)
+            usersByYear
+                    .append(userDatabase.getUsersByYear(year))
+                    .append(SEPARATOR)
+                    .append("\n");
+
+        return usersByYear.toString();
+    }
+    */
 }

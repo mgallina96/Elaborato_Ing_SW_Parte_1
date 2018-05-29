@@ -8,11 +8,15 @@ import main.utility.notifications.Notifications;
 import javax.xml.crypto.Data;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static main.utility.GlobalParameters.LOAN_DATABASE_FILE_PATH;
+import static main.utility.notifications.Notifications.ERR_NO_LOANS_IN_YEAR;
+import static main.utility.notifications.Notifications.MSG_LOANS_IN_YEAR;
+import static main.utility.notifications.Notifications.SEPARATOR;
 
 /**
  * Database which contains a record of all loans.
@@ -122,6 +126,38 @@ public class LoanDatabase implements Serializable, Database {
         catch(ClassNotFoundException cnfEx) {
             logger.log(Level.SEVERE, Notifications.ERR_CLASS_NOT_FOUND + this.getClass().getName());
         }
+    }
+
+    public String getLoansByYear(int year) {
+        StringBuilder loansByYear = new StringBuilder();
+        int len;
+
+        String start = String.format("%s%d:%n", MSG_LOANS_IN_YEAR, year);
+
+        for(ArrayList<Loan> loanValues : loans.values()) {
+            len = loanValues.size();
+            Loan currentLoan = loanValues.get(0);
+
+            if(currentLoan.getLoanDate().get(Calendar.YEAR) == year)
+                loansByYear
+                        .append("User <")
+                        .append(currentLoan.getUser().getUsername())
+                        .append(">\n\t")
+                        .append(currentLoan.toEssentialString());
+
+            for(int i = 1; i < len; i++) {
+                currentLoan = loanValues.get(i);
+
+                if(currentLoan.getLoanDate().get(Calendar.YEAR) == year)
+                    loansByYear
+                            .append("\t")
+                            .append(currentLoan.toEssentialString());
+            }
+        }
+
+        return loansByYear.length() > 0 ?
+                start + loansByYear.toString() :
+                (ERR_NO_LOANS_IN_YEAR + year + "\n");
     }
 
     private void sweep() {
