@@ -98,6 +98,7 @@ public class Notifications {
     public static String ERR_WRONG_PASSWORD;
     public static String ERR_LOAN_LIST_EMPTY;
     public static String ERR_CANNOT_EXTEND;
+    public static String ERR_NO_LOANS_IN_YEAR;
 
     //generic useful messages
     public static final String SEPARATOR = "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
@@ -229,6 +230,7 @@ public class Notifications {
                 ERR_WRONG_PASSWORD = "Password errata.";
                 ERR_LOAN_LIST_EMPTY = "Non hai effettuato alcun prestito";
                 ERR_CANNOT_EXTEND = "È troppo presto per estendere questo prestito.";
+                ERR_NO_LOANS_IN_YEAR = "Non sono stati effettuati prestiti nell'anno ";
             }
         },
         ENGLISH {
@@ -314,6 +316,7 @@ public class Notifications {
                 ERR_WRONG_PASSWORD = "Wrong password.";
                 ERR_LOAN_LIST_EMPTY = "There are no loans associated to this user.";
                 ERR_CANNOT_EXTEND = "It's too early to extend this loan.";
+                ERR_NO_LOANS_IN_YEAR = "No loans were made in the year ";
             }
         }
     }

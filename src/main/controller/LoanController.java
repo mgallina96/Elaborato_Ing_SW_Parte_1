@@ -39,4 +39,11 @@ public interface LoanController extends Controller {
      * @param mediaID
      */
     void extendLoan(int mediaID);
+
+    /**
+     *
+     * @param year
+     * @return
+     */
+    String getLoansByYear(int year);
 }

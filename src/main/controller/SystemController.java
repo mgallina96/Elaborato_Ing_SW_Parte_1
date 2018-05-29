@@ -15,12 +15,15 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static main.utility.GlobalParameters.*;
+import static main.utility.notifications.Notifications.ERR_NO_LOANS_IN_YEAR;
 
 /**
  * Controller class that manages any kind of interaction between the graphical user interface
@@ -303,5 +306,28 @@ public class SystemController implements UserController, MediaController, LoanCo
         catch(ClassNotFoundException cnfEx) {
             logger.log(Level.SEVERE, Notifications.ERR_CLASS_NOT_FOUND + this.getClass().getName());
         }
+    }
+
+    public String getLoansByYear(int year) {
+        StringBuilder loansByYear = new StringBuilder();
+        int len;
+
+        for(ArrayList<Loan> loans : loanDatabase.getLoansList().values()) {
+            len = loans.size();
+            Loan currentLoan = loans.get(0);
+            if(currentLoan.getLoanDate().get(Calendar.YEAR) == year) {
+                loansByYear.append("User <").append(currentLoan.getUser().getUsername()).append(">\n");
+                loansByYear.append("\t").append(currentLoan.toEssentialString());
+            }
+
+            for(int i = 1; i < len; i++) {
+                currentLoan = loans.get(i);
+                if(currentLoan.getLoanDate().get(Calendar.YEAR) == year) {
+                    loansByYear.append("\t").append(currentLoan.toEssentialString());
+                }
+            }
+        }
+
+        return loansByYear.length() > 0 ? loansByYear.toString() : (ERR_NO_LOANS_IN_YEAR + year);
     }
 }

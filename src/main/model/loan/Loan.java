@@ -68,7 +68,11 @@ public class Loan implements Serializable {
     }
 
     public String toString() {
-        return String.format("Loan -> Media item: %s\tUser: %s", media.toString(), user.toString());
+        return String.format("Loan -> Media item: %s\t\tUser: %s\t\tYear: %d%n", media.toString(), user.toString(), loanDate.get(Calendar.YEAR));
+    }
+
+    public String toEssentialString() {
+        return String.format("Media item: %s\t|\tLoan date: %s%n", media.getBareItemDetails(), loanDate.toZonedDateTime().toString().substring(0, 10));
     }
 
     public ArrayList<GregorianCalendar> getExtensionDates() {
