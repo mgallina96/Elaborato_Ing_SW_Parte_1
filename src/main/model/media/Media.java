@@ -1,6 +1,7 @@
 package main.model.media;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
@@ -17,7 +18,7 @@ public class Media implements Serializable {
     private static final int DEFAULT_MEDIA_IDENTIFIER = 0;
     private static final String DEFAULT_MEDIA_NAME = "Default";
     private static final String DEFAULT_MEDIA_PATH = "null";
-    private static final GregorianCalendar DEFAULT_DATE_ADDED = new GregorianCalendar(1970, 1, 1);
+    private static final GregorianCalendar DEFAULT_DATE_ADDED = new GregorianCalendar(1970, Calendar.JANUARY, 1);
     private static final int DEFAULT_MEDIA_LICENSES = 1;
     private static final int DEFAULT_EXTENSION_RESTRICTION = 1;
     private static final int DEFAULT_MEDIA_LOAN_LIMIT = 1;

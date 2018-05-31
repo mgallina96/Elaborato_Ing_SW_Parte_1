@@ -1,4 +1,4 @@
 
-Œsquid:S1319W"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Š¬Ş“ıÿÿÿÿ
-„squid:S1319d"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(ÛÆŠÄ
-`squid:S2147R"DCombine this catch with the one at line 79, which has the same body.(¼î‘ıÿÿÿÿ
+„squid:S1319h"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(ÛÆŠÄ
+Œsquid:S1319["pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Š¬Ş“ıÿÿÿÿ
+`squid:S2147V"DCombine this catch with the one at line 83, which has the same body.(¼î‘ıÿÿÿÿ

@@ -15,12 +15,13 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.time.temporal.ChronoUnit;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collector;
 
 import static main.utility.GlobalParameters.*;
+import static main.utility.notifications.Notifications.ERR_NO_LOANS_IN_YEAR;
 import static main.utility.notifications.Notifications.SEPARATOR;
 
 /**
@@ -262,6 +263,88 @@ public class SystemController implements UserController, MediaController, LoanCo
         return mediaDatabase.getFolderContents(folderPath);
     }
 
+    public String mostLentMediaItem(int year) {
+        int[] mults = new int[mediaDatabase.getMediaList().size()];
+
+        for(ArrayList<Loan> loans : loanDatabase.getLoansList().values()) {
+            for(Loan l : loans) {
+                if(l.getLoanDate().get(Calendar.YEAR) == year)
+                    mults[l.getMedia().getIdentifier()]++;
+            }
+        }
+
+        int max = 0;
+        int s = mediaDatabase.getMediaList().size();
+
+        for(int i : mults)
+            if(i > max)
+                max = i;
+
+        if(max == 0)
+            return ERR_NO_LOANS_IN_YEAR + year;
+
+        StringBuilder sb = new StringBuilder();
+
+        for(int i = 0; i < s; i++) {
+            if(mults[i] == max)
+                sb.append(mediaDatabase.fetch(new Media(i)).getBareItemDetails()).append("\n");
+        }
+
+        return sb.toString();
+    }
+/*      teniamolo perchè è carino
+    public String mostLentMediaItem(int year) {
+        ArrayList<Media> mediaArray = new ArrayList<>();
+
+        for(ArrayList<Loan> loans : loanDatabase.getLoansList().values())
+            for(Loan l : loans) {
+                if(l.getLoanDate().get(Calendar.YEAR) == year)
+                    mediaArray.add(l.getMedia());
+            }
+
+        mediaArray.sort(Comparator.comparing(Media::getIdentifier));
+        mediaArray.add(new Media(-1));
+
+        StringBuilder mostLentMedia = new StringBuilder();
+
+        ArrayList<ArrayList<Media>> inception = new ArrayList<>();
+        ArrayList<Media> tmp = new ArrayList<>();
+        tmp.add(new Media(38966));
+        int mediaListSize = mediaArray.size();
+
+        for(int i = 1; i < mediaListSize; i++) {
+            if(mediaArray.get(i) != mediaArray.get(i - 1)) {
+                inception.add(tmp);
+                tmp = new ArrayList<>();
+            }
+
+            tmp.add(mediaArray.get(i - 1));
+        }
+
+        inception.sort(Comparator.comparing(ArrayList::size));
+
+        HashMap<Media, Integer> mults = new HashMap<>();
+        int max = 0;
+
+        for(ArrayList<Media> am : inception) {
+            int s = am.size();
+            mults.put(am.get(0), s);
+
+            if(s > max)
+                max = s;
+        }
+
+        final int m2 = max;
+
+        mults.forEach((m, i) -> {
+            if(i == m2) {
+                mostLentMedia.append(m);
+            }
+        });
+
+        return mostLentMedia.toString();
+    }
+*/
     private <D extends Database> void saveDatabase(String path, @NotNull D database) {
         try (
                 //to increase serializing speed

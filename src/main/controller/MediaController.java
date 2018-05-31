@@ -1,5 +1,9 @@
 package main.controller;
 
+import main.model.media.Media;
+
+import java.util.ArrayList;
+
 /**
  * Interface for the Media controller, which provides methods specific to media management.
  *
@@ -47,4 +51,11 @@ public interface MediaController extends Controller {
      * @return A {@code String} with all the contents of that folder.
      */
     String getFolderContents(String folderPath);
+
+    /**
+     *
+     * @param year
+     * @return
+     */
+    String mostLentMediaItem(int year);
 }

@@ -165,7 +165,7 @@ public class LoanDatabase implements Serializable, Database {
             for(Loan l : al) {
                 if(l.hasExpired()) {
                     l.getMedia().giveBack();
-                    al.remove(l);
+                    l.setActive(false);
                 }
             }
     }

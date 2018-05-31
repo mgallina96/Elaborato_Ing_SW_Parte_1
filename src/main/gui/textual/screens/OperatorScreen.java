@@ -166,7 +166,19 @@ public class OperatorScreen extends Screen {
     }
 
     private void showHistory() {
+        long sum = 0;
+        int iterations = 10000;
 
+        for(int i = 0; i < iterations; i++) {
+            long l1 = System.currentTimeMillis();
+            getMediaController().mostLentMediaItem(2018);
+            long l2 = System.currentTimeMillis();
+            long diff = (l2 - l1);
+
+            sum += diff;
+        }
+
+        System.out.println(((double) sum / (double) iterations) + " millis");
     }
 
 }

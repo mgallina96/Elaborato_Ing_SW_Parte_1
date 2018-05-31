@@ -24,10 +24,12 @@ public class Loan implements Serializable {
     private GregorianCalendar loanDate;
     private GregorianCalendar loanExpiry;
     private ArrayList<GregorianCalendar> extensionDates;
+    private boolean isActive;
 
     public Loan(User user, Media media) {
         this.user = user;
         this.media = media;
+        this.isActive = true;
 
         this.extensionRestrictionInDays = this.media.getExtensionRestriction();
         this.loanDate = new GregorianCalendar();
@@ -77,5 +79,13 @@ public class Loan implements Serializable {
 
     public ArrayList<GregorianCalendar> getExtensionDates() {
         return extensionDates;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 }

@@ -105,7 +105,7 @@ public class MediaDatabase implements Serializable, Database {
         this.mediaList = mediaList;
     }
 
-    HashMap<Integer, Media> getMediaList() {
+    public HashMap<Integer, Media> getMediaList() {
         return mediaList;
     }
 

@@ -1,0 +1,24 @@
+
+U"squid:SwitchLastCaseIsDefaultCheck0""Add a default case to this switch.(¿Ê‘…ùÿÿÿÿ
+Csquid:S1659"'Declare "lastNames" on a separate line.(£Ü—Öýÿÿÿÿ
+Asquid:S1659"%Declare "nounsMS" on a separate line.(£Ü—Öýÿÿÿÿ
+Asquid:S1659"%Declare "nounsMP" on a separate line.(£Ü—Öýÿÿÿÿ
+Asquid:S1659"%Declare "nounsFS" on a separate line.(£Ü—Öýÿÿÿÿ
+Asquid:S1659"%Declare "nounsFP" on a separate line.(£Ü—Öýÿÿÿÿ
+Fsquid:S1659"*Declare "adjectivesMS" on a separate line.(£Ü—Öýÿÿÿÿ
+Fsquid:S1659"*Declare "adjectivesMP" on a separate line.(£Ü—Öýÿÿÿÿ
+Fsquid:S1659"*Declare "adjectivesFS" on a separate line.(£Ü—Öýÿÿÿÿ
+Fsquid:S1659"*Declare "adjectivesFP" on a separate line.(£Ü—Öýÿÿÿÿ
+Dsquid:S1659"(Declare "articlesMS" on a separate line.(Ë÷Äãÿÿÿÿÿ
+Dsquid:S1659"(Declare "articlesMP" on a separate line.(Ë÷Äãÿÿÿÿÿ
+Dsquid:S1659"(Declare "articlesFS" on a separate line.(Ë÷Äãÿÿÿÿÿ
+Dsquid:S1659"(Declare "articlesFP" on a separate line.(Ë÷Äãÿÿÿÿÿ
+Fsquid:S1659"*Declare "conjunctions" on a separate line.(Ë÷Äãÿÿÿÿÿ
+Asquid:S1659"%Declare "adverbs" on a separate line.(Ë÷Äãÿÿÿÿÿ
+Fsquid:S1659"*Declare "prepositions" on a separate line.(Ë÷Äãÿÿÿÿÿ
+Asquid:S1659"%Declare "prepsMS" on a separate line.(Ë÷Äãÿÿÿÿÿ
+Asquid:S1659"%Declare "prepsMP" on a separate line.(Ë÷Äãÿÿÿÿÿ
+Asquid:S1659"%Declare "prepsFS" on a separate line.(Ë÷Äãÿÿÿÿÿ
+Asquid:S1659"%Declare "prepsFP" on a separate line.(Ë÷Äãÿÿÿÿÿ
+?squid:S1659"#Declare "verbs" on a separate line.(Ë÷Äãÿÿÿÿÿ
+nsquid:S3776$"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(ÀÒÙ˜ûÿÿÿÿ
