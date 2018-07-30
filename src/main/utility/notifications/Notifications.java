@@ -37,7 +37,9 @@ public class Notifications {
     public static String MSG_LOAN_LIST_SINGLE;
     public static String MSG_EXTEND_SUCCESSFUL;
     public static String MSG_LOANS_IN_YEAR;
-
+    public static String MSG_USER_LOANS_IN_YEAR;
+    public static String MSG_EXTENSIONS_IN_YEAR;
+    public static String MSG_MOST_LENT_MEDIA_IN_YEAR;
     //PROMPTS
     public static String PROMPT_FIRST_NAME;
     public static String PROMPT_LAST_NAME;
@@ -173,7 +175,10 @@ public class Notifications {
                 MSG_LOAN_LIST_ALL = "Ecco la lista di tutti i prestiti effettuati agli utenti seguenti: ";
                 MSG_LOAN_LIST_SINGLE = "Ecco la lista dei tuoi prestiti: ";
                 MSG_EXTEND_SUCCESSFUL = "Prestito prorogato correttamente.";
-                MSG_LOANS_IN_YEAR = "Prestiti effettuati nell'anno ";
+                MSG_LOANS_IN_YEAR = "Numero di prestiti per anno solare: ";
+                MSG_EXTENSIONS_IN_YEAR = "Numero di proroghe per anno solare: ";
+                MSG_USER_LOANS_IN_YEAR = "Numero di prestiti per utente per anno solare: ";
+                MSG_MOST_LENT_MEDIA_IN_YEAR = "Media maggiormente concesso in prestito per anno solare: ";
                 PROMPT_FIRST_NAME = "Nome (si prega di inserire un nome valido): ";
                 PROMPT_LAST_NAME = "Cognome (si prega di inserire un cognome valido): ";
                 PROMPT_USERNAME = "Username: ";
@@ -260,7 +265,10 @@ public class Notifications {
                 MSG_LOAN_LIST_ALL = "Here's the list of all loans that have been granted to the following users: ";
                 MSG_LOAN_LIST_SINGLE = "Here's the list of your loans: ";
                 MSG_EXTEND_SUCCESSFUL = "Loan extended successfully.";
-                MSG_LOANS_IN_YEAR = "Loans granted in the year ";
+                MSG_LOANS_IN_YEAR = "Number of loans by year: ";
+                MSG_MOST_LENT_MEDIA_IN_YEAR = "The most lent media by year: ";
+                MSG_EXTENSIONS_IN_YEAR = "Number of extensions by year: ";
+                MSG_USER_LOANS_IN_YEAR = "Number of user loans by year: ";
                 PROMPT_FIRST_NAME = "First name (please insert a valid first name): ";
                 PROMPT_LAST_NAME = "Last name (please insert a valid last name): ";
                 PROMPT_USERNAME = "Username: ";
@@ -268,7 +276,7 @@ public class Notifications {
                 PROMPT_BIRTHDAY = "Birthday (accepted format = DD/MM/YYYY): ";
                 PROMPT_PRESENT_USER_MULTIPLE_CHOICE = "(1) EXIT WITHOUT SAVING\t|\t(2) CHANGE FIELDS";
                 PROMPT_BIBLIO_INITIAL_CHOICES = "(1) LOGIN\t|\t(2) SIGN UP\t|\t(3) EXIT";
-                PROMPT_OPERATOR_CHOICES = "(1) ADD A MEDIA ITEM\t|\t(2) REMOVE A MEDIA ITEM\t|\t(3) SHOW MEDIA ITEMS BY FOLDER\t|\t(4) SEARCH FOR MEDIA ITEMS\t|\t(5) SHOW ALL SUBSCRIBED USERS\t|\t(6) SHOW ALL LOANS\t|\t(7) SHOW APPLICATION HISTORY\t|\t(8) LOGOUT";
+                PROMPT_OPERATOR_CHOICES = "(1) ADD A MEDIA ITEM\t|\t(2) REMOVE A MEDIA ITEM\t|\t(3) SHOW MEDIA ITEMS BY FOLDER\t|\t(4) SEARCH FOR MEDIA ITEMS\t|\t(5) SHOW ALL SUBSCRIBED USERS\t|\t(6) SHOW ALL LOANS\t|\t(7) SHOW LOANS NUMBER BY YEAR\t|\t(8) SHOW USER LOANS NUMBER BY YEAR\t|\t(9) SHOW LOAN EXTENSIONS NUMBER BY YEAR\t|\t(10) SHOW THE MOST LENT MEDIA\t|\t(11) LOGOUT";
                 PROMPT_CUSTOMER_CHOICES = "(1) RENEW YOUR SUBSCRIPTION!\t|\t(2) REQUEST A LOAN\t|\t(3) EXTEND YOUR LOAN\t|\t(4) SEARCH FOR MEDIA ITEMS\t|\t(5) LOGOUT";
                 PROMPT_SIGN_UP_CONFIRMATION = "Are you sure you want to submit this form? (y/n)";
                 PROMPT_REMOVE_CONFIRMATION = "Are you sure you want to remove this media item? (y/n)";

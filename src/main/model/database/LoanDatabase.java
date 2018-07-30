@@ -1,22 +1,19 @@
 package main.model.database;
 import main.model.loan.Loan;
 import main.model.media.Media;
+import main.model.user.Customer;
 import main.model.user.User;
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.notifications.Notifications;
 
 import javax.xml.crypto.Data;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static main.utility.GlobalParameters.LOAN_DATABASE_FILE_PATH;
-import static main.utility.notifications.Notifications.ERR_NO_LOANS_IN_YEAR;
-import static main.utility.notifications.Notifications.MSG_LOANS_IN_YEAR;
-import static main.utility.notifications.Notifications.SEPARATOR;
+
 
 /**
  * Database which contains a record of all loans.
@@ -97,6 +94,67 @@ public class LoanDatabase implements Serializable, Database {
         }
     }
 
+    public int getLoanNumberByYear(int year) {
+        int counter = 0;
+
+        for(ArrayList<Loan> loanValues : loans.values()) {
+            for(Loan l : loanValues)
+                if(l.getLoanDate().get(Calendar.YEAR) == year)
+                    counter++;
+        }
+
+        return counter;
+    }
+
+    public HashMap<String, Integer> getUserLoanNumberByYear(int year) {
+       HashMap<String, Integer> userLoanByYear = new HashMap<>();
+
+        for(String username : loans.keySet()) {
+            int counter = 0;
+            for (Loan loan : loans.get(username))
+                if (loan.getLoanDate().get(Calendar.YEAR) == year)
+                    counter++;
+            userLoanByYear.put(username, counter);
+
+        }
+
+        return userLoanByYear;
+    }
+
+    public int getExtensionNumberByYear(int year) {
+        int counter = 0;
+
+        for(ArrayList<Loan> loanValues : loans.values()) {
+            for(Loan l : loanValues)
+                for(GregorianCalendar extension : l.getExtensionDates())
+                    if(extension.get(Calendar.YEAR) == year)
+                        counter++;
+        }
+
+        return counter;
+    }
+
+    public Integer getMostLentMediaByYear(int year){
+        HashMap<Integer, Integer> mediaCounter = new HashMap<>();
+        for(ArrayList<Loan> loanValues : loans.values())
+            for(Loan l: loanValues){
+                if(l.getLoanDate().get(Calendar.YEAR) == year) {
+                    mediaCounter.computeIfPresent(l.getMedia().getIdentifier(), (k, v) -> v + 1);
+                    mediaCounter.putIfAbsent(l.getMedia().getIdentifier(), 1);
+                }
+            }
+
+        Integer maxId = 0;
+        for(Integer id : mediaCounter.keySet())
+            maxId = id;
+
+        for(Integer id : mediaCounter.keySet())
+            if(mediaCounter.get(id) > mediaCounter.get(maxId))
+                maxId = id;
+
+        return maxId == 0 ? null : maxId;
+    }
+
     private static void setLoanDatabase(LoanDatabase loanDatabase) {
         LoanDatabase.loanDatabase = loanDatabase;
     }
@@ -126,38 +184,6 @@ public class LoanDatabase implements Serializable, Database {
         catch(ClassNotFoundException cnfEx) {
             logger.log(Level.SEVERE, Notifications.ERR_CLASS_NOT_FOUND + this.getClass().getName());
         }
-    }
-
-    public String getLoansByYear(int year) {
-        StringBuilder loansByYear = new StringBuilder();
-        int len;
-
-        String start = String.format("%s%d:%n", MSG_LOANS_IN_YEAR, year);
-
-        for(ArrayList<Loan> loanValues : loans.values()) {
-            len = loanValues.size();
-            Loan currentLoan = loanValues.get(0);
-
-            if(currentLoan.getLoanDate().get(Calendar.YEAR) == year)
-                loansByYear
-                        .append("User <")
-                        .append(currentLoan.getUser().getUsername())
-                        .append(">\n\t")
-                        .append(currentLoan.toEssentialString());
-
-            for(int i = 1; i < len; i++) {
-                currentLoan = loanValues.get(i);
-
-                if(currentLoan.getLoanDate().get(Calendar.YEAR) == year)
-                    loansByYear
-                            .append("\t")
-                            .append(currentLoan.toEssentialString());
-            }
-        }
-
-        return loansByYear.length() > 0 ?
-                start + loansByYear.toString() :
-                (ERR_NO_LOANS_IN_YEAR + year + "\n");
     }
 
     private void sweep() {

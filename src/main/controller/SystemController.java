@@ -21,8 +21,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collector;
 
 import static main.utility.GlobalParameters.*;
-import static main.utility.notifications.Notifications.ERR_NO_LOANS_IN_YEAR;
-import static main.utility.notifications.Notifications.SEPARATOR;
+import static main.utility.notifications.Notifications.*;
 
 /**
  * Controller class that manages any kind of interaction between the graphical user interface
@@ -263,8 +262,72 @@ public class SystemController implements UserController, MediaController, LoanCo
         return mediaDatabase.getFolderContents(folderPath);
     }
 
+    public String getLoanNumberByYear(int from, int to) {
+        StringBuilder loansByYear = new StringBuilder();
+
+        loansByYear.append(MSG_LOANS_IN_YEAR + "\n");
+
+        for(int year = from; year <= to; year++)
+            loansByYear
+                    .append(year + ": ")
+                    .append(loanDatabase.getLoanNumberByYear(year))
+                    .append("\n");
+
+        return loansByYear.toString();
+    }
+
+    public String getUserLoanNumberByYear(int from, int to) {
+        StringBuilder loansByYear = new StringBuilder();
+
+        loansByYear.append(MSG_USER_LOANS_IN_YEAR + "\n");
+
+        for(int year = from; year <= to; year++) {
+            loansByYear.append(year + ":\n");
+
+            HashMap<String, Integer> userLoansByYear = loanDatabase.getUserLoanNumberByYear(year);
+            for(String username : userLoansByYear.keySet())
+                loansByYear
+                    .append("\t"+ username + ": ")
+                    .append(userLoansByYear.get(username))
+                    .append("\n");
+        }
+
+        return loansByYear.toString();
+    }
+
+    public String getExtensionNumberByYear(int from, int to) {
+        StringBuilder extensionsByYear = new StringBuilder();
+
+        extensionsByYear.append(MSG_EXTENSIONS_IN_YEAR + "\n");
+
+        for(int year = from; year <= to; year++)
+            extensionsByYear
+                    .append(year + ": ")
+                    .append(loanDatabase.getExtensionNumberByYear(year))
+                    .append("\n");
+
+        return extensionsByYear.toString();
+    }
+
+    public String getMostLentMediaByYear(int from, int to){
+        StringBuilder mostLentMedia = new StringBuilder();
+        mostLentMedia.append(MSG_MOST_LENT_MEDIA_IN_YEAR + "\n");
+
+        for(int year = from; year <= to; year++) {
+            if (loanDatabase.getMostLentMediaByYear(year) != null) {
+                mostLentMedia
+                        .append(year + ": ")
+                        .append(mediaDatabase.getMediaList().get(loanDatabase.getMostLentMediaByYear(year)))
+                        .append("\n");
+            }
+        }
+
+        return mostLentMedia.toString();
+    }
+
     public String mostLentMediaItem(int year) {
-        int[] mults = new int[mediaDatabase.getMediaList().size()];
+        int mediaDatabaseSize = mediaDatabase.getMediaList().size();
+        int[] mults = new int[mediaDatabaseSize];
 
         for(ArrayList<Loan> loans : loanDatabase.getLoansList().values()) {
             for(Loan l : loans) {
@@ -274,8 +337,6 @@ public class SystemController implements UserController, MediaController, LoanCo
         }
 
         int max = 0;
-        int s = mediaDatabase.getMediaList().size();
-
         for(int i : mults)
             if(i > max)
                 max = i;
@@ -285,14 +346,74 @@ public class SystemController implements UserController, MediaController, LoanCo
 
         StringBuilder sb = new StringBuilder();
 
-        for(int i = 0; i < s; i++) {
+        for(int i = 0; i < mediaDatabaseSize; i++) {
             if(mults[i] == max)
                 sb.append(mediaDatabase.fetch(new Media(i)).getBareItemDetails()).append("\n");
         }
 
         return sb.toString();
     }
-/*      teniamolo perchè è carino
+
+    private <D extends Database> void saveDatabase(String path, @NotNull D database) {
+        try (
+            //to increase serializing speed
+            RandomAccessFile raf = new RandomAccessFile(path, "rw");
+            FileOutputStream fileOut = new FileOutputStream(raf.getFD());
+            ObjectOutputStream out = new ObjectOutputStream(fileOut)
+        ) {
+            out.writeObject(database);
+        }
+        catch(IOException ioEx) {
+            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + database.getClass().getName());
+        }
+    }
+
+    /**
+     * Opens a .ser serializable file and loads its contents into this {@link UserDatabase} class.<p>
+     * This method loads a {@code HashMap} containing all subscribed users.
+     */
+    @SuppressWarnings("unchecked")
+    private void loadDatabase(String path) {
+        try (
+            FileInputStream fileIn = new FileInputStream(path);
+            ObjectInputStream in = new ObjectInputStream(fileIn)
+        ) {
+            Object database = in.readObject();
+
+            if(database instanceof UserDatabase)
+                userDatabase = (UserDatabase)database;
+            else if(database instanceof MediaDatabase)
+                mediaDatabase = (MediaDatabase)database;
+            else if(database instanceof LoanDatabase)
+                loanDatabase = (LoanDatabase)database;
+        }
+        catch(FileNotFoundException fnfEx) {
+            logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND + this.getClass().getName());
+        }
+        catch(IOException ioEx) {
+            logger.log(Level.SEVERE, Notifications.ERR_LOADING_DATABASE + this.getClass().getName());
+        }
+        catch(ClassNotFoundException cnfEx) {
+            logger.log(Level.SEVERE, Notifications.ERR_CLASS_NOT_FOUND + this.getClass().getName());
+        }
+    }
+
+    /* ---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO
+
+
+    public String getUsersByYear(int from, int to) {
+        StringBuilder usersByYear = new StringBuilder();
+
+        for(int year = from; year <= to; year++)
+            usersByYear
+                    .append(userDatabase.getUsersByYear(year))
+                    .append(SEPARATOR)
+                    .append("\n");
+
+        return usersByYear.toString();
+    }
+    */
+    /*      teniamolo perchè è carino
     public String mostLentMediaItem(int year) {
         ArrayList<Media> mediaArray = new ArrayList<>();
 
@@ -345,74 +466,4 @@ public class SystemController implements UserController, MediaController, LoanCo
         return mostLentMedia.toString();
     }
 */
-    private <D extends Database> void saveDatabase(String path, @NotNull D database) {
-        try (
-                //to increase serializing speed
-                RandomAccessFile raf = new RandomAccessFile(path, "rw");
-                FileOutputStream fileOut = new FileOutputStream(raf.getFD());
-                ObjectOutputStream out = new ObjectOutputStream(fileOut)
-        ) {
-            out.writeObject(database);
-        }
-        catch(IOException ioEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + database.getClass().getName());
-        }
-    }
-
-    /**
-     * Opens a .ser serializable file and loads its contents into this {@link UserDatabase} class.<p>
-     * This method loads a {@code HashMap} containing all subscribed users.
-     */
-    @SuppressWarnings("unchecked")
-    private void loadDatabase(String path) {
-        try (
-            FileInputStream fileIn = new FileInputStream(path);
-            ObjectInputStream in = new ObjectInputStream(fileIn)
-        ) {
-            Object database = in.readObject();
-
-            if(database instanceof UserDatabase)
-                userDatabase = (UserDatabase)database;
-            else if(database instanceof MediaDatabase)
-                mediaDatabase = (MediaDatabase)database;
-            else if(database instanceof LoanDatabase)
-                loanDatabase = (LoanDatabase)database;
-        }
-        catch(FileNotFoundException fnfEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND + this.getClass().getName());
-        }
-        catch(IOException ioEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_LOADING_DATABASE + this.getClass().getName());
-        }
-        catch(ClassNotFoundException cnfEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_CLASS_NOT_FOUND + this.getClass().getName());
-        }
-    }
-
-
-    /* ---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO
-    public String getLoansByYear(int from, int to) {
-        StringBuilder loansByYear = new StringBuilder();
-
-        for(int year = from; year <= to; year++)
-            loansByYear
-                    .append(loanDatabase.getLoansByYear(year))
-                    .append(SEPARATOR)
-                    .append("\n");
-
-        return loansByYear.toString();
-    }
-
-    public String getUsersByYear(int from, int to) {
-        StringBuilder usersByYear = new StringBuilder();
-
-        for(int year = from; year <= to; year++)
-            usersByYear
-                    .append(userDatabase.getUsersByYear(year))
-                    .append(SEPARATOR)
-                    .append("\n");
-
-        return usersByYear.toString();
-    }
-    */
 }

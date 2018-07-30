@@ -5,6 +5,9 @@ import main.controller.LoanController;
 import main.controller.MediaController;
 import main.controller.UserController;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 import static main.utility.notifications.Notifications.*;
 
 /**
@@ -28,7 +31,7 @@ public class OperatorScreen extends Screen {
         while(!exitFromOperatorSection) {
             System.out.printf("%s%n%s%n%s%n", SEPARATOR, PROMPT_OPERATOR_CHOICES, SEPARATOR);
 
-            switch(insertInteger(1, 9)) {
+            switch(insertInteger(1, 12)) {
                 case 1:
                     addMedia();
                     break;
@@ -49,9 +52,26 @@ public class OperatorScreen extends Screen {
                     System.out.printf("%s%n%s%n", MSG_LOAN_LIST_ALL, loanController.allLoansToString());
                     break;
                 case 7:
-                    showHistory();
+                    System.out.println(
+                            getLoanController().getLoanNumberByYear(1980, new GregorianCalendar().get(Calendar.YEAR))
+                    );
                     break;
                 case 8:
+                    System.out.println(
+                            getLoanController().getUserLoanNumberByYear(1980, new GregorianCalendar().get(Calendar.YEAR))
+                    );
+                    break;
+                case 9:
+                    System.out.println(
+                            getLoanController().getExtensionNumberByYear(1980, new GregorianCalendar().get(Calendar.YEAR))
+                    );
+                    break;
+                case 10:
+                    System.out.println(
+                            getLoanController().getMostLentMediaByYear(1980, new GregorianCalendar().get(Calendar.YEAR))
+                    );
+                    break;
+                case 11:
                     System.out.printf("%s%n", MSG_LOG_OUT);
                     exitFromOperatorSection = true;
                     userController.logout();
@@ -164,21 +184,4 @@ public class OperatorScreen extends Screen {
         else
             System.out.println(MSG_ABORT);
     }
-
-    private void showHistory() {
-        long sum = 0;
-        int iterations = 10000;
-
-        for(int i = 0; i < iterations; i++) {
-            long l1 = System.currentTimeMillis();
-            getMediaController().mostLentMediaItem(2018);
-            long l2 = System.currentTimeMillis();
-            long diff = (l2 - l1);
-
-            sum += diff;
-        }
-
-        System.out.println(((double) sum / (double) iterations) + " millis");
-    }
-
 }

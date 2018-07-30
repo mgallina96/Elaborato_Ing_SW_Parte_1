@@ -41,4 +41,24 @@ public interface LoanController extends Controller {
      * @param mediaID
      */
     void extendLoan(int mediaID);
+
+    /**
+     *
+     * @param from
+     * @param to
+     * @return
+     */
+    String getLoanNumberByYear(int from, int to);
+
+    /**
+     *
+     * @param from
+     * @param to
+     * @return
+     */
+    String getUserLoanNumberByYear(int from, int to);
+
+    String getExtensionNumberByYear(int from, int to);
+
+    String getMostLentMediaByYear(int from, int to);
 }
