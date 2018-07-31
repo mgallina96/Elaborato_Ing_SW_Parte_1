@@ -265,11 +265,12 @@ public class SystemController implements UserController, MediaController, LoanCo
     public String getLoanNumberByYear(int from, int to) {
         StringBuilder loansByYear = new StringBuilder();
 
-        loansByYear.append(MSG_LOANS_IN_YEAR + "\n");
+        loansByYear.append(MSG_LOANS_IN_YEAR).append("\n");
 
         for(int year = from; year <= to; year++)
             loansByYear
-                    .append(year + ": ")
+                    .append(year)
+                    .append(": ")
                     .append(loanDatabase.getLoanNumberByYear(year))
                     .append("\n");
 
@@ -279,15 +280,18 @@ public class SystemController implements UserController, MediaController, LoanCo
     public String getUserLoanNumberByYear(int from, int to) {
         StringBuilder loansByYear = new StringBuilder();
 
-        loansByYear.append(MSG_USER_LOANS_IN_YEAR + "\n");
+        loansByYear.append(MSG_USER_LOANS_IN_YEAR)
+                .append("\n");
 
         for(int year = from; year <= to; year++) {
-            loansByYear.append(year + ":\n");
+            loansByYear.append(year).append(":\n");
 
             HashMap<String, Integer> userLoansByYear = loanDatabase.getUserLoanNumberByYear(year);
             for(String username : userLoansByYear.keySet())
                 loansByYear
-                    .append("\t"+ username + ": ")
+                    .append("\t")
+                    .append(username)
+                    .append(": ")
                     .append(userLoansByYear.get(username))
                     .append("\n");
         }
@@ -298,11 +302,12 @@ public class SystemController implements UserController, MediaController, LoanCo
     public String getExtensionNumberByYear(int from, int to) {
         StringBuilder extensionsByYear = new StringBuilder();
 
-        extensionsByYear.append(MSG_EXTENSIONS_IN_YEAR + "\n");
+        extensionsByYear.append(MSG_EXTENSIONS_IN_YEAR).append("\n");
 
         for(int year = from; year <= to; year++)
             extensionsByYear
-                    .append(year + ": ")
+                    .append(year)
+                    .append(": ")
                     .append(loanDatabase.getExtensionNumberByYear(year))
                     .append("\n");
 
@@ -311,12 +316,13 @@ public class SystemController implements UserController, MediaController, LoanCo
 
     public String getMostLentMediaByYear(int from, int to){
         StringBuilder mostLentMedia = new StringBuilder();
-        mostLentMedia.append(MSG_MOST_LENT_MEDIA_IN_YEAR + "\n");
+        mostLentMedia.append(MSG_MOST_LENT_MEDIA_IN_YEAR).append("\n");
 
         for(int year = from; year <= to; year++) {
             if (loanDatabase.getMostLentMediaByYear(year) != null) {
                 mostLentMedia
-                        .append(year + ": ")
+                        .append(year)
+                        .append(": ")
                         .append(mediaDatabase.getMediaList().get(loanDatabase.getMostLentMediaByYear(year)))
                         .append("\n");
             }
@@ -329,12 +335,10 @@ public class SystemController implements UserController, MediaController, LoanCo
         int mediaDatabaseSize = mediaDatabase.getMediaList().size();
         int[] mults = new int[mediaDatabaseSize];
 
-        for(ArrayList<Loan> loans : loanDatabase.getLoansList().values()) {
-            for(Loan l : loans) {
+        for(ArrayList<Loan> loans : loanDatabase.getLoansList().values())
+            for(Loan l : loans)
                 if(l.getLoanDate().get(Calendar.YEAR) == year)
                     mults[l.getMedia().getIdentifier()]++;
-            }
-        }
 
         int max = 0;
         for(int i : mults)
@@ -413,6 +417,60 @@ public class SystemController implements UserController, MediaController, LoanCo
         return usersByYear.toString();
     }
     */
+    /*      teniamolo perchè è carino
+    public String mostLentMediaItem(int year) {
+        ArrayList<Media> mediaArray = new ArrayList<>();
+
+        for(ArrayList<Loan> loans : loanDatabase.getLoansList().values())
+            for(Loan l : loans) {
+                if(l.getLoanDate().get(Calendar.YEAR) == year)
+                    mediaArray.add(l.getMedia());
+            }
+
+        mediaArray.sort(Comparator.comparing(Media::getIdentifier));
+        mediaArray.add(new Media(-1));
+
+        StringBuilder mostLentMedia = new StringBuilder();
+
+        ArrayList<ArrayList<Media>> inception = new ArrayList<>();
+        ArrayList<Media> tmp = new ArrayList<>();
+        tmp.add(new Media(38966));
+        int mediaListSize = mediaArray.size();
+
+        for(int i = 1; i < mediaListSize; i++) {
+            if(mediaArray.get(i) != mediaArray.get(i - 1)) {
+                inception.add(tmp);
+                tmp = new ArrayList<>();
+            }
+
+            tmp.add(mediaArray.get(i - 1));
+        }
+
+        inception.sort(Comparator.comparing(ArrayList::size));
+
+        HashMap<Media, Integer> mults = new HashMap<>();
+        int max = 0;
+
+        for(ArrayList<Media> am : inception) {
+            int s = am.size();
+            mults.put(am.get(0), s);
+
+            if(s > max)
+                max = s;
+        }
+
+        final int m2 = max;
+
+        mults.forEach((m, i) -> {
+            if(i == m2) {
+                mostLentMedia.append(m);
+            }
+        });
+
+        return mostLentMedia.toString();
+    }
+*/
+
     /*      teniamolo perchè è carino
     public String mostLentMediaItem(int year) {
         ArrayList<Media> mediaArray = new ArrayList<>();
