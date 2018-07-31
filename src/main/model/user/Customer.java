@@ -1,8 +1,10 @@
 package main.model.user;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import static main.utility.GlobalParameters.*;
+
+import static main.utility.GlobalParameters.EXPIRY_TIME_IN_YEARS;
 
 /**
  * The {@code Customer} class, a subclass of {@link User} equipped with:

@@ -1,9 +1,5 @@
 package main.controller;
 
-import main.model.user.User;
-
-import java.util.ArrayList;
-
 /**
  * Interface for the Loan controller, which provides methods specific to loan management.
  *

@@ -1,10 +1,13 @@
 package generators.mediagenerator;
+
 import generators.randomwords.PoolLoader;
 import generators.randomwords.RandomWords;
 import main.model.media.Film;
 import main.model.media.Media;
+
 import java.util.ArrayList;
 import java.util.Random;
+
 import static generators.Generator.COMMON_MEDIA_PATH;
 
 public class FilmGenerator {

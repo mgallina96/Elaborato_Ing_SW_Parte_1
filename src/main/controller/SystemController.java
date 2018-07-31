@@ -1,4 +1,5 @@
 package main.controller;
+
 import main.model.database.Database;
 import main.model.database.LoanDatabase;
 import main.model.database.MediaDatabase;
@@ -15,13 +16,14 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.time.temporal.ChronoUnit;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collector;
 
 import static main.utility.GlobalParameters.*;
-import static main.utility.notifications.Notifications.*;
 
 /**
  * Controller class that manages any kind of interaction between the graphical user interface
@@ -265,7 +267,7 @@ public class SystemController implements UserController, MediaController, LoanCo
     public String getLoanNumberByYear(int from, int to) {
         StringBuilder loansByYear = new StringBuilder();
 
-        loansByYear.append(MSG_LOANS_IN_YEAR).append("\n");
+        loansByYear.append(Notifications.getMessage("MSG_LOANS_IN_YEAR")).append("\n");
 
         for(int year = from; year <= to; year++)
             loansByYear
@@ -280,7 +282,7 @@ public class SystemController implements UserController, MediaController, LoanCo
     public String getUserLoanNumberByYear(int from, int to) {
         StringBuilder loansByYear = new StringBuilder();
 
-        loansByYear.append(MSG_USER_LOANS_IN_YEAR)
+        loansByYear.append(Notifications.getMessage("MSG_USER_LOANS_IN_YEAR"))
                 .append("\n");
 
         for(int year = from; year <= to; year++) {
@@ -302,7 +304,7 @@ public class SystemController implements UserController, MediaController, LoanCo
     public String getExtensionNumberByYear(int from, int to) {
         StringBuilder extensionsByYear = new StringBuilder();
 
-        extensionsByYear.append(MSG_EXTENSIONS_IN_YEAR).append("\n");
+        extensionsByYear.append(Notifications.getMessage("MSG_EXTENSIONS_IN_YEAR")).append("\n");
 
         for(int year = from; year <= to; year++)
             extensionsByYear
@@ -316,7 +318,7 @@ public class SystemController implements UserController, MediaController, LoanCo
 
     public String getMostLentMediaByYear(int from, int to){
         StringBuilder mostLentMedia = new StringBuilder();
-        mostLentMedia.append(MSG_MOST_LENT_MEDIA_IN_YEAR).append("\n");
+        mostLentMedia.append(Notifications.getMessage("MSG_MOST_LENT_MEDIA_IN_YEAR")).append("\n");
 
         for(int year = from; year <= to; year++) {
             if (loanDatabase.getMostLentMediaByYear(year) != null) {
@@ -346,7 +348,7 @@ public class SystemController implements UserController, MediaController, LoanCo
                 max = i;
 
         if(max == 0)
-            return ERR_NO_LOANS_IN_YEAR + year;
+            return Notifications.getMessage("ERR_NO_LOANS_IN_YEAR") + year;
 
         StringBuilder sb = new StringBuilder();
 
@@ -368,7 +370,7 @@ public class SystemController implements UserController, MediaController, LoanCo
             out.writeObject(database);
         }
         catch(IOException ioEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + database.getClass().getName());
+            logger.log(Level.SEVERE, Notifications.getMessage("ERR_SAVING_DATABASE") + database.getClass().getName());
         }
     }
 
@@ -392,13 +394,13 @@ public class SystemController implements UserController, MediaController, LoanCo
                 loanDatabase = (LoanDatabase)database;
         }
         catch(FileNotFoundException fnfEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND + this.getClass().getName());
+            logger.log(Level.SEVERE, Notifications.getMessage("ERR_FILE_NOT_FOUND") + this.getClass().getName());
         }
         catch(IOException ioEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_LOADING_DATABASE + this.getClass().getName());
+            logger.log(Level.SEVERE, Notifications.getMessage("ERR_LOADING_DATABASE") + this.getClass().getName());
         }
         catch(ClassNotFoundException cnfEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_CLASS_NOT_FOUND + this.getClass().getName());
+            logger.log(Level.SEVERE, Notifications.getMessage("ERR_CLASS_NOT_FOUND") + this.getClass().getName());
         }
     }
 

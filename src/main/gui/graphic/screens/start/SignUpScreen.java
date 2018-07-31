@@ -1,10 +1,8 @@
 package main.gui.graphic.screens.start;
-
-import main.controller.Controller;
 import main.controller.UserController;
 import main.gui.graphic.components.BackgroundImagePanel;
-import main.model.user.User;
 import main.utility.InputParserUtility;
+import main.utility.notifications.Notifications;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,9 +11,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.Arrays;
-
 import static main.gui.graphic.Resources.*;
-import static main.utility.notifications.Notifications.ERR_INVALID_NAME;
 
 /**
  * @author Manuel Gallina
@@ -223,11 +219,11 @@ public class SignUpScreen {
         signUp.addActionListener(e -> {
             if(!InputParserUtility.isValidName(firstNameField.getText())) {
                 firstNameField.setText("");
-                warningField.setText(ERR_INVALID_NAME);
+                warningField.setText(Notifications.getMessage("ERR_INVALID_NAME"));
             }
             if(!InputParserUtility.isValidName(lastNameField.getText())) {
                 lastNameField.setText("");
-                warningField.setText(ERR_INVALID_NAME);
+                warningField.setText(Notifications.getMessage("ERR_INVALID_NAME"));
             }
             if(!Arrays.equals(passwordField.getPassword(), confirmPasswordField.getPassword())) {
                 passwordField.setText("");

@@ -1,14 +1,16 @@
 package main.model.database;
+
 import main.model.loan.Loan;
 import main.model.media.Media;
-import main.model.user.Customer;
 import main.model.user.User;
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.notifications.Notifications;
 
-import javax.xml.crypto.Data;
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -176,13 +178,13 @@ public class LoanDatabase implements Serializable, Database {
             setLoanDatabase((LoanDatabase)in.readObject());
         }
         catch(FileNotFoundException fnfEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND + this.getClass().getName());
+            logger.log(Level.SEVERE, Notifications.getMessage("ERR_FILE_NOT_FOUND") + this.getClass().getName());
         }
         catch(IOException ioEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_LOADING_DATABASE + this.getClass().getName());
+            logger.log(Level.SEVERE, Notifications.getMessage("ERR_LOADING_DATABASE") + this.getClass().getName());
         }
         catch(ClassNotFoundException cnfEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_CLASS_NOT_FOUND + this.getClass().getName());
+            logger.log(Level.SEVERE, Notifications.getMessage("ERR_CLASS_NOT_FOUND") + this.getClass().getName());
         }
     }
 

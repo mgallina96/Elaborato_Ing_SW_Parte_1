@@ -64,8 +64,7 @@ public class QuickFillMain {
     }
 
     private static void fillDatabase() {
-        Notifications notifications = Notifications.getInstance();
-        notifications.setLanguage(Notifications.ENGLISH);
+        Notifications.setLanguage(Notifications.LANGUAGE_ENG);
 
         SystemController sc = SystemController.getInstance();
         UserDatabase userDatabase = UserDatabase.getInstance();

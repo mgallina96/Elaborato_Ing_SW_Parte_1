@@ -171,13 +171,13 @@ public class FileSystem implements Serializable {
             setFolderCounter(Integer.parseInt((String)in.readObject()));
         }
         catch(FileNotFoundException fnfEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_FILE_NOT_FOUND + this.getClass().getName());
+            logger.log(Level.SEVERE, Notifications.getMessage("ERR_FILE_NOT_FOUND ") + this.getClass().getName());
         }
         catch(IOException ioEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_LOADING_FILESYSTEM);
+            logger.log(Level.SEVERE, Notifications.getMessage("ERR_LOADING_FILESYSTEM"));
         }
         catch(ClassNotFoundException cnfEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_CLASS_NOT_FOUND + this.getClass().getName());
+            logger.log(Level.SEVERE, Notifications.getMessage("ERR_CLASS_NOT_FOUND ") + this.getClass().getName());
         }
     }
 
@@ -193,7 +193,7 @@ public class FileSystem implements Serializable {
             out.writeObject(Integer.toString(folderCounter));
         }
         catch(IOException ioEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_SAVING_DATABASE + this.getClass().getName());
+            logger.log(Level.SEVERE, Notifications.getMessage("ERR_SAVING_DATABASE ") + this.getClass().getName());
         }
     }
 

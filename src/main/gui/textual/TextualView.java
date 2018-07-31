@@ -2,8 +2,7 @@ package main.gui.textual;
 import main.controller.*;
 import main.gui.GuiManager;
 import main.gui.textual.screens.*;
-
-import static main.utility.notifications.Notifications.MSG_GOODBYE;
+import main.utility.notifications.Notifications;
 
 /**
  * Class that manages a textual GUI for the application, loading the different sections when they are needed and
@@ -58,7 +57,7 @@ public class TextualView implements GuiManager {
                     signUpScreen();
                     break;
                 case 3:
-                    System.out.printf("%s%n", MSG_GOODBYE);
+                    System.out.printf("%s%n", Notifications.getMessage("MSG_GOODBYE"));
                     exit = true;
                     break;
                 default:

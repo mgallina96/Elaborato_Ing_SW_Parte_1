@@ -1,11 +1,9 @@
 package main.gui.textual.screens;
+
 import main.controller.UserController;
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.exceptions.WrongPasswordException;
-
-import java.util.logging.Logger;
-
-import static main.utility.notifications.Notifications.*;
+import main.utility.notifications.Notifications;
 
 /**
  * The login screen.
@@ -33,39 +31,39 @@ public class LoginScreen extends Screen {
      * @return The username of the user who just logged in.
      */
     public String login() {
-        System.out.printf("%s%n%s%n", PROMPT_LOGIN_SCREEN, SEPARATOR);
+        System.out.printf("%s%n%s%n", Notifications.getMessage("PROMPT_LOGIN_SCREEN"), Notifications.getMessage("SEPARATOR"));
 
         while(true) {
             String username;
             String password;
 
-            System.out.printf("[%s %s]%n", ESCAPE_STRING, MSG_ESCAPE_STRING_MESSAGE);
+            System.out.printf("[%s %s]%n", ESCAPE_STRING, Notifications.getMessage("MSG_ESCAPE_STRING_MESSAGE"));
 
             try {
-                username = inputRequest(PROMPT_USERNAME);
-                password = inputRequest(PROMPT_PASSWORD);
+                username = inputRequest(Notifications.getMessage("PROMPT_USERNAME"));
+                password = inputRequest(Notifications.getMessage("PROMPT_PASSWORD"));
 
                 if(getUserController().checkUserLogin(username, password)) {
                     int days = getUserController().daysLeftToRenew(username);
 
                     if(days > 0)
                         System.out.printf("%s %s %s %s.%n",
-                                PROMPT_EXPIRY_IMMINENT, MSG_REMINDER_DAYS_LEFT, days, MSG_DAYS);
+                                Notifications.getMessage("PROMPT_EXPIRY_IMMINENT"), Notifications.getMessage("MSG_REMINDER_DAYS_LEFT"), days, Notifications.getMessage("MSG_DAYS"));
 
                     return username;
                 } else {
-                    System.out.printf("%s%n%s%n", PROMPT_RETRY_LOGGING_IN, SEPARATOR);
+                    System.out.printf("%s%n%s%n", Notifications.getMessage("PROMPT_RETRY_LOGGING_IN"), Notifications.getMessage("SEPARATOR"));
                 }
             }
             catch(InterruptedException e) {
-                System.out.printf("%s%n%n", MSG_EXIT_LOGIN);
+                System.out.printf("%s%n%n", Notifications.getMessage("MSG_EXIT_LOGIN"));
                 break; //returns a null value in this case.
             }
             catch(UserNotFoundException e) {
-                System.out.println(ERR_USER_NOT_PRESENT);
+                System.out.println(Notifications.getMessage("ERR_USER_NOT_PRESENT"));
             }
             catch(WrongPasswordException e) {
-                System.out.println(ERR_WRONG_PASSWORD);
+                System.out.println(Notifications.getMessage("ERR_WRONG_PASSWORD"));
             }
         }
 

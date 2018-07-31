@@ -2,8 +2,6 @@ package generators;
 
 import generators.mediagenerator.BookGenerator;
 import generators.mediagenerator.FilmGenerator;
-import generators.randomwords.PoolLoader;
-import generators.randomwords.RandomWords;
 import main.model.media.Media;
 import main.model.user.User;
 

@@ -1,10 +1,11 @@
 package main.gui.textual.screens;
+
 import main.controller.*;
 import main.utility.InputParserUtility;
+import main.utility.notifications.Notifications;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Scanner;
-import static main.utility.notifications.Notifications.*;
 
 /**
  * Class that implements a generic screen.
@@ -112,7 +113,7 @@ public class Screen {
         String name = getScanner().nextLine();
 
         while(!InputParserUtility.isValidName(name)) {
-            System.out.println(ERR_INVALID_NAME);
+            System.out.println(Notifications.getMessage("ERR_INVALID_NAME"));
             name = getScanner().nextLine();
         }
 
@@ -130,7 +131,7 @@ public class Screen {
         String year = getScanner().nextLine();
 
         while(!InputParserUtility.isValidYear(year)) {
-            System.out.println(ERR_INVALID_YEAR);
+            System.out.println(Notifications.getMessage("ERR_INVALID_YEAR"));
             year = getScanner().nextLine();
         }
 
@@ -148,7 +149,7 @@ public class Screen {
         String integer = getScanner().nextLine();
 
         while(!InputParserUtility.isValidInteger(integer)) {
-            System.out.println(ERR_MSG_INVALID_INPUT);
+            System.out.println(Notifications.getMessage("ERR_MSG_INVALID_INPUT"));
             integer = getScanner().nextLine();
         }
 
@@ -170,7 +171,7 @@ public class Screen {
         String integer = getScanner().nextLine();
 
         while(!InputParserUtility.isValidInteger(integer, lowerBound, upperBound)) {
-            System.out.println(ERR_MSG_INVALID_INPUT);
+            System.out.println(Notifications.getMessage("ERR_MSG_INVALID_INPUT"));
             integer = getScanner().nextLine();
         }
 
@@ -188,7 +189,7 @@ public class Screen {
         String date = getScanner().nextLine();
 
         while(!InputParserUtility.isValidDate(date)) {
-            System.out.println(ERR_INVALID_DATE);
+            System.out.println(Notifications.getMessage("ERR_INVALID_DATE"));
             date = getScanner().nextLine();
         }
 

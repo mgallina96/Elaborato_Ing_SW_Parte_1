@@ -1,9 +1,5 @@
 package main.controller;
 
-import main.model.media.Media;
-
-import java.util.ArrayList;
-
 /**
  * Interface for the Media controller, which provides methods specific to media management.
  *

@@ -1,9 +1,9 @@
 package main.gui.textual.screens;
+
 import main.controller.LoanController;
 import main.controller.MediaController;
 import main.controller.UserController;
-
-import static main.utility.notifications.Notifications.*;
+import main.utility.notifications.Notifications;
 
 /**
  * The customer menu screen.
@@ -24,15 +24,15 @@ public class CustomerScreen extends Screen {
         boolean exitFromCustomerSection = false;
 
         while(!exitFromCustomerSection) {
-            System.out.printf("%s%n%s%n%s%n", SEPARATOR, PROMPT_CUSTOMER_CHOICES, SEPARATOR);
+            System.out.printf("%s%n%s%n%s%n", Notifications.getMessage("SEPARATOR"), Notifications.getMessage("PROMPT_CUSTOMER_CHOICES"), Notifications.getMessage("SEPARATOR"));
 
             switch(insertInteger(1,6)) {
                 case 1:
                     if(!userController.renewSubscription())
-                        System.out.printf("%s%n%s%n", ERR_CANNOT_RENEW, userController.dateDetails());
+                        System.out.printf("%s%n%s%n", Notifications.getMessage("ERR_CANNOT_RENEW"), userController.dateDetails());
                     break;
                 case 2:
-                    if(searchForMedia(PROMPT_SEARCH_FOR_MEDIA_TO_BORROW))
+                    if(searchForMedia(Notifications.getMessage("PROMPT_SEARCH_FOR_MEDIA_TO_BORROW")))
                         borrowMedia();
                     break;
                 case 3:
@@ -40,10 +40,10 @@ public class CustomerScreen extends Screen {
                         extendLoan();
                     break;
                 case 4:
-                    searchForMedia(PROMPT_SEARCH_FOR_MEDIA);
+                    searchForMedia(Notifications.getMessage("PROMPT_SEARCH_FOR_MEDIA"));
                     break;
                 case 5:
-                    System.out.printf("%s%n", MSG_LOG_OUT);
+                    System.out.printf("%s%n", Notifications.getMessage("MSG_LOG_OUT"));
                     exitFromCustomerSection = true;
                     userController.logout();
                     break;
@@ -57,9 +57,9 @@ public class CustomerScreen extends Screen {
         String output = getLoanController().currentUserLoansToString();
 
         if(output.length() > 0)
-            System.out.printf("%s%n%s%n", MSG_LOAN_LIST_SINGLE, output);
+            System.out.printf("%s%n%s%n", Notifications.getMessage("MSG_LOAN_LIST_SINGLE"), output);
         else {
-            System.out.println(ERR_LOAN_LIST_EMPTY);
+            System.out.println(Notifications.getMessage("ERR_LOAN_LIST_EMPTY"));
             return false;
         }
 
@@ -71,16 +71,16 @@ public class CustomerScreen extends Screen {
         String input = getScanner().nextLine();
 
         if(input.equals(ESCAPE_STRING)) {
-            System.out.println(MSG_ABORT);
+            System.out.println(Notifications.getMessage("MSG_ABORT"));
             return false;
         }
 
         String output = getMediaController().allFilteredMediaList(input);
 
         if(output.length() > 0)
-            System.out.printf("%s%n%s%n", MSG_FILTERED_MEDIA_LIST, output);
+            System.out.printf("%s%n%s%n", Notifications.getMessage("MSG_FILTERED_MEDIA_LIST"), output);
         else {
-            System.out.println(ERR_FILTERED_MEDIA_LIST_EMPTY);
+            System.out.println(Notifications.getMessage("ERR_FILTERED_MEDIA_LIST_EMPTY"));
             return false;
         }
 
@@ -90,40 +90,40 @@ public class CustomerScreen extends Screen {
     private void borrowMedia() {
         int id = insertInteger();
         while(!getMediaController().mediaIsPresent(id)) {
-            System.out.println(ERR_MEDIA_NOT_PRESENT);
+            System.out.println(Notifications.getMessage("ERR_MEDIA_NOT_PRESENT"));
             id = insertInteger();
         }
 
-        System.out.println(PROMPT_BORROW_CONFIRMATION);
+        System.out.println(Notifications.getMessage("PROMPT_BORROW_CONFIRMATION"));
 
         if(insertString(YN_REGEX).equalsIgnoreCase(YES)) {
             if(getLoanController().canBorrow(id)) {
                 if(getLoanController().addLoanToDatabase(id))
-                    System.out.println(MSG_BORROW_SUCCESSFUL);
+                    System.out.println(Notifications.getMessage("MSG_BORROW_SUCCESSFUL"));
                 else
-                    System.out.println(ERR_MEDIA_NOT_AVAILABLE);
+                    System.out.println(Notifications.getMessage("ERR_MEDIA_NOT_AVAILABLE"));
             }
             else
-                System.out.println(ERR_CANNOT_BORROW);
+                System.out.println(Notifications.getMessage("ERR_CANNOT_BORROW"));
         }
         else
-            System.out.println(MSG_ABORT);
+            System.out.println(Notifications.getMessage("MSG_ABORT"));
     }
 
     private void extendLoan() {
-        System.out.println(PROMPT_CHOOSE_MEDIA_TO_EXTEND);
+        System.out.println(Notifications.getMessage("PROMPT_CHOOSE_MEDIA_TO_EXTEND"));
 
         int id = insertInteger();
         while(!getMediaController().mediaIsPresent(id)) {
-            System.out.println(ERR_MEDIA_NOT_PRESENT);
+            System.out.println(Notifications.getMessage("ERR_MEDIA_NOT_PRESENT"));
             id = insertInteger();
         }
 
         if(getLoanController().canBeExtended(id)) {
             getLoanController().extendLoan(id);
-            System.out.println(MSG_EXTEND_SUCCESSFUL);
+            System.out.println(Notifications.getMessage("MSG_EXTEND_SUCCESSFUL"));
         }
         else
-            System.out.println(ERR_CANNOT_EXTEND);
+            System.out.println(Notifications.getMessage("ERR_CANNOT_EXTEND"));
     }
 }

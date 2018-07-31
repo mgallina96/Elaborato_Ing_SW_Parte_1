@@ -1,5 +1,11 @@
 package main.utility.notifications;
 
+import java.io.File;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * Utility class that stores useful messages, warnings and notifications for this particular program.
  *
@@ -7,127 +13,17 @@ package main.utility.notifications;
  */
 public class Notifications {
 
-    private static final Language DEFAULT_LANGUAGE = Language.ENGLISH;
+    public static final String LANGUAGE_ITA = "lang_ita.txt";
+    public static final String LANGUAGE_ENG = "lang_eng.txt";
 
-    public static final Language ITALIAN = Language.ITALIAN;
-    public static final Language ENGLISH = Language.ENGLISH;
-
-    //MESSAGES
-    public static final String MSG_BIBLIO_NAME = "BIBLIOTECA SMARTin4t0r 3.0";
-    public static String MSG_SIGN_UP_SUCCESSFUL;
-    public static String MSG_EXIT_WITHOUT_SAVING;
-    public static String MSG_GOODBYE;
-    public static String MSG_LOG_OUT;
-    public static String MSG_USER_LIST;
-    public static String MSG_MEDIA_LIST;
-    public static String MSG_FILTERED_MEDIA_LIST;
-    public static String MSG_REMOVE_SUCCESSFUL;
-    public static String MSG_EXIT_LOGIN;
-    public static String MSG_OPERATOR_MENU;
-    public static String MSG_CUSTOMER_MENU;
-    public static String MSG_ABORT;
-    public static String MSG_ADD_SUCCESSFUL;
-    public static String MSG_REMINDER_DAYS_LEFT;
-    public static String MSG_DAYS;
-    public static String MSG_ESCAPE_STRING_MESSAGE;
-    public static String MSG_FOLDER_CONTENTS;
-    public static String MSG_MOVE_TO_LOGIN;
-    public static String MSG_BORROW_SUCCESSFUL;
-    public static String MSG_LOAN_LIST_ALL;
-    public static String MSG_LOAN_LIST_SINGLE;
-    public static String MSG_EXTEND_SUCCESSFUL;
-    public static String MSG_LOANS_IN_YEAR;
-    public static String MSG_USER_LOANS_IN_YEAR;
-    public static String MSG_EXTENSIONS_IN_YEAR;
-    public static String MSG_MOST_LENT_MEDIA_IN_YEAR;
-    //PROMPTS
-    public static String PROMPT_FIRST_NAME;
-    public static String PROMPT_LAST_NAME;
-    public static String PROMPT_USERNAME;
-    public static String PROMPT_PASSWORD;
-    public static String PROMPT_BIRTHDAY;
-    public static String PROMPT_PRESENT_USER_MULTIPLE_CHOICE;
-    public static String PROMPT_BIBLIO_INITIAL_CHOICES;
-    public static String PROMPT_OPERATOR_CHOICES;
-    public static String PROMPT_CUSTOMER_CHOICES;
-    public static String PROMPT_SIGN_UP_CONFIRMATION;
-    public static String PROMPT_LOGIN_SCREEN;
-    public static String PROMPT_SIGN_UP_SCREEN;
-    public static String PROMPT_MODIFY_FIELDS;
-    public static String PROMPT_RETRY_LOGGING_IN;
-    public static String PROMPT_ADD_MEDIA;
-    public static String PROMPT_TITLE;
-    public static String PROMPT_AUTHOR;
-    public static String PROMPT_GENRE;
-    public static String PROMPT_PUBLICATION_YEAR;
-    public static String PROMPT_PUBLISHER_NAME;
-    public static String PROMPT_REMOVE_MEDIA;
-    public static String PROMPT_REMOVE_MEDIA_ID;
-    public static String PROMPT_SELECT_PATH;
-    public static String PROMPT_EXPIRY_IMMINENT;
-    public static String PROMPT_WHICH_FOLDER;
-    public static String PROMPT_REMOVE_CONFIRMATION;
-    public static String PROMPT_SEARCH_FOR_MEDIA;
-    public static String PROMPT_SEARCH_FOR_MEDIA_TO_BORROW;
-    public static String PROMPT_BORROW_CONFIRMATION;
-    public static String PROMPT_SEARCH_FOR_LOANS;
-    public static String PROMPT_CHOOSE_MEDIA_TO_EXTEND;
-
-    //ERRORS
-    public static String ERR_NOT_OF_AGE;
-    public static String ERR_INVALID_NAME;
-    public static String ERR_INVALID_DATE;
-    public static String ERR_INVALID_YEAR;
-    public static String ERR_LOGIN_FAILED;
-    public static String ERR_SIGN_UP_FAILED;
-    public static String ERR_SIGN_UP_ABORTED;
-    public static String ERR_SAVING_DATABASE;
-    public static String ERR_LOADING_DATABASE;
-    public static String ERR_LOADING_FILESYSTEM;
-    public static String ERR_CLASS_NOT_FOUND;
-    public static String ERR_FILE_NOT_FOUND;
-    public static String ERR_MSG_INVALID_INPUT;
-    public static String ERR_USER_ALREADY_PRESENT;
-    public static String ERR_CANNOT_RENEW;
-    public static String ERR_FILTERED_MEDIA_LIST_EMPTY;
-    public static String ERR_MEDIA_NOT_PRESENT;
-    public static String ERR_MEDIA_ALREADY_PRESENT;
-    public static String ERR_INVALID_PATH;
-    public static String ERR_PATH_NOT_PRESENT;
-    public static String ERR_BORROW_FAILED;
-    public static String ERR_MEDIA_NOT_AVAILABLE;
-    public static String ERR_CANNOT_BORROW;
-    public static String ERR_USER_NOT_PRESENT;
-    public static String ERR_WRONG_PASSWORD;
-    public static String ERR_LOAN_LIST_EMPTY;
-    public static String ERR_CANNOT_EXTEND;
-    public static String ERR_NO_LOANS_IN_YEAR;
-
-    //generic useful messages
-    public static final String SEPARATOR = "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
-
-    private Language language;
-    private static Notifications notifications;
+    private static final String DELIMITER = " -@ ";
+    private static HashMap<String, String> messages;
+    private static String currentLanguage;
 
     private Notifications() {
         //sets english as the default language
-        this(ENGLISH);
-    }
-
-    private Notifications(Language language) {
-        this.language = language;
-        this.language.initializeLanguages();
-    }
-
-    /**
-     * Returns the instance of the {@code Notifications class}.
-     *
-     * @return The instance of the {@code Notifications class}.
-     */
-    public static Notifications getInstance() {
-        if(notifications == null)
-            notifications = new Notifications(DEFAULT_LANGUAGE);
-        return notifications;
+        messages = new HashMap<>();
+        currentLanguage = LANGUAGE_ENG;
     }
 
     /**
@@ -135,20 +31,40 @@ public class Notifications {
      *
      * @param language The language to be set.
      */
-    public void setLanguage(Language language) {
-        this.language = language;
-        language.initializeLanguages();
+    public static void setLanguage(String language) {
+        new Notifications();
+
+        if(!language.equals(currentLanguage)) {
+            currentLanguage = language;
+        }
+
+        updateLanguage();
     }
 
-    /**
-     * Getter for the language used within the application.
-     *
-     * @return The language.
-     */
-    public Language getLanguage() {
-        return language;
+    private static void updateLanguage() {
+        messages.clear();
+
+        File file = new File("resources\\languages\\" + currentLanguage);
+
+        try (
+            Scanner scanner = new Scanner(file)
+        ) {
+            while(scanner.hasNextLine()) {
+                String[] split = scanner.nextLine().split(DELIMITER);
+
+                messages.put(split[0], split[1].replaceAll("\\\\t", "\t"));
+            }
+        }
+        catch(Exception e) {
+            Logger.getLogger("Notifications").log(Level.SEVERE, "ERROR");
+        }
     }
 
+    public static String getMessage(String messageName) {
+        return messages.get(messageName);
+    }
+
+/*
     private enum Language implements Languages {
         ITALIAN {
             @Override
@@ -331,5 +247,99 @@ public class Notifications {
             }
         }
     }
+
+
+
+    //MESSAGES
+    public static final String MSG_BIBLIO_NAME = "BIBLIOTECA SMARTin4t0r 3.0";
+    public static String MSG_SIGN_UP_SUCCESSFUL;
+    public static String MSG_EXIT_WITHOUT_SAVING;
+    public static String MSG_GOODBYE;
+    public static String MSG_LOG_OUT;
+    public static String MSG_USER_LIST;
+    public static String MSG_MEDIA_LIST;
+    public static String MSG_FILTERED_MEDIA_LIST;
+    public static String MSG_REMOVE_SUCCESSFUL;
+    public static String MSG_EXIT_LOGIN;
+    public static String MSG_OPERATOR_MENU;
+    public static String MSG_CUSTOMER_MENU;
+    public static String MSG_ABORT;
+    public static String MSG_ADD_SUCCESSFUL;
+    public static String MSG_REMINDER_DAYS_LEFT;
+    public static String MSG_DAYS;
+    public static String MSG_ESCAPE_STRING_MESSAGE;
+    public static String MSG_FOLDER_CONTENTS;
+    public static String MSG_MOVE_TO_LOGIN;
+    public static String MSG_BORROW_SUCCESSFUL;
+    public static String MSG_LOAN_LIST_ALL;
+    public static String MSG_LOAN_LIST_SINGLE;
+    public static String MSG_EXTEND_SUCCESSFUL;
+    public static String MSG_LOANS_IN_YEAR;
+    public static String MSG_USER_LOANS_IN_YEAR;
+    public static String MSG_EXTENSIONS_IN_YEAR;
+    public static String MSG_MOST_LENT_MEDIA_IN_YEAR;
+    //PROMPTS
+    public static String PROMPT_FIRST_NAME;
+    public static String PROMPT_LAST_NAME;
+    public static String PROMPT_USERNAME;
+    public static String PROMPT_PASSWORD;
+    public static String PROMPT_BIRTHDAY;
+    public static String PROMPT_PRESENT_USER_MULTIPLE_CHOICE;
+    public static String PROMPT_BIBLIO_INITIAL_CHOICES;
+    public static String PROMPT_OPERATOR_CHOICES;
+    public static String PROMPT_CUSTOMER_CHOICES;
+    public static String PROMPT_SIGN_UP_CONFIRMATION;
+    public static String PROMPT_LOGIN_SCREEN;
+    public static String PROMPT_SIGN_UP_SCREEN;
+    public static String PROMPT_MODIFY_FIELDS;
+    public static String PROMPT_RETRY_LOGGING_IN;
+    public static String PROMPT_ADD_MEDIA;
+    public static String PROMPT_TITLE;
+    public static String PROMPT_AUTHOR;
+    public static String PROMPT_GENRE;
+    public static String PROMPT_PUBLICATION_YEAR;
+    public static String PROMPT_PUBLISHER_NAME;
+    public static String PROMPT_REMOVE_MEDIA;
+    public static String PROMPT_REMOVE_MEDIA_ID;
+    public static String PROMPT_SELECT_PATH;
+    public static String PROMPT_EXPIRY_IMMINENT;
+    public static String PROMPT_WHICH_FOLDER;
+    public static String PROMPT_REMOVE_CONFIRMATION;
+    public static String PROMPT_SEARCH_FOR_MEDIA;
+    public static String PROMPT_SEARCH_FOR_MEDIA_TO_BORROW;
+    public static String PROMPT_BORROW_CONFIRMATION;
+    public static String PROMPT_SEARCH_FOR_LOANS;
+    public static String PROMPT_CHOOSE_MEDIA_TO_EXTEND;
+
+    //ERRORS
+    public static String ERR_NOT_OF_AGE;
+    public static String ERR_INVALID_NAME;
+    public static String ERR_INVALID_DATE;
+    public static String ERR_INVALID_YEAR;
+    public static String ERR_LOGIN_FAILED;
+    public static String ERR_SIGN_UP_FAILED;
+    public static String ERR_SIGN_UP_ABORTED;
+    public static String ERR_SAVING_DATABASE;
+    public static String ERR_LOADING_DATABASE;
+    public static String ERR_LOADING_FILESYSTEM;
+    public static String ERR_CLASS_NOT_FOUND;
+    public static String ERR_FILE_NOT_FOUND;
+    public static String ERR_MSG_INVALID_INPUT;
+    public static String ERR_USER_ALREADY_PRESENT;
+    public static String ERR_CANNOT_RENEW;
+    public static String ERR_FILTERED_MEDIA_LIST_EMPTY;
+    public static String ERR_MEDIA_NOT_PRESENT;
+    public static String ERR_MEDIA_ALREADY_PRESENT;
+    public static String ERR_INVALID_PATH;
+    public static String ERR_PATH_NOT_PRESENT;
+    public static String ERR_BORROW_FAILED;
+    public static String ERR_MEDIA_NOT_AVAILABLE;
+    public static String ERR_CANNOT_BORROW;
+    public static String ERR_USER_NOT_PRESENT;
+    public static String ERR_WRONG_PASSWORD;
+    public static String ERR_LOAN_LIST_EMPTY;
+    public static String ERR_CANNOT_EXTEND;
+    public static String ERR_NO_LOANS_IN_YEAR;
+*/
 }
 

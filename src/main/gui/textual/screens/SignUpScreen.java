@@ -1,10 +1,11 @@
 package main.gui.textual.screens;
+
 import main.controller.UserController;
 import main.utility.InputParserUtility;
 import main.utility.exceptions.IllegalDateFormatException;
+import main.utility.notifications.Notifications;
 
 import static main.utility.GlobalParameters.LEGAL_AGE_IN_YEARS;
-import static main.utility.notifications.Notifications.*;
 
 /**
  * The sign up screen.
@@ -20,7 +21,7 @@ public class SignUpScreen extends Screen {
      */
     public SignUpScreen(UserController userController) {
         super(userController);
-        System.out.printf("%s%n%s%n", PROMPT_SIGN_UP_SCREEN, SEPARATOR);
+        System.out.printf("%s%n%s%n", Notifications.getMessage("PROMPT_SIGN_UP_SCREEN"), Notifications.getMessage("SEPARATOR"));
 
         int status;
         do {
@@ -35,13 +36,13 @@ public class SignUpScreen extends Screen {
             details = fillDetails();
         }
         catch(InterruptedException iEx) {
-            System.out.printf("%s %s%n", ERR_SIGN_UP_ABORTED, MSG_EXIT_WITHOUT_SAVING);
+            System.out.printf("%s %s%n", Notifications.getMessage("ERR_SIGN_UP_ABORTED"), Notifications.getMessage("MSG_EXIT_WITHOUT_SAVING"));
             return -1;
         }
 
         try {
             if(!InputParserUtility.isOfAge(details[4], LEGAL_AGE_IN_YEARS)) {
-                System.out.println(ERR_NOT_OF_AGE);
+                System.out.println(Notifications.getMessage("ERR_NOT_OF_AGE"));
                 return 1;
             }
         }
@@ -50,7 +51,7 @@ public class SignUpScreen extends Screen {
         }
 
         if(getUserController().addUserToDatabase(details[0], details[1], details[2], details[3], InputParserUtility.toGregorianDate(details[4]))) {
-            System.out.println(MSG_SIGN_UP_SUCCESSFUL);
+            System.out.println(Notifications.getMessage("MSG_SIGN_UP_SUCCESSFUL"));
             return 0;
         }
         else
@@ -58,22 +59,22 @@ public class SignUpScreen extends Screen {
     }
 
     private String[] fillDetails() throws InterruptedException {
-        System.out.print(PROMPT_FIRST_NAME);
+        System.out.print(Notifications.getMessage("PROMPT_FIRST_NAME"));
         String firstName = insertName();
 
-        System.out.print(PROMPT_LAST_NAME);
+        System.out.print(Notifications.getMessage("PROMPT_LAST_NAME"));
         String lastName = insertName();
 
-        System.out.print(PROMPT_USERNAME);
+        System.out.print(Notifications.getMessage("PROMPT_USERNAME"));
         String username = getScanner().nextLine();
 
-        System.out.print(PROMPT_PASSWORD);
+        System.out.print(Notifications.getMessage("PROMPT_PASSWORD"));
         String password = getScanner().nextLine();
 
-        System.out.print(PROMPT_BIRTHDAY);
+        System.out.print(Notifications.getMessage("PROMPT_BIRTHDAY"));
         String birthday = insertDate();
 
-        System.out.printf("%s%n%s%n%s%n", SEPARATOR, PROMPT_SIGN_UP_CONFIRMATION, SEPARATOR);
+        System.out.printf("%s%n%s%n%s%n", Notifications.getMessage("SEPARATOR"), Notifications.getMessage("PROMPT_SIGN_UP_CONFIRMATION"), Notifications.getMessage("SEPARATOR"));
 
         if(insertString(YN_REGEX).equalsIgnoreCase(NO))
             throw new InterruptedException();
@@ -82,14 +83,14 @@ public class SignUpScreen extends Screen {
     }
 
     private int userAlreadyPresent() {
-        System.out.printf("%s%n%s%n%s%n%s%n", ERR_USER_ALREADY_PRESENT, SEPARATOR, PROMPT_PRESENT_USER_MULTIPLE_CHOICE, SEPARATOR);
+        System.out.printf("%s%n%s%n%s%n%s%n", Notifications.getMessage("ERR_USER_ALREADY_PRESENT"), Notifications.getMessage("SEPARATOR"), Notifications.getMessage("PROMPT_PRESENT_USER_MULTIPLE_CHOICE"), Notifications.getMessage("SEPARATOR"));
 
         switch(insertInteger(1, 3)) {
             case 1:
-                System.out.printf("%s %s%n", MSG_EXIT_WITHOUT_SAVING, MSG_MOVE_TO_LOGIN);
+                System.out.printf("%s %s%n", Notifications.getMessage("MSG_EXIT_WITHOUT_SAVING"), Notifications.getMessage("MSG_MOVE_TO_LOGIN"));
                 return -1;
             case 2:
-                System.out.println(PROMPT_MODIFY_FIELDS);
+                System.out.println(Notifications.getMessage("PROMPT_MODIFY_FIELDS"));
                 return 1;
             default:
                 return 0;

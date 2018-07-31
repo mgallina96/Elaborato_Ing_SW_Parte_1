@@ -4,11 +4,10 @@ import main.controller.FileSystemController;
 import main.controller.LoanController;
 import main.controller.MediaController;
 import main.controller.UserController;
+import main.utility.notifications.Notifications;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
-import static main.utility.notifications.Notifications.*;
 
 /**
  * The operator menu screen.
@@ -29,7 +28,7 @@ public class OperatorScreen extends Screen {
         boolean exitFromOperatorSection = false;
 
         while(!exitFromOperatorSection) {
-            System.out.printf("%s%n%s%n%s%n", SEPARATOR, PROMPT_OPERATOR_CHOICES, SEPARATOR);
+            System.out.printf("%s%n%s%n%s%n", Notifications.getMessage("SEPARATOR"), Notifications.getMessage("PROMPT_OPERATOR_CHOICES"), Notifications.getMessage("SEPARATOR"));
 
             switch(insertInteger(1, 12)) {
                 case 1:
@@ -46,10 +45,10 @@ public class OperatorScreen extends Screen {
                     searchForMedia();
                     break;
                 case 5:
-                    System.out.printf("%s%n%s%n", MSG_USER_LIST, userController.allUsersToString());
+                    System.out.printf("%s%n%s%n", Notifications.getMessage("MSG_USER_LIST"), userController.allUsersToString());
                     break;
                 case 6:
-                    System.out.printf("%s%n%s%n", MSG_LOAN_LIST_ALL, loanController.allLoansToString());
+                    System.out.printf("%s%n%s%n", Notifications.getMessage("MSG_LOAN_LIST_ALL"), loanController.allLoansToString());
                     break;
                 case 7:
                     System.out.println(
@@ -72,7 +71,7 @@ public class OperatorScreen extends Screen {
                     );
                     break;
                 case 11:
-                    System.out.printf("%s%n", MSG_LOG_OUT);
+                    System.out.printf("%s%n", Notifications.getMessage("MSG_LOG_OUT"));
                     exitFromOperatorSection = true;
                     userController.logout();
                     break;
@@ -87,39 +86,39 @@ public class OperatorScreen extends Screen {
      * (title, author, genre, etc.) for that particular media item.
      */
     private void addMedia() {
-        System.out.printf("%s%n%s%n", PROMPT_ADD_MEDIA, SEPARATOR);
-        System.out.print(PROMPT_TITLE);
+        System.out.printf("%s%n%s%n", Notifications.getMessage("PROMPT_ADD_MEDIA"), Notifications.getMessage("SEPARATOR"));
+        System.out.print(Notifications.getMessage("PROMPT_TITLE"));
         String title = getScanner().nextLine();
 
-        System.out.print(PROMPT_AUTHOR);
+        System.out.print(Notifications.getMessage("PROMPT_AUTHOR"));
         String author = insertName();
 
-        System.out.print(PROMPT_GENRE);
+        System.out.print(Notifications.getMessage("PROMPT_GENRE"));
         String genre = getScanner().nextLine();
 
-        System.out.print(PROMPT_PUBLICATION_YEAR);
+        System.out.print(Notifications.getMessage("PROMPT_PUBLICATION_YEAR"));
         int year = insertYear();
 
-        System.out.print(PROMPT_PUBLISHER_NAME);
+        System.out.print(Notifications.getMessage("PROMPT_PUBLISHER_NAME"));
         String publisherName = insertName();
 
-        System.out.printf("%s%n%s%n", SEPARATOR, PROMPT_SELECT_PATH);
+        System.out.printf("%s%n%s%n", Notifications.getMessage("SEPARATOR"), Notifications.getMessage("PROMPT_SELECT_PATH"));
         String path = chooseFolder();
 
         if(!getMediaController().addMediaToDatabase(title, author, genre, year, publisherName, path))
-            System.out.printf("%s%n%s%n", ERR_MEDIA_ALREADY_PRESENT, MSG_ABORT);
+            System.out.printf("%s%n%s%n", Notifications.getMessage("ERR_MEDIA_ALREADY_PRESENT"), Notifications.getMessage("MSG_ABORT"));
         else
-            System.out.printf("%s\"%s\"%n", MSG_ADD_SUCCESSFUL, path);
+            System.out.printf("%s\"%s\"%n", Notifications.getMessage("MSG_ADD_SUCCESSFUL"), path);
     }
 
     /**
      * Prints the filtered list of {@code Media} items that are located in the chosen folder.
      */
     private void printFilteredMediaByFolder() {
-        System.out.printf("%s%n%s%n", PROMPT_WHICH_FOLDER, SEPARATOR);
+        System.out.printf("%s%n%s%n", Notifications.getMessage("PROMPT_WHICH_FOLDER"), Notifications.getMessage("SEPARATOR"));
         String path = chooseFolder();
 
-        System.out.printf("%s\"%s\":%n%s%n", MSG_FOLDER_CONTENTS, path, getMediaController().getFolderContents(path));
+        System.out.printf("%s\"%s\":%n%s%n", Notifications.getMessage("MSG_FOLDER_CONTENTS"), path, getMediaController().getFolderContents(path));
     }
 
     /**
@@ -146,42 +145,42 @@ public class OperatorScreen extends Screen {
      * media item is removed from the database.
      */
     private boolean searchForMedia() {
-        System.out.println(PROMPT_REMOVE_MEDIA);
+        System.out.println(Notifications.getMessage("PROMPT_REMOVE_MEDIA"));
         String input = getScanner().nextLine();
 
         if(input.equals(ESCAPE_STRING)) {
-            System.out.println(MSG_ABORT);
+            System.out.println(Notifications.getMessage("MSG_ABORT"));
             return false;
         }
 
         String output = getMediaController().allFilteredMediaList(input);
 
         if(output.length() > 0) {
-            System.out.printf("%s%n%s%n", MSG_FILTERED_MEDIA_LIST, output);
+            System.out.printf("%s%n%s%n", Notifications.getMessage("MSG_FILTERED_MEDIA_LIST"), output);
             return true;
         }
         else
-            System.out.println(ERR_FILTERED_MEDIA_LIST_EMPTY);
+            System.out.println(Notifications.getMessage("ERR_FILTERED_MEDIA_LIST_EMPTY"));
 
         return false;
     }
 
     private void remove() {
-        System.out.println(PROMPT_REMOVE_MEDIA_ID);
+        System.out.println(Notifications.getMessage("PROMPT_REMOVE_MEDIA_ID"));
 
         int id = insertInteger();
         while(!getMediaController().mediaIsPresent(id)) {
-            System.out.println(ERR_MEDIA_NOT_PRESENT);
+            System.out.println(Notifications.getMessage("ERR_MEDIA_NOT_PRESENT"));
             id = insertInteger();
         }
 
-        System.out.println(PROMPT_REMOVE_CONFIRMATION);
+        System.out.println(Notifications.getMessage("PROMPT_REMOVE_CONFIRMATION"));
 
         if(insertString(YN_REGEX).equalsIgnoreCase(YES)) {
             getMediaController().removeMediaFromDatabase(id);
-            System.out.println(MSG_REMOVE_SUCCESSFUL);
+            System.out.println(Notifications.getMessage("MSG_REMOVE_SUCCESSFUL"));
         }
         else
-            System.out.println(MSG_ABORT);
+            System.out.println(Notifications.getMessage("MSG_ABORT"));
     }
 }

@@ -1,6 +1,8 @@
 package main.utility;
+
 import main.utility.exceptions.IllegalDateFormatException;
 import main.utility.notifications.Notifications;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
@@ -31,7 +33,7 @@ public class InputParserUtility {
             Integer.parseInt(input);
         }
         catch(NumberFormatException nfEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_MSG_INVALID_INPUT);
+            logger.log(Level.SEVERE, Notifications.getMessage("ERR_MSG_INVALID_INPUT"));
             return false;
         }
 
@@ -84,7 +86,7 @@ public class InputParserUtility {
             Double.parseDouble(input);
         }
         catch(Exception e) {
-            logger.log(Level.SEVERE, Notifications.ERR_MSG_INVALID_INPUT);
+            logger.log(Level.SEVERE, Notifications.getMessage("ERR_MSG_INVALID_INPUT"));
             return false;
         }
 
@@ -123,7 +125,7 @@ public class InputParserUtility {
             Long.parseLong(input);
         }
         catch(NumberFormatException nfEx) {
-            logger.log(Level.SEVERE, Notifications.ERR_MSG_INVALID_INPUT);
+            logger.log(Level.SEVERE, Notifications.getMessage("ERR_MSG_INVALID_INPUT"));
             return false;
         }
 

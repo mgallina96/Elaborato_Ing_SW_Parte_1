@@ -1,4 +1,5 @@
 package main.model.loan;
+
 import main.model.media.Media;
 import main.model.user.User;
 
@@ -6,7 +7,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.HashMap;
 
 /**
  * The Loan class, which associates a user with a media item they borrowed.
