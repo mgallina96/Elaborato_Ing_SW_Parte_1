@@ -1,0 +1,88 @@
+﻿- -@ -
+MSG_BIBLIO_NAME -@ BIBLIOTECA SMARTin4t0r 3.0
+MSG_SIGN_UP_SUCCESSFUL -@ Sign up successful. Welcome!
+MSG_EXIT_WITHOUT_SAVING -@ Exiting without saving...
+MSG_GOODBYE -@ Exiting BIBLIOTECA SMARTin4t0r 3.0... Goodbye!
+MSG_LOG_OUT -@ Logging out...
+MSG_USER_LIST -@ Here is the list of all subscribed users:
+MSG_MEDIA_LIST -@ Here is the list of all media items:
+MSG_FILTERED_MEDIA_LIST -@ Results:
+MSG_REMOVE_SUCCESSFUL -@ Media item removed successfully.
+MSG_EXIT_LOGIN -@ Exiting login section...
+MSG_OPERATOR_MENU -@ Welcome, operator!
+MSG_CUSTOMER_MENU -@ Welcome, customer!
+MSG_ABORT -@ Aborting...
+MSG_ADD_SUCCESSFUL -@ Media item added successfully to: 
+MSG_REMINDER_DAYS_LEFT -@ Days you have left to renew your subscription:
+MSG_DAYS -@ days
+MSG_ESCAPE_STRING_MESSAGE -@ to exit this section
+MSG_FOLDER_CONTENTS -@ Here are the contents of the folder 
+MSG_MOVE_TO_LOGIN -@ Try logging in with these credentials.
+MSG_BORROW_SUCCESSFUL -@ Media item successfully borrowed!
+MSG_LOAN_LIST_ALL -@ Here's the list of all loans that have been granted to the following users: 
+MSG_LOAN_LIST_SINGLE -@ Here's the list of your loans: 
+MSG_EXTEND_SUCCESSFUL -@ Loan extended successfully.
+MSG_LOANS_IN_YEAR -@ Number of loans by year: 
+MSG_MOST_LENT_MEDIA_IN_YEAR -@ The most lent media by year: 
+MSG_EXTENSIONS_IN_YEAR -@ Number of extensions by year: 
+MSG_USER_LOANS_IN_YEAR -@ Number of user loans by year: 
+PROMPT_FIRST_NAME -@ First name (please insert a valid first name): 
+PROMPT_LAST_NAME -@ Last name (please insert a valid last name): 
+PROMPT_USERNAME -@ Username: 
+PROMPT_PASSWORD -@ Password: 
+PROMPT_BIRTHDAY -@ Birthday (accepted format -@ DD/MM/YYYY): 
+PROMPT_PRESENT_USER_MULTIPLE_CHOICE -@ (1) EXIT WITHOUT SAVING\t|\t(2) CHANGE FIELDS
+PROMPT_BIBLIO_INITIAL_CHOICES -@ (1) LOGIN\t|\t(2) SIGN UP\t|\t(3) EXIT
+PROMPT_OPERATOR_CHOICES -@ (1) ADD A MEDIA ITEM\t|\t(2) REMOVE A MEDIA ITEM\t|\t(3) SHOW MEDIA ITEMS BY FOLDER\t|\t(4) SEARCH FOR MEDIA ITEMS\t|\t(5) SHOW ALL SUBSCRIBED USERS\t|\t(6) SHOW ALL LOANS\t|\t(7) SHOW LOANS NUMBER BY YEAR\t|\t(8) SHOW USER LOANS NUMBER BY YEAR\t|\t(9) SHOW LOAN EXTENSIONS NUMBER BY YEAR\t|\t(10) SHOW THE MOST LENT MEDIA\t|\t(11) LOGOUT
+PROMPT_CUSTOMER_CHOICES -@ (1) RENEW YOUR SUBSCRIPTION!\t|\t(2) REQUEST A LOAN\t|\t(3) EXTEND YOUR LOAN\t|\t(4) SEARCH FOR MEDIA ITEMS\t|\t(5) LOGOUT
+PROMPT_SIGN_UP_CONFIRMATION -@ Are you sure you want to submit this form? (y/n)
+PROMPT_REMOVE_CONFIRMATION -@ Are you sure you want to remove this media item? (y/n)
+PROMPT_LOGIN_SCREEN -@ Welcome back! Log in to BIBLIOTECA SMARTin4t0r 3.0
+PROMPT_SIGN_UP_SCREEN -@ Hi there! Sign up for BIBLIOTECA SMARTin4t0r 3.0
+PROMPT_MODIFY_FIELDS -@ Please modify the wrong fields.
+PROMPT_RETRY_LOGGING_IN -@ Please retry logging in with correct credentials.
+PROMPT_ADD_MEDIA -@ Please add a media item.
+PROMPT_TITLE -@ Title: 
+PROMPT_AUTHOR -@ Author: 
+PROMPT_GENRE -@ Genre: 
+PROMPT_PUBLICATION_YEAR -@ Publication year: 
+PROMPT_PUBLISHER_NAME -@ Publisher: 
+PROMPT_REMOVE_MEDIA -@ Please insert one or more keywords for the media item you wish to remove (insert !quit to quit): 
+PROMPT_SEARCH_FOR_MEDIA -@ Please insert one or more keywords for the media item you're looking for (insert !quit to quit): 
+PROMPT_SEARCH_FOR_MEDIA_TO_BORROW -@ Please insert one or more keywords for the media item you'd like to borrow (insert !quit to quit): 
+PROMPT_REMOVE_MEDIA_ID -@ Please choose the ID for the item you wish to remove.
+PROMPT_SELECT_PATH -@ Please choose the folder path you wish to put the media item in by selecting the desired folders step by step.
+PROMPT_EXPIRY_IMMINENT -@ WARNING! SUBSCRIPTION EXPIRY IMMINENT!
+PROMPT_WHICH_FOLDER -@ Please choose the path you wish to see the contents of, by selecting the desired folders step by step.
+PROMPT_BORROW_CONFIRMATION -@ Are you sure you want to borrow this media item? (y/n)
+PROMPT_SEARCH_FOR_LOANS -@ Here's the list of the media items you borrowed. Please select the media item whose loan you wish to extend.
+PROMPT_CHOOSE_MEDIA_TO_EXTEND -@ Please select the ID of the media whose loan you wish to extend.
+ERR_NOT_OF_AGE -@ Warning: user is underage. Please re-fill this form.
+ERR_INVALID_NAME -@ Looks like this name has an invalid format, please re-insert a valid name.
+ERR_INVALID_DATE -@ This birth date has an invalid format. Please re-insert a valid date.
+ERR_INVALID_YEAR -@ This year has an invalid format. Please re-insert a valid year.
+ERR_LOGIN_FAILED -@ Login failed: wrong username or password.
+ERR_SIGN_UP_FAILED -@ Sign up failed.
+ERR_SIGN_UP_ABORTED -@ Sign up aborted.
+ERR_SAVING_DATABASE -@ An error occurred while saving the following database to a .ser file: 
+ERR_LOADING_DATABASE -@ An error occurred while loading the following database: 
+ERR_LOADING_FILESYSTEM -@ An error occurred while loading the file system.
+ERR_CLASS_NOT_FOUND -@ Error! The following class was not found: 
+ERR_FILE_NOT_FOUND -@ Error! The file belonging to the following class was not found: 
+ERR_MSG_INVALID_INPUT -@ Invalid input.
+ERR_USER_ALREADY_PRESENT -@ This username is already present in our database.
+ERR_CANNOT_RENEW -@ It's too early to renew your subscription.
+ERR_FILTERED_MEDIA_LIST_EMPTY -@ No media items match your search. Aborting...
+ERR_MEDIA_NOT_PRESENT -@ The chosen ID doesn't match any media in the database.
+ERR_MEDIA_ALREADY_PRESENT -@ The media you're trying to add is already in our database.
+ERR_INVALID_PATH -@ The path you inserted seems to be invalid. Please re-insert a valid path. (accepted format: folder\\subfolder\\subfolder...)
+ERR_PATH_NOT_PRESENT -@ The path you inserted doesn't exist.
+ERR_BORROW_FAILED -@ There has been an error while borrowing this media item.
+ERR_MEDIA_NOT_AVAILABLE -@ The selected media is not available at the moment.
+ERR_CANNOT_BORROW -@ Upper loan limit reached! It's not possible to borrow any more media items at the moment.
+ERR_USER_NOT_PRESENT -@ The requested username couldn't be found. Please check the spelling or sign up.
+ERR_WRONG_PASSWORD -@ Wrong password.
+ERR_LOAN_LIST_EMPTY -@ There are no loans associated to this user.
+ERR_CANNOT_EXTEND -@ It's too early to extend this loan.
+ERR_NO_LOANS_IN_YEAR -@ No loans were made in the year 
+SEPARATOR -@ -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
