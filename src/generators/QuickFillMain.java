@@ -14,6 +14,8 @@ import main.utility.notifications.Notifications;
 
 import java.util.HashMap;
 
+import static generators.Generator.COMMON_BOOK_PATH;
+import static generators.Generator.COMMON_FILM_PATH;
 import static generators.Generator.COMMON_MEDIA_PATH;
 
 /**
@@ -23,10 +25,11 @@ import static generators.Generator.COMMON_MEDIA_PATH;
  */
 public class QuickFillMain {
 
-    //di quanto volete riempire il database? Viene riempito con (2^FILLING_LEVEL)^2 utenti e libri.
-    private static final byte FILLING_LEVEL = 6;
+    private static final int HOW_MANY_INSTANCES = 1500;
 
     public static void main(String[] args) {
+        Notifications.setLanguage(Notifications.LANGUAGE_ENG);
+
         //fillFileSystem();
         //fillDatabase();
         //printFileSystem();
@@ -53,25 +56,24 @@ public class QuickFillMain {
         fs.addFolder("Libri", ROOT);
         fs.addFolder("Film", ROOT);
 
-        String[] genres = PoolLoader.fromTXTFile(COMMON_MEDIA_PATH + "generi_libro.txt");
+        String[] book_genres = PoolLoader.fromTXTFile(COMMON_BOOK_PATH + "book_genres.txt");
+        String[] film_genres = PoolLoader.fromTXTFile(COMMON_FILM_PATH + "film_genres.txt");
 
-        for(String g : genres)
+        for(String g : book_genres)
             fs.addFolder(g, fs.getFolder(ROOT.getChildren().get(0).getFolderId()));
-        for(String g : genres)
+        for(String g : film_genres)
             fs.addFolder(g, fs.getFolder(ROOT.getChildren().get(1).getFolderId()));
 
         fs.saveFileSystem();
     }
 
     private static void fillDatabase() {
-        Notifications.setLanguage(Notifications.LANGUAGE_ENG);
-
         SystemController sc = SystemController.getInstance();
         UserDatabase userDatabase = UserDatabase.getInstance();
         MediaDatabase mediaDatabase = MediaDatabase.getInstance();
         LoanDatabase loanDatabase = LoanDatabase.getInstance();
 
-        Generator generator = new Generator(FILLING_LEVEL);
+        Generator generator = new Generator(HOW_MANY_INSTANCES);
 
         for(User u : generator.getUsers())
             userDatabase.addUser(u);

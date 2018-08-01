@@ -1,0 +1,19 @@
+﻿Horror
+Romantico
+Giallo
+Thriller
+Fantasy
+Fantascienza
+Opera teatrale
+Comico
+Noir
+Arte
+Musical
+Per bambini
+Religioso
+Avventura
+Geografia
+Scienza
+Cartone animato
+Animali
+Educativo

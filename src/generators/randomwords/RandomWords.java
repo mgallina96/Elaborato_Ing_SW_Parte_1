@@ -2,8 +2,8 @@ package generators.randomwords;
 import java.util.Random;
 
 /**
- * Random word generator. This class requires a pool of words (in form of a {@code String} array) from which the words
- * will be randomly picked.
+ * Random word generator. In order to work properly, this class requires a pool of words (in form of a {@code String}
+ * array), from which the words will be randomly picked.
  *
  * @author Alessandro Polcini
  */
@@ -14,7 +14,7 @@ public class RandomWords {
     private String[] wordPool;
 
     /**
-     * Constructor for the RandomWords class. Initializes the pool from which the words will be randomly picked.
+     * Constructor for the RandomWords class. Initializes the pool from which the words will be chosen at random.
      *
      * @param wordPool the word pool in form of a {@code String} array.
      */
@@ -25,7 +25,7 @@ public class RandomWords {
     }
 
     /**
-     * Constructor for the RandomWords class. Initializes the pool from which the words will be randomly picked.
+     * Constructor for the RandomWords class. Initializes the pool from which the words will be chosen at random.
      *
      * @param wordPool the word pool in form of a {@code String} array.
      * @param seed the seed for the {@code Random} constructor.

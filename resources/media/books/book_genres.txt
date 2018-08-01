@@ -1,0 +1,34 @@
+﻿Horror
+Romantico
+Giallo
+Thriller
+Fantasy
+Fantascienza
+Commedia
+Comico
+Noir
+Romanzo Storico
+Biografia
+Tecnica
+Arte
+Fotografia
+Musica
+Per bambini
+Raccolta di fiabe
+Raccolta di poesie
+Raccolta di favole
+Romanzo epico
+Religioso
+Spirituale
+Salute e benessere
+Giardinaggio
+Automobili
+Matematica
+Fisica
+Didattica
+Viaggi
+Avventura
+Geografia
+Scienza
+Fumetto
+Animali
