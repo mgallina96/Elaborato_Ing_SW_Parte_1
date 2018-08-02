@@ -18,7 +18,7 @@ class TitleGenerator {
     TitleGenerator(String mediaType, String genre) {
         this.mediaType = mediaType;
         this.genre = genre.toLowerCase().replaceAll("\\s+", "");
-        filePath = COMMON_MEDIA_PATH + mediaType + "\\titles\\" + genre + "_titles.txt";
+        filePath = COMMON_MEDIA_PATH + mediaType + "\\titles\\" + this.genre + "_titles.txt";
         titles = new RandomWords(PoolLoader.fromTXTFile(filePath));
     }
 

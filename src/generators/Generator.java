@@ -1,11 +1,9 @@
 package generators;
-
 import generators.mediagenerator.BookGenerator;
 import generators.mediagenerator.FilmGenerator;
 import generators.usergenerator.UserGenerator;
 import main.model.media.Media;
 import main.model.user.User;
-
 import java.util.ArrayList;
 
 /**

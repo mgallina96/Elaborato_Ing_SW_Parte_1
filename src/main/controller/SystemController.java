@@ -71,7 +71,8 @@ public class SystemController implements UserController, MediaController, LoanCo
         if(toCheck.getPassword().equals(password)){
             userDatabase.setCurrentUser(toCheck);
             return true;
-        } else
+        }
+        else
             throw new WrongPasswordException();
 
     }
@@ -267,7 +268,9 @@ public class SystemController implements UserController, MediaController, LoanCo
     public String getLoanNumberByYear(int from, int to) {
         StringBuilder loansByYear = new StringBuilder();
 
-        loansByYear.append(Notifications.getMessage("MSG_LOANS_IN_YEAR")).append("\n");
+        loansByYear
+                .append(Notifications.getMessage("MSG_LOANS_IN_YEAR"))
+                .append("\n");
 
         for(int year = from; year <= to; year++)
             loansByYear
@@ -282,11 +285,14 @@ public class SystemController implements UserController, MediaController, LoanCo
     public String getUserLoanNumberByYear(int from, int to) {
         StringBuilder loansByYear = new StringBuilder();
 
-        loansByYear.append(Notifications.getMessage("MSG_USER_LOANS_IN_YEAR"))
+        loansByYear
+                .append(Notifications.getMessage("MSG_USER_LOANS_IN_YEAR"))
                 .append("\n");
 
         for(int year = from; year <= to; year++) {
-            loansByYear.append(year).append(":\n");
+            loansByYear
+                    .append(year)
+                    .append(":\n");
 
             HashMap<String, Integer> userLoansByYear = loanDatabase.getUserLoanNumberByYear(year);
             for(String username : userLoansByYear.keySet())
@@ -360,7 +366,7 @@ public class SystemController implements UserController, MediaController, LoanCo
         return sb.toString();
     }
 
-    private <D extends Database> void saveDatabase(String path, @NotNull D database) {
+    private  <D extends Database> void saveDatabase(String path, @NotNull D database) {
         try (
             //to increase serializing speed
             RandomAccessFile raf = new RandomAccessFile(path, "rw");

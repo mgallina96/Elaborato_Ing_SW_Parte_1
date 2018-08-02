@@ -19,12 +19,14 @@ import static generators.Generator.COMMON_FILM_PATH;
 import static generators.Generator.COMMON_MEDIA_PATH;
 
 /**
- * Class QuickFillMain, to quickly fill all of the databases (FileSystem, User database, Media database and Loan
- * database).
+ * The QuickFillMain Class, whose job is to quickly fill all of the databases (FileSystem, User database, Media database
+ * and Loan database).
+ *
  * @author Alessandro Polcini.
  */
 public class QuickFillMain {
 
+    private static final String COMMON_DATABASE_PATH = "resources\\data\\";
     private static final int HOW_MANY_INSTANCES = 1500;
 
     public static void main(String[] args) {
@@ -85,9 +87,9 @@ public class QuickFillMain {
                 mediaDatabase.addMedia(f, "root\\Film\\" + ((Film)f).getGenre() + "\\");
 
         //this method needs to be made (temporarily) public
-        //sc.saveDatabase("resources\\data\\Biblioteca SMARTINATOR - Media Database.ser", mediaDatabase);
-        //sc.saveDatabase("resources\\data\\Biblioteca SMARTINATOR - User Database.ser", userDatabase);
-        //sc.saveDatabase("resources\\data\\Biblioteca SMARTINATOR - Loan Database.ser", loanDatabase);
+        //sc.saveDatabase(COMMON_DATABASE_PATH + "Biblioteca SMARTINATOR - Media Database.ser", mediaDatabase);
+        //sc.saveDatabase(COMMON_DATABASE_PATH + "Biblioteca SMARTINATOR - User Database.ser", userDatabase);
+        //sc.saveDatabase(COMMON_DATABASE_PATH + "Biblioteca SMARTINATOR - Loan Database.ser", loanDatabase);
     }
 
 
