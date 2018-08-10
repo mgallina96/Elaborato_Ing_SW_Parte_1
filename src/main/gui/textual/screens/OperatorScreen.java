@@ -30,7 +30,7 @@ public class OperatorScreen extends Screen {
         while(!exitFromOperatorSection) {
             System.out.printf("%s%n%s%n%s%n", Notifications.getMessage("SEPARATOR"), Notifications.getMessage("PROMPT_OPERATOR_CHOICES"), Notifications.getMessage("SEPARATOR"));
 
-            switch(insertInteger(1, 12)) {
+            switch(insertInteger(1, 7)) {
                 case 1:
                     addMedia();
                     break;
@@ -45,32 +45,9 @@ public class OperatorScreen extends Screen {
                     searchForMedia();
                     break;
                 case 5:
-                    System.out.printf("%s%n%s%n", Notifications.getMessage("MSG_USER_LIST"), userController.allUsersToString());
+                    visualizeData();
                     break;
                 case 6:
-                    System.out.printf("%s%n%s%n", Notifications.getMessage("MSG_LOAN_LIST_ALL"), loanController.allLoansToString());
-                    break;
-                case 7:
-                    System.out.println(
-                            getLoanController().getLoanNumberByYear(1980, new GregorianCalendar().get(Calendar.YEAR))
-                    );
-                    break;
-                case 8:
-                    System.out.println(
-                            getLoanController().getUserLoanNumberByYear(1980, new GregorianCalendar().get(Calendar.YEAR))
-                    );
-                    break;
-                case 9:
-                    System.out.println(
-                            getLoanController().getExtensionNumberByYear(1980, new GregorianCalendar().get(Calendar.YEAR))
-                    );
-                    break;
-                case 10:
-                    System.out.println(
-                            getLoanController().getMostLentMediaByYear(1980, new GregorianCalendar().get(Calendar.YEAR))
-                    );
-                    break;
-                case 11:
                     System.out.printf("%s%n", Notifications.getMessage("MSG_LOG_OUT"));
                     exitFromOperatorSection = true;
                     userController.logout();
@@ -78,6 +55,43 @@ public class OperatorScreen extends Screen {
                 default:
                     break;
             }
+        }
+    }
+
+    private void visualizeData() {
+        System.out.printf("%s%n%s%n", Notifications.getMessage("PROMPT_DATA_VISUALIZATION_CHOICES"), Notifications.getMessage("SEPARATOR"));
+
+        switch(insertInteger(1, 7)) {
+            case 1:
+                System.out.printf("%s%n%s%n", Notifications.getMessage("MSG_USER_LIST"), getUserController().allUsersToString());
+                break;
+            case 2:
+                System.out.printf("%s%n%s%n", Notifications.getMessage("MSG_LOAN_LIST_ALL"), getLoanController().allLoansToString());
+                break;
+            case 3:
+                System.out.printf("%s", Notifications.getMessage("MSG_CHOOSE_YEAR"));
+                System.out.println(
+                        getLoanController().getLoanNumberByYear(insertYear(), new GregorianCalendar().get(Calendar.YEAR))
+                );
+                break;
+            case 4:
+                System.out.printf("%s", Notifications.getMessage("MSG_CHOOSE_YEAR"));
+                System.out.println(
+                        getLoanController().getUserLoanNumberByYear(insertYear(), new GregorianCalendar().get(Calendar.YEAR))
+                );
+                break;
+            case 5:
+                System.out.printf("%s", Notifications.getMessage("MSG_CHOOSE_YEAR"));
+                System.out.println(
+                        getLoanController().getExtensionNumberByYear(insertYear(), new GregorianCalendar().get(Calendar.YEAR))
+                );
+                break;
+            case 6:
+                System.out.printf("%s", Notifications.getMessage("MSG_CHOOSE_YEAR"));
+                System.out.println(
+                        getLoanController().getMostLentMediaByYear(insertYear(), new GregorianCalendar().get(Calendar.YEAR))
+                );
+                break;
         }
     }
 
