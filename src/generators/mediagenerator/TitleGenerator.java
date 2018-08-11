@@ -13,13 +13,19 @@ class TitleGenerator {
     private String filePath;
     private String mediaType;
     private String genre;
-    private RandomWords titles;
+    private String[] titles;
+    private int length;
 
     TitleGenerator(String mediaType, String genre) {
         this.mediaType = mediaType;
         this.genre = genre.toLowerCase().replaceAll("\\s+", "");
         filePath = COMMON_MEDIA_PATH + mediaType + "\\titles\\" + this.genre + "_titles.txt";
-        titles = new RandomWords(PoolLoader.fromTXTFile(filePath));
+        titles = PoolLoader.fromTXTFile(filePath);
+        length = titles.length;
+    }
+
+    int getLength() {
+        return length;
     }
 
     /**
@@ -27,7 +33,7 @@ class TitleGenerator {
      *
      * @return A random title in form of a {@code String}.
      */
-    String getTitle() {
-        return titles.nextWord();
+    String[] getTitles() {
+        return titles;
     }
 }

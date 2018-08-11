@@ -25,12 +25,13 @@ public class Generator {
 
     /**
      * Constructor for the generator class.
-     * @param howMany The number of users, books and films to be generated.
+     *
+     * @param howMany The number of users to be generated.
      */
     Generator(int howMany) {
         users = UserGenerator.generateUsers(howMany);
-        books = BookGenerator.generateBooks((int)((double)howMany / CONSTANT));
-        films = FilmGenerator.generateFilm((int)((double)howMany / CONSTANT));
+        books = BookGenerator.generateBooks();
+        films = FilmGenerator.generateFilms();
     }
 
     /**

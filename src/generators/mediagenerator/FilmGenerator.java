@@ -29,21 +29,21 @@ public class FilmGenerator {
     /**
      * Generates an arbitrary number of films with random parameters.
      *
-     * @param howMany The number of films to be generated.
      * @return An ArrayList containing the randomly generated films.
      */
-    public static ArrayList<Media> generateFilm(int howMany) {
+    public static ArrayList<Media> generateFilms() {
         ArrayList<Media> media = new ArrayList<>();
-        int booksForEachGenre = howMany / numOfGenres;
         PersonNameGenerator personNameGenerator = new PersonNameGenerator();
 
         for(int i = 0; i < numOfGenres; i++) {
             String currentGenre = genres[i];
             TitleGenerator t = new TitleGenerator("films", currentGenre);
+            int howMany = t.getLength();
+            String[] titles = t.getTitles();
 
-            for(int j = 0; j < booksForEachGenre; j++) {
+            for(int j = 0; j < howMany; j++) {
                 media.add(new Film(
-                        t.getTitle(),
+                        titles[j],
                         personNameGenerator.getRandomFullName(),
                         currentGenre,
                         generatePlausibleYear(),

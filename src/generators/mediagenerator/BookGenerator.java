@@ -29,21 +29,21 @@ public class BookGenerator {
     /**
      * Generates an arbitrary number of books with random parameters.
      *
-     * @param howMany The number of books to be generated.
      * @return An ArrayList containing the randomly generated books.
      */
-    public static ArrayList<Media> generateBooks(int howMany) {
+    public static ArrayList<Media> generateBooks() {
         ArrayList<Media> media = new ArrayList<>();
-        int booksForEachGenre = howMany / numOfGenres;
         PersonNameGenerator personNameGenerator = new PersonNameGenerator();
 
         for(int i = 0; i < numOfGenres; i++) {
             String currentGenre = genres[i];
             TitleGenerator t = new TitleGenerator("books", currentGenre);
+            int howMany = t.getLength();
+            String[] titles = t.getTitles();
 
-            for(int j = 0; j < booksForEachGenre; j++) {
+            for(int j = 0; j < howMany; j++) {
                 media.add(new Book(
-                        t.getTitle(),
+                        titles[j],
                         personNameGenerator.getRandomFullName(),
                         currentGenre,
                         generatePlausibleYear(),
