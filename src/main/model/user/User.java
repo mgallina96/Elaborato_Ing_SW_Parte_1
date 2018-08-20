@@ -157,7 +157,7 @@ public class User implements Serializable {
      * @return the birth date in {@code GregorianCalendar} form.
      */
     @SuppressWarnings("unused")
-    GregorianCalendar getBirthday() {
+    public GregorianCalendar getBirthday() {
         return birthday;
     }
 
