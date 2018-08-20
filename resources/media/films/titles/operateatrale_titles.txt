@@ -39,23 +39,17 @@ Gli Amori Di Zelinda E Lindoro
 Anconitana (Toscano, Pavano, Veneziano Anconitana)
 Andria
 Andromaca
-Andromaca ((RU) Андромаха)
-Andromaca ((FR) Andromaque)
 Andromeda ((GRC) Ἀνδρομέδα)
 Andy E Norman ((EN) The Star-Spangled Girl)
 Anfitrione ((LA) Amphitruo)
-Angelo, Tiranno Di Padova ((FR) Angel, Tyran De Padoue) Di Victor Hugo
-Angels In America: Fantasia Gay Su Temi Nazionali Di Tony Kushner
-L'anima Buona Di Sezuan ((DE) Der Gute Mensch Von Sezuan) Di Bertolt Brecht
-Anniversario ((EN) Celebration) Di Harold Pinter
+Angelo, Tiranno Di Padova ((FR) Angel, Tyran De Padoue)
+Angels In America: Fantasia Gay Su Temi Nazionali
+L'anima Buona Di Sezuan ((DE) Der Gute Mensch Von Sezuan)
+Anniversario ((EN) Celebration)
 Antigone
-Antigone Di Jean Anouilh
-Antigone Di Bertolt Brecht
-Antigone ((GRC) Ἀντιγόνη)
 Antiope ((LA) Antiope)
 Antonello Capobrigante Calabrese
 Antonio E Cleopatra
-Antonio E Cleopatra ((EN) Antony And Cleopatra)
 Apu Ollantay (Lingua Quechua Apu Ullantay)
 Arcadia Di Tom Stoppard
 Gli Arcangeli Non Giocano A Flipper
@@ -68,12 +62,12 @@ Ascesa E Caduta Della Città Di Mahagonny ((DE) Aufstieg Und Fall Der Stadt Maha
 Asinaria
 Aspettando Godot ((FR) "En Attendant Godot"
 Assassinio Nella Cattedrale
-Assassino, Speranza Delle Donne ((DE) Mörder, Hoffnung Der Frauen) Di Oskar Kokoschka
+Assassino, Speranza Delle Donne ((DE) Mörder, Hoffnung Der Frauen)
 Atalanta ((LA) Atalanta)
 Atalia ((FR) Athalie)
 Attanasio Cavallo Vanesio
-Atto Senza Parole ((FR) Act Sans Paroles) Di Samuel Beckett
-Atto Senza Parole II ((FR) Act Sans Paroles II) Di Samuel Beckett
+Atto Senza Parole ((FR) Act Sans Paroles)
+Atto Senza Parole II ((FR) Act Sans Paroles II)
 Aulularia ((LA) Aulularia)
 L'avaro
 Aveva Due Pistole Con Gli Occhi Bianchi E Neri
@@ -481,8 +475,6 @@ L'opera Da Tre Soldi ((DE) Die Dreigroschenoper)
 L'opera Del Mendicante ((EN) The Beggar's Opera)
 Orbecche
 Oreste
-Oreste
-Oreste ((GRC) Ὀρέστης)
 Oreste E Pilade
 Proteo ((GRC) Πρωτεύς)
 Orgia
@@ -501,7 +493,6 @@ Passi ((EN) "Footfalls")
 La Passion Selon Pier Paolo Pasolini ((FR) La Passion Selon Pier Paolo Pasolini)
 Il Pastor Fido
 La Pastoral
-La Patente
 La Patente
 Un Patriota Per Me ((EN) A Patriot For Me)
 La Paura Numero Uno

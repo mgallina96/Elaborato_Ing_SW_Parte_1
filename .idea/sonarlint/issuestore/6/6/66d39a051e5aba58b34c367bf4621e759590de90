@@ -1,5 +1,6 @@
 
+Ssquid:S2864 "4Iterate over the "entrySet" instead of the "keySet".(û¹¼½8ªãÌäÎ,
+Bsquid:S1148º"#Use a logger to log this exception.(Ç’Çê8•¥¦õ¼,
+jsquid:CommentedOutCodeLine¡"<This block of commented-out lines of code should be removed.(Ë‚ÖÁ8ü‚èö¼,
+osquid:CommentedOutCodeLine”"<This block of commented-out lines of code should be removed.(×«Âìıÿÿÿÿ8ü‚èö¼,
 gsquid:UselessImportCheck"7Remove this unused import 'java.util.stream.Collector'.(ß‹ÎÓøÿÿÿÿ8•¥¦õ¼,
-osquid:CommentedOutCodeLineñ"<This block of commented-out lines of code should be removed.(×«Âìıÿÿÿÿ8ü‚èö¼,
-jsquid:CommentedOutCodeLineş"<This block of commented-out lines of code should be removed.(Ë‚ÖÁ8ü‚èö¼,
-Bsquid:S1148»"#Use a logger to log this exception.(Ç’Çê8•¥¦õ¼,
