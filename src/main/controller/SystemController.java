@@ -327,18 +327,21 @@ public class SystemController implements UserController, MediaController, LoanCo
         mostLentMedia.append(Notifications.getMessage("MSG_MOST_LENT_MEDIA_IN_YEAR")).append("\n");
 
         for(int year = from; year <= to; year++) {
-            if (loanDatabase.getMostLentMediaByYear(year) != null) {
+            if(loanDatabase.getMostLentMediaByYear(year) != null) {
+                Media m = mediaDatabase.getMediaList().get(loanDatabase.getMostLentMediaByYear(year));
                 mostLentMedia
                         .append(year)
                         .append(": ")
-                        .append(mediaDatabase.getMediaList().get(loanDatabase.getMostLentMediaByYear(year)))
+                        .append(m.getBareItemDetails())
+                        .append("\t-\t")
+                        .append(m.getType())
                         .append("\n");
             }
         }
 
         return mostLentMedia.toString();
     }
-
+/*
     public String mostLentMediaItem(int year) {
         int mediaDatabaseSize = mediaDatabase.getMediaList().size();
         int[] mults = new int[mediaDatabaseSize];
@@ -365,8 +368,8 @@ public class SystemController implements UserController, MediaController, LoanCo
 
         return sb.toString();
     }
-
-    private  <D extends Database> void saveDatabase(String path, @NotNull D database) {
+*/
+    private <D extends Database> void saveDatabase(String path, @NotNull D database) {
         try (
             //to increase serializing speed
             RandomAccessFile raf = new RandomAccessFile(path, "rw");

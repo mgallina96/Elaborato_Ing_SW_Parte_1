@@ -47,11 +47,4 @@ public interface MediaController extends Controller {
      * @return A {@code String} with all the contents of that folder.
      */
     String getFolderContents(String folderPath);
-
-    /**
-     *
-     * @param year
-     * @return
-     */
-    String mostLentMediaItem(int year);
 }
