@@ -21,7 +21,7 @@ public class Loan implements Serializable {
     private int extensionRestrictionInDays;
     private GregorianCalendar loanDate;
     private GregorianCalendar loanExpiry;
-    private ArrayList<GregorianCalendar> extensionDates;
+    private GregorianCalendar extensionDates;
     private boolean isActive;
 
     /**
@@ -39,7 +39,7 @@ public class Loan implements Serializable {
         this.loanDate = new GregorianCalendar();
         this.loanExpiry = new GregorianCalendar();
         this.loanExpiry.add(Calendar.DATE, this.media.getMediaLoanValidityPeriod());
-        this.extensionDates = new ArrayList<>();
+        this.extensionDates = null;
     }
 
     /**
@@ -61,11 +61,13 @@ public class Loan implements Serializable {
     /**
      * Extends a loan by x days, where x is a variable defined in the {@link Media} class or its subclasses.
      */
-    public void extend() {
-        if(media.isAvailable()) {
+    public boolean extend() {
+        if(extensionDates == null) {
             loanExpiry.add(Calendar.DATE, media.getMediaLoanValidityPeriod());
-            extensionDates.add(new GregorianCalendar());
+            extensionDates = new GregorianCalendar();
+            return true;
         }
+        return false;
     }
 
     /**
@@ -121,7 +123,7 @@ public class Loan implements Serializable {
      * Getter for the extension dates: all dates in which this loan was extended.
      * @return An {@code ArrayList} containing all extension dates.
      */
-    public ArrayList<GregorianCalendar> getExtensionDates() {
+    public GregorianCalendar getExtensionDates() {
         return extensionDates;
     }
 

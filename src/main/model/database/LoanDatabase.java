@@ -165,13 +165,13 @@ public class LoanDatabase implements Serializable, Database {
     public int getExtensionNumberByYear(int year) {
         int counter = 0;
 
-        for(ArrayList<Loan> loanValues : loans.values()) {
-            for(Loan l : loanValues)
-                for(GregorianCalendar extension : l.getExtensionDates())
-                    if(extension.get(Calendar.YEAR) == year)
-                        counter++;
+        for (ArrayList<Loan> loanValues : loans.values()) {
+            for (Loan l : loanValues) {
+                GregorianCalendar extension = l.getExtensionDates();
+                if (extension.get(Calendar.YEAR) == year)
+                    counter++;
+            }
         }
-
         return counter;
     }
 

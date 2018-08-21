@@ -185,7 +185,7 @@ public class SystemController implements UserController, MediaController, LoanCo
         try {
             for(Loan l : loanDatabase.getUserLoans(userDatabase.getCurrentUser())) {
                 if(l.getMedia().getIdentifier() == mediaID) {
-                    l.extend();
+                    if(l.extend())
                     break;
                 }
             }
