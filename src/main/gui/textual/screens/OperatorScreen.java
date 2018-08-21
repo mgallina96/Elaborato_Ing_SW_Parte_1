@@ -1,11 +1,9 @@
 package main.gui.textual.screens;
-
 import main.controller.FileSystemController;
 import main.controller.LoanController;
 import main.controller.MediaController;
 import main.controller.UserController;
 import main.utility.notifications.Notifications;
-
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -28,7 +26,11 @@ public class OperatorScreen extends Screen {
         boolean exitFromOperatorSection = false;
 
         while(!exitFromOperatorSection) {
-            System.out.printf("%s%n%s%n%s%n", Notifications.getMessage("SEPARATOR"), Notifications.getMessage("PROMPT_OPERATOR_CHOICES"), Notifications.getMessage("SEPARATOR"));
+            System.out.printf("%s%n%s\t\t\t\t\t\t%s%s%n%s%n",
+                    Notifications.getMessage("SEPARATOR"),
+                    Notifications.getMessage("PROMPT_OPERATOR_CHOICES"),
+                    Notifications.getMessage("MSG_LOGGED_IN_AS"), getUserController().getCurrentUserName(),
+                    Notifications.getMessage("SEPARATOR"));
 
             switch(insertInteger(1, 7)) {
                 case 1:
@@ -58,6 +60,7 @@ public class OperatorScreen extends Screen {
         }
     }
 
+    //for generic program data visualization.
     private void visualizeData() {
         System.out.printf("%s%n%s%s%n", Notifications.getMessage("PROMPT_DATA_VISUALIZATION_CHOICES"), Notifications.getMessage("SEPARATOR"), Notifications.getMessage("SEPARATOR"));
         int choice = insertInteger(1, 7);
@@ -175,6 +178,7 @@ public class OperatorScreen extends Screen {
         return false;
     }
 
+    //allows the operator to remove a media item from the database.
     private void remove() {
         System.out.println(Notifications.getMessage("PROMPT_REMOVE_MEDIA_ID"));
 

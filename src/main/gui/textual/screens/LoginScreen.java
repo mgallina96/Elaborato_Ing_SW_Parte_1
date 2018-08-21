@@ -1,5 +1,4 @@
 package main.gui.textual.screens;
-
 import main.controller.UserController;
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.exceptions.WrongPasswordException;
@@ -8,8 +7,7 @@ import main.utility.notifications.Notifications;
 /**
  * The login screen.
  *
- * @author Manuel Gallina
- * @author Giosuè Filippini
+ * @author Manuel Gallina, Giosuè Filippini
  * @since version 0.1
  */
 public class LoginScreen extends Screen {

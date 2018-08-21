@@ -1,5 +1,4 @@
 package main;
-
 import main.controller.Controller;
 import main.controller.FileSystemController;
 import main.controller.FileSystemManager;
@@ -7,7 +6,6 @@ import main.controller.SystemController;
 import main.gui.GuiManager;
 import main.gui.textual.TextualView;
 import main.utility.notifications.Notifications;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

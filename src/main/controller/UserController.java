@@ -1,8 +1,6 @@
 package main.controller;
-
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.exceptions.WrongPasswordException;
-
 import java.util.GregorianCalendar;
 
 /**
@@ -88,6 +86,12 @@ public interface UserController extends Controller {
      * @return An {@code integer} value representing the days the user has left.
      */
     int daysLeftToRenew(String username) throws UserNotFoundException;
+
+    /**
+     * Getter for the current user's username.
+     * @return The current user's username.
+     */
+    String getCurrentUserName();
 
 
 }

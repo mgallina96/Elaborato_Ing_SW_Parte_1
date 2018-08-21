@@ -1,8 +1,6 @@
 package main.model.user;
-
 import java.io.Serializable;
 import java.util.GregorianCalendar;
-
 import static main.model.user.UserConstants.*;
 
 /**

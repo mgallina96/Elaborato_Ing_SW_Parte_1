@@ -1,14 +1,8 @@
 package main.model.database;
-
 import main.model.media.Media;
-import main.utility.notifications.Notifications;
-
 import java.io.*;
 import java.util.HashMap;
-import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import static main.utility.GlobalParameters.MEDIA_DATABASE_FILE_PATH;
 
 /**
  * Database concerned with saving, removing, finding, fetching and generally managing all kinds of media items.
@@ -22,16 +16,17 @@ public class MediaDatabase implements Serializable, Database {
 
     private static MediaDatabase mediaDatabase;
     private int counter;
-
     private HashMap<Integer, Media> mediaList;
-    private transient Logger logger;
 
-    //Singleton Database constructor, private to prevent instantiation.
+    //MediaDatabase initializer.
     private MediaDatabase() {
         this.mediaList = new HashMap<>();
-        logger = Logger.getLogger(this.getClass().getName());
     }
 
+    /**
+     * Getter/initializer for the {@code MediaDatabase} singleton class.
+     * @return The {@code MediaDatabase} instance.
+     */
     public static MediaDatabase getInstance() {
         if(mediaDatabase == null)
             mediaDatabase = new MediaDatabase();
@@ -39,6 +34,12 @@ public class MediaDatabase implements Serializable, Database {
         return mediaDatabase;
     }
 
+    /**
+     * Adds a given media item to the database.
+     *
+     * @param toAdd The media to be added.
+     * @param path The file system path for the given media item.
+     */
     public void addMedia(Media toAdd, String path) {
         toAdd.setIdentifier(counter++);
 
@@ -46,10 +47,33 @@ public class MediaDatabase implements Serializable, Database {
         mediaList.put(toAdd.getIdentifier(), toAdd);
     }
 
+    /**
+     * Removes a given media from the database.
+     * @param toRemove The media to be removed.
+     */
     public void removeMedia(Media toRemove) {
         mediaList.get(toRemove.getIdentifier()).setUnavailable();
     }
 
+    /**
+     * Checks whether a given media item is present in the database. Mainly used during the borrowing operations.
+     *
+     * @param toFind The media to be found.
+     * @return A {@code boolean} value: {@code true} if the media item is present, {@code false} otherwise.
+     */
+    public boolean isPresent(Media toFind) {
+        return mediaList.containsKey(toFind.getIdentifier());
+    }
+
+    /**
+     * An alternate version of the {@code isPresent} method. This method is used when adding a media item to the
+     * database, in order to prevent the operator from adding a duplicate media item (with the same title, author and
+     * details as another media item in the database).
+     *
+     * @param toFind The media item to be found.
+     * @return A {@code boolean} value: {@code true} if this media item matches another media item in the database,
+     *                                  {@code false} otherwise.
+     */
     public boolean isMatchingMedia(Media toFind) {
         for(Media m : mediaList.values())
             if((m.getBareItemDetails()).equalsIgnoreCase(toFind.getBareItemDetails()))
@@ -58,23 +82,23 @@ public class MediaDatabase implements Serializable, Database {
         return false;
     }
 
-    public boolean isPresent(Media toFind) {
-        return mediaList.containsKey(toFind.getIdentifier());
-    }
-
+    /**
+     * Fetches a media item from the database.
+     *
+     * @param toFetch The media item to be fetched.
+     * @return The media item.
+     */
     public Media fetch(Media toFetch) {
         return mediaList.get(toFetch.getIdentifier());
     }
 
-    public String getMediaListString() {
-        StringBuilder allMedia = new StringBuilder();
-
-        for(Media m : mediaList.values())
-            allMedia.append("\t- ").append(m.toString());
-
-        return allMedia.toString();
-    }
-
+    /**
+     * Builds a {@code String} containing all media items whose title (or detail such as author name, genre, year)
+     * matches a given {@code filter}.
+     *
+     * @param filter The filter that will be applied to the search.
+     * @return The {@code String} of all media items matching the {@code filter}.
+     */
     public String getFilteredMediaList(String filter) {
         StringBuilder filteredMedia = new StringBuilder();
         filter = filter.replaceAll("(\\W+ )+", "|").toLowerCase();
@@ -87,6 +111,12 @@ public class MediaDatabase implements Serializable, Database {
         return filteredMedia.toString();
     }
 
+    /**
+     * Builds a {@code String} containing all media items in a given folder.
+     *
+     * @param folderPath The path of the folder whose contents are to be shown.
+     * @return The {@code String} containing the contents of the given folder.
+     */
     public String getFolderContents(String folderPath) {
         StringBuilder folderContents = new StringBuilder();
 
@@ -97,31 +127,11 @@ public class MediaDatabase implements Serializable, Database {
         return folderContents.toString();
     }
 
-    private static void setMediaDatabase(MediaDatabase mediaDatabase) {
-        MediaDatabase.mediaDatabase = mediaDatabase;
-    }
-
-    void setMediaList(HashMap<Integer, Media> mediaList) {
-        this.mediaList = mediaList;
-    }
-
-    public HashMap<Integer, Media> getMediaList() {
-        return mediaList;
-    }
-
-    private int getCounter() {
-        return counter;
-    }
-
-    private void setCounter(int counter) {
-        this.counter = counter;
-    }
-
     /**
      * Opens a .ser serializable file and loads its contents into this {@link MediaDatabase} class.<p>
      * This method loads a {@code HashMap} containing all media items.
      */
-    @SuppressWarnings("unchecked")
+/*    @SuppressWarnings("unchecked")
     private void loadMediaDatabase() {
         try (
             FileInputStream fileIn = new FileInputStream(MEDIA_DATABASE_FILE_PATH);
@@ -139,4 +149,5 @@ public class MediaDatabase implements Serializable, Database {
             logger.log(Level.SEVERE, Notifications.getMessage("ERR_CLASS_NOT_FOUND") + this.getClass().getName());
         }
     }
+    */
 }

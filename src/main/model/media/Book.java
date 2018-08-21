@@ -1,12 +1,11 @@
 package main.model.media;
-
 import java.io.Serializable;
 
 /**
  * The {@code Book} class, subclass of the {@link Media} class.
  * <p>
- * This class represents a book through parameters like its title, its publication year, its author's name, its
- * publisher's name, etc.
+ * This class represents a book through parameters like its title, its publication year, the name of its author, the
+ * name of its publisher, etc.
  *
  * @author Alessandro Polcini
  */
@@ -18,7 +17,8 @@ public class Book extends Media implements Serializable {
     private static final String TYPE = "BOOK";
     private static final int EXTENSION_RESTRICTION_IN_DAYS = 3;
     private static final int DEFAULT_BOOK_LICENSES = 3;
-    private static final int MAX_NUMBER_OF_LENT_BOOKS = 3;
+    private static final int BOOK_LOAN_LIMIT = 3;
+    private static final int BOOK_LOAN_VALIDITY_PERIOD_IN_DAYS = 30;
     private String title;
     private String author;
     private String genre;
@@ -46,7 +46,7 @@ public class Book extends Media implements Serializable {
      * @param licenses The number of licences for this book.
      */
     public Book(String title, String author, String genre, int publicationYear, String publisherName, int licenses) {
-        super(title, licenses, EXTENSION_RESTRICTION_IN_DAYS, MAX_NUMBER_OF_LENT_BOOKS);
+        super(title, licenses, EXTENSION_RESTRICTION_IN_DAYS, BOOK_LOAN_LIMIT, BOOK_LOAN_VALIDITY_PERIOD_IN_DAYS);
         this.title = title;
         this.author = author;
         this.genre = genre;
@@ -125,7 +125,11 @@ public class Book extends Media implements Serializable {
         return genre;
     }
 
-    public static int getMaxNumberOfLentBooks() {
-        return MAX_NUMBER_OF_LENT_BOOKS;
+    /**
+     * Getter for the maximum number of allowed loans for books.
+     * @return The maximum number of allowed loans for books.
+     */
+    public static int getBookLoanLimit() {
+        return BOOK_LOAN_LIMIT;
     }
 }

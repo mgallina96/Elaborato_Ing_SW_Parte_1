@@ -1,10 +1,8 @@
 package main.gui.textual.screens;
-
 import main.controller.*;
 import main.utility.InputParserUtility;
 import main.utility.notifications.Notifications;
 import org.jetbrains.annotations.NotNull;
-
 import java.util.Scanner;
 
 /**
@@ -24,6 +22,9 @@ public class Screen {
     static final String NO = "n";
     static final String YN_REGEX = "[yYnN]";
 
+    /**
+     * Generic constructor for the Screen class, which initializes a Scanner for textual input.
+     */
     public Screen() {
         scanner = new Scanner(System.in);
     }
@@ -61,35 +62,51 @@ public class Screen {
         scanner = new Scanner(System.in);
     }
 
-    public UserController getUserController() {
+    /**
+     * Getter for the user controller.
+     * @return The user controller.
+     */
+    UserController getUserController() {
         return userController;
     }
 
-    public void setUserController(UserController userController) {
-        this.userController = userController;
-    }
+//    public void setUserController(UserController userController) {
+//        this.userController = userController;
+//    }
 
-    public MediaController getMediaController() {
+    /**
+     * Getter for the media controller.
+     * @return The media controller.
+     */
+    MediaController getMediaController() {
         return mediaController;
     }
 
-    public void setMediaController(MediaController mediaController) {
-        this.mediaController = mediaController;
-    }
+//    public void setMediaController(MediaController mediaController) {
+//        this.mediaController = mediaController;
+//    }
 
-    public LoanController getLoanController() {
+    /**
+     * Getter for the loan controller.
+     * @return The loan controller.
+     */
+    LoanController getLoanController() {
         return loanController;
     }
 
-    public void setLoanController(LoanController loanController) {
-        this.loanController = loanController;
-    }
+//    public void setLoanController(LoanController loanController) {
+//        this.loanController = loanController;
+//    }
 
-    public void setFileSystemController(FileSystemController fileSystemController) {
-        this.fileSystemController = fileSystemController;
-    }
+//    public void setFileSystemController(FileSystemController fileSystemController) {
+//        this.fileSystemController = fileSystemController;
+//    }
 
-    public FileSystemController getFileSystemController() {
+    /**
+     * Getter for the file system controller.
+     * @return The file system controller.
+     */
+    FileSystemController getFileSystemController() {
         return fileSystemController;
     }
 

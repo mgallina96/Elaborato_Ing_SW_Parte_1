@@ -1,9 +1,10 @@
 package main.model.user;
-
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
+ * Utility class containing general-purpose user constants.
+ *
  * @author Manuel Gallina
  */
 class UserConstants {

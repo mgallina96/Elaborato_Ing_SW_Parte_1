@@ -1,5 +1,4 @@
 package main.controller;
-
 import main.model.database.Database;
 import main.model.database.LoanDatabase;
 import main.model.database.MediaDatabase;
@@ -13,16 +12,13 @@ import main.utility.exceptions.UserNotFoundException;
 import main.utility.exceptions.WrongPasswordException;
 import main.utility.notifications.Notifications;
 import org.jetbrains.annotations.NotNull;
-
 import java.io.*;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import static main.utility.GlobalParameters.*;
 
 /**
@@ -77,14 +73,17 @@ public class SystemController implements UserController, MediaController, LoanCo
 
     }
 
+    @Override
     public boolean userIsPresent(String username) {
         return userDatabase.isPresent(new User(username));
     }
 
+    @Override
     public boolean mediaIsPresent(int id) {
         return mediaDatabase.isPresent(new Media(id));
     }
 
+    @Override
     public boolean addUserToDatabase(String firstName, String lastName, String username, String password, GregorianCalendar birthday) {
         Customer c = new Customer(firstName, lastName, username, password, birthday);
 
@@ -97,6 +96,7 @@ public class SystemController implements UserController, MediaController, LoanCo
         return false;
     }
 
+    @Override
     public boolean addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName, String path) {
         Book b = new Book(title, author, genre, publicationYear, publisherName);
 
@@ -109,6 +109,7 @@ public class SystemController implements UserController, MediaController, LoanCo
         return false;
     }
 
+    @Override
     public boolean addLoanToDatabase(int mediaID) {
         Media toLend = mediaDatabase.fetch(new Media(mediaID));
 
@@ -123,10 +124,12 @@ public class SystemController implements UserController, MediaController, LoanCo
         return false;
     }
 
+    @Override
     public void removeMediaFromDatabase(int id) {
         mediaDatabase.removeMedia(new Media(id));
     }
 
+    @Override
     public int getUserStatus(String username) {
         if(username == null)
             return -1;
@@ -141,6 +144,7 @@ public class SystemController implements UserController, MediaController, LoanCo
         }
     }
 
+    @Override
     public boolean canBorrow(int mediaID) {
         int counter = 0;
         Media media = mediaDatabase.fetch(new Media(mediaID));
@@ -176,6 +180,7 @@ public class SystemController implements UserController, MediaController, LoanCo
         return false;
     }
 
+    @Override
     public void extendLoan(int mediaID) {
         try {
             for(Loan l : loanDatabase.getUserLoans(userDatabase.getCurrentUser())) {
@@ -190,6 +195,7 @@ public class SystemController implements UserController, MediaController, LoanCo
         }
     }
 
+    @Override
     public int daysLeftToRenew(String username) throws UserNotFoundException {
         try {
             User user = userDatabase.fetchUser(new User(username));
@@ -211,6 +217,7 @@ public class SystemController implements UserController, MediaController, LoanCo
         return 0;
     }
 
+    @Override
     public boolean renewSubscription() {
         try {
             Customer customer = (Customer) userDatabase.getCurrentUser();
@@ -230,6 +237,7 @@ public class SystemController implements UserController, MediaController, LoanCo
         return false;
     }
 
+    @Override
     public String dateDetails() {
         User u = userDatabase.getCurrentUser();
         return (u instanceof Customer) ?
@@ -240,14 +248,17 @@ public class SystemController implements UserController, MediaController, LoanCo
                 "";
     }
 
+    @Override
     public void logout() {
         userDatabase.removeCurrentUser();
     }
 
+    @Override
     public String allUsersToString() {
         return userDatabase.getUserListString();
     }
 
+    @Override
     public String allLoansToString() {
         return loanDatabase.getLoanListString();
     }
@@ -257,14 +268,17 @@ public class SystemController implements UserController, MediaController, LoanCo
         return loanDatabase.getUserLoansToString(userDatabase.getCurrentUser());
     }
 
+    @Override
     public String allFilteredMediaList(String filter) {
         return mediaDatabase.getFilteredMediaList(filter);
     }
 
+    @Override
     public String getFolderContents(String folderPath) {
         return mediaDatabase.getFolderContents(folderPath);
     }
 
+    @Override
     public String getLoanNumberByYear(int from, int to) {
         StringBuilder loansByYear = new StringBuilder();
 
@@ -282,6 +296,7 @@ public class SystemController implements UserController, MediaController, LoanCo
         return loansByYear.toString();
     }
 
+    @Override
     public String getUserLoanNumberByYear(int from, int to) {
         StringBuilder loansByYear = new StringBuilder();
 
@@ -307,6 +322,7 @@ public class SystemController implements UserController, MediaController, LoanCo
         return loansByYear.toString();
     }
 
+    @Override
     public String getExtensionNumberByYear(int from, int to) {
         StringBuilder extensionsByYear = new StringBuilder();
 
@@ -322,13 +338,14 @@ public class SystemController implements UserController, MediaController, LoanCo
         return extensionsByYear.toString();
     }
 
+    @Override
     public String getMostLentMediaByYear(int from, int to){
         StringBuilder mostLentMedia = new StringBuilder();
         mostLentMedia.append(Notifications.getMessage("MSG_MOST_LENT_MEDIA_IN_YEAR")).append("\n");
 
         for(int year = from; year <= to; year++) {
             if(loanDatabase.getMostLentMediaByYear(year) != null) {
-                Media m = mediaDatabase.getMediaList().get(loanDatabase.getMostLentMediaByYear(year));
+                Media m = mediaDatabase.fetch(new Media(loanDatabase.getMostLentMediaByYear(year)));
                 mostLentMedia
                         .append(year)
                         .append(": ")
@@ -341,34 +358,13 @@ public class SystemController implements UserController, MediaController, LoanCo
 
         return mostLentMedia.toString();
     }
-/*
-    public String mostLentMediaItem(int year) {
-        int mediaDatabaseSize = mediaDatabase.getMediaList().size();
-        int[] mults = new int[mediaDatabaseSize];
 
-        for(ArrayList<Loan> loans : loanDatabase.getLoansList().values())
-            for(Loan l : loans)
-                if(l.getLoanDate().get(Calendar.YEAR) == year)
-                    mults[l.getMedia().getIdentifier()]++;
-
-        int max = 0;
-        for(int i : mults)
-            if(i > max)
-                max = i;
-
-        if(max == 0)
-            return Notifications.getMessage("ERR_NO_LOANS_IN_YEAR") + year;
-
-        StringBuilder sb = new StringBuilder();
-
-        for(int i = 0; i < mediaDatabaseSize; i++) {
-            if(mults[i] == max)
-                sb.append(mediaDatabase.fetch(new Media(i)).getBareItemDetails()).append("\n");
-        }
-
-        return sb.toString();
+    @Override
+    public String getCurrentUserName() {
+        return userDatabase.getCurrentUser().getUsername();
     }
-*/
+
+    //saves a generic HashMap (database) to a serializable .ser file.
     private <D extends Database> void saveDatabase(String path, @NotNull D database) {
         try (
             //to increase serializing speed
@@ -413,126 +409,4 @@ public class SystemController implements UserController, MediaController, LoanCo
         }
     }
 
-    /* ---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO---NON RICHIESTO
-
-
-    public String getUsersByYear(int from, int to) {
-        StringBuilder usersByYear = new StringBuilder();
-
-        for(int year = from; year <= to; year++)
-            usersByYear
-                    .append(userDatabase.getUsersByYear(year))
-                    .append(SEPARATOR)
-                    .append("\n");
-
-        return usersByYear.toString();
-    }
-    */
-    /*      teniamolo perchè è carino
-    public String mostLentMediaItem(int year) {
-        ArrayList<Media> mediaArray = new ArrayList<>();
-
-        for(ArrayList<Loan> loans : loanDatabase.getLoansList().values())
-            for(Loan l : loans) {
-                if(l.getLoanDate().get(Calendar.YEAR) == year)
-                    mediaArray.add(l.getMedia());
-            }
-
-        mediaArray.sort(Comparator.comparing(Media::getIdentifier));
-        mediaArray.add(new Media(-1));
-
-        StringBuilder mostLentMedia = new StringBuilder();
-
-        ArrayList<ArrayList<Media>> inception = new ArrayList<>();
-        ArrayList<Media> tmp = new ArrayList<>();
-        tmp.add(new Media(38966));
-        int mediaListSize = mediaArray.size();
-
-        for(int i = 1; i < mediaListSize; i++) {
-            if(mediaArray.get(i) != mediaArray.get(i - 1)) {
-                inception.add(tmp);
-                tmp = new ArrayList<>();
-            }
-
-            tmp.add(mediaArray.get(i - 1));
-        }
-
-        inception.sort(Comparator.comparing(ArrayList::size));
-
-        HashMap<Media, Integer> mults = new HashMap<>();
-        int max = 0;
-
-        for(ArrayList<Media> am : inception) {
-            int s = am.size();
-            mults.put(am.get(0), s);
-
-            if(s > max)
-                max = s;
-        }
-
-        final int m2 = max;
-
-        mults.forEach((m, i) -> {
-            if(i == m2) {
-                mostLentMedia.append(m);
-            }
-        });
-
-        return mostLentMedia.toString();
-    }
-*/
-
-    /*      teniamolo perchè è carino
-    public String mostLentMediaItem(int year) {
-        ArrayList<Media> mediaArray = new ArrayList<>();
-
-        for(ArrayList<Loan> loans : loanDatabase.getLoansList().values())
-            for(Loan l : loans) {
-                if(l.getLoanDate().get(Calendar.YEAR) == year)
-                    mediaArray.add(l.getMedia());
-            }
-
-        mediaArray.sort(Comparator.comparing(Media::getIdentifier));
-        mediaArray.add(new Media(-1));
-
-        StringBuilder mostLentMedia = new StringBuilder();
-
-        ArrayList<ArrayList<Media>> inception = new ArrayList<>();
-        ArrayList<Media> tmp = new ArrayList<>();
-        tmp.add(new Media(38966));
-        int mediaListSize = mediaArray.size();
-
-        for(int i = 1; i < mediaListSize; i++) {
-            if(mediaArray.get(i) != mediaArray.get(i - 1)) {
-                inception.add(tmp);
-                tmp = new ArrayList<>();
-            }
-
-            tmp.add(mediaArray.get(i - 1));
-        }
-
-        inception.sort(Comparator.comparing(ArrayList::size));
-
-        HashMap<Media, Integer> mults = new HashMap<>();
-        int max = 0;
-
-        for(ArrayList<Media> am : inception) {
-            int s = am.size();
-            mults.put(am.get(0), s);
-
-            if(s > max)
-                max = s;
-        }
-
-        final int m2 = max;
-
-        mults.forEach((m, i) -> {
-            if(i == m2) {
-                mostLentMedia.append(m);
-            }
-        });
-
-        return mostLentMedia.toString();
-    }
-*/
 }

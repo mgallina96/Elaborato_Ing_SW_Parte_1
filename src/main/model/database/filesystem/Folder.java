@@ -56,13 +56,16 @@ public class Folder implements Serializable {
 
     /**
      * Getter for the folder path.
-     *
      * @return A {@code String} containing the path of this folder.
      */
     public String getFolderPath() {
         return folderPath;
     }
 
+    /**
+     * Getter for the folder name.
+     * @return The name of the folder.
+     */
     public String getName() {
         return name;
     }
@@ -73,7 +76,6 @@ public class Folder implements Serializable {
 
     /**
      * Getter for the children of this folder.
-     *
      * @return An {@code ArrayList} containing this folder's children.
      */
     public ArrayList<Folder> getChildren() {
@@ -81,14 +83,17 @@ public class Folder implements Serializable {
     }
 
     /**
-     * Returns the depth of the folder.
-     *
+     * Getter for the depth of the folder: an integer as big as the folder is deep.
      * @return The depth of the folder.
      */
     private int getDepth() {
         return depth;
     }
 
+    /**
+     * Getter for the folder-specific ID.
+     * @return The ID of this folder.
+     */
     public int getFolderId() {
         return folderId;
     }

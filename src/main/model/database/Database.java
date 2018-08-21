@@ -1,4 +1,6 @@
 package main.model.database;
 
-public interface Database {
-}
+/**
+ * Generic interface for a Database.
+ */
+public interface Database {}

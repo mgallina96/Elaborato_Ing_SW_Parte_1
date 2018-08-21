@@ -1,6 +1,15 @@
 package main.model.media;
+import java.io.Serializable;
 
-public class Film extends Media {
+/**
+ * The {@code Film} class, subclass of the {@link Media} class.
+ * <p>
+ * This class represents a film through parameters like its title, its release year, the name of its director, the name
+ * of its publisher, etc.
+ *
+ * @author Alessandro Polcini
+ */
+public class Film extends Media implements Serializable {
 
     //Unique serial ID for this class. DO NOT CHANGE, otherwise the database can't be read properly.
     private static final long serialVersionUID = -5271323384398735051L;
@@ -8,7 +17,8 @@ public class Film extends Media {
     private static final String TYPE = "FILM";
     private static final int EXTENSION_RESTRICTION_IN_DAYS = 5;
     private static final int DEFAULT_FILM_LICENSES = 5;
-    private static final int MAX_NUMBER_OF_LENT_FILMS = 5;
+    private static final int FILM_LOAN_LIMIT = 5;
+    private static final int FILM_LOAN_VALIDITY_PERIOD_IN_DAYS = 20;
     private String title;
     private String director;
     private String genre;
@@ -36,7 +46,7 @@ public class Film extends Media {
      * @param licenses The number of licences for this film.
      */
     public Film(String title, String director, String genre, int releaseYear, String producer, int licenses) {
-        super(title, licenses, EXTENSION_RESTRICTION_IN_DAYS, MAX_NUMBER_OF_LENT_FILMS);
+        super(title, licenses, EXTENSION_RESTRICTION_IN_DAYS, FILM_LOAN_LIMIT, FILM_LOAN_VALIDITY_PERIOD_IN_DAYS);
         this.title = title;
         this.director = director;
         this.genre = genre;
@@ -115,7 +125,11 @@ public class Film extends Media {
         return genre;
     }
 
-    public static int getMaxNumberOfLentFilms() {
-        return MAX_NUMBER_OF_LENT_FILMS;
+    /**
+     * Getter for the maximum number of allowed loans for films.
+     * @return The maximum number of allowed loans for films.
+     */
+    public static int getFilmLoanLimit() {
+        return FILM_LOAN_LIMIT;
     }
 }

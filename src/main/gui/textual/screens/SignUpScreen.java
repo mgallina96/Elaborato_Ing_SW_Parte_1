@@ -1,10 +1,8 @@
 package main.gui.textual.screens;
-
 import main.controller.UserController;
 import main.utility.InputParserUtility;
 import main.utility.exceptions.IllegalDateFormatException;
 import main.utility.notifications.Notifications;
-
 import static main.utility.GlobalParameters.LEGAL_AGE_IN_YEARS;
 
 /**
@@ -29,6 +27,7 @@ public class SignUpScreen extends Screen {
         } while(status == 1);
     }
 
+    //sign up screen
     private int signUp() {
         String[] details;
 
@@ -58,6 +57,7 @@ public class SignUpScreen extends Screen {
             return userAlreadyPresent();
     }
 
+    //to insert sign-up details
     private String[] fillDetails() throws InterruptedException {
         System.out.print(Notifications.getMessage("PROMPT_FIRST_NAME"));
         String firstName = insertName();
@@ -82,6 +82,7 @@ public class SignUpScreen extends Screen {
         return new String[]{firstName, lastName, username, password, birthday};
     }
 
+    //routine that gets executed if the user is trying to sign up but is already present in the database
     private int userAlreadyPresent() {
         System.out.printf("%s%n%s%n%s%n%s%n", Notifications.getMessage("ERR_USER_ALREADY_PRESENT"), Notifications.getMessage("SEPARATOR"), Notifications.getMessage("PROMPT_PRESENT_USER_MULTIPLE_CHOICE"), Notifications.getMessage("SEPARATOR"));
 

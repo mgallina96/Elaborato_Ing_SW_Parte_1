@@ -1,8 +1,6 @@
 package main.utility;
-
 import main.utility.exceptions.IllegalDateFormatException;
 import main.utility.notifications.Notifications;
-
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
@@ -261,12 +259,12 @@ public class InputParserUtility {
     }
 
     /**
+     * Checks whether a hypothetical person with the given birth date would be of age or not.
      *
-     *
-     * @param birthday
-     * @param legalAgeInYears
-     * @return
-     * @throws IllegalDateFormatException
+     * @param birthday The birth date.
+     * @param legalAgeInYears The legal age (its value changes from country to country).
+     * @return {@code true} if the date is "legal", {@code false} otherwise.
+     * @throws IllegalDateFormatException If the inserted date has an invalid format.
      */
     public static boolean isOfAge(String birthday, int legalAgeInYears) throws IllegalDateFormatException {
         if(isValidDate(birthday)) {

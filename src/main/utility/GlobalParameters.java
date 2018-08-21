@@ -1,6 +1,8 @@
 package main.utility;
 
 /**
+ * Utility class that holds various multi-purpose parameters for general use.
+ *
  * @author Manuel Gallina
  */
 public class GlobalParameters {

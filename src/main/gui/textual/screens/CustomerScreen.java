@@ -1,5 +1,4 @@
 package main.gui.textual.screens;
-
 import main.controller.LoanController;
 import main.controller.MediaController;
 import main.controller.UserController;
@@ -24,7 +23,11 @@ public class CustomerScreen extends Screen {
         boolean exitFromCustomerSection = false;
 
         while(!exitFromCustomerSection) {
-            System.out.printf("%s%n%s%n%s%n", Notifications.getMessage("SEPARATOR"), Notifications.getMessage("PROMPT_CUSTOMER_CHOICES"), Notifications.getMessage("SEPARATOR"));
+            System.out.printf("%s%n%s\t\t\t\t\t\t%s%s%n%s%n",
+                    Notifications.getMessage("SEPARATOR"),
+                    Notifications.getMessage("PROMPT_CUSTOMER_CHOICES"),
+                    Notifications.getMessage("MSG_LOGGED_IN_AS"), getUserController().getCurrentUserName(),
+                    Notifications.getMessage("SEPARATOR"));
 
             switch(insertInteger(1,6)) {
                 case 1:
@@ -53,6 +56,7 @@ public class CustomerScreen extends Screen {
         }
     }
 
+    //finds all the current user's loans.
     private boolean searchForLoans() {
         String output = getLoanController().currentUserLoansToString();
 
@@ -66,6 +70,7 @@ public class CustomerScreen extends Screen {
         return true;
     }
 
+    //allows the user to search for media items.
     private boolean searchForMedia(String prompt) {
         System.out.println(prompt);
         String input = getScanner().nextLine();
@@ -87,6 +92,7 @@ public class CustomerScreen extends Screen {
         return true;
     }
 
+    //allows the user to borrow a media item.
     private void borrowMedia() {
         int id = insertInteger();
         while(!getMediaController().mediaIsPresent(id)) {
@@ -110,6 +116,7 @@ public class CustomerScreen extends Screen {
             System.out.println(Notifications.getMessage("MSG_ABORT"));
     }
 
+    //allows the user to extend their loan.
     private void extendLoan() {
         System.out.println(Notifications.getMessage("PROMPT_CHOOSE_MEDIA_TO_EXTEND"));
 

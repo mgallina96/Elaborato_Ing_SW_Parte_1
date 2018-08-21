@@ -1,12 +1,9 @@
 package main.model.database.filesystem;
-
 import main.utility.notifications.Notifications;
-
 import java.io.*;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import static main.utility.GlobalParameters.FILESYSTEM_FILE_PATH;
 
 /**
@@ -33,7 +30,7 @@ public class FileSystem implements Serializable {
 
     private transient Logger logger;
 
-    // Private constructor for the unique instance of file system.
+    //private constructor for the unique instance of file system.
     private FileSystem() {
         this.folderStructure = new HashMap<>();
         this.logger = Logger.getLogger(this.getClass().getName());
@@ -49,7 +46,7 @@ public class FileSystem implements Serializable {
     }
 
     /**
-     * Getter/Setter for the FileSystem instance.
+     * Getter/initializer for the FileSystem instance.
      *
      * @return The FileSystem instance.
      */

@@ -1,5 +1,4 @@
 package main.gui.textual.screens;
-
 import main.utility.notifications.Notifications;
 
 /**
@@ -19,7 +18,11 @@ public class MainScreen extends Screen {
      * @return The choice the user made.
      */
     public int menuChoices() {
-        System.out.printf("%s%n%s%n%s%n%s%n> ", Notifications.getMessage("MSG_BIBLIO_NAME"), Notifications.getMessage("SEPARATOR"), Notifications.getMessage("PROMPT_BIBLIO_INITIAL_CHOICES"), Notifications.getMessage("SEPARATOR"));
+        System.out.printf("%s%n%s%n%s%n%s%n> ",
+                Notifications.getMessage("MSG_BIBLIO_NAME"),
+                Notifications.getMessage("SEPARATOR"),
+                Notifications.getMessage("PROMPT_BIBLIO_INITIAL_CHOICES"),
+                Notifications.getMessage("SEPARATOR"));
 
         return insertInteger(1, 4);
     }

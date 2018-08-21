@@ -1,5 +1,4 @@
 package main.model.media;
-
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -22,6 +21,7 @@ public class Media implements Serializable {
     private static final int DEFAULT_MEDIA_LICENSES = 1;
     private static final int DEFAULT_EXTENSION_RESTRICTION = 1;
     private static final int DEFAULT_MEDIA_LOAN_LIMIT = 1;
+    private static final int DEFAULT_MEDIA_LOAN_VALIDITY_PERIOD_IN_DAYS = 1;
 
     private String bareItemDetails;
 
@@ -32,32 +32,9 @@ public class Media implements Serializable {
     private int licenses;
     private int extensionRestriction;
     private int loanLimit;
+    private int mediaLoanValidityPeriod;
     private String type;
     private boolean available;
-
-    /**
-     * Constructor for the {@code Media} class. Builds a new {@code Media} item with its own unique item ID.
-     *
-     * @param identifier The item ID to set.
-     */
-    public Media(int identifier) {
-        this(identifier, DEFAULT_MEDIA_NAME, DEFAULT_MEDIA_PATH, DEFAULT_DATE_ADDED,
-                DEFAULT_MEDIA_LICENSES, DEFAULT_EXTENSION_RESTRICTION, DEFAULT_MEDIA_LOAN_LIMIT);
-    }
-
-    /**
-     * Constructor for the {@code Media} class. Builds a new {@code Media} item and gives it a name (its title).
-     * This method also keeps track of the date in which the media item was added and saves it in a class field.
-     *
-     * @param mediaName the name to set.
-     * @param licenses The number of licenses available for this media.
-     * @param extensionRestriction The time range in which the user may extend the loan period for this media.
-     * @param loanLimit The maximum number of loans a user can request for this category of media.
-     */
-    public Media(String mediaName, int licenses, int extensionRestriction, int loanLimit) {
-        this(DEFAULT_MEDIA_IDENTIFIER, mediaName, DEFAULT_MEDIA_PATH, DEFAULT_DATE_ADDED,
-                licenses, extensionRestriction, loanLimit);
-    }
 
     /**
      * Constructor for the {@code Media} class.
@@ -69,9 +46,10 @@ public class Media implements Serializable {
      * @param licenses The number of licenses available for this media.
      * @param extensionRestriction The time range in which the user may extend the loan period for this media.
      * @param loanLimit The maximum number of loans a user can request for this category of media.
+     * @param mediaLoanValidityPeriod The number of days after which the loan of this media item expires.
      */
     public Media(int identifier, String mediaName, String path, GregorianCalendar dateAdded, int licenses,
-                 int extensionRestriction, int loanLimit) {
+                 int extensionRestriction, int loanLimit, int mediaLoanValidityPeriod) {
         this.identifier = identifier;
         this.mediaName = mediaName;
         this.path = path;
@@ -79,9 +57,36 @@ public class Media implements Serializable {
         this.licenses = licenses;
         this.extensionRestriction = extensionRestriction;
         this.loanLimit = loanLimit;
+        this.mediaLoanValidityPeriod = mediaLoanValidityPeriod;
         this.type = "MEDIA";
         this.available = true;
     }
+
+    /**
+     * Constructor for the {@code Media} class. Builds a new {@code Media} item and gives it a name (its title).
+     * This method also keeps track of the date in which the media item was added and saves it in a class field.
+     *
+     * @param mediaName the name to set.
+     * @param licenses The number of licenses available for this media.
+     * @param extensionRestriction The time range in which the user may extend the loan period for this media.
+     * @param loanLimit The maximum number of loans a user can request for this category of media.
+     * @param mediaLoanValidityPeriod The number of days after which the loan of this media item expires.
+     */
+    public Media(String mediaName, int licenses, int extensionRestriction, int loanLimit, int mediaLoanValidityPeriod) {
+        this(DEFAULT_MEDIA_IDENTIFIER, mediaName, DEFAULT_MEDIA_PATH, DEFAULT_DATE_ADDED,
+                licenses, extensionRestriction, loanLimit, mediaLoanValidityPeriod);
+    }
+
+    /**
+     * Constructor for the {@code Media} class. Builds a new {@code Media} item with its own unique item ID.
+     *
+     * @param identifier The item ID to set.
+     */
+    public Media(int identifier) {
+        this(identifier, DEFAULT_MEDIA_NAME, DEFAULT_MEDIA_PATH, DEFAULT_DATE_ADDED,
+                DEFAULT_MEDIA_LICENSES, DEFAULT_EXTENSION_RESTRICTION, DEFAULT_MEDIA_LOAN_LIMIT, DEFAULT_MEDIA_LOAN_VALIDITY_PERIOD_IN_DAYS);
+    }
+
 
     /**
      * Getter for the identifier parameter.
@@ -115,7 +120,7 @@ public class Media implements Serializable {
      *
      * @return The number of licenses to get.
      */
-    public int getLicenses() {
+    int getLicenses() {
         return licenses;
     }
 
@@ -219,15 +224,34 @@ public class Media implements Serializable {
                 mediaName, identifier, dateAdded.toZonedDateTime(), licenses);
     }
 
+    /**
+     * Setter for the type of this media.
+     * @param type The type: BOOK or FILM.
+     */
     void setType(String type) {
         this.type = type;
     }
 
+    /**
+     * Getter for the media type.
+     * @return The media type: BOOK or FILM.
+     */
     public String getType() {
         return type;
     }
 
+    /**
+     * Sets a media item as "unavailable" (all copies are currently being borrowed).
+     */
     public void setUnavailable() {
         this.available = false;
+    }
+
+    /**
+     * Getter for the expiry time (in days) for this media item.
+     * @return The expiry time in days.
+     */
+    public int getMediaLoanValidityPeriod() {
+        return mediaLoanValidityPeriod;
     }
 }
