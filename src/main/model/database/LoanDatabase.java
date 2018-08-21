@@ -3,14 +3,13 @@ import main.model.loan.Loan;
 import main.model.media.Media;
 import main.model.user.User;
 import main.utility.exceptions.UserNotFoundException;
-import main.utility.notifications.Notifications;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import static main.utility.GlobalParameters.LOAN_DATABASE_FILE_PATH;
 
 /**
@@ -167,7 +166,7 @@ public class LoanDatabase implements Serializable, Database {
 
         for (ArrayList<Loan> loanValues : loans.values()) {
             for (Loan l : loanValues) {
-                GregorianCalendar extension = l.getExtensionDates();
+                GregorianCalendar extension = l.getExtensionDate();
                 if (extension.get(Calendar.YEAR) == year)
                     counter++;
             }

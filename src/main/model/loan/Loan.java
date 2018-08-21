@@ -2,7 +2,6 @@ package main.model.loan;
 import main.model.media.Media;
 import main.model.user.User;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -21,7 +20,8 @@ public class Loan implements Serializable {
     private int extensionRestrictionInDays;
     private GregorianCalendar loanDate;
     private GregorianCalendar loanExpiry;
-    private GregorianCalendar extensionDates;
+    private GregorianCalendar extensionDate;
+    private boolean isValidExtension;
     private boolean isActive;
 
     /**
@@ -39,7 +39,8 @@ public class Loan implements Serializable {
         this.loanDate = new GregorianCalendar();
         this.loanExpiry = new GregorianCalendar();
         this.loanExpiry.add(Calendar.DATE, this.media.getMediaLoanValidityPeriod());
-        this.extensionDates = null;
+        this.extensionDate = null;
+
     }
 
     /**
@@ -61,13 +62,12 @@ public class Loan implements Serializable {
     /**
      * Extends a loan by x days, where x is a variable defined in the {@link Media} class or its subclasses.
      */
-    public boolean extend() {
-        if(extensionDates == null) {
+    public void extend() {
+        if(isValidExtension) {
             loanExpiry.add(Calendar.DATE, media.getMediaLoanValidityPeriod());
-            extensionDates = new GregorianCalendar();
-            return true;
+            extensionDate = new GregorianCalendar();
+            isValidExtension = false;
         }
-        return false;
     }
 
     /**
@@ -123,8 +123,8 @@ public class Loan implements Serializable {
      * Getter for the extension dates: all dates in which this loan was extended.
      * @return An {@code ArrayList} containing all extension dates.
      */
-    public GregorianCalendar getExtensionDates() {
-        return extensionDates;
+    public GregorianCalendar getExtensionDate() {
+        return extensionDate;
     }
 
     /**
@@ -143,4 +143,13 @@ public class Loan implements Serializable {
     public void setActive(boolean active) {
         isActive = active;
     }
+
+    /**
+     *
+     * @return
+     */
+    public boolean isValidExtension(){
+        return this.isValidExtension;
+    }
+
 }
