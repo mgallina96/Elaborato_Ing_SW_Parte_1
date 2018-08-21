@@ -1,19 +1,18 @@
 
-T
-squid:S106A"9Replace this use of System.out or System.err by a logger.(ºĞïæøÿÿÿÿ
-T
-squid:S106Q"9Replace this use of System.out or System.err by a logger.(Æİêùÿÿÿÿ
-T
-squid:S106*"9Replace this use of System.out or System.err by a logger.(Ì¸Ÿøÿÿÿÿ
-T
-squid:S106="9Replace this use of System.out or System.err by a logger.(”ìØ§üÿÿÿÿ
+bsquid:S2142:"FEither re-interrupt this method or rethrow the "InterruptedException".(²ı…¦ûÿÿÿÿ
 O
-squid:S1064"9Replace this use of System.out or System.err by a logger.(àì¿¿
+squid:S1062"9Replace this use of System.out or System.err by a logger.(àì¿¿
 T
-squid:S106D"9Replace this use of System.out or System.err by a logger.(¥ÇÊíüÿÿÿÿ
-`squid:UselessImportCheck"5Remove this unused import 'java.util.logging.Logger'.(ƒ¥óš8´İÅµ¸,
-O
-squid:S1069"9Replace this use of System.out or System.err by a logger.(Ï÷±÷
-bsquid:S2142<"FEither re-interrupt this method or rethrow the "InterruptedException".(²ı…¦ûÿÿÿÿ
-T
-squid:S106$"9Replace this use of System.out or System.err by a logger.(äˆÖÛşÿÿÿÿ
+squid:S106O"9Replace this use of System.out or System.err by a logger.(Æİêùÿÿÿÿ
+U
+squid:S106""9Replace this use of System.out or System.err by a logger.(Çš:8šÆÆ¼Õ,
+[
+squid:S106("9Replace this use of System.out or System.err by a logger.(ì’×üÿÿÿÿ8šÆÆ¼Õ,
+V
+squid:S1067"9Replace this use of System.out or System.err by a logger.(òó°×8šÆÆ¼Õ,
+[
+squid:S106;"9Replace this use of System.out or System.err by a logger.(¤ÚÃ¶øÿÿÿÿ8šÆÆ¼Õ,
+V
+squid:S106?"9Replace this use of System.out or System.err by a logger.(ü¬»Ä8šÆÆ¼Õ,
+V
+squid:S106B"9Replace this use of System.out or System.err by a logger.(†ó™†8šÆÆ¼Õ,

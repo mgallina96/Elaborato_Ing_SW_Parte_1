@@ -63,7 +63,7 @@ public class Loan implements Serializable {
      */
     public void extend() {
         if(media.isAvailable()) {
-            loanExpiry.add(Calendar.DATE, media.getExtensionRestriction());
+            loanExpiry.add(Calendar.DATE, media.getMediaLoanValidityPeriod());
             extensionDates.add(new GregorianCalendar());
         }
     }

@@ -1,3 +1,2 @@
 
-^squid:UselessImportCheck	".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ8ªãÌäÎ,
 squid:S1319Q"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(çãëÊ8 ³¦õ¼,

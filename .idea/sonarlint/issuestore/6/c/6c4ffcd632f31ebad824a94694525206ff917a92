@@ -1,430 +1,3 @@
 
-ƒsquid:S3008?"`Rename this field "PROMPT_PUBLISHER_NAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆŒô¿üÿÿÿÿ8¢¯¦õ¼,
-_squid:S1444A"<Make this "public static PROMPT_REMOVE_MEDIA_ID" field final(Ó„Üøÿÿÿÿ8¢¯¦õ¼,
-Tsquid:S1444["6Make this "public static ERR_CANNOT_RENEW" field final(á³ç¾8¢¯¦õ¼,
-Usquid:S2696›"6Make the enclosing method "static" or remove this set.(ùÏ˜é8ã·†¹,
-Zsquid:S2696œ"6Make the enclosing method "static" or remove this set.(¸¤¼“úÿÿÿÿ8ã·†¹,
-Usquid:S2696è"6Make the enclosing method "static" or remove this set.(° Åœ8¢¯¦õ¼,
-Usquid:S2696µ"6Make the enclosing method "static" or remove this set.(ÀáŠ8ã·†¹,
-fsquid:S14441"IMake this "public static PROMPT_PRESENT_USER_MULTIPLE_CHOICE" field final(Š»ï!8¢¯¦õ¼,
-Wsquid:S1444D"9Make this "public static PROMPT_WHICH_FOLDER" field final(¦Ÿ¹8¢¯¦õ¼,
-•"squid:ClassVariableVisibilityCheckd"`Make ERR_USER_NOT_PRESENT a static final constant or non-public and provide accessors if needed.(¦ÀšÒ8¢¯¦õ¼,
-–"squid:ClassVariableVisibilityCheckQ"\Make ERR_LOGIN_FAILED a static final constant or non-public and provide accessors if needed.(È ³Äıÿÿÿÿ8¢¯¦õ¼,
-Wsquid:S14446"9Make this "public static PROMPT_LOGIN_SCREEN" field final(¶æ’«8¢¯¦õ¼,
-Zsquid:S2696Ü"6Make the enclosing method "static" or remove this set.(›Ÿ’øÿÿÿÿ8¢¯¦õ¼,
-psquid:S3008"YRename this field "MSG_MEDIA_LIST" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ôè—±
-squid:S3008@"^Rename this field "PROMPT_REMOVE_MEDIA" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬Ş’Çşÿÿÿÿ8¢¯¦õ¼,
-Fsquid:S1444"/Make this "public static MSG_ABORT" field final(Î×
-Tsquid:S2696ü"6Make the enclosing method "static" or remove this set.(²äüq8¢¯¦õ¼,
-Vsquid:S1444X"8Make this "public static ERR_FILE_NOT_FOUND" field final(é¢©ä8¢¯¦õ¼,
-"squid:ClassVariableVisibilityCheck<"YMake PROMPT_AUTHOR a static final constant or non-public and provide accessors if needed.(à²îş8¢¯¦õ¼,
-"squid:ClassVariableVisibilityCheck\"iMake ERR_FILTERED_MEDIA_LIST_EMPTY a static final constant or non-public and provide accessors if needed.(ÆÊ’ä8¢¯¦õ¼,
-€squid:S30083"bRename this field "PROMPT_OPERATOR_CHOICES" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡¯ö©8¢¯¦õ¼,
-Wsquid:S1444";Make this "public static MSG_REMOVE_SUCCESSFUL" field final(òÏéàùÿÿÿÿ
-Psquid:S1444="2Make this "public static PROMPT_GENRE" field final( ®¾ğ8¢¯¦õ¼,
-_squid:S1444)"<Make this "public static MSG_EXTENSIONS_IN_YEAR" field final(Ÿ™ ’úÿÿÿÿ8ªãÌäÎ,
-•"squid:ClassVariableVisibilityCheck0"[Make PROMPT_BIRTHDAY a static final constant or non-public and provide accessors if needed.(ò®ç‘øÿÿÿÿ8¢¯¦õ¼,
-asquid:S1444\"CMake this "public static ERR_FILTERED_MEDIA_LIST_EMPTY" field final(ÆÊ’ä8¢¯¦õ¼,
-Ysquid:S1444P"6Make this "public static ERR_INVALID_YEAR" field final(ÖÀ›¢ıÿÿÿÿ8¢¯¦õ¼,
-Usquid:S2696ä"6Make the enclosing method "static" or remove this set.(®Ğ¾¯8¢¯¦õ¼,
-usquid:S3008="WRename this field "PROMPT_GENRE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( ®¾ğ8¢¯¦õ¼,
-Usquid:S2696Ì"6Make the enclosing method "static" or remove this set.(´îçä8¢¯¦õ¼,
-ˆ"squid:ClassVariableVisibilityCheck"ZMake MSG_MEDIA_LIST a static final constant or non-public and provide accessors if needed.(Ôè—±
-Tsquid:S2696’"6Make the enclosing method "static" or remove this set.(á²‡_8ã·†¹,
-„squid:S30085"fRename this field "PROMPT_SIGN_UP_CONFIRMATION" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ã¶Ù8¢¯¦õ¼,
-Usquid:S2696¨"6Make the enclosing method "static" or remove this set.(•¾€â8ã·†¹,
-Xsquid:S1444"<Make this "public static MSG_SIGN_UP_SUCCESSFUL" field final(ò‰ç‚ùÿÿÿÿ
-Tsquid:S2696ˆ"6Make the enclosing method "static" or remove this set.(©•Ï88ã·†¹,
-wsquid:S3008."ZRename this field "PROMPT_USERNAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“”¦88¢¯¦õ¼,
-Usquid:S2696”"6Make the enclosing method "static" or remove this set.(ÿ´À™8ã·†¹,
-Zsquid:S2696ö"6Make the enclosing method "static" or remove this set.(İìğÍùÿÿÿÿ8¢¯¦õ¼,
-Usquid:S2696ú"6Make the enclosing method "static" or remove this set.(¶Ò»ã8¢¯¦õ¼,
-Zsquid:S2696Å"6Make the enclosing method "static" or remove this set.(ù·ù÷üÿÿÿÿ8ªãÌäÎ,
-‡"squid:ClassVariableVisibilityCheck"TMake MSG_DAYS a static final constant or non-public and provide accessors if needed.(õ´Ş½úÿÿÿÿ
-£"squid:ClassVariableVisibilityCheck2"iMake PROMPT_BIBLIO_INITIAL_CHOICES a static final constant or non-public and provide accessors if needed.(Ï•½øÿÿÿÿ8¢¯¦õ¼,
-`squid:S14449"=Make this "public static PROMPT_RETRY_LOGGING_IN" field final(Õ‘ƒ¨ÿÿÿÿÿ8¢¯¦õ¼,
-“"squid:ClassVariableVisibilityCheckX"^Make ERR_FILE_NOT_FOUND a static final constant or non-public and provide accessors if needed.(é¢©ä8¢¯¦õ¼,
-Usquid:S2696©"6Make the enclosing method "static" or remove this set.(ü¨´ì8ã·†¹,
-ysquid:S3008:"[Rename this field "PROMPT_ADD_MEDIA" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ââôİ8¢¯¦õ¼,
-Wsquid:S1444#";Make this "public static MSG_BORROW_SUCCESSFUL" field final(¦üÊ™øÿÿÿÿ
-[squid:S1444>"=Make this "public static PROMPT_PUBLICATION_YEAR" field final(ØÖ¶û8¢¯¦õ¼,
-Usquid:S2696§"6Make the enclosing method "static" or remove this set.(õ±„8ã·†¹,
-Zsquid:S2696Õ"6Make the enclosing method "static" or remove this set.(ğ‡øÿÿÿÿ8¢¯¦õ¼,
-"squid:ClassVariableVisibilityCheck9"cMake PROMPT_RETRY_LOGGING_IN a static final constant or non-public and provide accessors if needed.(Õ‘ƒ¨ÿÿÿÿÿ8¢¯¦õ¼,
-Xsquid:S14440"5Make this "public static PROMPT_BIRTHDAY" field final(ò®ç‘øÿÿÿÿ8¢¯¦õ¼,
-”"squid:ClassVariableVisibilityCheck#"aMake MSG_BORROW_SUCCESSFUL a static final constant or non-public and provide accessors if needed.(¦üÊ™øÿÿÿÿ
-Ksquid:S1444"4Make this "public static MSG_MEDIA_LIST" field final(Ôè—±
-¡"squid:ClassVariableVisibilityCheck*"gMake MSG_MOST_LENT_MEDIA_IN_YEAR a static final constant or non-public and provide accessors if needed.(åïüæûÿÿÿÿ8ªãÌäÎ,
-usquid:S3008"YRename this field "MSG_EXIT_LOGIN" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ã¡ƒüüÿÿÿÿ
-tsquid:S2068í"U'PASSWORD' detected in this expression, review this potentially hardcoded credential.(ËÿÚ›8¢¯¦õ¼,
-Usquid:S2696§"6Make the enclosing method "static" or remove this set.(ê¶Å°8¢¯¦õ¼,
-Usquid:S2696"6Make the enclosing method "static" or remove this set.(®¾ˆ¢8Ø£Â†¹,
-Tsquid:S2696Ô"6Make the enclosing method "static" or remove this set.(üöë8¢¯¦õ¼,
-Psquid:S1444"4Make this "public static MSG_EXIT_LOGIN" field final(ã¡ƒüüÿÿÿÿ
-tsquid:S3008"]Rename this field "MSG_ADD_SUCCESSFUL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ş¯íÒ
-Zsquid:S2696«"6Make the enclosing method "static" or remove this set.(Òš¾âøÿÿÿÿ8ã·†¹,
-Xsquid:S1444%":Make this "public static MSG_LOAN_LIST_SINGLE" field final(¦ç™“8ã·†¹,
-csquid:S1444H"@Make this "public static PROMPT_BORROW_CONFIRMATION" field final(É’È­úÿÿÿÿ8¢¯¦õ¼,
-rsquid:S3008"VRename this field "MSG_LOG_OUT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ò«†ÿÿÿÿÿ
-™"squid:ClassVariableVisibilityCheckS"_Make ERR_SIGN_UP_ABORTED a static final constant or non-public and provide accessors if needed.(ï‰÷Æşÿÿÿÿ8¢¯¦õ¼,
-}squid:S30087"`Rename this field "PROMPT_SIGN_UP_SCREEN" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹è@8¢¯¦õ¼,
-jsquid:S1444G"GMake this "public static PROMPT_SEARCH_FOR_MEDIA_TO_BORROW" field final(Î×ßÑşÿÿÿÿ8¢¯¦õ¼,
-€squid:S3008e"]Rename this field "ERR_WRONG_PASSWORD" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïíğëùÿÿÿÿ8¢¯¦õ¼,
-Tsquid:S1444N"6Make this "public static ERR_INVALID_NAME" field final(½”¬Ø8¢¯¦õ¼,
-"squid:ClassVariableVisibilityCheckI"cMake PROMPT_SEARCH_FOR_LOANS a static final constant or non-public and provide accessors if needed.(¥ó»´ÿÿÿÿÿ8¢¯¦õ¼,
-–"squid:ClassVariableVisibilityCheckP"\Make ERR_INVALID_YEAR a static final constant or non-public and provide accessors if needed.(ÖÀ›¢ıÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696¡"6Make the enclosing method "static" or remove this set.(âı´èùÿÿÿÿ8¢¯¦õ¼,
-Usquid:S2696 "6Make the enclosing method "static" or remove this set.(Í·êÓ8ã·†¹,
-Zsquid:S2696·"6Make the enclosing method "static" or remove this set.(»½üŸüÿÿÿÿ8¢¯¦õ¼,
-Usquid:S2696‘"6Make the enclosing method "static" or remove this set.(œĞúÃ8ã·†¹,
-|squid:S3008"`Rename this field "MSG_REMOVE_SUCCESSFUL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òÏéàùÿÿÿÿ
-…squid:S3008I"bRename this field "PROMPT_SEARCH_FOR_LOANS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥ó»´ÿÿÿÿÿ8¢¯¦õ¼,
-Tsquid:S1444"=Make this "public static MSG_EXIT_WITHOUT_SAVING" field final(¡Ë‚Ü
-"squid:ClassVariableVisibilityCheck!"_Make MSG_FOLDER_CONTENTS a static final constant or non-public and provide accessors if needed.(èª˜
-™"squid:ClassVariableVisibilityCheckZ"dMake ERR_USER_ALREADY_PRESENT a static final constant or non-public and provide accessors if needed.(Ü¢Ûà8¢¯¦õ¼,
-˜"squid:ClassVariableVisibilityCheckb"cMake ERR_MEDIA_NOT_AVAILABLE a static final constant or non-public and provide accessors if needed.(¾¬¬í8¢¯¦õ¼,
-Zsquid:S2696"6Make the enclosing method "static" or remove this set.(é†ÌÁûÿÿÿÿ8ã·†¹,
-Usquid:S2696¤"6Make the enclosing method "static" or remove this set.(é¸¢‰8ã·†¹,
-Zsquid:S2696®"6Make the enclosing method "static" or remove this set.(óİÑôşÿÿÿÿ8ã·†¹,
-Usquid:S2696Í"6Make the enclosing method "static" or remove this set.(œ¬8¢¯¦õ¼,
-Usquid:S2696î"6Make the enclosing method "static" or remove this set.(•ÇÜ»8ªãÌäÎ,
-|squid:S3008#"`Rename this field "MSG_BORROW_SUCCESSFUL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦üÊ™øÿÿÿÿ
-Tsquid:S1444:"6Make this "public static PROMPT_ADD_MEDIA" field final(Ââôİ8¢¯¦õ¼,
-Zsquid:S2696â"6Make the enclosing method "static" or remove this set.(İ÷¢èúÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696†"6Make the enclosing method "static" or remove this set.(¸ø¾Ùıÿÿÿÿ8¢¯¦õ¼,
-Vsquid:S1444W"9Make this "public static ERR_CLASS_NOT_FOUND" field final(«¤ã8¢¯¦õ¼,
-ƒsquid:S3008]"`Rename this field "ERR_MEDIA_NOT_PRESENT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õÊİşÿÿÿÿ8¢¯¦õ¼,
-Usquid:S2696¡"6Make the enclosing method "static" or remove this set.(‘çÚ…8ã·†¹,
-~squid:S3008&"`Rename this field "MSG_EXTEND_SUCCESSFUL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Óœ¦í8Œå¹†¹,
-Usquid:S2696¢"6Make the enclosing method "static" or remove this set.(õÆêà8¢¯¦õ¼,
-Tsquid:S2696Ç"6Make the enclosing method "static" or remove this set.(©Äó48¢¯¦õ¼,
-Zsquid:S2696ç"6Make the enclosing method "static" or remove this set.(£„««üÿÿÿÿ8¢¯¦õ¼,
-Usquid:S2696ÿ"6Make the enclosing method "static" or remove this set.(™Ä¸«8¢¯¦õ¼,
-Usquid:S2696"6Make the enclosing method "static" or remove this set.(È¯Ÿ8ã·†¹,
-“"squid:ClassVariableVisibilityCheckR"^Make ERR_SIGN_UP_FAILED a static final constant or non-public and provide accessors if needed.(íâ¡à8¢¯¦õ¼,
-Jsquid:S1444".Make this "public static MSG_DAYS" field final(õ´Ş½úÿÿÿÿ
-wsquid:S3008M"YRename this field "ERR_NOT_OF_AGE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™ÆØ8¢¯¦õ¼,
-[squid:S1444e"8Make this "public static ERR_WRONG_PASSWORD" field final(ïíğëùÿÿÿÿ8¢¯¦õ¼,
-Usquid:S2696"6Make the enclosing method "static" or remove this set.(Èœµñ8¢¯¦õ¼,
-Tsquid:S2696"6Make the enclosing method "static" or remove this set.(ÃÈ€D8¢¯¦õ¼,
-"squid:ClassVariableVisibilityCheck"]Make MSG_OPERATOR_MENU a static final constant or non-public and provide accessors if needed.(Ÿ¬»‘ÿÿÿÿÿ
-Jsquid:S1444"3Make this "public static MSG_USER_LIST" field final(£Â½¢
-Zsquid:S2696²"6Make the enclosing method "static" or remove this set.(™·ñŠüÿÿÿÿ8ã·†¹,
-Zsquid:S2696„"6Make the enclosing method "static" or remove this set.(úŒ×Ÿşÿÿÿÿ8¢¯¦õ¼,
-˜"squid:ClassVariableVisibilityChecke"^Make ERR_WRONG_PASSWORD a static final constant or non-public and provide accessors if needed.(ïíğëùÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696¼"6Make the enclosing method "static" or remove this set.(ÃšòÛşÿÿÿÿ8ã·†¹,
-Zsquid:S2696±"6Make the enclosing method "static" or remove this set.(¥ÃÆŸúÿÿÿÿ8¢¯¦õ¼,
-”"squid:ClassVariableVisibilityCheck6"_Make PROMPT_LOGIN_SCREEN a static final constant or non-public and provide accessors if needed.(¶æ’«8¢¯¦õ¼,
-}squid:S3008"aRename this field "MSG_SIGN_UP_SUCCESSFUL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ò‰ç‚ùÿÿÿÿ
-€squid:S3008 "dRename this field "MSG_ESCAPE_STRING_MESSAGE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÔÚ—“ÿÿÿÿÿ
-—"squid:ClassVariableVisibilityCheckg"]Make ERR_CANNOT_EXTEND a static final constant or non-public and provide accessors if needed.(•æñ‹üÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696Û"6Make the enclosing method "static" or remove this set.(ÕŞ¥ùÿÿÿÿ8¢¯¦õ¼,
-Usquid:S2696ª"6Make the enclosing method "static" or remove this set.(âó§‰8ã·†¹,
-"squid:ClassVariableVisibilityCheck_"\Make ERR_INVALID_PATH a static final constant or non-public and provide accessors if needed.(áó¯!8¢¯¦õ¼,
-osquid:S3008"XRename this field "MSG_USER_LIST" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£Â½¢
-xsquid:S3008/"ZRename this field "PROMPT_PASSWORD" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ş×üÚ8¢¯¦õ¼,
-~squid:S3008P"[Rename this field "ERR_INVALID_YEAR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÖÀ›¢ıÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696©"6Make the enclosing method "static" or remove this set.(ÍîÈúÿÿÿÿ8¢¯¦õ¼,
-|squid:S3008D"^Rename this field "PROMPT_WHICH_FOLDER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦Ÿ¹8¢¯¦õ¼,
-Usquid:S2696¶"6Make the enclosing method "static" or remove this set.(­Üµñ8ã·†¹,
-Zsquid:S2696¦"6Make the enclosing method "static" or remove this set.(÷ÙØ¬ûÿÿÿÿ8¢¯¦õ¼,
-„squid:S3008)"aRename this field "MSG_EXTENSIONS_IN_YEAR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿ™ ’úÿÿÿÿ8ªãÌäÎ,
-msquid:S3008"VRename this field "MSG_GOODBYE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆıÅ
-~squid:S3008Q"[Rename this field "ERR_LOGIN_FAILED" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(È ³Äıÿÿÿÿ8¢¯¦õ¼,
-ƒsquid:S3008E"eRename this field "PROMPT_REMOVE_CONFIRMATION" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÁŠ†Ù8¢¯¦õ¼,
-Usquid:S2696•"6Make the enclosing method "static" or remove this set.(Ÿóç³8ã·†¹,
-Zsquid:S2696ı"6Make the enclosing method "static" or remove this set.(”óÉÊùÿÿÿÿ8¢¯¦õ¼,
-€squid:S3008b"bRename this field "ERR_MEDIA_NOT_AVAILABLE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾¬¬í8¢¯¦õ¼,
-Zsquid:S1444g"7Make this "public static ERR_CANNOT_EXTEND" field final(•æñ‹üÿÿÿÿ8¢¯¦õ¼,
-squid:S3008C"aRename this field "PROMPT_EXPIRY_IMMINENT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ı·Ä½8¢¯¦õ¼,
-}squid:S3008%"_Rename this field "MSG_LOAN_LIST_SINGLE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦ç™“8ã·†¹,
-squid:S3008Z"cRename this field "ERR_USER_ALREADY_PRESENT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ü¢Ûà8¢¯¦õ¼,
-Zsquid:S2696×"6Make the enclosing method "static" or remove this set.(ğ€†‡ùÿÿÿÿ8¢¯¦õ¼,
-Usquid:S2696€"6Make the enclosing method "static" or remove this set.( äÊÉ8¢¯¦õ¼,
-Zsquid:S2696ù"6Make the enclosing method "static" or remove this set.(·ô«½ûÿÿÿÿ8¢¯¦õ¼,
-…"squid:ClassVariableVisibilityCheck"WMake MSG_GOODBYE a static final constant or non-public and provide accessors if needed.(ÆıÅ
-Tsquid:S2696"6Make the enclosing method "static" or remove this set.(Ì‹‚w8¢¯¦õ¼,
-‘"squid:ClassVariableVisibilityCheck"cMake MSG_FILTERED_MEDIA_LIST a static final constant or non-public and provide accessors if needed.(¹È£§
-‹squid:S30081"nRename this field "PROMPT_PRESENT_USER_MULTIPLE_CHOICE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š»ï!8¢¯¦õ¼,
-Wsquid:S1444f"9Make this "public static ERR_LOAN_LIST_EMPTY" field final(°ùÓ8¢¯¦õ¼,
-Usquid:S2696£"6Make the enclosing method "static" or remove this set.(áóí§8¢¯¦õ¼,
-\squid:S1444@"9Make this "public static PROMPT_REMOVE_MEDIA" field final(¬Ş’Çşÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696œ"6Make the enclosing method "static" or remove this set.(¾Œä‘ıÿÿÿÿ8¢¯¦õ¼,
-Ysquid:S1444Q"6Make this "public static ERR_LOGIN_FAILED" field final(È ³Äıÿÿÿÿ8¢¯¦õ¼,
-]squid:S1444h":Make this "public static ERR_NO_LOANS_IN_YEAR" field final(†±Çÿÿÿÿÿ8¢¯¦õ¼,
-Ÿ"squid:ClassVariableVisibilityCheck^"eMake ERR_MEDIA_ALREADY_PRESENT a static final constant or non-public and provide accessors if needed.(Éœ“¢üÿÿÿÿ8¢¯¦õ¼,
-Usquid:S2696Ä"6Make the enclosing method "static" or remove this set.(¦ªäê8¢¯¦õ¼,
-‘"squid:ClassVariableVisibilityCheck"cMake MSG_EXIT_WITHOUT_SAVING a static final constant or non-public and provide accessors if needed.(¡Ë‚Ü
-Vsquid:S1444B"8Make this "public static PROMPT_SELECT_PATH" field final(Ñ®Íã8¢¯¦õ¼,
-Zsquid:S2696±"6Make the enclosing method "static" or remove this set.(½—òÅÿÿÿÿÿ8ã·†¹,
-Zsquid:S2696À"6Make the enclosing method "static" or remove this set.(¢ÅøÚúÿÿÿÿ8Œ€¨¼,
-Usquid:S2696í"6Make the enclosing method "static" or remove this set.(ËÿÚ›8ªãÌäÎ,
-Zsquid:S2696»"6Make the enclosing method "static" or remove this set.(ìÑØ…şÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S1444'"7Make this "public static MSG_LOANS_IN_YEAR" field final(ÑÉÊşÿÿÿÿ8¢¯¦õ¼,
-}squid:S3008d"_Rename this field "ERR_USER_NOT_PRESENT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦ÀšÒ8¢¯¦õ¼,
-_squid:S14445"AMake this "public static PROMPT_SIGN_UP_CONFIRMATION" field final(ã¶Ù8¢¯¦õ¼,
-œ"squid:ClassVariableVisibilityCheckV"bMake ERR_LOADING_FILESYSTEM a static final constant or non-public and provide accessors if needed.(®¼İâıÿÿÿÿ8¢¯¦õ¼,
-Hsquid:S1444"1Make this "public static MSG_GOODBYE" field final(ÆıÅ
-Zsquid:S2696Â"6Make the enclosing method "static" or remove this set.(”…ÖÙûÿÿÿÿ8¢¯¦õ¼,
-[squid:S1444 "?Make this "public static MSG_ESCAPE_STRING_MESSAGE" field final(ÔÚ—“ÿÿÿÿÿ
-Œ"squid:ClassVariableVisibilityCheck"^Make MSG_ADD_SUCCESSFUL a static final constant or non-public and provide accessors if needed.(Ş¯íÒ
-Usquid:S2696ï"6Make the enclosing method "static" or remove this set.(ÔšŞ8ªãÌäÎ,
-Usquid:S2696Æ"6Make the enclosing method "static" or remove this set.(ğò‚‚8¢¯¦õ¼,
-^squid:S1444]";Make this "public static ERR_MEDIA_NOT_PRESENT" field final(õÊİşÿÿÿÿ8¢¯¦õ¼,
-Tsquid:S2696Ö"6Make the enclosing method "static" or remove this set.(÷â@8¢¯¦õ¼,
-Usquid:S2696Ã"6Make the enclosing method "static" or remove this set.(³å·¶8¢¯¦õ¼,
-Zsquid:S1444$"7Make this "public static MSG_LOAN_LIST_ALL" field final(¯çèÿÿÿÿÿ8ã·†¹,
-Zsquid:S2696£"6Make the enclosing method "static" or remove this set.(ŸŞ·ıÿÿÿÿ8ã·†¹,
-Xsquid:S1444U":Make this "public static ERR_LOADING_DATABASE" field final(ôê‘È8¢¯¦õ¼,
-Zsquid:S2696°"6Make the enclosing method "static" or remove this set.(ŸÇÓœûÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696È"6Make the enclosing method "static" or remove this set.(§üõ–üÿÿÿÿ8¢¯¦õ¼,
-Usquid:S2696½"6Make the enclosing method "static" or remove this set.(³âÅØ8ã·†¹,
-Zsquid:S2696ã"6Make the enclosing method "static" or remove this set.(’¼Æõúÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696´"6Make the enclosing method "static" or remove this set.(‰„ùşûÿÿÿÿ8¢¯¦õ¼,
-bsquid:S1444^"?Make this "public static ERR_MEDIA_ALREADY_PRESENT" field final(Éœ“¢üÿÿÿÿ8¢¯¦õ¼,
-ysquid:S3008"bRename this field "MSG_FILTERED_MEDIA_LIST" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹È£§
-Tsquid:S2696­"6Make the enclosing method "static" or remove this set.(íïº(8ã·†¹,
-Zsquid:S2696·"6Make the enclosing method "static" or remove this set.(»©ìıÿÿÿÿ8ã·†¹,
-›"squid:ClassVariableVisibilityCheckE"fMake PROMPT_REMOVE_CONFIRMATION a static final constant or non-public and provide accessors if needed.(ÁŠ†Ù8¢¯¦õ¼,
-\squid:S1444S"9Make this "public static ERR_SIGN_UP_ABORTED" field final(ï‰÷Æşÿÿÿÿ8¢¯¦õ¼,
-Usquid:S2696‡"6Make the enclosing method "static" or remove this set.(Ï¾ëÇ8¢¯¦õ¼,
-Zsquid:S2696º"6Make the enclosing method "static" or remove this set.(‰”Ñìÿÿÿÿÿ8ã·†¹,
-Usquid:S2696»"6Make the enclosing method "static" or remove this set.(îßˆÒ8ã·†¹,
-Zsquid:S2696­"6Make the enclosing method "static" or remove this set.(şøÂ×ùÿÿÿÿ8¢¯¦õ¼,
-…squid:S30084"bRename this field "PROMPT_CUSTOMER_CHOICES" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ËğÓŒÿÿÿÿÿ8¢¯¦õ¼,
-usquid:S3008!"^Rename this field "MSG_FOLDER_CONTENTS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èª˜
-‚squid:S30088"_Rename this field "PROMPT_MODIFY_FIELDS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ã¢ş±úÿÿÿÿ8¢¯¦õ¼,
-ysquid:S3008"bRename this field "MSG_EXIT_WITHOUT_SAVING" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡Ë‚Ü
-"squid:ClassVariableVisibilityCheck"ZMake MSG_EXIT_LOGIN a static final constant or non-public and provide accessors if needed.(ã¡ƒüüÿÿÿÿ
-’"squid:ClassVariableVisibilityCheck;"XMake PROMPT_TITLE a static final constant or non-public and provide accessors if needed.(ÔÉ¢ûÿÿÿÿ8¢¯¦õ¼,
-Usquid:S2696“"6Make the enclosing method "static" or remove this set.(Ö¬¦µ8ã·†¹,
-…squid:S3008F"bRename this field "PROMPT_SEARCH_FOR_MEDIA" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñ»Î˜şÿÿÿÿ8¢¯¦õ¼,
-squid:S3008G"lRename this field "PROMPT_SEARCH_FOR_MEDIA_TO_BORROW" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Î×ßÑşÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696Ø"6Make the enclosing method "static" or remove this set.(½ã€îøÿÿÿÿ8¢¯¦õ¼,
-|squid:S30086"^Rename this field "PROMPT_LOGIN_SCREEN" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶æ’«8¢¯¦õ¼,
-Zsquid:S2696Ê"6Make the enclosing method "static" or remove this set.(çòıîøÿÿÿÿ8ªãÌäÎ,
-{squid:S3008R"]Rename this field "ERR_SIGN_UP_FAILED" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íâ¡à8¢¯¦õ¼,
-•"squid:ClassVariableVisibilityCheck"bMake MSG_SIGN_UP_SUCCESSFUL a static final constant or non-public and provide accessors if needed.(ò‰ç‚ùÿÿÿÿ
-"squid:ClassVariableVisibilityCheckF"cMake PROMPT_SEARCH_FOR_MEDIA a static final constant or non-public and provide accessors if needed.(Ñ»Î˜şÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696¥"6Make the enclosing method "static" or remove this set.(˜ ¹¦øÿÿÿÿ8ã·†¹,
-Zsquid:S1444C"<Make this "public static PROMPT_EXPIRY_IMMINENT" field final(ı·Ä½8¢¯¦õ¼,
-—"squid:ClassVariableVisibilityCheck'"]Make MSG_LOANS_IN_YEAR a static final constant or non-public and provide accessors if needed.(ÑÉÊşÿÿÿÿ8¢¯¦õ¼,
-}squid:S3008"aRename this field "MSG_REMINDER_DAYS_LEFT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÖÜÂ…üÿÿÿÿ
-Rsquid:S1444."5Make this "public static PROMPT_USERNAME" field final(“”¦88¢¯¦õ¼,
-Usquid:S2696¬"6Make the enclosing method "static" or remove this set.(Û»ûß8¢¯¦õ¼,
-Zsquid:S2696Å"6Make the enclosing method "static" or remove this set.(”µØñüÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696ì"6Make the enclosing method "static" or remove this set.(À¥¹şÿÿÿÿÿ8ªãÌäÎ,
-Usquid:S2696¾"6Make the enclosing method "static" or remove this set.(¼ıºè8ã·†¹,
-‘"squid:ClassVariableVisibilityCheckO"\Make ERR_INVALID_DATE a static final constant or non-public and provide accessors if needed.(™„´ó8¢¯¦õ¼,
-Zsquid:S2696é"6Make the enclosing method "static" or remove this set.(ä ¶êûÿÿÿÿ8¢¯¦õ¼,
-fsquid:S1444J"CMake this "public static PROMPT_CHOOSE_MEDIA_TO_EXTEND" field final(¹¼€ûÿÿÿÿ8¢¯¦õ¼,
-‡squid:S3008^"dRename this field "ERR_MEDIA_ALREADY_PRESENT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Éœ“¢üÿÿÿÿ8¢¯¦õ¼,
-_squid:S1444("<Make this "public static MSG_USER_LOANS_IN_YEAR" field final(È™ú³ıÿÿÿÿ8ªãÌäÎ,
-Usquid:S2696å"6Make the enclosing method "static" or remove this set.(ËŠı«8¢¯¦õ¼,
-’"squid:ClassVariableVisibilityChecka"]Make ERR_BORROW_FAILED a static final constant or non-public and provide accessors if needed.(‰™šİ8¢¯¦õ¼,
-Zsquid:S2696¥"6Make the enclosing method "static" or remove this set.(½âŞÿÿÿÿÿ8¢¯¦õ¼,
-Nsquid:S1444""7Make this "public static MSG_MOVE_TO_LOGIN" field final(°ÉÑÙ
-Zsquid:S2696¸"6Make the enclosing method "static" or remove this set.(Œ›—©øÿÿÿÿ8ã·†¹,
-ysquid:S3008["[Rename this field "ERR_CANNOT_RENEW" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(á³ç¾8¢¯¦õ¼,
-Rsquid:S1444M"4Make this "public static ERR_NOT_OF_AGE" field final(™ÆØ8¢¯¦õ¼,
-”"squid:ClassVariableVisibilityCheckD"_Make PROMPT_WHICH_FOLDER a static final constant or non-public and provide accessors if needed.(¦Ÿ¹8¢¯¦õ¼,
-›"squid:ClassVariableVisibilityCheck?"aMake PROMPT_PUBLISHER_NAME a static final constant or non-public and provide accessors if needed.(ÆŒô¿üÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696"6Make the enclosing method "static" or remove this set.(¶è·÷ùÿÿÿÿ8ã·†¹,
-Usquid:S2696«"6Make the enclosing method "static" or remove this set.(œ»ËÕ8¢¯¦õ¼,
-Qsquid:S1444<"3Make this "public static PROMPT_AUTHOR" field final(à²îş8¢¯¦õ¼,
-›"squid:ClassVariableVisibilityCheckY"aMake ERR_MSG_INVALID_INPUT a static final constant or non-public and provide accessors if needed.(Ÿ–‹üÿÿÿÿ8¢¯¦õ¼,
-Xsquid:S1444d":Make this "public static ERR_USER_NOT_PRESENT" field final(¦ÀšÒ8¢¯¦õ¼,
-Msquid:S1444"1Make this "public static MSG_LOG_OUT" field final(ò«†ÿÿÿÿÿ
-Zsquid:S2696´"6Make the enclosing method "static" or remove this set.(„ó§™şÿÿÿÿ8ã·†¹,
-Usquid:S2696®"6Make the enclosing method "static" or remove this set.(¦Ëˆ‡8¢¯¦õ¼,
-Tsquid:S2696¸"6Make the enclosing method "static" or remove this set.(á²‡_8¢¯¦õ¼,
-Zsquid:S2696Œ"6Make the enclosing method "static" or remove this set.(«ºƒ­şÿÿÿÿ8ã·†¹,
-Usquid:S2696Á"6Make the enclosing method "static" or remove this set.(«Á¦ü8¢¯¦õ¼,
-Ysquid:S1444-"6Make this "public static PROMPT_LAST_NAME" field final(€íŞĞúÿÿÿÿ8¢¯¦õ¼,
-—"squid:ClassVariableVisibilityCheckC"bMake PROMPT_EXPIRY_IMMINENT a static final constant or non-public and provide accessors if needed.(ı·Ä½8¢¯¦õ¼,
-Zsquid:S2696Ã"6Make the enclosing method "static" or remove this set.(ä©®€şÿÿÿÿ8ªãÌäÎ,
-^squid:S1444?";Make this "public static PROMPT_PUBLISHER_NAME" field final(ÆŒô¿üÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696¯"6Make the enclosing method "static" or remove this set.(÷¦³àşÿÿÿÿ8ã·†¹,
-"squid:ClassVariableVisibilityCheck."[Make PROMPT_USERNAME a static final constant or non-public and provide accessors if needed.(“”¦88¢¯¦õ¼,
-Tsquid:S1444O"6Make this "public static ERR_INVALID_DATE" field final(™„´ó8¢¯¦õ¼,
-|squid:S3008f"^Rename this field "ERR_LOAN_LIST_EMPTY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°ùÓ8¢¯¦õ¼,
-•"squid:ClassVariableVisibilityCheck7"aMake PROMPT_SIGN_UP_SCREEN a static final constant or non-public and provide accessors if needed.(¹è@8¢¯¦õ¼,
-squid:S3008$"\Rename this field "MSG_LOAN_LIST_ALL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯çèÿÿÿÿÿ8ã·†¹,
-`squid:S1444I"=Make this "public static PROMPT_SEARCH_FOR_LOANS" field final(¥ó»´ÿÿÿÿÿ8¢¯¦õ¼,
-‹squid:S30082"hRename this field "PROMPT_BIBLIO_INITIAL_CHOICES" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï•½øÿÿÿÿ8¢¯¦õ¼,
-{squid:S3008W"^Rename this field "ERR_CLASS_NOT_FOUND" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«¤ã8¢¯¦õ¼,
-Psquid:S1444!"9Make this "public static MSG_FOLDER_CONTENTS" field final(èª˜
-Usquid:S2696Ş"6Make the enclosing method "static" or remove this set.(‚«ê’8¢¯¦õ¼,
-ysquid:S3008N"[Rename this field "ERR_INVALID_NAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½”¬Ø8¢¯¦õ¼,
-tsquid:S2068“"U'PASSWORD' detected in this expression, review this potentially hardcoded credential.(Ö¬¦µ8¢¯¦õ¼,
-}squid:S30080"ZRename this field "PROMPT_BIRTHDAY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ò®ç‘øÿÿÿÿ8¢¯¦õ¼,
-ssquid:S3008"\Rename this field "MSG_CUSTOMER_MENU" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹ÁúÊ
-Usquid:S2696…"6Make the enclosing method "static" or remove this set.(î Ã8¢¯¦õ¼,
-Zsquid:S2696ß"6Make the enclosing method "static" or remove this set.(ï¼×ƒÿÿÿÿÿ8¢¯¦õ¼,
-œ"squid:ClassVariableVisibilityCheck)"bMake MSG_EXTENSIONS_IN_YEAR a static final constant or non-public and provide accessors if needed.(Ÿ™ ’úÿÿÿÿ8ªãÌäÎ,
-Usquid:S2696ø"6Make the enclosing method "static" or remove this set.(ÁíÚµ8¢¯¦õ¼,
-Zsquid:S2696à"6Make the enclosing method "static" or remove this set.(—×È“üÿÿÿÿ8¢¯¦õ¼,
-[squid:S1444b"=Make this "public static ERR_MEDIA_NOT_AVAILABLE" field final(¾¬¬í8¢¯¦õ¼,
-Zsquid:S2696÷"6Make the enclosing method "static" or remove this set.(šÇÃ²ÿÿÿÿÿ8¢¯¦õ¼,
-ksquid:S3008"TRename this field "MSG_ABORT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Î×
-zsquid:S3008a"\Rename this field "ERR_BORROW_FAILED" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰™šİ8¢¯¦õ¼,
-Zsquid:S2696™"6Make the enclosing method "static" or remove this set.(úŞªíüÿÿÿÿ8ã·†¹,
-Tsquid:S2696ƒ"6Make the enclosing method "static" or remove this set.(àú~8¢¯¦õ¼,
-™"squid:ClassVariableVisibilityCheck@"_Make PROMPT_REMOVE_MEDIA a static final constant or non-public and provide accessors if needed.(¬Ş’Çşÿÿÿÿ8¢¯¦õ¼,
-Usquid:S2696ê"6Make the enclosing method "static" or remove this set.(°Å‚8¢¯¦õ¼,
-^squid:S1444Y";Make this "public static ERR_MSG_INVALID_INPUT" field final(Ÿ–‹üÿÿÿÿ8¢¯¦õ¼,
-ƒsquid:S3008Y"`Rename this field "ERR_MSG_INVALID_INPUT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿ–‹üÿÿÿÿ8¢¯¦õ¼,
-Usquid:S2696ş"6Make the enclosing method "static" or remove this set.(æÃá¾8¢¯¦õ¼,
-Zsquid:S2696Ğ"6Make the enclosing method "static" or remove this set.(Í‹É©ıÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696²"6Make the enclosing method "static" or remove this set.(û¼ü¯üÿÿÿÿ8¢¯¦õ¼,
-ysquid:S3008O"[Rename this field "ERR_INVALID_DATE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™„´ó8¢¯¦õ¼,
-Usquid:S2696¶"6Make the enclosing method "static" or remove this set.(™°€ò8¢¯¦õ¼,
-Zsquid:S2696İ"6Make the enclosing method "static" or remove this set.(à šòüÿÿÿÿ8¢¯¦õ¼,
-Š"squid:ClassVariableVisibilityCheck"WMake MSG_LOG_OUT a static final constant or non-public and provide accessors if needed.(ò«†ÿÿÿÿÿ
-Zsquid:S2696Ç"6Make the enclosing method "static" or remove this set.(ûı·Ëşÿÿÿÿ8ªãÌäÎ,
-Zsquid:S2696ë"6Make the enclosing method "static" or remove this set.(§—ôøÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696¾"6Make the enclosing method "static" or remove this set.(şúøšşÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696"6Make the enclosing method "static" or remove this set.(Ê®€Ìşÿÿÿÿ8ã·†¹,
-Usquid:S2696 "6Make the enclosing method "static" or remove this set.(ë‡ƒú8¢¯¦õ¼,
-Osquid:S1444"8Make this "public static MSG_ADD_SUCCESSFUL" field final(Ş¯íÒ
-˜"squid:ClassVariableVisibilityCheck "eMake MSG_ESCAPE_STRING_MESSAGE a static final constant or non-public and provide accessors if needed.(ÔÚ—“ÿÿÿÿÿ
-’"squid:ClassVariableVisibilityCheck,"]Make PROMPT_FIRST_NAME a static final constant or non-public and provide accessors if needed.(Ãˆİô8¢¯¦õ¼,
-Zsquid:S2696½"6Make the enclosing method "static" or remove this set.(€‚¤ÿÿÿÿÿ8¢¯¦õ¼,
-§"squid:ClassVariableVisibilityCheckG"mMake PROMPT_SEARCH_FOR_MEDIA_TO_BORROW a static final constant or non-public and provide accessors if needed.(Î×ßÑşÿÿÿÿ8¢¯¦õ¼,
-~squid:S3008-"[Rename this field "PROMPT_LAST_NAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€íŞĞúÿÿÿÿ8¢¯¦õ¼,
-Ysquid:S1444&";Make this "public static MSG_EXTEND_SUCCESSFUL" field final(Óœ¦í8Œå¹†¹,
-Xsquid:S14447";Make this "public static PROMPT_SIGN_UP_SCREEN" field final(¹è@8¢¯¦õ¼,
-Zsquid:S1444c"7Make this "public static ERR_CANNOT_BORROW" field final(ïÅ–ùÿÿÿÿ8¢¯¦õ¼,
-Usquid:S2696Ê"6Make the enclosing method "static" or remove this set.(ßíµ¦8¢¯¦õ¼,
-Zsquid:S2696æ"6Make the enclosing method "static" or remove this set.(ØùÕìÿÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696É"6Make the enclosing method "static" or remove this set.(ÇŠ…øÿÿÿÿ8ªãÌäÎ,
-"squid:ClassVariableVisibilityCheckM"ZMake ERR_NOT_OF_AGE a static final constant or non-public and provide accessors if needed.(™ÆØ8¢¯¦õ¼,
-Zsquid:S2696ª"6Make the enclosing method "static" or remove this set.(±ö®¾üÿÿÿÿ8¢¯¦õ¼,
-Usquid:S1444,"7Make this "public static PROMPT_FIRST_NAME" field final(Ãˆİô8¢¯¦õ¼,
- "squid:ClassVariableVisibilityCheckH"fMake PROMPT_BORROW_CONFIRMATION a static final constant or non-public and provide accessors if needed.(É’È­úÿÿÿÿ8¢¯¦õ¼,
-squid:S3008T"^Rename this field "ERR_SAVING_DATABASE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éŒÉêşÿÿÿÿ8¢¯¦õ¼,
-Vsquid:S1444R"8Make this "public static ERR_SIGN_UP_FAILED" field final(íâ¡à8¢¯¦õ¼,
-£"squid:ClassVariableVisibilityCheckJ"iMake PROMPT_CHOOSE_MEDIA_TO_EXTEND a static final constant or non-public and provide accessors if needed.(¹¼€ûÿÿÿÿ8¢¯¦õ¼,
-`squid:S1444F"=Make this "public static PROMPT_SEARCH_FOR_MEDIA" field final(Ñ»Î˜şÿÿÿÿ8¢¯¦õ¼,
-Usquid:S2696–"6Make the enclosing method "static" or remove this set.(‚£¡¾8ã·†¹,
-Usquid:S2696Ï"6Make the enclosing method "static" or remove this set.(ßÆú8¢¯¦õ¼,
-[squid:S14443"=Make this "public static PROMPT_OPERATOR_CHOICES" field final(¡¯ö©8¢¯¦õ¼,
-‘"squid:ClassVariableVisibilityCheck:"\Make PROMPT_ADD_MEDIA a static final constant or non-public and provide accessors if needed.(Ââôİ8¢¯¦õ¼,
-Usquid:S2696¹"6Make the enclosing method "static" or remove this set.(Ö¬¦µ8¢¯¦õ¼,
-Tsquid:S2696Ò"6Make the enclosing method "static" or remove this set.(å™×v8¢¯¦õ¼,
-squid:S3008c"\Rename this field "ERR_CANNOT_BORROW" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïÅ–ùÿÿÿÿ8¢¯¦õ¼,
-squid:S3008g"\Rename this field "ERR_CANNOT_EXTEND" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•æñ‹üÿÿÿÿ8¢¯¦õ¼,
-{squid:S3008X"]Rename this field "ERR_FILE_NOT_FOUND" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é¢©ä8¢¯¦õ¼,
-Zsquid:S2696Ù"6Make the enclosing method "static" or remove this set.(ÏÙêÇøÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696¢"6Make the enclosing method "static" or remove this set.(¿ê³±úÿÿÿÿ8ã·†¹,
-Usquid:S2696¤"6Make the enclosing method "static" or remove this set.(‘ã·ª8¢¯¦õ¼,
-“"squid:ClassVariableVisibilityCheckW"_Make ERR_CLASS_NOT_FOUND a static final constant or non-public and provide accessors if needed.(«¤ã8¢¯¦õ¼,
-Zsquid:S2696Î"6Make the enclosing method "static" or remove this set.(ÌĞÓáıÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696á"6Make the enclosing method "static" or remove this set.(èáñ¼üÿÿÿÿ8¢¯¦õ¼,
-Usquid:S2696É"6Make the enclosing method "static" or remove this set.(ÄÍ±8¢¯¦õ¼,
-Zsquid:S2696¯"6Make the enclosing method "static" or remove this set.(«Ú½–ıÿÿÿÿ8¢¯¦õ¼,
-zsquid:S3008;"WRename this field "PROMPT_TITLE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÔÉ¢ûÿÿÿÿ8¢¯¦õ¼,
-Usquid:S2696Ä"6Make the enclosing method "static" or remove this set.(‚Ÿåé8ªãÌäÎ,
-ƒ"squid:ClassVariableVisibilityCheck"UMake MSG_ABORT a static final constant or non-public and provide accessors if needed.(Î×
-œ"squid:ClassVariableVisibilityCheckA"bMake PROMPT_REMOVE_MEDIA_ID a static final constant or non-public and provide accessors if needed.(Ó„Üøÿÿÿÿ8¢¯¦õ¼,
-š"squid:ClassVariableVisibilityCheckh"`Make ERR_NO_LOANS_IN_YEAR a static final constant or non-public and provide accessors if needed.(†±Çÿÿÿÿÿ8¢¯¦õ¼,
-–"squid:ClassVariableVisibilityCheck-"\Make PROMPT_LAST_NAME a static final constant or non-public and provide accessors if needed.(€íŞĞúÿÿÿÿ8¢¯¦õ¼,
-ssquid:S3008""\Rename this field "MSG_MOVE_TO_LOGIN" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°ÉÑÙ
-Zsquid:S2696Š"6Make the enclosing method "static" or remove this set.(Òûäêûÿÿÿÿ8ã·†¹,
-•"squid:ClassVariableVisibilityCheck"bMake MSG_REMINDER_DAYS_LEFT a static final constant or non-public and provide accessors if needed.(ÖÜÂ…üÿÿÿÿ
-Zsquid:S2696³"6Make the enclosing method "static" or remove this set.(Ì¨ü…şÿÿÿÿ8¢¯¦õ¼,
-dsquid:S1444*"AMake this "public static MSG_MOST_LENT_MEDIA_IN_YEAR" field final(åïüæûÿÿÿÿ8ªãÌäÎ,
-‹"squid:ClassVariableVisibilityCheck"]Make MSG_CUSTOMER_MENU a static final constant or non-public and provide accessors if needed.(‹ÁúÊ
-•"squid:ClassVariableVisibilityCheckU"`Make ERR_LOADING_DATABASE a static final constant or non-public and provide accessors if needed.(ôê‘È8¢¯¦õ¼,
-„squid:S3008("aRename this field "MSG_USER_LOANS_IN_YEAR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(È™ú³ıÿÿÿÿ8ªãÌäÎ,
-Zsquid:S2696°"6Make the enclosing method "static" or remove this set.(°ëœ¬ùÿÿÿÿ8ã·†¹,
-Zsquid:S2696¿"6Make the enclosing method "static" or remove this set.(Èøòúÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696"6Make the enclosing method "static" or remove this set.(¾Íëñıÿÿÿÿ8ã·†¹,
-”"squid:ClassVariableVisibilityCheck"aMake MSG_REMOVE_SUCCESSFUL a static final constant or non-public and provide accessors if needed.(òÏéàùÿÿÿÿ
-Tsquid:S1444"=Make this "public static MSG_FILTERED_MEDIA_LIST" field final(¹È£§
-Tsquid:S2696‹"6Make the enclosing method "static" or remove this set.(—İµ&8ã·†¹,
-—"squid:ClassVariableVisibilityCheckc"]Make ERR_CANNOT_BORROW a static final constant or non-public and provide accessors if needed.(ïÅ–ùÿÿÿÿ8¢¯¦õ¼,
-Usquid:S2696À"6Make the enclosing method "static" or remove this set.(äá¾Ã8¢¯¦õ¼,
-Usquid:S2696Ë"6Make the enclosing method "static" or remove this set.(»‚İ8¢¯¦õ¼,
-Zsquid:S2696—"6Make the enclosing method "static" or remove this set.(Ş÷‡ÿÿÿÿÿ8ã·†¹,
-Zsquid:S2696¬"6Make the enclosing method "static" or remove this set.(Ïæ×æûÿÿÿÿ8ã·†¹,
-œ"squid:ClassVariableVisibilityCheck5"gMake PROMPT_SIGN_UP_CONFIRMATION a static final constant or non-public and provide accessors if needed.(ã¶Ù8¢¯¦õ¼,
-\squid:S1444Z">Make this "public static ERR_USER_ALREADY_PRESENT" field final(Ü¢Ûà8¢¯¦õ¼,
-‘"squid:ClassVariableVisibilityCheckN"\Make ERR_INVALID_NAME a static final constant or non-public and provide accessors if needed.(½”¬Ø8¢¯¦õ¼,
-squid:S3008'"\Rename this field "MSG_LOANS_IN_YEAR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÑÉÊşÿÿÿÿ8¢¯¦õ¼,
-^squid:S1444E"@Make this "public static PROMPT_REMOVE_CONFIRMATION" field final(ÁŠ†Ù8¢¯¦õ¼,
-\squid:S1444T"9Make this "public static ERR_SAVING_DATABASE" field final(éŒÉêşÿÿÿÿ8¢¯¦õ¼,
-xsquid:S3008_"[Rename this field "ERR_INVALID_PATH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áó¯!8¢¯¦õ¼,
-€squid:S3008>"bRename this field "PROMPT_PUBLICATION_YEAR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ØÖ¶û8¢¯¦õ¼,
-›"squid:ClassVariableVisibilityCheck]"aMake ERR_MEDIA_NOT_PRESENT a static final constant or non-public and provide accessors if needed.(õÊİşÿÿÿÿ8¢¯¦õ¼,
-Usquid:S2696Ú"6Make the enclosing method "static" or remove this set.(óìì»8¢¯¦õ¼,
-Usquid:S2696Ñ"6Make the enclosing method "static" or remove this set.(üâÆº8¢¯¦õ¼,
-Usquid:S2696‰"6Make the enclosing method "static" or remove this set.(ºäÅ™8ã·†¹,
-Usquid:S2696Á"6Make the enclosing method "static" or remove this set.(Ãèğç8Œ€¨¼,
-Usquid:S2696¦"6Make the enclosing method "static" or remove this set.(š»ü¢8ã·†¹,
-Zsquid:S2696û"6Make the enclosing method "static" or remove this set.(›‘‘üÿÿÿÿ8¢¯¦õ¼,
-“"squid:ClassVariableVisibilityCheckB"^Make PROMPT_SELECT_PATH a static final constant or non-public and provide accessors if needed.(Ñ®Íã8¢¯¦õ¼,
-Zsquid:S2696˜"6Make the enclosing method "static" or remove this set.(¿Ö¬ºøÿÿÿÿ8ã·†¹,
-ˆsquid:S3008H"eRename this field "PROMPT_BORROW_CONFIRMATION" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É’È­úÿÿÿÿ8¢¯¦õ¼,
-{squid:S3008B"]Rename this field "PROMPT_SELECT_PATH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñ®Íã8¢¯¦õ¼,
-`squid:S14444"=Make this "public static PROMPT_CUSTOMER_CHOICES" field final(ËğÓŒÿÿÿÿÿ8¢¯¦õ¼,
-fsquid:S14442"CMake this "public static PROMPT_BIBLIO_INITIAL_CHOICES" field final(Ï•½øÿÿÿÿ8¢¯¦õ¼,
-Nsquid:S1444"7Make this "public static MSG_CUSTOMER_MENU" field final(‹ÁúÊ
-—"squid:ClassVariableVisibilityCheck$"]Make MSG_LOAN_LIST_ALL a static final constant or non-public and provide accessors if needed.(¯çèÿÿÿÿÿ8ã·†¹,
-Zsquid:S2696ğ"6Make the enclosing method "static" or remove this set.(‚£©ÿÿÿÿÿ8ªãÌäÎ,
-vsquid:S3008<"XRename this field "PROMPT_AUTHOR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à²îş8¢¯¦õ¼,
-}squid:S3008U"_Rename this field "ERR_LOADING_DATABASE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôê‘È8¢¯¦õ¼,
-‚squid:S3008`"_Rename this field "ERR_PATH_NOT_PRESENT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ê¾…úÿÿÿÿ8¢¯¦õ¼,
-…squid:S30089"bRename this field "PROMPT_RETRY_LOGGING_IN" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õ‘ƒ¨ÿÿÿÿÿ8¢¯¦õ¼,
-]squid:S14448":Make this "public static PROMPT_MODIFY_FIELDS" field final(ã¢ş±úÿÿÿÿ8¢¯¦õ¼,
-"squid:ClassVariableVisibilityCheck="XMake PROMPT_GENRE a static final constant or non-public and provide accessors if needed.( ®¾ğ8¢¯¦õ¼,
-]squid:S1444`":Make this "public static ERR_PATH_NOT_PRESENT" field final(Ê¾…úÿÿÿÿ8¢¯¦õ¼,
-"squid:ClassVariableVisibilityCheck/"[Make PROMPT_PASSWORD a static final constant or non-public and provide accessors if needed.(Ş×üÚ8¢¯¦õ¼,
-†squid:S3008\"hRename this field "ERR_FILTERED_MEDIA_LIST_EMPTY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆÊ’ä8¢¯¦õ¼,
-š"squid:ClassVariableVisibilityCheck`"`Make ERR_PATH_NOT_PRESENT a static final constant or non-public and provide accessors if needed.(Ê¾…úÿÿÿÿ8¢¯¦õ¼,
-”"squid:ClassVariableVisibilityCheckf"_Make ERR_LOAN_LIST_EMPTY a static final constant or non-public and provide accessors if needed.(°ùÓ8¢¯¦õ¼,
-squid:S3008S"^Rename this field "ERR_SIGN_UP_ABORTED" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ï‰÷Æşÿÿÿÿ8¢¯¦õ¼,
-Usquid:S2696‚"6Make the enclosing method "static" or remove this set.(±¿ì¥8¢¯¦õ¼,
-Zsquid:S2696¿"6Make the enclosing method "static" or remove this set.(Æ’Ì¥øÿÿÿÿ8¾ÆÂ†¹,
-Zsquid:S2696Ÿ"6Make the enclosing method "static" or remove this set.(Ù¹›Íûÿÿÿÿ8ã·†¹,
-‰squid:S3008*"fRename this field "MSG_MOST_LENT_MEDIA_IN_YEAR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åïüæûÿÿÿÿ8ªãÌäÎ,
-Usquid:S2696Ÿ"6Make the enclosing method "static" or remove this set.(ÌšäŒ8¢¯¦õ¼,
-š"squid:ClassVariableVisibilityCheck8"`Make PROMPT_MODIFY_FIELDS a static final constant or non-public and provide accessors if needed.(ã¢ş±úÿÿÿÿ8¢¯¦õ¼,
-Ssquid:S1444_"6Make this "public static ERR_INVALID_PATH" field final(áó¯!8¢¯¦õ¼,
-‡"squid:ClassVariableVisibilityCheck"YMake MSG_USER_LIST a static final constant or non-public and provide accessors if needed.(£Â½¢
-Xsquid:S1444"<Make this "public static MSG_REMINDER_DAYS_LEFT" field final(ÖÜÂ…üÿÿÿÿ
-Zsquid:S2696Â"6Make the enclosing method "static" or remove this set.(¨Ò•éùÿÿÿÿ8Œ€¨¼,
-˜"squid:ClassVariableVisibilityCheck3"cMake PROMPT_OPERATOR_CHOICES a static final constant or non-public and provide accessors if needed.(¡¯ö©8¢¯¦õ¼,
-™"squid:ClassVariableVisibilityCheckT"_Make ERR_SAVING_DATABASE a static final constant or non-public and provide accessors if needed.(éŒÉêşÿÿÿÿ8¢¯¦õ¼,
-‚squid:S3008h"_Rename this field "ERR_NO_LOANS_IN_YEAR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†±Çÿÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696š"6Make the enclosing method "static" or remove this set.(ÛÍĞøÿÿÿÿ8ã·†¹,
-Usquid:S2696Ó"6Make the enclosing method "static" or remove this set.(Õ§Áµ8¢¯¦õ¼,
-œ"squid:ClassVariableVisibilityCheck("bMake MSG_USER_LOANS_IN_YEAR a static final constant or non-public and provide accessors if needed.(È™ú³ıÿÿÿÿ8ªãÌäÎ,
-‘"squid:ClassVariableVisibilityCheck["\Make ERR_CANNOT_RENEW a static final constant or non-public and provide accessors if needed.(á³ç¾8¢¯¦õ¼,
-_squid:S1444V"<Make this "public static ERR_LOADING_FILESYSTEM" field final(®¼İâıÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696¨"6Make the enclosing method "static" or remove this set.(…ÎÊ¢ÿÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696¹"6Make the enclosing method "static" or remove this set.(°Š‹Äüÿÿÿÿ8ã·†¹,
-zsquid:S3008,"\Rename this field "PROMPT_FIRST_NAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ãˆİô8¢¯¦õ¼,
-Zsquid:S2696º"6Make the enclosing method "static" or remove this set.(Ô ÜÅşÿÿÿÿ8¢¯¦õ¼,
-„squid:S3008A"aRename this field "PROMPT_REMOVE_MEDIA_ID" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ó„Üøÿÿÿÿ8¢¯¦õ¼,
-•"squid:ClassVariableVisibilityCheck%"`Make MSG_LOAN_LIST_SINGLE a static final constant or non-public and provide accessors if needed.(¦ç™“8ã·†¹,
-Zsquid:S2696µ"6Make the enclosing method "static" or remove this set.(›•‰Êúÿÿÿÿ8¢¯¦õ¼,
-osquid:S3008"SRename this field "MSG_DAYS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õ´Ş½úÿÿÿÿ
-Usquid:S1444;"2Make this "public static PROMPT_TITLE" field final(ÔÉ¢ûÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696Æ"6Make the enclosing method "static" or remove this set.(òöòêüÿÿÿÿ8ªãÌäÎ,
-tsquid:S2068¹"U'PASSWORD' detected in this expression, review this potentially hardcoded credential.(Ö¬¦µ8Ø£Â†¹,
-£"squid:ClassVariableVisibilityCheck1"oMake PROMPT_PRESENT_USER_MULTIPLE_CHOICE a static final constant or non-public and provide accessors if needed.(Š»ï!8¢¯¦õ¼,
-ysquid:S2068Ç"U'PASSWORD' detected in this expression, review this potentially hardcoded credential.(ûı·Ëşÿÿÿÿ8Ø£Â†¹,
-‹"squid:ClassVariableVisibilityCheck""]Make MSG_MOVE_TO_LOGIN a static final constant or non-public and provide accessors if needed.(°ÉÑÙ
-"squid:ClassVariableVisibilityCheck4"cMake PROMPT_CUSTOMER_CHOICES a static final constant or non-public and provide accessors if needed.(ËğÓŒÿÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696È"6Make the enclosing method "static" or remove this set.(›­ÕĞşÿÿÿÿ8ªãÌäÎ,
-Ssquid:S1444/"5Make this "public static PROMPT_PASSWORD" field final(Ş×üÚ8¢¯¦õ¼,
-Usquid:S1444a"7Make this "public static ERR_BORROW_FAILED" field final(‰™šİ8¢¯¦õ¼,
-„squid:S3008V"aRename this field "ERR_LOADING_FILESYSTEM" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®¼İâıÿÿÿÿ8¢¯¦õ¼,
-˜"squid:ClassVariableVisibilityCheck>"cMake PROMPT_PUBLICATION_YEAR a static final constant or non-public and provide accessors if needed.(ØÖ¶û8¢¯¦õ¼,
-Ssquid:S1444"7Make this "public static MSG_OPERATOR_MENU" field final(Ÿ¬»‘ÿÿÿÿÿ
-‹squid:S3008J"hRename this field "PROMPT_CHOOSE_MEDIA_TO_EXTEND" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹¼€ûÿÿÿÿ8¢¯¦õ¼,
-–"squid:ClassVariableVisibilityCheck&"aMake MSG_EXTEND_SUCCESSFUL a static final constant or non-public and provide accessors if needed.(Óœ¦í8Œå¹†¹,
-Zsquid:S2696¼"6Make the enclosing method "static" or remove this set.(õİìÛùÿÿÿÿ8¢¯¦õ¼,
-Zsquid:S2696³"6Make the enclosing method "static" or remove this set.(¯Á·“ùÿÿÿÿ8ã·†¹,
-xsquid:S3008"\Rename this field "MSG_OPERATOR_MENU" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿ¬»‘ÿÿÿÿÿ
+Csquid:S3010"%Remove this assignment of "messages".(â“³×8çÄÎ³Õ,
+Osquid:S3010",Remove this assignment of "currentLanguage".(»ûæûÿÿÿÿ8çÄÎ³Õ,

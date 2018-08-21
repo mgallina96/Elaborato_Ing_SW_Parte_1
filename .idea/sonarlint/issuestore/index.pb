@@ -87,23 +87,69 @@ M
 src/generators/Generator.java,6\0\60723022fcba28dc96e5eadc135c3aea505f6e84
 `
 0src/generators/mediagenerator/BookGenerator.java,f\a\faada7869d810c05d2a39e21b45a2315a81bf99f
-`
-0resources/media/sostantivi_femminili_plurali.txt,0\6\0654c686ab931ff05fbae90e198617d733b7fee6
-a
-1resources/media/sostantivi_maschili_singolari.txt,8\9\89d3620ca1152477559f2d723f9e59ffed68727f
 Z
 *src/generators/randomwords/PoolLoader.java,5\b\5b7a332e7e9c002413de0ebc96e4f90e172ad8b9
 [
 +src/generators/randomwords/RandomWords.java,e\9\e99252ec2631a478a0e671ddee1e4bd281a9e5f2
 a
 1src/generators/mediagenerator/TitleGenerator.java,2\2\22d7be02e145e54c411e91eaf78ea47f809ccb19
-K
-resources/media/avverbi.txt,7\d\7da471e322712a4bbd8a43dc654fbf4de493d130
-R
-"resources/media/verbi_italiani.txt,0\e\0ec9649f87180b78d23a28064e8becee5e09f0a8
-b
-2resources/media/sostantivi_femminili_singolari.txt,e\d\ed9bd6abc2feb15ef9ec889e15b0e9248f8e724f
 W
 'src/generators/RandomNounGenerator.java,a\7\a7b32c2eb5012f06f338451bdb74855786448925
 G
 resources/tmp/words.txt,d\a\da90b031bf7ecb7c5a3994504fc541c58f1c5bb4
+Q
+!src/generators/QuickFillMain.java,1\0\109da9ded21cc57e8c85c174b6358cbd56eeba1f
+e
+5src/generators/usergenerator/PersonNameGenerator.java,b\5\b51a640898c92f632fc47dd714476f7b2d70caed
+_
+/src/generators/usergenerator/UserGenerator.java,9\6\9681031bca53edbb407386a59dbac471e4605322
+U
+%resources/media/books/book_genres.txt,5\4\54d7680b13b4c9f4fec4169e1695c8cd76e64c2b
+b
+2resources/media/books/titles/automobili_titles.txt,c\5\c50085f7e51e4d7a5e307f34a4138264ca5e331c
+^
+.resources/media/books/titles/giallo_titles.txt,3\a\3a278b4aad683df0edd5879cf97e0cd2a522daf0
+^
+.resources/media/books/titles/musica_titles.txt,f\e\fe2df31af36dc47d39db94022b774f063643a493
+^
+.resources/media/books/titles/horror_titles.txt,b\7\b76735e16d661f79204f550031a19fb22cb1efaf
+`
+0resources/media/films/titles/thriller_titles.txt,2\4\2426b9ef20dc18515dc410ca29b7378d023d2c49
+P
+ resources/languages/lang_ita.txt,1\b\1b38febe7751520f69cf4d681efbd586a5316468
+a
+1resources/media/films/titles/romantico_titles.txt,8\4\8422ebc9133bdd05f61c11b28a9fd0f355e12fab
+e
+5resources/media/films/titles/operateatrale_titles.txt,f\9\f9a505260b2f291bccd0ed3c50ff32cef3d20ba6
+^
+.resources/media/films/titles/horror_titles.txt,b\5\b5c87b23d564876dac33ed2deefec752a5090a36
+P
+ resources/languages/lang_eng.txt,c\d\cd560e3515fffa40f8e8ddedb6cacd79d5224059
+a
+1resources/media/books/titles/biografia_titles.txt,3\6\36b131d632f72fe5a2ac50dcf381e9cd94b3023c
+_
+/resources/media/books/titles/animali_titles.txt,5\f\5fe88d0c5122f4f95e4416c77bc01459219f710d
+X
+(resources/media/films/film_companies.txt,2\4\24bee204b1a585274050fb0b82c5b7fde4eb7d83
+U
+%resources/media/films/film_genres.txt,a\1\a1efcda702f672c1bcb499aff992c09ad5671a2c
+\
+,resources/media/books/titles/arte_titles.txt,3\4\3409e3b9cbae0842f7ea429c1e6a68ff760b60e7
+Y
+)resources/media/books/book_publishers.txt,1\e\1e092e7d9a7526e069dde8ea10fb0199ff552b20
+a
+1resources/media/books/titles/avventura_titles.txt,5\9\59908f3d21f2941672798c3001873f7334a3ed62
+_
+/resources/media/films/titles/musical_titles.txt,3\3\33de411453b6e21f33930d43781ac1812eade6e5
+a
+1resources/media/films/titles/religioso_titles.txt,e\7\e73bec57656227a5fd509c815e316a9ffee419a0
+g
+7resources/data/Biblioteca SMARTINATOR - File System.ser,2\9\2939d649aacfda67d8eabe04972488a681751af4
+d
+4resources/media/books/titles/fantascienza_titles.txt,f\d\fd2bc7e34d21926049911ede33530b0860f76715
+i
+9resources/data/Biblioteca SMARTINATOR - Loan Database.ser,d\b\db07124de1d0f478368e496e91b1e7e69b49860e
+j
+:resources/data/Biblioteca SMARTINATOR - Media Database.ser,5\0\50e3d4ce541b9a96a88e34b9783f6b5ec1c0bb82
+O
+test/main/SubscriptionTest.java,3\6\36f62ac260d59428180acf14efd07ad1a8188f61

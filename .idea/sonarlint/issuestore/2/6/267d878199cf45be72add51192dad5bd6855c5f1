@@ -1,2 +1,3 @@
 
-Œsquid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(âÅÈøÿÿÿÿ
+squid:S1319""pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¦«×ù8š¤Ü³Õ,
+bsquid:UselessImportCheck"2Remove this unused import 'main.model.media.Book'.(ú”Ç¼øÿÿÿÿ8š¤Ü³Õ,

@@ -1,2 +1,3 @@
 
-Ö squid:ForLoopCounterChangedCheck‹"XRefactor the code in order to not assign to this loop counter from within the loop body.(ﬁºﬁ¢
+Ö squid:ForLoopCounterChangedCheckﬁ"XRefactor the code in order to not assign to this loop counter from within the loop body.(ﬁºﬁ¢
+tsquid:S1192$"VDefine a constant instead of duplicating this literal "ERR_MSG_INVALID_INPUT" 3 times.(ùõﬁ¯8¶ûÃº’,
