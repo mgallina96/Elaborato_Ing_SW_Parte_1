@@ -1,22 +1,22 @@
 ﻿54
 300 Guerrieri, La Battaglia Delle Termopili
 A Escola
-A Ferro E Fuoco 
+A Ferro E Fuoco
 L'abate Roys E Il Fatto Innominabile
 Ai Confini Del Mare
 Aimée & Jaguar
-Alamut 
-L'albero Della Vita 
+Alamut
+L'albero Della Vita
 L'alcova Elettrica
-L'Alfiere 
-Alto Tradimento 
+L'Alfiere
+Alto Tradimento
 L'amante Del Doge
 L'amazzone Di Alessandro Magno
 Un Amore Ad Auschwitz
 Anna Bolena, Una Questione Di Famiglia
 Gli Anni Difficili
 L'anno Della Morte Di Ricardo Reis
-Annus Mirabilis 
+Annus Mirabilis
 L'antiquario
 L'aquila Dell'impero
 L'aquila Sul Nilo
@@ -26,59 +26,59 @@ Aristotele E Il Giavellotto Fatale
 Aristotele E La Giustizia Poetica
 L'armata Dei Fiumi Perduti
 L'armata Perduta
-Arrivederci Ragazzi 
+Arrivederci Ragazzi
 Gli Artigli Del Diavolo
 Assalto Alla Fortezza
-Assassin's Creed: Unity 
+Assassin's Creed: Unity
 Gli Assassini Del Graal
 L'assiro
 Le Ateniesi
 L'autunno Dell'azteco
 L'Avvocato
-Azazel 
+Azazel
 L'azteco
 Il Bambino Che Guardava Le Donne
-Barabba 
+Barabba
 La Baracca Dei Tristi Piaceri
 Barnaby Rudge
 Basile Et Sophia
 La Battaglia Di Benevento
 La Battaglia Finale
 La Battaglia Sul Lago Ghiacciato
-I Beati Paoli 
-Beatrice Cenci 
-Belisario 
+I Beati Paoli
+Beatrice Cenci
+Belisario
 Le Benevole
 Il Birraio Di Preston
 Le Bostoniane
 Buon Vento Dell'ovest
 Burrasca Nella Manica
-C'era Una Volta 
-Caccia Notturna 
+C'era Una Volta
+Caccia Notturna
 Cacciatore E Preda
 La Caduta Dei Giganti
 La Caduta Dei Re
-Caino 
-Il Calice D'argento 
-Calore E Polvere 
+Caino
+Il Calice D'argento
+Calore E Polvere
 Calvello Il Bastardo
 La Camera Dello Scirocco
 Canale Mussolini
 La Canzone Del Cavaliere
 Le Canzoni Dell'aglio
 Capitano Alatriste
-Cartagena 
+Cartagena
 La Casa Degli Spiriti
-Catriona 
+Catriona
 La Cattedrale Del Mare
 Il Cavaliere Di Maison-Rouge
 Il Cavaliere d'Harmental
 Cento Anni
-Chaka 
-La Chimera 
+Chaka
+La Chimera
 I Cigni Di Leonardo
 Il Cimitero Di Praga
-Città Delle Stelle 
+Città Delle Stelle
 Clandestina A Bordo
 Codice 632
 Codice A Zero
@@ -88,21 +88,21 @@ Il Collare Di Fuoco
 Il Collare Spezzato
 La Collera Di Napoli
 La Compagnia Della Selva Bella
-La Condizione Umana 
+La Condizione Umana
 Le Confessioni D'un Italiano
 Il Confine Del Mondo
-I Conquistatori 
+I Conquistatori
 Il Conte Di Saint-Germain
 Coriolano Della Floresta
-Il Corpo 
+Il Corpo
 Costa Sottovento
 Costretti A Sanguinare
-Creazione 
+Creazione
 La Cripta Dei Cappuccini
 Cristiani Di Allah
 I Crociati In Europa
 Crossing The River
-Cuore Di Pietra 
+Cuore Di Pietra
 Dante Alighieri E I Delitti Della Medusa
 I Delitti Del Chiodo Cinese
 Dialogo Patriottico Sul Libero Commercio Dei Viveri
@@ -125,11 +125,11 @@ L'enigma Di Cartesio
 L'epigramma A Stalin
 L'epopea Di Amergin, Il Bardo Gaelico Che Conquistò l'Irlanda
 Gli Eredi Dell'eden
-L'eredità Della Priora 
+L'eredità Della Priora
 L'eroe Di Trafalgar
-L'età Dell'oro 
+L'età Dell'oro
 Evelina E Le Fate
-Exodus 
+Exodus
 Family Favourites
 Le Fantastiche Avventure Di Kavalier E Clay
 Il Favorito
@@ -150,16 +150,16 @@ Gai-Jin
 Il Gattopardo
 Le Gazze Ladre
 Il Generale Del Re
-Il Generale 
+Il Generale
 Il Giardino Delle Bestie - Berlino 1934
 Gilles E Jeanne
 Il Giocatore Occulto
 I Giorni Dell'eternità
-Giuliano 
-Giuseppe Balsamo 
+Giuliano
+Giuseppe Balsamo
 Giuseppe In Egitto
 Giustizia In Prima Linea
-Il Gladiatore 
+Il Gladiatore
 Il Governo Dei Preti
 La Grande Rapina Al Treno
 Un Grido Fino Al Cielo
@@ -167,12 +167,12 @@ La Guardia Bianca
 Guardiamarina E Tenente Hornblower
 Guerra E Pace
 Guido Mannering
-Hitler 
+Hitler
 Hyakka Ryōran Samurai Girls
 Iacobus
 L'impero Dei Draghi
-Imprimatur 
-In Territorio Nemico 
+Imprimatur
+In Territorio Nemico
 Inés E L'allegria
 Un Infinito Numero
 Innocente. Una Storia Vera
@@ -184,10 +184,10 @@ L'isola Dei Monaci Senza Nome
 L'isola Dei Pirati
 L'isola Del Giorno Prima
 L'isola Della Desolazione
-L'isola Di Pascali 
+L'isola Di Pascali
 Jefte E Sua Figlia
 Jesus: Storia Di Un Uomo
-Kenilworth 
+Kenilworth
 L'armata Invincibile
 L'ultimo Campo Di Battaglia
 La Battaglia Dei Due Regni
@@ -203,18 +203,18 @@ La Legione
 Il Leone d'Irlanda
 Lincoln Nel Bardo
 Lisario O Il Piacere Infinito Delle Donne
-La Lista Di Schindler 
+La Lista Di Schindler
 Lola Nascerà A Diciott'anni
-Lucrezia Borgia 
+Lucrezia Borgia
 La Lunga Vita Di Marianna Ucrìa
 Una Macchina Da Guerra
-Il Maestro Di Scherma 
+Il Maestro Di Scherma
 Magdeburg - L'eretico
 Mangiatori Di Morte
 Manituana
 La Mano Di Fatima
 La Mano Di Ferro
-Marathon 
+Marathon
 La Marcia Di Radetzky
 Marcia Su Roma E Dintorni
 Marco Il Romano
@@ -223,9 +223,9 @@ I Martiri
 Master Georgie
 Memorie Di Giuda
 Memorie Di Un Cavaliere
-Memorie Di Una Geisha 
+Memorie Di Una Geisha
 Le Menzogne Della Notte
-Metello 
+Metello
 Mhudi
 Millant'anni
 Le Miniere Dell'imperatore
@@ -241,19 +241,19 @@ Misteri Imperiali
 Mistero Napoletano
 Il Mondo Estremo
 Monte Cinque
-Morituri Te Salutant 
+Morituri Te Salutant
 Morte A Breslavia
-Musashi 
+Musashi
 Il Muto Di Gallura
 Il Nano
 Il Napoleone Nero
 La Nave Corsara
-Nemesis 
+Nemesis
 Nevicava Sangue
 Il Nipote Del Negus
 La Nobil Casa
 Noi Saremo Tutto
-Nomadi 
+Nomadi
 Non Mi Arrendo
 Non Tutti I Bastardi Sono Di Vienna
 Notte A Corduba
@@ -263,8 +263,8 @@ Nottetempo, Casa Per Casa
 Novantatré
 Gli Occhi Di Venezia
 Ode Per Un Banchiere
-Ogni Cosa È Illuminata 
-Olocausto 
+Ogni Cosa È Illuminata
+Olocausto
 L'ombra Della Luna
 L'ombra Di Troia
 Le Ombre
@@ -273,24 +273,24 @@ L'onore Di Roma
 L'opera Al Nero
 L'ora Di Tutti
 L'oracolo
-L'oro Del Mondo 
+L'oro Del Mondo
 L'oro Di Mosè
 L'oro Di Poseidone
 L'oro Di Sharpe
 Palladion
 Le Paludi Di Hesperia
-Passaggio A Nord-Ovest 
+Passaggio A Nord-Ovest
 Il Passeggero Inglese
 In Pasto Ai Leoni
 Le Pecore E Il Pastore
-La Pelle 
+La Pelle
 Per Amore Di Iside
-Per Amore, Solo Per Amore 
+Per Amore, Solo Per Amore
 Per La Gloria Dell'impero
 La Perla Dell'imperatore
 Il Petalo Cremisi E Il Bianco
 Il Pirata E Il Condottiero
-Pompei 
+Pompei
 Il Ponte Sulla Drina
 Portami Al Di Là Del Fiume
 Le Porte Di Fuoco
@@ -298,34 +298,34 @@ Le Porte Di Roma
 Il Porto Del Tradimento
 Il Pretoriano
 Primo Comando
-Il Principe Delle Volpi 
+Il Principe Delle Volpi
 La Profezia Dell'aquila
 Il Profumo
 I Quaranta Giorni Del Mussa Dagh
-Quattrocento 
-Quel Che Resta Del Giorno 
+Quattrocento
+Quel Che Resta Del Giorno
 Quel Che Sanno Gli Angeli
 Il Quinto Evangelio
 Racconto Di Due Città
-La Ragazza Con L'orecchino Di Perla 
+La Ragazza Con L'orecchino Di Perla
 Il Ragazzo Del Lago
 Ragazzo Etrusco
 Il Ragazzo Persiano
 Il Re Deve Morire
 Il Re Di Girgenti
 Re Senza Dio
-Il Re 
+Il Re
 La Regina Libertà - L'impero Delle Tenebre
 La Regina Libertà - La Guerra Delle Corone
 La Regina Libertà - La Spada Di Luce
 La Regina Scalza
 La Repubblica Di Un Solo Giorno
-Il Resto Di Niente 
+Il Resto Di Niente
 La Ricamatrice Di Segreti
 Rinascimento Privato
 Il Ritorno Di Teseo
 La Rivolta Dei Soldati
-Rob Roy 
+Rob Roy
 Roma Alla Conquista Del Mondo
 Roma O Morte
 Roma, Sangue E Arena
@@ -339,17 +339,17 @@ Il Romanzo Di Ramses - La Dimora Millenaria
 Il Romanzo Di Ramses - La Regina Di Abu Simbel
 Romanzo Storico Sentimentale
 Rotta A Oriente
-Il Rovescio Della Medaglia 
+Il Rovescio Della Medaglia
 Le Sabbie Di Amon
 Un Sacchetto Di Biglie
 Sacred Hunger
 Salammbô
 Salomone - Il Tempio Segreto
-San Andreas 
+San Andreas
 Il Sangue Dell'azteco
 Il Sangue Dell'impero
 Satana A St. Mary
-Satori 
+Satori
 Sceneggiata Di Morte
 La Scomparsa Del Fuoco Greco
 La Scomparsa Dell'erebus
@@ -365,20 +365,20 @@ La Setta Degli Angeli
 I Sette Calici Dell'eresia
 La Sfida Della Tigre
 Sharpe All'attacco
-Shōgun 
-Siddharta 
+Shōgun
+Siddharta
 Il Signore Di Barcellona
 Il Signore Di Troia
-Silenzio 
+Silenzio
 Silenzio Assoluto
 The Singapore Grip
-Sinuhe L'egiziano 
+Sinuhe L'egiziano
 Sof'ja Petrovna
 Un Sogno In Rosso
 Il Soldato Di Roma
 Il Sole Dell'avvenire
 Il Sorbetto Della Regina
-Sorgo Rosso 
+Sorgo Rosso
 Sostiene Pereira
 Sotto Un Unico Impero
 Sotto L'aquila Di Roma
@@ -386,7 +386,7 @@ La Spada Di Roma
 La Spada E Il Calice
 Lo Spettacolo Della Vita
 La Sposa Di Lammermoor
-Stabat Mater 
+Stabat Mater
 Una Storia Romantica
 La Strage Dimenticata
 Strane Creature
@@ -394,43 +394,43 @@ Lo Strano Caso Di Adelaide Harris
 La Straordinaria Invenzione Di Hugo Cabret
 La Strategia Dell'ariete
 Sulla Collina Nera
-Sulle Ali Delle Aquile 
-Tai-Pan 
-Tempesta 
+Sulle Ali Delle Aquile
+Tai-Pan
+Tempesta
 Tenebrae
 Territorio Nemico
 Terza Liceo 1939
 Il Tesoro Del Bigatto
 Il Tiranno
 La Torre Della Solitudine
-Tortuga 
+Tortuga
 La Traccia Del Vento
 I Traditori
-Trafalgar 
+Trafalgar
 Tramonto Sull'elba
 Tre Mani Nella Fontana
 Il Tulipano Nero
 Tumulti
 Turms L'etrusco
-Turno Di Notte 
-Tutte Le Mattine Del Mondo 
+Turno Di Notte
+Tutte Le Mattine Del Mondo
 L'ultima Fortezza
 L'ultima Tentazione
 Le Ultime Gocce Di Vino
-Gli Ultimi Giorni Di Pompei 
+Gli Ultimi Giorni Di Pompei
 Ultimo Atto A Palmira
 L'ultimo Baluardo
 L'ultimo Crociato
-Underworld 
+Underworld
 L'uomo Di Pietroburgo
 Le Uova Del Drago
-Valperga 
+Valperga
 Il Vangelo Secondo Gesù Cristo
 Il Vangelo Secondo Pilato
-Vendetta 
+Vendetta
 La Venere Di Rame
 I Venti Dell'egeo
-Veracruz 
+Veracruz
 La Vergine Azzurra
 Una Vergine Di Troppo
 Le Vergini Di Pietra
@@ -440,8 +440,8 @@ Il Viaggio Dell'elefante
 Vieni Ruota! Vieni Forca!
 Vita Di Eleonora d'Arborea
 Vita E Destino
-Vittoria Accoramboni 
+Vittoria Accoramboni
 La Voce Del Fuoco
-Il Volo Del Calabrone 
-Waverley 
+Il Volo Del Calabrone
+Waverley
 Wolf Hall

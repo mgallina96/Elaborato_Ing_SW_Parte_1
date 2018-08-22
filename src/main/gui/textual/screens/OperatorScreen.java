@@ -32,7 +32,7 @@ public class OperatorScreen extends Screen {
                     Notifications.getMessage("MSG_LOGGED_IN_AS"), getUserController().getCurrentUserName(),
                     Notifications.getMessage("SEPARATOR"));
 
-            switch(insertInteger(1, 7)) {
+            switch(insertInteger(1, 8)) {
                 case 1:
                     addMedia();
                     break;
@@ -62,34 +62,39 @@ public class OperatorScreen extends Screen {
 
     //for generic program data visualization.
     private void visualizeData() {
-        System.out.printf("%s%n%s%s%n", Notifications.getMessage("PROMPT_DATA_VISUALIZATION_CHOICES"), Notifications.getMessage("SEPARATOR"), Notifications.getMessage("SEPARATOR"));
-        int choice = insertInteger(1, 7);
+        System.out.printf("%s%n%s%n", Notifications.getMessage("PROMPT_DATA_VISUALIZATION_CHOICES"), Notifications.getMessage("SEPARATOR"));
+        int choice = insertInteger(1, 8);
 
-        switch(choice) {
-            case 1:
-                System.out.printf("%s%n%s%n", Notifications.getMessage("MSG_USER_LIST"), getUserController().allUsersToString());
-                return;
-            case 2:
-                System.out.printf("%s%n%s%n", Notifications.getMessage("MSG_LOAN_LIST_ALL"), getLoanController().allLoansToString());
-                return;
+        if(choice != 7) {
+            switch(choice) {
+                case 1:
+                    System.out.printf("%s%n%s%n", Notifications.getMessage("MSG_USER_LIST"), getUserController().allUsersToString());
+                    return;
+                case 2:
+                    System.out.printf("%s%n%s%n", Notifications.getMessage("MSG_LOAN_LIST_ALL"), getLoanController().allLoansToString());
+                    return;
+            }
+
+            System.out.printf("%s", Notifications.getMessage("MSG_CHOOSE_YEAR"));
+            int year = insertYear();
+
+            switch(choice) {
+                case 3:
+                    System.out.println(getLoanController().getLoanNumberByYear(year, new GregorianCalendar().get(Calendar.YEAR)));
+                    break;
+                case 4:
+                    System.out.println(getLoanController().getUserLoanNumberByYear(year, new GregorianCalendar().get(Calendar.YEAR)));
+                    break;
+                case 5:
+                    System.out.println(getLoanController().getExtensionNumberByYear(year, new GregorianCalendar().get(Calendar.YEAR)));
+                    break;
+                case 6:
+                    System.out.println(getLoanController().getMostLentMediaByYear(year, new GregorianCalendar().get(Calendar.YEAR)));
+                    break;
+            }
         }
-
-        System.out.printf("%s", Notifications.getMessage("MSG_CHOOSE_YEAR"));
-        int year = insertYear();
-
-        switch(choice) {
-            case 3:
-                System.out.println(getLoanController().getLoanNumberByYear(year, new GregorianCalendar().get(Calendar.YEAR)));
-                break;
-            case 4:
-                System.out.println(getLoanController().getUserLoanNumberByYear(year, new GregorianCalendar().get(Calendar.YEAR)));
-                break;
-            case 5:
-                System.out.println(getLoanController().getExtensionNumberByYear(year, new GregorianCalendar().get(Calendar.YEAR)));
-                break;
-            case 6:
-                System.out.println(getLoanController().getMostLentMediaByYear(year, new GregorianCalendar().get(Calendar.YEAR)));
-                break;
+        else {
+            System.out.printf("%s%n", Notifications.getMessage("MSG_LOG_OUT"));
         }
 
     }

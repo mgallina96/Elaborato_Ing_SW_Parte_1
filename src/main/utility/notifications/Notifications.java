@@ -58,7 +58,7 @@ public class Notifications {
             while(scanner.hasNextLine()) {
                 String[] split = scanner.nextLine().split(DELIMITER);
 
-                messages.put(split[0], split[1].replaceAll("\\\\t", "\t"));
+                messages.put(split[0], split[1].replaceAll("\\\\t", "\t").replaceAll("\\\\n", "\n"));
             }
         }
         catch(Exception e) {

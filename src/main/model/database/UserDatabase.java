@@ -72,7 +72,7 @@ public class UserDatabase implements Serializable, Database {
      * Fetches a given user from the database.
      *
      * @param toFetch The user to be fetched.
-     * @return The user.
+     * @return The user (if found, {@code null} otherwise).
      */
     public User fetchUser(User toFetch) {
         return isPresent(toFetch) ? userList.get(toFetch.getUsername()) : null;

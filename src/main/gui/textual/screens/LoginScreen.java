@@ -45,7 +45,7 @@ public class LoginScreen extends Screen {
                     int days = getUserController().daysLeftToRenew(username);
 
                     if(days > 0)
-                        System.out.printf("%s %s %s %s.%n",
+                        System.out.printf("%s%s %s %s.%n",
                                 Notifications.getMessage("PROMPT_EXPIRY_IMMINENT"), Notifications.getMessage("MSG_REMINDER_DAYS_LEFT"), days, Notifications.getMessage("MSG_DAYS"));
 
                     return username;

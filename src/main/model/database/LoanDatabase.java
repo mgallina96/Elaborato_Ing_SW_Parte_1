@@ -2,6 +2,7 @@ package main.model.database;
 import main.model.loan.Loan;
 import main.model.media.Media;
 import main.model.user.User;
+import main.utility.exceptions.LoanNotFoundException;
 import main.utility.exceptions.UserNotFoundException;
 
 import java.io.*;
@@ -57,6 +58,22 @@ public class LoanDatabase implements Serializable, Database {
         }
         else
             loans.get(user.getUsername()).add(new Loan(user, media));
+    }
+
+    /**
+     * Fetches a loan that matches the given pair {@code [user, media]} from the database.
+     *
+     * @param user The user who requested the loan.
+     * @param mediaID The ID of the media item to be fetched.
+     * @return The loan (if found, {@code null} otherwise).
+     * @throws LoanNotFoundException If this specific loan can't be found.
+     */
+    public Loan fetchLoan(User user, int mediaID) throws LoanNotFoundException {
+        for(Loan l : loans.get(user.getUsername()))
+            if(l.getMedia().getIdentifier() == mediaID)
+                return l;
+
+        throw new LoanNotFoundException();
     }
 
     /**
@@ -164,13 +181,14 @@ public class LoanDatabase implements Serializable, Database {
     public int getExtensionNumberByYear(int year) {
         int counter = 0;
 
-        for (ArrayList<Loan> loanValues : loans.values()) {
-            for (Loan l : loanValues) {
-                GregorianCalendar extension = l.getExtensionDate();
-                if (extension.get(Calendar.YEAR) == year)
+        for(ArrayList<Loan> loanValues : loans.values()) {
+            for(Loan l : loanValues) {
+                GregorianCalendar extensionDate = l.getExtensionDate();
+                if(extensionDate != null && extensionDate.get(Calendar.YEAR) == year)
                     counter++;
             }
         }
+
         return counter;
     }
 

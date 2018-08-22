@@ -73,11 +73,11 @@ public interface UserController extends Controller {
     String allUsersToString();
 
     /**
-     * Converts the subscription and expiry dates into a {@code String}.
+     * Converts the subscription, last renewal (if present) and expiry dates into a {@code String} array.
      *
-     * @return a {@code String} containing the subscription and expiry dates.
+     * @return A {@code String} array containing the subscription, (renewal) and expiry dates.
      */
-    String dateDetails();
+    String[] dateDetails();
 
     /**
      * Returns the amount of days the user has left to renew their subscription.

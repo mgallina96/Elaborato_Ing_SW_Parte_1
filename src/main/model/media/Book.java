@@ -18,7 +18,7 @@ public class Book extends Media implements Serializable {
     private static final int EXTENSION_RESTRICTION_IN_DAYS = 3;
     private static final int DEFAULT_BOOK_LICENSES = 3;
     private static final int BOOK_LOAN_LIMIT = 3;
-    private static final int BOOK_LOAN_VALIDITY_PERIOD_IN_DAYS = 2;
+    private static final int BOOK_LOAN_VALIDITY_PERIOD_IN_DAYS = 30;
     private String title;
     private String author;
     private String genre;

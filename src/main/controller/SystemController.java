@@ -8,6 +8,7 @@ import main.model.media.Book;
 import main.model.media.Media;
 import main.model.user.Customer;
 import main.model.user.User;
+import main.utility.exceptions.LoanNotFoundException;
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.exceptions.WrongPasswordException;
 import main.utility.notifications.Notifications;
@@ -162,39 +163,39 @@ public class SystemController implements UserController, MediaController, LoanCo
     }
 
     @Override
-    public boolean canBeExtended(int mediaID) {
+    public int canBeExtended(int mediaID) {
         try {
-            for(Loan l : loanDatabase.getUserLoans(userDatabase.getCurrentUser())) {
-                if(l.getMedia().getIdentifier() == mediaID) {
-                    GregorianCalendar correctedLoanExpiry = (GregorianCalendar) l.getLoanExpiry().clone();
-                    correctedLoanExpiry.add(Calendar.DATE, -l.getExtensionRestrictionInDays());
+            Loan toCheck = loanDatabase.fetchLoan(userDatabase.getCurrentUser(), mediaID);
 
-                    return (new GregorianCalendar()).after(correctedLoanExpiry);
-                }
-            }
+            GregorianCalendar correctedLoanExpiry = (GregorianCalendar) toCheck.getLoanExpiry().clone();
+            correctedLoanExpiry.add(Calendar.DATE, -toCheck.getExtensionRestrictionInDays());
+
+            if(new GregorianCalendar().after(correctedLoanExpiry))
+                return 0;
         }
-        catch(Exception ex) {
-            return true;
+        catch(LoanNotFoundException unfEx) {
+            return -1;
         }
 
-        return false;
+        return 1;
     }
 
     @Override
-    public void extendLoan(int mediaID) {
+    public boolean extendLoan(int mediaID) {
         try {
-            for(Loan l : loanDatabase.getUserLoans(userDatabase.getCurrentUser())) {
-                if(l.getMedia().getIdentifier() == mediaID) {
-                    if(l.isValidExtension()) {
-                        l.extend();
-                        break;
-                    }
-                }
+            Loan toBeExtended = loanDatabase.fetchLoan(userDatabase.getCurrentUser(), mediaID);
+
+            if(toBeExtended.canBeExtended()) {
+                toBeExtended.extend();
+                saveDatabase(LOAN_DATABASE_FILE_PATH, loanDatabase);
+                return true;
             }
         }
-        catch(Exception ex) {
-            ex.printStackTrace();
+        catch(LoanNotFoundException lnfEx) {
+            lnfEx.printStackTrace();
         }
+
+        return false;
     }
 
     @Override
@@ -240,14 +241,22 @@ public class SystemController implements UserController, MediaController, LoanCo
     }
 
     @Override
-    public String dateDetails() {
+    public String[] dateDetails() {
         User u = userDatabase.getCurrentUser();
-        return (u instanceof Customer) ?
-                String.format("Reminder:\n\tYou subscribed on %s\n\tYour subscription expires on %s\n\tYou're not " +
-                                "allowed to renew your subscription until 10 days before the expiry date.",
-                        ((Customer)u).getSubscriptionDate(),
-                        ((Customer)u).getExpiryDate()) :
-                "";
+        if(u instanceof Customer) {
+            String[] dates;
+            int renewalDates = ((Customer)u).getRenewalDate().size();
+
+            if(renewalDates == 0)
+                dates = new String[]{((Customer)u).getSubscriptionDate(), "/", ((Customer)u).getExpiryDate()};
+            else
+                dates = new String[]{((Customer)u).getSubscriptionDate(), ((Customer)u).getLastRenewalDate(), ((Customer)u).getExpiryDate()};
+
+            return dates;
+
+        }
+
+        return new String[]{};
     }
 
     @Override

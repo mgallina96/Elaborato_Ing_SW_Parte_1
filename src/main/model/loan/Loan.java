@@ -21,7 +21,7 @@ public class Loan implements Serializable {
     private GregorianCalendar loanDate;
     private GregorianCalendar loanExpiry;
     private GregorianCalendar extensionDate;
-    private boolean isValidExtension;
+    private boolean canBeExtended;
     private boolean isActive;
 
     /**
@@ -34,6 +34,7 @@ public class Loan implements Serializable {
         this.user = user;
         this.media = media;
         this.isActive = true;
+        this.canBeExtended = true;
 
         this.extensionRestrictionInDays = this.media.getExtensionRestriction();
         this.loanDate = new GregorianCalendar();
@@ -63,11 +64,9 @@ public class Loan implements Serializable {
      * Extends a loan by x days, where x is a variable defined in the {@link Media} class or its subclasses.
      */
     public void extend() {
-        if(isValidExtension) {
-            loanExpiry.add(Calendar.DATE, media.getMediaLoanValidityPeriod());
-            extensionDate = new GregorianCalendar();
-            isValidExtension = false;
-        }
+        loanExpiry.add(Calendar.DATE, media.getMediaLoanValidityPeriod());
+        extensionDate = new GregorianCalendar();
+        canBeExtended = false;
     }
 
     /**
@@ -145,11 +144,11 @@ public class Loan implements Serializable {
     }
 
     /**
-     *
-     * @return
+     * Getter for the {@code canBeExtended} boolean parameter.
+     * @return {@code true} if the loan can be extended, {@code false} otherwise.
      */
-    public boolean isValidExtension(){
-        return this.isValidExtension;
+    public boolean canBeExtended(){
+        return canBeExtended;
     }
 
 }

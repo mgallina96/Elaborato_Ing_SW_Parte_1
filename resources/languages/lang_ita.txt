@@ -26,8 +26,14 @@ MSG_LOANS_IN_YEAR -@ Numero di prestiti per anno solare:
 MSG_EXTENSIONS_IN_YEAR -@ Numero di proroghe per anno solare: 
 MSG_USER_LOANS_IN_YEAR -@ Numero di prestiti per utente per anno solare: 
 MSG_MOST_LENT_MEDIA_IN_YEAR -@ Media maggiormente concesso in prestito per anno solare: 
-MSG_CHOOSE_YEAR -@ Inserire l'anno di partenza ->
+MSG_CHOOSE_YEAR -@ Inserire l'anno di partenza -> 
 MSG_LOGGED_IN_AS -@ Collegato come: 
+MSG_SUBSCRIPTION_RENEWAL_SUCCESSFUL -@ Iscrizione rinnovata con successo!
+MSG_SUBSCRIPTION_REMINDER -@ Promemoria:\n\tHai effettuato l'iscrizione il giorno 
+MSG_LATEST_RENEWAL_REMINDER -@ \n\tData dell'ultimo rinnovo: 
+MSG_EXPIRY_REMINDER -@ \n\tL'iscrizione scadrà il 
+MSG_RENEWAL_INFO -@ \n\tNon è consentito rinnovare l'iscrizione fino a 
+MSG_RENEWAL_INFO_END_OF_MESSAGE -@ prima della data della scadenza.
 PROMPT_FIRST_NAME -@ Nome (si prega di inserire un nome valido): 
 PROMPT_LAST_NAME -@ Cognome (si prega di inserire un cognome valido): 
 PROMPT_USERNAME -@ Username: 
@@ -36,7 +42,7 @@ PROMPT_BIRTHDAY -@ Compleanno (formato accettato: GG/MM/AAAA):
 PROMPT_PRESENT_USER_MULTIPLE_CHOICE -@ (1) USCIRE SENZA SALVARE\t|\t(2) CAMBIARE I CAMPI
 PROMPT_BIBLIO_INITIAL_CHOICES -@ (1) ENTRA\t|\t(2) REGISTRATI\t|\t(3) ESCI
 PROMPT_OPERATOR_CHOICES -@ (1) AGGIUNGI UN MEDIA\t|\t(2) RIMUOVI UN MEDIA\t|\t(3) MOSTRA I MEDIA PER CARTELLE\t|\t(4) CERCA MEDIA\t|\t(5) VISUALIZZA DATI\t|\t(6) ESCI
-PROMPT_DATA_VISUALIZATION_CHOICES -@ (1) MOSTRA TUTTI GLI UTENTI ISCRITTI\t|\t(2) MOSTRA TUTTI I PRESTITI EFFETTUATI\t|\t(3) MOSTRA NUMERO DI PRESTITI PER ANNO SOLARE\t|\t(4) MOSTRA NUMERO DI PRESTITI PER UTENTE E ANNO SOLARE\t|\t(5) MOSTRA NUMERO DI PROROGHE PER ANNO SOLARE\t|\t(6) MOSTRA IL MEDIA PIÙ PRESTATO
+PROMPT_DATA_VISUALIZATION_CHOICES -@ (1) MOSTRA TUTTI GLI UTENTI ISCRITTI\t|\t(2) MOSTRA TUTTI I PRESTITI EFFETTUATI\t|\t(3) MOSTRA NUMERO DI PRESTITI PER ANNO SOLARE\t|\t(4) MOSTRA NUMERO DI PRESTITI PER UTENTE E ANNO SOLARE\t|\n(5) MOSTRA NUMERO DI PROROGHE PER ANNO SOLARE\t|\t(6) MOSTRA IL MEDIA PIÙ PRESTATO\t|\t(7) ESCI
 PROMPT_CUSTOMER_CHOICES -@ (1) RINNOVA LA TUA ISCRIZIONE!\t|\t(2) RICHIEDI UN PRESTITO\t|\t(3) RICHIEDI UNA PROROGA\t|\t(4) CERCA UNA RISORSA\t|\t(5) ESCI
 PROMPT_SIGN_UP_CONFIRMATION -@ Confermi l'iscrizione? (y/n)
 PROMPT_REMOVE_CONFIRMATION -@ Confermi la rimozione? (y/n)
@@ -55,7 +61,7 @@ PROMPT_SEARCH_FOR_MEDIA -@ Si prega di inserire una o più parole chiave relativ
 PROMPT_SEARCH_FOR_MEDIA_TO_BORROW -@ Si prega di inserire una o più parole chiave relative al media che si desidera prendere in prestito (inserire !quit per uscire): 
 PROMPT_REMOVE_MEDIA_ID -@ Si prega di selezionare l'ID del media da rimuovere.
 PROMPT_SELECT_PATH -@ Inserire il percorso in cui si vuole mettere il media selezionando volta per volta la cartella desiderata.
-PROMPT_EXPIRY_IMMINENT -@ ATTENZIONE! SCADENZA ISCRIZIONE IMMINENTE
+PROMPT_EXPIRY_IMMINENT -@ ATTENZIONE! SCADENZA ISCRIZIONE IMMINENTE! 
 PROMPT_WHICH_FOLDER -@ Inserire il percorso di cui si vuole vedere il contenuto, selezionando volta per volta la cartella desiderata.
 PROMPT_BORROW_CONFIRMATION -@ Confermi il prestito? (y/n)
 PROMPT_SEARCH_FOR_LOANS -@ Ecco la lista dei media presi in prestito. Si prega di selezionare il media di cui si vuole prorogare il prestito.
@@ -82,10 +88,12 @@ ERR_INVALID_PATH -@ Il percorso inserito sembra essere non valido. Si prega di i
 ERR_PATH_NOT_PRESENT -@ Il percorso inserito non esiste.
 ERR_BORROW_FAILED -@ Non è stato possibile prendere in prestito il media.
 ERR_MEDIA_NOT_AVAILABLE -@ Il media selezionato non è disponibile al momento.
-ERR_CANNOT_BORROW -@ Tetto massimo di prestiti raggiunto! Non è possibile prendere in prestito altri media al momento.
+ERR_CANNOT_BORROW -@ Tetto massimo di prestiti raggiunto per questo tipo di media! Non è possibile prendere in prestito altri media di questo tipo al momento.
 ERR_USER_NOT_PRESENT -@ Il nome utente inserito non è presente. Si prega di verificare che il nome utente sia corretto, oppure di registrarsi.
 ERR_WRONG_PASSWORD -@ Password errata.
 ERR_LOAN_LIST_EMPTY -@ Non hai effettuato alcun prestito
-ERR_CANNOT_EXTEND -@ È troppo presto per estendere questo prestito.
+ERR_TOO_EARLY_TO_EXTEND -@ È troppo presto per estendere questo prestito.
+ERR_ALREADY_EXTENDED -@ Prestito già prorogato una volta. È impossibile ripetere l'operazione.
 ERR_NO_LOANS_IN_YEAR -@ Non sono stati effettuati prestiti nell'anno 
+ERR_LOAN_DOES_NOT_EXIST -@ Non hai mai preso in prestito il media associato a questo ID.  
 SEPARATOR -@ -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

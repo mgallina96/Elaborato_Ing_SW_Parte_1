@@ -7,10 +7,22 @@ package main.controller;
  */
 public interface LoanController extends Controller {
 
-    /** Checks whether the currently logged-in user is allowed to borrow another media item. */
+    /**
+     * Checks whether the currently logged-in user is allowed to borrow another media item.
+     *
+     * @param mediaID The media item to be checked.
+     * @return {@code true} if that media item can be borrowed, {@code false} otherwise.
+     */
     boolean canBorrow(int mediaID);
 
-    boolean canBeExtended(int mediaID);
+    /**
+     * Checks whether the loan of the media matching the {@code mediaID} can be extended.
+     *
+     * @param mediaID The media item associated with the loan to be checked.
+     * @return {@code true} if that loan can be extended, {@code false} otherwise.
+     */
+    int canBeExtended(int mediaID);
+
     /**
      * Adds a new {@code Loan} object to the database whenever the current user borrows a media item.
      *
@@ -21,9 +33,11 @@ public interface LoanController extends Controller {
 
     /**
      * Extends the loan due date.
+     *
      * @param mediaID The ID of the media whose loan is to be extended.
+     * @return {@code true} if the loan can be extended, {@code false} otherwise.
      */
-    void extendLoan(int mediaID);
+    boolean extendLoan(int mediaID);
 
     /**
      * Creates a {@code String} that contains all the loans that have been granted.

@@ -1,6 +1,6 @@
 ﻿A 139 Passi Dalla Morte
-A Che Punto È La Notte 
-A Ciascuno Il Suo 
+A Che Punto È La Notte
+A Ciascuno Il Suo
 A Ciascuno La Sua Morte
 A Come Alibi
 A Rischio
@@ -10,31 +10,31 @@ Abissi D'acciaio
 Un Aereo Senza Di Lei
 L'affare D'Arblay
 L'affare Khalkis
-L'agente Segreto 
+L'agente Segreto
 Agguato Nell'invisibile
 Agguato Sull'isola
 Al Buio
 L'albero Dei Giannizzeri
 Alf Moon Detective Privato
 Alias Basil Willing
-L'allieva 
+L'allieva
 Allmen E Il Diamante Rosa
 Allmen E Le Dalie
 Allmen E Le Libellule
 Alta Finanza
-Alto Tradimento 
+Alto Tradimento
 L'amante Senza Fissa Dimora
 Amici Assoluti
 Amici, Amanti E Cioccolato
-L'amico Americano 
-L'angelo Custode 
+L'amico Americano
+L'angelo Custode
 L'angelo Del Silenzio
 Anonima Carogne
 Another
 Another Note: Il Serial Killer Di Los Angeles
-Arabesque 
-Archeologia 
-Argento Vivo 
+Arabesque
+Archeologia
+Argento Vivo
 Aristotele Detective
 Aristotele E I Veleni Di Atene
 Aristotele E Il Giavellotto Fatale
@@ -45,14 +45,14 @@ L'assassinio Di Mia Zia
 L'assassino È Tra Noi
 Assassino Senza Volto
 L'assenza Dell'assenzio
-L'asso Nella Manica 
+L'asso Nella Manica
 L'astuccio D'oro
 Attraverso Il Fuoco
 L'autopompa Fantasma
 Autopsia Virtuale
 Autunno Antimonio
 L'avvocata Delle Vertigini
-La Balia 
+La Balia
 Il Bambino Ombra
 Il Bambino Segreto
 La Bambola Cieca
@@ -69,7 +69,7 @@ Il Boia Di Cater Street
 Bōkyaku Tantei Shirīzu
 La Borsa Del Presidente
 La Bottega Degli Errori
-Brama 
+Brama
 Breve Ritorno
 Il Briccone Galantuomo
 Buchi Nella Sabbia
@@ -77,15 +77,15 @@ Buio D'estate
 Buio Per I Bastardi Di Pizzofalcone
 Bungaku Shōjo
 C'è Del Marcio In Vernon Street
-Caccia Al Ladro 
-Il Cacciatore Di Teste 
+Caccia Al Ladro
+Il Cacciatore Di Teste
 Cacciatore Nel Buio
 Il Cacciatore Silenzioso
 Un Cadavere Di Troppo
 Cadavere Non Identificato
 Cala La Tela
 The Call Of The Mild
-Calliphora 
+Calliphora
 La Camera D'ambra
 Camilla E I Vizi Apparenti
 Camilla E Il Grande Fratello
@@ -108,21 +108,21 @@ Il Caso Dei Fratelli Siamesi
 Il Caso G
 Un Caso Per Tre Detective
 Un Castello Di Inganni
-Causa Di Morte 
+Causa Di Morte
 La Cavalcata Dei Morti
 Il Cavaliere E La Morte
-Cave Canem 
+Cave Canem
 Cercando Nel Buio
 Cercasi Un Milione
-Il Cerchio Rosso 
+Il Cerchio Rosso
 Una Certa Giustizia
 Un Certo Smith
 Charlie Chan E Il Pappagallo Cinese
 Charlie Chan E La Casa Senza Chiavi
-Cherchez La Femme 
+Cherchez La Femme
 Chi È Morto Alzi La Mano
 Chiamata Per Il Morto
-Chimaira 
+Chimaira
 La Chioma Di Berenice
 Il Cimitero Dei Folli
 Il Cimitero Dei Senza Nome
@@ -133,15 +133,15 @@ Il Club Dei Filosofi Dilettanti
 Il Club Mefistofele
 Codice: Cacciatore
 La Collera Di Napoli
-Il Collezionista 
+Il Collezionista
 Colpi Di Coda
-Colpo Di Grazia 
+Colpo Di Grazia
 Come Sigillo Sul Tuo Cuore
 Come Una Morsa
 Il Commesso Viaggiatore
 Il Commissario Cade In Trappola
 Il Commissario E Il Silenzio
-Complesso Di Colpa 
+Complesso Di Colpa
 Complimenti, Mr. Queen
 L'apprendista Eretico
 La Confessione Di Fratello Haluin
@@ -154,18 +154,18 @@ Coraggio, Devlin!
 La Corona Nelle Tenebre
 Corpi Senza Volto
 Un Corpo Sulla Spiaggia
-Corruzione 
+Corruzione
 Cosa Sai Della Notte
-Cosa Succederà Alla Ragazza 
+Cosa Succederà Alla Ragazza
 Le Cose Che Non Ti Ho Detto
-La Costola Di Adamo 
+La Costola Di Adamo
 Il Covo Nascosto
 La Crepa
 La Crêuza Degli Ulivi
-Crossfire 
+Crossfire
 Cuccioli Per I Bastardi Di Pizzofalcone
 Cuore Depravato
-Il Danno 
+Il Danno
 Dante Alighieri E I Delitti Della Medusa
 La Dea Della Vendetta
 I Delitti Del Chiodo Cinese
@@ -179,18 +179,18 @@ Il Delitto Alla Rovescia
 Un Delitto Di Classe
 Delitto Di Mezza Estate
 Il Delitto Di Mezzanotte
-Delitto Imperfetto 
+Delitto Imperfetto
 Delitto In Bianco
 Delitto In Manicomio
 I Denti Del Drago
 Di Tutti E Di Nessuno
-I Diabolici 
+I Diabolici
 Il Diabolico Terzetto
-Il Diavolo Nella Cattedrale 
-Il Diavolo Nella Cattedrale 
+Il Diavolo Nella Cattedrale
+Il Diavolo Nella Cattedrale
 Dicembre È Un Mese Crudele
-Dieci Incredibili Giorni 
-Difesa A Zona 
+Dieci Incredibili Giorni
+Difesa A Zona
 Il Direttore Di Notte
 Un Disco Dei Platters - Romanzo Di Un Maresciallo E Una Regina
 Doctor Frigo
@@ -198,8 +198,8 @@ La Dodicesima Carta
 I Dodici Sospetti
 Il Domatore Di Leoni
 La Donna Che Vestiva Di Rosso
-La Donna Che Visse Due Volte 
-La Donna Della Domenica 
+La Donna Che Visse Due Volte
+La Donna Della Domenica
 Una Donna Segnata
 La Doppia Vita Di M.Laurent
 Dormi Mentre Canto
@@ -212,7 +212,7 @@ Dura Lex
 ...E L'ottavo Giorno...
 E Liberaci Dal Padre
 E Trentuno Con La Morte...
-Elettroshock 
+Elettroshock
 Ellery Queen E La Parola Chiave
 L'enigma Dell'alfiere
 L'enigma Della Chiave D'argento
@@ -222,27 +222,27 @@ L'enorme Ingranaggio
 Era Di Maggio
 Era Tutta Un'altra Storia
 L'eremita Della Foresta
-Errore Fatale 
+Errore Fatale
 L'esattore
 L'esecutore
 L'estate Fredda
 Europa Blues
 La Falsa Pista
-False Verità 
+False Verità
 Falso Bersaglio
-I Fantasmi Del Cappellaio 
+I Fantasmi Del Cappellaio
 I Fantasmi Della Casa Maledetta
-Fantômas 
+Fantômas
 A Fatal Frame Of Mind
-Fatherland 
+Fatherland
 Il Fattore Scarpetta
 La Febbre Dell'ottone
 Ferro E Sangue
 La Fiera Di San Pietro
-Finché Morte Non Ci Separi 
+Finché Morte Non Ci Separi
 Finché Sarà Passata La Tua Ira
 La Fine Dei Greene
-La Fine È Nota 
+La Fine È Nota
 Fiore Di Ghiaccio
 Il Fiume Dei Cadaveri
 Flavia De Luce E Il Delitto Nel Campo Dei Cetrioli
@@ -250,18 +250,18 @@ Fondazione Paradiso
 Forza, Cannon!
 The Four Pools Mystery
 Fratello Athelstan - Il Regno Del Male
-Freddo Sud 
+Freddo Sud
 Fuga O Morte
 Fuori L'autore
 Gatta Randagia
 Il Gatto Che Leggeva Alla Rovescia
 Il Gatto Dalle Molte Code
-Il Gatto E Il Topo 
+Il Gatto E Il Topo
 Gelo Per I Bastardi Di Pizzofalcone
 Un Gioco Da Bambini
 Il Gioco Di Ripper
 Il Giorno Del Peccato
-Un Giorno Dopo L'altro 
+Un Giorno Dopo L'altro
 I Giovedì Della Signora Giulia
 Il Giudice E Il Suo Boia
 Giustizia In Prima Linea
@@ -269,12 +269,12 @@ Glennkill
 Gosick
 Il Grande Nulla
 La Grande Rapina Di Nizza
-Il Guardiano Del Faro 
-Happy Nation 
+Il Guardiano Del Faro
+Happy Nation
 Ho Fatto Giardino
 Hollywood In Subbuglio
 Hyouka
-Idi Di Marzo 
+Idi Di Marzo
 Il Prezzo Dei Soldi
 L'impronta Scarlatta
 Le Impronte Sul Soffitto
@@ -287,13 +287,13 @@ Gli Ineffabili Cinque
 L'inquilino Sospetto
 Insolito E Crudele
 Io Sono Il Tenebroso
-L'ipnotista 
+L'ipnotista
 L'isola Dei Cani
 L'ispettore Tibbs E Il Morto Senza Nome
 Joker Game
 Jungletown Jihad
 Kami-Sama No Memo-Chō
-Kay Scarpetta 
+Kay Scarpetta
 Kyōto Teramachi Sanjō No Holmes
 L.A. Killer
 L.A. Tattoo
@@ -302,7 +302,7 @@ La Settima Notte Di Veneruso
 Le Lacrime Della Giraffa
 Ladro Contro Assassino
 Il Lato Oscuro Dell'addio
-Laura 
+Laura
 Layton Kyōju To Kaijin God
 Layton Kyōju To Samayoeru Shiro
 Lazzaro, Vieni Fuori
@@ -313,27 +313,27 @@ La Leonessa Bianca
 Letto Di Ossa
 Lew Archer E Il Brivido Blu
 Lezioni Di Morte
-Il Libro Dei Morti 
+Il Libro Dei Morti
 Il Libro Del Morto
 Il Libro Delle Ombre
 La Linea Del Male
-Linea Di Confine 
+Linea Di Confine
 Liquidate Quel Parker!
 Lorenza E Il Commissario
 Luna Bugiarda
 Una Lunga Estate Crudele
 La Lunga Notte Di Black Dudley
-Il Lungo Addio 
+Il Lungo Addio
 Il Lungo Ritorno
 Un Luogo Incerto
 Il Lupo Rosso
 Macaronì. Romanzo Di Santi E Delinquenti
 Maccaia
-Madame X 
+Madame X
 Il Maestro Di Nodi
 Mai Dimenticare
 La Mano Di Ferro
-La Mano 
+La Mano
 Manuale Di Investigazione
 Maschera Bianca
 La Maschera Di Dimitrios
@@ -344,8 +344,8 @@ Una Mente Per Uccidere
 Il Mercante Di Corpi
 Il Metodo Cardosa
 Il Metodo Del Coccodrillo
-Mezzanotte 
-La Miglior Vendetta 
+Mezzanotte
+La Miglior Vendetta
 I Milanesi Ammazzano Al Sabato
 Milioni Di Milioni
 A Mind Is A Terrible Thing To Read
@@ -377,17 +377,17 @@ Un Mistero Occitano Per Il Commissario Abruzzese
 Il Mistero Penrose
 Il Monaco Prigioniero
 Il Monastero Dei Lunghi Coltelli
-Un Mondo D'amore 
+Un Mondo D'amore
 Morale E Belle Ragazze
 Morire D'estasi
 Morire È Un Po' Partire
-Morituri Te Salutant 
-Il Morso Del Serpente 
+Morituri Te Salutant
+Il Morso Del Serpente
 Morte A Breslavia
 Morte A Firenze
 La Morte Cammina Per Eastrepps
 Morte Di Un Banchiere
-Morte Di Una Strega 
+Morte Di Una Strega
 La Morte Fa L'appello
 Morte In Paradise
 Morte In Seminario
@@ -403,7 +403,7 @@ Il Negozio Fantasma
 Nei Boschi Eterni
 Nel Gelo Della Notte
 Nel Tunnel
-Nemesis 
+Nemesis
 Nessun Testimone
 Nessuno È Colpevole
 Nido Vuoto
@@ -418,7 +418,7 @@ Notte A Corduba
 Una Notte Di Luna Per L'ispettore Dalgliesh
 Nove Risposte Per Nove Problemi
 Il Novizio Del Diavolo
-Occhi Nel Buio 
+Occhi Nel Buio
 L'occhio Di Dio
 L'occhio Di Giada
 L'occhio Di Osiride
@@ -432,23 +432,23 @@ L'ombra Di Edgar
 Gli Onori Di Casa
 L'origine Del Male
 L'orlo Dell'abisso
-L'orma Del Gigante 
+L'orma Del Gigante
 L'oro Di Mosè
 L'oro Di Poseidone
 Orrore Sull'isola
 L'ospite Invisibile
 Le Ossa Della Principessa
-L'ostaggio 
+L'ostaggio
 Otto Innocenti E Un Colpevole
 Il Padrone Della Città
 Il Paese Del Maleficio
-Un Paio Di Scarpe 
+Un Paio Di Scarpe
 Il Palio Delle Contrade Morte
 Una Pallottola Per Erroll Flynn
 Pane Per I Bastardi Di Pizzofalcone
 Parker: A Ferro E A Fuoco
 Parti In Fretta E Non Tornare
-Il Passato È Una Terra Straniera 
+Il Passato È Una Terra Straniera
 In Pasto Ai Leoni
 Un Peana Per Le Zebre
 Le Pecore E Il Pastore
@@ -457,40 +457,40 @@ La Penitenza Di Fratello Cadfael
 Per Cause Innaturali
 Per Mano Mia. Il Natale Del Commissario Ricciardi
 Perdas De Fogu
-Perduta 
+Perduta
 The Perfect Insider
 La Perla Dell'imperatore
 Peter Wimsey E Il Cadavere Sconosciuto
 Il Piacere Sottile Della Pioggia
 Piovono Morti
-Il Pipistrello 
+Il Pipistrello
 Il Plagio
 Il Porto Delle Anime
 Un Po' Di Follia In Primavera
 Un Po' Più In Là Sulla Destra
 Il Poliziotto Che Ride
 La Poltrona N. 30
-Polvere 
+Polvere
 Pop. 1280
-La Porta Chiusa 
+La Porta Chiusa
 Portami Al Di Là Del Fiume
-Postmortem 
-Predatore 
+Postmortem
+Predatore
 Il Predicatore
 Prestiti Scaduti
 Pretty Dead Things
-Il Prezzo Dell'inganno 
+Il Prezzo Dell'inganno
 Prigione Chimica
 Prima Del Gelo
 Prima Di Morire Addio
 Primo Piano Sul Delitto
 La Principessa Di Ghiaccio
 Processo A Un Medico
-La Prova Del Nove 
+La Prova Del Nove
 Psychic Detective Yakumo
-Il Pugnale Di Vetro 
+Il Pugnale Di Vetro
 Pulvis Et Umbra
-Punto Di Origine 
+Punto Di Origine
 Qualcuno Ha Tradito
 Quattro Di Cuori
 I Quattro Giusti
@@ -501,27 +501,27 @@ Questione Di Prove
 Questo Sangue Che Impasta La Terra
 La Quinta Donna
 Il Quinto Servitore
-Quo Vadis, Baby? 
+Quo Vadis, Baby?
 La Ragazza Che Danzava Per Mao
-I Ragazzi Del Massacro 
+I Ragazzi Del Massacro
 Ragnatele D'inganni
 Il Ranch Delle Ombre
 Il Re È Morto
-Rebecca, La Prima Moglie 
+Rebecca, La Prima Moglie
 Il Regista Di Inganni
 Resa Dei Conti
 La Rete A Maglie Larghe
 Riti Di Morte
 La Rizzagliata
 I Robot Dell'alba
-Romanzo Criminale 
+Romanzo Criminale
 Rompicapo In Quattro Giornate
 La Rondine, Il Gatto, La Rosa, La Morte
 La Rosa Del Farmacista
 Roseanna
 Il Roseto Ardente
 Rossoamaro
-Il Rovescio Della Medaglia 
+Il Rovescio Della Medaglia
 La Sabbia Non Ricorda
 Sacrificio A Moloch
 Un Sacrilegio Per Fratello Cadfael
@@ -532,8 +532,8 @@ Il Sangue Non È Acqua
 Sangue Sul Grattacielo
 Il Sangue Versato
 Il Santuario Dei Delitti
-La Scala A Chiocciola 
-La Scala A Chiocciola 
+La Scala A Chiocciola
+La Scala A Chiocciola
 Lo Scalpellino
 Lo Scandalo Modigliani
 Sceneggiata Di Morte
@@ -552,13 +552,13 @@ Sei Giorni Di Preavviso
 Sempre Caro
 Il Senso Del Dolore. L'inverno Del Commissario Ricciardi
 Sentiero Nero
-La Sentinella 
+La Sentinella
 Senza Ragione Apparente
 La Sequenza Mirabile
-Sequestro Di Persona 
+Sequestro Di Persona
 Seren La Celta
 Serpenti Nel Paradiso
-La Settima Vittima 
+La Settima Vittima
 Sezione Π²
 Sfida Per Bencolin
 Shakespeare In Nero
@@ -574,52 +574,52 @@ Il Silenzio Dei Chiostri
 Il Silenzio Del Ghiaccio
 Sindrome Da Cuore In Sospeso
 Sipario Nero
-La Sirena 
+La Sirena
 Il Soffio Della Valanga
 Il Sogno Di Volare
 Il Sole Nudo
 La Soluzione Sette Per Cento
-Sonno Profondo 
+Sonno Profondo
 Sorpresa A Mezzogiorno
-Il Sospetto 
-Il Sospetto 
+Il Sospetto
+Il Sospetto
 Sotto I Venti Di Nettuno
 Sotto La Città
 Souvenir Per I Bastardi Di Pizzofalcone
-Sparizione 
-Lo Specialista 
+Sparizione
+Lo Specialista
 La Stanza Dei Delitti
-Lo Stato Dell'unione 
+Lo Stato Dell'unione
 Lo Stato Delle Anime
-La Statua Che Urla 
+La Statua Che Urla
 La Statuetta Di Terracotta
-Una Storia Semplice 
+Una Storia Semplice
 La Strana Morte Del Signor Benson
 Lo Strano Caso Del Cane Ucciso A Mezzanotte
 Lo Strano Caso Di Adelaide Harris
 Lo Strano Caso Di Emma Bovary
 Uno Strano Cliente
-La Strega 
+La Strega
 Uno Studio In Nero
 Uno Studio In Rosso
-Studio Sex 
-Tabula Rasa 
+Studio Sex
+Tabula Rasa
 Tantei Team KZ Jiken Note
 Il Tè È Sempre Una Soluzione
 Tempesta Di Neve E Profumo Di Mandorle
-Tempesta Di Sabbia 
-Tempesta Solare 
+Tempesta Di Sabbia
+Tempesta Solare
 Tempi Glaciali
 Il Tempo Del Male
 Tenebrae
 Il Teorema Del Pappagallo
 Terra Violenta
-Terroristi 
+Terroristi
 Il Testamento Blu
 Il Testamento Di Nobel
 La Testimone Del Fuoco
 Titoli Di Coda: Un Nuovo Caso Per Il Commissario Kostas Charitos
-Todo Modo 
+Todo Modo
 Tokyo Bandwagon
 Una Tomba Piena Di Soldi
 La Traccia Del Veleno
@@ -633,18 +633,18 @@ La Tragedia In Casa Coe
 Tre Mani Nella Fontana
 I Tre Segugi
 I Tredici Scalini
-Tua 
+Tua
 Tutto Sotto Il Cielo
 L'uccello Del Malaugurio
-L'ultima Carta 
-Ultime Della Notte 
+L'ultima Carta
+Ultime Della Notte
 Ultimo Atto A Palmira
 L'ultimo Bianco A Panama
 L'ultimo Catone
-L'ultimo Detective 
+L'ultimo Detective
 L'ultimo Distretto
 L'ultimo Mistero Di Agatha Christie
-L'ultimo Testimone 
+L'ultimo Testimone
 L'ultimo Treno Per Rock Ferry
 Gli Uomini In Grigio
 L'uomo A Rovescio
@@ -658,7 +658,7 @@ L'uomo Che Sorrideva
 L'uomo Che Visse Un Giorno
 L'uomo Con Due Vite
 L'uomo Dei Cerchi Azzurri
-L'uomo Della Sabbia 
+L'uomo Della Sabbia
 L'uomo Disintegrato
 L'uomo Inquieto
 L'uomo Senza Un Cane
@@ -683,9 +683,9 @@ La Via Per Gandolfo
 La Villa Dei Ricordi Cattivi
 Villa Maltraversi
 Vipera. Nessuna Resurrezione Per Il Commissario Ricciardi
-La Voce 
+La Voce
 Una Volta C'era Una Vecchia
 White Jazz
 Zaregoto
-Zodiac 
+Zodiac
 Zugzwang. Mossa Obbligata

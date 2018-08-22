@@ -74,6 +74,15 @@ public class Customer extends User {
     }
 
     /**
+     * The getter for the last renewal date of the subscription.
+     *
+     * @return the last renewal date in form of a {@code String}.
+     */
+    public String getLastRenewalDate() {
+        return renewalDates.get(renewalDates.size() - 1).toZonedDateTime().toString().substring(0, 10);
+    }
+
+    /**
      * The getter for the date when the customer's subscription expires.
      *
      * @return the expiry date in {@code GregorianCalendar} form.
@@ -105,7 +114,21 @@ public class Customer extends User {
      * class. This value is equal to 5 now.
      */
     public void renewSubscription() {
+        expiryDate = new GregorianCalendar();
         expiryDate.add(Calendar.YEAR, EXPIRY_TIME_IN_YEARS);
         renewalDates.add(new GregorianCalendar());
+    }
+
+    /**
+     * Converts the customer's public data into a readable {@code String}.
+     *
+     * @return The customer's details, in form of a {@code String}.
+     */
+    public String toString() {
+        return String.format("First name: %s\t|\tLast name: %s\t|\tUsername: %s\t|\tBirthday = %s\t|\tSubscription date = %s\t|\tPassword = %s%n",
+                getFirstName(), getLastName(), getUsername(),
+                getBirthday().toZonedDateTime().toString().substring(0, 10),
+                subscriptionDate.toZonedDateTime().toString().substring(0, 10),
+                getPassword());
     }
 }

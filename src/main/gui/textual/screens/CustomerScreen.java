@@ -4,6 +4,8 @@ import main.controller.MediaController;
 import main.controller.UserController;
 import main.utility.notifications.Notifications;
 
+import static main.utility.GlobalParameters.RENEWAL_BOUNDARY_IN_DAYS;
+
 /**
  * The customer menu screen.
  *
@@ -31,8 +33,18 @@ public class CustomerScreen extends Screen {
 
             switch(insertInteger(1,6)) {
                 case 1:
-                    if(!userController.renewSubscription())
-                        System.out.printf("%s%n%s%n", Notifications.getMessage("ERR_CANNOT_RENEW"), userController.dateDetails());
+                    if(userController.renewSubscription())
+                        System.out.println(Notifications.getMessage("MSG_SUBSCRIPTION_RENEWAL_SUCCESSFUL"));
+                    else {
+                        System.out.printf("%s%n", Notifications.getMessage("ERR_CANNOT_RENEW"));
+                        String[] dates = userController.dateDetails();
+                        System.out.printf("%s%s%s%s%s%s%s%d %s %s%n",
+                                Notifications.getMessage("MSG_SUBSCRIPTION_REMINDER"), dates[0],
+                                Notifications.getMessage("MSG_LATEST_RENEWAL_REMINDER"), dates[1],
+                                Notifications.getMessage("MSG_EXPIRY_REMINDER"), dates[2],
+                                Notifications.getMessage("MSG_RENEWAL_INFO"), RENEWAL_BOUNDARY_IN_DAYS,
+                                Notifications.getMessage("MSG_DAYS"), Notifications.getMessage("MSG_RENEWAL_INFO_END_OF_MESSAGE"));
+                    }
                     break;
                 case 2:
                     if(searchForMedia(Notifications.getMessage("PROMPT_SEARCH_FOR_MEDIA_TO_BORROW")))
@@ -126,11 +138,24 @@ public class CustomerScreen extends Screen {
             id = insertInteger();
         }
 
-        if(getLoanController().canBeExtended(id)) {
-            getLoanController().extendLoan(id);
-            System.out.println(Notifications.getMessage("MSG_EXTEND_SUCCESSFUL"));
+        int loanOutcome = getLoanController().canBeExtended(id);
+
+        if(loanOutcome == 0) {
+            if(getLoanController().extendLoan(id))
+                System.out.println(Notifications.getMessage("MSG_EXTEND_SUCCESSFUL"));
+            else
+                System.out.println(Notifications.getMessage("ERR_ALREADY_EXTENDED"));
         }
-        else
-            System.out.println(Notifications.getMessage("ERR_CANNOT_EXTEND"));
+
+        switch(loanOutcome) {
+            case 1:
+                System.out.println(Notifications.getMessage("ERR_TOO_EARLY_TO_EXTEND"));
+                break;
+            case -1:
+                System.out.println(Notifications.getMessage("ERR_LOAN_DOES_NOT_EXIST"));
+                break;
+            default:
+                break;
+        }
     }
 }
