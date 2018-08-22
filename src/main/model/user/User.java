@@ -74,7 +74,6 @@ public class User implements Serializable {
      *
      * @return the username in form of a {@code String}.
      */
-    @SuppressWarnings("unused")
     public String getUsername() {
         return username;
     }
@@ -84,7 +83,6 @@ public class User implements Serializable {
      *
      * @param username The username to set.
      */
-    @SuppressWarnings("unused")
     public void setUsername(String username) {
         this.username = username;
     }
@@ -94,7 +92,6 @@ public class User implements Serializable {
      *
      * @return the first name in form of a {@code String}.
      */
-    @SuppressWarnings("unused")
     public String getFirstName() {
         return firstName;
     }
@@ -104,7 +101,6 @@ public class User implements Serializable {
      *
      * @param firstName The user's first name to set.
      */
-    @SuppressWarnings("unused")
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -114,7 +110,6 @@ public class User implements Serializable {
      *
      * @return the last name in form of a {@code String}.
      */
-    @SuppressWarnings("unused")
     public String getLastName() {
         return lastName;
     }
@@ -124,7 +119,6 @@ public class User implements Serializable {
      *
      * @param lastName The user's last name to set.
      */
-    @SuppressWarnings("unused")
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -134,7 +128,6 @@ public class User implements Serializable {
      *
      * @return the password in form of a {@code String}.
      */
-    @SuppressWarnings("unused")
     public String getPassword() {
         return password;
     }
@@ -144,7 +137,6 @@ public class User implements Serializable {
      *
      * @param password The password to set.
      */
-    @SuppressWarnings("unused")
     public void setPassword(String password) {
         this.password = password;
     }
@@ -154,7 +146,6 @@ public class User implements Serializable {
      *
      * @return the birth date in {@code GregorianCalendar} form.
      */
-    @SuppressWarnings("unused")
     public GregorianCalendar getBirthday() {
         return birthday;
     }
@@ -164,7 +155,6 @@ public class User implements Serializable {
      *
      * @param birthday The birth date in {@code GregorianCalendar} form.
      */
-    @SuppressWarnings("unused")
     public void setBirthday(GregorianCalendar birthday) {
         this.birthday = birthday;
     }
@@ -174,7 +164,6 @@ public class User implements Serializable {
      *
      * @return The value {@code CUSTOMER} if the User is a Customer, {@code OPERATOR} if the User is an Operator.
      */
-    @SuppressWarnings("unused")
     public UserStatus getUserStatus() {
         return userStatus;
     }
@@ -185,7 +174,6 @@ public class User implements Serializable {
      *
      * @param userStatus The status to set.
      */
-    @SuppressWarnings("unused")
     public void setUserStatus(UserStatus userStatus) {
         this.userStatus = userStatus;
     }

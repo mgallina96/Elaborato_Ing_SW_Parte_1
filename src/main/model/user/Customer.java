@@ -125,10 +125,9 @@ public class Customer extends User {
      * @return The customer's details, in form of a {@code String}.
      */
     public String toString() {
-        return String.format("First name: %s\t|\tLast name: %s\t|\tUsername: %s\t|\tBirthday = %s\t|\tSubscription date = %s\t|\tPassword = %s%n",
+        return String.format("First name: %s\t|\tLast name: %s\t|\tUsername: %s\t|\tBirthday = %s\t|\tSubscription date = %s%n",
                 getFirstName(), getLastName(), getUsername(),
                 getBirthday().toZonedDateTime().toString().substring(0, 10),
-                subscriptionDate.toZonedDateTime().toString().substring(0, 10),
-                getPassword());
+                subscriptionDate.toZonedDateTime().toString().substring(0, 10));
     }
 }
