@@ -6,6 +6,7 @@ import main.controller.SystemController;
 import main.gui.GuiManager;
 import main.gui.textual.TextualView;
 import main.utility.notifications.Notifications;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,7 +29,7 @@ public class Main {
 
         GuiManager textualView = new TextualView(CONTROLLER, FILE_SYSTEM_CONTROLLER);
         textualView.mainScreen();
-//        GuiManager graphicalView = new GraphicView(CONTROLLER, FILE_SYSTEM_CONTROLLER);
-//        graphicalView.mainScreen();
+//      GuiManager graphicalView = new GraphicView(CONTROLLER, FILE_SYSTEM_CONTROLLER);
+//      graphicalView.mainScreen();
     }
 }
