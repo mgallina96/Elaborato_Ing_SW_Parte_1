@@ -223,12 +223,12 @@ public class SystemController implements UserController, MediaController, LoanCo
     @Override
     public boolean renewSubscription() {
         try {
-            Customer customer = (Customer) userDatabase.getCurrentUser();
+            Customer customer = (Customer)userDatabase.getCurrentUser();
 
             GregorianCalendar correctedExpiryDate = (GregorianCalendar) (customer.getExpiryDateGregorian().clone());
             correctedExpiryDate.add(Calendar.DATE, -RENEWAL_BOUNDARY_IN_DAYS);
 
-            if (new GregorianCalendar().after(correctedExpiryDate)) {
+            if(new GregorianCalendar().after(correctedExpiryDate)) {
                 customer.renewSubscription();
                 return true;
             }
@@ -242,8 +242,8 @@ public class SystemController implements UserController, MediaController, LoanCo
 
     @Override
     public String[] dateDetails() {
-        User u = userDatabase.getCurrentUser();
-        if(u instanceof Customer) {
+        try {
+            User u = userDatabase.getCurrentUser();
             String[] dates;
             int renewalDates = ((Customer)u).getRenewalDate().size();
 
@@ -253,10 +253,10 @@ public class SystemController implements UserController, MediaController, LoanCo
                 dates = new String[]{((Customer)u).getSubscriptionDate(), ((Customer)u).getLastRenewalDate(), ((Customer)u).getExpiryDate()};
 
             return dates;
-
         }
-
-        return new String[]{};
+        catch(ClassCastException ccEx) {
+            throw new IllegalArgumentException();
+        }
     }
 
     @Override
