@@ -2,13 +2,15 @@ package main.controller;
 import main.model.database.UserDatabase;
 import main.model.user.Customer;
 import main.model.user.User;
+import main.utility.InputParserUtility;
+import main.utility.exceptions.IllegalDateFormatException;
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.exceptions.WrongPasswordException;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import static main.model.database.DatabaseIO.loadLoanDatabase;
-import static main.model.database.DatabaseIO.saveDatabase;
+import static main.model.database.DatabaseIO.*;
+import static main.utility.GlobalParameters.LEGAL_AGE_IN_YEARS;
 import static main.utility.GlobalParameters.RENEWAL_BOUNDARY_IN_DAYS;
 import static main.utility.GlobalParameters.USER_DATABASE_FILE_PATH;
 
@@ -19,7 +21,6 @@ public class SystemUserController implements UserController {
 
     private SystemUserController() {
         userDatabase = UserDatabase.getInstance();
-        loadLoanDatabase();
     }
 
     //returns the instance of this controller.
@@ -44,6 +45,11 @@ public class SystemUserController implements UserController {
         else
             throw new WrongPasswordException();
 
+    }
+
+    @Override
+    public boolean isOfAge(String date) throws IllegalDateFormatException {
+        return InputParserUtility.isOfAge(date, LEGAL_AGE_IN_YEARS);
     }
 
     @Override

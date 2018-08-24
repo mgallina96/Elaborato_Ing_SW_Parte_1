@@ -195,7 +195,7 @@ public class Media implements Serializable {
      * @return A boolean value, {@code true} if this media item is available, {@code false} otherwise.
      */
     public boolean isAvailable() {
-        return licenses > 0 && this.available;
+        return licenses > 0 && available;
     }
 
     /**
@@ -220,8 +220,10 @@ public class Media implements Serializable {
      * @return a {@code String} with the basic details that describe this particular media item.
      */
     public String toString() {
-        return String.format("Media name: %s\t|\tItem ID: %d\t|\tDate added: %s\t|\tNumber of licences: %d%n",
-                mediaName, identifier, dateAdded.toZonedDateTime(), licenses);
+        if(available)
+            return String.format("Media name: %s\t|\tItem ID: %d\t|\tDate added: %s\t|\tNumber of licences: %d%n", mediaName, identifier, dateAdded.toZonedDateTime(), licenses);
+        else
+            return "";
     }
 
     /**

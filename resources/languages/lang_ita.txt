@@ -93,7 +93,8 @@ ERR_INVALID_PATH -@ Il percorso inserito sembra essere non valido. Si prega di i
 ERR_PATH_NOT_PRESENT -@ Il percorso inserito non esiste.
 ERR_BORROW_FAILED -@ Non è stato possibile prendere in prestito il media.
 ERR_MEDIA_NOT_AVAILABLE -@ Il media selezionato non è disponibile al momento.
-ERR_CANNOT_BORROW -@ Tetto massimo di prestiti raggiunto per questo tipo di media! Non è possibile prendere in prestito altri media di questo tipo al momento.
+ERR_LOAN_LIMIT_REACHED -@ Tetto massimo di prestiti raggiunto per questo tipo di media! Non è possibile prendere in prestito altri media di questo tipo al momento.
+ERR_LOAN_UNAVAILABLE -@ Il media richiesto non è disponibile al momento.
 ERR_USER_NOT_PRESENT -@ Il nome utente inserito non è presente. Si prega di verificare che il nome utente sia corretto, oppure di registrarsi.
 ERR_WRONG_PASSWORD -@ Password errata.
 ERR_LOAN_LIST_EMPTY -@ Non hai effettuato alcun prestito

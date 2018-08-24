@@ -102,8 +102,11 @@ public class Book extends Media implements Serializable {
      */
     @Override
     public String toString() {
-        return String.format("Media type: %s, Item ID: %d\t|\tTitle: %s\t|\tAuthor: %s\t|\tPublication year: %d\t|\tGenre: %s\t|\tPublisher name: %s\t|\tNumber of licenses: %d%n",
-                TYPE, getIdentifier(), title, author, publicationYear, genre, publisherName, getLicenses());
+        if(isAvailable())
+            return String.format("Media type: %s, Item ID: %d\t|\tTitle: %s\t|\tAuthor: %s\t|\tPublication year: %d\t|\tGenre: %s\t|\tPublisher name: %s\t|\tNumber of licenses: %d%n",
+                    TYPE, getIdentifier(), title, author, publicationYear, genre, publisherName, getLicenses());
+        else
+            return "";
     }
 
     /**

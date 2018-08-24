@@ -15,7 +15,6 @@ public class SystemMediaController implements MediaController {
 
     private SystemMediaController() {
         mediaDatabase = MediaDatabase.getInstance();
-        loadMediaDatabase();
     }
 
     //returns the instance of this controller.
@@ -58,6 +57,7 @@ public class SystemMediaController implements MediaController {
     @Override
     public void removeMediaFromDatabase(int id) {
         mediaDatabase.removeMedia(new Media(id));
+        saveDatabase(MEDIA_DATABASE_FILE_PATH, mediaDatabase);
     }
 
     @Override

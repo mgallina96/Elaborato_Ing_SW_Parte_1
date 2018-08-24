@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author Manuel Gallina
  */
-public class Screen implements Controller {
+public class Screen {
 
     private Scanner scanner;
     private UserController userController;

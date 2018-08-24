@@ -26,7 +26,6 @@ public class SystemLoanController implements LoanController {
         loanDatabase = LoanDatabase.getInstance();
         userDatabase = UserDatabase.getInstance();
         mediaDatabase = MediaDatabase.getInstance();
-        loadLoanDatabase();
 
         logger = Logger.getLogger(this.getClass().getName());
     }

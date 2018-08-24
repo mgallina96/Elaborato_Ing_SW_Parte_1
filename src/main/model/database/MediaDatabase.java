@@ -4,6 +4,8 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
+import static main.model.database.DatabaseIO.loadMediaDatabase;
+
 /**
  * Database concerned with saving, removing, finding, fetching and generally managing all kinds of media items.
  *
@@ -28,8 +30,10 @@ public class MediaDatabase implements Serializable, Database {
      * @return The {@code MediaDatabase} instance.
      */
     public static MediaDatabase getInstance() {
-        if(mediaDatabase == null)
+        if(mediaDatabase == null) {
             mediaDatabase = new MediaDatabase();
+            mediaDatabase = loadMediaDatabase();
+        }
 
         return mediaDatabase;
     }
@@ -48,7 +52,7 @@ public class MediaDatabase implements Serializable, Database {
     }
 
     /**
-     * Removes a given media from the database.
+     * Removes a given media from the database (by setting the media to "unavailable").
      * @param toRemove The media to be removed.
      */
     public void removeMedia(Media toRemove) {

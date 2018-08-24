@@ -1,4 +1,5 @@
 package main.controller;
+import main.utility.exceptions.IllegalDateFormatException;
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.exceptions.WrongPasswordException;
 import java.util.GregorianCalendar;
@@ -45,6 +46,13 @@ public interface UserController extends Controller {
      * @return A boolean value, {@code true} if the given user can be found in the database, {@code false} otherwise.
      */
     boolean userIsPresent(String username);
+
+    /**
+     *
+     * @param date
+     * @return
+     */
+    boolean isOfAge(String date) throws IllegalDateFormatException;
 
     /**
      * Adds a new user to the database.

@@ -11,6 +11,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 
+import static main.model.database.DatabaseIO.loadLoanDatabase;
 import static main.utility.GlobalParameters.LOAN_DATABASE_FILE_PATH;
 
 /**
@@ -36,8 +37,10 @@ public class LoanDatabase implements Serializable, Database {
      * @return The {@code LoanDatabase} instance.
      */
     public static LoanDatabase getInstance() {
-        if(loanDatabase == null)
+        if(loanDatabase == null) {
             loanDatabase = new LoanDatabase();
+            loanDatabase = loadLoanDatabase();
+        }
 
         return loanDatabase;
     }

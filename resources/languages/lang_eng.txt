@@ -93,7 +93,8 @@ ERR_INVALID_PATH -@ The path you inserted seems to be invalid. Please re-insert 
 ERR_PATH_NOT_PRESENT -@ The path you inserted doesn't exist.
 ERR_BORROW_FAILED -@ There has been an error while borrowing this media item.
 ERR_MEDIA_NOT_AVAILABLE -@ The selected media is not available at the moment.
-ERR_CANNOT_BORROW -@ Upper loan limit reached for this type of media! It's not possible to borrow any more media items of this type at the moment.
+ERR_LOAN_LIMIT_REACHED -@ Upper loan limit reached for this type of media! It's not possible to borrow any more media items of this type at the moment.
+ERR_LOAN_UNAVAILABLE -@ The requested media item is unavailable at the moment.
 ERR_USER_NOT_PRESENT -@ The requested username couldn't be found. Please check the spelling or sign up.
 ERR_WRONG_PASSWORD -@ Wrong password.
 ERR_LOAN_LIST_EMPTY -@ There are no loans associated to this user.

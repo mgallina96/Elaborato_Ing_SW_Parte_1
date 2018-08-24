@@ -1,6 +1,5 @@
 package generators;
 import generators.randomwords.PoolLoader;
-import main.controller.SystemController;
 import main.model.database.LoanDatabase;
 import main.model.database.MediaDatabase;
 import main.model.database.UserDatabase;
@@ -11,12 +10,10 @@ import main.model.media.Film;
 import main.model.media.Media;
 import main.model.user.User;
 import main.utility.notifications.Notifications;
-
 import java.util.HashMap;
-
 import static generators.Generator.COMMON_BOOK_PATH;
 import static generators.Generator.COMMON_FILM_PATH;
-import static generators.Generator.COMMON_MEDIA_PATH;
+import static main.model.database.DatabaseIO.saveDatabase;
 
 /**
  * The QuickFillMain Class, whose job is to quickly fill all of the databases (FileSystem, User database, Media database
@@ -70,7 +67,6 @@ public class QuickFillMain {
     }
 
     private static void fillDatabase() {
-        SystemController sc = SystemController.getInstance();
         UserDatabase userDatabase = UserDatabase.getInstance();
         MediaDatabase mediaDatabase = MediaDatabase.getInstance();
         LoanDatabase loanDatabase = LoanDatabase.getInstance();
@@ -87,9 +83,9 @@ public class QuickFillMain {
                 mediaDatabase.addMedia(f, "root\\Film\\" + ((Film)f).getGenre() + "\\");
 
         //this method needs to be made (temporarily) public
-        //sc.saveDatabase(COMMON_DATABASE_PATH + "Biblioteca SMARTINATOR - Media Database.ser", mediaDatabase);
-        //sc.saveDatabase(COMMON_DATABASE_PATH + "Biblioteca SMARTINATOR - User Database.ser", userDatabase);
-        //sc.saveDatabase(COMMON_DATABASE_PATH + "Biblioteca SMARTINATOR - Loan Database.ser", loanDatabase);
+        saveDatabase(COMMON_DATABASE_PATH + "Biblioteca SMARTINATOR - Media Database.ser", mediaDatabase);
+        saveDatabase(COMMON_DATABASE_PATH + "Biblioteca SMARTINATOR - User Database.ser", userDatabase);
+        saveDatabase(COMMON_DATABASE_PATH + "Biblioteca SMARTINATOR - Loan Database.ser", loanDatabase);
     }
 
 

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 
+import static main.model.database.DatabaseIO.loadUserDatabase;
 import static main.utility.GlobalParameters.USER_DATABASE_FILE_PATH;
 
 /**
@@ -44,8 +45,10 @@ public class UserDatabase implements Serializable, Database {
      * @return The {@code UserDatabase} instance.
      */
     public static UserDatabase getInstance() {
-        if(userDatabase == null)
+        if(userDatabase == null) {
             userDatabase = new UserDatabase();
+            userDatabase = loadUserDatabase();
+        }
 
         return userDatabase;
     }

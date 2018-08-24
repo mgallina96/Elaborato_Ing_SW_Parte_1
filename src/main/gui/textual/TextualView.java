@@ -3,6 +3,9 @@ import main.controller.*;
 import main.gui.GuiManager;
 import main.gui.textual.screens.*;
 import main.utility.notifications.Notifications;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Scanner;
 
 /**
  * Class that manages a textual GUI for the application, loading the different sections when they are needed and
@@ -19,13 +22,33 @@ public class TextualView implements GuiManager {
     /**
      * Constructor for the TextualView class.
      *
-     * @param controller The system controller.
+     * @param controllers The system controllers.
+     * @param <C> Objects of the Controller type.
      */
-    public TextualView(Controller controller, FileSystemController fileSystemController) {
-        this.userController = (UserController) controller;
-        this.mediaController = (MediaController) controller;
-        this.loanController = (LoanController) controller;
-        this.fileSystemController = fileSystemController;
+    @SafeVarargs
+    public <C extends Controller> TextualView(@NotNull C... controllers) {
+        boolean[] controllerSet = new boolean[3];
+        for(C controller : controllers) {
+            try {
+                if(controller instanceof UserController && !controllerSet[0]) {
+                    this.userController = (UserController) controller;
+                    controllerSet[0] = true;
+                }
+                else if(controller instanceof MediaController && !controllerSet[1]) {
+                    this.mediaController = (MediaController) controller;
+                    controllerSet[1] = true;
+                }
+                else if(controller instanceof LoanController && !controllerSet[2]) {
+                    this.loanController = (LoanController) controller;
+                    controllerSet[2] = true;
+                }
+                else if(controller instanceof FileSystemController)
+                    this.fileSystemController = (FileSystemController) controller;
+            }
+            catch(ClassCastException ccEX) {
+                ccEX.printStackTrace();
+            }
+        }
     }
 
     @Override

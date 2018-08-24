@@ -40,12 +40,12 @@ public class SignUpScreen extends Screen {
         }
 
         try {
-            if(!InputParserUtility.isOfAge(details[4], LEGAL_AGE_IN_YEARS)) {
+            if(!getUserController().isOfAge(details[4])) {
                 System.out.println(Notifications.getMessage("ERR_NOT_OF_AGE"));
                 return 1;
             }
         }
-        catch (IllegalDateFormatException idfEx) {
+        catch(IllegalDateFormatException idfEx) {
             idfEx.printStackTrace();
         }
 

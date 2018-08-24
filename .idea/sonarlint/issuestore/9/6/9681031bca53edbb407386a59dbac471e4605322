@@ -1,0 +1,4 @@
+
+åsquid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(∫ÃŒâ¸ˇˇˇˇ
+bsquid:UselessImportCheck">Remove this unused import 'generators.randomwords.PoolLoader'.(Çµ”∞
+csquid:UselessImportCheck"?Remove this unused import 'generators.randomwords.RandomWords'.(‘ÓÌ÷

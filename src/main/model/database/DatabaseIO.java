@@ -1,11 +1,9 @@
 package main.model.database;
-import main.model.user.User;
 import main.utility.notifications.Notifications;
 import org.jetbrains.annotations.NotNull;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import static main.utility.GlobalParameters.LOAN_DATABASE_FILE_PATH;
 import static main.utility.GlobalParameters.MEDIA_DATABASE_FILE_PATH;
 import static main.utility.GlobalParameters.USER_DATABASE_FILE_PATH;
