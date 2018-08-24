@@ -50,12 +50,17 @@ PROMPT_LOGIN_SCREEN -@ Welcome back! Log in to BIBLIOTECA SMARTin4t0r 3.0
 PROMPT_SIGN_UP_SCREEN -@ Hi there! Sign up for BIBLIOTECA SMARTin4t0r 3.0
 PROMPT_MODIFY_FIELDS -@ Please modify the wrong fields.
 PROMPT_RETRY_LOGGING_IN -@ Please retry logging in with correct credentials.
-PROMPT_ADD_MEDIA -@ Please add a media item.
+PROMPT_CHOOSE_MEDIA_TYPE -@ Please choose the media type you wish to add -> 
+PROMPT_ADD_BOOK -@ Please add a book.
+PROMPT_ADD_FILM -@ Please add a film.
 PROMPT_TITLE -@ Title: 
 PROMPT_AUTHOR -@ Author: 
+PROMPT_DIRECTOR -@ Director: 
 PROMPT_GENRE -@ Genre: 
 PROMPT_PUBLICATION_YEAR -@ Publication year: 
+PROMPT_RELEASE_YEAR -@ Release year: 
 PROMPT_PUBLISHER_NAME -@ Publisher: 
+PROMPT_PRODUCER_NAME -@ Producer: 
 PROMPT_REMOVE_MEDIA -@ Please insert one or more keywords for the media item you wish to remove (insert !quit to quit): 
 PROMPT_SEARCH_FOR_MEDIA -@ Please insert one or more keywords for the media item you're looking for (insert !quit to quit): 
 PROMPT_SEARCH_FOR_MEDIA_TO_BORROW -@ Please insert one or more keywords for the media item you'd like to borrow (insert !quit to quit): 

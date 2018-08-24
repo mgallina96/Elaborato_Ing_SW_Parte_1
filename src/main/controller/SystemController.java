@@ -5,6 +5,7 @@ import main.model.database.MediaDatabase;
 import main.model.database.UserDatabase;
 import main.model.loan.Loan;
 import main.model.media.Book;
+import main.model.media.Film;
 import main.model.media.Media;
 import main.model.user.Customer;
 import main.model.user.User;
@@ -98,11 +99,20 @@ public class SystemController implements UserController, MediaController, LoanCo
     }
 
     @Override
-    public boolean addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName, String path) {
-        Book b = new Book(title, author, genre, publicationYear, publisherName);
+    public boolean addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName, String path, String type) {
+        Media m = null;
 
-        if(!mediaDatabase.isMatchingMedia(b)) {
-            mediaDatabase.addMedia(b, path);
+        switch(type) {
+            case "BOOK":
+                m = new Book(title, author, genre, publicationYear, publisherName);
+                break;
+            case "FILM":
+                m = new Film(title, author, genre, publicationYear, publisherName);
+                break;
+        }
+
+        if(!mediaDatabase.isMatchingMedia(m)) {
+            mediaDatabase.addMedia(m, path);
             saveDatabase(MEDIA_DATABASE_FILE_PATH, mediaDatabase);
             return true;
         }

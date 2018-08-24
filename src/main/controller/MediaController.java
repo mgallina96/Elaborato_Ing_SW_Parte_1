@@ -23,8 +23,9 @@ public interface MediaController extends Controller {
      * @param genre the genre.
      * @param publicationYear the publication year.
      * @param publisherName the publisher's name.
+     * @param type the media type.
      */
-    boolean addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName, String path);
+    boolean addMediaToDatabase(String title, String author, String genre, int publicationYear, String publisherName, String path, String type);
 
     /**
      * Removes the media element with the given ID from the database.

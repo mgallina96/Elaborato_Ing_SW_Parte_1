@@ -104,26 +104,46 @@ public class OperatorScreen extends Screen {
      * (title, author, genre, etc.) for that particular media item.
      */
     private void addMedia() {
-        System.out.printf("%s%n%s%n", Notifications.getMessage("PROMPT_ADD_MEDIA"), Notifications.getMessage("SEPARATOR"));
+        System.out.print(Notifications.getMessage("PROMPT_CHOOSE_MEDIA_TYPE"));
+
+        String choice = insertString("book|BOOK|film|FILM");
+
+        if(choice.equalsIgnoreCase("book"))
+            addMedia(Notifications.getMessage("PROMPT_AUTHOR"),
+                    Notifications.getMessage("PROMPT_PUBLICATION_YEAR"),
+                    Notifications.getMessage("PROMPT_PUBLISHER_NAME"),
+                    "BOOK");
+        else if(choice.equalsIgnoreCase("film"))
+            addMedia(Notifications.getMessage("PROMPT_DIRECTOR"),
+                    Notifications.getMessage("PROMPT_RELEASE_YEAR"),
+                    Notifications.getMessage("PROMPT_PRODUCER_NAME"),
+                    "FILM");
+        else
+            System.out.println(Notifications.getMessage("ERR_MSG_INVALID_INPUT"));
+    }
+
+    //to add a book
+    private void addMedia(String authorMSG, String yearMSG, String producerMSG, String type) {
+        System.out.printf("%s%n%s%n", Notifications.getMessage("PROMPT_ADD_" + type), Notifications.getMessage("SEPARATOR"));
         System.out.print(Notifications.getMessage("PROMPT_TITLE"));
         String title = getScanner().nextLine();
 
-        System.out.print(Notifications.getMessage("PROMPT_AUTHOR"));
+        System.out.print(authorMSG);
         String author = insertName();
 
         System.out.print(Notifications.getMessage("PROMPT_GENRE"));
         String genre = getScanner().nextLine();
 
-        System.out.print(Notifications.getMessage("PROMPT_PUBLICATION_YEAR"));
+        System.out.print(yearMSG);
         int year = insertYear();
 
-        System.out.print(Notifications.getMessage("PROMPT_PUBLISHER_NAME"));
-        String publisherName = insertName();
+        System.out.print(producerMSG);
+        String publisherName = getScanner().nextLine();
 
         System.out.printf("%s%n%s%n", Notifications.getMessage("SEPARATOR"), Notifications.getMessage("PROMPT_SELECT_PATH"));
         String path = chooseFolder();
 
-        if(!getMediaController().addMediaToDatabase(title, author, genre, year, publisherName, path))
+        if(!getMediaController().addMediaToDatabase(title, author, genre, year, publisherName, path, type))
             System.out.printf("%s%n%s%n", Notifications.getMessage("ERR_MEDIA_ALREADY_PRESENT"), Notifications.getMessage("MSG_ABORT"));
         else
             System.out.printf("%s\"%s\"%n", Notifications.getMessage("MSG_ADD_SUCCESSFUL"), path);
