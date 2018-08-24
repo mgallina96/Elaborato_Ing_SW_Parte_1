@@ -100,5 +100,6 @@ ERR_LOAN_LIST_EMPTY -@ There are no loans associated to this user.
 ERR_TOO_EARLY_TO_EXTEND -@ It's too early to extend this loan.
 ERR_ALREADY_EXTENDED -@ This loan has already been extended once. You cannot repeat this operation.
 ERR_NO_LOANS_IN_YEAR -@ No loans were made in the year 
+ERR_LOAN_NOT_FOUND -@ Error! Loan not found.
 ERR_LOAN_DOES_NOT_EXIST -@ You never borrowed the media item associated with this ID.
 SEPARATOR -@ -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

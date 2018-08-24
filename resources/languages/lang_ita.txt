@@ -100,5 +100,6 @@ ERR_LOAN_LIST_EMPTY -@ Non hai effettuato alcun prestito
 ERR_TOO_EARLY_TO_EXTEND -@ È troppo presto per estendere questo prestito.
 ERR_ALREADY_EXTENDED -@ Prestito già prorogato una volta. È impossibile ripetere l'operazione.
 ERR_NO_LOANS_IN_YEAR -@ Non sono stati effettuati prestiti nell'anno 
+ERR_LOAN_NOT_FOUND -@ Errore! Prestito non trovato.
 ERR_LOAN_DOES_NOT_EXIST -@ Non hai mai preso in prestito il media associato a questo ID.  
 SEPARATOR -@ -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

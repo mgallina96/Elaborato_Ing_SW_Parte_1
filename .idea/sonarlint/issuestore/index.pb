@@ -1,8 +1,6 @@
 
 c
 3src/main/gui/graphic/screens/start/LoginScreen.java,6\3\6388f253f42953fe56fc1cde05253138f8303d5b
-]
--src/main/utility/notifications/Languages.java,f\2\f24a9701b5fc0201abd4361a9154382903b170c9
 k
 ;src/main/utility/exceptions/IllegalDateFormatException.java,e\0\e046f9846c918aab0c75146879ec7cc56b91a573
 S
