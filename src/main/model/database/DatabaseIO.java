@@ -11,9 +11,16 @@ import static main.utility.GlobalParameters.USER_DATABASE_FILE_PATH;
 public class DatabaseIO {
 
     private static final String CLASS_NAME = "DatabaseIO";
+    private static String FILE_NOT_FOUND;
+    private static String DATABASE_LOADING_ERROR;
+    private static String CLASS_NOT_FOUND;
     private static Logger logger = Logger.getLogger(CLASS_NAME);
 
-    private DatabaseIO() {}
+    private DatabaseIO() {
+        FILE_NOT_FOUND = Notifications.getMessage("ERR_FILE_NOT_FOUND") + CLASS_NAME;
+        DATABASE_LOADING_ERROR = Notifications.getMessage("ERR_LOADING_DATABASE") + CLASS_NAME;
+        CLASS_NOT_FOUND = Notifications.getMessage("ERR_CLASS_NOT_FOUND") + CLASS_NAME;
+    }
 
     //saves a generic HashMap (database) to a serializable .ser file.
     public static <D extends Database> void saveDatabase(String path, @NotNull D database) {
@@ -43,13 +50,13 @@ public class DatabaseIO {
             return (MediaDatabase)in.readObject();
         }
         catch(FileNotFoundException fnfEx) {
-            logger.log(Level.SEVERE, Notifications.getMessage("ERR_FILE_NOT_FOUND") + CLASS_NAME);
+            logger.log(Level.SEVERE, FILE_NOT_FOUND);
         }
         catch(IOException ioEx) {
-            logger.log(Level.SEVERE, Notifications.getMessage("ERR_LOADING_DATABASE") + CLASS_NAME);
+            logger.log(Level.SEVERE, DATABASE_LOADING_ERROR);
         }
         catch(ClassNotFoundException cnfEx) {
-            logger.log(Level.SEVERE, Notifications.getMessage("ERR_CLASS_NOT_FOUND") + CLASS_NAME);
+            logger.log(Level.SEVERE, CLASS_NOT_FOUND);
         }
 
         return null;
@@ -68,13 +75,13 @@ public class DatabaseIO {
             return (UserDatabase)in.readObject();
         }
         catch(FileNotFoundException fnfEx) {
-            logger.log(Level.SEVERE, Notifications.getMessage("ERR_FILE_NOT_FOUND") + CLASS_NAME);
+            logger.log(Level.SEVERE, FILE_NOT_FOUND);
         }
         catch(IOException ioEx) {
-            logger.log(Level.SEVERE, Notifications.getMessage("ERR_LOADING_DATABASE") + CLASS_NAME);
+            logger.log(Level.SEVERE, DATABASE_LOADING_ERROR);
         }
         catch(ClassNotFoundException cnfEx) {
-            logger.log(Level.SEVERE, Notifications.getMessage("ERR_CLASS_NOT_FOUND") + CLASS_NAME);
+            logger.log(Level.SEVERE, CLASS_NOT_FOUND);
         }
 
         return null;
@@ -93,13 +100,13 @@ public class DatabaseIO {
             return (LoanDatabase)in.readObject();
         }
         catch(FileNotFoundException fnfEx) {
-            logger.log(Level.SEVERE, Notifications.getMessage("ERR_FILE_NOT_FOUND") + CLASS_NAME);
+            logger.log(Level.SEVERE, FILE_NOT_FOUND);
         }
         catch(IOException ioEx) {
-            logger.log(Level.SEVERE, Notifications.getMessage("ERR_LOADING_DATABASE") + CLASS_NAME);
+            logger.log(Level.SEVERE, DATABASE_LOADING_ERROR);
         }
         catch(ClassNotFoundException cnfEx) {
-            logger.log(Level.SEVERE, Notifications.getMessage("ERR_CLASS_NOT_FOUND") + CLASS_NAME);
+            logger.log(Level.SEVERE, CLASS_NOT_FOUND);
         }
 
         return null;

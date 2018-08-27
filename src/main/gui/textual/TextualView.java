@@ -80,6 +80,9 @@ public class TextualView implements GuiManager {
                     signUpScreen();
                     break;
                 case 3:
+                    settings();
+                    break;
+                case 4:
                     System.out.printf("%s%n", Notifications.getMessage("MSG_GOODBYE"));
                     exit = true;
                     break;
@@ -103,5 +106,9 @@ public class TextualView implements GuiManager {
             default: //in case ths user status is still a null value (either the username or the password isn't valid).
                 break;
         }
+    }
+
+    private void settings() {
+        new SettingsScreen();
     }
 }

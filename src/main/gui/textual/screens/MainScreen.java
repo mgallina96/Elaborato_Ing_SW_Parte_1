@@ -24,6 +24,6 @@ public class MainScreen extends Screen {
                 Notifications.getMessage("PROMPT_BIBLIO_INITIAL_CHOICES"),
                 Notifications.getMessage("SEPARATOR"));
 
-        return insertInteger(1, 4);
+        return insertInteger(1, 5);
     }
 }

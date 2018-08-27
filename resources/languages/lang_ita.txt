@@ -34,13 +34,15 @@ MSG_LATEST_RENEWAL_REMINDER -@ \n\tData dell'ultimo rinnovo:
 MSG_EXPIRY_REMINDER -@ \n\tL'iscrizione scadrà il 
 MSG_RENEWAL_INFO -@ \n\tNon è consentito rinnovare l'iscrizione fino a 
 MSG_RENEWAL_INFO_END_OF_MESSAGE -@ prima della data della scadenza.
+MSG_BOOK_WORD -@ libro
+MSG_FILM_WORD -@ film
 PROMPT_FIRST_NAME -@ Nome (si prega di inserire un nome valido): 
 PROMPT_LAST_NAME -@ Cognome (si prega di inserire un cognome valido): 
 PROMPT_USERNAME -@ Username: 
 PROMPT_PASSWORD -@ Password: 
 PROMPT_BIRTHDAY -@ Compleanno (formato accettato: GG/MM/AAAA): 
 PROMPT_PRESENT_USER_MULTIPLE_CHOICE -@ (1) USCIRE SENZA SALVARE\t|\t(2) CAMBIARE I CAMPI
-PROMPT_BIBLIO_INITIAL_CHOICES -@ (1) ENTRA\t|\t(2) REGISTRATI\t|\t(3) ESCI
+PROMPT_BIBLIO_INITIAL_CHOICES -@ (1) ENTRA\t|\t(2) REGISTRATI\t|\t(3) OPZIONI\t|\t(4) ESCI
 PROMPT_OPERATOR_CHOICES -@ (1) AGGIUNGI UN MEDIA\t|\t(2) RIMUOVI UN MEDIA\t|\t(3) MOSTRA I MEDIA PER CARTELLE\t|\t(4) CERCA MEDIA\t|\t(5) VISUALIZZA DATI\t|\t(6) ESCI
 PROMPT_DATA_VISUALIZATION_CHOICES -@ (1) MOSTRA TUTTI GLI UTENTI ISCRITTI\t|\t(2) MOSTRA TUTTI I PRESTITI EFFETTUATI\t|\t(3) MOSTRA NUMERO DI PRESTITI PER ANNO SOLARE\t|\t(4) MOSTRA NUMERO DI PRESTITI PER UTENTE E ANNO SOLARE\t|\n(5) MOSTRA NUMERO DI PROROGHE PER ANNO SOLARE\t|\t(6) MOSTRA IL MEDIA PIÙ PRESTATO\t|\t(7) ESCI
 PROMPT_CUSTOMER_CHOICES -@ (1) RINNOVA LA TUA ISCRIZIONE!\t|\t(2) RICHIEDI UN PRESTITO\t|\t(3) RICHIEDI UNA PROROGA\t|\t(4) CERCA UNA RISORSA\t|\t(5) ESCI
@@ -51,8 +53,8 @@ PROMPT_SIGN_UP_SCREEN -@ Ciao! Registrati alla BIBLIOTECA SMARTin4t0r 3.0
 PROMPT_MODIFY_FIELDS -@ Modificare i campi errati per favore.
 PROMPT_RETRY_LOGGING_IN -@ Si prega di riprovare ad entrare usando le credenziali corrette.
 PROMPT_CHOOSE_MEDIA_TYPE -@ Scegliere un tipo di media da aggiungere -> 
-PROMPT_ADD_BOOK -@ Aggiungere un libro per favore.
-PROMPT_ADD_FILM -@ Aggiungere un film per favore.
+PROMPT_ADD_BOOK -@ Aggiungere un libro per favore (!quit per uscire).
+PROMPT_ADD_FILM -@ Aggiungere un film per favore (!quit per uscire).
 PROMPT_TITLE -@ Titolo: 
 PROMPT_AUTHOR -@ Autore: 
 PROMPT_DIRECTOR -@ Regista: 
@@ -71,6 +73,7 @@ PROMPT_WHICH_FOLDER -@ Inserire il percorso di cui si vuole vedere il contenuto,
 PROMPT_BORROW_CONFIRMATION -@ Confermi il prestito? (y/n)
 PROMPT_SEARCH_FOR_LOANS -@ Ecco la lista dei media presi in prestito. Si prega di selezionare il media di cui si vuole prorogare il prestito.
 PROMPT_CHOOSE_MEDIA_TO_EXTEND -@ Scegliere l'ID del media di cui si vuole estendere il prestito.
+PROMPT_CHOOSE_LANGUAGE -@ Si prega di scegliere la lingua desiderata.
 ERR_NOT_OF_AGE -@ Attenzione: l'utente è minorenne. Si prega di riempire i campi da capo.
 ERR_INVALID_NAME -@ Sembra che questo nome abbia un formato non valido, si prega di inserire nuovamente un nome valido.
 ERR_INVALID_DATE -@ Questa data di nascita ha un formato non valido. Si prega di inserire una data di nascita valida.
@@ -102,5 +105,6 @@ ERR_TOO_EARLY_TO_EXTEND -@ È troppo presto per estendere questo prestito.
 ERR_ALREADY_EXTENDED -@ Prestito già prorogato una volta. È impossibile ripetere l'operazione.
 ERR_NO_LOANS_IN_YEAR -@ Non sono stati effettuati prestiti nell'anno 
 ERR_LOAN_NOT_FOUND -@ Errore! Prestito non trovato.
-ERR_LOAN_DOES_NOT_EXIST -@ Non hai mai preso in prestito il media associato a questo ID.  
+ERR_LOAN_DOES_NOT_EXIST -@ Non hai mai preso in prestito il media associato a questo ID.
+ERR_LANGUAGE_UNAVAILABLE -@ La lingua inserita non è disponibile.
 SEPARATOR -@ -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

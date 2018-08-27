@@ -62,41 +62,41 @@ public class OperatorScreen extends Screen {
 
     //for generic program data visualization.
     private void visualizeData() {
-        System.out.printf("%s%n%s%n", Notifications.getMessage("PROMPT_DATA_VISUALIZATION_CHOICES"), Notifications.getMessage("SEPARATOR"));
-        int choice = insertInteger(1, 8);
+        int choice;
 
-        if(choice != 7) {
+        do {
+            System.out.printf("%s%n%s%n",
+                    Notifications.getMessage("PROMPT_DATA_VISUALIZATION_CHOICES"),
+                    Notifications.getMessage("SEPARATOR"));
+            choice = insertInteger(1, 8);
+
             switch(choice) {
                 case 1:
                     System.out.printf("%s%n%s%n", Notifications.getMessage("MSG_USER_LIST"), getUserController().allUsersToString());
-                    return;
+                    break;
                 case 2:
                     System.out.printf("%s%n%s%n", Notifications.getMessage("MSG_LOAN_LIST_ALL"), getLoanController().allLoansToString());
-                    return;
-            }
-
-            System.out.printf("%s", Notifications.getMessage("MSG_CHOOSE_YEAR"));
-            int year = insertYear();
-
-            switch(choice) {
+                    break;
                 case 3:
-                    System.out.println(getLoanController().getLoanNumberByYear(year, new GregorianCalendar().get(Calendar.YEAR)));
+                    System.out.printf("%s", Notifications.getMessage("MSG_CHOOSE_YEAR"));
+                    System.out.println(getLoanController().getLoanNumberByYear(insertYear(), new GregorianCalendar().get(Calendar.YEAR)));
                     break;
                 case 4:
-                    System.out.println(getLoanController().getUserLoanNumberByYear(year, new GregorianCalendar().get(Calendar.YEAR)));
+                    System.out.printf("%s", Notifications.getMessage("MSG_CHOOSE_YEAR"));
+                    System.out.println(getLoanController().getUserLoanNumberByYear(insertYear(), new GregorianCalendar().get(Calendar.YEAR)));
                     break;
                 case 5:
-                    System.out.println(getLoanController().getExtensionNumberByYear(year, new GregorianCalendar().get(Calendar.YEAR)));
+                    System.out.printf("%s", Notifications.getMessage("MSG_CHOOSE_YEAR"));
+                    System.out.println(getLoanController().getExtensionNumberByYear(insertYear(), new GregorianCalendar().get(Calendar.YEAR)));
                     break;
                 case 6:
-                    System.out.println(getLoanController().getMostLentMediaByYear(year, new GregorianCalendar().get(Calendar.YEAR)));
+                    System.out.printf("%s", Notifications.getMessage("MSG_CHOOSE_YEAR"));
+                    System.out.println(getLoanController().getMostLentMediaByYear(insertYear(), new GregorianCalendar().get(Calendar.YEAR)));
                     break;
             }
-        }
-        else {
-            System.out.printf("%s%n", Notifications.getMessage("MSG_LOG_OUT"));
-        }
+        } while(choice != 7);
 
+        System.out.printf("%s%n", Notifications.getMessage("MSG_LOG_OUT"));
     }
 
     /**
@@ -106,14 +106,17 @@ public class OperatorScreen extends Screen {
     private void addMedia() {
         System.out.print(Notifications.getMessage("PROMPT_CHOOSE_MEDIA_TYPE"));
 
-        String choice = insertString("book|BOOK|film|FILM");
+        String bookStr = Notifications.getMessage("MSG_BOOK_WORD");
+        String filmStr = Notifications.getMessage("MSG_FILM_WORD");
 
-        if(choice.equalsIgnoreCase("book"))
+        String choice = insertString(bookStr + "|" + filmStr);
+
+        if(choice.equalsIgnoreCase(bookStr))
             addMedia(Notifications.getMessage("PROMPT_AUTHOR"),
                     Notifications.getMessage("PROMPT_PUBLICATION_YEAR"),
                     Notifications.getMessage("PROMPT_PUBLISHER_NAME"),
                     "BOOK");
-        else if(choice.equalsIgnoreCase("film"))
+        else if(choice.equalsIgnoreCase(filmStr))
             addMedia(Notifications.getMessage("PROMPT_DIRECTOR"),
                     Notifications.getMessage("PROMPT_RELEASE_YEAR"),
                     Notifications.getMessage("PROMPT_PRODUCER_NAME"),
@@ -127,6 +130,11 @@ public class OperatorScreen extends Screen {
         System.out.printf("%s%n%s%n", Notifications.getMessage("PROMPT_ADD_" + type), Notifications.getMessage("SEPARATOR"));
         System.out.print(Notifications.getMessage("PROMPT_TITLE"));
         String title = getScanner().nextLine();
+
+        if(title.equals(ESCAPE_STRING)) {
+            System.out.println(Notifications.getMessage("MSG_ABORT"));
+            return;
+        }
 
         System.out.print(authorMSG);
         String author = insertName();
@@ -183,7 +191,7 @@ public class OperatorScreen extends Screen {
      * media item is removed from the database.
      */
     private boolean searchForMedia() {
-        System.out.println(Notifications.getMessage("PROMPT_REMOVE_MEDIA"));
+        System.out.println(Notifications.getMessage("PROMPT_SEARCH_FOR_MEDIA"));
         String input = getScanner().nextLine();
 
         if(input.equals(ESCAPE_STRING)) {
