@@ -4,6 +4,7 @@ import main.utility.InputParserUtility;
 import main.utility.notifications.Notifications;
 import org.jetbrains.annotations.NotNull;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 /**
  * Class that implements a generic screen.

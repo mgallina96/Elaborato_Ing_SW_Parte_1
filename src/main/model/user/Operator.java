@@ -16,10 +16,10 @@ public class Operator extends User {
      * @param lastName The operator's last name.
      * @param username The operator's username.
      * @param password The operator's password.
-     * @param birthday The operator's birth date.
+     * @param birthDate The operator's birth date.
      */
-    public Operator(String firstName, String lastName, String username, String password, GregorianCalendar birthday) {
-        super(firstName, lastName, username, password, birthday);
+    public Operator(String firstName, String lastName, String username, String password, GregorianCalendar birthDate) {
+        super(firstName, lastName, username, password, birthDate);
         super.setUserStatus(UserStatus.OPERATOR);
     }
 }

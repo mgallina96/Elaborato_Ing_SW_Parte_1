@@ -19,9 +19,9 @@ public class MainScreen extends Screen {
      */
     public int menuChoices() {
         System.out.printf("%s%n%s%n%s%n%s%n> ",
-                Notifications.getMessage("MSG_BIBLIO_NAME"),
+                Notifications.getMessage("MSG_LIBRARY_NAME"),
                 Notifications.getMessage("SEPARATOR"),
-                Notifications.getMessage("PROMPT_BIBLIO_INITIAL_CHOICES"),
+                Notifications.getMessage("PROMPT_LIBRARY_INITIAL_CHOICES"),
                 Notifications.getMessage("SEPARATOR"));
 
         return insertInteger(1, 5);

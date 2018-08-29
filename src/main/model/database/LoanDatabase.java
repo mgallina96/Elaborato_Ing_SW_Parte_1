@@ -107,7 +107,7 @@ public class LoanDatabase implements Serializable, Database {
         try {
             StringBuilder userLoans = new StringBuilder();
             getUserLoans(user)
-                    .forEach(s -> userLoans.append(s.getMedia()));
+                    .forEach(s -> userLoans.append("  - ").append(s.getMedia()));
 
             return userLoans.toString();
 

@@ -37,14 +37,14 @@ public class OperatorScreen extends Screen {
                     addMedia();
                     break;
                 case 2:
-                    if(searchForMedia())
+                    if(searchForMedia(Notifications.getMessage("PROMPT_REMOVE_MEDIA")))
                         remove();
                     break;
                 case 3:
                     printFilteredMediaByFolder();
                     break;
                 case 4:
-                    searchForMedia();
+                    searchForMedia(Notifications.getMessage("PROMPT_SEARCH_FOR_MEDIA"));
                     break;
                 case 5:
                     visualizeData();
@@ -109,7 +109,7 @@ public class OperatorScreen extends Screen {
         String bookStr = Notifications.getMessage("MSG_BOOK_WORD");
         String filmStr = Notifications.getMessage("MSG_FILM_WORD");
 
-        String choice = insertString(bookStr + "|" + filmStr);
+        String choice = insertString(bookStr + "|" + filmStr + "|" + bookStr.toUpperCase() + "|" + filmStr.toUpperCase());
 
         if(choice.equalsIgnoreCase(bookStr))
             addMedia(Notifications.getMessage("PROMPT_AUTHOR"),
@@ -189,9 +189,11 @@ public class OperatorScreen extends Screen {
      * Once the user has located the media item they wish to remove, this method asks the user to insert the numeric ID
      * associated with that media item. If that ID is present in the database and has a valid format, the associated
      * media item is removed from the database.
+     *
+     * @param prompt The initial prompt.
      */
-    private boolean searchForMedia() {
-        System.out.println(Notifications.getMessage("PROMPT_SEARCH_FOR_MEDIA"));
+    private boolean searchForMedia(String prompt) {
+        System.out.println(prompt);
         String input = getScanner().nextLine();
 
         if(input.equals(ESCAPE_STRING)) {

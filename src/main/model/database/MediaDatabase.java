@@ -110,7 +110,7 @@ public class MediaDatabase implements Serializable, Database {
 
         mediaList.values().stream()
                 .filter(s -> (s.getBareItemDetails().toLowerCase()).matches(regex))
-                .forEach(s -> filteredMedia.append(s.toString()));
+                .forEach(s -> filteredMedia.append("  - ").append(s.toString()));
 
         return filteredMedia.toString();
     }

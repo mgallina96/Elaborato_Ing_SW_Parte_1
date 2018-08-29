@@ -83,7 +83,10 @@ public class TextualView implements GuiManager {
                     settings();
                     break;
                 case 4:
-                    System.out.printf("%s%n", Notifications.getMessage("MSG_GOODBYE"));
+                    System.out.printf("%s%s%s%n",
+                            Notifications.getMessage("MSG_EXITING"),
+                            Notifications.getMessage("MSG_LIBRARY_NAME"),
+                            Notifications.getMessage("MSG_GOODBYE"));
                     exit = true;
                     break;
                 default:

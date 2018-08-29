@@ -1,8 +1,9 @@
 ﻿- -@ -
-MSG_BIBLIO_NAME -@ BIBLIOTECA SMARTin4t0r 3.0
+MSG_LIBRARY_NAME -@ BIBLIOTECA SMART 3.0
 MSG_SIGN_UP_SUCCESSFUL -@ Sign up successful. Welcome!
 MSG_EXIT_WITHOUT_SAVING -@ Exiting without saving...
-MSG_GOODBYE -@ Exiting BIBLIOTECA SMARTin4t0r 3.0... Goodbye!
+MSG_EXITING -@ Exiting 
+MSG_GOODBYE -@ ... Goodbye!
 MSG_LOG_OUT -@ Logging out...
 MSG_USER_LIST -@ Here is the list of all subscribed users:
 MSG_MEDIA_LIST -@ Here is the list of all media items:
@@ -40,16 +41,16 @@ PROMPT_FIRST_NAME -@ First name (please insert a valid first name):
 PROMPT_LAST_NAME -@ Last name (please insert a valid last name): 
 PROMPT_USERNAME -@ Username: 
 PROMPT_PASSWORD -@ Password: 
-PROMPT_BIRTHDAY -@ Birthday (accepted format: DD/MM/YYYY): 
+PROMPT_BIRTH_DATE -@ Birth date (accepted format: DD/MM/YYYY): 
 PROMPT_PRESENT_USER_MULTIPLE_CHOICE -@ (1) EXIT WITHOUT SAVING\t|\t(2) CHANGE FIELDS
-PROMPT_BIBLIO_INITIAL_CHOICES -@ (1) LOGIN\t|\t(2) SIGN UP\t|\t(3) SETTINGS\t|\t(4) EXIT
+PROMPT_LIBRARY_INITIAL_CHOICES -@ (1) LOGIN\t|\t(2) SIGN UP\t|\t(3) SETTINGS\t|\t(4) EXIT
 PROMPT_OPERATOR_CHOICES -@ (1) ADD A MEDIA ITEM\t|\t(2) REMOVE A MEDIA ITEM\t|\t(3) SHOW MEDIA ITEMS BY FOLDER\t|\t(4) SEARCH FOR MEDIA ITEMS\t|\t(5) VISUALIZE DATA\t|\t(6) LOGOUT
 PROMPT_DATA_VISUALIZATION_CHOICES -@ (1) SHOW ALL SUBSCRIBED USERS\t|\t(2) SHOW ALL LOANS\t|\t(3) SHOW THE NUMBER OF LOANS BY YEAR\t|\t(4) SHOW THE NUMBER OF LOANS BY USER AND YEAR\t|\n(5) SHOW THE NUMBER OF LOAN EXTENSIONS BY YEAR\t|\t(6) SHOW THE MOST LENT MEDIA ITEM\t|\t(7) QUIT
 PROMPT_CUSTOMER_CHOICES -@ (1) RENEW YOUR SUBSCRIPTION!\t|\t(2) REQUEST A LOAN\t|\t(3) EXTEND YOUR LOAN\t|\t(4) SEARCH FOR MEDIA ITEMS\t|\t(5) LOGOUT
 PROMPT_SIGN_UP_CONFIRMATION -@ Are you sure you want to submit this form? (y/n)
 PROMPT_REMOVE_CONFIRMATION -@ Are you sure you want to remove this media item? (y/n)
-PROMPT_LOGIN_SCREEN -@ Welcome back! Log in to BIBLIOTECA SMARTin4t0r 3.0
-PROMPT_SIGN_UP_SCREEN -@ Hi there! Sign up for BIBLIOTECA SMARTin4t0r 3.0
+PROMPT_LOGIN_SCREEN -@ Welcome back! Log in to 
+PROMPT_SIGN_UP_SCREEN -@ Hi there! Sign up for 
 PROMPT_MODIFY_FIELDS -@ Please modify the wrong fields.
 PROMPT_RETRY_LOGGING_IN -@ Please retry logging in with correct credentials.
 PROMPT_CHOOSE_MEDIA_TYPE -@ Please choose the media type you wish to add -> 
@@ -72,7 +73,8 @@ PROMPT_EXPIRY_IMMINENT -@ WARNING! SUBSCRIPTION EXPIRY IMMINENT!
 PROMPT_WHICH_FOLDER -@ Please choose the path you wish to see the contents of, by selecting the desired folders step by step.
 PROMPT_BORROW_CONFIRMATION -@ Are you sure you want to borrow this media item? (y/n)
 PROMPT_SEARCH_FOR_LOANS -@ Here's the list of the media items you borrowed. Please select the media item whose loan you wish to extend.
-PROMPT_CHOOSE_MEDIA_TO_EXTEND -@ Please select the ID of the media whose loan you wish to extend.
+PROMPT_CHOOSE_MEDIA_TO_EXTEND -@ Please insert the ID of the media whose loan you wish to extend.
+PROMPT_CHOOSE_MEDIA_TO_BORROW -@ Please insert the ID of the media you wish to borrow -> 
 PROMPT_CHOOSE_LANGUAGE -@ Please choose the desired language.
 ERR_NOT_OF_AGE -@ Warning: user is underage. Please re-fill this form.
 ERR_INVALID_NAME -@ Looks like this name has an invalid format, please re-insert a valid name.

@@ -29,10 +29,10 @@ public class Customer extends User {
      * @param lastName The customer's last name.
      * @param username The customer's username.
      * @param password The customer's password.
-     * @param birthday The customer's birthday, in {@code GregorianCalendar} form.
+     * @param birthDate The customer's birth date, in {@code GregorianCalendar} form.
      */
-    public Customer(String firstName, String lastName, String username, String password, GregorianCalendar birthday) {
-        this(firstName, lastName, username, password, birthday, new GregorianCalendar());
+    public Customer(String firstName, String lastName, String username, String password, GregorianCalendar birthDate) {
+        this(firstName, lastName, username, password, birthDate, new GregorianCalendar());
     }
 
     /**
@@ -42,11 +42,11 @@ public class Customer extends User {
      * @param lastName The customer's last name.
      * @param username The customer's username.
      * @param password The customer's password.
-     * @param birthday The customer's birthday, in {@code GregorianCalendar} form.
+     * @param birthDate The customer's birth date, in {@code GregorianCalendar} form.
      * @param subscriptionDate The customer's subscription date, in {@code GregorianCalendar} form.
      */
-    private Customer(String firstName, String lastName, String username, String password, GregorianCalendar birthday, GregorianCalendar subscriptionDate) {
-        super(firstName, lastName, username, password, birthday);
+    private Customer(String firstName, String lastName, String username, String password, GregorianCalendar birthDate, GregorianCalendar subscriptionDate) {
+        super(firstName, lastName, username, password, birthDate);
         super.setUserStatus(UserStatus.CUSTOMER);
 
         this.renewalDates = new ArrayList<>();
@@ -127,7 +127,7 @@ public class Customer extends User {
     public String toString() {
         return String.format("First name: %s\t|\tLast name: %s\t|\tUsername: %s\t|\tBirthday = %s\t|\tSubscription date = %s%n",
                 getFirstName(), getLastName(), getUsername(),
-                getBirthday().toZonedDateTime().toString().substring(0, 10),
+                getBirthDate().toZonedDateTime().toString().substring(0, 10),
                 subscriptionDate.toZonedDateTime().toString().substring(0, 10));
     }
 }

@@ -19,7 +19,10 @@ public class SignUpScreen extends Screen {
      */
     public SignUpScreen(UserController userController) {
         super(userController);
-        System.out.printf("%s%n%s%n", Notifications.getMessage("PROMPT_SIGN_UP_SCREEN"), Notifications.getMessage("SEPARATOR"));
+        System.out.printf("%s%s%n%s%n",
+                Notifications.getMessage("PROMPT_SIGN_UP_SCREEN"),
+                Notifications.getMessage("MSG_LIBRARY_NAME"),
+                Notifications.getMessage("SEPARATOR"));
 
         int status;
         do {
@@ -71,15 +74,15 @@ public class SignUpScreen extends Screen {
         System.out.print(Notifications.getMessage("PROMPT_PASSWORD"));
         String password = getScanner().nextLine();
 
-        System.out.print(Notifications.getMessage("PROMPT_BIRTHDAY"));
-        String birthday = insertDate();
+        System.out.print(Notifications.getMessage("PROMPT_BIRTH_DATE"));
+        String birthDate = insertDate();
 
         System.out.printf("%s%n%s%n%s%n", Notifications.getMessage("SEPARATOR"), Notifications.getMessage("PROMPT_SIGN_UP_CONFIRMATION"), Notifications.getMessage("SEPARATOR"));
 
         if(insertString(YN_REGEX).equalsIgnoreCase(NO))
             throw new InterruptedException();
 
-        return new String[]{firstName, lastName, username, password, birthday};
+        return new String[]{firstName, lastName, username, password, birthDate};
     }
 
     //routine that gets executed if the user is trying to sign up but is already present in the database

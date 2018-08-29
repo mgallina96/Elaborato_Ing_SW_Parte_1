@@ -17,7 +17,7 @@ public class User implements Serializable {
     private String firstName;
     private String lastName;
     private String password;
-    private GregorianCalendar birthday;
+    private GregorianCalendar birthDate;
 
     /**
      * The least specific user constructor (mainly used to quickly initialize a user for database matching).
@@ -34,10 +34,10 @@ public class User implements Serializable {
     /**
      * Constructor that builds a new {@code Customer} object using the given parameters.
      *
-     * @param birthday The customer's birthday, in {@code GregorianCalendar} form.
+     * @param birthDate The customer's birth date, in {@code GregorianCalendar} form.
      */
-    public User(GregorianCalendar birthday) {
-        this(DEFAULT_FIRST_NAME, DEFAULT_LAST_NAME, DEFAULT_USERNAME, DEFAULT_PASSWORD, birthday);
+    public User(GregorianCalendar birthDate) {
+        this(DEFAULT_FIRST_NAME, DEFAULT_LAST_NAME, DEFAULT_USERNAME, DEFAULT_PASSWORD, birthDate);
     }
 
     /**
@@ -59,14 +59,14 @@ public class User implements Serializable {
      * @param lastName The user's last name.
      * @param username The user's unique username.
      * @param password The user's password.
-     * @param birthday The user's birth date.
+     * @param birthDate The user's birth date.
      */
-    public User(String firstName, String lastName, String username, String password, GregorianCalendar birthday) {
+    public User(String firstName, String lastName, String username, String password, GregorianCalendar birthDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
-        this.birthday = birthday;
+        this.birthDate = birthDate;
     }
 
     /**
@@ -146,17 +146,17 @@ public class User implements Serializable {
      *
      * @return the birth date in {@code GregorianCalendar} form.
      */
-    public GregorianCalendar getBirthday() {
-        return birthday;
+    public GregorianCalendar getBirthDate() {
+        return birthDate;
     }
 
     /**
      * Setter for the user's birth date.
      *
-     * @param birthday The birth date in {@code GregorianCalendar} form.
+     * @param birthDate The birth date in {@code GregorianCalendar} form.
      */
-    public void setBirthday(GregorianCalendar birthday) {
-        this.birthday = birthday;
+    public void setBirthDate(GregorianCalendar birthDate) {
+        this.birthDate = birthDate;
     }
 
     /**
@@ -184,7 +184,7 @@ public class User implements Serializable {
      * @return the user's details, in form of a {@code String}.
      */
     public String toString() {
-        return String.format("First name: %s\t|\tLast name: %s\t|\tUsername: %s\t|\tBirthday = %s%n",
-                firstName, lastName, username, birthday.toZonedDateTime().toString().substring(0, 10));
+        return String.format("First name: %s\t|\tLast name: %s\t|\tUsername: %s\t|\tBirth date = %s%n",
+                firstName, lastName, username, birthDate.toZonedDateTime().toString().substring(0, 10));
     }
 }

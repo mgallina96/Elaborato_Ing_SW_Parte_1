@@ -106,6 +106,8 @@ public class CustomerScreen extends Screen {
 
     //allows the user to borrow a media item.
     private void borrowMedia() {
+        System.out.printf("%s", Notifications.getMessage("PROMPT_CHOOSE_MEDIA_TO_BORROW"));
+
         int id = insertInteger();
         while(!getMediaController().mediaIsPresent(id)) {
             System.out.println(Notifications.getMessage("ERR_MEDIA_NOT_PRESENT"));

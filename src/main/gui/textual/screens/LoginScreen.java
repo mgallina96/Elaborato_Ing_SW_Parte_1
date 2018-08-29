@@ -29,7 +29,10 @@ public class LoginScreen extends Screen {
      * @return The username of the user who just logged in.
      */
     public String login() {
-        System.out.printf("%s%n%s%n", Notifications.getMessage("PROMPT_LOGIN_SCREEN"), Notifications.getMessage("SEPARATOR"));
+        System.out.printf("%s%s%n%s%n",
+                Notifications.getMessage("PROMPT_LOGIN_SCREEN"),
+                Notifications.getMessage("MSG_LIBRARY_NAME"),
+                Notifications.getMessage("SEPARATOR"));
 
         while(true) {
             String username;
