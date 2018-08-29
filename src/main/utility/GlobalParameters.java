@@ -16,10 +16,10 @@ public class GlobalParameters {
     public static final int LONG_SEPARATOR_BOUND = 166;
 
     //strings
-    public static final String MEDIA_DATABASE_FILE_PATH = "resources\\data\\Biblioteca SMARTINATOR - Media Database.ser";
-    public static final String LOAN_DATABASE_FILE_PATH = "resources\\data\\Biblioteca SMARTINATOR - Loan Database.ser";
-    public static final String USER_DATABASE_FILE_PATH = "resources\\data\\Biblioteca SMARTINATOR - User Database.ser";
-    public static final String FILESYSTEM_FILE_PATH = "resources\\data\\Biblioteca SMARTINATOR - File System.ser";
+    public static final String MEDIA_DATABASE_FILE_PATH = "resources\\data\\Biblioteca SMART - Media Database.ser";
+    public static final String LOAN_DATABASE_FILE_PATH = "resources\\data\\Biblioteca SMART - Loan Database.ser";
+    public static final String USER_DATABASE_FILE_PATH = "resources\\data\\Biblioteca SMART - User Database.ser";
+    public static final String FILESYSTEM_FILE_PATH = "resources\\data\\Biblioteca SMART - File System.ser";
 
     private GlobalParameters() {}
 

@@ -1,5 +1,5 @@
 ﻿- -@ -
-MSG_LIBRARY_NAME -@ BIBLIOTECA SMART 3.0
+MSG_LIBRARY_NAME -@ BIBLIOTECA SMART
 MSG_SIGN_UP_SUCCESSFUL -@ Registrazione avvenuta con successo. Benvenuto/a!
 MSG_EXIT_WITHOUT_SAVING -@ Uscita in corso senza salvare...
 MSG_EXITING -@ Uscita in corso da 

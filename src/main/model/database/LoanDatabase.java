@@ -28,8 +28,6 @@ public class LoanDatabase implements Serializable, Database {
     //LoanDatabase initializer.
     private LoanDatabase() {
         this.loans = new HashMap<>();
-
-        sweep();
     }
 
     /**
@@ -246,11 +244,12 @@ public class LoanDatabase implements Serializable, Database {
     }
 */
     //sweeps the database, looking for invalid entries and deleting them.
-    private void sweep() {
+    public void sweep() {
         for(ArrayList<Loan> al : loans.values())
             for(Loan l : al) {
                 if(l.hasExpired()) {
-                    l.getMedia().giveBack();
+                    System.out.println("Utente: " + l.getUser().getUsername() + "\n\tMedia: " + l.getMedia().getBareItemDetails());
+                    MediaDatabase.getInstance().fetch(l.getMedia()).giveBack();
                     l.setActive(false);
                 }
             }

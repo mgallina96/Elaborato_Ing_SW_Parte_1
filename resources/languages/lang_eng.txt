@@ -1,5 +1,5 @@
 ﻿- -@ -
-MSG_LIBRARY_NAME -@ BIBLIOTECA SMART 3.0
+MSG_LIBRARY_NAME -@ BIBLIOTECA SMART
 MSG_SIGN_UP_SUCCESSFUL -@ Sign up successful. Welcome!
 MSG_EXIT_WITHOUT_SAVING -@ Exiting without saving...
 MSG_EXITING -@ Exiting 
