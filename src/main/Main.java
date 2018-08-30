@@ -30,7 +30,5 @@ public class Main {
         textualView.mainScreen();
 //      GuiManager graphicalView = new GraphicView(CONTROLLER, FILE_SYSTEM_CONTROLLER);
 //      graphicalView.mainScreen();
-
-
     }
 }

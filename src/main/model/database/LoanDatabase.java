@@ -221,38 +221,22 @@ public class LoanDatabase implements Serializable, Database {
     }
 
     /**
-     * Opens a .ser serializable file and loads its contents into this {@link LoanDatabase} class.<p>
-     * This method loads a {@code HashMap} containing a record of all loans.
+     * Sweeps the database, looking for invalid entries and collecting them.
+     * @return An {@code ArrayList} containing the list of books to be returned.
      */
-    @SuppressWarnings("unchecked")
-/*    private void loadLoanDatabase() {
-        try (
-            FileInputStream fileIn = new FileInputStream(LOAN_DATABASE_FILE_PATH);
-            ObjectInputStream in = new ObjectInputStream(fileIn)
-        ) {
-            setLoanDatabase((LoanDatabase)in.readObject());
-        }
-        catch(FileNotFoundException fnfEx) {
-            logger.log(Level.SEVERE, Notifications.getMessage("ERR_FILE_NOT_FOUND") + this.getClass().getName());
-        }
-        catch(IOException ioEx) {
-            logger.log(Level.SEVERE, Notifications.getMessage("ERR_LOADING_DATABASE") + this.getClass().getName());
-        }
-        catch(ClassNotFoundException cnfEx) {
-            logger.log(Level.SEVERE, Notifications.getMessage("ERR_CLASS_NOT_FOUND") + this.getClass().getName());
-        }
-    }
-*/
-    //sweeps the database, looking for invalid entries and deleting them.
-    public void sweep() {
-        for(ArrayList<Loan> al : loans.values())
+    public ArrayList<Integer> sweep() {
+        ArrayList<Integer> toGiveBack = new ArrayList<>();
+
+        for(ArrayList<Loan> al : loans.values()) {
             for(Loan l : al) {
-                if(l.hasExpired()) {
-                    System.out.println("Utente: " + l.getUser().getUsername() + "\n\tMedia: " + l.getMedia().getBareItemDetails());
-                    MediaDatabase.getInstance().fetch(l.getMedia()).giveBack();
+                if(l.hasExpired() && l.isActive()) {
+                    toGiveBack.add(l.getMedia().getIdentifier());
                     l.setActive(false);
                 }
             }
+        }
+
+        return toGiveBack;
     }
 
     /**
