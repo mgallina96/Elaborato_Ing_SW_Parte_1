@@ -1,11 +1,10 @@
 package main.gui.textual;
+
 import main.controller.*;
 import main.gui.GuiManager;
 import main.gui.textual.screens.*;
 import main.utility.notifications.Notifications;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Scanner;
 
 /**
  * Class that manages a textual GUI for the application, loading the different sections when they are needed and

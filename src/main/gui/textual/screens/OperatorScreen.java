@@ -1,9 +1,11 @@
 package main.gui.textual.screens;
+
 import main.controller.FileSystemController;
 import main.controller.LoanController;
 import main.controller.MediaController;
 import main.controller.UserController;
 import main.utility.notifications.Notifications;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 

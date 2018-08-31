@@ -1,2 +1,3 @@
 
-“squid:S1319e"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Æ€áâûÿÿÿÿ8•áæŠ¹,
+“squid:S1319n"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Æ€áâûÿÿÿÿ8•áæŠ¹,
+Ysquid:S1161":Add the "@Override" annotation above this method signature(Á»›ê8ˆ¡­âÖ,

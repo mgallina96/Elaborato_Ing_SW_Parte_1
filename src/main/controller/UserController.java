@@ -1,7 +1,10 @@
 package main.controller;
+
 import main.utility.exceptions.IllegalDateFormatException;
+import main.utility.exceptions.NotOfAgeException;
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.exceptions.WrongPasswordException;
+
 import java.util.GregorianCalendar;
 
 /**
@@ -48,13 +51,6 @@ public interface UserController extends Controller {
     boolean userIsPresent(String username);
 
     /**
-     *
-     * @param date
-     * @return
-     */
-    boolean isOfAge(String date) throws IllegalDateFormatException;
-
-    /**
      * Adds a new user to the database.
      *
      * @param firstName The user's first name.
@@ -62,8 +58,11 @@ public interface UserController extends Controller {
      * @param username The user's username.
      * @param password The user's password.
      * @param birthday The user's birthday.
+     *
+     * @throws NotOfAgeException If the user is less than 18.
+     * @throws IllegalDateFormatException If the submitted date has an illegal format.
      */
-    boolean addUserToDatabase(String firstName, String lastName, String username, String password, GregorianCalendar birthday);
+    boolean addUserToDatabase(String firstName, String lastName, String username, String password, String birthday) throws NotOfAgeException, IllegalDateFormatException;
 
     /**
      * Getter for the User status (CUSTOMER or OPERATOR).

@@ -1,12 +1,13 @@
 package main.model.database;
+
 import main.utility.notifications.Notifications;
 import org.jetbrains.annotations.NotNull;
+
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static main.utility.GlobalParameters.LOAN_DATABASE_FILE_PATH;
-import static main.utility.GlobalParameters.MEDIA_DATABASE_FILE_PATH;
-import static main.utility.GlobalParameters.USER_DATABASE_FILE_PATH;
+
+import static main.utility.GlobalParameters.*;
 
 public class DatabaseIO {
 
@@ -42,7 +43,7 @@ public class DatabaseIO {
      * @return The media database.
      */
     @SuppressWarnings("unchecked")
-    public static MediaDatabase loadMediaDatabase() {
+    static MediaDatabase loadMediaDatabase() {
         try (
                 FileInputStream fileIn = new FileInputStream(MEDIA_DATABASE_FILE_PATH);
                 ObjectInputStream in = new ObjectInputStream(fileIn)
@@ -67,7 +68,7 @@ public class DatabaseIO {
      * @return The user database.
      */
     @SuppressWarnings("unchecked")
-    public static UserDatabase loadUserDatabase() {
+    static UserDatabase loadUserDatabase() {
         try (
                 FileInputStream fileIn = new FileInputStream(USER_DATABASE_FILE_PATH);
                 ObjectInputStream in = new ObjectInputStream(fileIn)
@@ -92,7 +93,7 @@ public class DatabaseIO {
      * @return The loan database.
      */
     @SuppressWarnings("unchecked")
-    public static LoanDatabase loadLoanDatabase() {
+    static LoanDatabase loadLoanDatabase() {
         try (
                 FileInputStream fileIn = new FileInputStream(LOAN_DATABASE_FILE_PATH);
                 ObjectInputStream in = new ObjectInputStream(fileIn)

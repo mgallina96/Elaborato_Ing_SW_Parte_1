@@ -1,6 +1,8 @@
 package main.utility;
+
 import main.utility.exceptions.IllegalDateFormatException;
 import main.utility.notifications.Notifications;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
@@ -275,5 +277,17 @@ public class InputParserUtility {
         }
         else
             throw new IllegalDateFormatException();
+    }
+
+    /**
+     * Converts a date from the default GregorianCalendar format to the standard European format: from YYYY/MM/DD to
+     * DD/MM/YYYY.
+     *
+     * @param toConvert The birthday to be converted.
+     * @return The "european" birth date.
+     */
+    public static String convertDateToEuropeanFormat(GregorianCalendar toConvert) {
+        String date = toConvert.toZonedDateTime().toString();
+        return String.format("%s/%s/%s", date.substring(8, 10), date.substring(5, 7), date.substring(0, 4));
     }
 }

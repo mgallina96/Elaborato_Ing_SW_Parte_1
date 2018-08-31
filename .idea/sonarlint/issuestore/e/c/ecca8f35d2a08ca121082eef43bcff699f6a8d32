@@ -1,18 +1,18 @@
 
-bsquid:S2142:"FEither re-interrupt this method or rethrow the "InterruptedException".(²ı…¦ûÿÿÿÿ
 O
-squid:S1062"9Replace this use of System.out or System.err by a logger.(àì¿¿
-T
-squid:S106O"9Replace this use of System.out or System.err by a logger.(Æİêùÿÿÿÿ
+squid:S1060"9Replace this use of System.out or System.err by a logger.(àì¿¿
+bsquid:S21428"FEither re-interrupt this method or rethrow the "InterruptedException".(²ı…¦ûÿÿÿÿ
+[
+squid:S106&"9Replace this use of System.out or System.err by a logger.(ì’×üÿÿÿÿ8šÆÆ¼Õ,
+[
+squid:S1069"9Replace this use of System.out or System.err by a logger.(¤ÚÃ¶øÿÿÿÿ8šÆÆ¼Õ,
+V
+squid:S1065"9Replace this use of System.out or System.err by a logger.(òó°×8šÆÆ¼Õ,
+V
+squid:S106@"9Replace this use of System.out or System.err by a logger.(†ó™†8šÆÆ¼Õ,
+V
+squid:S106="9Replace this use of System.out or System.err by a logger.(ü¬»Ä8šÆÆ¼Õ,
 U
-squid:S106""9Replace this use of System.out or System.err by a logger.(Çš:8šÆÆ¼Õ,
-[
-squid:S106("9Replace this use of System.out or System.err by a logger.(ì’×üÿÿÿÿ8šÆÆ¼Õ,
-V
-squid:S1067"9Replace this use of System.out or System.err by a logger.(òó°×8šÆÆ¼Õ,
-[
-squid:S106;"9Replace this use of System.out or System.err by a logger.(¤ÚÃ¶øÿÿÿÿ8šÆÆ¼Õ,
-V
-squid:S106?"9Replace this use of System.out or System.err by a logger.(ü¬»Ä8šÆÆ¼Õ,
-V
-squid:S106B"9Replace this use of System.out or System.err by a logger.(†ó™†8šÆÆ¼Õ,
+squid:S106 "9Replace this use of System.out or System.err by a logger.(Çš:8šÆÆ¼Õ,
+T
+squid:S106M"9Replace this use of System.out or System.err by a logger.(Æİêùÿÿÿÿ

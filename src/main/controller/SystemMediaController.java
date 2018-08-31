@@ -1,10 +1,10 @@
 package main.controller;
+
 import main.model.database.MediaDatabase;
 import main.model.media.Book;
 import main.model.media.Film;
 import main.model.media.Media;
-import java.util.logging.Logger;
-import static main.model.database.DatabaseIO.loadMediaDatabase;
+
 import static main.model.database.DatabaseIO.saveDatabase;
 import static main.utility.GlobalParameters.MEDIA_DATABASE_FILE_PATH;
 

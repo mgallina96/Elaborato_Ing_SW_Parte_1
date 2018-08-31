@@ -1,8 +1,9 @@
 package main.model.database;
+
 import main.model.media.Media;
-import java.io.*;
+
+import java.io.Serializable;
 import java.util.HashMap;
-import java.util.logging.Logger;
 
 import static main.model.database.DatabaseIO.loadMediaDatabase;
 
@@ -57,6 +58,17 @@ public class MediaDatabase implements Serializable, Database {
      */
     public void removeMedia(Media toRemove) {
         mediaList.get(toRemove.getIdentifier()).setUnavailable();
+    }
+
+    /**
+     * ACTUALLY removes the desired media.
+     * FOR TESTING PURPOSES ONLY.
+     *
+     * @param toRemove The media item(s) to be (actually) removed.
+     */
+    public void actuallyRemoveMedia(Media... toRemove) {
+        for(Media trm : toRemove)
+            mediaList.remove(trm.getIdentifier());
     }
 
     /**

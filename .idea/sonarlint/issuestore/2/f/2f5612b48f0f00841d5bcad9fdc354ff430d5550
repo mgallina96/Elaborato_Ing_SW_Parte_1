@@ -1,40 +1,47 @@
 
 V
-squid:S106."9Replace this use of System.out or System.err by a logger.(Ï²Î×8¯«³†¹,
+squid:S106'"9Replace this use of System.out or System.err by a logger.(ÔÁ’‡8ªÚîİÖ,
 [
-squid:S106F"9Replace this use of System.out or System.err by a logger.(¶Û¼Íøÿÿÿÿ8¯«³†¹,
-[
-squid:S106Q"9Replace this use of System.out or System.err by a logger.(‘ùÀ şÿÿÿÿ8¯«³†¹,
-[
-squid:S106]"9Replace this use of System.out or System.err by a logger.(÷û °ûÿÿÿÿ8¯«³†¹,
-[
-squid:S106k"9Replace this use of System.out or System.err by a logger.(¢ö¬şÿÿÿÿ8¯«³†¹,
+squid:S106}"9Replace this use of System.out or System.err by a logger.( Ñ˜ùÿÿÿÿ8¯«³†¹,
+\
+squid:S106‰"9Replace this use of System.out or System.err by a logger.(÷û °ûÿÿÿÿ8¯«³†¹,
 V
-squid:S106n"9Replace this use of System.out or System.err by a logger.(ò­³Ñ8¯«³†¹,
+squid:S106%"9Replace this use of System.out or System.err by a logger.(€ï×¥8ªÚîİÖ,
 [
-squid:S106r"9Replace this use of System.out or System.err by a logger.(ªÊàıÿÿÿÿ8¯«³†¹,
+squid:S106s"9Replace this use of System.out or System.err by a logger.(—®’úÿÿÿÿ8¯«³†¹,
+\
+squid:S106“"9Replace this use of System.out or System.err by a logger.(Õ¸²¨şÿÿÿÿ8ªÚîİÖ,
+\
+squid:S106‘"9Replace this use of System.out or System.err by a logger.(ó…îÿÿÿÿÿ8¯«³†¹,
 [
-squid:S106>"9Replace this use of System.out or System.err by a logger.(¤­‘„ùÿÿÿÿ8¯«³†¹,
-lsquid:S1192 "IDefine a constant instead of duplicating this literal "%s%n%s%n" 3 times.( “±ˆÿÿÿÿÿ8³ ·¸,
+squid:S106)"9Replace this use of System.out or System.err by a logger.(Õ¯øşÿÿÿÿ8ªÚîİÖ,
 [
-squid:S106h"9Replace this use of System.out or System.err by a logger.(ÓÅ¢øÿÿÿÿ8¯«³†¹,
+squid:S106L"9Replace this use of System.out or System.err by a logger.(§Ş€Êøÿÿÿÿ8¯«³†¹,
 [
-squid:S106a"9Replace this use of System.out or System.err by a logger.(—®’úÿÿÿÿ8¯«³†¹,
+squid:S106x"9Replace this use of System.out or System.err by a logger.(ñ–äøÿÿÿÿ8¯«³†¹,
+W
+squid:S106˜"9Replace this use of System.out or System.err by a logger.(õ³É8ªÚîİÖ,
 [
-squid:S106v"9Replace this use of System.out or System.err by a logger.(÷û °ûÿÿÿÿ8¯«³†¹,
-[
-squid:S106|"9Replace this use of System.out or System.err by a logger.(ó…îÿÿÿÿÿ8¯«³†¹,
-T
-squid:S106"9Replace this use of System.out or System.err by a logger.(ÊÅİëÿÿÿÿÿ
-[
-squid:S106f"9Replace this use of System.out or System.err by a logger.(ñ–äøÿÿÿÿ8¯«³†¹,
-[
-squid:S106<"9Replace this use of System.out or System.err by a logger.(§Ş€Êøÿÿÿÿ8¯«³†¹,
-T
-squid:S106 "9Replace this use of System.out or System.err by a logger.( “±ˆÿÿÿÿÿ
+squid:S106N"9Replace this use of System.out or System.err by a logger.(¤­‘„ùÿÿÿÿ8¯«³†¹,
 V
-squid:S106S"9Replace this use of System.out or System.err by a logger.(ƒ¼ĞÈ8¯«³†¹,
+squid:S106d"9Replace this use of System.out or System.err by a logger.(ƒ¼ĞÈ8¯«³†¹,
+W
+squid:S106›"9Replace this use of System.out or System.err by a logger.(ü€Ã8ªÚîİÖ,
+[
+squid:S106b"9Replace this use of System.out or System.err by a logger.(‘ùÀ şÿÿÿÿ8¯«³†¹,
+W
+squid:S106€"9Replace this use of System.out or System.err by a logger.(ò­³Ñ8¯«³†¹,
+[
+squid:S106o"9Replace this use of System.out or System.err by a logger.(÷û °ûÿÿÿÿ8¯«³†¹,
 V
-squid:S106"9Replace this use of System.out or System.err by a logger.(½İ8¯«³†¹,
+squid:S106["9Replace this use of System.out or System.err by a logger.(ò­³Ñ8¯«³†¹,
+\
+squid:S106…"9Replace this use of System.out or System.err by a logger.(ªÊàıÿÿÿÿ8¯«³†¹,
 V
-squid:S106J"9Replace this use of System.out or System.err by a logger.(ò­³Ñ8¯«³†¹,
+squid:S106="9Replace this use of System.out or System.err by a logger.(Ï²Î×8¯«³†¹,
+[
+squid:S106W"9Replace this use of System.out or System.err by a logger.(¶Û¼Íøÿÿÿÿ8¯«³†¹,
+[
+squid:S106z"9Replace this use of System.out or System.err by a logger.(ÓÅ¢øÿÿÿÿ8¯«³†¹,
+[
+squid:S106"9Replace this use of System.out or System.err by a logger.(¨´î×üÿÿÿÿ8ªÚîİÖ,

@@ -1,4 +1,5 @@
 package generators.mediagenerator;
+
 import generators.randomwords.PoolLoader;
 import generators.randomwords.RandomWords;
 import generators.usergenerator.PersonNameGenerator;
@@ -10,7 +11,6 @@ import java.util.Collections;
 import java.util.Random;
 
 import static generators.Generator.COMMON_BOOK_PATH;
-import static generators.Generator.COMMON_MEDIA_PATH;
 
 /**
  * Book generator class. Generates an arbitrary number of books with random parameters.

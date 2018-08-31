@@ -1,4 +1,5 @@
 package main.model.user;
+import main.utility.InputParserUtility;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -125,9 +126,9 @@ public class Customer extends User {
      * @return The customer's details, in form of a {@code String}.
      */
     public String toString() {
-        return String.format("First name: %s\t|\tLast name: %s\t|\tUsername: %s\t|\tBirthday = %s\t|\tSubscription date = %s%n",
+        return String.format("First name: %s\t|\tLast name: %s\t|\tUsername: %s\t|\tBirth date = %s\t|\tSubscription date = %s%n",
                 getFirstName(), getLastName(), getUsername(),
-                getBirthDate().toZonedDateTime().toString().substring(0, 10),
-                subscriptionDate.toZonedDateTime().toString().substring(0, 10));
+                InputParserUtility.convertDateToEuropeanFormat(getBirthDate()),
+                InputParserUtility.convertDateToEuropeanFormat(subscriptionDate));
     }
 }

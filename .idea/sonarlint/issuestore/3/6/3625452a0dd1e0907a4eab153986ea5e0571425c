@@ -1,4 +1,2 @@
 
-[squid:UnusedPrivateMethodp"/Remove this unused private "getCounter" method.(úıüÒ8Œ€¨¼,
-[squid:UnusedPrivateMethodt"/Remove this unused private "setCounter" method.(İØ¸8Œ€¨¼,
-‹squid:S1319l"mThe return type of this method should be an interface such as "Map" rather than the implementation "HashMap".(ğâÔ8¸»¦õ¼,
+osquid:CommentedOutCodeLineŒ"<This block of commented-out lines of code should be removed.(˜»²µûÿÿÿÿ8—á×àÖ,

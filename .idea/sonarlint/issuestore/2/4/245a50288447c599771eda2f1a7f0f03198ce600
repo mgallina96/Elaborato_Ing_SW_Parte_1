@@ -1,3 +1,4 @@
 
-T
-squid:S106="9Replace this use of System.out or System.err by a logger.(ž¥ äúÿÿÿÿ
+Fsquid:S11480"#Use a logger to log this exception.(¹çª©ýÿÿÿÿ8³ÃŽàÖ,
+[
+squid:S106R"9Replace this use of System.out or System.err by a logger.(ýîü€üÿÿÿÿ8³ÃŽàÖ,

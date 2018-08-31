@@ -1,9 +1,10 @@
 package main;
+
 import main.controller.*;
 import main.gui.GuiManager;
 import main.gui.textual.TextualView;
-import main.model.user.User;
 import main.utility.notifications.Notifications;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

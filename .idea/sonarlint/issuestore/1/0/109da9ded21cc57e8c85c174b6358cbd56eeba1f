@@ -1,26 +1,20 @@
 
-Ysquid:UnusedPrivateMethod("4Remove this unused private "printFileSystem" method.(Âˆ¾›
-Xsquid:UnusedPrivateMethod5"3Remove this unused private "fillFileSystem" method.(™ïôÓ
-Usquid:UnusedPrivateMethodH"1Remove this unused private "fillDatabase" method.(Î†ÆJ
-Osquid:S1068"8Remove this unused "COMMON_DATABASE_PATH" private field.(˜ÔÕÌ
-bsquid:CommentedOutCodeLine#"<This block of commented-out lines of code should be removed.(à—´Ö
-bsquid:CommentedOutCodeLineZ"<This block of commented-out lines of code should be removed.(¦û›‘
-T
-squid:S106+"9Replace this use of System.out or System.err by a logger.(¹É¢¹şÿÿÿÿ
-T
-squid:S106,"9Replace this use of System.out or System.err by a logger.(…¨Äûÿÿÿÿ
-T
-squid:S106."9Replace this use of System.out or System.err by a logger.(œáğ§üÿÿÿÿ
-T
-squid:S106/"9Replace this use of System.out or System.err by a logger.(¤ÇŒşÿÿÿÿ
-T
-squid:S1061"9Replace this use of System.out or System.err by a logger.(òè¹°şÿÿÿÿ
+osquid:S00117="QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”¯f8ø„òßÖ,
+nsquid:S00117>"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕŒçÇúÿÿÿÿ
+usquid:S001178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñ¥¦•ùÿÿÿÿ8ø„òßÖ,
 T
 squid:S1062"9Replace this use of System.out or System.err by a logger.(„ˆšœùÿÿÿÿ
->squid:S1481I"'Remove this unused "sc" local variable.(õŸ€¥
-Hsquid:S1481L"1Remove this unused "loanDatabase" local variable.(Òáª²
-Wsquid:S1854L"@Remove this useless assignment to local variable "loanDatabase".(Òáª²
-Msquid:S1854I"6Remove this useless assignment to local variable "sc".(õŸ€¥
-nsquid:S001178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñ¥¦•ùÿÿÿÿ
-hsquid:S00117="QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”¯f
-nsquid:S00117>"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÕŒçÇúÿÿÿÿ
+\squid:UnusedPrivateMethodH"1Remove this unused private "fillDatabase" method.(Î†ÆJ8ø„òßÖ,
+[
+squid:S1061"9Replace this use of System.out or System.err by a logger.(òè¹°şÿÿÿÿ8ø„òßÖ,
+`squid:UnusedPrivateMethod("4Remove this unused private "printFileSystem" method.(Âˆ¾›8ø„òßÖ,
+[
+squid:S106+"9Replace this use of System.out or System.err by a logger.(¹É¢¹şÿÿÿÿ8ø„òßÖ,
+T
+squid:S106,"9Replace this use of System.out or System.err by a logger.(…¨Äûÿÿÿÿ
+isquid:CommentedOutCodeLine#"<This block of commented-out lines of code should be removed.(à—´Ö8ø„òßÖ,
+[
+squid:S106."9Replace this use of System.out or System.err by a logger.(œáğ§üÿÿÿÿ8ø„òßÖ,
+T
+squid:S106/"9Replace this use of System.out or System.err by a logger.(¤ÇŒşÿÿÿÿ
+_squid:UnusedPrivateMethod5"3Remove this unused private "fillFileSystem" method.(™ïôÓ8ø„òßÖ,

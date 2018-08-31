@@ -1,4 +1,5 @@
 package main.gui.graphic.screens.start;
+
 import main.controller.UserController;
 import main.gui.graphic.components.BackgroundImagePanel;
 import main.utility.InputParserUtility;
@@ -11,6 +12,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.Arrays;
+
 import static main.gui.graphic.Resources.*;
 
 /**

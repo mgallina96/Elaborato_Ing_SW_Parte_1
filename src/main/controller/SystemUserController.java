@@ -1,18 +1,20 @@
 package main.controller;
+
 import main.model.database.UserDatabase;
 import main.model.user.Customer;
 import main.model.user.User;
 import main.utility.InputParserUtility;
 import main.utility.exceptions.IllegalDateFormatException;
+import main.utility.exceptions.NotOfAgeException;
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.exceptions.WrongPasswordException;
+
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import static main.model.database.DatabaseIO.*;
-import static main.utility.GlobalParameters.LEGAL_AGE_IN_YEARS;
-import static main.utility.GlobalParameters.RENEWAL_BOUNDARY_IN_DAYS;
-import static main.utility.GlobalParameters.USER_DATABASE_FILE_PATH;
+
+import static main.model.database.DatabaseIO.saveDatabase;
+import static main.utility.GlobalParameters.*;
 
 public class SystemUserController implements UserController {
 
@@ -48,23 +50,22 @@ public class SystemUserController implements UserController {
     }
 
     @Override
-    public boolean isOfAge(String date) throws IllegalDateFormatException {
-        return InputParserUtility.isOfAge(date, LEGAL_AGE_IN_YEARS);
-    }
-
-    @Override
     public boolean userIsPresent(String username) {
         return userDatabase.isPresent(new User(username));
     }
 
     @Override
-    public boolean addUserToDatabase(String firstName, String lastName, String username, String password, GregorianCalendar birthday) {
-        Customer c = new Customer(firstName, lastName, username, password, birthday);
+    public boolean addUserToDatabase(String firstName, String lastName, String username, String password, String birthday) throws NotOfAgeException, IllegalDateFormatException {
+        Customer c = new Customer(firstName, lastName, username, password, InputParserUtility.toGregorianDate(birthday));
 
         if(!userDatabase.isPresent(c)) {
-            userDatabase.addUser(c);
-            saveDatabase(USER_DATABASE_FILE_PATH, userDatabase);
-            return true;
+            if(InputParserUtility.isOfAge(birthday, LEGAL_AGE_IN_YEARS)) {
+                userDatabase.addUser(c);
+                saveDatabase(USER_DATABASE_FILE_PATH, userDatabase);
+                return true;
+            }
+            else
+                throw new NotOfAgeException();
         }
 
         return false;
@@ -112,7 +113,7 @@ public class SystemUserController implements UserController {
         try {
             Customer customer = (Customer)userDatabase.getCurrentUser();
 
-            GregorianCalendar correctedExpiryDate = (GregorianCalendar) (customer.getExpiryDateGregorian().clone());
+            GregorianCalendar correctedExpiryDate = (GregorianCalendar)(customer.getExpiryDateGregorian().clone());
             correctedExpiryDate.add(Calendar.DATE, -RENEWAL_BOUNDARY_IN_DAYS);
 
             if(new GregorianCalendar().after(correctedExpiryDate)) {

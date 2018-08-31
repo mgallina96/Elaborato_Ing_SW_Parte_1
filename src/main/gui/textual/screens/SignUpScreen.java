@@ -1,9 +1,10 @@
 package main.gui.textual.screens;
+
 import main.controller.UserController;
 import main.utility.InputParserUtility;
 import main.utility.exceptions.IllegalDateFormatException;
+import main.utility.exceptions.NotOfAgeException;
 import main.utility.notifications.Notifications;
-import static main.utility.GlobalParameters.LEGAL_AGE_IN_YEARS;
 
 /**
  * The sign up screen.
@@ -43,21 +44,21 @@ public class SignUpScreen extends Screen {
         }
 
         try {
-            if(!getUserController().isOfAge(details[4])) {
-                System.out.println(Notifications.getMessage("ERR_NOT_OF_AGE"));
-                return 1;
+            if(getUserController().addUserToDatabase(details[0], details[1], details[2], details[3], details[4])) {
+                System.out.println(Notifications.getMessage("MSG_SIGN_UP_SUCCESSFUL"));
+                return 0;
             }
+            else
+                return userAlreadyPresent();
+        }
+        catch(NotOfAgeException noaEx) {
+            System.out.println(Notifications.getMessage("ERR_NOT_OF_AGE"));
+            return 1;
         }
         catch(IllegalDateFormatException idfEx) {
-            idfEx.printStackTrace();
+            System.out.println("Data demmerda");
+            return -1;
         }
-
-        if(getUserController().addUserToDatabase(details[0], details[1], details[2], details[3], InputParserUtility.toGregorianDate(details[4]))) {
-            System.out.println(Notifications.getMessage("MSG_SIGN_UP_SUCCESSFUL"));
-            return 0;
-        }
-        else
-            return userAlreadyPresent();
     }
 
     //to insert sign-up details

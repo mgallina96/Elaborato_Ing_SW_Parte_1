@@ -75,8 +75,6 @@ Z
 *src/main/model/database/MediaDatabase.java,3\6\3625452a0dd1e0907a4eab153986ea5e0571425c
 Y
 )src/main/model/database/LoanDatabase.java,1\e\1e4182559b46e7d8cfeea32e9288186d87bfe536
-Y
-)src/main/controller/SystemController.java,6\6\66d39a051e5aba58b34c367bf4621e759590de90
 `
 0src/generators/mediagenerator/FilmGenerator.java,2\6\267d878199cf45be72add51192dad5bd6855c5f1
 S
@@ -151,3 +149,11 @@ j
 :resources/data/Biblioteca SMARTINATOR - Media Database.ser,5\0\50e3d4ce541b9a96a88e34b9783f6b5ec1c0bb82
 O
 test/main/SubscriptionTest.java,3\6\36f62ac260d59428180acf14efd07ad1a8188f61
+W
+'src/main/model/database/DatabaseIO.java,9\0\901569155beb0a6e057663f2c73c0acda04fbd45
+]
+-src/main/controller/SystemLoanController.java,8\e\8eddf8755d24c5e14ad8fe5359fb90d2ae2fc544
+^
+.src/main/controller/SystemMediaController.java,1\2\12a663beb92cf180d77bb4bbd12ceb9e69a94fb6
+]
+-src/main/controller/SystemUserController.java,e\8\e8d5660ed1c25440c9982206ee35831e52d6b40d

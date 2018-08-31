@@ -1,8 +1,10 @@
 package main.model.database;
+
 import main.model.user.Customer;
 import main.model.user.User;
 import main.model.user.UserStatus;
-import java.io.*;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -163,5 +165,13 @@ public class UserDatabase implements Serializable, Database {
      */
     static String getPath() {
         return USER_DATABASE_FILE_PATH;
+    }
+
+    /**
+     *
+     * @param toRemove
+     */
+    public void removeUser(User toRemove) {
+        userList.remove(toRemove.getUsername());
     }
 }

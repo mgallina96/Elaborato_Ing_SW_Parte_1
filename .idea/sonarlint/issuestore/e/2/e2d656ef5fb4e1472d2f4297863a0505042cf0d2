@@ -1,69 +1,75 @@
 
-msquid:S1192"JDefine a constant instead of duplicating this literal "SEPARATOR" 7 times.(Ò­”Óûÿÿÿÿ8î²Î³Õ,
-W
-squid:S106Â"9Replace this use of System.out or System.err by a logger.(ò­³Ñ8î²Î³Õ,
-V
-squid:S1063"9Replace this use of System.out or System.err by a logger.(Ï²Î×8î²Î³Õ,
-V
-squid:S106w"9Replace this use of System.out or System.err by a logger.(€ªÈ•8î²Î³Õ,
-[
-squid:S106F"9Replace this use of System.out or System.err by a logger.(¿´Š©ùÿÿÿÿ8î²Î³Õ,
-[
-squid:S106g"9Replace this use of System.out or System.err by a logger.(ó»Ÿëüÿÿÿÿ8î²Î³Õ,
-[
-squid:S106j"9Replace this use of System.out or System.err by a logger.(ŒàÙÁùÿÿÿÿ8î²Î³Õ,
-isquid:S1301A"KReplace this "switch" statement by "if" statements to increase readability.(¨ÕÉ8î²Î³Õ,
-lsquid:S1192C"IDefine a constant instead of duplicating this literal "%s%n%s%n" 7 times.(ÁÓ³™şÿÿÿÿ8î²Î³Õ,
-W"squid:SwitchLastCaseIsDefaultCheckA""Add a default case to this switch.(¨ÕÉ8î²Î³Õ,
-V
-squid:S106y"9Replace this use of System.out or System.err by a logger.(ˆÒ­É8î²Î³Õ,
 \
-squid:S106ƒ"9Replace this use of System.out or System.err by a logger.(õæÛ†üÿÿÿÿ8î²Î³Õ,
-\
-squid:S106"9Replace this use of System.out or System.err by a logger.(ÆÙ¶²ùÿÿÿÿ8î²Î³Õ,
-[
-squid:S106R"9Replace this use of System.out or System.err by a logger.(ÄšĞïüÿÿÿÿ8î²Î³Õ,
-[
-squid:S106X"9Replace this use of System.out or System.err by a logger.(‡‡Òşÿÿÿÿ8î²Î³Õ,
-U
-squid:S106p"9Replace this use of System.out or System.err by a logger.(Ã®˜&8î²Î³Õ,
-\
-squid:S106"9Replace this use of System.out or System.err by a logger.(æØ–êúÿÿÿÿ8î²Î³Õ,
+squid:S106®"9Replace this use of System.out or System.err by a logger.(æØ–êúÿÿÿÿ8î²Î³Õ,
 W
-squid:S106»"9Replace this use of System.out or System.err by a logger.(òÓì¦8î²Î³Õ,
+squid:S106Ú"9Replace this use of System.out or System.err by a logger.(òÓì¦8î²Î³Õ,
 W
-squid:S106¿"9Replace this use of System.out or System.err by a logger.(¸‡ø÷8î²Î³Õ,
-W
-squid:S106³"9Replace this use of System.out or System.err by a logger.(¬İÛƒ8î²Î³Õ,
+squid:S106Ş"9Replace this use of System.out or System.err by a logger.(¸‡ø÷8î²Î³Õ,
 V
-squid:S106>"9Replace this use of System.out or System.err by a logger.(’Ú˜‹8î²Î³Õ,
+squid:S106["9Replace this use of System.out or System.err by a logger.(ºšÓ¬8î²Î³Õ,
+W
+squid:S106‘"9Replace this use of System.out or System.err by a logger.(×õ¦8î²Î³Õ,
+W"squid:SwitchLastCaseIsDefaultCheckS""Add a default case to this switch.(¨ÕÉ8î²Î³Õ,
+[
+squid:S106L"9Replace this use of System.out or System.err by a logger.(¿´Š©ùÿÿÿÿ8î²Î³Õ,
+W"squid:SwitchLastCaseIsDefaultCheckG""Add a default case to this switch.(¨ÕÉ8î²Î³Õ,
+W
+squid:S106•"9Replace this use of System.out or System.err by a logger.(€ªÈ•8î²Î³Õ,
+W
+squid:S106—"9Replace this use of System.out or System.err by a logger.(ˆÒ­É8î²Î³Õ,
+[
+squid:S106X"9Replace this use of System.out or System.err by a logger.(ÄšĞïüÿÿÿÿ8î²Î³Õ,
 \
-squid:S106©"9Replace this use of System.out or System.err by a logger.(‘ùÀ şÿÿÿÿ8î²Î³Õ,
-\
-squid:S106·"9Replace this use of System.out or System.err by a logger.(÷û °ûÿÿÿÿ8î²Î³Õ,
-W"squid:SwitchLastCaseIsDefaultCheckM""Add a default case to this switch.(¨ÕÉ8î²Î³Õ,
-V
-squid:S106O"9Replace this use of System.out or System.err by a logger.(”‡ù„8î²Î³Õ,
-[
-squid:S106"9Replace this use of System.out or System.err by a logger.(Ò­”Óûÿÿÿÿ8î²Î³Õ,
-U
-squid:S106c"9Replace this use of System.out or System.err by a logger.(¶“m8î²Î³Õ,
-V
-squid:S106s"9Replace this use of System.out or System.err by a logger.(×õ¦8î²Î³Õ,
-[
-squid:S106J"9Replace this use of System.out or System.err by a logger.(ºŞ“Óûÿÿÿÿ8î²Î³Õ,
-hsquid:S1192w"JDefine a constant instead of duplicating this literal "MSG_ABORT" 3 times.(€ªÈ•8î²Î³Õ,
-\
-squid:S106€"9Replace this use of System.out or System.err by a logger.(Í¥ÔÎÿÿÿÿÿ8î²Î³Õ,
+squid:S106Ç"9Replace this use of System.out or System.err by a logger.(‘ùÀ şÿÿÿÿ8î²Î³Õ,
 W
-squid:S106¢"9Replace this use of System.out or System.err by a logger.(ò­³Ñ8î²Î³Õ,
-V
-squid:S106U"9Replace this use of System.out or System.err by a logger.(ºšÓ¬8î²Î³Õ,
+squid:S106Ë"9Replace this use of System.out or System.err by a logger.(ƒ¼ĞÈ8î²Î³Õ,
+[
+squid:S106I"9Replace this use of System.out or System.err by a logger.(ÁÓ³™şÿÿÿÿ8î²Î³Õ,
+isquid:S1192•"JDefine a constant instead of duplicating this literal "MSG_ABORT" 3 times.(€ªÈ•8î²Î³Õ,
 W
-squid:S106­"9Replace this use of System.out or System.err by a logger.(ƒ¼ĞÈ8î²Î³Õ,
+squid:S106‚"9Replace this use of System.out or System.err by a logger.(‹Û€Ê8î²Î³Õ,
 [
-squid:S106C"9Replace this use of System.out or System.err by a logger.(ÁÓ³™şÿÿÿÿ8î²Î³Õ,
+squid:S106^"9Replace this use of System.out or System.err by a logger.(‡‡Òşÿÿÿÿ8î²Î³Õ,
+isquid:S1301G"KReplace this "switch" statement by "if" statements to increase readability.(¨ÕÉ8î²Î³Õ,
 V
-squid:S106d"9Replace this use of System.out or System.err by a logger.(‹Û€Ê8î²Î³Õ,
+squid:S106U"9Replace this use of System.out or System.err by a logger.(”‡ù„8î²Î³Õ,
+\
+squid:S106¼"9Replace this use of System.out or System.err by a logger.(ÆÙ¶²ùÿÿÿÿ8î²Î³Õ,
+W
+squid:S106À"9Replace this use of System.out or System.err by a logger.(ò­³Ñ8î²Î³Õ,
+\
+squid:S106Ö"9Replace this use of System.out or System.err by a logger.(÷û °ûÿÿÿÿ8î²Î³Õ,
+W
+squid:S106á"9Replace this use of System.out or System.err by a logger.(ò­³Ñ8î²Î³Õ,
+\
+squid:S106…"9Replace this use of System.out or System.err by a logger.(úœ—·şÿÿÿÿ8î²Î³Õ,
+V
+squid:S1067"9Replace this use of System.out or System.err by a logger.(Ï²Î×8î²Î³Õ,
+\
+squid:S106ˆ"9Replace this use of System.out or System.err by a logger.(ŒàÙÁùÿÿÿÿ8î²Î³Õ,
+W
+squid:S106Ò"9Replace this use of System.out or System.err by a logger.(¬İÛƒ8î²Î³Õ,
+hsquid:S1192 "JDefine a constant instead of duplicating this literal "SEPARATOR" 6 times.(õ±8°¾îİÖ,
+gsquid:S1192C"IDefine a constant instead of duplicating this literal "%s%n%s%n" 8 times.( ‡«¹8°¾îİÖ,
 [
-squid:S106m"9Replace this use of System.out or System.err by a logger.(´ÒĞ¾ıÿÿÿÿ8î²Î³Õ,
+squid:S106"9Replace this use of System.out or System.err by a logger.(¨´î×üÿÿÿÿ8°¾îİÖ,
+V
+squid:S106C"9Replace this use of System.out or System.err by a logger.( ‡«¹8°¾îİÖ,
+[
+squid:S106P"9Replace this use of System.out or System.err by a logger.(ºŞ“Óûÿÿÿÿ8°¾îİÖ,
+V
+squid:S106c"9Replace this use of System.out or System.err by a logger.(Ï²Î×8°¾îİÖ,
+V
+squid:S106m"9Replace this use of System.out or System.err by a logger.(ô³€Ò8°¾îİÖ,
+V
+squid:S106|"9Replace this use of System.out or System.err by a logger.(Š¾ç¹8°¾îİÖ,
+\
+squid:S106"9Replace this use of System.out or System.err by a logger.(–ƒŞ¬ıÿÿÿÿ8°¾îİÖ,
+V
+squid:S106‹"9Replace this use of System.out or System.err by a logger.(÷Î8°¾îİÖ,
+\
+squid:S106"9Replace this use of System.out or System.err by a logger.(ÊĞôØùÿÿÿÿ8°¾îİÖ,
+\
+squid:S106"9Replace this use of System.out or System.err by a logger.(Í¥ÔÎÿÿÿÿÿ8°¾îİÖ,
+\
+squid:S106¡"9Replace this use of System.out or System.err by a logger.(õæÛ†üÿÿÿÿ8°¾îİÖ,

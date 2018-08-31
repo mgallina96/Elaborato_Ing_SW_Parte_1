@@ -1,8 +1,10 @@
 package main.gui.textual.screens;
+
 import main.controller.*;
 import main.utility.InputParserUtility;
 import main.utility.notifications.Notifications;
 import org.jetbrains.annotations.NotNull;
+
 import java.util.Scanner;
 import java.util.regex.Pattern;
 

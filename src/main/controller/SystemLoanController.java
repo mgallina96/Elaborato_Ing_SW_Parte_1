@@ -1,4 +1,5 @@
 package main.controller;
+
 import main.model.database.LoanDatabase;
 import main.model.database.MediaDatabase;
 import main.model.database.UserDatabase;
@@ -6,12 +7,14 @@ import main.model.loan.Loan;
 import main.model.media.Media;
 import main.utility.exceptions.LoanNotFoundException;
 import main.utility.notifications.Notifications;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static main.model.database.DatabaseIO.*;
+
+import static main.model.database.DatabaseIO.saveDatabase;
 import static main.utility.GlobalParameters.*;
 
 public class SystemLoanController implements LoanController {

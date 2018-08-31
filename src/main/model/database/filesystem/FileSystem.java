@@ -1,9 +1,12 @@
 package main.model.database.filesystem;
+
 import main.utility.notifications.Notifications;
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import static main.utility.GlobalParameters.FILESYSTEM_FILE_PATH;
 
 /**

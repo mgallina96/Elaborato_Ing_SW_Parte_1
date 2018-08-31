@@ -1,6 +1,7 @@
 package generators.mediagenerator;
+
 import generators.randomwords.PoolLoader;
-import generators.randomwords.RandomWords;
+
 import static generators.Generator.COMMON_MEDIA_PATH;
 
 /**

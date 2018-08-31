@@ -1,6 +1,8 @@
 package main.model.loan;
+
 import main.model.media.Media;
 import main.model.user.User;
+
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -41,7 +43,6 @@ public class Loan implements Serializable {
         this.loanExpiry = new GregorianCalendar();
         this.loanExpiry.add(Calendar.DATE, this.media.getMediaLoanValidityPeriod());
         this.extensionDate = null;
-
     }
 
     /**
@@ -149,6 +150,14 @@ public class Loan implements Serializable {
      */
     public boolean canBeExtended(){
         return canBeExtended;
+    }
+
+    /**
+     * For testing purposes only.
+     * @param expiryDate The date to be set.
+     */
+    public void setLoanExpiry(GregorianCalendar expiryDate) {
+        this.loanExpiry = expiryDate;
     }
 
 }

@@ -1,16 +1,16 @@
 package generators.mediagenerator;
+
 import generators.randomwords.PoolLoader;
 import generators.randomwords.RandomWords;
 import generators.usergenerator.PersonNameGenerator;
-import main.model.media.Book;
 import main.model.media.Film;
 import main.model.media.Media;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
 import static generators.Generator.COMMON_FILM_PATH;
-import static generators.Generator.COMMON_MEDIA_PATH;
 
 /**
  * Film generator class. Generates an arbitrary number of films with random parameters.

@@ -1,4 +1,7 @@
 package main.model.user;
+
+import main.utility.InputParserUtility;
+
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 import static main.model.user.UserConstants.*;
@@ -185,6 +188,6 @@ public class User implements Serializable {
      */
     public String toString() {
         return String.format("First name: %s\t|\tLast name: %s\t|\tUsername: %s\t|\tBirth date = %s%n",
-                firstName, lastName, username, birthDate.toZonedDateTime().toString().substring(0, 10));
+                firstName, lastName, username, InputParserUtility.convertDateToEuropeanFormat(birthDate));
     }
 }

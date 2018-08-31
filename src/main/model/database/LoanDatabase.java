@@ -1,11 +1,12 @@
 package main.model.database;
+
 import main.model.loan.Loan;
 import main.model.media.Media;
 import main.model.user.User;
 import main.utility.exceptions.LoanNotFoundException;
 import main.utility.exceptions.UserNotFoundException;
 
-import java.io.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -59,6 +60,10 @@ public class LoanDatabase implements Serializable, Database {
         }
         else
             loans.get(user.getUsername()).add(new Loan(user, media));
+    }
+
+    public void removeUserAndLoans(User toRemove) {
+        loans.remove(toRemove.getUsername());
     }
 
     /**

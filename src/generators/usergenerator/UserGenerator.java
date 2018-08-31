@@ -1,6 +1,5 @@
 package generators.usergenerator;
-import generators.randomwords.PoolLoader;
-import generators.randomwords.RandomWords;
+
 import main.model.user.Customer;
 import main.model.user.Operator;
 import main.model.user.User;
@@ -8,8 +7,6 @@ import main.model.user.User;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Random;
-
-import static generators.Generator.COMMON_USER_PATH;
 
 /**
  * Class UserGenerator to generate a given amount of users with random parameters such as first name, last name,
