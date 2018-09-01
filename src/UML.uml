@@ -3,17 +3,168 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="0.0" y="0.0">main.model.database.DatabaseIO</node>
+    <node x="0.0" y="158.0">main.controller.SystemUserController</node>
+    <node x="19.0" y="79.0">main.controller.UserController</node>
+    <node x="201.0" y="79.0">main.controller.MediaController</node>
+    <node x="41.5" y="548.0">main.model.media.Media</node>
+    <node x="563.0" y="321.0">main.gui.textual.screens.SignUpScreen</node>
+    <node x="182.0" y="158.0">main.controller.SystemMediaController</node>
+    <node x="263.0" y="321.0">main.gui.textual.screens.SettingsScreen</node>
+    <node x="0.0" y="701.0">main.model.user.UserStatus</node>
+    <node x="556.0" y="79.0">main.controller.FileSystemController</node>
+    <node x="211.0" y="548.0">main.gui.GuiManager</node>
+    <node x="149.0" y="474.0">main.model.database.UserDatabase</node>
+    <node x="0.0" y="627.0">main.model.media.Film</node>
+    <node x="538.0" y="548.0">main.model.database.DatabaseIO</node>
+    <node x="0.0" y="474.0">main.model.database.MediaDatabase</node>
+    <node x="408.0" y="321.0">main.gui.textual.screens.CustomerScreen</node>
+    <node x="455.0" y="474.0">main.model.user.Customer</node>
+    <node x="374.0" y="158.0">main.controller.SystemLoanController</node>
+    <node x="575.0" y="474.0">main.model.user.Operator</node>
+    <node x="704.0" y="321.0">main.gui.textual.screens.OperatorScreen</node>
+    <node x="133.0" y="321.0">main.gui.textual.screens.MainScreen</node>
+    <node x="148.0" y="701.0">main.model.database.filesystem.Folder</node>
+    <node x="559.0" y="158.0">main.controller.FileSystemManager</node>
+    <node x="0.0" y="321.0">main.gui.textual.screens.LoginScreen</node>
+    <node x="274.0" y="701.0">main.Main</node>
+    <node x="359.00000000000006" y="232.0">main.gui.textual.screens.Screen</node>
+    <node x="91.0" y="627.0">main.model.media.Book</node>
+    <node x="528.25" y="395.0">main.model.user.User</node>
+    <node x="212.0" y="627.0">main.gui.textual.TextualView</node>
+    <node x="691.0" y="548.0">main.model.database.filesystem.FileSystem</node>
+    <node x="160.5" y="395.0">main.model.database.Database</node>
+    <node x="311.75" y="0.0">main.controller.Controller</node>
+    <node x="288.0" y="474.0">main.model.database.LoanDatabase</node>
+    <node x="394.0" y="701.0">main.model.loan.Loan</node>
+    <node x="369.0" y="548.0">main.model.user.UserConstants</node>
+    <node x="393.0" y="79.0">main.controller.LoanController</node>
   </nodes>
   <notes />
-  <edges />
-  <settings layout="Hierarchic Group" zoom="1.0" x="356.5" y="93.5" />
+  <edges>
+    <edge source="main.model.database.UserDatabase" target="main.model.database.Database">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="main.gui.textual.screens.CustomerScreen" target="main.gui.textual.screens.Screen">
+      <point x="1.1368683772161603E-13" y="-14.5" />
+      <point x="475.5000000000001" y="301.0" />
+      <point x="407.4166666666667" y="301.0" />
+      <point x="6.916666666666629" y="14.5" />
+    </edge>
+    <edge source="main.controller.SystemUserController" target="main.controller.UserController">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="main.model.database.LoanDatabase" target="main.model.database.Database">
+      <point x="0.0" y="-14.5" />
+      <point x="349.0" y="449.0" />
+      <point x="240.5" y="449.0" />
+      <point x="32.0" y="14.5" />
+    </edge>
+    <edge source="main.controller.SystemMediaController" target="main.controller.MediaController">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="main.gui.textual.screens.SignUpScreen" target="main.gui.textual.screens.Screen">
+      <point x="0.0" y="-14.5" />
+      <point x="623.5" y="291.0" />
+      <point x="421.25000000000006" y="291.0" />
+      <point x="20.75" y="14.5" />
+    </edge>
+    <edge source="main.model.media.Book" target="main.model.media.Media">
+      <point x="0.0" y="-14.5" />
+      <point x="128.5" y="602.0" />
+      <point x="102.25" y="602.0" />
+      <point x="20.25" y="14.5" />
+    </edge>
+    <edge source="main.controller.FileSystemController" target="main.controller.Controller">
+      <point x="0.0" y="-14.5" />
+      <point x="634.5" y="49.0" />
+      <point x="400.125" y="49.0" />
+      <point x="37.875" y="14.5" />
+    </edge>
+    <edge source="main.controller.UserController" target="main.controller.Controller">
+      <point x="0.0" y="-14.5" />
+      <point x="81.0" y="49.0" />
+      <point x="324.375" y="49.0" />
+      <point x="-37.875" y="14.5" />
+    </edge>
+    <edge source="main.controller.MediaController" target="main.controller.Controller">
+      <point x="0.0" y="-14.5" />
+      <point x="268.0" y="59.0" />
+      <point x="349.625" y="59.0" />
+      <point x="-12.625" y="14.5" />
+    </edge>
+    <edge source="main.model.media.Film" target="main.model.media.Media">
+      <point x="0.0" y="-14.5" />
+      <point x="35.5" y="602.0" />
+      <point x="61.75" y="602.0" />
+      <point x="-20.25" y="14.5" />
+    </edge>
+    <edge source="main.gui.textual.screens.MainScreen" target="main.gui.textual.screens.Screen">
+      <point x="0.0" y="-14.5" />
+      <point x="188.0" y="291.0" />
+      <point x="379.75000000000006" y="291.0" />
+      <point x="-20.75" y="14.5" />
+    </edge>
+    <edge source="main.controller.FileSystemManager" target="main.controller.FileSystemController">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="main.model.user.Operator" target="main.model.user.User">
+      <point x="0.0" y="-14.5" />
+      <point x="622.5" y="449.0" />
+      <point x="581.5" y="449.0" />
+      <point x="17.75" y="14.5" />
+    </edge>
+    <edge source="main.gui.textual.screens.SettingsScreen" target="main.gui.textual.screens.Screen">
+      <point x="0.0" y="-14.5" />
+      <point x="325.5" y="301.0" />
+      <point x="393.5833333333334" y="301.0" />
+      <point x="-6.916666666666629" y="14.5" />
+    </edge>
+    <edge source="main.controller.SystemLoanController" target="main.controller.LoanController">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="main.gui.textual.TextualView" target="main.gui.GuiManager">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="main.model.user.Customer" target="main.model.user.User">
+      <point x="0.0" y="-14.5" />
+      <point x="505.0" y="449.0" />
+      <point x="546.0" y="449.0" />
+      <point x="-17.75" y="14.5" />
+    </edge>
+    <edge source="main.gui.textual.screens.OperatorScreen" target="main.gui.textual.screens.Screen">
+      <point x="0.0" y="-14.5" />
+      <point x="769.0" y="281.0" />
+      <point x="435.0833333333334" y="281.0" />
+      <point x="34.58333333333337" y="14.5" />
+    </edge>
+    <edge source="main.controller.LoanController" target="main.controller.Controller">
+      <point x="0.0" y="-14.5" />
+      <point x="456.5" y="59.0" />
+      <point x="374.875" y="59.0" />
+      <point x="12.625" y="14.5" />
+    </edge>
+    <edge source="main.gui.textual.screens.LoginScreen" target="main.gui.textual.screens.Screen">
+      <point x="0.0" y="-14.5" />
+      <point x="56.5" y="281.0" />
+      <point x="365.9166666666667" y="281.0" />
+      <point x="-34.58333333333337" y="14.5" />
+    </edge>
+    <edge source="main.model.database.MediaDatabase" target="main.model.database.Database">
+      <point x="0.0" y="-14.5" />
+      <point x="64.5" y="449.0" />
+      <point x="176.5" y="449.0" />
+      <point x="-32.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.49056603773584906" x="1076.5" y="521.0" />
   <SelectedNodes />
-  <Categories>
-    <Category>Methods</Category>
-    <Category>Constructors</Category>
-    <Category>Fields</Category>
-  </Categories>
+  <Categories />
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
 </Diagram>

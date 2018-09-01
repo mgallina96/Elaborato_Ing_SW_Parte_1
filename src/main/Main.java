@@ -24,7 +24,7 @@ public class Main {
     private static final FileSystemController FILE_SYSTEM_CONTROLLER = FileSystemManager.getInstance();
 
     public static void main(String[] args) {
-        Notifications.setLanguage(Notifications.LANGUAGE_ITA);
+        Notifications.init();
         LOGGER.setLevel(Level.ALL);
 
         GuiManager textualView = new TextualView(USER_CONTROLLER, MEDIA_CONTROLLER, LOAN_CONTROLLER, FILE_SYSTEM_CONTROLLER);

@@ -37,6 +37,7 @@ MSG_RENEWAL_INFO -@ \n\tNon è consentito rinnovare l'iscrizione fino a
 MSG_RENEWAL_INFO_END_OF_MESSAGE -@ prima della data di scadenza.
 MSG_BOOK_WORD -@ libro
 MSG_FILM_WORD -@ film
+MSG_AVAILABLE_LANGUAGES -@ Lingue disponibili: 
 PROMPT_FIRST_NAME -@ Nome (si prega di inserire un nome valido): 
 PROMPT_LAST_NAME -@ Cognome (si prega di inserire un cognome valido): 
 PROMPT_USERNAME -@ Nome utente: 

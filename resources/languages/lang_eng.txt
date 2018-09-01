@@ -37,6 +37,7 @@ MSG_RENEWAL_INFO -@ \n\tYou're not allowed to renew your subscription until
 MSG_RENEWAL_INFO_END_OF_MESSAGE -@ before the expiry date.
 MSG_BOOK_WORD -@ book
 MSG_FILM_WORD -@ film
+MSG_AVAILABLE_LANGUAGES -@ Available languages: 
 PROMPT_FIRST_NAME -@ First name (please insert a valid first name): 
 PROMPT_LAST_NAME -@ Last name (please insert a valid last name): 
 PROMPT_USERNAME -@ Username: 

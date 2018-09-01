@@ -11,6 +11,7 @@ import main.model.media.Film;
 import main.model.media.Media;
 import main.model.user.User;
 import main.utility.notifications.Notifications;
+import main.utility.notifications.languages.Languages;
 
 import java.util.HashMap;
 
@@ -30,7 +31,7 @@ public class QuickFillMain {
     private static final int HOW_MANY_INSTANCES = 1500;
 
     public static void main(String[] args) {
-        Notifications.setLanguage(Notifications.LANGUAGE_ENG);
+        Notifications.setLanguage(Languages.ENGLISH);
 
         //fillFileSystem();
         //fillDatabase();
