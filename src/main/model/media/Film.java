@@ -102,11 +102,8 @@ public class Film extends Media implements Serializable {
      */
     @Override
     public String toString() {
-        if(isAvailable())
-            return String.format("Media type: %s, Item ID: %d\t|\tTitle: %s\t|\tDirector: %s\t|\tRelease year: %d\t|\tGenre: %s\t|\tPublisher: %s\t|\tNumber of licenses: %d%n",
-                    TYPE, getIdentifier(), title, director, releaseYear, genre, producer, getLicenses());
-        else
-            return "";
+        return String.format("Media type: %s, Item ID: %d\t|\tTitle: %s\t|\tDirector: %s\t|\tRelease year: %d\t|\tGenre: %s\t|\tPublisher: %s\t|\tNumber of licenses: %d%n",
+                TYPE, getIdentifier(), title, director, releaseYear, genre, producer, getLicenses());
     }
 
     /**

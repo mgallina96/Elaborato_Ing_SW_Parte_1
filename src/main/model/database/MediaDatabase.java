@@ -118,8 +118,9 @@ public class MediaDatabase implements Serializable, Database {
         String regex = ".*(" + filter + ").*";
 
         mediaList.values().stream()
-                .filter(s -> (s.getBareItemDetails().toLowerCase()).matches(regex))
-                .forEach(s -> filteredMedia.append("  - ").append(s.toString()));
+                .filter(Media::isAvailable)
+                .filter(m -> (m.getBareItemDetails().toLowerCase()).matches(regex))
+                .forEach(m -> filteredMedia.append("  - ").append(m.toString()));
 
         return filteredMedia.toString();
     }
@@ -134,6 +135,7 @@ public class MediaDatabase implements Serializable, Database {
         StringBuilder folderContents = new StringBuilder();
 
         mediaList.values().stream()
+                .filter(Media::isAvailable)
                 .filter(m -> m.getPath().equals(folderPath))
                 .forEach(m -> folderContents.append(m.toString()));
 

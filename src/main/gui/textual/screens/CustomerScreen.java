@@ -127,7 +127,7 @@ public class CustomerScreen extends Screen {
                     System.out.println(Notifications.getMessage("ERR_MEDIA_NOT_AVAILABLE"));
             }
             else
-                System.out.println(Notifications.getMessage("ERR_LOAN_UNAVAILABLE"));
+                System.out.println(Notifications.getMessage("ERR_LOAN_LIMIT_REACHED"));
         }
         else
             System.out.println(Notifications.getMessage("MSG_ABORT"));
