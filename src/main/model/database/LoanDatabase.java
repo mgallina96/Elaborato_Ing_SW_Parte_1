@@ -1,19 +1,15 @@
 package main.model.database;
-
 import main.model.loan.Loan;
 import main.model.media.Media;
 import main.model.user.User;
 import main.utility.exceptions.LoanNotFoundException;
 import main.utility.exceptions.UserNotFoundException;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-
 import static main.model.database.DatabaseIO.loadLoanDatabase;
-import static main.utility.GlobalParameters.LOAN_DATABASE_FILE_PATH;
 
 /**
  * Database which contains a record of all loans.
@@ -244,11 +240,4 @@ public class LoanDatabase implements Serializable, Database {
         return toGiveBack;
     }
 
-    /**
-     * Getter for the path where the loan database is located.
-     * @return The Loan Database path.
-     */
-    static String getPath() {
-        return LOAN_DATABASE_FILE_PATH;
-    }
 }

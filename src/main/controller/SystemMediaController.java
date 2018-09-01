@@ -1,13 +1,16 @@
 package main.controller;
-
 import main.model.database.MediaDatabase;
 import main.model.media.Book;
 import main.model.media.Film;
 import main.model.media.Media;
-
 import static main.model.database.DatabaseIO.saveDatabase;
 import static main.utility.GlobalParameters.MEDIA_DATABASE_FILE_PATH;
 
+/**
+ * Controller for media management and operations.
+ *
+ * @author Giosuè Filippini, Manuel Gallina, Alessandro Polcini
+ */
 public class SystemMediaController implements MediaController {
 
     private static SystemMediaController instance;

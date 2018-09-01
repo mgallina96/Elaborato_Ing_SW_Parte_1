@@ -1,5 +1,4 @@
 package main.model.loan;
-
 import main.model.media.Media;
 import main.model.user.User;
 

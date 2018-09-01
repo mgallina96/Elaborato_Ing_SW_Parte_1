@@ -2,6 +2,9 @@ package main.gui.textual.screens;
 import main.controller.LoanController;
 import main.controller.MediaController;
 import main.controller.UserController;
+import main.utility.exceptions.ExtensionDateOutOfBoundsException;
+import main.utility.exceptions.ExtensionLimitReachedException;
+import main.utility.exceptions.LoanNotFoundException;
 import main.utility.notifications.Notifications;
 
 import static main.utility.GlobalParameters.RENEWAL_BOUNDARY_IN_DAYS;
@@ -140,24 +143,18 @@ public class CustomerScreen extends Screen {
             id = insertInteger();
         }
 
-        int loanOutcome = getLoanController().canBeExtended(id);
-
-        if(loanOutcome == 0) {
-            if(getLoanController().extendLoan(id))
-                System.out.println(Notifications.getMessage("MSG_EXTEND_SUCCESSFUL"));
-            else
-                System.out.println(Notifications.getMessage("ERR_ALREADY_EXTENDED"));
+        try {
+            getLoanController().extendLoan(id);
+            System.out.println(Notifications.getMessage("MSG_EXTEND_SUCCESSFUL"));
         }
-
-        switch(loanOutcome) {
-            case 1:
-                System.out.println(Notifications.getMessage("ERR_TOO_EARLY_TO_EXTEND"));
-                break;
-            case -1:
-                System.out.println(Notifications.getMessage("ERR_LOAN_DOES_NOT_EXIST"));
-                break;
-            default:
-                break;
+        catch(LoanNotFoundException e) {
+            System.out.println(Notifications.getMessage("ERR_LOAN_DOES_NOT_EXIST"));
+        }
+        catch(ExtensionDateOutOfBoundsException e) {
+            System.out.println(Notifications.getMessage("ERR_TOO_EARLY_TO_EXTEND"));
+        }
+        catch(ExtensionLimitReachedException e) {
+            System.out.println(Notifications.getMessage("ERR_ALREADY_EXTENDED"));
         }
     }
 }

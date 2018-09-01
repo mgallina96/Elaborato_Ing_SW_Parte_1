@@ -1,8 +1,11 @@
 package main.model.user;
+
 import main.utility.InputParserUtility;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
 import static main.utility.GlobalParameters.EXPIRY_TIME_IN_YEARS;
 
 /**

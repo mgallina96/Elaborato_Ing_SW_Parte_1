@@ -1,10 +1,7 @@
 package main.model.database;
-
 import main.model.media.Media;
-
 import java.io.Serializable;
 import java.util.HashMap;
-
 import static main.model.database.DatabaseIO.loadMediaDatabase;
 
 /**
@@ -142,28 +139,4 @@ public class MediaDatabase implements Serializable, Database {
 
         return folderContents.toString();
     }
-
-    /**
-     * Opens a .ser serializable file and loads its contents into this {@link MediaDatabase} class.<p>
-     * This method loads a {@code HashMap} containing all media items.
-     */
-/*    @SuppressWarnings("unchecked")
-    private void loadMediaDatabase() {
-        try (
-            FileInputStream fileIn = new FileInputStream(MEDIA_DATABASE_FILE_PATH);
-            ObjectInputStream in = new ObjectInputStream(fileIn)
-        ) {
-            setMediaDatabase((MediaDatabase)in.readObject());
-        }
-        catch(FileNotFoundException fnfEx) {
-            logger.log(Level.SEVERE, Notifications.getMessage("ERR_FILE_NOT_FOUND") + this.getClass().getName());
-        }
-        catch(IOException ioEx) {
-            logger.log(Level.SEVERE, Notifications.getMessage("ERR_LOADING_DATABASE") + this.getClass().getName());
-        }
-        catch(ClassNotFoundException cnfEx) {
-            logger.log(Level.SEVERE, Notifications.getMessage("ERR_CLASS_NOT_FOUND") + this.getClass().getName());
-        }
-    }
-    */
 }

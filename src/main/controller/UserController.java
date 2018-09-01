@@ -1,11 +1,8 @@
 package main.controller;
-
 import main.utility.exceptions.IllegalDateFormatException;
 import main.utility.exceptions.NotOfAgeException;
 import main.utility.exceptions.UserNotFoundException;
 import main.utility.exceptions.WrongPasswordException;
-
-import java.util.GregorianCalendar;
 
 /**
  * Interface for the User controller, which provides methods specific to user management.

@@ -1,9 +1,9 @@
 package main.model.user;
-
 import main.utility.InputParserUtility;
 
 import java.io.Serializable;
 import java.util.GregorianCalendar;
+
 import static main.model.user.UserConstants.*;
 
 /**
@@ -31,7 +31,7 @@ public class User implements Serializable {
      * @param username The user's unique username.
      */
     public User(String username) {
-        this(DEFAULT_FIRST_NAME, DEFAULT_LAST_NAME, username, DEFAULT_PASSWORD, DEFAULT_BIRTHDAY);
+        this(DEFAULT_FIRST_NAME, DEFAULT_LAST_NAME, username, DEFAULT_PASSWORD, DEFAULT_BIRTH_DATE);
     }
 
     /**
@@ -52,7 +52,7 @@ public class User implements Serializable {
      * @param password The user's password.
      */
     public User(String username, String password) {
-        this(DEFAULT_FIRST_NAME, DEFAULT_LAST_NAME, username, password, DEFAULT_BIRTHDAY);
+        this(DEFAULT_FIRST_NAME, DEFAULT_LAST_NAME, username, password, DEFAULT_BIRTH_DATE);
     }
 
     /**

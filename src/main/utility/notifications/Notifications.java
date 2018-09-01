@@ -1,4 +1,5 @@
 package main.utility.notifications;
+
 import main.utility.notifications.languages.Languages;
 
 import java.io.File;
@@ -6,7 +7,9 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static main.utility.notifications.languages.LanguageIO.*;
+
+import static main.utility.notifications.languages.LanguageIO.loadLastUsedLanguage;
+import static main.utility.notifications.languages.LanguageIO.saveLastUsedLanguage;
 
 /**
  * Utility class that contains useful textual messages, warnings and notifications for this particular program.

@@ -1,5 +1,4 @@
 package main.model.database;
-
 import main.utility.notifications.Notifications;
 import org.jetbrains.annotations.NotNull;
 
@@ -9,6 +8,11 @@ import java.util.logging.Logger;
 
 import static main.utility.GlobalParameters.*;
 
+/**
+ * Utility class for saving and loading databases.
+ *
+ * @author Manuel Gallina, Alessandro Polcini
+ */
 public class DatabaseIO {
 
     private static final String CLASS_NAME = "DatabaseIO";

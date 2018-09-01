@@ -2,13 +2,18 @@ package main.gui.textual.screens;
 import main.utility.notifications.Notifications;
 import main.utility.notifications.languages.Languages;
 
+import java.util.Scanner;
+
 /**
- * Class:
+ * The settings screen.
  *
- * @author Alessandro.
+ * @author Alessandro Polcini
  */
 public class SettingsScreen extends Screen {
 
+    /**
+     * Constructor for the SettingsScreen class.
+     */
     public SettingsScreen() {
         System.out.printf("%s %s%s%n",
                 Notifications.getMessage("PROMPT_CHOOSE_LANGUAGE"),

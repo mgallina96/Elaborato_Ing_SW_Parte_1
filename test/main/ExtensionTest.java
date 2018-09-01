@@ -9,6 +9,10 @@ import main.model.media.Book;
 import main.model.media.Media;
 import main.model.user.User;
 import main.utility.InputParserUtility;
+import main.utility.exceptions.ExtensionDateOutOfBoundsException;
+import main.utility.exceptions.ExtensionLimitReachedException;
+import main.utility.exceptions.LoanNotFoundException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -19,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ExtensionTest {
 
+    SystemLoanController slc = SystemLoanController.getInstance();
     private User testUser1 = new User("Franchello", "Cavalli", "franchellocavalli111", "1234", new GregorianCalendar(1976, Calendar.JANUARY, 12));
     private Media testBook1 = new Book("La morte", "Dario Platino", "Horror", 1998, "AncoMarzio editore", 10);
 
@@ -27,38 +32,51 @@ public class ExtensionTest {
         signUpAndLogin();
         addMedia();
 
-        SystemLoanController slc = SystemLoanController.getInstance();
-
         assertTrue(slc.canBorrow(testBook1.getIdentifier()));
         assertTrue(slc.addLoanToDatabase(testBook1.getIdentifier()));
 
-        //non può perchè non esiste
-        assertEquals(-1, slc.canBeExtended(Integer.MAX_VALUE));
+        //errore: il prestito non esiste perchè quel media non esiste
+        assertEquals(1, extend(Integer.MAX_VALUE));
 
-        //non può perché è troppo presto
-        assertEquals(1, slc.canBeExtended(testBook1.getIdentifier()));
+        //errore: il prestito esiste ma è troppo presto per estenderlo
+        assertEquals(2, extend(testBook1.getIdentifier()));
 
-        //cambio data in modo che sia possibile estendere
+        //-----cambio data in modo che sia possibile estendere il prestito-----
         GregorianCalendar newDate = new GregorianCalendar();
         newDate.add(Calendar.DATE, 2);
-        //-----------------------------------------------
+        //---------------------------------------------------------------------
 
         try {
             LoanDatabase.getInstance().fetchLoan(testUser1, testBook1.getIdentifier()).setLoanExpiry(newDate);
-            //adesso può
-            assertEquals(0, slc.canBeExtended(testBook1.getIdentifier()));
-
-            //esteso a buon fine
-            assertTrue(slc.extendLoan(testBook1.getIdentifier()));
-
-            //ora non può più essere esteso
-            assertFalse(slc.extendLoan(testBook1.getIdentifier()));
         }
-        catch(Exception e) {
+        catch(LoanNotFoundException lnfEx) {
 
         }
+
+        //adesso si può. Prestito esteso a buon fine
+        assertEquals(0, extend(testBook1.getIdentifier()));
+
+        //ora il prestito non può più essere esteso, perchè l'operazione è già stata fatta una volta
+        assertEquals(3, extend(testBook1.getIdentifier()));
 
         removeAndSave();
+    }
+
+    int extend(int ID) {
+        try {
+            slc.extendLoan(ID);
+        }
+        catch(LoanNotFoundException e) {
+            return 1;
+        }
+        catch(ExtensionDateOutOfBoundsException e) {
+            return 2;
+        }
+        catch(ExtensionLimitReachedException e) {
+            return 3;
+        }
+
+        return 0;
     }
 
     void addMedia() {

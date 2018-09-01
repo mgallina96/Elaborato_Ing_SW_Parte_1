@@ -1,4 +1,7 @@
 package main.controller;
+import main.utility.exceptions.ExtensionDateOutOfBoundsException;
+import main.utility.exceptions.ExtensionLimitReachedException;
+import main.utility.exceptions.LoanNotFoundException;
 
 /**
  * Interface for the Loan controller, which provides methods that are specific to loan management.
@@ -16,28 +19,23 @@ public interface LoanController extends Controller {
     boolean canBorrow(int mediaID);
 
     /**
-     * Checks whether the loan of the media matching the {@code mediaID} can be extended.
-     *
-     * @param mediaID The media item associated with the loan to be checked.
-     * @return {@code true} if that loan can be extended, {@code false} otherwise.
-     */
-    int canBeExtended(int mediaID);
-
-    /**
      * Adds a new {@code Loan} object to the database whenever the current user borrows a media item.
      *
      * @param mediaID The media to be borrowed.
-     * @return A boolean value: {@code true} if the loan has been added successfully, {@code false} otherwise.
+     * @return {@code true} if the loan has been added successfully, {@code false} otherwise.
      */
     boolean addLoanToDatabase(int mediaID);
 
     /**
-     * Extends the loan due date.
+     * Extends the loan due date. The loan must be extended in a very specific time window and only one extension is
+     * allowed. If these requirements are not met, exceptions will be thrown.
      *
      * @param mediaID The ID of the media whose loan is to be extended.
-     * @return {@code true} if the loan can be extended, {@code false} otherwise.
+     * @throws LoanNotFoundException If that loan can't be found.
+     * @throws ExtensionDateOutOfBoundsException If it's too early to extend that loan.
+     * @throws ExtensionLimitReachedException If the loan has already been extended once.
      */
-    boolean extendLoan(int mediaID);
+    void extendLoan(int mediaID) throws LoanNotFoundException, ExtensionDateOutOfBoundsException, ExtensionLimitReachedException;
 
     /**
      * Creates a {@code String} that contains all the loans that have been granted.

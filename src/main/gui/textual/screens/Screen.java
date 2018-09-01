@@ -6,7 +6,6 @@ import main.utility.notifications.Notifications;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 /**
  * Class that implements a generic screen.
@@ -200,7 +199,8 @@ public class Screen {
 
     /**
      * Loops a scanner until the inserted {@code String} is a valid birth date.
-     * <p>The parameters and the logic for date validity are defined in the {@code isValidDate()} method of the
+     * <p>
+     * The parameters and the logic for date validity are defined in the {@code isValidDate()} method of the
      * {@link InputParserUtility} class.
      *
      * @return a valid birth date in the form of a {@code String}.

@@ -1,16 +1,12 @@
 package main.model.database;
-
 import main.model.user.Customer;
 import main.model.user.User;
 import main.model.user.UserStatus;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-
 import static main.model.database.DatabaseIO.loadUserDatabase;
-import static main.utility.GlobalParameters.USER_DATABASE_FILE_PATH;
 
 /**
  * Database concerned with saving, removing, finding, fetching and generally managing all kinds of users and details
@@ -61,6 +57,14 @@ public class UserDatabase implements Serializable, Database {
      */
     public void addUser(User toAdd) {
         userList.put(toAdd.getUsername(), toAdd);
+    }
+
+    /**
+     * Removes a user from the database.
+     * @param toRemove The user to be removed.
+     */
+    public void removeUser(User toRemove) {
+        userList.remove(toRemove.getUsername());
     }
 
     /**
@@ -121,30 +125,6 @@ public class UserDatabase implements Serializable, Database {
         return allUsers.toString();
     }
 
-    /**
-     * Opens a .ser serializable file and loads its contents into this {@link UserDatabase} class.<p>
-     * This method loads a {@code HashMap} containing all subscribed users.
-     */
-/*    @SuppressWarnings("unchecked")
-    private void loadUserDatabase() {
-        try (
-            FileInputStream fileIn = new FileInputStream(USER_DATABASE_FILE_PATH);
-            ObjectInputStream in = new ObjectInputStream(fileIn)
-        ) {
-            setUserDatabase((UserDatabase)in.readObject());
-        }
-        catch(FileNotFoundException fnfEx) {
-            logger.log(Level.SEVERE, Notifications.getMessage("ERR_FILE_NOT_FOUND") + this.getClass().getName());
-        }
-        catch(IOException ioEx) {
-            logger.log(Level.SEVERE, Notifications.getMessage("ERR_LOADING_DATABASE") + this.getClass().getName());
-        }
-        catch(ClassNotFoundException cnfEx) {
-            logger.log(Level.SEVERE, Notifications.getMessage("ERR_CLASS_NOT_FOUND") + this.getClass().getName());
-        }
-    }
-*/
-
     //sweeps the user database removing all users whose subscription has expired.
     private void sweep() {
         GregorianCalendar today = new GregorianCalendar();
@@ -159,19 +139,4 @@ public class UserDatabase implements Serializable, Database {
             userList.remove(s);
     }
 
-    /**
-     * Getter for the path where the user database is located.
-     * @return The User Database path.
-     */
-    static String getPath() {
-        return USER_DATABASE_FILE_PATH;
-    }
-
-    /**
-     *
-     * @param toRemove
-     */
-    public void removeUser(User toRemove) {
-        userList.remove(toRemove.getUsername());
-    }
 }

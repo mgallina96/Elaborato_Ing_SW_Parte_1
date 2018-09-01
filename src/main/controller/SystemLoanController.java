@@ -1,22 +1,27 @@
 package main.controller;
-
 import main.model.database.LoanDatabase;
 import main.model.database.MediaDatabase;
 import main.model.database.UserDatabase;
 import main.model.loan.Loan;
 import main.model.media.Media;
+import main.utility.exceptions.ExtensionDateOutOfBoundsException;
+import main.utility.exceptions.ExtensionLimitReachedException;
 import main.utility.exceptions.LoanNotFoundException;
 import main.utility.notifications.Notifications;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static main.model.database.DatabaseIO.saveDatabase;
 import static main.utility.GlobalParameters.*;
 
+/**
+ * Controller for loan management and operations.
+ *
+ * @author Giosuè Filippini, Manuel Gallina, Alessandro Polcini
+ */
 public class SystemLoanController implements LoanController {
 
     private static SystemLoanController instance;
@@ -82,39 +87,24 @@ public class SystemLoanController implements LoanController {
     }
 
     @Override
-    public int canBeExtended(int mediaID) {
-        try {
-            Loan toCheck = loanDatabase.fetchLoan(userDatabase.getCurrentUser(), mediaID);
+    public void extendLoan(int mediaID) throws LoanNotFoundException,
+            ExtensionDateOutOfBoundsException, ExtensionLimitReachedException {
 
-            GregorianCalendar correctedLoanExpiry = (GregorianCalendar) toCheck.getLoanExpiry().clone();
-            correctedLoanExpiry.add(Calendar.DATE, -toCheck.getExtensionRestrictionInDays());
+        Loan toBeExtended = loanDatabase.fetchLoan(userDatabase.getCurrentUser(), mediaID);
 
-            if(new GregorianCalendar().after(correctedLoanExpiry))
-                return 0;
-        }
-        catch(LoanNotFoundException unfEx) {
-            return -1;
-        }
+        if(toBeExtended.canBeExtended()) {
+            GregorianCalendar correctedLoanExpiry = (GregorianCalendar)toBeExtended.getLoanExpiry().clone();
+            correctedLoanExpiry.add(Calendar.DATE, -toBeExtended.getExtensionRestrictionInDays());
 
-        return 1;
-    }
-
-    @Override
-    public boolean extendLoan(int mediaID) {
-        try {
-            Loan toBeExtended = loanDatabase.fetchLoan(userDatabase.getCurrentUser(), mediaID);
-
-            if(toBeExtended.canBeExtended()) {
+            if(new GregorianCalendar().after(correctedLoanExpiry)) {
                 toBeExtended.extend();
                 saveDatabase(LOAN_DATABASE_FILE_PATH, loanDatabase);
-                return true;
             }
+            else
+                throw new ExtensionDateOutOfBoundsException();
         }
-        catch(LoanNotFoundException lnfEx) {
-            logger.log(Level.SEVERE, Notifications.getMessage("ERR_LOAN_NOT_FOUND"));
-        }
-
-        return false;
+        else
+            throw new ExtensionLimitReachedException();
     }
 
     @Override

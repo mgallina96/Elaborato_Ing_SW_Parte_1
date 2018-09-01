@@ -1,5 +1,4 @@
 package main.controller;
-
 import main.model.database.UserDatabase;
 import main.model.user.Customer;
 import main.model.user.User;
@@ -16,6 +15,11 @@ import java.util.GregorianCalendar;
 import static main.model.database.DatabaseIO.saveDatabase;
 import static main.utility.GlobalParameters.*;
 
+/**
+ * Controller for user management and operations.
+ *
+ * @author Giosuè Filippini, Manuel Gallina, Alessandro Polcini
+ */
 public class SystemUserController implements UserController {
 
     private static SystemUserController instance;

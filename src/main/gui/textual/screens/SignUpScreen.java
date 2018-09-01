@@ -1,7 +1,6 @@
 package main.gui.textual.screens;
 
 import main.controller.UserController;
-import main.utility.InputParserUtility;
 import main.utility.exceptions.IllegalDateFormatException;
 import main.utility.exceptions.NotOfAgeException;
 import main.utility.notifications.Notifications;
