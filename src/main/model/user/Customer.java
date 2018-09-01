@@ -131,7 +131,7 @@ public class Customer extends User {
     public String toString() {
         return String.format("First name: %s\t|\tLast name: %s\t|\tUsername: %s\t|\tBirth date = %s\t|\tSubscription date = %s%n",
                 getFirstName(), getLastName(), getUsername(),
-                InputParserUtility.convertDateToEuropeanFormat(getBirthDate()),
-                InputParserUtility.convertDateToEuropeanFormat(subscriptionDate));
+                InputParserUtility.toEuropeanFormat(getBirthDate()),
+                InputParserUtility.toEuropeanFormat(subscriptionDate));
     }
 }

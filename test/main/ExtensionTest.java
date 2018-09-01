@@ -12,7 +12,6 @@ import main.utility.InputParserUtility;
 import main.utility.exceptions.ExtensionDateOutOfBoundsException;
 import main.utility.exceptions.ExtensionLimitReachedException;
 import main.utility.exceptions.LoanNotFoundException;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -93,7 +92,7 @@ public class ExtensionTest {
                     testUser1.getLastName(),
                     testUser1.getUsername(),
                     testUser1.getPassword(),
-                    InputParserUtility.convertDateToEuropeanFormat(testUser1.getBirthDate()))
+                    InputParserUtility.toEuropeanFormat(testUser1.getBirthDate()))
             );
 
             assertTrue(suc.checkUserLogin(testUser1.getUsername(), testUser1.getPassword()));

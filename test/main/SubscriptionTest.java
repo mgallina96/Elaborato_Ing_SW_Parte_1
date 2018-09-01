@@ -35,7 +35,7 @@ class SubscriptionTest {
                     testUser1.getLastName(),
                     testUser1.getUsername(),
                     testUser1.getPassword(),
-                    InputParserUtility.convertDateToEuropeanFormat(testUser1.getBirthDate())
+                    InputParserUtility.toEuropeanFormat(testUser1.getBirthDate())
             ));
 
             //dovrebbe essere falso perchè l'utente è minorenne
@@ -44,7 +44,7 @@ class SubscriptionTest {
                     testUser2.getLastName(),
                     testUser2.getUsername(),
                     testUser2.getPassword(),
-                    InputParserUtility.convertDateToEuropeanFormat(testUser2.getBirthDate())));
+                    InputParserUtility.toEuropeanFormat(testUser2.getBirthDate())));
 
             //dovrebbe essere falso percè l'utente non è ancora nato
             assertFalse(sc.addUserToDatabase(
@@ -52,7 +52,7 @@ class SubscriptionTest {
                     testUser3.getLastName(),
                     testUser3.getUsername(),
                     testUser3.getPassword(),
-                    InputParserUtility.convertDateToEuropeanFormat(testUser3.getBirthDate())));
+                    InputParserUtility.toEuropeanFormat(testUser3.getBirthDate())));
         }
         catch(Exception e) {
 

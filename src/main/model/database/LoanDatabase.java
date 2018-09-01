@@ -2,13 +2,12 @@ package main.model.database;
 import main.model.loan.Loan;
 import main.model.media.Media;
 import main.model.user.User;
+import main.utility.InputParserUtility;
 import main.utility.exceptions.LoanNotFoundException;
 import main.utility.exceptions.UserNotFoundException;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
+import java.util.*;
+
 import static main.model.database.DatabaseIO.loadLoanDatabase;
 
 /**
@@ -145,9 +144,10 @@ public class LoanDatabase implements Serializable, Database {
         int counter = 0;
 
         for(ArrayList<Loan> loanValues : loans.values()) {
-            for(Loan l : loanValues)
+            for(Loan l : loanValues) {
                 if(l.getLoanDate().get(Calendar.YEAR) == year)
                     counter++;
+            }
         }
 
         return counter;
@@ -167,8 +167,8 @@ public class LoanDatabase implements Serializable, Database {
             for(Loan loan : loans.get(username))
                 if(loan.getLoanDate().get(Calendar.YEAR) == year)
                     counter++;
-            userLoanByYear.put(username, counter);
 
+            userLoanByYear.put(username, counter);
         }
 
         return userLoanByYear;

@@ -286,7 +286,7 @@ public class InputParserUtility {
      * @param toConvert The birthday to be converted.
      * @return The "european" birth date.
      */
-    public static String convertDateToEuropeanFormat(GregorianCalendar toConvert) {
+    public static String toEuropeanFormat(GregorianCalendar toConvert) {
         String date = toConvert.toZonedDateTime().toString();
         return String.format("%s/%s/%s", date.substring(8, 10), date.substring(5, 7), date.substring(0, 4));
     }

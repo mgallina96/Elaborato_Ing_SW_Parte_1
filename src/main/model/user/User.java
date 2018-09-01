@@ -188,6 +188,6 @@ public class User implements Serializable {
      */
     public String toString() {
         return String.format("First name: %s\t|\tLast name: %s\t|\tUsername: %s\t|\tBirth date = %s%n",
-                firstName, lastName, username, InputParserUtility.convertDateToEuropeanFormat(birthDate));
+                firstName, lastName, username, InputParserUtility.toEuropeanFormat(birthDate));
     }
 }

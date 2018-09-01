@@ -75,7 +75,7 @@ public class LoanTest {
                     testUser1.getLastName(),
                     testUser1.getUsername(),
                     testUser1.getPassword(),
-                    InputParserUtility.convertDateToEuropeanFormat(testUser1.getBirthDate()))
+                    InputParserUtility.toEuropeanFormat(testUser1.getBirthDate()))
             );
 
             assertTrue(suc.checkUserLogin(testUser1.getUsername(), testUser1.getPassword()));

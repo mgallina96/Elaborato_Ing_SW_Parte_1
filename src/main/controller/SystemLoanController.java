@@ -4,11 +4,13 @@ import main.model.database.MediaDatabase;
 import main.model.database.UserDatabase;
 import main.model.loan.Loan;
 import main.model.media.Media;
+import main.model.user.User;
 import main.utility.exceptions.ExtensionDateOutOfBoundsException;
 import main.utility.exceptions.ExtensionLimitReachedException;
 import main.utility.exceptions.LoanNotFoundException;
 import main.utility.notifications.Notifications;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -161,7 +163,10 @@ public class SystemLoanController implements LoanController {
         mostLentMedia.append(Notifications.getMessage("MSG_MOST_LENT_MEDIA_IN_YEAR")).append("\n");
 
         for(int year = from; year <= to; year++) {
-            if(loanDatabase.getMostLentMediaByYear(year) != null) {
+            if(loanDatabase.getMostLentMediaByYear(year) == null) {
+                mostLentMedia.append(year).append(": ").append("/").append("\n");
+            }
+            else {
                 Media m = mediaDatabase.fetch(new Media(loanDatabase.getMostLentMediaByYear(year)));
                 mostLentMedia.append(year).append(": ").append(m.getBareItemDetails()).append("\t-\t").append(m.getType()).append("\n");
             }

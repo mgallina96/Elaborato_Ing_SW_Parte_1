@@ -4,8 +4,6 @@ import main.model.database.DatabaseIO;
 import main.model.database.UserDatabase;
 import main.model.user.User;
 import main.utility.InputParserUtility;
-import main.utility.exceptions.UserNotFoundException;
-import main.utility.exceptions.WrongPasswordException;
 import org.junit.jupiter.api.Test;
 
 import java.util.Calendar;
@@ -56,7 +54,7 @@ public class LoginTest {
                     testUser1.getLastName(),
                     testUser1.getUsername(),
                     testUser1.getPassword(),
-                    InputParserUtility.convertDateToEuropeanFormat(testUser1.getBirthDate()));
+                    InputParserUtility.toEuropeanFormat(testUser1.getBirthDate()));
         }
         catch(Exception e) {
 
